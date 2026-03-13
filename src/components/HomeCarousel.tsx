@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const carouselImages = [
@@ -13,37 +13,52 @@ const carouselImages = [
 
 export function HomeCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    setIsLoaded(true);
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+  }, []);
+
+  const goToPrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
   }, []);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
 
-  const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
-  };
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(goToNext, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, goToNext]);
 
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") {
+      goToPrev();
+    } else if (e.key === "ArrowRight") {
+      goToNext();
+    }
   };
 
   return (
-    <div className="carousel-container" style={{ 
-      marginBottom: "40px",
-      borderRadius: "var(--radius-lg)",
-      overflow: "hidden",
-      position: "relative",
-      aspectRatio: "16/9",
-      maxHeight: "450px"
-    }}>
+    <div 
+      className="carousel-container"
+      style={{ 
+        marginBottom: "40px",
+        borderRadius: "var(--radius-lg)",
+        overflow: "hidden",
+        position: "relative",
+        aspectRatio: "16/9",
+        maxHeight: "450px"
+      }}
+      role="region"
+      aria-label="Carousel d'images"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <div 
         className="carousel-track"
         style={{
@@ -62,6 +77,9 @@ export function HomeCarousel() {
               position: "relative",
               background: "linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-card) 100%)"
             }}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${index + 1} sur ${carouselImages.length}: ${image.alt}`}
           >
             <Image
               src={image.src}
@@ -69,6 +87,7 @@ export function HomeCarousel() {
               fill
               style={{ objectFit: "cover" }}
               priority={index === 0}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
@@ -119,7 +138,7 @@ export function HomeCarousel() {
           fontSize: "1.25rem",
           transition: "all 0.2s ease"
         }}
-        aria-label="Previous slide"
+        aria-label="Image précédente"
       >
         ‹
       </button>
@@ -144,20 +163,24 @@ export function HomeCarousel() {
           fontSize: "1.25rem",
           transition: "all 0.2s ease"
         }}
-        aria-label="Next slide"
+        aria-label="Image suivante"
       >
         ›
       </button>
 
       {/* Dots */}
-      <div style={{
-        position: "absolute",
-        bottom: "16px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        display: "flex",
-        gap: "8px"
-      }}>
+      <div 
+        style={{
+          position: "absolute",
+          bottom: "16px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          gap: "8px"
+        }}
+        role="tablist"
+        aria-label="Contrôles du carousel"
+      >
         {carouselImages.map((_, index) => (
           <button
             key={index}
@@ -174,9 +197,16 @@ export function HomeCarousel() {
               transition: "all 0.3s ease",
               padding: 0
             }}
-            aria-label={`Go to slide ${index + 1}`}
+            role="tab"
+            aria-selected={index === currentIndex}
+            aria-label={`Aller à l'image ${index + 1}`}
           />
         ))}
+      </div>
+
+      {/* Pause/Play indicator for screen readers */}
+      <div className="sr-only" aria-live="polite">
+        Image {currentIndex + 1} sur {carouselImages.length}: {carouselImages[currentIndex].alt}
       </div>
     </div>
   );
