@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import * as XLSX from "xlsx";
 import path from "path";
+import fs from "fs";
 
 export const dynamic = "force-dynamic";
 
@@ -49,9 +50,8 @@ function parseShop(ws: XLSX.WorkSheet): ShopData {
 export async function GET() {
   try {
     const filePath = path.join(process.cwd(), "src", "tools", "svs-data.xlsx");
-    const response = await fetch(`file://${filePath}`);
-    const buffer = await response.arrayBuffer();
-    const wb = XLSX.read(buffer, { type: "buffer", cellDates: true });
+    const fileBuffer = fs.readFileSync(filePath);
+    const wb = XLSX.read(fileBuffer, { type: "buffer", cellDates: true });
 
     const result: Record<string, ShopData> = {};
     for (const sheetName of ["GOLD", "SILVER", "BRONZE"]) {

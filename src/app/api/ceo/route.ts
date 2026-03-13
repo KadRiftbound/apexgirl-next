@@ -6,10 +6,10 @@ import fs from "fs";
 export const dynamic = "force-dynamic";
 
 export type EventItem = {
-  item: string;
-  cost: number;
+  task: string;
   points: number;
-  bonus?: number;
+  used?: number;
+  score?: number;
 };
 
 export type EventData = {
@@ -17,42 +17,62 @@ export type EventData = {
   items: EventItem[];
 };
 
-function parseEvent(ws: XLSX.WorkSheet): EventData | null {
+function parseEventSheet(ws: XLSX.WorkSheet): EventData[] {
   const raw = XLSX.utils.sheet_to_json(ws, { header: 1 }) as unknown[][];
 
-  if (!raw.length || !raw[0]) return null;
+  if (!raw.length || !raw[0]) return [];
 
-  const name = String(raw[0]?.[0] ?? "Event");
+  // Find event names from the header row
+  const name = String(raw[0]?.[1] ?? "TOP CEO EVENT");
+  const name2 = String(raw[0]?.[7] ?? "ULTIMATE CEO EVENT");
+  const name3 = String(raw[0]?.[13] ?? "WARM UP EVENT");
 
-  const items: EventItem[] = [];
-  let foundData = false;
+  const events: EventData[] = [
+    { name, items: [] },
+    { name: name2, items: [] },
+    { name: name3, items: [] },
+  ];
 
-  for (const row of raw) {
+  // Parse data rows
+  for (let i = 4; i < raw.length; i++) {
+    const row = raw[i];
     if (!Array.isArray(row)) continue;
-    const col0 = String(row[0] ?? "");
-    
-    if (col0.toLowerCase().includes("item")) {
-      foundData = true;
-      continue;
+
+    // Skip rows that don't have task names
+    const task1 = String(row[1] || "");
+    const task2 = String(row[7] || "");
+    const task3 = String(row[13] || "");
+
+    if (task1 && !task1.includes("null") && task1 !== "Task") {
+      events[0].items.push({
+        task: task1,
+        points: Number(row[2]) || 0,
+        used: Number(row[3]) || 0,
+        score: Number(row[4]) || 0,
+      });
     }
-    if (!foundData) continue;
-    if (!col0 || col0 === "Event Name") continue;
 
-    const cost = typeof row[1] === "number" ? row[1] : Number(row[1]) || 0;
-    const points = typeof row[2] === "number" ? row[2] : Number(row[2]) || 0;
-    const bonus = typeof row[3] === "number" ? row[3] : Number(row[3]) || 0;
+    if (task2 && !task2.includes("null") && task2 !== "Task") {
+      events[1].items.push({
+        task: task2,
+        points: Number(row[8]) || 0,
+        used: Number(row[9]) || 0,
+        score: Number(row[10]) || 0,
+      });
+    }
 
-    if (cost > 0 || points > 0) {
-      items.push({
-        item: col0,
-        cost,
-        points,
-        bonus: bonus || undefined,
+    if (task3 && !task3.includes("null") && task3 !== "Task") {
+      events[2].items.push({
+        task: task3,
+        points: Number(row[14]) || 0,
+        used: Number(row[15]) || 0,
+        score: Number(row[16]) || 0,
       });
     }
   }
 
-  return { name, items };
+  // Filter out empty events
+  return events.filter(e => e.items.length > 0);
 }
 
 export async function GET() {
@@ -62,11 +82,10 @@ export async function GET() {
     const wb = XLSX.read(fileBuffer, { type: "buffer", cellDates: true });
 
     const result: EventData[] = [];
+    
     for (const sheetName of wb.SheetNames) {
-      const eventData = parseEvent(wb.Sheets[sheetName]);
-      if (eventData && eventData.items.length > 0) {
-        result.push(eventData);
-      }
+      const parsed = parseEventSheet(wb.Sheets[sheetName]);
+      result.push(...parsed);
     }
 
     return NextResponse.json({ events: result });
