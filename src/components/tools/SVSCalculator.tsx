@@ -16,24 +16,24 @@ type ShopData = {
 
 type TablesData = Record<string, ShopData>;
 
-const colorSchemes: Record<string, { card: string; title: string; total: string; check: string }> = {
+const colorSchemes: Record<string, { bg: string; title: string; total: string; border: string }> = {
   GOLD: {
-    card: "linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(15, 23, 42, 0.8))",
+    bg: "linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(30, 30, 50, 0.8))",
     title: "#fbbf24",
     total: "#fcd34d",
-    check: "#f59e0b",
+    border: "rgba(245, 158, 11, 0.4)",
   },
   SILVER: {
-    card: "linear-gradient(135deg, rgba(148, 163, 184, 0.1), rgba(15, 23, 42, 0.8))",
+    bg: "linear-gradient(135deg, rgba(148, 163, 184, 0.15), rgba(30, 30, 50, 0.8))",
     title: "#94a3b8",
     total: "#cbd5e1",
-    check: "#64748b",
+    border: "rgba(148, 163, 184, 0.4)",
   },
   BRONZE: {
-    card: "linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(15, 23, 42, 0.8))",
+    bg: "linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(30, 30, 50, 0.8))",
     title: "#f97316",
     total: "#fdba74",
-    check: "#ea580c",
+    border: "rgba(249, 115, 22, 0.4)",
   },
 };
 
@@ -76,24 +76,26 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
   return (
     <section
       style={{
-        background: scheme.card,
-        borderRadius: "var(--radius-lg)",
-        border: `1px solid ${scheme.title}33`,
-        padding: "var(--space-5)",
-        marginBottom: "var(--space-4)",
+        background: scheme.bg,
+        borderRadius: "16px",
+        border: `1px solid ${scheme.border}`,
+        padding: "20px",
+        marginBottom: "16px",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-4)" }}>
-        <h2 style={{ color: scheme.title, fontSize: "var(--text-lg)", fontWeight: 600 }}>{shop.title}</h2>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+        <h3 style={{ color: scheme.title, fontSize: "1rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          {shop.title}
+        </h3>
         <button
           onClick={reset}
           style={{
             background: "transparent",
-            border: "1px solid var(--border)",
-            color: "var(--text-muted)",
-            fontSize: "var(--text-xs)",
-            padding: "4px 8px",
-            borderRadius: "var(--radius)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            color: "rgba(255,255,255,0.6)",
+            fontSize: "0.75rem",
+            padding: "6px 12px",
+            borderRadius: "8px",
             cursor: "pointer",
           }}
         >
@@ -102,14 +104,14 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
       </div>
 
       <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", fontSize: "var(--text-sm)", borderCollapse: "collapse" }}>
+        <table style={{ width: "100%", fontSize: "0.85rem", borderCollapse: "collapse" }}>
           <thead>
-            <tr style={{ borderBottom: "1px solid var(--border)", color: "var(--text-muted)" }}>
-              <th style={{ padding: "var(--space-2)", textAlign: "left", width: "30px" }}></th>
-              <th style={{ padding: "var(--space-2)", textAlign: "left" }}>Item</th>
-              <th style={{ padding: "var(--space-2)", textAlign: "right", width: "80px" }}>Qty</th>
-              <th style={{ padding: "var(--space-2)", textAlign: "right" }}>Price</th>
-              <th style={{ padding: "var(--space-2)", textAlign: "right" }}>Subtotal</th>
+            <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+              <th style={{ padding: "8px", textAlign: "left", width: "30px", color: "rgba(255,255,255,0.5)" }}></th>
+              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.5)" }}>Item</th>
+              <th style={{ padding: "8px", textAlign: "center", width: "80px", color: "rgba(255,255,255,0.5)" }}>Qty</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)" }}>Price</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)" }}>Subtotal</th>
             </tr>
           </thead>
           <tbody>
@@ -117,17 +119,17 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
               const state = items[i];
               const subtotal = state.inCart ? state.quantity * item.price : 0;
               return (
-                <tr key={item.item} style={{ borderBottom: "1px solid var(--border)" }}>
-                  <td style={{ padding: "var(--space-2)" }}>
+                <tr key={item.item} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                  <td style={{ padding: "8px" }}>
                     <input
                       type="checkbox"
                       checked={state.inCart}
                       onChange={() => toggleCart(i)}
-                      style={{ accentColor: scheme.check, width: "16px", height: "16px", cursor: "pointer" }}
+                      style={{ accentColor: scheme.title, width: "16px", height: "16px", cursor: "pointer" }}
                     />
                   </td>
-                  <td style={{ padding: "var(--space-2)", color: "var(--text-primary)" }}>{item.item}</td>
-                  <td style={{ padding: "var(--space-2)", textAlign: "right" }}>
+                  <td style={{ padding: "8px", color: "#fff" }}>{item.item}</td>
+                  <td style={{ padding: "8px", textAlign: "center" }}>
                     <input
                       type="number"
                       min={0}
@@ -136,25 +138,26 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
                       disabled={!state.inCart}
                       style={{
                         width: "60px",
-                        padding: "4px 8px",
-                        borderRadius: "var(--radius)",
-                        border: "1px solid var(--border)",
-                        background: "var(--bg-subtle)",
-                        color: "var(--text-primary)",
-                        textAlign: "right",
+                        padding: "6px 8px",
+                        borderRadius: "8px",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                        background: "rgba(30, 30, 50, 0.9)",
+                        color: "#fff",
+                        textAlign: "center",
                         opacity: state.inCart ? 1 : 0.3,
                       }}
                     />
                   </td>
-                  <td style={{ padding: "var(--space-2)", textAlign: "right", color: "var(--text-muted)" }}>
+                  <td style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.6)", fontFamily: "monospace" }}>
                     {fmt(item.price)}
                   </td>
                   <td
                     style={{
-                      padding: "var(--space-2)",
+                      padding: "8px",
                       textAlign: "right",
                       fontWeight: 600,
-                      color: state.inCart ? scheme.total : "var(--text-muted)",
+                      fontFamily: "monospace",
+                      color: state.inCart ? scheme.total : "rgba(255,255,255,0.3)",
                     }}
                   >
                     {state.inCart ? fmt(subtotal) : "—"}
@@ -166,11 +169,11 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
         </table>
       </div>
 
-      <div style={{ marginTop: "var(--space-4)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--border)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+      <div style={{ marginTop: "16px", paddingTop: "16px", borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>
           Total Coins Needed
         </span>
-        <span style={{ color: scheme.title, fontSize: "var(--text-2xl)", fontWeight: 700 }}>
+        <span style={{ color: scheme.title, fontSize: "1.5rem", fontWeight: 700, fontFamily: "monospace" }}>
           {fmt(total)}
         </span>
       </div>
@@ -196,15 +199,16 @@ export default function SVSCalculator() {
 
   if (loading) {
     return (
-      <div style={{ textAlign: "center", padding: "var(--space-16)", color: "var(--text-muted)" }}>
-        Loading calculator data...
+      <div style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.6)" }}>
+        <div style={{ fontSize: "2rem", marginBottom: "12px" }}>⏳</div>
+        Loading SVS data...
       </div>
     );
   }
 
   if (error) {
     return (
-      <div style={{ textAlign: "center", padding: "var(--space-16)", color: "#ef4444" }}>
+      <div style={{ textAlign: "center", padding: "60px", color: "#f87171" }}>
         Error: {error}
       </div>
     );
@@ -214,15 +218,6 @@ export default function SVSCalculator() {
 
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-      <div style={{ marginBottom: "var(--space-6)" }}>
-        <h2 style={{ fontSize: "var(--text-2xl)", fontWeight: 700, marginBottom: "var(--space-2)" }}>
-          🛒 SVS Store Calculator
-        </h2>
-        <p style={{ color: "var(--text-muted)" }}>
-          Toggle items and adjust quantities to plan your coin spending
-        </p>
-      </div>
-
       {tables.GOLD && <ShopSection shop={tables.GOLD} color="GOLD" />}
       {tables.SILVER && <ShopSection shop={tables.SILVER} color="SILVER" />}
       {tables.BRONZE && <ShopSection shop={tables.BRONZE} color="BRONZE" />}

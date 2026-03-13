@@ -8,7 +8,7 @@ import ApexCalculator from "@/components/tools/ApexCalculator";
 import { AdBanner } from "@/components/AdSense";
 
 const tools = [
-  { id: "calculator", label: "Resource Calculator", icon: "🧮" },
+  { id: "calculator", label: "Resources", icon: "🧮" },
   { id: "svs", label: "SVS Store", icon: "🛒" },
   { id: "ceo", label: "CEO Events", icon: "📅" },
   { id: "team", label: "Team Builder", icon: "👥" },
@@ -42,7 +42,7 @@ export default function ToolsPage() {
           zIndex: 100,
           padding: "16px 0"
         }}>
-          <div className="container">
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
             <h1 style={{ 
               fontSize: "2rem", 
               fontWeight: 800, 
@@ -50,7 +50,6 @@ export default function ToolsPage() {
               background: "linear-gradient(135deg, #f472b6, #c084fc, #818cf8)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
             }}>
               🔧 TopGirl Tools
             </h1>
@@ -60,7 +59,7 @@ export default function ToolsPage() {
           </div>
         </div>
 
-        <div className="container" style={{ padding: "24px 16px 60px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px 16px 60px" }}>
           <AdBanner />
 
           {/* Navigation Tabs - KTS Style */}
@@ -116,13 +115,16 @@ export default function ToolsPage() {
                   color: "#fff", 
                   fontSize: "1.25rem", 
                   fontWeight: 700, 
-                  marginBottom: "16px",
+                  marginBottom: "8px",
                   display: "flex",
                   alignItems: "center",
                   gap: "8px"
                 }}>
-                  🧮 Resource Calculator
+                  🧮 Level Progression Cost Calculator
                 </h2>
+                <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: "20px", fontSize: "0.9rem" }}>
+                  Only complete levels are available. Select a category and choose levels to calculate total cost.
+                </p>
                 <ApexCalculator />
               </div>
             )}

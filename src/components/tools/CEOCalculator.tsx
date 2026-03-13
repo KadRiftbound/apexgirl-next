@@ -3,10 +3,10 @@
 import { useState, useEffect, useMemo } from "react";
 
 type EventItem = {
-  item: string;
-  cost: number;
+  task: string;
   points: number;
-  bonus?: number;
+  used?: number;
+  score?: number;
 };
 
 type EventData = {
@@ -15,9 +15,9 @@ type EventData = {
 };
 
 const colorSchemes = [
-  { bg: "rgba(139, 92, 246, 0.1)", border: "#8b5cf6", title: "#a78bfa", name: "violet" },
-  { bg: "rgba(6, 182, 212, 0.1)", border: "#06b6d4", title: "#22d3ee", name: "cyan" },
-  { bg: "rgba(16, 185, 129, 0.1)", border: "#10b981", title: "#34d399", name: "emerald" },
+  { bg: "rgba(139, 92, 246, 0.15)", border: "rgba(139, 92, 246, 0.5)", title: "#a78bfa", name: "violet" },
+  { bg: "rgba(6, 182, 212, 0.15)", border: "rgba(6, 182, 212, 0.5)", title: "#22d3ee", name: "cyan" },
+  { bg: "rgba(16, 185, 129, 0.15)", border: "rgba(16, 185, 129, 0.5)", title: "#34d399", name: "emerald" },
 ];
 
 function EventSection({
@@ -29,18 +29,27 @@ function EventSection({
   color: typeof colorSchemes[0];
   onReset: () => void;
 }) {
-  const [counts, setCounts] = useState<number[]>(event.items.map(() => 0));
+  const [counts, setCounts] = useState<number[]>(() => {
+    // Filter out header rows and initialize counts
+    return event.items
+      .filter(item => item.task && !item.task.includes("Task") && !item.task.includes("TOTAL") && !item.task.includes("APPROXIMATE"))
+      .map(() => 0);
+  });
+
+  const validItems = useMemo(() => {
+    return event.items.filter(item => 
+      item.task && 
+      !item.task.includes("Task") && 
+      !item.task.includes("TOTAL") && 
+      !item.task.includes("APPROXIMATE") &&
+      item.points > 0
+    );
+  }, [event.items]);
 
   const total = useMemo(
     () =>
-      counts.reduce((sum, count, i) => sum + count * event.items[i].points, 0),
-    [counts, event.items]
-  );
-
-  const totalCost = useMemo(
-    () =>
-      counts.reduce((sum, count, i) => sum + count * event.items[i].cost, 0),
-    [counts, event.items]
+      counts.reduce((sum, count, i) => sum + count * (validItems[i]?.points || 0), 0),
+    [counts, validItems]
   );
 
   function setCount(idx: number, val: number) {
@@ -48,7 +57,7 @@ function EventSection({
   }
 
   function reset() {
-    setCounts(event.items.map(() => 0));
+    setCounts(validItems.map(() => 0));
     onReset();
   }
 
@@ -57,23 +66,25 @@ function EventSection({
       id={event.name}
       style={{
         background: color.bg,
-        borderRadius: "var(--radius-lg)",
-        border: `1px solid ${color.border}66`,
-        padding: "var(--space-5)",
-        marginBottom: "var(--space-4)",
+        borderRadius: "16px",
+        border: `1px solid ${color.border}`,
+        padding: "20px",
+        marginBottom: "16px",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-4)" }}>
-        <h3 style={{ color: color.title, fontSize: "var(--text-lg)", fontWeight: 600 }}>{event.name}</h3>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+        <h3 style={{ color: color.title, fontSize: "1rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          {event.name}
+        </h3>
         <button
           onClick={reset}
           style={{
             background: "transparent",
-            border: "1px solid var(--border)",
-            color: "var(--text-muted)",
-            fontSize: "var(--text-xs)",
-            padding: "4px 8px",
-            borderRadius: "var(--radius)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            color: "rgba(255,255,255,0.6)",
+            fontSize: "0.75rem",
+            padding: "6px 12px",
+            borderRadius: "8px",
             cursor: "pointer",
           }}
         >
@@ -82,36 +93,24 @@ function EventSection({
       </div>
 
       <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", fontSize: "var(--text-sm)", borderCollapse: "collapse" }}>
+        <table style={{ width: "100%", fontSize: "0.85rem", borderCollapse: "collapse" }}>
           <thead>
-            <tr style={{ borderBottom: "1px solid var(--border)", color: "var(--text-muted)" }}>
-              <th style={{ padding: "var(--space-2)", textAlign: "left" }}>Item</th>
-              <th style={{ padding: "var(--space-2)", textAlign: "right" }}>Cost</th>
-              <th style={{ padding: "var(--space-2)", textAlign: "right" }}>Points</th>
-              <th style={{ padding: "var(--space-2)", textAlign: "right" }}>Qty</th>
-              <th style={{ padding: "var(--space-2)", textAlign: "right" }}>Total</th>
+            <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>Task</th>
+              <th style={{ padding: "8px", textAlign: "center", color: "rgba(255,255,255,0.5)", fontWeight: 500, width: "80px" }}>Used</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>Points</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>Total</th>
             </tr>
           </thead>
           <tbody>
-            {event.items.map((item, i) => {
+            {validItems.slice(0, 30).map((item, i) => {
               const subtotal = counts[i] * item.points;
               return (
-                <tr key={item.item} style={{ borderBottom: "1px solid var(--border)" }}>
-                  <td style={{ padding: "var(--space-2)", color: "var(--text-primary)" }}>
-                    {item.item}
-                    {item.bonus && (
-                      <span style={{ marginLeft: "8px", color: "#fbbf24", fontSize: "var(--text-xs)" }}>
-                        (+{item.bonus}% bonus)
-                      </span>
-                    )}
+                <tr key={i} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                  <td style={{ padding: "8px", color: "#fff" }}>
+                    {item.task}
                   </td>
-                  <td style={{ padding: "var(--space-2)", textAlign: "right", color: "var(--text-muted)" }}>
-                    {item.cost.toLocaleString()}
-                  </td>
-                  <td style={{ padding: "var(--space-2)", textAlign: "right", color: color.title }}>
-                    {item.points.toLocaleString()}
-                  </td>
-                  <td style={{ padding: "var(--space-2)", textAlign: "right" }}>
+                  <td style={{ padding: "8px", textAlign: "center" }}>
                     <input
                       type="number"
                       min={0}
@@ -119,16 +118,20 @@ function EventSection({
                       onChange={(e) => setCount(i, Number(e.target.value))}
                       style={{
                         width: "60px",
-                        padding: "4px 8px",
-                        borderRadius: "var(--radius)",
-                        border: "1px solid var(--border)",
-                        background: "var(--bg-subtle)",
-                        color: "var(--text-primary)",
-                        textAlign: "right",
+                        padding: "6px 8px",
+                        borderRadius: "8px",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                        background: "rgba(30, 30, 50, 0.9)",
+                        color: "#fff",
+                        textAlign: "center",
+                        fontSize: "0.85rem"
                       }}
                     />
                   </td>
-                  <td style={{ padding: "var(--space-2)", textAlign: "right", fontWeight: 600, color: color.title }}>
+                  <td style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.6)", fontFamily: "monospace" }}>
+                    {item.points.toLocaleString()}
+                  </td>
+                  <td style={{ padding: "8px", textAlign: "right", fontWeight: 600, color: counts[i] > 0 ? color.title : "rgba(255,255,255,0.3)", fontFamily: "monospace" }}>
                     {subtotal.toLocaleString()}
                   </td>
                 </tr>
@@ -138,14 +141,12 @@ function EventSection({
         </table>
       </div>
 
-      <div style={{ marginTop: "var(--space-4)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--border)", display: "flex", justifyContent: "space-between" }}>
+      <div style={{ marginTop: "16px", paddingTop: "16px", borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", justifyContent: "flex-end" }}>
         <div>
-          <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>Total Cost: </span>
-          <span style={{ fontWeight: 600 }}>{totalCost.toLocaleString()}</span>
-        </div>
-        <div>
-          <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>Total Points: </span>
-          <span style={{ fontWeight: 700, color: color.title, fontSize: "var(--text-xl)" }}>{total.toLocaleString()}</span>
+          <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", marginRight: "12px" }}>Total Points: </span>
+          <span style={{ fontWeight: 700, color: color.title, fontSize: "1.5rem", fontFamily: "monospace" }}>
+            {total.toLocaleString()}
+          </span>
         </div>
       </div>
     </section>
@@ -179,15 +180,16 @@ export default function CEOCalculator() {
 
   if (loading) {
     return (
-      <div style={{ textAlign: "center", padding: "var(--space-16)", color: "var(--text-muted)" }}>
-        Loading calculator data...
+      <div style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.6)" }}>
+        <div style={{ fontSize: "2rem", marginBottom: "12px" }}>⏳</div>
+        Loading CEO data...
       </div>
     );
   }
 
   if (error) {
     return (
-      <div style={{ textAlign: "center", padding: "var(--space-16)", color: "#ef4444" }}>
+      <div style={{ textAlign: "center", padding: "60px", color: "#f87171" }}>
         Error: {error}
       </div>
     );
@@ -195,7 +197,7 @@ export default function CEOCalculator() {
 
   if (!events.length) {
     return (
-      <div style={{ textAlign: "center", padding: "var(--space-16)", color: "var(--text-muted)" }}>
+      <div style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.6)" }}>
         No events found
       </div>
     );
@@ -207,16 +209,7 @@ export default function CEOCalculator() {
 
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-      <div style={{ marginBottom: "var(--space-6)" }}>
-        <h2 style={{ fontSize: "var(--text-2xl)", fontWeight: 700, marginBottom: "var(--space-2)" }}>
-          📅 CEO Event Calculator
-        </h2>
-        <p style={{ color: "var(--text-muted)" }}>
-          Enter how many items you plan to use to calculate your event points
-        </p>
-      </div>
-
-      <nav style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap", justifyContent: "center", marginBottom: "var(--space-5)" }}>
+      <nav style={{ display: "flex", gap: "8px", flexWrap: "wrap", justifyContent: "center", marginBottom: "20px" }}>
         {visibleEvents.map((event, i) => {
           const color = colorSchemes[i % colorSchemes.length];
           return (
@@ -224,12 +217,13 @@ export default function CEOCalculator() {
               key={event.name}
               href={`#${event.name}`}
               style={{
-                fontSize: "var(--text-xs)",
+                fontSize: "0.8rem",
                 fontWeight: 600,
-                padding: "6px 12px",
-                borderRadius: "var(--radius)",
-                border: `1px solid ${color.border}66`,
+                padding: "8px 14px",
+                borderRadius: "10px",
+                border: `1px solid ${color.border}`,
                 color: color.title,
+                background: "rgba(30, 30, 50, 0.8)",
                 textDecoration: "none",
                 transition: "all 0.2s",
               }}
