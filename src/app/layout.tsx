@@ -95,6 +95,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/assets/images/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="google-adsense-account" content="ca-pub-5737915177617454" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
         {/* Google Search Console - Remplace ce commentaire par ta balise de vérification */}
         {/* <meta name="google-site-verification" content="TON_CODE_VERIFICATION" /> */}
