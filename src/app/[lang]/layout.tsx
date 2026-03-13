@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 export const metadata: Metadata = {
   title: "TopGirl - Guide et Outils",
@@ -66,27 +67,7 @@ export default async function LocaleLayout({
                 {item.label}
               </Link>
             ))}
-            <select 
-              onChange={(e) => {
-                const newLang = e.target.value;
-                window.location.href = `/${newLang}/`;
-              }}
-              value={lang}
-              style={{
-                background: "rgba(255,255,255,0.1)",
-                border: "1px solid rgba(255,255,255,0.2)",
-                borderRadius: "8px",
-                padding: "6px 10px",
-                color: "#fff",
-                fontSize: "0.85rem",
-                cursor: "pointer",
-                marginLeft: "12px"
-              }}
-            >
-              {languages.map((l) => (
-                <option key={l.code} value={l.code}>{l.label}</option>
-              ))}
-            </select>
+            <LanguageSelector currentLang={lang} />
           </nav>
         </div>
       </header>
