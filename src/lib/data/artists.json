@@ -12,7 +12,7 @@
       "50% Basic Attack Damage"
     ],
     "description": "A talented Center from No Group.",
-    "rating": null,
+    "rating": 9.6,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -43,7 +43,7 @@
       "12% Reduction Normal Attack Damage"
     ],
     "description": "A talented Dancer from No Group.",
-    "rating": null,
+    "rating": 9.3,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -74,7 +74,7 @@
       "20% Damage to Player"
     ],
     "description": "A talented Center from No Group.",
-    "rating": null,
+    "rating": 8.7,
     "thoughts": "If Nothing Better",
     "build": "Not Recommended",
     "photos": "Universal",
@@ -106,7 +106,7 @@
       "20% Damage to Player"
     ],
     "description": "A talented Dancer from No Group.",
-    "rating": null,
+    "rating": 9.1,
     "thoughts": "YES",
     "build": "Recommended",
     "photos": "Universal",
@@ -137,7 +137,7 @@
       "20% Damage to Player"
     ],
     "description": "A talented Vocalist from No Group.",
-    "rating": null,
+    "rating": 9.5,
     "thoughts": "YES",
     "build": "Recommended",
     "photos": "Universal",
@@ -168,7 +168,7 @@
       "12% Reduction Normal Attack Damage"
     ],
     "description": "A talented Dancer from No Group.",
-    "rating": null,
+    "rating": 9.7,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -199,7 +199,7 @@
       "12% Skill Damage Reduction"
     ],
     "description": "A talented Center from No Group.",
-    "rating": null,
+    "rating": 9.4,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -230,7 +230,7 @@
       "20% Skill Damage"
     ],
     "description": "A talented Vocalist from No Group.",
-    "rating": null,
+    "rating": 9.1,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -261,7 +261,7 @@
       "50% Basic Attack Damage"
     ],
     "description": "A talented Vocalist from No Group.",
-    "rating": null,
+    "rating": 9.4,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -292,7 +292,7 @@
       "10% Fan Capacity"
     ],
     "description": "A talented Vocalist from No Group.",
-    "rating": null,
+    "rating": 9.4,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -324,7 +324,7 @@
       "10% Fan Capacity"
     ],
     "description": "A talented Center from No Group.",
-    "rating": null,
+    "rating": 9.3,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -356,7 +356,7 @@
       "10% Fan Capacity"
     ],
     "description": "A talented Dancer from No Group.",
-    "rating": null,
+    "rating": 9.5,
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
@@ -402,7 +402,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Fantasy Vibes.",
-    "rating": null,
+    "rating": 8.5,
     "thoughts": "",
     "image": "Alice.jpg"
   },
@@ -434,7 +434,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 7.7,
     "thoughts": "",
     "image": "Antonia.jpg"
   },
@@ -467,7 +467,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from DreamCatcher.",
-    "rating": null,
+    "rating": 7.9,
     "thoughts": "Single Car",
     "image": "Anya.jpg"
   },
@@ -499,7 +499,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from VenuLux.",
-    "rating": null,
+    "rating": 8,
     "thoughts": "",
     "image": "Ariadne.jpg"
   },
@@ -531,7 +531,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from WildFlower.",
-    "rating": null,
+    "rating": 8.6,
     "thoughts": "",
     "image": "Audrey.jpg"
   },
@@ -563,7 +563,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 8,
     "thoughts": "Single Car",
     "image": "Aurelia.jpg"
   },
@@ -594,7 +594,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Sparkle Artists.",
-    "rating": null,
+    "rating": 8.3,
     "thoughts": "",
     "image": "Aurora.jpg"
   },
@@ -626,7 +626,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from Luna.",
-    "rating": null,
+    "rating": 9.9,
     "thoughts": "Damage Reduction",
     "image": "Avery.jpg"
   },
@@ -658,7 +658,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from None.",
-    "rating": null,
+    "rating": 8.2,
     "thoughts": "Single Car",
     "image": "Ayaka.jpg"
   },
@@ -690,7 +690,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Tokyo48.",
-    "rating": null,
+    "rating": 9.3,
     "thoughts": "Damage Reduction",
     "image": "Ayaka.jpg"
   },
@@ -722,7 +722,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Echo.",
-    "rating": null,
+    "rating": 9.6,
     "thoughts": "HQ Defense",
     "image": "Brooklyn.jpg"
   },
@@ -754,7 +754,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from VenuLux.",
-    "rating": null,
+    "rating": 8.4,
     "thoughts": "Single Car",
     "image": "Calliope.jpg"
   },
@@ -786,7 +786,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
-    "rating": null,
+    "rating": 7.5,
     "thoughts": "Rally",
     "image": "Chizuru.jpg"
   },
@@ -818,7 +818,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Luna.",
-    "rating": null,
+    "rating": 7.9,
     "thoughts": "",
     "image": "Cindy.jpg"
   },
@@ -849,7 +849,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Sparkle Artists.",
-    "rating": null,
+    "rating": 8.2,
     "thoughts": "",
     "image": "Claire.jpg"
   },
@@ -880,7 +880,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 7.7,
     "thoughts": "",
     "image": "Claudius.jpg"
   },
@@ -913,7 +913,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 9.3,
     "thoughts": "HQ Defense",
     "image": "Cornelia.jpg"
   },
@@ -944,7 +944,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from VenuLux.",
-    "rating": null,
+    "rating": 8.5,
     "thoughts": "",
     "image": "Daphne.jpg"
   },
@@ -975,7 +975,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Breezara.",
-    "rating": null,
+    "rating": 7.6,
     "thoughts": ""
   },
   {
@@ -1006,7 +1006,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from VenuLux.",
-    "rating": null,
+    "rating": 8,
     "thoughts": "",
     "image": "Eirene.jpg"
   },
@@ -1039,7 +1039,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 8.7,
     "thoughts": ""
   },
   {
@@ -1070,7 +1070,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from DreamCatcher.",
-    "rating": null,
+    "rating": 9.7,
     "thoughts": "Damage Reduction",
     "image": "Everly.jpg"
   },
@@ -1103,7 +1103,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from None.",
-    "rating": null,
+    "rating": 8.2,
     "thoughts": "Single Car",
     "image": "Flora.jpg"
   },
@@ -1135,7 +1135,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Rina.",
-    "rating": null,
+    "rating": 8.2,
     "thoughts": "Single Car"
   },
   {
@@ -1166,7 +1166,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from WildFlower.",
-    "rating": null,
+    "rating": 8.4,
     "thoughts": "Rally",
     "image": "Hestia.jpg"
   },
@@ -1198,7 +1198,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from None.",
-    "rating": null,
+    "rating": 9.7,
     "thoughts": "Damage Reduction",
     "image": "Hikari.jpg"
   },
@@ -1230,7 +1230,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from None.",
-    "rating": null,
+    "rating": 7.7,
     "thoughts": "",
     "image": "Isla.jpg"
   },
@@ -1262,7 +1262,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Radiance.",
-    "rating": null,
+    "rating": 8.9,
     "thoughts": "",
     "image": "Julia.jpg"
   },
@@ -1293,7 +1293,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Tokyo48.",
-    "rating": null,
+    "rating": 7.8,
     "thoughts": "",
     "image": "Kasha.jpg"
   },
@@ -1325,7 +1325,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from WildFlower.",
-    "rating": null,
+    "rating": 7.6,
     "thoughts": "Single Car, Rally",
     "image": "Kelly.jpg"
   },
@@ -1357,7 +1357,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Radiance.",
-    "rating": null,
+    "rating": 8.4,
     "thoughts": "",
     "image": "Kesnia.jpg"
   },
@@ -1388,7 +1388,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
-    "rating": null,
+    "rating": 7.6,
     "thoughts": "",
     "image": "Kokoro.jpg"
   },
@@ -1419,7 +1419,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Coral.",
-    "rating": null,
+    "rating": 8,
     "thoughts": "",
     "image": "Leilani.jpg"
   },
@@ -1451,7 +1451,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Breezara.",
-    "rating": null,
+    "rating": 9.3,
     "thoughts": "HQ Defense",
     "image": "Lestari.jpg"
   },
@@ -1483,7 +1483,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 8.8,
     "thoughts": "Single Car"
   },
   {
@@ -1515,7 +1515,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 8.5,
     "thoughts": "Single Car",
     "image": "Rin.jpg"
   },
@@ -1547,7 +1547,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from WildFlower.",
-    "rating": null,
+    "rating": 8.1,
     "thoughts": "",
     "image": "Megan.jpg"
   },
@@ -1579,7 +1579,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Neon.",
-    "rating": null,
+    "rating": 8.4,
     "thoughts": "Single Car",
     "image": "Mellissa.jpg"
   },
@@ -1611,7 +1611,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 9.4,
     "thoughts": "Damage Reduction"
   },
   {
@@ -1642,7 +1642,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Rina.",
-    "rating": null,
+    "rating": 8.9,
     "thoughts": ""
   },
   {
@@ -1673,7 +1673,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Coral.",
-    "rating": null,
+    "rating": 9.2,
     "thoughts": "Damage Reduction"
   },
   {
@@ -1704,7 +1704,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
-    "rating": null,
+    "rating": 8.6,
     "thoughts": "Rally",
     "image": "Nastassja.jpg"
   },
@@ -1737,7 +1737,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Breezara.",
-    "rating": null,
+    "rating": 8.5,
     "thoughts": "",
     "image": "Ningsih.jpg"
   },
@@ -1769,7 +1769,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from WildFlower.",
-    "rating": null,
+    "rating": 8.8,
     "thoughts": "",
     "image": "Noora.jpg"
   },
@@ -1801,7 +1801,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from DreamCatcher.",
-    "rating": null,
+    "rating": 9.4,
     "thoughts": "HQ Defense",
     "image": "Nova.jpg"
   },
@@ -1834,7 +1834,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from None.",
-    "rating": null,
+    "rating": 7.5,
     "thoughts": "Single Car",
     "image": "Octavia.jpg"
   },
@@ -1866,7 +1866,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from Neon.",
-    "rating": null,
+    "rating": 9,
     "thoughts": "Damage Reduction",
     "image": "Paisley.jpg"
   },
@@ -1898,7 +1898,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Coral.",
-    "rating": null,
+    "rating": 7.9,
     "thoughts": "",
     "image": "Ratih.jpg"
   },
@@ -1930,7 +1930,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Rina.",
-    "rating": null,
+    "rating": 7.7,
     "thoughts": "",
     "image": "Riku.jpg"
   },
@@ -1962,7 +1962,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 8.9,
     "thoughts": "Single Car",
     "image": "Rin.jpg"
   },
@@ -1994,7 +1994,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
-    "rating": null,
+    "rating": 8.3,
     "thoughts": "Single Car",
     "image": "Rosemary.jpg"
   },
@@ -2025,7 +2025,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Echo.",
-    "rating": null,
+    "rating": 8.2,
     "thoughts": "",
     "image": "Ruby.jpg"
   },
@@ -2057,7 +2057,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Coral.",
-    "rating": null,
+    "rating": 7.7,
     "thoughts": "Rally",
     "image": "Sari.jpg"
   },
@@ -2090,7 +2090,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Echo.",
-    "rating": null,
+    "rating": 7.7,
     "thoughts": "Single Car",
     "image": "Savannah.jpg"
   },
@@ -2122,7 +2122,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 9.2,
     "thoughts": "Damage Reduction"
   },
   {
@@ -2152,7 +2152,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Neon.",
-    "rating": null,
+    "rating": 8.7,
     "thoughts": "",
     "image": "Skylar.jpg"
   },
@@ -2184,7 +2184,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
-    "rating": null,
+    "rating": 8.7,
     "thoughts": "Single Car",
     "image": "Sora.jpg"
   },
@@ -2216,7 +2216,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Coral.",
-    "rating": null,
+    "rating": 8.8,
     "thoughts": "Single Car",
     "image": "Talia.jpg"
   },
@@ -2249,7 +2249,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 8.6,
     "thoughts": "Single Car"
   },
   {
@@ -2281,7 +2281,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 9.3,
     "thoughts": "HQ Defense",
     "image": "Vivienne.jpg"
   },
@@ -2313,7 +2313,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from VenuLux.",
-    "rating": null,
+    "rating": 8.4,
     "thoughts": "Rally",
     "image": "Xenia.jpg"
   },
@@ -2345,7 +2345,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 9.5,
     "thoughts": "Damage Reduction"
   },
   {
@@ -2376,7 +2376,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Tokyo48.",
-    "rating": null,
+    "rating": 8.3,
     "thoughts": "",
     "image": "Yuuko.jpg"
   },
@@ -2408,7 +2408,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Radiance.",
-    "rating": null,
+    "rating": 8.5,
     "thoughts": "",
     "image": "Zendayah.jpg"
   },
@@ -2440,7 +2440,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Luna.",
-    "rating": null,
+    "rating": 8.3,
     "thoughts": "Single Car",
     "image": "Bella.jpg"
   },
@@ -2472,7 +2472,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Fantasy Vibes.",
-    "rating": null,
+    "rating": 8.7,
     "thoughts": "Single Car"
   },
   {
@@ -2502,7 +2502,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Fantasy Vibes.",
-    "rating": null,
+    "rating": 8.5,
     "thoughts": "",
     "image": "Longkui.jpg"
   },
@@ -2533,7 +2533,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
-    "rating": null,
+    "rating": 7.9,
     "thoughts": "",
     "image": "Monica.jpg"
   },
@@ -2550,7 +2550,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Sparkle Artists.",
-    "rating": null,
+    "rating": 4.1,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2581,7 +2581,7 @@
       "20% Normal Attack Damage"
     ],
     "description": "A talented Vocalist from Echo.",
-    "rating": null,
+    "rating": 4.3,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2613,7 +2613,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Radiance.",
-    "rating": null,
+    "rating": 5.8,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2645,7 +2645,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Neon.",
-    "rating": null,
+    "rating": 4.9,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2677,7 +2677,7 @@
       "20% Normal Attack Damage"
     ],
     "description": "A talented Center from DreamCatcher.",
-    "rating": null,
+    "rating": 4.9,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2710,7 +2710,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from WildFlower.",
-    "rating": null,
+    "rating": 5.5,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2743,7 +2743,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Dancer from Echo.",
-    "rating": null,
+    "rating": 6.7,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2775,7 +2775,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Echo.",
-    "rating": null,
+    "rating": 7,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2808,7 +2808,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Sparkle Artists.",
-    "rating": null,
+    "rating": 7,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2840,7 +2840,7 @@
       "10% Skill Damage"
     ],
     "description": "A talented Dancer from Neon.",
-    "rating": null,
+    "rating": 5.6,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2872,7 +2872,7 @@
       "10% Skill Damage"
     ],
     "description": "A talented Vocalist from DreamCatcher.",
-    "rating": null,
+    "rating": 5,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2904,7 +2904,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Luna.",
-    "rating": null,
+    "rating": 6,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2936,7 +2936,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Fantasy Vibes.",
-    "rating": null,
+    "rating": 5.5,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -2968,7 +2968,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Fantasy Vibes.",
-    "rating": null,
+    "rating": 6.5,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3001,7 +3001,7 @@
       "10% Skill Damage"
     ],
     "description": "A talented Center from Sparkle Artists.",
-    "rating": null,
+    "rating": 5.3,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3033,7 +3033,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Radiance.",
-    "rating": null,
+    "rating": 6.5,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3065,7 +3065,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Radiance.",
-    "rating": null,
+    "rating": 4.1,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3097,7 +3097,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Luna.",
-    "rating": null,
+    "rating": 5.9,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3128,7 +3128,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Neon.",
-    "rating": null,
+    "rating": 7.3,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3160,7 +3160,7 @@
       "20% Normal Attack Damage"
     ],
     "description": "A talented Vocalist from WildFlower.",
-    "rating": null,
+    "rating": 5.5,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3192,7 +3192,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Fantasy Vibes.",
-    "rating": null,
+    "rating": 6.3,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3225,7 +3225,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Luna.",
-    "rating": null,
+    "rating": 4.9,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3257,7 +3257,7 @@
       "None"
     ],
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 4.7,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3288,7 +3288,7 @@
       "None"
     ],
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 5.6,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3319,7 +3319,7 @@
       "None"
     ],
     "description": "A talented Center from None.",
-    "rating": null,
+    "rating": 4.9,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3350,7 +3350,7 @@
       "None"
     ],
     "description": "A talented Center from None.",
-    "rating": null,
+    "rating": 5.7,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3381,7 +3381,7 @@
       "None"
     ],
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 5,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3412,7 +3412,7 @@
       "None"
     ],
     "description": "A talented Dancer from None.",
-    "rating": null,
+    "rating": 5.7,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3442,7 +3442,7 @@
       "None"
     ],
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 5.3,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3473,7 +3473,7 @@
       "None"
     ],
     "description": "A talented Vocalist from None.",
-    "rating": null,
+    "rating": 5.2,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
@@ -3504,7 +3504,7 @@
       "None"
     ],
     "description": "A talented Center from None.",
-    "rating": null,
+    "rating": 4.6,
     "thoughts": "No",
     "build": "",
     "photos": "Universal",
