@@ -96,6 +96,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
+        {/* Google Search Console - Remplace ce commentaire par ta balise de vérification */}
+        {/* <meta name="google-site-verification" content="TON_CODE_VERIFICATION" /> */}
       </head>
       <body className={inter.className}>
         {children}
