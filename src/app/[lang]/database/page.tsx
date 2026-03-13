@@ -62,11 +62,17 @@ export default function DatabasePage() {
   const [filterGenre, setFilterGenre] = useState("");
 
   const filteredArtists = useMemo(() => {
+    const query = searchQuery.toLowerCase();
     return artistsData.filter((artist: Artist) => {
       const matchesSearch =
-        !searchQuery ||
-        artist.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        artist.group.toLowerCase().includes(searchQuery.toLowerCase());
+        !query ||
+        artist.name.toLowerCase().includes(query) ||
+        artist.group.toLowerCase().includes(query) ||
+        artist.position.toLowerCase().includes(query) ||
+        artist.genre.toLowerCase().includes(query) ||
+        artist.rank.toLowerCase().includes(query) ||
+        artist.build?.toLowerCase().includes(query) ||
+        (artist.skills && artist.skills.some(s => s.toLowerCase().includes(query)));
       const matchesRank = !filterRank || artist.rank === filterRank;
       const matchesPosition = !filterPosition || artist.position === filterPosition;
       const matchesGenre = !filterGenre || artist.genre === filterGenre;
@@ -346,8 +352,8 @@ export default function DatabasePage() {
             {/* Grid - Full Portraits */}
             <div style={{ 
               display: "grid", 
-              gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", 
-              gap: "10px" 
+              gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", 
+              gap: "8px" 
             }}>
               {filteredArtists
                 .sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank])
