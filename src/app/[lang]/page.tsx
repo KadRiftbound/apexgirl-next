@@ -4,7 +4,6 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { AdBanner } from "@/components/AdSense";
-import { HomeCarousel } from "@/components/HomeCarousel";
 
 export default function HomePage() {
   const [weeklyTop, setWeeklyTop] = useState<any>(null);
@@ -42,20 +41,35 @@ export default function HomePage() {
       </Head>
       
       <div className="container">
-        <HomeCarousel />
-
         {/* Hero Section */}
-        <section className="hero">
-          <h1>TopGirl</h1>
-          <p>
-            La référence pour maîtriser TopGirl • 112+ artistes • Guides experts • Outils exclusifs
+        <section className="hero" style={{ textAlign: "center", padding: "80px 20px" }}>
+          <h1 style={{ 
+            fontSize: "3rem", 
+            fontWeight: 800, 
+            letterSpacing: "-1px", 
+            background: "linear-gradient(135deg, var(--primary), var(--secondary), var(--accent))", 
+            WebkitBackgroundClip: "text", 
+            WebkitTextFillColor: "transparent",
+            marginBottom: "16px"
+          }}>
+            TOPGIRL GUIDE
+          </h1>
+          <p style={{ fontSize: "1.125rem", color: "var(--text-muted)", marginBottom: "32px" }}>
+            Maîtrise le jeu avec <strong style={{ color: "var(--primary)" }}>112+ artistes</strong>, des guides experts et des outils exclusifs
           </p>
-          <div className="flex gap-4" style={{ justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/fr/database/" className="btn">
-              🎤 Découvrir les Artistes
+          
+          <div className="grid grid-cols-3" style={{ maxWidth: "800px", margin: "0 auto", gap: "16px" }}>
+            <Link href="/fr/database/" className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+              <span style={{ fontSize: "2.5rem" }}>🎤</span>
+              Découvrir les Artistes
             </Link>
-            <Link href="/fr/tools/" className="btn btn-outline">
-              🛠️ Voir les Outils
+            <Link href="/fr/tools/" className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+              <span style={{ fontSize: "2.5rem" }}>🛠️</span>
+              Voir les Outils
+            </Link>
+            <Link href="/fr/tierlist/" className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+              <span style={{ fontSize: "2.5rem" }}>🏆</span>
+              Tier List & Votes
             </Link>
           </div>
         </section>

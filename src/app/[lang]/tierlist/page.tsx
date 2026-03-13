@@ -29,20 +29,20 @@ const rankColors: Record<string, string> = {
 };
 
 const tierColors: Record<string, { bg: string; border: string; text: string }> = {
+  "S+": { bg: "rgba(255, 215, 0, 0.25)", border: "#ffd700", text: "#ffd700" },
   S: { bg: "rgba(255, 215, 0, 0.15)", border: "#ffd700", text: "#ffd700" },
   A: { bg: "rgba(34, 197, 94, 0.15)", border: "#22c55e", text: "#22c55e" },
   B: { bg: "rgba(59, 130, 246, 0.15)", border: "#3b82f6", text: "#3b82f6" },
   C: { bg: "rgba(245, 158, 11, 0.15)", border: "#f59e0b", text: "#f59e0b" },
-  D: { bg: "rgba(239, 68, 68, 0.15)", border: "#ef4444", text: "#ef4444" },
   F: { bg: "rgba(148, 163, 184, 0.15)", border: "#94a3b8", text: "#94a3b8" },
 };
 
 const tierOrder: Record<string, number> = {
-  S: 0,
-  A: 1,
-  B: 2,
-  C: 3,
-  D: 4,
+  "S+": 0,
+  S: 1,
+  A: 2,
+  B: 3,
+  C: 4,
   F: 5,
 };
 
@@ -104,7 +104,7 @@ export default function TierListPage() {
   };
 
   const artists = artistsData as Artist[];
-  const tierOrder = ["S", "A", "B", "C", "D", "F"];
+  const tierOrder = ["S+", "S", "A", "B", "C", "F"];
 
   return (
     <>
@@ -224,7 +224,8 @@ export default function TierListPage() {
 
             {tierOrder.map(tier => {
               const tierArtists = artists.filter(a => 
-                (a.calculatedTier || "F").toUpperCase() === tier
+                (a.rating || "F").toUpperCase() === tier
+                && (a.rank === "UR" || a.rank === "SSR")
               );
               
               if (tierArtists.length === 0) return null;
@@ -319,7 +320,7 @@ export default function TierListPage() {
                               borderRadius: "4px",
                               fontSize: "0.65rem",
                               fontWeight: 700,
-                              color: tierColors[artist.calculatedTier]?.text
+                              color: tierColors[artist.rating]?.text
                             }}>
                               {artist.rating}
                             </div>
@@ -333,12 +334,6 @@ export default function TierListPage() {
                             textOverflow: "ellipsis"
                           }}>
                             {artist.name}
-                          </div>
-                          <div style={{
-                            fontSize: "0.6rem",
-                            color: rankColors[artist.rank]
-                          }}>
-                            {artist.rank}
                           </div>
                         </div>
                       ))}

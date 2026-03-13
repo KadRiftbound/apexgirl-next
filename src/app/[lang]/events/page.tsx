@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { AdBanner } from "@/components/AdSense";
 
 type Event = {
@@ -16,21 +16,28 @@ type Event = {
   frequency?: string;
   region?: string;
   date?: string;
+  image?: string;
+};
+
+const eventImages: Record<string, string> = {
+  recurring: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+  seasonal: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+  permanent: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
 };
 
 const typeColors: Record<string, { bg: string; text: string; border: string }> = {
   recurring: { bg: "rgba(34, 197, 94, 0.15)", text: "#22c55e", border: "rgba(34, 197, 94, 0.4)" },
   seasonal: { bg: "rgba(245, 158, 11, 0.15)", text: "#f59e0b", border: "rgba(245, 158, 11, 0.4)" },
-  permanent: { bg: "rgba(99, 102, 241, 0.15)", text: "#6366f1", border: "rgba(99, 102, 241, 0.4)" },
+  permanent: { bg: "rgba(59, 130, 246, 0.15)", text: "#3b82f6", border: "rgba(59, 130, 246, 0.4)" },
 };
 
 export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [filtered, setFiltered] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/database/data/events.json")
@@ -159,74 +166,97 @@ export default function EventsPage() {
           gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
           gap: "16px",
         }}>
-          {filtered.map((event) => (
-            <div
-              key={event.id}
-              onClick={() => setSelectedEvent(event)}
-              style={{
-                background: "rgba(30, 30, 50, 0.8)",
-                borderRadius: "16px",
-                border: `1px solid ${typeColors[event.type]?.border || "rgba(139, 92, 246, 0.3)"}`,
-                padding: "20px",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.boxShadow = "0 10px 40px rgba(236, 72, 153, 0.2)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
-                <span style={{
-                  padding: "4px 10px",
-                  borderRadius: "8px",
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  background: typeColors[event.type]?.bg || "rgba(99, 102, 241, 0.15)",
-                  color: typeColors[event.type]?.text || "#6366f1",
+          {filtered.map((event) => {
+            return (
+              <React.Fragment key={event.id}>
+              <div
+                onClick={() => setSelectedEvent(event)}
+                style={{
+                  background: "rgba(30, 30, 50, 0.8)",
+                  borderRadius: "16px",
+                  border: `1px solid ${typeColors[event.type]?.border || "rgba(139, 92, 246, 0.3)"}`,
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 10px 40px rgba(236, 72, 153, 0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                {/* Event Image Banner */}
+                <div style={{
+                  height: "100px",
+                  background: eventImages[event.type] || eventImages.recurring,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  position: "relative",
                 }}>
-                  {event.type}
-                </span>
-              </div>
-
-              <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, marginBottom: "8px" }}>
-                {event.name}
-              </h3>
-
-              <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", lineHeight: 1.5, marginBottom: "12px" }}>
-                {event.description.slice(0, 100)}...
-              </p>
-
-              <div style={{ display: "flex", gap: "12px", fontSize: "0.75rem", color: "rgba(255,255,255,0.5)" }}>
-                {event.duration && <span>⏱️ {event.duration}</span>}
-                {event.frequency && <span>🔄 {event.frequency}</span>}
-              </div>
-
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "12px" }}>
-                {(event.rewards || []).slice(0, 3).map((r, i) => (
-                  <span key={i} style={{
-                    padding: "3px 8px",
-                    background: "rgba(255,255,255,0.05)",
-                    borderRadius: "6px",
-                    fontSize: "0.7rem",
-                    color: "rgba(255,255,255,0.7)",
+                  <span style={{ fontSize: "3rem", opacity: 0.9 }}>
+                    {event.type === "recurring" ? "🏆" : event.type === "seasonal" ? "🎉" : "⭐"}
+                  </span>
+                  <div style={{
+                    position: "absolute",
+                    bottom: "8px",
+                    left: "12px",
                   }}>
-                    {r}
-                  </span>
-                ))}
-                {(event.rewards || []).length > 3 && (
-                  <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.5)" }}>
-                    +{event.rewards.length - 3}
-                  </span>
-                )}
+                    <span style={{
+                      padding: "4px 10px",
+                      borderRadius: "8px",
+                      fontSize: "0.7rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      background: "rgba(0,0,0,0.5)",
+                      color: "#fff",
+                    }}>
+                      {event.type}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Event Info */}
+                <div style={{ padding: "16px" }}>
+                  <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "8px", color: "#fff" }}>
+                    {event.name}
+                  </h3>
+                  
+                  <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", lineHeight: 1.5, marginBottom: "12px" }}>
+                    {event.description.slice(0, 100)}...
+                  </p>
+
+                  <div style={{ display: "flex", gap: "12px", fontSize: "0.75rem", color: "rgba(255,255,255,0.5)" }}>
+                    {event.duration && <span>⏱️ {event.duration}</span>}
+                    {event.frequency && <span>🔄 {event.frequency}</span>}
+                  </div>
+
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "12px" }}>
+                    {(event.rewards || []).slice(0, 3).map((r, i) => (
+                      <span key={i} style={{
+                        padding: "3px 8px",
+                        background: "rgba(255,255,255,0.05)",
+                        borderRadius: "6px",
+                        fontSize: "0.7rem",
+                        color: "rgba(255,255,255,0.7)",
+                      }}>
+                        {r}
+                      </span>
+                    ))}
+                    {(event.rewards || []).length > 3 && (
+                      <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.5)" }}>
+                        +{event.rewards.length - 3}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+              </React.Fragment>
+            );
+          })}
         </div>
 
         {filtered.length === 0 && (
@@ -250,130 +280,126 @@ export default function EventsPage() {
             alignItems: "center",
             justifyContent: "center",
             padding: "20px",
-            backdropFilter: "blur(8px)",
           }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
             style={{
-              background: "linear-gradient(135deg, rgba(30, 30, 50, 0.95), rgba(20, 20, 35, 0.95))",
-              borderRadius: "24px",
-              padding: "32px",
+              background: "rgba(20, 20, 35, 0.98)",
+              borderRadius: "20px",
+              border: "1px solid rgba(139, 92, 246, 0.4)",
               maxWidth: "600px",
               width: "100%",
-              maxHeight: "85vh",
-              overflowY: "auto",
-              border: "1px solid rgba(139, 92, 246, 0.4)",
-              position: "relative",
+              maxHeight: "80vh",
+              overflow: "auto",
             }}
           >
-            <button
-              onClick={() => setSelectedEvent(null)}
-              style={{
-                position: "absolute",
-                top: "16px",
-                right: "16px",
-                background: "rgba(255,255,255,0.1)",
-                border: "1px solid rgba(255,255,255,0.2)",
-                borderRadius: "10px",
-                width: "36px",
-                height: "36px",
-                cursor: "pointer",
-                color: "rgba(255,255,255,0.7)",
-                fontSize: "1.2rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              ✕
-            </button>
-
-            <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
-              <span style={{
-                padding: "6px 12px",
-                borderRadius: "8px",
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                background: typeColors[selectedEvent.type]?.bg,
-                color: typeColors[selectedEvent.type]?.text,
-              }}>
-                {selectedEvent.type}
-              </span>
+            <div style={{
+              height: "120px",
+              background: eventImages[selectedEvent.type] || eventImages.recurring,
+              position: "relative",
+            }}>
+              <button
+                onClick={() => setSelectedEvent(null)}
+                style={{
+                  position: "absolute",
+                  top: "12px",
+                  right: "12px",
+                  background: "rgba(0,0,0,0.5)",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "36px",
+                  height: "36px",
+                  color: "#fff",
+                  fontSize: "1.2rem",
+                  cursor: "pointer",
+                }}
+              >
+                ✕
+              </button>
             </div>
-
-            <h2 style={{ color: "#fff", fontSize: "1.75rem", fontWeight: 800, marginBottom: "16px" }}>
-              {selectedEvent.name}
-            </h2>
-
-            <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.7, marginBottom: "20px" }}>
-              {selectedEvent.description}
-            </p>
-
-            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", marginBottom: "20px", fontSize: "0.9rem", color: "rgba(255,255,255,0.6)" }}>
-              {selectedEvent.duration && <span>⏱️ <strong style={{color:"#fff"}}>Durée:</strong> {selectedEvent.duration}</span>}
-              {selectedEvent.frequency && <span>🔄 <strong style={{color:"#fff"}}>Fréquence:</strong> {selectedEvent.frequency}</span>}
-              {selectedEvent.region && <span>🌍 <strong style={{color:"#fff"}}>Région:</strong> {selectedEvent.region}</span>}
-            </div>
-
-            <div style={{ marginBottom: "20px" }}>
-              <h4 style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", marginBottom: "10px", textTransform: "uppercase" }}>
-                💎 Récompenses
-              </h4>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                {(selectedEvent.rewards || []).map((r, i) => (
-                  <span key={i} style={{
-                    padding: "6px 14px",
-                    background: "rgba(255,255,255,0.08)",
-                    borderRadius: "10px",
-                    fontSize: "0.85rem",
-                    color: "#fff",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                  }}>
-                    {r}
+            
+            <div style={{ padding: "24px" }}>
+              <h2 style={{ fontSize: "1.5rem", fontWeight: 800, marginBottom: "12px", color: "#fff" }}>
+                {selectedEvent.name}
+              </h2>
+              
+              <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+                <span style={{
+                  padding: "4px 12px",
+                  borderRadius: "8px",
+                  fontSize: "0.75rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  background: typeColors[selectedEvent.type]?.bg,
+                  color: typeColors[selectedEvent.type]?.text,
+                }}>
+                  {selectedEvent.type}
+                </span>
+                {selectedEvent.duration && (
+                  <span style={{ padding: "4px 12px", borderRadius: "8px", fontSize: "0.75rem", background: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.7)" }}>
+                    ⏱️ {selectedEvent.duration}
                   </span>
-                ))}
+                )}
               </div>
-            </div>
 
-            {selectedEvent.tips && (
-              <div style={{
-                background: "linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2))",
-                borderRadius: "16px",
-                padding: "20px",
-                border: "1px solid rgba(236, 72, 153, 0.3)",
-              }}>
-                <h4 style={{ fontSize: "0.9rem", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>
-                  💡 Tips
-                </h4>
-                <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.6 }}>
-                  {selectedEvent.tips}
-                </p>
-              </div>
-            )}
+              <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.6, marginBottom: "20px" }}>
+                {selectedEvent.description}
+              </p>
 
-            {selectedEvent.bestArtists && selectedEvent.bestArtists.length > 0 && (
-              <div style={{ marginTop: "20px" }}>
-                <h4 style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", marginBottom: "10px", textTransform: "uppercase" }}>
-                  ⭐ Meilleurs Artistes
-                </h4>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                  {selectedEvent.bestArtists.map((artist, i) => (
-                    <span key={i} style={{
-                      padding: "6px 14px",
-                      background: "rgba(168, 85, 247, 0.2)",
-                      color: "#c084fc",
-                      borderRadius: "10px",
-                      fontSize: "0.85rem",
-                      fontWeight: 500,
-                    }}>
-                      {artist}
-                    </span>
-                  ))}
+              {selectedEvent.rewards && selectedEvent.rewards.length > 0 && (
+                <div style={{ marginBottom: "20px" }}>
+                  <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "rgba(255,255,255,0.9)" }}>
+                    🎁 Récompenses
+                  </h4>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                    {selectedEvent.rewards.map((r, i) => (
+                      <span key={i} style={{
+                        padding: "6px 12px",
+                        background: "rgba(139, 92, 246, 0.2)",
+                        borderRadius: "8px",
+                        fontSize: "0.8rem",
+                        color: "rgba(255,255,255,0.9)",
+                      }}>
+                        {r}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+
+              {selectedEvent.bestArtists && selectedEvent.bestArtists.length > 0 && (
+                <div style={{ marginBottom: "20px" }}>
+                  <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "rgba(255,255,255,0.9)" }}>
+                    ⭐ Meilleures artistes
+                  </h4>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                    {selectedEvent.bestArtists.map((artist, i) => (
+                      <span key={i} style={{
+                        padding: "6px 12px",
+                        background: "rgba(236, 72, 153, 0.2)",
+                        borderRadius: "8px",
+                        fontSize: "0.8rem",
+                        color: "rgba(255,255,255,0.9)",
+                      }}>
+                        {artist}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selectedEvent.tips && (
+                <div>
+                  <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "rgba(255,255,255,0.9)" }}>
+                    💡 Conseils
+                  </h4>
+                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem", lineHeight: 1.5 }}>
+                    {selectedEvent.tips}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

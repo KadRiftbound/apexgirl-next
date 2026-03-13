@@ -57,6 +57,7 @@
   --header-height: 70px;
   
   --background: #0a0a12;
+  --background-image: url('/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.jpg');
   --foreground: #ffffff;
   
   --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -113,7 +114,7 @@ body::before {
   right: 0;
   bottom: 0;
   background: 
-    url('/assets/images/bgs/file_000000002bbc722fa8aecd2660d92f4b.png') center center / cover no-repeat,
+    url('/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.jpg') center center / cover no-repeat,
     linear-gradient(180deg, rgba(10, 10, 18, 0.92) 0%, rgba(10, 10, 18, 0.88) 50%, rgba(10, 10, 18, 0.95) 100%);
   pointer-events: none;
   z-index: -2;

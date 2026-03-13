@@ -14,6 +14,7 @@ type Artist = {
   genre: string;
   skills: string[];
   image?: string;
+  specialty?: string;
   skillCategories: {
     dps: string[];
     offensive: string[];
@@ -60,6 +61,7 @@ export default function DatabasePage() {
   const [filterRank, setFilterRank] = useState("");
   const [filterPosition, setFilterPosition] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
+  const [filterSpecialty, setFilterSpecialty] = useState("");
 
   const filteredArtists = useMemo(() => {
     const query = searchQuery.toLowerCase();
@@ -76,9 +78,10 @@ export default function DatabasePage() {
       const matchesRank = !filterRank || artist.rank === filterRank;
       const matchesPosition = !filterPosition || artist.position === filterPosition;
       const matchesGenre = !filterGenre || artist.genre === filterGenre;
-      return matchesSearch && matchesRank && matchesPosition && matchesGenre;
+      const matchesSpecialty = !filterSpecialty || artist.specialty === filterSpecialty;
+      return matchesSearch && matchesRank && matchesPosition && matchesGenre && matchesSpecialty;
     });
-  }, [searchQuery, filterRank, filterPosition, filterGenre]);
+  }, [searchQuery, filterRank, filterPosition, filterGenre, filterSpecialty]);
 
   const selectArtist = (artist: Artist) => {
     setSelectedArtist(artist);
@@ -347,6 +350,28 @@ export default function DatabasePage() {
                   <option value="R&B">R&B</option>
                   <option value="Rock">Rock</option>
                   <option value="Electronic">Electronic</option>
+                </select>
+                <select
+                  value={filterSpecialty}
+                  onChange={(e) => setFilterSpecialty(e.target.value)}
+                  style={{
+                    padding: "12px 16px",
+                    background: "var(--bg-subtle)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem",
+                    minWidth: "150px"
+                  }}
+                >
+                  <option value="">Toutes spécialités</option>
+                  <option value="Augmentation dommage">Augmentation dommage</option>
+                  <option value="Mixte">Mixte</option>
+                  <option value="Single Car">Single Car</option>
+                  <option value="Damage Reduction">Damage Reduction</option>
+                  <option value="HQ Defense">HQ Defense</option>
+                  <option value="Rassemblement">Rassemblement</option>
+                  <option value="Économie">Économie</option>
                 </select>
               </div>
             </div>
