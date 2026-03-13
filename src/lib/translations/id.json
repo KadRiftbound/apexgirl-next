@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "database": "Database",
+    "events": "Acara",
+    "guides": "Panduan",
+    "tools": "Alat"
+  },
+  "home": {
+    "title": "TOPGIRL",
+    "subtitle": "Kuasai permainan dengan <strong>112+ artis</strong>, panduan ahli dan alat eksklusif",
+    "cta": "Temukan Artis",
+    "stats": {
+      "artists": "Artis",
+      "guides": "Panduan",
+      "events": "Acara",
+      "tools": "Alat"
+    },
+    "redeemCodes": {
+      "title": "Kode Promo",
+      "subtitle": "Semua kode yang tersedia untuk TopGirl / ApexGirl",
+      "enterInGame": "Masukkan kode dalam game",
+      "seeGuide": "Lihat panduan"
+    },
+    "sections": {
+      "database": {
+        "title": "Database",
+        "description": "112+ artis dengan semua statistik mereka"
+      },
+      "tools": {
+        "title": "Alat",
+        "description": "Kalkulator dan pengoptimal"
+      },
+      "guides": {
+        "title": "Panduan",
+        "description": "Tutorial dan strategi"
+      },
+      "events": {
+        "title": "Acara",
+        "description": "Kalender dan hadiah"
+      }
+    }
+  },
+  "tools": {
+    "title": "Alat",
+    "subtitle": "Optimalkan gameplay Anda dengan alat kami",
+    "tabs": {
+      "calculator": "Kalkulator",
+      "team": "Tim",
+      "database": "Artis",
+      "ceo": "CEO",
+      "svs": "SVS"
+    },
+    "svs": {
+      "title": "Kalkulator SVS",
+      "subtitle": "Rencanakan pengeluaran koin Anda",
+      "items": {
+        "urSelector": "Pemilih Artis UR",
+        "ssrSelector": "Pemilih Artis SSR",
+        "srSelector": "Pemilih Artis SR",
+        "rSelector": "Pemilih Artis R",
+        "tenPull": "10x Pull (SSR+)",
+        "memoryBoost": "Memory Boost",
+        "evolution": "Material Evolusi",
+        "goldPack": "Paket Emas"
+      },
+      "total": "Total"
+    },
+    "team": {
+      "title": "Pengoptimal Tim",
+      "subtitle": "Pilih artis Anda untuk melihat sinergi",
+      "search": "Cari",
+      "stats": {
+        "artists": "Artis",
+        "damage": "Kerusakan",
+        "fanCap": "Kapasitas Fans",
+        "defense": "Pertahanan"
+      }
+    },
+    "database": {
+      "title": "Artis",
+      "subtitle": "Filter dan telusuri semua artis",
+      "search": "Cari...",
+      "filters": {
+        "rank": "Semua pangkat",
+        "role": "Semua peran"
+      },
+      "roles": {
+        "center": "Center",
+        "dancer": "Penari",
+        "singer": "Penyanyi",
+        "visual": "Visual"
+      },
+      "noResults": "Tidak ada artis ditemukan"
+    }
+  },
+  "footer": {
+    "copyright": "Semua hak dilindungi.",
+    "disclaimer": "Ini adalah fansite tidak resmi."
+  },
+  "common": {
+    "active": "Aktif",
+    "copy": "Salin",
+    "loading": "Memuat...",
+    "error": "Kesalahan"
+  },
+  "tierlist": {
+    "title": "Tier List",
+    "classic": "Tier List Klasik",
+    "vote": "Pilih favorit Anda",
+    "artistOfWeek": "Artis Minggu Ini",
+    "votes": "suara",
+    "voteForArtist": "Pilih seorang artis",
+    "alreadyVoted": "Anda sudah memilih hari ini! Kembali besok.",
+    "voteSuccess": "Suara terekam! Terima kasih sudah memilih."
+  },
+  "database": {
+    "title": "Database Artis",
+    "search": "Cari artis...",
+    "filters": {
+      "rank": "Semua pangkat",
+      "genre": "Semua genre"
+    },
+    "noResults": "Tidak ada artis ditemukan"
+  },
+  "events": {
+    "title": "Acara",
+    "all": "Semua",
+    "recurring": "Berulang",
+    "seasonal": "Musiman",
+    "permanent": "Permanen",
+    "duration": "Durasi",
+    "frequency": "Frekuensi",
+    "rewards": "Hadiah",
+    "tips": "Tips",
+    "bestArtists": "Artis Terbaik"
+  },
+  "guides": {
+    "title": "Panduan",
+    "subtitle": "Pelajari cara menguasai permainan"
+  }
+}
