@@ -23,6 +23,7 @@ export default async function LocaleLayout({
           <nav className="nav">
             <Link href="/fr/">Accueil</Link>
             <Link href="/fr/database/">Artistes</Link>
+            <Link href="/fr/tierlist/">Tier List</Link>
             <Link href="/fr/events/">Événements</Link>
             <Link href="/fr/guides/">Guides</Link>
             <Link href="/fr/tools/" className="nav-cta">Outils</Link>

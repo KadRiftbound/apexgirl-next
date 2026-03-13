@@ -2,12 +2,34 @@
 
 import Head from "next/head";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { AdBanner } from "@/components/AdSense";
 import { HomeCarousel } from "@/components/HomeCarousel";
 
 export default function HomePage() {
+  const [weeklyTop, setWeeklyTop] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/vote")
+      .then(res => res.json())
+      .then(data => {
+        setWeeklyTop(data.weekly_top);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
   const copyCode = (code: string) => {
     navigator.clipboard.writeText(code);
+  };
+
+  const rankColors: Record<string, string> = {
+    UR: "#ffd700",
+    SSR: "#c084fc",
+    SR: "#60a5fa",
+    R: "#4ade80",
+    N: "#94a3b8",
   };
 
   return (
@@ -63,6 +85,78 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Artist of the Week */}
+        {!loading && weeklyTop && (
+          <section style={{ padding: "40px 0" }}>
+            <Link href="/fr/tierlist/" style={{ textDecoration: "none" }}>
+              <div style={{
+                padding: "32px",
+                borderRadius: "var(--radius-lg)",
+                background: "linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05))",
+                border: "2px solid rgba(255, 215, 0, 0.4)",
+                textAlign: "center",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                position: "relative",
+                overflow: "hidden"
+              }}>
+                <div style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: "linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent)",
+                  pointerEvents: "none"
+                }} />
+                <div style={{ fontSize: "2.5rem", marginBottom: "8px", position: "relative" }}>👑</div>
+                <div style={{ 
+                  fontSize: "0.85rem", 
+                  color: "#ffd700", 
+                  textTransform: "uppercase",
+                  letterSpacing: "2px",
+                  marginBottom: "8px",
+                  fontWeight: 600,
+                  position: "relative"
+                }}>
+                  Artiste de la semaine
+                </div>
+                <div style={{ 
+                  fontSize: "2rem", 
+                  fontWeight: 800, 
+                  color: "#fff",
+                  marginBottom: "8px",
+                  position: "relative"
+                }}>
+                  {weeklyTop.artist_name}
+                </div>
+                <div style={{ 
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "8px 20px",
+                  background: "rgba(255, 215, 0, 0.2)",
+                  borderRadius: "var(--radius-full)",
+                  position: "relative"
+                }}>
+                  <span style={{ fontSize: "1.25rem" }}>⭐</span>
+                  <span style={{ fontWeight: 700, color: "#ffd700" }}>
+                    {weeklyTop.count} votes
+                  </span>
+                </div>
+                <div style={{ 
+                  marginTop: "16px", 
+                  fontSize: "0.85rem", 
+                  color: "var(--text-muted)",
+                  position: "relative"
+                }}>
+                  Cliquez pour voter pour votre favori →
+                </div>
+              </div>
+            </Link>
+          </section>
+        )}
 
         {/* Promo Codes */}
         <section style={{ padding: "40px 0" }}>
