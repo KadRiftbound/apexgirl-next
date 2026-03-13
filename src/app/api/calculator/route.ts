@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import * as XLSX from "xlsx";
 import fs from "fs";
+import path from "path";
 
 export const dynamic = "force-dynamic";
 
@@ -44,5 +45,3 @@ export async function GET() {
     return NextResponse.json({ error: String(error) }, { status: 500 });
   }
 }
-
-import path from "path";

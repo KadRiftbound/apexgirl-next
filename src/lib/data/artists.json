@@ -403,7 +403,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Fantasy Vibes.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Alice.jpg"
   },
   {
     "id": 68,
@@ -434,7 +435,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Antonia.jpg"
   },
   {
     "id": 6,
@@ -466,7 +468,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from DreamCatcher.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Anya.jpg"
   },
   {
     "id": 36,
@@ -497,7 +500,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from VenuLux.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Ariadne.jpg"
   },
   {
     "id": 10,
@@ -528,7 +532,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from WildFlower.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Audrey.jpg"
   },
   {
     "id": 61,
@@ -559,7 +564,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Aurelia.jpg"
   },
   {
     "id": 15,
@@ -589,7 +595,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Sparkle Artists.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Aurora.jpg"
   },
   {
     "id": 11,
@@ -620,7 +627,8 @@
     "calculatedTier": "S",
     "description": "A talented Dancer from Luna.",
     "rating": null,
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "image": "Avery.jpg"
   },
   {
     "id": 51,
@@ -651,7 +659,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from None.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Ayaka.jpg"
   },
   {
     "id": 12,
@@ -682,7 +691,8 @@
     "calculatedTier": "S",
     "description": "A talented Vocalist from Tokyo48.",
     "rating": null,
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "image": "Ayaka.jpg"
   },
   {
     "id": 17,
@@ -713,7 +723,8 @@
     "calculatedTier": "S",
     "description": "A talented Vocalist from Echo.",
     "rating": null,
-    "thoughts": "HQ Defense"
+    "thoughts": "HQ Defense",
+    "image": "Brooklyn.jpg"
   },
   {
     "id": 35,
@@ -744,7 +755,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from VenuLux.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Calliope.jpg"
   },
   {
     "id": 14,
@@ -775,7 +787,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
     "rating": null,
-    "thoughts": "Rally"
+    "thoughts": "Rally",
+    "image": "Chizuru.jpg"
   },
   {
     "id": 4,
@@ -806,7 +819,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Luna.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Cindy.jpg"
   },
   {
     "id": 26,
@@ -836,7 +850,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Sparkle Artists.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Claire.jpg"
   },
   {
     "id": 64,
@@ -866,7 +881,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Claudius.jpg"
   },
   {
     "id": 65,
@@ -898,7 +914,8 @@
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
     "rating": null,
-    "thoughts": "HQ Defense"
+    "thoughts": "HQ Defense",
+    "image": "Cornelia.jpg"
   },
   {
     "id": 34,
@@ -928,7 +945,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from VenuLux.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Daphne.jpg"
   },
   {
     "id": 45,
@@ -989,7 +1007,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from VenuLux.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Eirene.jpg"
   },
   {
     "id": 66,
@@ -1052,7 +1071,8 @@
     "calculatedTier": "S",
     "description": "A talented Center from DreamCatcher.",
     "rating": null,
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "image": "Everly.jpg"
   },
   {
     "id": 57,
@@ -1084,7 +1104,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from None.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Flora.jpg"
   },
   {
     "id": 39,
@@ -1146,7 +1167,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from WildFlower.",
     "rating": null,
-    "thoughts": "Rally"
+    "thoughts": "Rally",
+    "image": "Hestia.jpg"
   },
   {
     "id": 60,
@@ -1177,7 +1199,8 @@
     "calculatedTier": "S",
     "description": "A talented Center from None.",
     "rating": null,
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "image": "Hikari.jpg"
   },
   {
     "id": 58,
@@ -1208,7 +1231,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from None.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Isla.jpg"
   },
   {
     "id": 22,
@@ -1239,7 +1263,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Radiance.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Julia.jpg"
   },
   {
     "id": 30,
@@ -1269,7 +1294,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Tokyo48.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Kasha.jpg"
   },
   {
     "id": 50,
@@ -1300,7 +1326,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from WildFlower.",
     "rating": null,
-    "thoughts": "Single Car, Rally"
+    "thoughts": "Single Car, Rally",
+    "image": "Kelly.jpg"
   },
   {
     "id": 24,
@@ -1331,7 +1358,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Radiance.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Kesnia.jpg"
   },
   {
     "id": 1,
@@ -1361,7 +1389,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Kokoro.jpg"
   },
   {
     "id": 32,
@@ -1391,7 +1420,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Coral.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Leilani.jpg"
   },
   {
     "id": 46,
@@ -1422,7 +1452,8 @@
     "calculatedTier": "S",
     "description": "A talented Vocalist from Breezara.",
     "rating": null,
-    "thoughts": "HQ Defense"
+    "thoughts": "HQ Defense",
+    "image": "Lestari.jpg"
   },
   {
     "id": 55,
@@ -1485,7 +1516,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Rin.jpg"
   },
   {
     "id": 38,
@@ -1516,7 +1548,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from WildFlower.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Megan.jpg"
   },
   {
     "id": 40,
@@ -1547,7 +1580,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Neon.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Mellissa.jpg"
   },
   {
     "id": 53,
@@ -1671,7 +1705,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
     "rating": null,
-    "thoughts": "Rally"
+    "thoughts": "Rally",
+    "image": "Nastassja.jpg"
   },
   {
     "id": 44,
@@ -1703,7 +1738,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Breezara.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Ningsih.jpg"
   },
   {
     "id": 43,
@@ -1734,7 +1770,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from WildFlower.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Noora.jpg"
   },
   {
     "id": 21,
@@ -1765,7 +1802,8 @@
     "calculatedTier": "S",
     "description": "A talented Dancer from DreamCatcher.",
     "rating": null,
-    "thoughts": "HQ Defense"
+    "thoughts": "HQ Defense",
+    "image": "Nova.jpg"
   },
   {
     "id": 59,
@@ -1797,7 +1835,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from None.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Octavia.jpg"
   },
   {
     "id": 27,
@@ -1828,7 +1867,8 @@
     "calculatedTier": "S",
     "description": "A talented Dancer from Neon.",
     "rating": null,
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "image": "Paisley.jpg"
   },
   {
     "id": 25,
@@ -1859,7 +1899,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Coral.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Ratih.jpg"
   },
   {
     "id": 41,
@@ -1890,7 +1931,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Rina.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Riku.jpg"
   },
   {
     "id": 62,
@@ -1921,7 +1963,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Rin.jpg"
   },
   {
     "id": 49,
@@ -1952,7 +1995,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Rosemary.jpg"
   },
   {
     "id": 48,
@@ -1982,7 +2026,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Echo.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Ruby.jpg"
   },
   {
     "id": 7,
@@ -2013,7 +2058,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Coral.",
     "rating": null,
-    "thoughts": "Rally"
+    "thoughts": "Rally",
+    "image": "Sari.jpg"
   },
   {
     "id": 16,
@@ -2045,7 +2091,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Echo.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Savannah.jpg"
   },
   {
     "id": 54,
@@ -2106,7 +2153,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Neon.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Skylar.jpg"
   },
   {
     "id": 23,
@@ -2137,7 +2185,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Sora.jpg"
   },
   {
     "id": 31,
@@ -2168,7 +2217,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Coral.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Talia.jpg"
   },
   {
     "id": 56,
@@ -2232,7 +2282,8 @@
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
     "rating": null,
-    "thoughts": "HQ Defense"
+    "thoughts": "HQ Defense",
+    "image": "Vivienne.jpg"
   },
   {
     "id": 33,
@@ -2263,7 +2314,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from VenuLux.",
     "rating": null,
-    "thoughts": "Rally"
+    "thoughts": "Rally",
+    "image": "Xenia.jpg"
   },
   {
     "id": 52,
@@ -2325,7 +2377,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Tokyo48.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Yuuko.jpg"
   },
   {
     "id": 20,
@@ -2356,7 +2409,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Radiance.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Zendayah.jpg"
   },
   {
     "id": 13,
@@ -2387,7 +2441,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from Luna.",
     "rating": null,
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "image": "Bella.jpg"
   },
   {
     "id": 9,
@@ -2448,7 +2503,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Fantasy Vibes.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Longkui.jpg"
   },
   {
     "id": 18,
@@ -2478,7 +2534,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
     "rating": null,
-    "thoughts": ""
+    "thoughts": "",
+    "image": "Monica.jpg"
   },
   {
     "id": 57,
@@ -2572,7 +2629,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Ariadne.jpg"
   },
   {
     "id": 64,
@@ -2636,7 +2694,8 @@
         "30% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Eleanor.jpg"
   },
   {
     "id": 50,
@@ -2668,7 +2727,8 @@
         "40% Drive Speed Increase"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Bella.jpg"
   },
   {
     "id": 56,
@@ -2732,7 +2792,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "B"
+    "calculatedTier": "B",
+    "image": "Evelyn.jpg"
   },
   {
     "id": 66,
@@ -2924,7 +2985,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "B"
+    "calculatedTier": "B",
+    "image": "Madison.jpg"
   },
   {
     "id": 55,
@@ -3147,7 +3209,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "B"
+    "calculatedTier": "B",
+    "image": "Victoria.jpg"
   },
   {
     "id": 52,
@@ -3178,7 +3241,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Violet.jpg"
   },
   {
     "id": 1001,
@@ -3208,7 +3272,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Charlotte.jpg"
   },
   {
     "id": 1002,
@@ -3238,7 +3303,8 @@
         "10% Drive Speed Increase"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Harper.jpg"
   },
   {
     "id": 1003,
@@ -3268,7 +3334,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Olivia.jpg"
   },
   {
     "id": 1004,
@@ -3298,7 +3365,8 @@
         "20% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Isabella.jpg"
   },
   {
     "id": 1005,
@@ -3328,7 +3396,8 @@
         "20% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Ava.jpg"
   },
   {
     "id": 1006,
@@ -3388,7 +3457,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Sophia.jpg"
   },
   {
     "id": 1008,
@@ -3418,7 +3488,8 @@
         "20% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "image": "Mia.jpg"
   },
   {
     "id": 1009,

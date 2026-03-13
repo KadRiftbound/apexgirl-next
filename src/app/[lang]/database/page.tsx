@@ -13,6 +13,7 @@ type Artist = {
   position: string;
   genre: string;
   skills: string[];
+  image?: string;
   skillCategories: {
     dps: string[];
     offensive: string[];
@@ -45,12 +46,20 @@ const rankOrder: Record<string, number> = {
   N: 5,
 };
 
+const genreColors: Record<string, string> = {
+  Pop: "#ff69b4",
+  "Hip Hop": "#ff8c00",
+  "R&B": "#9b59b6",
+  Rock: "#e74c3c",
+  Electronic: "#00ced1",
+};
+
 export default function DatabasePage() {
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
   const [filterPosition, setFilterPosition] = useState("");
-  const [filterGroup, setFilterGroup] = useState("");
+  const [filterGenre, setFilterGenre] = useState("");
 
   const filteredArtists = useMemo(() => {
     return artistsData.filter((artist: Artist) => {
@@ -60,14 +69,10 @@ export default function DatabasePage() {
         artist.group.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesRank = !filterRank || artist.rank === filterRank;
       const matchesPosition = !filterPosition || artist.position === filterPosition;
-      const matchesGroup = !filterGroup || artist.group === filterGroup;
-      return matchesSearch && matchesRank && matchesPosition && matchesGroup;
+      const matchesGenre = !filterGenre || artist.genre === filterGenre;
+      return matchesSearch && matchesRank && matchesPosition && matchesGenre;
     });
-  }, [searchQuery, filterRank, filterPosition, filterGroup]);
-
-  const groups = useMemo(() => {
-    return [...new Set(artistsData.map((a: Artist) => a.group))].sort();
-  }, []);
+  }, [searchQuery, filterRank, filterPosition, filterGenre]);
 
   const selectArtist = (artist: Artist) => {
     setSelectedArtist(artist);
@@ -107,7 +112,7 @@ export default function DatabasePage() {
 
         <AdBanner />
 
-        <div className="grid" style={{ gridTemplateColumns: "380px 1fr", gap: "32px", marginTop: "32px" }}>
+        <div className="grid" style={{ gridTemplateColumns: "420px 1fr", gap: "32px", marginTop: "32px" }}>
           {/* Artist Panel */}
           <div className="glass-card" style={{ 
             position: "sticky", 
@@ -119,7 +124,7 @@ export default function DatabasePage() {
             <div style={{ 
               padding: "20px", 
               borderBottom: "1px solid var(--border)",
-              background: "linear-gradient(135deg, rgba(255, 77, 141, 0.1), rgba(139, 92, 246, 0.1))"
+              background: "linear-gradient(135deg, rgba(255, 77, 141, 0.15), rgba(139, 92, 246, 0.15))"
             }}>
               <span style={{ fontWeight: 600, fontSize: "0.9rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px" }}>
                 Artist Overview
@@ -132,12 +137,13 @@ export default function DatabasePage() {
                   <button 
                     onClick={prevArtist}
                     style={{
-                      width: "36px", height: "36px",
+                      width: "40px", height: "40px",
                       borderRadius: "var(--radius)",
                       border: "1px solid var(--border)",
                       background: "var(--bg-subtle)",
                       color: "var(--text-primary)",
-                      cursor: "pointer"
+                      cursor: "pointer",
+                      fontSize: "1.2rem"
                     }}
                   >
                     ←
@@ -145,27 +151,28 @@ export default function DatabasePage() {
                   <button 
                     onClick={nextArtist}
                     style={{
-                      width: "36px", height: "36px",
+                      width: "40px", height: "40px",
                       borderRadius: "var(--radius)",
                       border: "1px solid var(--border)",
                       background: "var(--bg-subtle)",
                       color: "var(--text-primary)",
-                      cursor: "pointer"
+                      cursor: "pointer",
+                      fontSize: "1.2rem"
                     }}
                   >
                     →
                   </button>
                 </div>
 
-                {/* Artist Image */}
+                {/* Artist Full Portrait */}
                 <div style={{ 
                   textAlign: "center", 
                   marginBottom: "20px",
                   position: "relative"
                 }}>
                   <div style={{
-                    width: "180px",
-                    height: "220px",
+                    width: "200px",
+                    height: "280px",
                     margin: "0 auto",
                     borderRadius: "var(--radius-lg)",
                     border: `3px solid ${rankColors[selectedArtist.rank]}`,
@@ -173,67 +180,70 @@ export default function DatabasePage() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "4rem",
-                    fontWeight: 800,
-                    color: rankColors[selectedArtist.rank],
-                    overflow: "hidden"
+                    overflow: "hidden",
+                    boxShadow: `0 0 30px ${rankColors[selectedArtist.rank]}44`
                   }}>
-                    <img 
-                      src={`/assets/images/artists/${selectedArtist.id}.png`}
-                      alt={selectedArtist.name}
-                      style={{
-                        width: "100%",
+                    {selectedArtist.image ? (
+                      <img 
+                        src={`/assets/images/artists/${selectedArtist.image}`}
+                        alt={selectedArtist.name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover"
+                        }}
+                      />
+                    ) : (
+                      <div style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
                         height: "100%",
-                        objectFit: "cover"
-                      }}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                      }}
-                    />
-                    <span className="artist-initial" style={{
-                      position: "absolute",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}>
-                      {selectedArtist.name.charAt(0)}
-                    </span>
+                        width: "100%",
+                        background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}33, var(--bg-subtle))`
+                      }}>
+                        <span style={{ fontSize: "5rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
+                        <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "8px" }}>{selectedArtist.name}</span>
+                      </div>
+                    )}
                   </div>
                   
-                  <div className="flex gap-4" style={{ justifyContent: "center", marginTop: "12px" }}>
+                  {/* Rank & Position badges */}
+                  <div className="flex gap-4" style={{ justifyContent: "center", marginTop: "16px" }}>
                     <span style={{ 
-                      padding: "6px 14px", 
+                      padding: "8px 16px", 
                       borderRadius: "var(--radius-full)", 
-                      fontSize: "0.75rem", 
+                      fontSize: "0.8rem", 
                       fontWeight: 700,
                       background: rankColors[selectedArtist.rank],
-                      color: "#000"
+                      color: "#000",
+                      boxShadow: `0 0 15px ${rankColors[selectedArtist.rank]}66`
                     }}>
                       {selectedArtist.rank}
                     </span>
                     <span style={{ 
-                      padding: "6px 14px", 
+                      padding: "8px 16px", 
                       borderRadius: "var(--radius-full)", 
-                      fontSize: "0.75rem",
-                      background: "var(--bg-elevated)",
-                      color: "var(--text-muted)"
+                      fontSize: "0.8rem",
+                      background: genreColors[selectedArtist.genre] || "var(--bg-elevated)",
+                      color: "#fff"
                     }}>
-                      {selectedArtist.position}
+                      {selectedArtist.genre}
                     </span>
                   </div>
                 </div>
 
                 {/* Artist Info */}
                 <div style={{ textAlign: "center" }}>
-                  <h2 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "4px", color: rankColors[selectedArtist.rank] }}>
+                  <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "4px", color: rankColors[selectedArtist.rank] }}>
                     {selectedArtist.name}
                   </h2>
-                  <p className="text-muted" style={{ fontSize: "0.9rem", marginBottom: "12px" }}>
+                  <p className="text-muted" style={{ fontSize: "1rem", marginBottom: "16px" }}>
                     {selectedArtist.group}
                   </p>
-                  <div className="flex gap-4 justify-between" style={{ justifyContent: "center", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-                    <span>🎵 {selectedArtist.genre}</span>
+                  <div className="flex gap-4 justify-between" style={{ justifyContent: "center", fontSize: "0.9rem", color: "var(--text-muted)" }}>
+                    <span>🎯 {selectedArtist.position}</span>
                     <span>⭐ {selectedArtist.build}</span>
                   </div>
                 </div>
@@ -246,11 +256,11 @@ export default function DatabasePage() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                     {selectedArtist.skills.map((skill, idx) => (
                       <div key={idx} style={{
-                        padding: "10px 14px",
+                        padding: "12px 16px",
                         background: "var(--bg-subtle)",
                         borderRadius: "var(--radius)",
-                        fontSize: "0.85rem",
-                        borderLeft: "3px solid var(--primary)"
+                        fontSize: "0.9rem",
+                        borderLeft: `3px solid ${rankColors[selectedArtist.rank]}`
                       }}>
                         {skill}
                       </div>
@@ -264,8 +274,8 @@ export default function DatabasePage() {
                 textAlign: "center", 
                 color: "var(--text-muted)"
               }}>
-                <div style={{ fontSize: "3rem", marginBottom: "16px" }}>👆</div>
-                <p>Sélectionnez un artiste</p>
+                <div style={{ fontSize: "4rem", marginBottom: "16px" }}>👆</div>
+                <p style={{ fontSize: "1.1rem" }}>Sélectionnez un artiste</p>
               </div>
             )}
           </div>
@@ -282,7 +292,7 @@ export default function DatabasePage() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
                     flex: "1",
-                    minWidth: "200px",
+                    minWidth: "180px",
                     padding: "12px 16px",
                     background: "var(--bg-subtle)",
                     border: "1px solid var(--border)",
@@ -301,18 +311,18 @@ export default function DatabasePage() {
                     borderRadius: "var(--radius)",
                     color: "var(--text-primary)",
                     fontSize: "0.9rem",
-                    minWidth: "120px"
+                    minWidth: "100px"
                   }}
                 >
-                  <option value="">Tous les ranks</option>
+                  <option value="">Tous</option>
                   <option value="UR">UR</option>
                   <option value="SSR">SSR</option>
                   <option value="SR">SR</option>
                   <option value="R">R</option>
                 </select>
                 <select
-                  value={filterPosition}
-                  onChange={(e) => setFilterPosition(e.target.value)}
+                  value={filterGenre}
+                  onChange={(e) => setFilterGenre(e.target.value)}
                   style={{
                     padding: "12px 16px",
                     background: "var(--bg-subtle)",
@@ -320,22 +330,24 @@ export default function DatabasePage() {
                     borderRadius: "var(--radius)",
                     color: "var(--text-primary)",
                     fontSize: "0.9rem",
-                    minWidth: "140px"
+                    minWidth: "130px"
                   }}
                 >
-                  <option value="">Tous les rôles</option>
-                  <option value="Center">Center</option>
-                  <option value="Dancer">Dancer</option>
-                  <option value="Vocalist">Vocalist</option>
+                  <option value="">Tous genres</option>
+                  <option value="Pop">Pop</option>
+                  <option value="Hip Hop">Hip Hop</option>
+                  <option value="R&B">R&B</option>
+                  <option value="Rock">Rock</option>
+                  <option value="Electronic">Electronic</option>
                 </select>
               </div>
             </div>
 
-            {/* Grid */}
+            {/* Grid - Full Portraits */}
             <div style={{ 
               display: "grid", 
-              gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", 
-              gap: "12px" 
+              gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", 
+              gap: "10px" 
             }}>
               {filteredArtists
                 .sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank])
@@ -345,58 +357,56 @@ export default function DatabasePage() {
                     onClick={() => selectArtist(artist)}
                     style={{
                       background: selectedArtist?.id === artist.id 
-                        ? `linear-gradient(135deg, ${rankColors[artist.rank]}33, var(--bg-card))`
+                        ? `${rankColors[artist.rank]}22`
                         : "var(--bg-card)",
                       border: `2px solid ${selectedArtist?.id === artist.id ? rankColors[artist.rank] : "var(--border)"}`,
                       borderRadius: "var(--radius-md)",
-                      padding: "16px 12px",
+                      padding: "0",
                       cursor: "pointer",
                       transition: "all 0.2s ease",
-                      textAlign: "center"
+                      aspectRatio: "3/4",
+                      overflow: "hidden",
+                      position: "relative"
                     }}
                   >
-                    <div style={{
-                      width: "60px",
-                      height: "60px",
-                      margin: "0 auto 10px",
-                      borderRadius: "var(--radius)",
-                      background: `${rankColors[artist.rank]}22`,
-                      border: `2px solid ${rankColors[artist.rank]}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "1.5rem",
-                      fontWeight: 700,
-                      color: rankColors[artist.rank],
-                      overflow: "hidden"
-                                            }}>
+                    {artist.image ? (
                       <img 
-                        src={`/assets/images/artists/${artist.id}.png`}
+                        src={`/assets/images/artists/${artist.image}`}
                         alt={artist.name}
                         style={{
                           width: "100%",
                           height: "100%",
                           objectFit: "cover"
                         }}
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                        }}
                       />
-                    </div>
-                    <div style={{ 
-                      fontWeight: 600, 
-                      fontSize: "0.85rem", 
-                      color: selectedArtist?.id === artist.id ? rankColors[artist.rank] : "var(--text-primary)",
-                      marginBottom: "4px",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis"
+                    ) : (
+                      <div style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        height: "100%",
+                        width: "100%",
+                        background: `linear-gradient(135deg, ${rankColors[artist.rank]}33, var(--bg-subtle))`
+                      }}>
+                        <span style={{ fontSize: "2.5rem", fontWeight: 800, color: rankColors[artist.rank] }}>{artist.name.charAt(0)}</span>
+                      </div>
+                    )}
+                    {/* Rank badge overlay */}
+                    <div style={{
+                      position: "absolute",
+                      bottom: "6px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      padding: "4px 10px",
+                      borderRadius: "var(--radius-full)",
+                      fontSize: "0.65rem",
+                      fontWeight: 700,
+                      background: rankColors[artist.rank],
+                      color: "#000",
+                      whiteSpace: "nowrap"
                     }}>
-                      {artist.name}
-                    </div>
-                    <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>
-                      {artist.rank} • {artist.position}
+                      {artist.rank}
                     </div>
                   </button>
                 ))}
