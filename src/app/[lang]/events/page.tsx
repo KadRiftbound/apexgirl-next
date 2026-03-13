@@ -192,16 +192,6 @@ export default function EventsPage() {
                 }}>
                   {event.type}
                 </span>
-                <span style={{
-                  padding: "4px 10px",
-                  borderRadius: "8px",
-                  fontSize: "0.7rem",
-                  fontWeight: 600,
-                  background: event.active ? "rgba(34, 197, 94, 0.2)" : "rgba(148, 163, 184, 0.2)",
-                  color: event.active ? "#22c55e" : "#94a3b8",
-                }}>
-                  {event.active ? "✓ Actif" : "Terminé"}
-                </span>
               </div>
 
               <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, marginBottom: "8px" }}>
@@ -310,16 +300,6 @@ export default function EventsPage() {
                 color: typeColors[selectedEvent.type]?.text,
               }}>
                 {selectedEvent.type}
-              </span>
-              <span style={{
-                padding: "6px 12px",
-                borderRadius: "8px",
-                fontSize: "0.75rem",
-                fontWeight: 600,
-                background: selectedEvent.active ? "rgba(34, 197, 94, 0.2)" : "rgba(148, 163, 184, 0.2)",
-                color: selectedEvent.active ? "#22c55e" : "#94a3b8",
-              }}>
-                {selectedEvent.active ? "✓ Actif" : "Terminé"}
               </span>
             </div>
 

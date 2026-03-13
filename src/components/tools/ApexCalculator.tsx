@@ -27,8 +27,7 @@ export default function ApexCalculator() {
   const [error, setError] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("Artists");
 
-  // Store selections as { category: { itemName: quantity } }
-  const [selections, setSelections] = useState<Record<string, Record<string, number>>>({});
+  const [selections, setSelections] = useState<Record<string, Record<string, { from: number; to: number }>>>({});
 
   useEffect(() => {
     fetch("/api/calculator")
@@ -43,39 +42,59 @@ export default function ApexCalculator() {
       .finally(() => setLoading(false));
   }, []);
 
-  const handleLevelChange = (item: string, level: number) => {
+  const handleLevelChange = (item: string, fromLevel: number, toLevel: number) => {
     setSelections((prev) => ({
       ...prev,
       [activeCategory]: {
         ...(prev[activeCategory] || {}),
-        [item]: level,
+        [item]: { from: fromLevel, to: toLevel },
       },
     }));
   };
 
-  const calculateTotal = useMemo(() => {
-    let total = 0;
-    const categoryItems = data[activeCategory] || [];
+  const calculateItemCost = (category: string, itemName: string, fromLevel: number, toLevel: number) => {
+    const categoryItems = data[category] || [];
+    const itemLevels = categoryItems.filter((i) => i.item === itemName);
     
-    for (const item of categoryItems) {
-      const qty = selections[activeCategory]?.[item.item] || 0;
-      if (qty > 0) {
-        const itemData = categoryItems.filter((i) => i.item === item.item);
-        // Sum up costs for levels 1 to qty
-        for (let l = 1; l <= qty; l++) {
-          const levelData = itemData.find((i) => i.level === l);
-          if (levelData) {
-            total += levelData.cost;
-          }
-        }
+    let total = 0;
+    for (let l = fromLevel + 1; l <= toLevel; l++) {
+      const levelData = itemLevels.find((i) => i.level === l);
+      if (levelData) {
+        total += levelData.cost;
       }
     }
     return total;
-  }, [data, activeCategory, selections]);
+  };
+
+  const calculateTotal = useMemo(() => {
+    const totals: Record<string, number> = {};
+    let grandTotal = 0;
+
+    for (const catId of Object.keys(data)) {
+      totals[catId] = 0;
+      const categoryItems = data[catId] || [];
+      const uniqueItems = [...new Set(categoryItems.map((i) => i.item))];
+
+      for (const itemName of uniqueItems) {
+        const selection = selections[catId]?.[itemName];
+        if (selection && selection.to > selection.from) {
+          const cost = calculateItemCost(catId, itemName, selection.from, selection.to);
+          totals[catId] += cost;
+          grandTotal += cost;
+        }
+      }
+    }
+
+    return { totals, grandTotal };
+  }, [data, selections]);
 
   const resetAll = () => {
     setSelections({});
   };
+
+  const currentItems = data[activeCategory] || [];
+  const uniqueItems = [...new Set(currentItems.map((i) => i.item))];
+  const maxLevel = Math.max(...currentItems.map((i) => i.level), 0);
 
   if (loading) {
     return (
@@ -93,9 +112,6 @@ export default function ApexCalculator() {
       </div>
     );
   }
-
-  const currentItems = data[activeCategory] || [];
-  const uniqueItems = [...new Set(currentItems.map((i) => i.item))];
 
   return (
     <div style={{ width: "100%" }}>
@@ -175,7 +191,18 @@ export default function ApexCalculator() {
                   textTransform: "uppercase",
                   letterSpacing: "0.05em"
                 }}>
-                  Level
+                  From
+                </th>
+                <th style={{ 
+                  padding: "12px 16px", 
+                  textAlign: "center", 
+                  color: "#f0abfc",
+                  fontWeight: 600,
+                  fontSize: "0.75rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em"
+                }}>
+                  To
                 </th>
                 <th style={{ 
                   padding: "12px 16px", 
@@ -196,14 +223,17 @@ export default function ApexCalculator() {
                   .filter((i) => i.item === itemName)
                   .sort((a, b) => a.level - b.level);
                 
-                const selectedLevel = selections[activeCategory]?.[itemName] || 0;
+                const selection = selections[activeCategory]?.[itemName];
+                const fromLevel = selection?.from || 0;
+                const toLevel = selection?.to || 0;
+                const hasSelection = toLevel > fromLevel;
                 
                 return (
                   <tr 
                     key={itemName}
                     style={{ 
                       borderBottom: "1px solid rgba(255,255,255,0.05)",
-                      background: selectedLevel > 0 ? "rgba(168, 85, 247, 0.1)" : "transparent"
+                      background: hasSelection ? "rgba(168, 85, 247, 0.1)" : "transparent"
                     }}
                   >
                     <td style={{ 
@@ -213,19 +243,42 @@ export default function ApexCalculator() {
                     }}>
                       {itemName}
                     </td>
-                    <td style={{ padding: "10px 16px", textAlign: "center" }}>
+                    <td style={{ padding: "10px 8px", textAlign: "center" }}>
                       <select
-                        value={selectedLevel}
-                        onChange={(e) => handleLevelChange(itemName, parseInt(e.target.value))}
+                        value={fromLevel}
+                        onChange={(e) => handleLevelChange(itemName, parseInt(e.target.value), toLevel)}
                         style={{
-                          padding: "6px 10px",
+                          padding: "6px 8px",
                           borderRadius: "8px",
                           border: "1px solid rgba(168, 85, 247, 0.5)",
                           background: "rgba(30, 30, 50, 0.9)",
                           color: "#fff",
-                          fontSize: "0.85rem",
+                          fontSize: "0.8rem",
                           cursor: "pointer",
-                          minWidth: "80px"
+                          width: "70px"
+                        }}
+                      >
+                        <option value={0}>0</option>
+                        {itemLevels.map((lvl) => (
+                          <option key={lvl.level} value={lvl.level}>
+                            {lvl.level}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td style={{ padding: "10px 8px", textAlign: "center" }}>
+                      <select
+                        value={toLevel}
+                        onChange={(e) => handleLevelChange(itemName, fromLevel, parseInt(e.target.value))}
+                        style={{
+                          padding: "6px 8px",
+                          borderRadius: "8px",
+                          border: "1px solid rgba(168, 85, 247, 0.5)",
+                          background: "rgba(30, 30, 50, 0.9)",
+                          color: "#fff",
+                          fontSize: "0.8rem",
+                          cursor: "pointer",
+                          width: "70px"
                         }}
                       >
                         <option value={0}>-</option>
@@ -239,14 +292,11 @@ export default function ApexCalculator() {
                     <td style={{ 
                       padding: "10px 16px", 
                       textAlign: "right",
-                      color: selectedLevel > 0 ? "#fff" : "rgba(255,255,255,0.5)",
+                      color: hasSelection ? "#fff" : "rgba(255,255,255,0.5)",
                       fontFamily: "monospace"
                     }}>
-                      {selectedLevel > 0 
-                        ? itemLevels
-                            .filter((l) => l.level <= selectedLevel)
-                            .reduce((sum, l) => sum + l.cost, 0)
-                            .toLocaleString()
+                      {hasSelection 
+                        ? calculateItemCost(activeCategory, itemName, fromLevel, toLevel).toLocaleString()
                         : "-"
                       }
                     </td>
@@ -258,12 +308,67 @@ export default function ApexCalculator() {
         </div>
       </div>
 
+      {/* All Resources Summary */}
+      <div style={{
+        marginTop: "20px",
+        padding: "16px",
+        background: "rgba(30, 30, 50, 0.8)",
+        borderRadius: "12px",
+        border: "1px solid rgba(168, 85, 247, 0.3)"
+      }}>
+        <h4 style={{ 
+          fontSize: "0.8rem", 
+          color: "rgba(255,255,255,0.5)", 
+          marginBottom: "12px",
+          textTransform: "uppercase",
+          letterSpacing: "0.05em"
+        }}>
+          📊 All Resources Required
+        </h4>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+          {categoryConfig.map((cat) => {
+            const hasData = data[cat.id] && data[cat.id].length > 0;
+            if (!hasData) return null;
+            
+            const total = calculateTotal.totals[cat.id] || 0;
+            const isActive = activeCategory === cat.id;
+            
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                style={{
+                  padding: "8px 12px",
+                  borderRadius: "8px",
+                  border: isActive ? `1px solid ${cat.color}` : "1px solid rgba(255,255,255,0.1)",
+                  background: isActive ? `${cat.color}22` : "rgba(20, 20, 35, 0.8)",
+                  color: total > 0 ? "#fff" : "rgba(255,255,255,0.4)",
+                  cursor: "pointer",
+                  fontSize: "0.75rem",
+                  fontWeight: 500,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  minWidth: "100px"
+                }}
+              >
+                <span style={{ opacity: 0.7 }}>{cat.icon}</span>
+                <span style={{ flex: 1, textAlign: "left" }}>{cat.label}</span>
+                <span style={{ fontFamily: "monospace", color: total > 0 ? cat.color : "inherit" }}>
+                  {total > 0 ? total.toLocaleString() : "-"}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Total & Reset */}
       <div style={{
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        marginTop: "20px",
+        marginTop: "16px",
         padding: "16px 20px",
         background: "rgba(30, 30, 50, 0.8)",
         borderRadius: "12px",
@@ -287,7 +392,7 @@ export default function ApexCalculator() {
         
         <div style={{ textAlign: "right" }}>
           <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.5)", marginBottom: "4px" }}>
-            TOTAL {categoryConfig.find(c => c.id === activeCategory)?.label.toUpperCase()}
+            GRAND TOTAL
           </div>
           <div style={{ 
             fontSize: "1.5rem", 
@@ -295,7 +400,7 @@ export default function ApexCalculator() {
             color: "#f0abfc",
             fontFamily: "monospace"
           }}>
-            {calculateTotal.toLocaleString()}
+            {calculateTotal.grandTotal.toLocaleString()}
           </div>
         </div>
       </div>

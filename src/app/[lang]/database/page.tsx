@@ -118,7 +118,7 @@ export default function DatabasePage() {
 
         <AdBanner />
 
-        <div className="grid" style={{ gridTemplateColumns: "420px 1fr", gap: "32px", marginTop: "32px" }}>
+        <div className="grid" style={{ gridTemplateColumns: "320px 1fr", gap: "24px", marginTop: "32px" }}>
           {/* Artist Panel */}
           <div className="glass-card" style={{ 
             position: "sticky", 
@@ -173,12 +173,12 @@ export default function DatabasePage() {
                 {/* Artist Full Portrait */}
                 <div style={{ 
                   textAlign: "center", 
-                  marginBottom: "20px",
+                  marginBottom: "16px",
                   position: "relative"
                 }}>
                   <div style={{
-                    width: "200px",
-                    height: "280px",
+                    width: "160px",
+                    height: "220px",
                     margin: "0 auto",
                     borderRadius: "var(--radius-lg)",
                     border: `3px solid ${rankColors[selectedArtist.rank]}`,
@@ -196,7 +196,8 @@ export default function DatabasePage() {
                         style={{
                           width: "100%",
                           height: "100%",
-                          objectFit: "cover"
+                          objectFit: "cover",
+                          objectPosition: "top center"
                         }}
                       />
                     ) : (
@@ -209,29 +210,29 @@ export default function DatabasePage() {
                         width: "100%",
                         background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}33, var(--bg-subtle))`
                       }}>
-                        <span style={{ fontSize: "5rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
-                        <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "8px" }}>{selectedArtist.name}</span>
+                        <span style={{ fontSize: "4rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
+                        <span style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "6px" }}>{selectedArtist.name}</span>
                       </div>
                     )}
                   </div>
                   
                   {/* Rank & Position badges */}
-                  <div className="flex gap-4" style={{ justifyContent: "center", marginTop: "16px" }}>
+                  <div className="flex gap-2" style={{ justifyContent: "center", marginTop: "12px" }}>
                     <span style={{ 
-                      padding: "8px 16px", 
+                      padding: "6px 12px", 
                       borderRadius: "var(--radius-full)", 
-                      fontSize: "0.8rem", 
+                      fontSize: "0.7rem", 
                       fontWeight: 700,
                       background: rankColors[selectedArtist.rank],
                       color: "#000",
-                      boxShadow: `0 0 15px ${rankColors[selectedArtist.rank]}66`
+                      boxShadow: `0 0 10px ${rankColors[selectedArtist.rank]}66`
                     }}>
                       {selectedArtist.rank}
                     </span>
                     <span style={{ 
-                      padding: "8px 16px", 
+                      padding: "6px 12px", 
                       borderRadius: "var(--radius-full)", 
-                      fontSize: "0.8rem",
+                      fontSize: "0.7rem",
                       background: genreColors[selectedArtist.genre] || "var(--bg-elevated)",
                       color: "#fff"
                     }}>
@@ -242,31 +243,32 @@ export default function DatabasePage() {
 
                 {/* Artist Info */}
                 <div style={{ textAlign: "center" }}>
-                  <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "4px", color: rankColors[selectedArtist.rank] }}>
+                  <h2 style={{ fontSize: "1.4rem", fontWeight: 700, marginBottom: "2px", color: rankColors[selectedArtist.rank] }}>
                     {selectedArtist.name}
                   </h2>
-                  <p className="text-muted" style={{ fontSize: "1rem", marginBottom: "16px" }}>
+                  <p className="text-muted" style={{ fontSize: "0.9rem", marginBottom: "12px" }}>
                     {selectedArtist.group}
                   </p>
-                  <div className="flex gap-4 justify-between" style={{ justifyContent: "center", fontSize: "0.9rem", color: "var(--text-muted)" }}>
+                  <div className="flex gap-3 justify-center" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
                     <span>🎯 {selectedArtist.position}</span>
                     <span>⭐ {selectedArtist.build}</span>
                   </div>
                 </div>
 
                 {/* Skills */}
-                <div style={{ marginTop: "24px" }}>
-                  <h4 style={{ fontSize: "0.85rem", color: "var(--text-muted)", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>
+                <div style={{ marginTop: "16px" }}>
+                  <h4 style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginBottom: "8px", textTransform: "uppercase", letterSpacing: "1px" }}>
                     Compétences
                   </h4>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                     {selectedArtist.skills.map((skill, idx) => (
                       <div key={idx} style={{
-                        padding: "12px 16px",
+                        padding: "8px 12px",
                         background: "var(--bg-subtle)",
                         borderRadius: "var(--radius)",
-                        fontSize: "0.9rem",
-                        borderLeft: `3px solid ${rankColors[selectedArtist.rank]}`
+                        fontSize: "0.8rem",
+                        borderLeft: `3px solid ${rankColors[selectedArtist.rank]}`,
+                        color: "var(--text-primary)"
                       }}>
                         {skill}
                       </div>
