@@ -17,7 +17,7 @@ type Artist = {
   image?: string;
   calculatedTier: string;
   build: string;
-  rating: number;
+  rating: string;
 };
 
 const rankColors: Record<string, string> = {
@@ -35,6 +35,19 @@ const tierColors: Record<string, { bg: string; border: string; text: string }> =
   C: { bg: "rgba(245, 158, 11, 0.15)", border: "#f59e0b", text: "#f59e0b" },
   D: { bg: "rgba(239, 68, 68, 0.15)", border: "#ef4444", text: "#ef4444" },
   F: { bg: "rgba(148, 163, 184, 0.15)", border: "#94a3b8", text: "#94a3b8" },
+};
+
+const tierOrder: Record<string, number> = {
+  S: 0,
+  A: 1,
+  B: 2,
+  C: 3,
+  D: 4,
+  F: 5,
+};
+
+const getTierOrder = (tier: string): number => {
+  return tierOrder[tier] ?? 3;
 };
 
 export default function TierListPage() {
@@ -258,7 +271,7 @@ export default function TierListPage() {
                     padding: "16px"
                   }}>
                     {tierArtists
-                      .sort((a, b) => (b.rating || 0) - (a.rating || 0))
+                      .sort((a, b) => getTierOrder(a.rating) - getTierOrder(b.rating))
                       .map(artist => (
                         <div
                           key={artist.id}
