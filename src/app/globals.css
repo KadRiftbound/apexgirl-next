@@ -99,7 +99,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background: var(--bg-dark);
+  background: transparent;
   color: var(--text-primary);
   font-family: var(--font-family);
   line-height: 1.6;

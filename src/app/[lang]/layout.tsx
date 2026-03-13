@@ -2,11 +2,73 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { LanguageSelector } from "@/components/LanguageSelector";
 
-export const metadata: Metadata = {
-  title: "TopGirl - Guide et Outils",
-  description: "Le fansite officiel de TopGirl/ApexGirl avec guides, outils et codes promo",
-  keywords: ["TopGirl", "ApexGirl", "guide", "tips", "codes promo"],
+const localeNames: Record<string, string> = {
+  fr: "fr-FR",
+  en: "en-US",
+  it: "it-IT",
+  es: "es-ES",
+  pt: "pt-BR",
+  pl: "pl-PL",
+  id: "id-ID",
+  ru: "ru-RU",
 };
+
+const metadataByLang: Record<string, { title: string; description: string; keywords: string }> = {
+  fr: { title: "TopGirl - Guide et Outils", description: "Le fansite officiel de TopGirl/ApexGirl avec guides, outils et codes promo", keywords: "TopGirl, ApexGirl, guide, tips, codes promo" },
+  en: { title: "TopGirl - Guides & Tools", description: "The official TopGirl/ApexGirl fansite with guides, tools and promo codes", keywords: "TopGirl, ApexGirl, guide, tips, promo codes" },
+  it: { title: "TopGirl - Guide e Strumenti", description: "Il fansite ufficiale di TopGirl/ApexGirl con guide, strumenti e codici promozionali", keywords: "TopGirl, ApexGirl, guida, tips, codici promozionali" },
+  es: { title: "TopGirl - Guías y Herramientas", description: "El fansite oficial de TopGirl/ApexGirl con guías, herramientas y códigos promocionales", keywords: "TopGirl, ApexGirl, guía, tips, códigos promocionales" },
+  pt: { title: "TopGirl - Guias e Ferramentas", description: "O fansite oficial da TopGirl/ApexGirl com guias, ferramentas e códigos promocionais", keywords: "TopGirl, ApexGirl, guia, tips, códigos promocionais" },
+  pl: { title: "TopGirl - Poradniki i Narzędzia", description: "Nieoficjalny serwis TopGirl/ApexGirl z poradnikami, narzędziami i kodami promocyjnymi", keywords: "TopGirl, ApexGirl, poradnik, tips, kody promocyjne" },
+  id: { title: "TopGirl - Panduan dan Alat", description: "Fansite resmi TopGirl/ApexGirl dengan panduan, alat, dan kode promo", keywords: "TopGirl, ApexGirl, panduan, tips, kode promo" },
+  ru: { title: "TopGirl - Руководства и Инструменты", description: "Неофициальный фан-сайт TopGirl/ApexGirl с руководствами, инструментами и промокодами", keywords: "TopGirl, ApexGirl, руководство, tips, промокоды" },
+};
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const meta = metadataByLang[lang] || metadataByLang.fr;
+  
+  const alternates: Metadata['alternates'] = {
+    languages: {
+      fr: "/fr",
+      en: "/en",
+      it: "/it",
+      es: "/es",
+      pt: "/pt",
+      pl: "/pl",
+      id: "/id",
+      ru: "/ru",
+    },
+  };
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords.split(", "),
+    alternates,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://apexgirlguide.com/${lang}`,
+      siteName: "TopGirl",
+      locale: localeNames[lang] || "fr-FR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+    },
+    icons: {
+      icon: "/assets/images/favicon.png",
+      apple: "/assets/images/favicon.png",
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return [
@@ -48,6 +110,24 @@ export default async function LocaleLayout({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "TopGirl",
+            "url": `https://apexgirlguide.com/${lang}`,
+            "description": metadataByLang[lang]?.description || metadataByLang.fr.description,
+            "inLanguage": localeNames[lang] || "fr-FR",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": `https://apexgirlguide.com/${lang}/search?q={search_term_string}`,
+              "query-input": "required name=search_term_string"
+            }
+          })
+        }}
+      />
       <a href="#main-content" className="skip-link">
         {lang === "fr" ? "Aller au contenu principal" : "Skip to main content"}
       </a>
