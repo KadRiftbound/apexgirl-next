@@ -3,27 +3,107 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
 
+const translations: Record<string, any> = {
+  fr: {
+    homeTitle: "TOPGIRL GUIDE",
+    subtitle: "Maîtrise le jeu avec 112+ artistes, des guides experts et des outils exclusifs",
+    discoverArtists: "Découvrir les Artistes",
+    seeTools: "Voir les Outils",
+    tierListVotes: "Tier List & Votes",
+    artists: "Artistes",
+    guides: "Guides",
+    events: "Événements",
+    tools: "Outils",
+    artistOfWeek: "Artiste de la semaine",
+    votes: "votes",
+    clickToVote: "Cliquez pour voter pour votre favori →",
+    promoCodes: "Codes Promo",
+    promoSubtitle: "Tous les codes disponibles pour TopGirl / ApexGirl",
+    enterInGame: "Entrez les codes dans le jeu",
+    codeGuide: "Guide des codes",
+    exploreSite: "Explorer le Site",
+    artistStats: "112+ artistes avec toutes leurs statistiques",
+    toolsStats: "Calculateurs et optimiseurs exclusifs",
+    guidesStats: "Tutoriels et stratégies complètes",
+    eventsStats: "Calendrier et récompenses",
+    readyToDominate: "Prêt à dominer le jeu ?",
+    unlockPotential: "Débloquez tout le potentiel de vos artistes avec nos outils et guides exclusifs.",
+    startNow: "Commencer Maintenant →",
+    active: "Actif",
+    copy: "Copier"
+  },
+  en: {
+    homeTitle: "TOPGIRL GUIDE",
+    subtitle: "Master the game with 112+ artists, expert guides and exclusive tools",
+    discoverArtists: "Discover Artists",
+    seeTools: "See Tools",
+    tierListVotes: "Tier List & Votes",
+    artists: "Artists",
+    guides: "Guides",
+    events: "Events",
+    tools: "Tools",
+    artistOfWeek: "Artist of the Week",
+    votes: "votes",
+    clickToVote: "Click to vote for your favorite →",
+    promoCodes: "Promo Codes",
+    promoSubtitle: "All available codes for TopGirl / ApexGirl",
+    enterInGame: "Enter the codes in the game",
+    codeGuide: "Code guide",
+    exploreSite: "Explore the Site",
+    artistStats: "112+ artists with all their stats",
+    toolsStats: "Calculators and optimizers",
+    guidesStats: "Tutorials and strategies",
+    eventsStats: "Calendar and rewards",
+    readyToDominate: "Ready to dominate the game?",
+    unlockPotential: "Unlock the full potential of your artists with our exclusive tools and guides.",
+    startNow: "Get Started →",
+    active: "Active",
+    copy: "Copy"
+  }
+};
+
+const otherTranslations: Record<string, any> = {
+  it: { homeTitle: "TOPGIRL GUIDE", subtitle: "Masterizza il gioco con 112+ artisti, guide esclusive", discoverArtists: "Scopri Artisti", seeTools: "Strumenti", tierListVotes: "Tier List", artists: "Artisti", guides: "Guide", events: "Eventi", tools: "Strumenti", artistOfWeek: "Artista della Settimana", votes: "voti", clickToVote: "Clicca per votare →", promoCodes: "Codici Promo", promoSubtitle: "Tutti i codici per TopGirl", enterInGame: "Inserisci i codici nel gioco", codeGuide: "Guida codici", exploreSite: "Esplora il Sito", artistStats: "112+ artisti con tutte le statistiche", toolsStats: "Calcolatori e ottimizzatori", guidesStats: "Tutorial e strategie", eventsStats: "Calendario e ricompense", readyToDominate: "Pronto a dominare?", unlockPotential: "Sblocca il pieno potenziale dei tuoi artisti.", startNow: "Inizia Ora →", active: "Attivo", copy: "Copia" },
+  es: { homeTitle: "TOPGIRL GUIDE", subtitle: "Domina el juego con 112+ artistas, guías expertas", discoverArtists: "Descubrir Artistas", seeTools: "Herramientas", tierListVotes: "Tier List", artists: "Artistas", guides: "Guías", events: "Eventos", tools: "Herramientas", artistOfWeek: "Artista de la Semana", votes: "votos", clickToVote: "Haz clic para votar →", promoCodes: "Códigos Promo", promoSubtitle: "Todos los códigos para TopGirl", enterInGame: "Introduce los códigos en el juego", codeGuide: "Guía de códigos", exploreSite: "Explorar el Sitio", artistStats: "112+ artistas con todas sus estadísticas", toolsStats: "Calculadoras y optimizadores", guidesStats: "Tutoriales y estrategias", eventsStats: "Calendario y recompensas", readyToDominate: "¿Listo para dominar?", unlockPotential: "Desbloquea todo el potencial de tus artistas.", startNow: "Empezar Ahora →", active: "Activo", copy: "Copiar" },
+  pt: { homeTitle: "TOPGIRL GUIDE", subtitle: "Domine o jogo com 112+ artistas, guias especializados", discoverArtists: "Descobrir Artistas", seeTools: "Ferramentas", tierListVotes: "Tier List", artists: "Artistas", guides: "Guias", events: "Eventos", tools: "Ferramentas", artistOfWeek: "Artista da Semana", votes: "votos", clickToVote: "Clique para votar →", promoCodes: "Códigos Promo", promoSubtitle: "Todos os códigos para TopGirl", enterInGame: "Insira os códigos no jogo", codeGuide: "Guia de códigos", exploreSite: "Explorar o Site", artistStats: "112+ artistas com todas as estatísticas", toolsStats: "Calculadoras e otimizadores", guidesStats: "Tutoriais e estratégias", eventsStats: "Calendário e recompensas", readyToDominate: "Pronto para dominar?", unlockPotential: "Desbloqueie o potencial completo dos seus artistas.", startNow: "Começar Agora →", active: "Ativo", copy: "Copiar" },
+  pl: { homeTitle: "TOPGIRL GUIDE", subtitle: "Opanuj grę z 112+ artystami, eksperckimi poradnikami", discoverArtists: "Odkryj Artystów", seeTools: "Narzędzia", tierListVotes: "Tier List", artists: "Artyści", guides: "Poradniki", events: "Wydarzenia", tools: "Narzędzia", artistOfWeek: "Artysta Tygodnia", votes: "głosów", clickToVote: "Kliknij, aby głosować →", promoCodes: "Kody Promo", promoSubtitle: "Wszystkie kody dla TopGirl", enterInGame: "Wpisz kody w grze", codeGuide: "Przewodnik po kodach", exploreSite: "Zbadaj Stronę", artistStats: "112+ artystów ze wszystkimi statystykami", toolsStats: "Kalkulatory i optymalizatory", guidesStats: "Samouczki i strategie", eventsStats: "Kalendarz i nagrody", readyToDominate: "Gotowy by dominować?", unlockPotential: "Odblokuj pełny potencjał swoich artystów.", startNow: "Zacznij Teraz →", active: "Aktywny", copy: "Kopiuj" },
+  id: { homeTitle: "TOPGIRL GUIDE", subtitle: "Kuasai permainan dengan 112+ artis, panduan ahli", discoverArtists: "Temukan Artis", seeTools: "Alat", tierListVotes: "Tier List", artists: "Artis", guides: "Panduan", events: "Acara", tools: "Alat", artistOfWeek: "Artis Minggu Ini", votes: "suara", clickToVote: "Klik untuk memilih →", promoCodes: "Kode Promo", promoSubtitle: "Semua kode untuk TopGirl", enterInGame: "Masukkan kode dalam game", codeGuide: "Panduan kode", exploreSite: "Jelajahi Situs", artistStats: "112+ artis dengan semua statistik", toolsStats: "Kalkulator dan optimizer", guidesStats: "Tutorial dan strategi", eventsStats: "Kalender dan hadiah", readyToDominate: "Siap untuk mendominasi?", unlockPotential: "Buka potensi penuh artis Anda.", startNow: "Mulai Sekarang →", active: "Aktif", copy: "Salin" },
+  ru: { homeTitle: "TOPGIRL GUIDE", subtitle: "Освой игру с 112+ артистами, экспертными гайдами", discoverArtists: "Открыть Артистов", seeTools: "Инструменты", tierListVotes: "Tier List", artists: "Артисты", guides: "Гайды", events: "События", tools: "Инструменты", artistOfWeek: "Артист Недели", votes: "голосов", clickToVote: "Нажмите, чтобы голосовать →", promoCodes: "Промокоды", promoSubtitle: "Все коды для TopGirl", enterInGame: "Введите коды в игре", codeGuide: "Руководство по кодам", exploreSite: "Исследовать Сайт", artistStats: "112+ артистов со всеми статистиками", toolsStats: "Калькуляторы и оптимизаторы", guidesStats: "Руководства и стратегии", eventsStats: "Календарь и награды", readyToDominate: "Готов доминировать?", unlockPotential: "Раскройте полный потенциал своих артистов.", startNow: "Начать Сейчас →", active: "Активно", copy: "Копировать" }
+};
+
 export default function HomePage() {
+  const params = useParams();
+  const lang = (params?.lang as string) || "en";
+  const t = translations[lang] || translations.en;
+  const t2 = otherTranslations[lang] || translations.en;
+  const text = lang === "fr" ? t : (otherTranslations[lang] || t2);
+  
   const [weeklyTop, setWeeklyTop] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [artistImage, setArtistImage] = useState<string>("");
+  const [artistName, setArtistName] = useState<string>("");
 
   useEffect(() => {
     fetch("/api/vote")
       .then(res => res.json())
       .then(data => {
-        setWeeklyTop(data.weekly_top);
-        if (data.weekly_top?.artist_id) {
-          fetch("/database/data/artists.json")
-            .then(r => r.json())
-            .then(artists => {
-              const artist = artists.find((a: any) => a.id === data.weekly_top.artist_id);
-              if (artist?.image) {
-                setArtistImage(artist.image);
-              }
-            });
+        if (data.weekly_top) {
+          setWeeklyTop(data.weekly_top);
+          if (data.weekly_top.artist_id) {
+            fetch("/database/data/artists.json")
+              .then(r => r.json())
+              .then(artists => {
+                const artist = artists.find((a: any) => a.id === data.weekly_top.artist_id);
+                if (artist) {
+                  setArtistImage(artist.image || "");
+                  setArtistName(artist.name);
+                }
+              })
+              .catch(() => {});
+          }
         }
         setLoading(false);
       })
@@ -34,20 +114,12 @@ export default function HomePage() {
     navigator.clipboard.writeText(code);
   };
 
-  const rankColors: Record<string, string> = {
-    UR: "#ffd700",
-    SSR: "#c084fc",
-    SR: "#60a5fa",
-    R: "#4ade80",
-    N: "#94a3b8",
-  };
-
   return (
     <>
       <Head>
         <meta name="robots" content="index, follow" />
         <meta property="og:type" content="website" />
-        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:locale" content={lang === "fr" ? "fr_FR" : "en_US"} />
         <meta property="og:site_name" content="TopGirl ApexGirl" />
       </Head>
       
@@ -63,24 +135,22 @@ export default function HomePage() {
             WebkitTextFillColor: "transparent",
             marginBottom: "16px"
           }}>
-            TOPGIRL GUIDE
+            {text.homeTitle}
           </h1>
-          <p style={{ fontSize: "1.125rem", color: "var(--text-muted)", marginBottom: "32px" }}>
-            Maîtrise le jeu avec <strong style={{ color: "var(--primary)" }}>112+ artistes</strong>, des guides experts et des outils exclusifs
-          </p>
+          <p style={{ fontSize: "1.125rem", color: "var(--text-muted)", marginBottom: "32px" }} dangerouslySetInnerHTML={{ __html: text.subtitle }} />
           
           <div className="grid grid-cols-3" style={{ maxWidth: "800px", margin: "0 auto", gap: "16px" }}>
-            <Link href="/fr/database/" className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+            <Link href={`/${lang}/database/`} className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
               <span style={{ fontSize: "2.5rem" }}>🎤</span>
-              Découvrir les Artistes
+              {text.discoverArtists}
             </Link>
-            <Link href="/fr/tools/" className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+            <Link href={`/${lang}/tools/`} className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
               <span style={{ fontSize: "2.5rem" }}>🛠️</span>
-              Voir les Outils
+              {text.seeTools}
             </Link>
-            <Link href="/fr/tierlist/" className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+            <Link href={`/${lang}/tierlist/`} className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
               <span style={{ fontSize: "2.5rem" }}>🏆</span>
-              Tier List & Votes
+              {text.tierListVotes}
             </Link>
           </div>
         </section>
@@ -91,92 +161,107 @@ export default function HomePage() {
             <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
               <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🎤</div>
               <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--primary)" }}>112+</div>
-              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>Artistes</div>
+              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.artists}</div>
             </div>
             <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
               <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>📖</div>
               <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--secondary)" }}>50+</div>
-              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>Guides</div>
+              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.guides}</div>
             </div>
             <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
               <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🎉</div>
               <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--accent)" }}>8</div>
-              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>Événements</div>
+              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.events}</div>
             </div>
             <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
               <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🛠️</div>
               <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--accent-yellow)" }}>5+</div>
-              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>Outils</div>
+              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.tools}</div>
             </div>
           </div>
         </section>
 
-        {/* Artist of the Week */}
-        {!loading && weeklyTop && (
-          <section style={{ padding: "40px 0" }}>
-            <Link href="/fr/tierlist/" style={{ textDecoration: "none" }}>
+        {/* Artist of the Week - Always show for demo */}
+        <section style={{ padding: "40px 0" }}>
+          <Link href={`/${lang}/tierlist/`} style={{ textDecoration: "none" }}>
+            <div style={{
+              padding: "32px",
+              borderRadius: "var(--radius-lg)",
+              background: "linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05))",
+              border: "2px solid rgba(255, 215, 0, 0.4)",
+              textAlign: "center",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              position: "relative",
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}>
               <div style={{
-                padding: "32px",
-                borderRadius: "var(--radius-lg)",
-                background: "linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05))",
-                border: "2px solid rgba(255, 215, 0, 0.4)",
-                textAlign: "center",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                position: "relative",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: "linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent)",
+                pointerEvents: "none"
+              }} />
+              
+              {/* Artist Image or Placeholder */}
+              <div style={{
+                width: "150px",
+                height: "150px",
+                borderRadius: "50%",
+                border: "4px solid #ffd700",
                 overflow: "hidden",
+                marginBottom: "16px",
+                position: "relative",
+                boxShadow: "0 0 30px rgba(255, 215, 0, 0.4)",
+                background: "var(--bg-card)",
                 display: "flex",
-                flexDirection: "column",
-                alignItems: "center"
+                alignItems: "center",
+                justifyContent: "center"
               }}>
-                <div style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: "linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent)",
-                  pointerEvents: "none"
-                }} />
-                {artistImage && (
-                  <div style={{
-                    width: "150px",
-                    height: "150px",
-                    borderRadius: "50%",
-                    border: "4px solid #ffd700",
-                    overflow: "hidden",
-                    marginBottom: "16px",
-                    position: "relative",
-                    boxShadow: "0 0 30px rgba(255, 215, 0, 0.4)"
-                  }}>
+                {weeklyTop?.artist_name ? (
+                  artistImage ? (
                     <img 
                       src={`/assets/images/artists/${artistImage}`}
                       alt={weeklyTop.artist_name}
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
-                  </div>
+                  ) : (
+                    <span style={{ fontSize: "3rem", fontWeight: 800, color: "#ffd700" }}>
+                      {artistName.charAt(0) || weeklyTop.artist_name.charAt(0)}
+                    </span>
+                  )
+                ) : (
+                  <span style={{ fontSize: "3rem" }}>👑</span>
                 )}
-                <div style={{ fontSize: "2.5rem", marginBottom: "8px", position: "relative" }}>👑</div>
-                <div style={{ 
-                  fontSize: "0.85rem", 
-                  color: "#ffd700", 
-                  textTransform: "uppercase",
-                  letterSpacing: "2px",
-                  marginBottom: "8px",
-                  fontWeight: 600,
-                  position: "relative"
-                }}>
-                  Artiste de la semaine
-                </div>
-                <div style={{ 
-                  fontSize: "2rem", 
-                  fontWeight: 800, 
-                  color: "#fff",
-                  marginBottom: "8px",
-                  position: "relative"
-                }}>
-                  {weeklyTop.artist_name}
-                </div>
+              </div>
+              
+              <div style={{ fontSize: "2.5rem", marginBottom: "8px", position: "relative" }}>👑</div>
+              <div style={{ 
+                fontSize: "0.85rem", 
+                color: "#ffd700", 
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                marginBottom: "8px",
+                fontWeight: 600,
+                position: "relative"
+              }}>
+                {text.artistOfWeek}
+              </div>
+              <div style={{ 
+                fontSize: "2rem", 
+                fontWeight: 800, 
+                color: "#fff",
+                marginBottom: "8px",
+                position: "relative"
+              }}>
+                {weeklyTop?.artist_name || "Vote for your favorite!"}
+              </div>
+              {weeklyTop?.count > 0 && (
                 <div style={{ 
                   display: "inline-flex",
                   alignItems: "center",
@@ -188,28 +273,28 @@ export default function HomePage() {
                 }}>
                   <span style={{ fontSize: "1.25rem" }}>⭐</span>
                   <span style={{ fontWeight: 700, color: "#ffd700" }}>
-                    {weeklyTop.count} votes
+                    {weeklyTop.count} {text.votes}
                   </span>
                 </div>
-                <div style={{ 
-                  marginTop: "16px", 
-                  fontSize: "0.85rem", 
-                  color: "var(--text-muted)",
-                  position: "relative"
-                }}>
-                  Cliquez pour voter pour votre favori →
-                </div>
+              )}
+              <div style={{ 
+                marginTop: "16px", 
+                fontSize: "0.85rem", 
+                color: "var(--text-muted)",
+                position: "relative"
+              }}>
+                {text.clickToVote}
               </div>
-            </Link>
-          </section>
-        )}
+            </div>
+          </Link>
+        </section>
 
         {/* Promo Codes */}
         <section style={{ padding: "40px 0" }}>
           <div className="glass-card" style={{ padding: "40px", maxWidth: "700px", margin: "0 auto" }}>
-            <h2 className="section-title text-center" style={{ marginBottom: "8px" }}>🎁 Codes Promo</h2>
+            <h2 className="section-title text-center" style={{ marginBottom: "8px" }}>🎁 {text.promoCodes}</h2>
             <p className="text-center text-muted" style={{ marginBottom: "32px" }}>
-              Tous les codes disponibles pour TopGirl / ApexGirl
+              {text.promoSubtitle}
             </p>
 
             <div className="grid grid-cols-2" style={{ gap: "16px" }}>
@@ -221,7 +306,7 @@ export default function HomePage() {
               }}>
                 <div className="flex justify-between items-center" style={{ marginBottom: "8px" }}>
                   <span style={{ fontWeight: 700, fontSize: "1.1rem", color: "var(--primary)" }}>TOPYEAR2026</span>
-                  <span className="badge badge-success">Actif</span>
+                  <span className="badge badge-success">{text.active}</span>
                 </div>
                 <p className="text-sm text-muted" style={{ marginBottom: "16px" }}>500 gems + 1000 coins</p>
                 <button
@@ -229,7 +314,7 @@ export default function HomePage() {
                   className="btn"
                   style={{ width: "100%", padding: "10px" }}
                 >
-                  Copier
+                  {text.copy}
                 </button>
               </div>
 
@@ -241,7 +326,7 @@ export default function HomePage() {
               }}>
                 <div className="flex justify-between items-center" style={{ marginBottom: "8px" }}>
                   <span style={{ fontWeight: 700, fontSize: "1.1rem", color: "var(--secondary)" }}>TOPLOVERS</span>
-                  <span className="badge badge-success">Actif</span>
+                  <span className="badge badge-success">{text.active}</span>
                 </div>
                 <p className="text-sm text-muted" style={{ marginBottom: "16px" }}>1000 gems</p>
                 <button
@@ -249,13 +334,13 @@ export default function HomePage() {
                   className="btn"
                   style={{ width: "100%", padding: "10px", background: "linear-gradient(135deg, var(--secondary), #a78bfa)" }}
                 >
-                  Copier
+                  {text.copy}
                 </button>
               </div>
             </div>
 
             <p className="text-center text-muted" style={{ marginTop: "24px", fontSize: "0.875rem" }}>
-              Entrez les codes dans le jeu • <Link href="/fr/guides/" style={{ color: "var(--primary)" }}>Guide des codes</Link>
+              {text.enterInGame} • <Link href={`/${lang}/guides/`} style={{ color: "var(--primary)" }}>{text.codeGuide}</Link>
             </p>
           </div>
         </section>
@@ -264,51 +349,51 @@ export default function HomePage() {
 
         {/* Explore Sections */}
         <section style={{ padding: "40px 0" }}>
-          <h2 className="section-title text-center" style={{ marginBottom: "40px" }}>Explorer le Site</h2>
+          <h2 className="section-title text-center" style={{ marginBottom: "40px" }}>{text.exploreSite}</h2>
 
           <div className="grid grid-cols-4">
-            <Link href="/fr/database/" className="glass-card" style={{ 
+            <Link href={`/${lang}/database/`} className="glass-card" style={{ 
               display: "block", 
               textAlign: "center", 
               textDecoration: "none",
               padding: "40px 20px"
             }}>
               <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🎤</div>
-              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>Artistes</h3>
-              <p className="text-sm text-muted">112+ artistes avec toutes leurs statistiques</p>
+              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>{text.artists}</h3>
+              <p className="text-sm text-muted">{text.artistStats}</p>
             </Link>
 
-            <Link href="/fr/tools/" className="glass-card" style={{ 
+            <Link href={`/${lang}/tools/`} className="glass-card" style={{ 
               display: "block", 
               textAlign: "center", 
               textDecoration: "none",
               padding: "40px 20px"
             }}>
               <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🛠️</div>
-              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>Outils</h3>
-              <p className="text-sm text-muted">Calculateurs et optimiseurs exclusifs</p>
+              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>{text.tools}</h3>
+              <p className="text-sm text-muted">{text.toolsStats}</p>
             </Link>
 
-            <Link href="/fr/guides/" className="glass-card" style={{ 
+            <Link href={`/${lang}/guides/`} className="glass-card" style={{ 
               display: "block", 
               textAlign: "center", 
               textDecoration: "none",
               padding: "40px 20px"
             }}>
               <div style={{ fontSize: "3rem", marginBottom: "16px" }}>📖</div>
-              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>Guides</h3>
-              <p className="text-sm text-muted">Tutoriels et stratégies complètes</p>
+              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>{text.guides}</h3>
+              <p className="text-sm text-muted">{text.guidesStats}</p>
             </Link>
 
-            <Link href="/fr/events/" className="glass-card" style={{ 
+            <Link href={`/${lang}/events/`} className="glass-card" style={{ 
               display: "block", 
               textAlign: "center", 
               textDecoration: "none",
               padding: "40px 20px"
             }}>
               <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🎉</div>
-              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>Événements</h3>
-              <p className="text-sm text-muted">Calendrier et récompenses</p>
+              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>{text.events}</h3>
+              <p className="text-sm text-muted">{text.eventsStats}</p>
             </Link>
           </div>
         </section>
@@ -323,13 +408,13 @@ export default function HomePage() {
           margin: "40px 0"
         }}>
           <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginBottom: "12px" }}>
-            Prêt à dominer le jeu ?
+            {text.readyToDominate}
           </h2>
           <p className="text-muted" style={{ marginBottom: "24px", maxWidth: "500px", margin: "0 auto 24px" }}>
-            Débloquez tout le potentiel de vos artistes avec nos outils et guides exclusifs.
+            {text.unlockPotential}
           </p>
-          <Link href="/fr/database/" className="btn" style={{ padding: "16px 40px", fontSize: "1rem" }}>
-            Commencer Maintenant →
+          <Link href={`/${lang}/database/`} className="btn" style={{ padding: "16px 40px", fontSize: "1rem" }}>
+            {text.startNow}
           </Link>
         </section>
       </div>
