@@ -8,12 +8,23 @@ import { AdBanner } from "@/components/AdSense";
 export default function HomePage() {
   const [weeklyTop, setWeeklyTop] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [artistImage, setArtistImage] = useState<string>("");
 
   useEffect(() => {
     fetch("/api/vote")
       .then(res => res.json())
       .then(data => {
         setWeeklyTop(data.weekly_top);
+        if (data.weekly_top?.artist_id) {
+          fetch("/database/data/artists.json")
+            .then(r => r.json())
+            .then(artists => {
+              const artist = artists.find((a: any) => a.id === data.weekly_top.artist_id);
+              if (artist?.image) {
+                setArtistImage(artist.image);
+              }
+            });
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -113,7 +124,10 @@ export default function HomePage() {
                 cursor: "pointer",
                 transition: "all 0.3s ease",
                 position: "relative",
-                overflow: "hidden"
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
               }}>
                 <div style={{
                   position: "absolute",
@@ -124,6 +138,24 @@ export default function HomePage() {
                   background: "linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent)",
                   pointerEvents: "none"
                 }} />
+                {artistImage && (
+                  <div style={{
+                    width: "150px",
+                    height: "150px",
+                    borderRadius: "50%",
+                    border: "4px solid #ffd700",
+                    overflow: "hidden",
+                    marginBottom: "16px",
+                    position: "relative",
+                    boxShadow: "0 0 30px rgba(255, 215, 0, 0.4)"
+                  }}>
+                    <img 
+                      src={`/assets/images/artists/${artistImage}`}
+                      alt={weeklyTop.artist_name}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  </div>
+                )}
                 <div style={{ fontSize: "2.5rem", marginBottom: "8px", position: "relative" }}>👑</div>
                 <div style={{ 
                   fontSize: "0.85rem", 
