@@ -10,16 +10,15 @@ type CalcItem = {
 };
 
 const categories = [
-  { id: "Artists", icon: "🎤", color: "#8b5cf6" },
-  { id: "HQ Glass", icon: "🏢", color: "#06b6d4" },
-  { id: "HQ Floors", icon: "🏗️", color: "#10b981" },
-  { id: "Collection Gems", icon: "💎", color: "#f59e0b" },
-  { id: "Museum Exhibits", icon: "🏛️", color: "#ec4899" },
-  { id: "Car Parts", icon: "🚗", color: "#ef4444" },
-  { id: "Car Core", icon: "⚙️", color: "#6366f1" },
-  { id: "Villa Suite", icon: "🏰", color: "#14b8a6" },
-  { id: "Villa Homemaking", icon: "🏠", color: "#f97316" },
-  { id: "Assets", icon: "💰", color: "#22c55e" },
+  { id: "Artists", icon: "🎤", color: "#a855f7" },
+  { id: "HQ Glass", icon: "🏢", color: "#22d3ee" },
+  { id: "HQ Floors", icon: "🏗️", color: "#34d399" },
+  { id: "Collection Gems", icon: "💎", color: "#fbbf24" },
+  { id: "Museum Exhibits", icon: "🏛️", color: "#f472b6" },
+  { id: "Car Parts", icon: "🚗", color: "#f87171" },
+  { id: "Assets", icon: "💰", color: "#4ade80" },
+  { id: "Villa Suite", icon: "🏰", color: "#2dd4bf" },
+  { id: "Blueprints", icon: "📐", color: "#818cf8" },
 ];
 
 function CategorySection({
@@ -71,30 +70,30 @@ function CategorySection({
   return (
     <section
       style={{
-        background: `${color}11`,
-        borderRadius: "var(--radius-lg)",
+        background: "rgba(0, 0, 0, 0.3)",
+        borderRadius: "16px",
         border: `1px solid ${color}33`,
-        padding: "var(--space-5)",
-        marginBottom: "var(--space-4)",
+        padding: "20px",
+        marginBottom: "16px",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-4)" }}>
-        <h3 style={{ color, fontSize: "var(--text-lg)", fontWeight: 600 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+        <h3 style={{ color: "#fff", fontSize: "1rem", fontWeight: 600 }}>
           {icon} {name}
         </h3>
-        <div style={{ display: "flex", alignItems: "center", gap: "var(--space-4)" }}>
-          <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>
-            Total: <strong style={{ color, fontSize: "var(--text-lg)" }}>{total.toLocaleString()}</strong>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>
+            Total: <strong style={{ color, fontSize: "1.1rem" }}>{total.toLocaleString()}</strong>
           </span>
           <button
             onClick={reset}
             style={{
               background: "transparent",
-              border: "1px solid var(--border)",
-              color: "var(--text-muted)",
-              fontSize: "var(--text-xs)",
-              padding: "4px 8px",
-              borderRadius: "var(--radius)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              color: "rgba(255,255,255,0.6)",
+              fontSize: "0.75rem",
+              padding: "4px 12px",
+              borderRadius: "8px",
               cursor: "pointer",
             }}
           >
@@ -104,11 +103,11 @@ function CategorySection({
       </div>
 
       {Object.entries(itemsByLevel).map(([level, levelItems]) => (
-        <div key={level} style={{ marginBottom: "var(--space-3)" }}>
-          <div style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", marginBottom: "var(--space-2)" }}>
+        <div key={level} style={{ marginBottom: "12px" }}>
+          <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.5)", marginBottom: "8px" }}>
             Level {level}
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {levelItems.map(({ item, cost }) => {
               const qty = selectedLevel[item] || 0;
               return (
@@ -117,11 +116,11 @@ function CategorySection({
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "var(--space-2)",
-                    background: "var(--bg-subtle)",
-                    padding: "4px 8px",
-                    borderRadius: "var(--radius)",
-                    border: "1px solid var(--border)",
+                    gap: "8px",
+                    background: "rgba(255,255,255,0.05)",
+                    padding: "6px 10px",
+                    borderRadius: "8px",
+                    border: "1px solid rgba(255,255,255,0.1)",
                   }}
                 >
                   <button
@@ -129,19 +128,20 @@ function CategorySection({
                     style={{
                       width: "24px",
                       height: "24px",
-                      borderRadius: "var(--radius-sm)",
-                      border: "1px solid var(--border)",
-                      background: "var(--bg-elevated)",
-                      color: "var(--text-primary)",
+                      borderRadius: "6px",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                      background: "rgba(255,255,255,0.1)",
+                      color: "#fff",
                       cursor: "pointer",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      fontSize: "14px"
                     }}
                   >
                     -
                   </button>
-                  <span style={{ minWidth: "30px", textAlign: "center", fontSize: "var(--text-sm)" }}>
+                  <span style={{ minWidth: "30px", textAlign: "center", fontSize: "0.85rem", color: "#fff" }}>
                     {qty}
                   </span>
                   <button
@@ -149,8 +149,8 @@ function CategorySection({
                     style={{
                       width: "24px",
                       height: "24px",
-                      borderRadius: "var(--radius-sm)",
-                      border: "1px solid var(--border)",
+                      borderRadius: "6px",
+                      border: "none",
                       background: color,
                       color: "#fff",
                       cursor: "pointer",
@@ -162,7 +162,7 @@ function CategorySection({
                   >
                     +
                   </button>
-                  <span style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", minWidth: "60px" }}>
+                  <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.5)", minWidth: "70px" }}>
                     {cost.toLocaleString()}
                   </span>
                 </div>
@@ -194,13 +194,10 @@ export default function ApexCalculator() {
       .finally(() => setLoading(false));
   }, []);
 
-  const totalCost = useMemo(() => {
-    return Object.values(data).flat().reduce((sum, item) => sum + item.cost, 0);
-  }, [data]);
-
   if (loading) {
     return (
-      <div style={{ textAlign: "center", padding: "var(--space-16)", color: "var(--text-muted)" }}>
+      <div style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.6)" }}>
+        <div style={{ fontSize: "2rem", marginBottom: "12px" }}>⏳</div>
         Loading calculator data...
       </div>
     );
@@ -208,7 +205,7 @@ export default function ApexCalculator() {
 
   if (error) {
     return (
-      <div style={{ textAlign: "center", padding: "var(--space-16)", color: "#ef4444" }}>
+      <div style={{ textAlign: "center", padding: "60px", color: "#f87171" }}>
         Error: {error}
       </div>
     );
@@ -218,28 +215,23 @@ export default function ApexCalculator() {
 
   return (
     <div>
-      <div style={{ marginBottom: "var(--space-6)" }}>
-        <h2 style={{ fontSize: "var(--text-2xl)", fontWeight: 700, marginBottom: "var(--space-2)" }}>
-          🧮 Resource Calculator
-        </h2>
-        <p style={{ color: "var(--text-muted)" }}>
-          Calculate the cost to upgrade your resources. Only complete levels are available.
-        </p>
-      </div>
+      <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: "20px", fontSize: "0.9rem" }}>
+        Calculate the cost to upgrade your resources. Select category and add levels.
+      </p>
 
-      <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap", marginBottom: "var(--space-4)" }}>
+      <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "16px" }}>
         {categoryList.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
             style={{
-              padding: "8px 16px",
-              borderRadius: "var(--radius)",
-              border: activeCategory === cat.id ? `1px solid ${cat.color}` : "1px solid var(--border)",
-              background: activeCategory === cat.id ? `${cat.color}22` : "transparent",
-              color: activeCategory === cat.id ? cat.color : "var(--text-muted)",
+              padding: "8px 14px",
+              borderRadius: "10px",
+              border: activeCategory === cat.id ? `1px solid ${cat.color}` : "1px solid rgba(255,255,255,0.15)",
+              background: activeCategory === cat.id ? `${cat.color}33` : "rgba(255,255,255,0.05)",
+              color: activeCategory === cat.id ? cat.color : "rgba(255,255,255,0.6)",
               cursor: "pointer",
-              fontSize: "var(--text-sm)",
+              fontSize: "0.8rem",
               fontWeight: 500,
               transition: "all 0.2s",
             }}
@@ -253,7 +245,7 @@ export default function ApexCalculator() {
         <CategorySection
           name={activeCategory}
           items={data[activeCategory]}
-          color={categories.find((c) => c.id === activeCategory)?.color || "#8b5cf6"}
+          color={categories.find((c) => c.id === activeCategory)?.color || "#a855f7"}
           icon={categories.find((c) => c.id === activeCategory)?.icon || "📦"}
         />
       )}
