@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexgirlguide.com"),
@@ -13,50 +7,33 @@ export const metadata: Metadata = {
     default: "TopGirl / ApexGirl - Fansite de Référence + Codes Promo 2026",
     template: "%s | TopGirl ApexGirl",
   },
-  description: "TopGirl (ApexGirl) fansite officiel - Tous les codes promo et redeem codes 2025/2026. Base de données 112+ artistes, guides complets, calculateurs et outils exclusifs. Télécharge TopGirl maintenant!",
+  description: "TopGirl (ApexGirl) fansite officiel - Tous les codes promo et redeem codes 2025/2026. 112+ artistes, guides complets, calculateurs et outils exclusifs.",
   keywords: [
     "TopGirl",
     "ApexGirl", 
     "A3Games",
     "redeem code",
     "code promo",
-    "codes gratuit",
-    "gems",
-    "TopGirl download",
-    "TopGirl apk",
-    "TopGirl ios",
-    "TopGirl tips",
+    "TopGirl database",
+    "TopGirl artists",
     "TopGirl guide",
     "TopGirl calculator",
     "TopGirl events",
-    "TopGirl database",
   ],
   authors: [{ name: "A3Games" }],
   creator: "A3Games",
   publisher: "A3Games",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: "https://apexgirlguide.com",
     siteName: "TopGirl ApexGirl",
-    title: "TopGirl / ApexGirl - Fansite de Référence + Codes Promo 2026",
-    description: "TopGirl (ApexGirl) fansite officiel - Tous les codes promo et redeem codes 2025/2026. Base de données 112+ artistes, guides complets, calculateurs et outils exclusifs.",
+    title: "TopGirl / ApexGirl - Fansite de Référence",
+    description: "Tous les codes promo, 112+ artistes, guides et outils pour TopGirl.",
     images: [
       {
         url: "/assets/images/logo.png",
@@ -68,19 +45,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TopGirl / ApexGirl - Fansite de Référence",
-    description: "Tous les codes promo et redeem codes pour TopGirl. Base de données 112+ artistes, guides et outils.",
+    title: "TopGirl / ApexGirl - Fansite",
+    description: "Codes promo, artistes, guides et outils pour TopGirl.",
     images: ["/assets/images/logo.png"],
   },
   alternates: {
     canonical: "https://apexgirlguide.com",
-    languages: {
-      fr: "https://apexgirlguide.com/fr",
-      en: "https://apexgirlguide.com/en",
-    },
   },
-  category: "gaming",
-  classification: "Fansite",
 };
 
 export default function RootLayout({
@@ -95,12 +66,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/assets/images/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <meta name="google-adsense-account" content="ca-pub-5737915177617454" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
-        {/* Google Search Console - Remplace ce commentaire par ta balise de vérification */}
-        {/* <meta name="google-site-verification" content="TON_CODE_VERIFICATION" /> */}
       </head>
-      <body className={inter.className}>
+      <body>
         {children}
       </body>
     </html>

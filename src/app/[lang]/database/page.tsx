@@ -24,13 +24,13 @@ type Artist = {
 };
 
 const rankColors: Record<string, string> = {
-  UR: "#fbbf24",
-  "UR Bali": "#fbbf24",
-  SSR: "#a855f7",
-  "SSR VIP": "#a855f7",
-  "SSR AH": "#a855f7",
-  SR: "#3b82f6",
-  R: "#22c55e",
+  UR: "#ffd700",
+  "UR Bali": "#ffd700",
+  SSR: "#c084fc",
+  "SSR VIP": "#c084fc",
+  "SSR AH": "#c084fc",
+  SR: "#60a5fa",
+  R: "#4ade80",
   N: "#94a3b8",
 };
 
@@ -51,7 +51,6 @@ export default function DatabasePage() {
   const [filterRank, setFilterRank] = useState("");
   const [filterPosition, setFilterPosition] = useState("");
   const [filterGroup, setFilterGroup] = useState("");
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const filteredArtists = useMemo(() => {
     return artistsData.filter((artist: Artist) => {
@@ -72,7 +71,6 @@ export default function DatabasePage() {
 
   const selectArtist = (artist: Artist) => {
     setSelectedArtist(artist);
-    setCurrentImageIndex(0);
   };
 
   const nextArtist = () => {
@@ -80,7 +78,6 @@ export default function DatabasePage() {
     const idx = filteredArtists.findIndex((a) => a.id === selectedArtist.id);
     if (idx < filteredArtists.length - 1) {
       setSelectedArtist(filteredArtists[idx + 1]);
-      setCurrentImageIndex(0);
     }
   };
 
@@ -89,196 +86,338 @@ export default function DatabasePage() {
     const idx = filteredArtists.findIndex((a) => a.id === selectedArtist.id);
     if (idx > 0) {
       setSelectedArtist(filteredArtists[idx - 1]);
-      setCurrentImageIndex(0);
     }
   };
 
   return (
     <>
       <Head>
-        <title>Base de Données - TopGirl ApexGirl | 112+ Artistes</title>
-        <meta name="description" content="Parcourez la base de données complète de TopGirl avec 112+ artistes. Stats, compétences, ranks et plus." />
-        <meta name="keywords" content="TopGirl database, TopGirl artists, TopGirl characters, TopGirl stats, TopGirl SSR, TopGirl UR" />
-        <meta property="og:title" content="Base de Données - TopGirl ApexGirl" />
-        <meta property="og:description" content="Parcourez la base de données complète de TopGirl avec 112+ artistes." />
+        <title>Artistes - TopGirl ApexGirl | 112+ Personnages</title>
+        <meta name="description" content="Découvrez tous les artistes de TopGirl. Stats complètes, compétences, ranks UR/SSR/SR/R. Trouvez les meilleurs personnages!" />
+        <meta name="keywords" content="TopGirl artists, TopGirl characters, TopGirl UR, TopGirl SSR, TopGirl database, personnages TopGirl" />
+        <meta property="og:title" content="Artistes - TopGirl ApexGirl" />
+        <meta property="og:description" content="Découvrez tous les artistes de TopGirl avec leurs stats complètes." />
       </Head>
 
-      <div className="database-container">
-        <div className="database-header">
-          <h1>Character & Skills</h1>
-          <p>Cliquez sur un artiste pour voir ses informations détaillées</p>
+      <div className="container" style={{ paddingTop: "40px" }}>
+        <div className="text-center" style={{ marginBottom: "40px" }}>
+          <h1 className="section-title">🎤 Artistes</h1>
+          <p className="section-subtitle">Découvrez tous les personnages du jeu</p>
         </div>
 
         <AdBanner />
 
-        <div className="database-content">
-          <div className="character-panel">
-            <div className="panel-header">
-              <span>Artist Overview</span>
+        <div className="grid" style={{ gridTemplateColumns: "380px 1fr", gap: "32px", marginTop: "32px" }}>
+          {/* Artist Panel */}
+          <div className="glass-card" style={{ 
+            position: "sticky", 
+            top: "100px", 
+            height: "fit-content",
+            padding: "0",
+            overflow: "hidden"
+          }}>
+            <div style={{ 
+              padding: "20px", 
+              borderBottom: "1px solid var(--border)",
+              background: "linear-gradient(135deg, rgba(255, 77, 141, 0.1), rgba(139, 92, 246, 0.1))"
+            }}>
+              <span style={{ fontWeight: 600, fontSize: "0.9rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px" }}>
+                Artist Overview
+              </span>
             </div>
 
             {selectedArtist ? (
-              <>
-                <div className="character-preview">
-                  <button className="nav-btn" onClick={prevArtist}>◀</button>
-                  <div className="character-image-container">
-                    <div
-                      className="character-portrait"
+              <div style={{ padding: "24px" }}>
+                <div className="flex justify-between items-center" style={{ marginBottom: "20px" }}>
+                  <button 
+                    onClick={prevArtist}
+                    style={{
+                      width: "36px", height: "36px",
+                      borderRadius: "var(--radius)",
+                      border: "1px solid var(--border)",
+                      background: "var(--bg-subtle)",
+                      color: "var(--text-primary)",
+                      cursor: "pointer"
+                    }}
+                  >
+                    ←
+                  </button>
+                  <button 
+                    onClick={nextArtist}
+                    style={{
+                      width: "36px", height: "36px",
+                      borderRadius: "var(--radius)",
+                      border: "1px solid var(--border)",
+                      background: "var(--bg-subtle)",
+                      color: "var(--text-primary)",
+                      cursor: "pointer"
+                    }}
+                  >
+                    →
+                  </button>
+                </div>
+
+                {/* Artist Image */}
+                <div style={{ 
+                  textAlign: "center", 
+                  marginBottom: "20px",
+                  position: "relative"
+                }}>
+                  <div style={{
+                    width: "180px",
+                    height: "220px",
+                    margin: "0 auto",
+                    borderRadius: "var(--radius-lg)",
+                    border: `3px solid ${rankColors[selectedArtist.rank]}`,
+                    background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, var(--bg-subtle))`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "4rem",
+                    fontWeight: 800,
+                    color: rankColors[selectedArtist.rank],
+                    overflow: "hidden"
+                  }}>
+                    <img 
+                      src={`/assets/images/artists/${selectedArtist.id}.png`}
+                      alt={selectedArtist.name}
                       style={{
-                        borderColor: rankColors[selectedArtist.rank],
-                        background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, transparent)`,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover"
                       }}
-                    >
-                      <span className="character-avatar" style={{ color: rankColors[selectedArtist.rank] }}>
-                        {selectedArtist.name.charAt(0)}
-                      </span>
-                    </div>
-                    <div className="character-badges">
-                      <span className="rank-badge" style={{ backgroundColor: rankColors[selectedArtist.rank] }}>
-                        {selectedArtist.rank}
-                      </span>
-                      <span className="position-badge">{selectedArtist.position}</span>
-                    </div>
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                    <span className="artist-initial" style={{
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}>
+                      {selectedArtist.name.charAt(0)}
+                    </span>
                   </div>
-                  <button className="nav-btn" onClick={nextArtist}>▶</button>
+                  
+                  <div className="flex gap-4" style={{ justifyContent: "center", marginTop: "12px" }}>
+                    <span style={{ 
+                      padding: "6px 14px", 
+                      borderRadius: "var(--radius-full)", 
+                      fontSize: "0.75rem", 
+                      fontWeight: 700,
+                      background: rankColors[selectedArtist.rank],
+                      color: "#000"
+                    }}>
+                      {selectedArtist.rank}
+                    </span>
+                    <span style={{ 
+                      padding: "6px 14px", 
+                      borderRadius: "var(--radius-full)", 
+                      fontSize: "0.75rem",
+                      background: "var(--bg-elevated)",
+                      color: "var(--text-muted)"
+                    }}>
+                      {selectedArtist.position}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="character-info">
-                  <h2 style={{ color: rankColors[selectedArtist.rank] }}>{selectedArtist.name}</h2>
-                  <p className="group-name">{selectedArtist.group}</p>
-                  <div className="stats-row">
+                {/* Artist Info */}
+                <div style={{ textAlign: "center" }}>
+                  <h2 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "4px", color: rankColors[selectedArtist.rank] }}>
+                    {selectedArtist.name}
+                  </h2>
+                  <p className="text-muted" style={{ fontSize: "0.9rem", marginBottom: "12px" }}>
+                    {selectedArtist.group}
+                  </p>
+                  <div className="flex gap-4 justify-between" style={{ justifyContent: "center", fontSize: "0.85rem", color: "var(--text-muted)" }}>
                     <span>🎵 {selectedArtist.genre}</span>
-                    <span>⭐ Build: {selectedArtist.build}</span>
+                    <span>⭐ {selectedArtist.build}</span>
                   </div>
                 </div>
 
-                <div className="skills-section">
-                  <h3>Character Skills</h3>
-                  {selectedArtist.skills.length > 0 ? (
-                    <div className="skills-list">
-                      {selectedArtist.skills.map((skill, idx) => (
-                        <div key={idx} className="skill-item">{skill}</div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="no-skills">Skills not available</p>
-                  )}
+                {/* Skills */}
+                <div style={{ marginTop: "24px" }}>
+                  <h4 style={{ fontSize: "0.85rem", color: "var(--text-muted)", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>
+                    Compétences
+                  </h4>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    {selectedArtist.skills.map((skill, idx) => (
+                      <div key={idx} style={{
+                        padding: "10px 14px",
+                        background: "var(--bg-subtle)",
+                        borderRadius: "var(--radius)",
+                        fontSize: "0.85rem",
+                        borderLeft: "3px solid var(--primary)"
+                      }}>
+                        {skill}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </>
+              </div>
             ) : (
-              <div className="select-prompt">
-                <span>Sélectionnez un artiste</span>
+              <div style={{ 
+                padding: "80px 24px", 
+                textAlign: "center", 
+                color: "var(--text-muted)"
+              }}>
+                <div style={{ fontSize: "3rem", marginBottom: "16px" }}>👆</div>
+                <p>Sélectionnez un artiste</p>
               </div>
             )}
           </div>
 
-          <div className="character-list-panel">
-            <div className="filters-container">
-              <div className="search-box">
+          {/* Artists Grid */}
+          <div>
+            {/* Filters */}
+            <div className="glass-card" style={{ marginBottom: "24px", padding: "20px" }}>
+              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <input
                   type="text"
-                  placeholder="Rechercher un artiste..."
+                  placeholder="Rechercher..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{
+                    flex: "1",
+                    minWidth: "200px",
+                    padding: "12px 16px",
+                    background: "var(--bg-subtle)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem"
+                  }}
                 />
-              </div>
-              <div className="filter-buttons">
-                <select value={filterRank} onChange={(e) => setFilterRank(e.target.value)}>
-                  <option value="">All Ranks</option>
+                <select
+                  value={filterRank}
+                  onChange={(e) => setFilterRank(e.target.value)}
+                  style={{
+                    padding: "12px 16px",
+                    background: "var(--bg-subtle)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem",
+                    minWidth: "120px"
+                  }}
+                >
+                  <option value="">Tous les ranks</option>
                   <option value="UR">UR</option>
-                  <option value="UR Bali">UR Bali</option>
                   <option value="SSR">SSR</option>
-                  <option value="SSR VIP">SSR VIP</option>
-                  <option value="SSR AH">SSR AH</option>
                   <option value="SR">SR</option>
                   <option value="R">R</option>
                 </select>
-                <select value={filterPosition} onChange={(e) => setFilterPosition(e.target.value)}>
-                  <option value="">All Positions</option>
+                <select
+                  value={filterPosition}
+                  onChange={(e) => setFilterPosition(e.target.value)}
+                  style={{
+                    padding: "12px 16px",
+                    background: "var(--bg-subtle)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem",
+                    minWidth: "140px"
+                  }}
+                >
+                  <option value="">Tous les rôles</option>
                   <option value="Center">Center</option>
                   <option value="Dancer">Dancer</option>
                   <option value="Vocalist">Vocalist</option>
                 </select>
-                <select value={filterGroup} onChange={(e) => setFilterGroup(e.target.value)}>
-                  <option value="">All Groups</option>
-                  {groups.map((group) => (
-                    <option key={group} value={group}>{group}</option>
-                  ))}
-                </select>
               </div>
             </div>
 
-            <div className="characters-grid">
+            {/* Grid */}
+            <div style={{ 
+              display: "grid", 
+              gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", 
+              gap: "12px" 
+            }}>
               {filteredArtists
                 .sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank])
                 .map((artist) => (
                   <button
                     key={artist.id}
-                    className={`character-card ${selectedArtist?.id === artist.id ? "selected" : ""}`}
                     onClick={() => selectArtist(artist)}
                     style={{
-                      borderColor: selectedArtist?.id === artist.id ? rankColors[artist.rank] : "var(--border)",
+                      background: selectedArtist?.id === artist.id 
+                        ? `linear-gradient(135deg, ${rankColors[artist.rank]}33, var(--bg-card))`
+                        : "var(--bg-card)",
+                      border: `2px solid ${selectedArtist?.id === artist.id ? rankColors[artist.rank] : "var(--border)"}`,
+                      borderRadius: "var(--radius-md)",
+                      padding: "16px 12px",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                      textAlign: "center"
                     }}
                   >
-                    <div className="card-avatar" style={{ color: rankColors[artist.rank] }}>
-                      {artist.name.charAt(0)}
+                    <div style={{
+                      width: "60px",
+                      height: "60px",
+                      margin: "0 auto 10px",
+                      borderRadius: "var(--radius)",
+                      background: `${rankColors[artist.rank]}22`,
+                      border: `2px solid ${rankColors[artist.rank]}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1.5rem",
+                      fontWeight: 700,
+                      color: rankColors[artist.rank],
+                      overflow: "hidden"
+                                            }}>
+                      <img 
+                        src={`/assets/images/artists/${artist.id}.png`}
+                        alt={artist.name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover"
+                        }}
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                        }}
+                      />
                     </div>
-                    <div className="card-info">
-                      <span className="card-name" style={{ color: rankColors[artist.rank] }}>{artist.name}</span>
-                      <span className="card-meta">{artist.rank} • {artist.position}</span>
+                    <div style={{ 
+                      fontWeight: 600, 
+                      fontSize: "0.85rem", 
+                      color: selectedArtist?.id === artist.id ? rankColors[artist.rank] : "var(--text-primary)",
+                      marginBottom: "4px",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis"
+                    }}>
+                      {artist.name}
+                    </div>
+                    <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>
+                      {artist.rank} • {artist.position}
                     </div>
                   </button>
                 ))}
             </div>
 
             {filteredArtists.length === 0 && (
-              <div className="no-results"><p>Aucun artiste trouvé</p></div>
+              <div className="text-center" style={{ padding: "60px", color: "var(--text-muted)" }}>
+                <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🔍</div>
+                <p>Aucun artiste trouvé</p>
+              </div>
             )}
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        .database-container { max-width: 1400px; margin: 0 auto; padding: var(--space-4); }
-        .database-header { text-align: center; margin-bottom: var(--space-8); }
-        .database-header h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: var(--space-2); }
-        .database-header p { color: var(--text-muted); }
-        .database-content { display: grid; grid-template-columns: 400px 1fr; gap: var(--space-6); }
-        @media (max-width: 1024px) { .database-content { grid-template-columns: 1fr; } }
-        .character-panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; position: sticky; top: calc(var(--header-height) + var(--space-4)); height: fit-content; }
-        .panel-header { background: var(--bg-subtle); padding: var(--space-4); border-bottom: 1px solid var(--border); font-weight: 600; }
-        .character-preview { display: flex; align-items: center; justify-content: space-between; padding: var(--space-6); background: linear-gradient(180deg, var(--bg-subtle), var(--bg-card)); }
-        .nav-btn { background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text-muted); width: 40px; height: 40px; border-radius: var(--radius); cursor: pointer; transition: all 0.2s; }
-        .nav-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
-        .character-image-container { text-align: center; }
-        .character-portrait { width: 160px; height: 200px; border-radius: var(--radius-lg); border: 3px solid; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-3); }
-        .character-avatar { font-size: 4rem; font-weight: 800; }
-        .character-badges { display: flex; gap: var(--space-2); justify-content: center; }
-        .rank-badge { padding: 4px 12px; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; color: #000; }
-        .position-badge { padding: 4px 12px; background: var(--bg-elevated); border-radius: var(--radius-full); font-size: var(--text-xs); color: var(--text-muted); }
-        .character-info { text-align: center; padding: var(--space-4); border-bottom: 1px solid var(--border); }
-        .character-info h2 { font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--space-1); }
-        .group-name { color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--space-2); }
-        .stats-row { display: flex; gap: var(--space-4); justify-content: center; font-size: var(--text-sm); color: var(--text-muted); }
-        .skills-section { padding: var(--space-4); }
-        .skills-section h3 { font-size: var(--text-lg); margin-bottom: var(--space-3); }
-        .skills-list { display: flex; flex-direction: column; gap: var(--space-2); }
-        .skill-item { background: var(--bg-subtle); padding: var(--space-3); border-radius: var(--radius); font-size: var(--text-sm); border-left: 3px solid var(--primary); }
-        .no-skills { color: var(--text-muted); font-style: italic; }
-        .select-prompt { display: flex; align-items: center; justify-content: center; height: 300px; color: var(--text-muted); }
-        .character-list-panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-4); }
-        .filters-container { margin-bottom: var(--space-4); }
-        .search-box input { width: 100%; padding: var(--space-3) var(--space-4); background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-primary); font-size: var(--text-base); margin-bottom: var(--space-3); }
-        .search-box input:focus { outline: none; border-color: var(--primary); }
-        .filter-buttons { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-        .filter-buttons select { flex: 1; min-width: 120px; padding: var(--space-2) var(--space-3); background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-primary); font-size: var(--text-sm); cursor: pointer; }
-        .characters-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-3); max-height: 600px; overflow-y: auto; padding-right: var(--space-2); }
-        .character-card { background: var(--bg-subtle); border: 2px solid var(--border); border-radius: var(--radius); padding: var(--space-3); cursor: pointer; transition: all 0.2s; text-align: center; }
-        .character-card:hover { border-color: var(--primary); transform: translateY(-2px); }
-        .card-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--bg-elevated); display: flex; align-items: center; justify-content: center; font-size: var(--text-xl); font-weight: 700; margin: 0 auto var(--space-2); }
-        .card-name { font-weight: 600; font-size: var(--text-sm); display: block; margin-bottom: 2px; }
-        .card-meta { font-size: var(--text-xs); color: var(--text-muted); }
-        .no-results { text-align: center; padding: var(--space-8); color: var(--text-muted); }
+        @media (max-width: 900px) {
+          .grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
       `}</style>
     </>
   );
