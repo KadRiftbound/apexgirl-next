@@ -3,6 +3,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
+import { HomeCarousel } from "@/components/HomeCarousel";
 
 export default function HomePage() {
   const copyCode = (code: string) => {
@@ -19,6 +20,8 @@ export default function HomePage() {
       </Head>
       
       <div className="container">
+        <HomeCarousel />
+
         {/* Hero Section */}
         <section className="hero">
           <h1>TopGirl</h1>
