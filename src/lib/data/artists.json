@@ -28,7 +28,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 34,
@@ -59,7 +60,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Mixte"
   },
   {
     "id": 36,
@@ -91,7 +93,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A"
+    "calculatedTier": "A",
+    "specialty": "Mixte"
   },
   {
     "id": 39,
@@ -122,7 +125,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 40,
@@ -153,7 +157,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 41,
@@ -184,7 +189,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Mixte"
   },
   {
     "id": 37,
@@ -215,7 +221,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Mixte"
   },
   {
     "id": 35,
@@ -246,7 +253,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 38,
@@ -277,7 +285,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 43,
@@ -309,7 +318,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Mixte"
   },
   {
     "id": 42,
@@ -341,7 +351,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Mixte"
   },
   {
     "id": 44,
@@ -373,7 +384,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S"
+    "calculatedTier": "S",
+    "specialty": "Mixte"
   },
   {
     "id": 3,
@@ -404,7 +416,8 @@
     "description": "A talented Vocalist from Fantasy Vibes.",
     "rating": "A",
     "thoughts": "",
-    "image": "Alice.jpg"
+    "image": "Alice.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 68,
@@ -436,7 +449,8 @@
     "description": "A talented Dancer from None.",
     "rating": "B",
     "thoughts": "",
-    "image": "Antonia.jpg"
+    "image": "Antonia.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 6,
@@ -469,7 +483,8 @@
     "description": "A talented Center from DreamCatcher.",
     "rating": "F",
     "thoughts": "Single Car",
-    "image": "Anya.jpg"
+    "image": "Anya.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 36,
@@ -501,7 +516,8 @@
     "description": "A talented Center from VenuLux.",
     "rating": "B",
     "thoughts": "",
-    "image": "Ariadne.jpg"
+    "image": "Ariadne.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 10,
@@ -533,7 +549,8 @@
     "description": "A talented Center from WildFlower.",
     "rating": "C",
     "thoughts": "",
-    "image": "Audrey.jpg"
+    "image": "Audrey.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 61,
@@ -565,7 +582,8 @@
     "description": "A talented Vocalist from None.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Aurelia.jpg"
+    "image": "Aurelia.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 15,
@@ -596,7 +614,8 @@
     "description": "A talented Center from Sparkle Artists.",
     "rating": "A",
     "thoughts": "",
-    "image": "Aurora.jpg"
+    "image": "Aurora.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 11,
@@ -628,7 +647,8 @@
     "description": "A talented Dancer from Luna.",
     "rating": "B",
     "thoughts": "Damage Reduction",
-    "image": "Avery.jpg"
+    "image": "Avery.jpg",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 51,
@@ -660,7 +680,8 @@
     "description": "A talented Center from None.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Ayaka.jpg"
+    "image": "Ayaka.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 12,
@@ -692,7 +713,8 @@
     "description": "A talented Vocalist from Tokyo48.",
     "rating": "B",
     "thoughts": "Damage Reduction",
-    "image": "Ayaka.jpg"
+    "image": "Ayaka.jpg",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 17,
@@ -724,7 +746,8 @@
     "description": "A talented Vocalist from Echo.",
     "rating": "F",
     "thoughts": "HQ Defense",
-    "image": "Brooklyn.jpg"
+    "image": "Brooklyn.jpg",
+    "specialty": "HQ Defense"
   },
   {
     "id": 35,
@@ -756,7 +779,8 @@
     "description": "A talented Dancer from VenuLux.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Calliope.jpg"
+    "image": "Calliope.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 14,
@@ -788,7 +812,8 @@
     "description": "A talented Center from Tokyo48.",
     "rating": "A",
     "thoughts": "Rally",
-    "image": "Chizuru.jpg"
+    "image": "Chizuru.jpg",
+    "specialty": "Rassemblement"
   },
   {
     "id": 4,
@@ -820,7 +845,8 @@
     "description": "A talented Center from Luna.",
     "rating": "B",
     "thoughts": "",
-    "image": "Cindy.jpg"
+    "image": "Cindy.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 26,
@@ -851,7 +877,8 @@
     "description": "A talented Center from Sparkle Artists.",
     "rating": "A",
     "thoughts": "",
-    "image": "Claire.jpg"
+    "image": "Claire.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 64,
@@ -882,7 +909,8 @@
     "description": "A talented Vocalist from None.",
     "rating": "S",
     "thoughts": "",
-    "image": "Claudius.jpg"
+    "image": "Claudius.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 65,
@@ -915,7 +943,8 @@
     "description": "A talented Dancer from None.",
     "rating": "C",
     "thoughts": "HQ Defense",
-    "image": "Cornelia.jpg"
+    "image": "Cornelia.jpg",
+    "specialty": "HQ Defense"
   },
   {
     "id": 34,
@@ -946,7 +975,8 @@
     "description": "A talented Vocalist from VenuLux.",
     "rating": "A",
     "thoughts": "",
-    "image": "Daphne.jpg"
+    "image": "Daphne.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 45,
@@ -976,7 +1006,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Breezara.",
     "rating": "S",
-    "thoughts": ""
+    "thoughts": "",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 37,
@@ -1008,7 +1039,8 @@
     "description": "A talented Vocalist from VenuLux.",
     "rating": "B",
     "thoughts": "",
-    "image": "Eirene.jpg"
+    "image": "Eirene.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 66,
@@ -1040,7 +1072,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
     "rating": "C",
-    "thoughts": ""
+    "thoughts": "",
+    "specialty": "Mixte"
   },
   {
     "id": 2,
@@ -1072,7 +1105,8 @@
     "description": "A talented Center from DreamCatcher.",
     "rating": "B",
     "thoughts": "Damage Reduction",
-    "image": "Everly.jpg"
+    "image": "Everly.jpg",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 57,
@@ -1105,7 +1139,8 @@
     "description": "A talented Center from None.",
     "rating": "C",
     "thoughts": "Single Car",
-    "image": "Flora.jpg"
+    "image": "Flora.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 39,
@@ -1136,7 +1171,8 @@
     "calculatedTier": "A",
     "description": "A talented Center from Rina.",
     "rating": "B",
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "specialty": "Single Car"
   },
   {
     "id": 47,
@@ -1168,7 +1204,8 @@
     "description": "A talented Center from WildFlower.",
     "rating": "A",
     "thoughts": "Rally",
-    "image": "Hestia.jpg"
+    "image": "Hestia.jpg",
+    "specialty": "Rassemblement"
   },
   {
     "id": 60,
@@ -1200,7 +1237,8 @@
     "description": "A talented Center from None.",
     "rating": "A",
     "thoughts": "Damage Reduction",
-    "image": "Hikari.jpg"
+    "image": "Hikari.jpg",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 58,
@@ -1232,7 +1270,8 @@
     "description": "A talented Center from None.",
     "rating": "A",
     "thoughts": "",
-    "image": "Isla.jpg"
+    "image": "Isla.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 22,
@@ -1264,7 +1303,8 @@
     "description": "A talented Vocalist from Radiance.",
     "rating": "C",
     "thoughts": "",
-    "image": "Julia.jpg"
+    "image": "Julia.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 30,
@@ -1295,7 +1335,8 @@
     "description": "A talented Dancer from Tokyo48.",
     "rating": "S",
     "thoughts": "",
-    "image": "Kasha.jpg"
+    "image": "Kasha.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 50,
@@ -1327,7 +1368,8 @@
     "description": "A talented Vocalist from WildFlower.",
     "rating": "C",
     "thoughts": "Single Car, Rally",
-    "image": "Kelly.jpg"
+    "image": "Kelly.jpg",
+    "specialty": "Rassemblement"
   },
   {
     "id": 24,
@@ -1359,7 +1401,8 @@
     "description": "A talented Vocalist from Radiance.",
     "rating": "F",
     "thoughts": "",
-    "image": "Kesnia.jpg"
+    "image": "Kesnia.jpg",
+    "specialty": "Économie"
   },
   {
     "id": 1,
@@ -1390,7 +1433,8 @@
     "description": "A talented Center from Tokyo48.",
     "rating": "A",
     "thoughts": "",
-    "image": "Kokoro.jpg"
+    "image": "Kokoro.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 32,
@@ -1421,7 +1465,8 @@
     "description": "A talented Dancer from Coral.",
     "rating": "A",
     "thoughts": "",
-    "image": "Leilani.jpg"
+    "image": "Leilani.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 46,
@@ -1453,7 +1498,8 @@
     "description": "A talented Vocalist from Breezara.",
     "rating": "F",
     "thoughts": "HQ Defense",
-    "image": "Lestari.jpg"
+    "image": "Lestari.jpg",
+    "specialty": "HQ Defense"
   },
   {
     "id": 55,
@@ -1484,7 +1530,8 @@
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
     "rating": "B",
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "specialty": "Single Car"
   },
   {
     "id": 63,
@@ -1517,7 +1564,8 @@
     "description": "A talented Vocalist from None.",
     "rating": "F",
     "thoughts": "Single Car",
-    "image": "Rin.jpg"
+    "image": "Rin.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 38,
@@ -1549,7 +1597,8 @@
     "description": "A talented Dancer from WildFlower.",
     "rating": "B",
     "thoughts": "",
-    "image": "Megan.jpg"
+    "image": "Megan.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 40,
@@ -1581,7 +1630,8 @@
     "description": "A talented Center from Neon.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Mellissa.jpg"
+    "image": "Mellissa.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 53,
@@ -1612,7 +1662,8 @@
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
     "rating": "A",
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 42,
@@ -1643,7 +1694,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Rina.",
     "rating": "A",
-    "thoughts": ""
+    "thoughts": "",
+    "specialty": "Mixte"
   },
   {
     "id": 19,
@@ -1674,7 +1726,8 @@
     "calculatedTier": "S",
     "description": "A talented Vocalist from Coral.",
     "rating": "B",
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 8,
@@ -1706,7 +1759,8 @@
     "description": "A talented Vocalist from Tokyo48.",
     "rating": "A",
     "thoughts": "Rally",
-    "image": "Nastassja.jpg"
+    "image": "Nastassja.jpg",
+    "specialty": "Rassemblement"
   },
   {
     "id": 44,
@@ -1739,7 +1793,8 @@
     "description": "A talented Dancer from Breezara.",
     "rating": "F",
     "thoughts": "",
-    "image": "Ningsih.jpg"
+    "image": "Ningsih.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 43,
@@ -1771,7 +1826,8 @@
     "description": "A talented Center from WildFlower.",
     "rating": "B",
     "thoughts": "",
-    "image": "Noora.jpg"
+    "image": "Noora.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 21,
@@ -1803,7 +1859,8 @@
     "description": "A talented Dancer from DreamCatcher.",
     "rating": "B",
     "thoughts": "HQ Defense",
-    "image": "Nova.jpg"
+    "image": "Nova.jpg",
+    "specialty": "HQ Defense"
   },
   {
     "id": 59,
@@ -1836,7 +1893,8 @@
     "description": "A talented Center from None.",
     "rating": "F",
     "thoughts": "Single Car",
-    "image": "Octavia.jpg"
+    "image": "Octavia.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 27,
@@ -1868,7 +1926,8 @@
     "description": "A talented Dancer from Neon.",
     "rating": "B",
     "thoughts": "Damage Reduction",
-    "image": "Paisley.jpg"
+    "image": "Paisley.jpg",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 25,
@@ -1900,7 +1959,8 @@
     "description": "A talented Dancer from Coral.",
     "rating": "B",
     "thoughts": "",
-    "image": "Ratih.jpg"
+    "image": "Ratih.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 41,
@@ -1932,7 +1992,8 @@
     "description": "A talented Vocalist from Rina.",
     "rating": "A",
     "thoughts": "",
-    "image": "Riku.jpg"
+    "image": "Riku.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 62,
@@ -1964,7 +2025,8 @@
     "description": "A talented Vocalist from None.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Rin.jpg"
+    "image": "Rin.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 49,
@@ -1996,7 +2058,8 @@
     "description": "A talented Vocalist from Tokyo48.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Rosemary.jpg"
+    "image": "Rosemary.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 48,
@@ -2027,7 +2090,8 @@
     "description": "A talented Dancer from Echo.",
     "rating": "S",
     "thoughts": "",
-    "image": "Ruby.jpg"
+    "image": "Ruby.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 7,
@@ -2059,7 +2123,8 @@
     "description": "A talented Vocalist from Coral.",
     "rating": "A",
     "thoughts": "Rally",
-    "image": "Sari.jpg"
+    "image": "Sari.jpg",
+    "specialty": "Rassemblement"
   },
   {
     "id": 16,
@@ -2092,7 +2157,8 @@
     "description": "A talented Dancer from Echo.",
     "rating": "F",
     "thoughts": "Single Car",
-    "image": "Savannah.jpg"
+    "image": "Savannah.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 54,
@@ -2123,7 +2189,8 @@
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
     "rating": "A",
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 29,
@@ -2154,7 +2221,8 @@
     "description": "A talented Vocalist from Neon.",
     "rating": "C",
     "thoughts": "",
-    "image": "Skylar.jpg"
+    "image": "Skylar.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 23,
@@ -2186,7 +2254,8 @@
     "description": "A talented Vocalist from Tokyo48.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Sora.jpg"
+    "image": "Sora.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 31,
@@ -2218,7 +2287,8 @@
     "description": "A talented Center from Coral.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Talia.jpg"
+    "image": "Talia.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 56,
@@ -2250,7 +2320,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
     "rating": "C",
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "specialty": "Single Car"
   },
   {
     "id": 67,
@@ -2283,7 +2354,8 @@
     "description": "A talented Dancer from None.",
     "rating": "C",
     "thoughts": "HQ Defense",
-    "image": "Vivienne.jpg"
+    "image": "Vivienne.jpg",
+    "specialty": "HQ Defense"
   },
   {
     "id": 33,
@@ -2315,7 +2387,8 @@
     "description": "A talented Center from VenuLux.",
     "rating": "A",
     "thoughts": "Rally",
-    "image": "Xenia.jpg"
+    "image": "Xenia.jpg",
+    "specialty": "Rassemblement"
   },
   {
     "id": 52,
@@ -2346,7 +2419,8 @@
     "calculatedTier": "S",
     "description": "A talented Vocalist from None.",
     "rating": "A",
-    "thoughts": "Damage Reduction"
+    "thoughts": "Damage Reduction",
+    "specialty": "Damage Reduction"
   },
   {
     "id": 28,
@@ -2378,7 +2452,8 @@
     "description": "A talented Dancer from Tokyo48.",
     "rating": "B",
     "thoughts": "",
-    "image": "Yuuko.jpg"
+    "image": "Yuuko.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 20,
@@ -2410,7 +2485,8 @@
     "description": "A talented Center from Radiance.",
     "rating": "C",
     "thoughts": "",
-    "image": "Zendayah.jpg"
+    "image": "Zendayah.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 13,
@@ -2442,7 +2518,8 @@
     "description": "A talented Vocalist from Luna.",
     "rating": "B",
     "thoughts": "Single Car",
-    "image": "Bella.jpg"
+    "image": "Bella.jpg",
+    "specialty": "Single Car"
   },
   {
     "id": 9,
@@ -2473,7 +2550,8 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Fantasy Vibes.",
     "rating": "B",
-    "thoughts": "Single Car"
+    "thoughts": "Single Car",
+    "specialty": "Single Car"
   },
   {
     "id": 5,
@@ -2502,9 +2580,10 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Fantasy Vibes.",
-    "rating": "S",
+    "rating": "S+",
     "thoughts": "",
-    "image": "Longkui.jpg"
+    "image": "Longkui.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 18,
@@ -2533,9 +2612,10 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
-    "rating": "S",
+    "rating": "S+",
     "thoughts": "",
-    "image": "Monica.jpg"
+    "image": "Monica.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 57,
@@ -2566,7 +2646,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 58,
@@ -2598,7 +2679,8 @@
         "30% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 62,
@@ -2630,7 +2712,8 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Ariadne.jpg"
+    "image": "Ariadne.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 64,
@@ -2662,7 +2745,8 @@
         "40% Drive Speed Increase"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 45,
@@ -2695,7 +2779,8 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Eleanor.jpg"
+    "image": "Eleanor.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 50,
@@ -2728,7 +2813,8 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Bella.jpg"
+    "image": "Bella.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 56,
@@ -2760,7 +2846,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "B"
+    "calculatedTier": "B",
+    "specialty": "Mixte"
   },
   {
     "id": 54,
@@ -2793,7 +2880,8 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "image": "Evelyn.jpg"
+    "image": "Evelyn.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 66,
@@ -2825,7 +2913,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "B"
+    "calculatedTier": "B",
+    "specialty": "Mixte"
   },
   {
     "id": 65,
@@ -2857,7 +2946,8 @@
         "30% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 61,
@@ -2889,7 +2979,8 @@
         "30% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 49,
@@ -2921,7 +3012,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "B"
+    "calculatedTier": "B",
+    "specialty": "Mixte"
   },
   {
     "id": 47,
@@ -2953,7 +3045,8 @@
         "40% Drive Speed Increase"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Mixte"
   },
   {
     "id": 48,
@@ -2986,7 +3079,8 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "image": "Madison.jpg"
+    "image": "Madison.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 55,
@@ -3018,7 +3112,8 @@
         "30% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 59,
@@ -3050,7 +3145,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "B"
+    "calculatedTier": "B",
+    "specialty": "Mixte"
   },
   {
     "id": 60,
@@ -3082,7 +3178,8 @@
         "40% Drive Speed Increase"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Mixte"
   },
   {
     "id": 51,
@@ -3113,7 +3210,8 @@
         "40% Drive Speed Increase"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Économie"
   },
   {
     "id": 63,
@@ -3145,7 +3243,8 @@
       ],
       "speed": []
     },
-    "calculatedTier": "B"
+    "calculatedTier": "B",
+    "specialty": "Mixte"
   },
   {
     "id": 53,
@@ -3177,7 +3276,8 @@
         "30% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 46,
@@ -3210,7 +3310,8 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "image": "Victoria.jpg"
+    "image": "Victoria.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 52,
@@ -3242,7 +3343,8 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Violet.jpg"
+    "image": "Violet.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 1001,
@@ -3273,7 +3375,8 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Charlotte.jpg"
+    "image": "Charlotte.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 1002,
@@ -3304,7 +3407,8 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Harper.jpg"
+    "image": "Harper.jpg",
+    "specialty": "Économie"
   },
   {
     "id": 1003,
@@ -3335,7 +3439,8 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Olivia.jpg"
+    "image": "Olivia.jpg",
+    "specialty": "Mixte"
   },
   {
     "id": 1004,
@@ -3366,7 +3471,8 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Isabella.jpg"
+    "image": "Isabella.jpg",
+    "specialty": "Économie"
   },
   {
     "id": 1005,
@@ -3397,7 +3503,8 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Ava.jpg"
+    "image": "Ava.jpg",
+    "specialty": "Économie"
   },
   {
     "id": 1006,
@@ -3427,7 +3534,8 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 1007,
@@ -3458,7 +3566,8 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Sophia.jpg"
+    "image": "Sophia.jpg",
+    "specialty": "Augmentation dommage"
   },
   {
     "id": 1008,
@@ -3489,7 +3598,8 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Mia.jpg"
+    "image": "Mia.jpg",
+    "specialty": "Économie"
   },
   {
     "id": 1009,
@@ -3519,6 +3629,7 @@
         "20% Gold Brick Gather Speed"
       ]
     },
-    "calculatedTier": "C"
+    "calculatedTier": "C",
+    "specialty": "Économie"
   }
 ]
