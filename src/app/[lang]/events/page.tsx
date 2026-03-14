@@ -83,7 +83,6 @@ export default function EventsPage() {
   return (
     <div style={{ 
       minHeight: "100vh", 
-      background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
       paddingBottom: "60px"
     }}>
       {/* Header */}

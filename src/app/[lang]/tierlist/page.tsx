@@ -284,8 +284,8 @@ export default function TierListPage() {
                           }}
                         >
                           <div style={{
-                            width: "80px",
-                            height: "100px",
+                            width: "112px",
+                            height: "140px",
                             margin: "0 auto 6px",
                             borderRadius: "var(--radius-md)",
                             border: `2px solid ${rankColors[artist.rank]}`,
@@ -571,8 +571,8 @@ export default function TierListPage() {
                     transform: "translateY(40px)"
                   }}>
                     <div style={{
-                      width: "80px",
-                      height: "80px",
+                      width: "112px",
+                      height: "112px",
                       margin: "0 auto 8px",
                       borderRadius: "50%",
                       border: "3px solid #cd7f32",

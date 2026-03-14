@@ -155,33 +155,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Stats */}
-        <section style={{ padding: "40px 0" }}>
-          <div className="grid grid-cols-4">
-            <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🎤</div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--primary)" }}>112+</div>
-              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.artists}</div>
-            </div>
-            <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>📖</div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--secondary)" }}>50+</div>
-              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.guides}</div>
-            </div>
-            <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🎉</div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--accent)" }}>8</div>
-              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.events}</div>
-            </div>
-            <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🛠️</div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--accent-yellow)" }}>5+</div>
-              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.tools}</div>
-            </div>
-          </div>
-        </section>
-
-        {/* Artist of the Week - Always show for demo */}
+        {/* Artist of the Week */}
+        {weeklyTop && (
         <section style={{ padding: "40px 0" }}>
           <Link href={`/${lang}/tierlist/`} style={{ textDecoration: "none" }}>
             <div style={{
@@ -208,35 +183,31 @@ export default function HomePage() {
                 pointerEvents: "none"
               }} />
               
-              {/* Artist Image or Placeholder */}
+              {/* Artist Image */}
               <div style={{
-                width: "150px",
-                height: "150px",
+                width: "180px",
+                height: "180px",
                 borderRadius: "50%",
-                border: "4px solid #ffd700",
+                border: "5px solid #ffd700",
                 overflow: "hidden",
                 marginBottom: "16px",
                 position: "relative",
-                boxShadow: "0 0 30px rgba(255, 215, 0, 0.4)",
+                boxShadow: "0 0 40px rgba(255, 215, 0, 0.5)",
                 background: "var(--bg-card)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center"
               }}>
-                {weeklyTop?.artist_name ? (
-                  artistImage ? (
-                    <img 
-                      src={`/assets/images/artists/${artistImage}`}
-                      alt={weeklyTop.artist_name}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                    />
-                  ) : (
-                    <span style={{ fontSize: "3rem", fontWeight: 800, color: "#ffd700" }}>
-                      {artistName.charAt(0) || weeklyTop.artist_name.charAt(0)}
-                    </span>
-                  )
+                {artistImage ? (
+                  <img 
+                    src={`/assets/images/artists/${artistImage}`}
+                    alt={weeklyTop.artist_name}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
                 ) : (
-                  <span style={{ fontSize: "3rem" }}>👑</span>
+                  <span style={{ fontSize: "3rem", fontWeight: 800, color: "#ffd700" }}>
+                    {artistName?.charAt(0) || weeklyTop?.artist_name?.charAt(0)}
+                  </span>
                 )}
               </div>
               
@@ -287,6 +258,33 @@ export default function HomePage() {
               </div>
             </div>
           </Link>
+        </section>
+        )}
+
+        {/* Stats */}
+        <section style={{ padding: "40px 0" }}>
+          <div className="grid grid-cols-4">
+            <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
+              <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🎤</div>
+              <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--primary)" }}>112+</div>
+              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.artists}</div>
+            </div>
+            <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
+              <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>📖</div>
+              <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--secondary)" }}>50+</div>
+              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.guides}</div>
+            </div>
+            <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
+              <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🎉</div>
+              <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--accent)" }}>8</div>
+              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.events}</div>
+            </div>
+            <div className="glass-card text-center" style={{ padding: "32px 20px" }}>
+              <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🛠️</div>
+              <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--accent-yellow)" }}>5+</div>
+              <div style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{text.tools}</div>
+            </div>
+          </div>
         </section>
 
         {/* Promo Codes */}

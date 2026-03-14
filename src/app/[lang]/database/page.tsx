@@ -379,8 +379,8 @@ export default function DatabasePage() {
             {/* Grid - Full Portraits */}
             <div style={{ 
               display: "grid", 
-              gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", 
-              gap: "8px" 
+              gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", 
+              gap: "12px" 
             }}>
               {filteredArtists
                 .sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank])

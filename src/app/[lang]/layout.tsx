@@ -112,6 +112,20 @@ export default async function LocaleLayout({
   return (
     <>
       <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-Y082CPMLKJ"
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Y082CPMLKJ');
+          `
+        }}
+      />
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
