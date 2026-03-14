@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 export type CalcItem = {
   category: string;
   item: string;
+  tier?: string;
   level: number;
   cost: number;
 };
@@ -98,6 +99,119 @@ function parseCarPartsSheet(ws: XLSX.WorkSheet): CalcItem[] {
   return items;
 }
 
+interface TierData {
+  name: string;
+  material: string;
+  levels: { level: number; cost: number }[];
+}
+
+function parseFloorsSheet(ws: XLSX.WorkSheet): Record<string, TierData[]> {
+  const raw = XLSX.utils.sheet_to_json(ws, { header: 1 }) as unknown[][];
+  
+  const result: Record<string, TierData[]> = {
+    "HQ Floors": [],
+    "Museum": [],
+    "Homemaking": [],
+    "Car Core": []
+  };
+
+  const floorIndices = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]];
+  const museumIndices = [[11, 12], [13, 14], [15, 16], [17, 18], [19, 20]];
+  const homemakingIndices = [[21, 22], [23, 24], [25, 26], [27, 28], [29, 30]];
+  const carIndices = [[31, 32], [33, 34], [35, 36], [37, 38], [39, 40]];
+
+  const floorNames = ["Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5"];
+  const museumNames = ["Room 1", "Room 2", "Room 3", "Room 4", "Room 5"];
+  const homemakingNames = ["Tier 1", "Tier 2", "Tier 3", "Tier 4", "Tier 5"];
+  const carNames = ["D Grade", "C", "B", "A", "A+"];
+
+  for (let rowIdx = 5; rowIdx < raw.length; rowIdx++) {
+    const row = raw[rowIdx];
+    if (!row || !row[0]) continue;
+    
+    const level = Number(row[0]);
+    if (!level || level < 1) continue;
+
+    for (let i = 0; i < 5; i++) {
+      const cost1 = Number(row[floorIndices[i][0]]) || 0;
+      const cost2 = Number(row[floorIndices[i][1]]) || 0;
+      const totalCost = cost1 + cost2;
+      
+      if (totalCost > 0) {
+        const existing = result["HQ Floors"].find(t => t.name === floorNames[i]);
+        if (existing) {
+          existing.levels.push({ level, cost: totalCost });
+        } else {
+          result["HQ Floors"].push({
+            name: floorNames[i],
+            material: "Wood + Steel",
+            levels: [{ level, cost: totalCost }]
+          });
+        }
+      }
+    }
+
+    for (let i = 0; i < 5; i++) {
+      const cost1 = Number(row[museumIndices[i][0]]) || 0;
+      const cost2 = Number(row[museumIndices[i][1]]) || 0;
+      const totalCost = cost1 + cost2;
+      
+      if (totalCost > 0) {
+        const existing = result["Museum"].find(t => t.name === museumNames[i]);
+        if (existing) {
+          existing.levels.push({ level, cost: totalCost });
+        } else {
+          result["Museum"].push({
+            name: museumNames[i],
+            material: "Sandstone + Tile",
+            levels: [{ level, cost: totalCost }]
+          });
+        }
+      }
+    }
+
+    for (let i = 0; i < 5; i++) {
+      const cost1 = Number(row[homemakingIndices[i][0]]) || 0;
+      const cost2 = Number(row[homemakingIndices[i][1]]) || 0;
+      const totalCost = cost1 + cost2;
+      
+      if (totalCost > 0) {
+        const existing = result["Homemaking"].find(t => t.name === homemakingNames[i]);
+        if (existing) {
+          existing.levels.push({ level, cost: totalCost });
+        } else {
+          result["Homemaking"].push({
+            name: homemakingNames[i],
+            material: "HQ Tile + HQ Sandstone",
+            levels: [{ level, cost: totalCost }]
+          });
+        }
+      }
+    }
+
+    for (let i = 0; i < 5; i++) {
+      const cost1 = Number(row[carIndices[i][0]]) || 0;
+      const cost2 = Number(row[carIndices[i][1]]) || 0;
+      const totalCost = cost1 + cost2;
+      
+      if (totalCost > 0) {
+        const existing = result["Car Core"].find(t => t.name === carNames[i]);
+        if (existing) {
+          existing.levels.push({ level, cost: totalCost });
+        } else {
+          result["Car Core"].push({
+            name: carNames[i],
+            material: "Plug + Coil",
+            levels: [{ level, cost: totalCost }]
+          });
+        }
+      }
+    }
+  }
+
+  return result;
+}
+
 export async function GET() {
   try {
     const filePath = path.join(process.cwd(), "src", "tools", "apexcalc-data.xlsx");
@@ -106,27 +220,22 @@ export async function GET() {
 
     const result: Record<string, CalcItem[]> = {};
 
-    // Parse Glass sheet
     if (wb.Sheets["Glass"]) {
       result["HQ Glass"] = parseGlassSheet(wb.Sheets["Glass"]);
     }
 
-    // Parse Artist sheet
     if (wb.Sheets["Artist"]) {
       result["Artists"] = parseArtistSheet(wb.Sheets["Artist"]);
     }
 
-    // Parse Assets sheet
     if (wb.Sheets["Assets"]) {
       result["Assets"] = parseAssetsSheet(wb.Sheets["Assets"], "Assets");
     }
 
-    // Parse Car Parts sheet
     if (wb.Sheets["Car Parts"]) {
       result["Car Parts"] = parseCarPartsSheet(wb.Sheets["Car Parts"]);
     }
 
-    // Parse Gems (Collection Gems)
     if (wb.Sheets["Gems"]) {
       const raw = XLSX.utils.sheet_to_json(wb.Sheets["Gems"], { header: 1 }) as unknown[][];
       const items: CalcItem[] = [];
@@ -141,7 +250,6 @@ export async function GET() {
       if (items.length > 0) result["Collection Gems"] = items;
     }
 
-    // Parse Others (Blueprints, etc)
     if (wb.Sheets["Others"]) {
       const raw = XLSX.utils.sheet_to_json(wb.Sheets["Others"], { header: 1 }) as unknown[][];
       const items: CalcItem[] = [];
@@ -156,37 +264,28 @@ export async function GET() {
       if (items.length > 0) result["Blueprints"] = items;
     }
 
-    // Parse Tables (Museum Exhibits)
-    if (wb.Sheets["Tables"]) {
-      const raw = XLSX.utils.sheet_to_json(wb.Sheets["Tables"], { header: 1 }) as unknown[][];
-      const items: CalcItem[] = [];
-      for (const row of raw) {
-        if (!Array.isArray(row)) continue;
-        const level = Number(row[0]);
-        const cost = Number(row[1]) || 0;
-        if (level > 0 && cost > 0) {
-          items.push({ category: "Museum Exhibits", item: "Exhibit", level, cost });
-        }
-      }
-      if (items.length > 0) result["Museum Exhibits"] = items;
-    }
-
-    // Handle the complex Floors sheet
     if (wb.Sheets["Floors,Exhibits,Homemaking,CarC"]) {
-      const raw = XLSX.utils.sheet_to_json(wb.Sheets["Floors,Exhibits,Homemaking,CarC"], { header: 1 }) as unknown[][];
-      const items: CalcItem[] = [];
-      for (const row of raw) {
-        if (!Array.isArray(row)) continue;
-        const level = Number(row[0]);
-        const cost = Number(row[1]) || 0;
-        if (level > 0 && cost > 0) {
-          items.push({ category: "HQ Floors", item: "Floor", level, cost });
+      const tierData = parseFloorsSheet(wb.Sheets["Floors,Exhibits,Homemaking,CarC"]);
+      
+      for (const [category, tiers] of Object.entries(tierData)) {
+        const items: CalcItem[] = [];
+        for (const tier of tiers) {
+          for (const lvl of tier.levels) {
+            items.push({
+              category,
+              item: tier.name,
+              tier: tier.material,
+              level: lvl.level,
+              cost: lvl.cost
+            });
+          }
+        }
+        if (items.length > 0) {
+          result[category] = items;
         }
       }
-      if (items.length > 0) result["HQ Floors"] = items;
     }
 
-    // Drones (as Villa Suite)
     if (wb.Sheets["Drones"]) {
       const raw = XLSX.utils.sheet_to_json(wb.Sheets["Drones"], { header: 1 }) as unknown[][];
       const items: CalcItem[] = [];

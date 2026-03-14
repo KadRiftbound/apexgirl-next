@@ -134,11 +134,13 @@ body.bg-tools {
 body::before {
   content: '';
   position: fixed;
-  top: 0;
+  top: -50px;
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--bg-image) center center / cover no-repeat;
+  background: 
+    url('/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.jpg') center top / cover no-repeat,
+    linear-gradient(180deg, rgba(10, 10, 18, 0.85) 0%, rgba(10, 10, 18, 0.80) 50%, rgba(10, 10, 18, 0.90) 100%);
   pointer-events: none;
   z-index: -2;
 }
@@ -253,9 +255,9 @@ img {
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-weight: 700;
-  font-size: 1.35rem;
+  gap: 14px;
+  font-weight: 800;
+  font-size: 1.8rem;
   letter-spacing: -0.5px;
   background: linear-gradient(135deg, var(--primary), #ff80ab);
   -webkit-background-clip: text;
@@ -264,7 +266,7 @@ img {
 }
 
 .logo img {
-  height: 50px;
+  height: 70px;
   border-radius: var(--radius);
 }
 
