@@ -325,13 +325,16 @@ export default function DatabasePage() {
 
         <AdBanner />
 
-        <div className="grid" style={{ gridTemplateColumns: "360px 1fr", gap: "24px", marginTop: "32px" }}>
+        <div className="grid" style={{ gridTemplateColumns: "270px 1fr", gap: "24px", marginTop: "32px" }}>
           {/* Left Panel - Sticky */}
           <div style={{ position: "sticky", top: "100px", height: "fit-content", alignSelf: "start" }}>
             <div className="glass-card" style={{ 
               padding: "0",
               overflow: "hidden",
-              marginBottom: "24px"
+              marginBottom: "24px",
+              transform: "scale(0.75)",
+              transformOrigin: "top left",
+              width: "133.33%"
             }}>
             <div style={{ 
               padding: "20px", 
@@ -497,7 +500,10 @@ export default function DatabasePage() {
             <div style={{ 
               padding: "20px", 
               borderTop: "1px solid var(--border)",
-              background: "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))"
+              background: "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))",
+              transform: "scale(1.15)",
+              transformOrigin: "top left",
+              width: "86.96%"
             }}>
               <div style={{ fontWeight: 600, fontSize: "0.85rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "16px" }}>
                 Team Builder ({team.length}/5)
@@ -812,17 +818,17 @@ export default function DatabasePage() {
       <style jsx>{`
         .grid-container {
           display: grid;
-          grid-template-columns: repeat(6, 1fr);
+          grid-template-columns: repeat(8, 1fr);
           gap: 12px;
         }
         @media (max-width: 1400px) {
           .grid-container {
-            grid-template-columns: repeat(5, 1fr) !important;
+            grid-template-columns: repeat(6, 1fr) !important;
           }
         }
         @media (max-width: 1100px) {
           .grid-container {
-            grid-template-columns: repeat(4, 1fr) !important;
+            grid-template-columns: repeat(5, 1fr) !important;
           }
         }
         @media (max-width: 900px) {
@@ -832,12 +838,12 @@ export default function DatabasePage() {
         }
         @media (max-width: 600px) {
           .grid-container {
-            grid-template-columns: repeat(3, 1fr) !important;
+            grid-template-columns: repeat(4, 1fr) !important;
           }
         }
         @media (max-width: 480px) {
           .grid-container {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: repeat(3, 1fr) !important;
           }
         }
       `}</style>
