@@ -105,6 +105,31 @@ body {
   line-height: 1.6;
 }
 
+/* Background with Images - Default */
+body {
+  --bg-image: url('/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.jpg');
+}
+
+/* Page-specific backgrounds */
+body.bg-home {
+  --bg-image: url('/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.jpg');
+}
+body.bg-database {
+  --bg-image: url('/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.jpg');
+}
+body.bg-tierlist {
+  --bg-image: url('/assets/images/bgs/PZa0kXg48tUA95eC40v6--1--40zmy.jpg');
+}
+body.bg-events {
+  --bg-image: url('/assets/images/bgs/Screenshot_20260213_103558_ChatGPT.jpg');
+}
+body.bg-guides {
+  --bg-image: url('/assets/images/bgs/file_000000002bbc722fa8aecd2660d92f4b.png');
+}
+body.bg-tools {
+  --bg-image: url('/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.jpg');
+}
+
 /* Background with Images */
 body::before {
   content: '';
@@ -113,8 +138,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    url('/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.jpg') center center / cover no-repeat;
+  background: var(--bg-image) center center / cover no-repeat;
   pointer-events: none;
   z-index: -2;
 }

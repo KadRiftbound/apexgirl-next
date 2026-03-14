@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { BackgroundManager } from "@/components/BackgroundManager";
 
 const localeNames: Record<string, string> = {
   fr: "fr-FR",
@@ -128,6 +129,7 @@ export default async function LocaleLayout({
           })
         }}
       />
+      <BackgroundManager />
       <a href="#main-content" className="skip-link">
         {lang === "fr" ? "Aller au contenu principal" : "Skip to main content"}
       </a>
