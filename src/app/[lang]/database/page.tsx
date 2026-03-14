@@ -327,9 +327,9 @@ export default function DatabasePage() {
 
         <AdBanner />
 
-        <div className="grid" style={{ gridTemplateColumns: "400px 1fr", gap: "24px", marginTop: "32px" }}>
+        <div style={{ display: "flex", gap: "24px", marginTop: "32px" }}>
           {/* Left Panel - Sticky */}
-          <div style={{ position: "sticky", top: "100px", height: "fit-content", alignSelf: "start" }}>
+          <div style={{ position: "sticky", top: "100px", height: "fit-content", alignSelf: "start", width: "400px", flexShrink: 0 }}>
             <div className="glass-card" style={{ 
               padding: "0",
               overflow: "hidden",
@@ -652,10 +652,9 @@ export default function DatabasePage() {
               )}
             </div>
           </div>
-          </div>
 
           {/* Artists Grid */}
-          <div>
+          <div style={{ flex: 1 }}>
             <div className="glass-card" style={{ marginBottom: "24px", padding: "20px" }}>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <input
@@ -809,7 +808,8 @@ export default function DatabasePage() {
             </div>
           )}
         </div>
-      </div>
+        </div>
+        </div>
 
       <style jsx>{`
         .grid-container {
