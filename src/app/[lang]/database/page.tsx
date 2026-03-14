@@ -57,6 +57,53 @@ const genreColors: Record<string, string> = {
 
 export default function DatabasePage() {
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
+  const [team, setTeam] = useState<Artist[]>([]);
+
+  const addToTeam = (artist: Artist) => {
+    if (team.length < 5 && !team.find(a => a.id === artist.id)) {
+      setTeam([...team, artist]);
+    }
+  };
+
+  const removeFromTeam = (artistId: number) => {
+    setTeam(team.filter(a => a.id !== artistId));
+  };
+
+  const teamStats = useMemo(() => {
+    let skillDamage = 0;
+    let basicAttackPercent = 0;
+    let skillDamagePercent = 0;
+    let attackResist = 0;
+    let skillResist = 0;
+    let passiveDamage = 0;
+
+    team.forEach(artist => {
+      artist.skills?.forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('resist')) {
+            skillDamagePercent += val;
+          }
+          if (skill.toLowerCase().includes('basic attack')) {
+            basicAttackPercent += val;
+          }
+          if (skill.toLowerCase().includes('player damage') || skill.toLowerCase().includes('attack damage')) {
+            passiveDamage += val;
+          }
+          if (skill.toLowerCase().includes('resist')) {
+            if (skill.toLowerCase().includes('skill')) {
+              skillResist += val;
+            } else {
+              attackResist += val;
+            }
+          }
+        }
+      });
+    });
+
+    return { skillDamage, basicAttackPercent, skillDamagePercent, attackResist, skillResist, passiveDamage };
+  }, [team]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
   const [filterPosition, setFilterPosition] = useState("");
@@ -121,7 +168,7 @@ export default function DatabasePage() {
 
         <AdBanner />
 
-        <div className="grid" style={{ gridTemplateColumns: "320px 1fr", gap: "24px", marginTop: "32px" }}>
+        <div className="grid" style={{ gridTemplateColumns: "360px 1fr", gap: "24px", marginTop: "32px" }}>
           {/* Artist Panel */}
           <div className="glass-card" style={{ 
             position: "sticky", 
@@ -379,7 +426,7 @@ export default function DatabasePage() {
             {/* Grid - Full Portraits */}
             <div style={{ 
               display: "grid", 
-              gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", 
+              gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", 
               gap: "12px" 
             }}>
               {filteredArtists
@@ -451,6 +498,135 @@ export default function DatabasePage() {
                 <p>Aucun artiste trouvé</p>
               </div>
             )}
+          </div>
+
+          {/* Team Builder */}
+          <div className="glass-card" style={{ 
+            position: "sticky", 
+            top: "100px", 
+            height: "fit-content",
+            padding: "0",
+            overflow: "hidden",
+            marginTop: "24px"
+          }}>
+            <div style={{ 
+              padding: "20px", 
+              borderBottom: "1px solid var(--border)",
+              background: "linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15))"
+            }}>
+              <span style={{ fontWeight: 600, fontSize: "0.9rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px" }}>
+                Team Builder ({team.length}/5)
+              </span>
+            </div>
+
+            <div style={{ padding: "16px" }}>
+              {/* Team slots */}
+              <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
+                {[0,1,2,3,4].map(i => (
+                  <div
+                    key={i}
+                    onClick={() => team[i] && removeFromTeam(team[i].id)}
+                    style={{
+                      width: "50px",
+                      height: "65px",
+                      borderRadius: "var(--radius)",
+                      border: `2px solid ${team[i] ? rankColors[team[i].rank] : "var(--border)"}`,
+                      background: team[i] ? `linear-gradient(135deg, ${rankColors[team[i].rank]}22, var(--bg-subtle))` : "var(--bg-subtle)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      cursor: team[i] ? "pointer" : "default",
+                      overflow: "hidden"
+                    }}
+                  >
+                    {team[i] ? (
+                      team[i].image ? (
+                        <img 
+                          src={`/assets/images/artists/${team[i].image}`}
+                          alt={team[i].name}
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        />
+                      ) : (
+                        <span style={{ fontSize: "1.5rem", fontWeight: 800, color: rankColors[team[i].rank] }}>
+                          {team[i].name.charAt(0)}
+                        </span>
+                      )
+                    ) : (
+                      <span style={{ color: "var(--text-dim)", fontSize: "1.2rem" }}>+</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Team stats */}
+              {team.length > 0 && (
+                <div style={{ 
+                  background: "var(--bg-subtle)", 
+                  borderRadius: "var(--radius)",
+                  padding: "12px"
+                }}>
+                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginBottom: "8px", textTransform: "uppercase" }}>
+                    Stats combinés
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", fontSize: "0.8rem" }}>
+                    <div style={{ color: "var(--primary)" }}>
+                      ⚔️ Skill Dmg: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamagePercent}%</span>
+                    </div>
+                    <div style={{ color: "var(--secondary)" }}>
+                      👊 Basic Atk: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.basicAttackPercent}%</span>
+                    </div>
+                    <div style={{ color: "var(--accent)" }}>
+                      🛡️ Atk Resist: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.attackResist}%</span>
+                    </div>
+                    <div style={{ color: "var(--accent-yellow)" }}>
+                      ✨ Skill Resist: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillResist}%</span>
+                    </div>
+                    <div style={{ color: "#ff69b4", gridColumn: "span 2" }}>
+                      💥 Passive Dmg: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.passiveDamage}%</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Add to team button */}
+              {selectedArtist && !team.find(a => a.id === selectedArtist.id) && team.length < 5 && (
+                <button
+                  onClick={() => addToTeam(selectedArtist)}
+                  style={{
+                    width: "100%",
+                    marginTop: "12px",
+                    padding: "10px",
+                    borderRadius: "var(--radius)",
+                    border: "none",
+                    background: "linear-gradient(135deg, var(--primary), #ff80ab)",
+                    color: "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer"
+                  }}
+                >
+                  + Ajouter {selectedArtist.name}
+                </button>
+              )}
+
+              {team.length > 0 && (
+                <button
+                  onClick={() => setTeam([])}
+                  style={{
+                    width: "100%",
+                    marginTop: "8px",
+                    padding: "8px",
+                    borderRadius: "var(--radius)",
+                    border: "1px solid var(--border)",
+                    background: "transparent",
+                    color: "var(--text-muted)",
+                    fontSize: "0.8rem",
+                    cursor: "pointer"
+                  }}
+                >
+                  🗑️ Tout effacer
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
