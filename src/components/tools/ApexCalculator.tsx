@@ -8,7 +8,7 @@ type CalcItem = {
   item: string;
   tier?: string;
   level: number;
-  cost: number;
+  resources: Record<string, number>;
 };
 
 const translations: Record<string, any> = {
@@ -21,107 +21,84 @@ const translations: Record<string, any> = {
     costBreakdown: "Détail des coûts",
     level: "Niveau",
     resources: "Ressources",
+    resource: "Ressource",
   },
   en: {
     selectCategory: "Category",
     selectTier: "Select Tier",
     fromLevel: "From Level",
     toLevel: "To Level",
-    totalCost: "Total Cost",
+    totalCost: "Total",
     costBreakdown: "Cost Breakdown",
     level: "Level",
     resources: "Resources",
+    resource: "Resource",
   },
   it: {
     selectCategory: "Categoria",
     selectTier: "Seleziona Tier",
     fromLevel: "Da Livello",
     toLevel: "A Livello",
-    totalCost: "Costo Totale",
+    totalCost: "Totale",
     costBreakdown: "Dettaglio Costi",
     level: "Livello",
     resources: "Risorse",
+    resource: "Risorsa",
   },
   es: {
     selectCategory: "Categoría",
     selectTier: "Seleccionar Tier",
     fromLevel: "Desde Nivel",
     toLevel: "Hasta Nivel",
-    totalCost: "Costo Total",
+    totalCost: "Total",
     costBreakdown: "Desglose de Costos",
     level: "Nivel",
     resources: "Recursos",
+    resource: "Recurso",
   },
   pt: {
     selectCategory: "Categoria",
     selectTier: "Selecionar Tier",
     fromLevel: "Do Nível",
     toLevel: "Até Nível",
-    totalCost: "Custo Total",
-    costBreakdown: "Detalhamento de Custos",
+    totalCost: "Total",
+    costBreakdown: "Detalhamento",
     level: "Nível",
     resources: "Recursos",
+    resource: "Recurso",
   },
   pl: {
     selectCategory: "Kategoria",
     selectTier: "Wybierz Tier",
     fromLevel: "Z Poziomu",
     toLevel: "Do Poziomu",
-    totalCost: "Łączny Koszt",
-    costBreakdown: "Szczegółowy Koszt",
+    totalCost: "Łącznie",
+    costBreakdown: "Szczegóły",
     level: "Poziom",
     resources: "Zasoby",
+    resource: "Zasób",
   },
   id: {
     selectCategory: "Kategori",
     selectTier: "Pilih Tier",
     fromLevel: "Dari Level",
     toLevel: "Ke Level",
-    totalCost: "Total Biaya",
-    costBreakdown: "Rincian Biaya",
+    totalCost: "Total",
+    costBreakdown: "Rincian",
     level: "Level",
     resources: "Sumber Daya",
+    resource: "Sumber",
   },
   ru: {
     selectCategory: "Категория",
     selectTier: "Выбрать Тир",
     fromLevel: "С Уровня",
     toLevel: "По Уровень",
-    totalCost: "Общая Стоимость",
-    costBreakdown: "Детализация Стоимости",
+    totalCost: "Итого",
+    costBreakdown: "Детализация",
     level: "Уровень",
     resources: "Ресурсы",
-  },
-};
-
-const tierResources: Record<string, Record<string, string>> = {
-  "HQ Floors": {
-    "Floor 1": "Wood + Steel",
-    "Floor 2": "Wood + Steel",
-    "Floor 3": "Wood + Steel",
-    "Floor 4": "Wood + Steel",
-    "Floor 5": "Wood + Steel",
-  },
-  "Museum": {
-    "Room 1": "Sandstone + Tile",
-    "Room 2": "Sandstone + Tile",
-    "Room 3": "Sandstone + Tile",
-    "Room 4": "Sandstone + Tile",
-    "Room 5": "Sandstone + Tile",
-  },
-  "Homemaking": {
-    "Tier 1": "HQ Tile + HQ Sandstone",
-    "Tier 2": "HQ Tile + HQ Sandstone",
-    "Tier 3": "HQ Tile + HQ Sandstone",
-    "Tier 4": "HQ Tile + HQ Sandstone",
-    "Tier 5": "HQ Tile + HQ Sandstone",
-  },
-  "Car Core": {
-    "D Grade": "Plug + Coil",
-    "C": "Plug + Coil",
-    "B": "Plug + Coil",
-    "A": "Plug + Coil",
-    "A+": "Plug + Coil",
+    resource: "Ресурс",
   },
 };
 
@@ -164,90 +141,74 @@ export default function ApexCalculator() {
 
   const currentConfig = categoryConfig.find((c) => c.id === activeCategory);
   const hasTiers = currentConfig && "tiers" in currentConfig;
-  const tierResourceLabel = hasTiers ? tierResources[activeCategory]?.[selectedTier] : null;
 
-  const calculateCost = () => {
+  const getFilteredItems = () => {
     const items = data[activeCategory] || [];
-    let filteredItems = items;
-
     if (hasTiers && selectedTier) {
-      filteredItems = items.filter((i) => i.item === selectedTier);
+      return items.filter((i) => i.item === selectedTier);
     }
-
-    let total = 0;
-    for (let l = fromLevel; l <= toLevel; l++) {
-      const item = filteredItems.find((i) => i.level === l);
-      if (item) total += item.cost;
-    }
-    return total;
+    return items;
   };
 
-  const getLevelCosts = () => {
-    const items = data[activeCategory] || [];
-    let filteredItems = items;
-
-    if (hasTiers && selectedTier) {
-      filteredItems = items.filter((i) => i.item === selectedTier);
+  const calculateTotals = () => {
+    const items = getFilteredItems().filter((i) => i.level >= fromLevel && i.level <= toLevel);
+    const totals: Record<string, number> = {};
+    
+    for (const item of items) {
+      for (const [resource, cost] of Object.entries(item.resources)) {
+        totals[resource] = (totals[resource] || 0) + cost;
+      }
     }
+    return totals;
+  };
 
-    return filteredItems
-      .filter((item) => item.level >= fromLevel && item.level <= toLevel)
-      .sort((a, b) => a.level - b.level);
+  const getResourceBreakdown = () => {
+    const items = getFilteredItems().filter((i) => i.level >= fromLevel && i.level <= toLevel);
+    const breakdown: Record<string, { level: number; cost: number }[]> = {};
+    
+    for (const item of items) {
+      for (const [resource, cost] of Object.entries(item.resources)) {
+        if (!breakdown[resource]) breakdown[resource] = [];
+        breakdown[resource].push({ level: item.level, cost });
+      }
+    }
+    return breakdown;
   };
 
   if (loading) {
-    return (
-      <div style={{ textAlign: "center", padding: "60px", color: "#fff" }}>
-        Loading...
-      </div>
-    );
+    return <div style={{ textAlign: "center", padding: "60px", color: "#fff" }}>Loading...</div>;
   }
 
   if (error) {
-    return (
-      <div style={{ textAlign: "center", padding: "60px", color: "#f87171" }}>
-        Error: {error}
-      </div>
-    );
+    return <div style={{ textAlign: "center", padding: "60px", color: "#f87171" }}>Error: {error}</div>;
   }
+
+  const totals = calculateTotals();
+  const breakdown = getResourceBreakdown();
+  const grandTotal = Object.values(totals).reduce((sum, val) => sum + val, 0);
 
   return (
     <div style={{ width: "100%", color: "#fff" }}>
       {/* Category Tabs */}
-      <div
-        style={{
-          display: "flex",
-          gap: "6px",
-          marginBottom: "20px",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
+      <div style={{ display: "flex", gap: "6px", marginBottom: "20px", flexWrap: "wrap", justifyContent: "center" }}>
         {categoryConfig.map((cat) => (
           <button
             key={cat.id}
             onClick={() => {
               setActiveCategory(cat.id);
-              if ("tiers" in cat && cat.tiers) {
-                setSelectedTier(cat.tiers[0]);
-              }
+              if ("tiers" in cat && cat.tiers) setSelectedTier(cat.tiers[0]);
               setFromLevel(1);
               setToLevel(60);
             }}
             style={{
               padding: "8px 14px",
               borderRadius: "6px",
-              border:
-                activeCategory === cat.id ? "1px solid #f472b6" : "1px solid #374151",
-              background:
-                activeCategory === cat.id
-                  ? "linear-gradient(135deg, #ec4899, #a855f7)"
-                  : "#1f2937",
+              border: activeCategory === cat.id ? "1px solid #f472b6" : "1px solid #374151",
+              background: activeCategory === cat.id ? "linear-gradient(135deg, #ec4899, #a855f7)" : "#1f2937",
               color: "#fff",
               cursor: "pointer",
               fontSize: "0.8rem",
               fontWeight: 600,
-              transition: "all 0.2s",
             }}
           >
             {cat.label}
@@ -257,16 +218,7 @@ export default function ApexCalculator() {
 
       {/* Tier Selector */}
       {hasTiers && currentConfig && "tiers" in currentConfig && (
-        <div
-          style={{
-            marginBottom: "20px",
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}
-        >
+        <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <span style={{ color: "#9ca3af", fontSize: "0.9rem" }}>{t.selectTier}:</span>
           {(currentConfig.tiers || []).map((tier: string) => (
             <button
@@ -280,7 +232,6 @@ export default function ApexCalculator() {
                 color: "#fff",
                 cursor: "pointer",
                 fontSize: "0.8rem",
-                fontWeight: 500,
               }}
             >
               {tier}
@@ -289,35 +240,8 @@ export default function ApexCalculator() {
         </div>
       )}
 
-      {/* Resource Type Display */}
-      {tierResourceLabel && (
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: "20px",
-            padding: "12px",
-            background: "rgba(139, 92, 246, 0.15)",
-            borderRadius: "8px",
-            border: "1px solid rgba(139, 92, 246, 0.3)",
-          }}
-        >
-          <span style={{ color: "#a78bfa", fontSize: "0.9rem" }}>
-            {t.resources}: <strong style={{ color: "#fff" }}>{tierResourceLabel}</strong>
-          </span>
-        </div>
-      )}
-
       {/* Level Inputs */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          justifyContent: "center",
-          marginBottom: "24px",
-          flexWrap: "wrap",
-        }}
-      >
+      <div style={{ display: "flex", alignItems: "center", gap: "16px", justifyContent: "center", marginBottom: "24px", flexWrap: "wrap" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <label style={{ color: "#9ca3af", fontSize: "0.9rem" }}>{t.fromLevel}:</label>
           <input
@@ -358,101 +282,36 @@ export default function ApexCalculator() {
         </div>
       </div>
 
-      {/* Result */}
-      <div
-        style={{
-          textAlign: "center",
-          padding: "20px",
-          background: "linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(168, 85, 247, 0.15))",
-          borderRadius: "12px",
-          border: "1px solid rgba(244, 114, 182, 0.3)",
-          marginBottom: "24px",
-        }}
-      >
-        <div
-          style={{
-            fontSize: "0.8rem",
-            color: "#9ca3af",
-            marginBottom: "4px",
-            textTransform: "uppercase",
-            letterSpacing: "0.05em",
-          }}
-        >
-          {t.totalCost}
-        </div>
-        <div style={{ fontSize: "2rem", fontWeight: 700, color: "#f472b6", fontFamily: "monospace" }}>
-          {calculateCost().toLocaleString()}
-        </div>
+      {/* Grand Total */}
+      <div style={{ textAlign: "center", padding: "16px", background: "linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(168, 85, 247, 0.15))", borderRadius: "12px", border: "1px solid rgba(244, 114, 182, 0.3)", marginBottom: "20px" }}>
+        <div style={{ fontSize: "0.8rem", color: "#9ca3af", marginBottom: "4px", textTransform: "uppercase" }}>{t.totalCost}</div>
+        <div style={{ fontSize: "2rem", fontWeight: 700, color: "#f472b6", fontFamily: "monospace" }}>{grandTotal.toLocaleString()}</div>
       </div>
 
-      {/* Cost breakdown table */}
-      <div style={{ marginTop: "24px" }}>
-        <h3
-          style={{
-            fontSize: "0.9rem",
-            fontWeight: 600,
-            marginBottom: "12px",
-            color: "#fff",
-          }}
-        >
-          {t.costBreakdown}
-        </h3>
-        <div
-          style={{
-            background: "#1f2937",
-            borderRadius: "8px",
-            border: "1px solid #374151",
-            maxHeight: "350px",
-            overflowY: "auto",
-          }}
-        >
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
-            <thead style={{ position: "sticky", top: 0, background: "#111827" }}>
-              <tr>
-                <th
-                  style={{
-                    padding: "10px 12px",
-                    textAlign: "left",
-                    color: "#9ca3af",
-                    fontWeight: 600,
-                    borderBottom: "1px solid #374151",
-                  }}
-                >
-                  {t.level}
-                </th>
-                <th
-                  style={{
-                    padding: "10px 12px",
-                    textAlign: "right",
-                    color: "#9ca3af",
-                    fontWeight: 600,
-                    borderBottom: "1px solid #374151",
-                  }}
-                >
-                  Cost
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {getLevelCosts().map((item) => (
-                <tr key={item.level} style={{ borderBottom: "1px solid #374151" }}>
-                  <td style={{ padding: "8px 12px", color: "#fff" }}>Level {item.level}</td>
-                  <td
-                    style={{
-                      padding: "8px 12px",
-                      textAlign: "right",
-                      color: "#f472b6",
-                      fontFamily: "monospace",
-                    }}
-                  >
-                    {item.cost.toLocaleString()}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      {/* Resource Breakdown by Type */}
+      {Object.entries(breakdown).map(([resource, levels]) => {
+        const resourceTotal = Object.values(levels).reduce((sum, l) => sum + l.cost, 0);
+        return (
+          <div key={resource} style={{ marginBottom: "16px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 12px", background: "#374151", borderRadius: "8px 8px 0 0" }}>
+              <span style={{ fontWeight: 600, color: "#fff" }}>{resource}</span>
+              <span style={{ fontFamily: "monospace", color: "#f472b6", fontWeight: 600 }}>{resourceTotal.toLocaleString()}</span>
+            </div>
+            <div style={{ background: "#1f2937", borderRadius: "0 0 8px 8px", border: "1px solid #374151", borderTop: "none", maxHeight: "200px", overflowY: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.8rem" }}>
+                <tbody>
+                  {levels.sort((a, b) => a.level - b.level).map((lvl) => (
+                    <tr key={lvl.level} style={{ borderBottom: "1px solid #374151" }}>
+                      <td style={{ padding: "6px 12px", color: "#9ca3af" }}>Level {lvl.level}</td>
+                      <td style={{ padding: "6px 12px", textAlign: "right", color: "#fff", fontFamily: "monospace" }}>{lvl.cost.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
