@@ -4,13 +4,14 @@ import { useState } from "react";
 import SVSCalculator from "@/components/tools/SVSCalculator";
 import CEOCalculator from "@/components/tools/CEOCalculator";
 import ApexCalculator from "@/components/tools/ApexCalculator";
+import LevelingGuide from "@/components/tools/LevelingGuide";
 import { AdBanner } from "@/components/AdSense";
 
 const tools = [
   { id: "resource", label: "Resources", icon: "🧮" },
+  { id: "leveling", label: "Leveling", icon: "📈" },
   { id: "svs", label: "SVS Store", icon: "🛒" },
   { id: "ceo", label: "CEO Event", icon: "📅" },
-  { id: "team", label: "Team Builder", icon: "👥" },
 ];
 
 export default function ToolsPage() {
@@ -78,17 +79,9 @@ export default function ToolsPage() {
           minHeight: "500px",
         }}>
           {activeTab === "resource" && <ApexCalculator />}
+          {activeTab === "leveling" && <LevelingGuide />}
           {activeTab === "svs" && <SVSCalculator />}
           {activeTab === "ceo" && <CEOCalculator />}
-          {activeTab === "team" && (
-            <div style={{ textAlign: "center", padding: "60px 20px", color: "#9ca3af" }}>
-              <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🚧</div>
-              <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "12px", color: "#fff" }}>
-                Coming Soon
-              </h3>
-              <p>Team Builder will be available soon.</p>
-            </div>
-          )}
         </div>
 
         <div style={{ textAlign: "center", padding: "24px", color: "#6b7280", fontSize: "0.85rem" }}>
