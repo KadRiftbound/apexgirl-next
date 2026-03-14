@@ -131,7 +131,7 @@ type Artist = {
   skills: string[];
   image?: string;
   specialty?: string;
-  skillCategories: {
+  skillCategories?: {
     dps: string[];
     offensive: string[];
     hp: string[];
@@ -201,9 +201,9 @@ export default function DatabasePage() {
       const basePassive = 200;
       passive += basePassive;
       
-      artist.skillCategories?.dps?.forEach(dps => {
-        const match = dps.match(/(\d+)\s*Damage/);
-        if (match) {
+      [...(artist.skillCategories?.dps || []), ...(artist.skillCategories?.offensive || [])].forEach(skill => {
+        const match = skill.match(/(\d+)\s*Damage/);
+        if (match && !skill.toLowerCase().includes('%')) {
           skillDamageRaw += parseInt(match[1]);
         }
       });
@@ -536,10 +536,10 @@ export default function DatabasePage() {
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", fontSize: "0.75rem" }}>
                     <div style={{ color: "#ff6b6b" }}>
-                      ⚔️ Skill Dmg: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamage}%</span>
+                      ⚔️ Skill Dmg %: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamage}%</span>
                     </div>
                     <div style={{ color: "#ff8c42" }}>
-                      💥 Skill DMG: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamageRaw}</span>
+                      💥 Skill Dmg: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamageRaw}</span>
                     </div>
                     <div style={{ color: "#4ecdc4" }}>
                       👊 Basic Atk: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.basicAttackPercent}%</span>
