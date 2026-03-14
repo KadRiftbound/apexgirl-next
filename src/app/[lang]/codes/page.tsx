@@ -38,7 +38,7 @@ const translations: Record<string, any> = {
     copied: 'Copié!',
     noActive: 'Aucun code actif pour le moment',
     howToUse: 'Comment utiliser les codes',
-    howToUseDesc: 'Allez dans le jeu, appuyez sur votre头像 > Settings > Gift Code et entrez le code.',
+    howToUseDesc: 'Allez dans le jeu, appuyez sur votre profil > Settings > Gift Code et entrez le code.',
     new: 'Nouveau',
   },
   en: {
