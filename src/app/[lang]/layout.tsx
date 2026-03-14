@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { BackgroundManager } from "@/components/BackgroundManager";
+import CookieConsent from "@/components/CookieConsent";
 
 const localeNames: Record<string, string> = {
   fr: "fr-FR",
@@ -170,6 +171,7 @@ export default async function LocaleLayout({
       <main id="main-content" className="main-content" role="main" tabIndex={-1}>
         {children}
       </main>
+      <CookieConsent />
       <footer className="footer" role="contentinfo">
         <div className="footer-inner">
           <div>
