@@ -199,16 +199,28 @@ export default function EventsPage() {
               >
                 {/* Event Image Banner */}
                 <div style={{
-                  height: "100px",
+                  height: "120px",
                   background: eventImages[event.type] || eventImages.recurring,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   position: "relative",
+                  backgroundImage: eventIconMap[event.name] ? `url('/assets/images/events/${eventIconMap[event.name]}')` : undefined,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
                 }}>
-                  <span style={{ fontSize: "3rem", opacity: 0.9 }}>
+                  {eventIconMap[event.name] && (
+                    <div style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "rgba(0,0,0,0.4)",
+                    }} />
+                  )}
+                  {!eventIconMap[event.name] && (
+                  <span style={{ fontSize: "3rem", opacity: 0.9, position: "relative" }}>
                     {event.type === "recurring" ? "🏆" : event.type === "seasonal" ? "🎉" : "⭐"}
                   </span>
+                  )}
                   <div style={{
                     position: "absolute",
                     bottom: "8px",
@@ -220,7 +232,7 @@ export default function EventsPage() {
                       fontSize: "0.7rem",
                       fontWeight: 700,
                       textTransform: "uppercase",
-                      background: "rgba(0,0,0,0.5)",
+                      background: "rgba(0,0,0,0.6)",
                       color: "#fff",
                     }}>
                       {event.type}
