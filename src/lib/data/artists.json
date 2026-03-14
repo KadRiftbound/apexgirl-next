@@ -5,7 +5,7 @@
     "group": "No Group",
     "rank": "UR",
     "position": "Center",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
@@ -38,7 +38,7 @@
     "group": "No Group",
     "rank": "UR",
     "position": "Dancer",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
@@ -71,7 +71,7 @@
     "group": "No Group",
     "rank": "UR",
     "position": "Center",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑20% player damage",
       "↑10% fan cap"
@@ -138,7 +138,7 @@
     "group": "No Group",
     "rank": "UR",
     "position": "Vocalist",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑20% player damage",
       "↑20% skill damage"
@@ -171,7 +171,7 @@
     "group": "No Group",
     "rank": "UR",
     "position": "Dancer",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
@@ -237,7 +237,7 @@
     "group": "No Group",
     "rank": "UR",
     "position": "Vocalist",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
@@ -436,7 +436,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑24% skill damage",
       "↑12% fan cap"
@@ -507,7 +507,7 @@
     "group": "VenuLux",
     "rank": "SSR",
     "position": "Center",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑50% basic attack damage dealt",
       "↓12% basic attack damage taken"
@@ -542,7 +542,7 @@
     "group": "WildFlower",
     "rank": "SSR",
     "position": "Center",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑30% damage to world building guard",
       "↓12% skill damage taken"
@@ -612,7 +612,7 @@
     "group": "Sparkle Artists",
     "rank": "SSR",
     "position": "Center",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
@@ -646,7 +646,7 @@
     "group": "Luna",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
@@ -716,7 +716,7 @@
     "group": "Tokyo48",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
@@ -751,7 +751,7 @@
     "group": "Echo",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑200 dps when defending",
       "↑36% damage to world building guard"
@@ -786,7 +786,7 @@
     "group": "VenuLux",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
@@ -821,7 +821,7 @@
     "group": "Tokyo48",
     "rank": "SSR",
     "position": "Center",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑20% player damage",
       "↑10% rally fan cap"
@@ -891,7 +891,7 @@
     "group": "Sparkle Artists",
     "rank": "SSR",
     "position": "Center",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
@@ -925,7 +925,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑24% player damage",
       "↑24% player damage"
@@ -995,7 +995,7 @@
     "group": "VenuLux",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
@@ -1203,7 +1203,7 @@
     "group": "Rina",
     "rank": "SSR",
     "position": "Center",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑60% basic attack damage dealt",
       "↑12% fan cap"
@@ -1237,7 +1237,7 @@
     "group": "WildFlower",
     "rank": "SSR",
     "position": "Center",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑20% player damage",
       "↑10% rally fan cap"
@@ -1272,7 +1272,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Center",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑24% player damage",
       "↓12% skill damage taken"
@@ -1307,7 +1307,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Center",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑24% player damage",
       "↓12% skill damage taken"
@@ -1377,7 +1377,7 @@
     "group": "Tokyo48",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑24% player damage",
       "↑60% basic attack damage dealt"
@@ -1516,7 +1516,7 @@
     "group": "Coral",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
@@ -1550,7 +1550,7 @@
     "group": "Breezara",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑240 dps when defending",
       "↑36% damage to world building guard"
@@ -1619,7 +1619,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑240 dps when attacking gc/club/lm",
       "↑12% fan cap"
@@ -1655,7 +1655,7 @@
     "group": "WildFlower",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑20% player damage",
       "↑40% gold mining speed"
@@ -1690,7 +1690,7 @@
     "group": "Neon",
     "rank": "SSR",
     "position": "Center",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
@@ -1725,7 +1725,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑70% basic attack damage dealt",
       "↓12% basic attack damage taken"
@@ -1793,7 +1793,7 @@
     "group": "Coral",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
@@ -1862,7 +1862,7 @@
     "group": "Breezara",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑240 dps when attacking company",
       "↑12% fan cap"
@@ -1968,7 +1968,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Center",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑240 dps when attacking company",
       "↑12% fan cap"
@@ -2004,7 +2004,7 @@
     "group": "Neon",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
@@ -2074,7 +2074,7 @@
     "group": "Rina",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑24% player damage",
       "↓12% basic attack damage taken"
@@ -2144,7 +2144,7 @@
     "group": "Tokyo48",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
@@ -2179,7 +2179,7 @@
     "group": "Echo",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑20% player damage",
       "↑50% basic attack damage dealt"
@@ -2248,7 +2248,7 @@
     "group": "Echo",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑200 dps when attacking company",
       "↑10% fan cap"
@@ -2284,7 +2284,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Center",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑28% player damage",
       "↓12% skill damage taken"
@@ -2318,7 +2318,7 @@
     "group": "Neon",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑20% skill damage",
       "↑30% damage to world building guard"
@@ -2387,7 +2387,7 @@
     "group": "Coral",
     "rank": "SSR",
     "position": "Center",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
@@ -2457,7 +2457,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑240 dps when defending",
       "↓12% basic attack damage taken"
@@ -2528,7 +2528,7 @@
     "group": "None",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑28% player damage",
       "↓12% basic attack damage taken"
@@ -2562,7 +2562,7 @@
     "group": "Tokyo48",
     "rank": "SSR",
     "position": "Dancer",
-    "genre": "ROCK",
+    "genre": "Rock",
     "skills": [
       "↑50% basic attack damage dealt",
       "↓12% basic attack damage taken"
@@ -2632,7 +2632,7 @@
     "group": "Luna",
     "rank": "SSR",
     "position": "Vocalist",
-    "genre": "HipHop",
+    "genre": "Hip Hop",
     "skills": [
       "↑20% skill damage",
       "↑10% fan cap"
@@ -2735,7 +2735,7 @@
     "group": "Tokyo48",
     "rank": "SSR",
     "position": "Center",
-    "genre": "POP",
+    "genre": "Pop",
     "skills": [
       "↑30% player damage",
       "↑30% player damage"
@@ -2900,7 +2900,7 @@
     "group": "DreamCatcher",
     "rank": "SR",
     "position": "Center",
-    "genre": "Electronic",
+    "genre": "EDM",
     "skills": [
       "10 sec/800 Damage",
       "30% Gold Brick Gather Speed",
@@ -3167,7 +3167,7 @@
     "group": "Fantasy Vibes",
     "rank": "SR",
     "position": "Dancer",
-    "genre": "Electronic",
+    "genre": "EDM",
     "skills": [
       "10 sec/800 Damage",
       "5% Reduce Normal Damage Taken",
@@ -3200,7 +3200,7 @@
     "group": "Fantasy Vibes",
     "rank": "SR",
     "position": "Vocalist",
-    "genre": "Electronic",
+    "genre": "EDM",
     "skills": [
       "10 sec/800 Damage",
       "5% Reduce Skill Damage Taken",
@@ -3431,7 +3431,7 @@
     "group": "Fantasy Vibes",
     "rank": "SR",
     "position": "Center",
-    "genre": "Electronic",
+    "genre": "EDM",
     "skills": [
       "10 sec/800 Damage",
       "10% Skill Damage",
@@ -3530,7 +3530,7 @@
     "group": "None",
     "rank": "R",
     "position": "Vocalist",
-    "genre": "Electronic",
+    "genre": "EDM",
     "skills": [
       "10 sec/300 Damage",
       "10% Drive Speed Increase",
@@ -3626,7 +3626,7 @@
     "group": "None",
     "rank": "R",
     "position": "Dancer",
-    "genre": "Electronic",
+    "genre": "EDM",
     "skills": [
       "10 sec/300 Damage",
       "20% Gold Brick Gather Speed",

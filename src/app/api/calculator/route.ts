@@ -3,8 +3,6 @@ import * as XLSX from "xlsx";
 import fs from "fs";
 import path from "path";
 
-export const dynamic = "force-dynamic";
-
 export type CalcItem = {
   category: string;
   item: string;

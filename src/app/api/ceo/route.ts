@@ -3,8 +3,6 @@ import * as XLSX from "xlsx";
 import path from "path";
 import fs from "fs";
 
-export const dynamic = "force-dynamic";
-
 export type EventItem = {
   task: string;
   points: number;

@@ -29,89 +29,8 @@ type Artist = {
   skillCategories?: { dps: string[]; offensive: string[]; hp: string[]; defense: string[] };
 };
 
-function SearchFilters({ 
-  searchQuery, 
-  setSearchQuery, 
-  filterRank, 
-  setFilterRank, 
-  filterGenre, 
-  setFilterGenre, 
-  uniqueGenres, 
-  uniqueRanks,
-  t
-}: {
-  searchQuery: string;
-  setSearchQuery: (v: string) => void;
-  filterRank: string;
-  setFilterRank: (v: string) => void;
-  filterGenre: string;
-  setFilterGenre: (v: string) => void;
-  uniqueGenres: string[];
-  uniqueRanks: string[];
-  t: any;
-}) {
-  return (
-    <div style={{ background: "rgba(30,30,50,0.9)", borderRadius: "16px", padding: "14px", marginBottom: "16px" }}>
-      <input
-        type="text"
-        placeholder={t.search}
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "10px 14px",
-          background: "rgba(255,255,255,0.1)",
-          border: "1px solid rgba(255,255,255,0.2)",
-          borderRadius: "8px",
-          color: "#fff",
-          fontSize: "0.9rem",
-          marginBottom: "10px",
-        }}
-      />
-      <div style={{ display: "flex", gap: "8px" }}>
-        <select 
-          value={filterRank} 
-          onChange={(e) => setFilterRank(e.target.value)} 
-          style={{ 
-            flex: 1,
-            padding: "8px 12px", 
-            background: "rgba(255,255,255,0.1)", 
-            border: "1px solid rgba(255,255,255,0.2)", 
-            borderRadius: "8px", 
-            color: "#fff", 
-            fontSize: "0.8rem" 
-          }}
-        >
-          <option value="">{t.all} (Rareté)</option>
-          {uniqueRanks.map(rank => (
-            <option key={rank} value={rank}>{rank}</option>
-          ))}
-        </select>
-        <select 
-          value={filterGenre} 
-          onChange={(e) => setFilterGenre(e.target.value)} 
-          style={{ 
-            flex: 1,
-            padding: "8px 12px", 
-            background: "rgba(255,255,255,0.1)", 
-            border: "1px solid rgba(255,255,255,0.2)", 
-            borderRadius: "8px", 
-            color: "#fff", 
-            fontSize: "0.8rem" 
-          }}
-        >
-          <option value="">{t.allGenres}</option>
-          {uniqueGenres.map(genre => (
-            <option key={genre} value={genre}>{genre}</option>
-          ))}
-        </select>
-      </div>
-      <div style={{ marginTop: "8px", fontSize: "0.75rem", color: "rgba(255,255,255,0.5)" }}>
-        {t.search}: "{searchQuery}" | Rareté: "{filterRank}" | Genre: "{filterGenre}"
-      </div>
-    </div>
-  );
-}
+const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
+const RANKS = ['UR', 'SSR', 'SR', 'R', 'UR Bali'];
 
 export default function ArtistsPage() {
   const params = useParams();
@@ -197,14 +116,10 @@ export default function ArtistsPage() {
     return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
   }, [team]);
 
-  const uniqueGenres = useMemo(() => [...new Set(artistsData.map((a: Artist) => a.genre))].sort(), []);
-  const uniqueRanks = useMemo(() => [...new Set(artistsData.map((a: Artist) => a.rank))].sort(), []);
-
   const filteredArtists = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
     return artistsData.filter((artist: Artist) => {
-      const matchesSearch = !q || 
-        artist.name.toLowerCase().includes(q);
+      const matchesSearch = !q || artist.name.toLowerCase().includes(q);
       const matchesRank = !filterRank || artist.rank === filterRank;
       const matchesGenre = !filterGenre || artist.genre === filterGenre;
       return matchesSearch && matchesRank && matchesGenre;
@@ -342,17 +257,69 @@ export default function ArtistsPage() {
 
           {/* RIGHT: Artists Grid */}
           <div className="artists-container">
-            <SearchFilters 
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-              filterRank={filterRank}
-              setFilterRank={setFilterRank}
-              filterGenre={filterGenre}
-              setFilterGenre={setFilterGenre}
-              uniqueGenres={uniqueGenres}
-              uniqueRanks={uniqueRanks}
-              t={t}
-            />
+            {/* BARRE DE RECHERCHE */}
+            <div style={{ background: "#1a1a2e", borderRadius: "12px", padding: "16px", marginBottom: "16px" }}>
+              <input
+                type="text"
+                placeholder={t.search}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "12px 16px",
+                  background: "#0f0f1a",
+                  border: "1px solid #333",
+                  borderRadius: "8px",
+                  color: "#fff",
+                  fontSize: "1rem",
+                  marginBottom: "12px",
+                  outline: "none",
+                }}
+              />
+              <div style={{ display: "flex", gap: "8px" }}>
+                <select 
+                  value={filterRank} 
+                  onChange={(e) => setFilterRank(e.target.value)} 
+                  style={{ 
+                    flex: 1,
+                    padding: "10px", 
+                    background: "#0f0f1a", 
+                    border: "1px solid #333", 
+                    borderRadius: "8px", 
+                    color: "#fff", 
+                    fontSize: "0.9rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  <option value="">Tous les ranks</option>
+                  {RANKS.map(rank => (
+                    <option key={rank} value={rank} style={{ color: "#fff" }}>{rank}</option>
+                  ))}
+                </select>
+                <select 
+                  value={filterGenre} 
+                  onChange={(e) => setFilterGenre(e.target.value)} 
+                  style={{ 
+                    flex: 1,
+                    padding: "10px", 
+                    background: "#0f0f1a", 
+                    border: "1px solid #333", 
+                    borderRadius: "8px", 
+                    color: "#fff", 
+                    fontSize: "0.9rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  <option value="">Tous les genres</option>
+                  {GENRES.map(genre => (
+                    <option key={genre} value={genre} style={{ color: "#fff" }}>{genre}</option>
+                  ))}
+                </select>
+              </div>
+              <div style={{ marginTop: "10px", fontSize: "0.85rem", color: "#888" }}>
+                {filteredArtists.length} artistes trouvés
+              </div>
+            </div>
 
             <div className="artists-grid">
               {filteredArtists.sort((a: Artist, b: Artist) => getRankSort(a.rank) - getRankSort(b.rank)).map((artist: Artist) => (

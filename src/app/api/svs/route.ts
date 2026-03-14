@@ -3,8 +3,6 @@ import * as XLSX from "xlsx";
 import path from "path";
 import fs from "fs";
 
-export const dynamic = "force-dynamic";
-
 export type ShopItem = {
   inCart: boolean;
   item: string;
