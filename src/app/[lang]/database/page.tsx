@@ -191,27 +191,34 @@ export default function DatabasePage() {
 
   const teamStats = useMemo(() => {
     let skillDamage = 0;
+    let skillDamageRaw = 0;
     let basicAttackPercent = 0;
-    let skillDamagePercent = 0;
     let attackResist = 0;
     let skillResist = 0;
-    let passiveDamage = 0;
+    let passive = 0;
 
     team.forEach(artist => {
+      const basePassive = 200;
+      passive += basePassive;
+      
+      artist.skillCategories?.dps?.forEach(dps => {
+        const match = dps.match(/(\d+)\s*Damage/);
+        if (match) {
+          skillDamageRaw += parseInt(match[1]);
+        }
+      });
+
       artist.skills?.forEach(skill => {
         const match = skill.match(/(\d+)%/);
         if (match) {
           const val = parseInt(match[1]);
-          if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('resist')) {
-            skillDamagePercent += val;
+          if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('resist') && !skill.toLowerCase().includes('taken')) {
+            skillDamage += val;
           }
-          if (skill.toLowerCase().includes('basic attack')) {
+          if (skill.toLowerCase().includes('basic attack') && !skill.toLowerCase().includes('taken')) {
             basicAttackPercent += val;
           }
-          if (skill.toLowerCase().includes('player damage') || skill.toLowerCase().includes('attack damage')) {
-            passiveDamage += val;
-          }
-          if (skill.toLowerCase().includes('resist')) {
+          if (skill.toLowerCase().includes('resist') || skill.toLowerCase().includes('taken')) {
             if (skill.toLowerCase().includes('skill')) {
               skillResist += val;
             } else {
@@ -222,13 +229,20 @@ export default function DatabasePage() {
       });
     });
 
+    const genreCounts: Record<string, number> = {};
+    team.forEach(artist => {
+      const genre = artist.genre?.toUpperCase() || 'Unknown';
+      genreCounts[genre] = (genreCounts[genre] || 0) + 1;
+    });
+
     return { 
-      skillDamage: skillDamagePercent, 
+      skillDamage, 
+      skillDamageRaw,
       basicAttackPercent, 
-      skillDamagePercent, 
       attackResist, 
       skillResist, 
-      passiveDamage 
+      passive,
+      genreCounts
     };
   }, [team]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -296,14 +310,13 @@ export default function DatabasePage() {
         <AdBanner />
 
         <div className="grid" style={{ gridTemplateColumns: "360px 1fr", gap: "24px", marginTop: "32px" }}>
-          {/* Artist Panel */}
-          <div className="glass-card" style={{ 
-            position: "sticky", 
-            top: "100px", 
-            height: "fit-content",
-            padding: "0",
-            overflow: "hidden"
-          }}>
+          {/* Left Panel - Sticky */}
+          <div style={{ position: "sticky", top: "100px", height: "fit-content", alignSelf: "start" }}>
+            <div className="glass-card" style={{ 
+              padding: "0",
+              overflow: "hidden",
+              marginBottom: "24px"
+            }}>
             <div style={{ 
               padding: "20px", 
               borderBottom: "1px solid var(--border)",
@@ -523,13 +536,13 @@ export default function DatabasePage() {
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", fontSize: "0.75rem" }}>
                     <div style={{ color: "#ff6b6b" }}>
-                      ⚔️ Skill Dmg: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamagePercent}%</span>
+                      ⚔️ Skill Dmg: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamage}%</span>
+                    </div>
+                    <div style={{ color: "#ff8c42" }}>
+                      💥 Skill DMG: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamageRaw}</span>
                     </div>
                     <div style={{ color: "#4ecdc4" }}>
                       👊 Basic Atk: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.basicAttackPercent}%</span>
-                    </div>
-                    <div style={{ color: "#ffe66d" }}>
-                      🗡️ Skill Dmg%: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamagePercent}%</span>
                     </div>
                     <div style={{ color: "#95e1d3" }}>
                       🛡️ Atk Resist: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.attackResist}%</span>
@@ -538,7 +551,7 @@ export default function DatabasePage() {
                       ✨ Skill Resist: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillResist}%</span>
                     </div>
                     <div style={{ color: "#fd79a8" }}>
-                      💥 Passive: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.passiveDamage}%</span>
+                      💫 Passive: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.passive}</span>
                     </div>
                   </div>
                 </div>
@@ -581,7 +594,40 @@ export default function DatabasePage() {
                   🗑️ Tout effacer
                 </button>
               )}
+
+              {team.length > 0 && (
+                <div style={{ 
+                  marginTop: "12px",
+                  padding: "10px",
+                  background: "linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2))",
+                  borderRadius: "var(--radius)",
+                  border: "1px solid rgba(139, 92, 246, 0.3)"
+                }}>
+                  <div style={{ fontSize: "0.65rem", color: "var(--text-muted)", marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                    Genres
+                  </div>
+                  <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                    {Object.entries(teamStats.genreCounts).map(([genre, count]) => (
+                      <span
+                        key={genre}
+                        style={{
+                          padding: "4px 10px",
+                          borderRadius: "var(--radius-full)",
+                          fontSize: "0.7rem",
+                          fontWeight: 600,
+                          background: "rgba(0,0,0,0.4)",
+                          color: "#fff",
+                          border: "1px solid rgba(255,255,255,0.1)"
+                        }}
+                      >
+                        {count} {genre}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
+          </div>
           </div>
 
           {/* Artists Grid */}
