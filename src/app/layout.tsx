@@ -68,7 +68,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <meta name="google-adsense-account" content="ca-pub-5737915177617454" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5737915177617454&consent_ad_storage=denied" />
       </head>
       <body>
         {children}

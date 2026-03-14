@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
+import artistsData from "@/lib/data/artists.json";
 
 const translations: Record<string, any> = {
   fr: {
@@ -93,16 +94,11 @@ export default function HomePage() {
         if (data.weekly_top) {
           setWeeklyTop(data.weekly_top);
           if (data.weekly_top.artist_id) {
-            fetch("/database/data/artists.json")
-              .then(r => r.json())
-              .then(artists => {
-                const artist = artists.find((a: any) => a.id === data.weekly_top.artist_id);
-                if (artist) {
-                  setArtistImage(artist.image || "");
-                  setArtistName(artist.name);
-                }
-              })
-              .catch(() => {});
+            const artist = artistsData.find((a: any) => a.id === data.weekly_top.artist_id);
+            if (artist) {
+              setArtistImage(artist.image || "");
+              setArtistName(artist.name);
+            }
           }
         }
         setLoading(false);

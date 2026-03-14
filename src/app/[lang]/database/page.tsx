@@ -2,8 +2,124 @@
 
 import Head from "next/head";
 import { useState, useMemo } from "react";
+import { useParams } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
+
+const filterTranslations: Record<string, any> = {
+  fr: {
+    all: "Tous", allGenres: "Tous genres", allSpecialties: "Toutes spécialités",
+    search: "Rechercher...",
+    rank: "Rang", genre: "Genre", specialty: "Spécialité",
+    specialties: {
+      "Augmentation dommage": "Augmentation dommage",
+      "Mixte": "Mixte",
+      "Single Car": "Single Car",
+      "Damage Reduction": "Damage Reduction",
+      "HQ Defense": "HQ Defense",
+      "Rassemblement": "Rassemblement",
+      "Économie": "Économie"
+    }
+  },
+  en: {
+    all: "All", allGenres: "All genres", allSpecialties: "All specialties",
+    search: "Search...",
+    rank: "Rank", genre: "Genre", specialty: "Specialty",
+    specialties: {
+      "Augmentation dommage": "Damage Boost",
+      "Mixte": "Hybrid",
+      "Single Car": "Single Car",
+      "Damage Reduction": "Damage Reduction",
+      "HQ Defense": "HQ Defense",
+      "Rassemblement": "Gathering",
+      "Économie": "Economy"
+    }
+  },
+  it: {
+    all: "Tutti", allGenres: "Tutti i generi", allSpecialties: "Tutte le specialità",
+    search: "Cerca...",
+    rank: "Rango", genre: "Genere", specialty: "Specialità",
+    specialties: {
+      "Augmentation dommage": "Aumento danno",
+      "Mixte": "Ibrido",
+      "Single Car": "Single Car",
+      "Damage Reduction": "Riduzione danno",
+      "HQ Defense": "HQ Difesa",
+      "Rassemblement": "Raccolta",
+      "Économie": "Economia"
+    }
+  },
+  es: {
+    all: "Todos", allGenres: "Todos los géneros", allSpecialties: "Todas las especialidades",
+    search: "Buscar...",
+    rank: "Rango", genre: "Género", specialty: "Especialidad",
+    specialties: {
+      "Augmentation dommage": "Aumento de daño",
+      "Mixte": "Híbrido",
+      "Single Car": "Single Car",
+      "Damage Reduction": "Reducción de daño",
+      "HQ Defense": "HQ Defensa",
+      "Rassemblement": "Reunión",
+      "Économie": "Economía"
+    }
+  },
+  pt: {
+    all: "Todos", allGenres: "Todos os gêneros", allSpecialties: "Todas as especialidades",
+    search: "Pesquisar...",
+    rank: "Rank", genre: "Gênero", specialty: "Especialidade",
+    specialties: {
+      "Augmentation dommage": "Aumento de dano",
+      "Mixte": "Híbrido",
+      "Single Car": "Single Car",
+      "Damage Reduction": "Redução de dano",
+      "HQ Defense": "HQ Defesa",
+      "Rassemblement": "Reunião",
+      "Économie": "Economia"
+    }
+  },
+  pl: {
+    all: "Wszystkie", allGenres: "Wszystkie gatunki", allSpecialties: "Wszystkie specjalności",
+    search: "Szukaj...",
+    rank: "Ranga", genre: "Gatunek", specialty: "Specjalność",
+    specialties: {
+      "Augmentation dommage": "Zwiększenie obrażeń",
+      "Mixte": "Hybryda",
+      "Single Car": "Single Car",
+      "Damage Reduction": "Redukcja obrażeń",
+      "HQ Defense": "HQ Obrona",
+      "Rassemblement": "Zbieranie",
+      "Économie": "Ekonomia"
+    }
+  },
+  id: {
+    all: "Semua", allGenres: "Semua genre", allSpecialties: "Semua spesialisasi",
+    search: "Cari...",
+    rank: "Pangkat", genre: "Genre", specialty: "Spesialisasi",
+    specialties: {
+      "Augmentation dommage": "Peningkatan damage",
+      "Mixte": "Hibrida",
+      "Single Car": "Single Car",
+      "Damage Reduction": "Pengurangan damage",
+      "HQ Defense": "HQ Pertahanan",
+      "Rassemblement": "Pengumpulan",
+      "Économie": "Ekonomi"
+    }
+  },
+  ru: {
+    all: "Все", allGenres: "Все жанры", allSpecialties: "Все специальности",
+    search: "Поиск...",
+    rank: "Ранг", genre: "Жанр", specialty: "Специальность",
+    specialties: {
+      "Augmentation dommage": "Увеличение урона",
+      "Mixte": "Гибрид",
+      "Single Car": "Single Car",
+      "Damage Reduction": "Уменьшение урона",
+      "HQ Defense": "HQ Защита",
+      "Rassemblement": "Сбор",
+      "Économie": "Экономика"
+    }
+  }
+};
 
 type Artist = {
   id: number;
@@ -56,6 +172,10 @@ const genreColors: Record<string, string> = {
 };
 
 export default function DatabasePage() {
+  const params = useParams();
+  const lang = (params?.lang as string) || "en";
+  const t = filterTranslations[lang] || filterTranslations.en;
+  
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [team, setTeam] = useState<Artist[]>([]);
 
@@ -102,7 +222,14 @@ export default function DatabasePage() {
       });
     });
 
-    return { skillDamage, basicAttackPercent, skillDamagePercent, attackResist, skillResist, passiveDamage };
+    return { 
+      skillDamage: skillDamagePercent, 
+      basicAttackPercent, 
+      skillDamagePercent, 
+      attackResist, 
+      skillResist, 
+      passiveDamage 
+    };
   }, [team]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
@@ -336,199 +463,25 @@ export default function DatabasePage() {
                 <p style={{ fontSize: "1.1rem" }}>Sélectionnez un artiste</p>
               </div>
             )}
-          </div>
 
-          {/* Artists Grid */}
-          <div>
-            {/* Filters */}
-            <div className="glass-card" style={{ marginBottom: "24px", padding: "20px" }}>
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                <input
-                  type="text"
-                  placeholder="Rechercher..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  style={{
-                    flex: "1",
-                    minWidth: "180px",
-                    padding: "12px 16px",
-                    background: "var(--bg-subtle)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "var(--radius)",
-                    color: "var(--text-primary)",
-                    fontSize: "0.9rem"
-                  }}
-                />
-                <select
-                  value={filterRank}
-                  onChange={(e) => setFilterRank(e.target.value)}
-                  style={{
-                    padding: "12px 16px",
-                    background: "var(--bg-subtle)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "var(--radius)",
-                    color: "var(--text-primary)",
-                    fontSize: "0.9rem",
-                    minWidth: "100px"
-                  }}
-                >
-                  <option value="">Tous</option>
-                  <option value="UR">UR</option>
-                  <option value="SSR">SSR</option>
-                  <option value="SR">SR</option>
-                  <option value="R">R</option>
-                </select>
-                <select
-                  value={filterGenre}
-                  onChange={(e) => setFilterGenre(e.target.value)}
-                  style={{
-                    padding: "12px 16px",
-                    background: "var(--bg-subtle)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "var(--radius)",
-                    color: "var(--text-primary)",
-                    fontSize: "0.9rem",
-                    minWidth: "130px"
-                  }}
-                >
-                  <option value="">Tous genres</option>
-                  <option value="Pop">Pop</option>
-                  <option value="Hip Hop">Hip Hop</option>
-                  <option value="R&B">R&B</option>
-                  <option value="Rock">Rock</option>
-                  <option value="Electronic">Electronic</option>
-                </select>
-                <select
-                  value={filterSpecialty}
-                  onChange={(e) => setFilterSpecialty(e.target.value)}
-                  style={{
-                    padding: "12px 16px",
-                    background: "var(--bg-subtle)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "var(--radius)",
-                    color: "var(--text-primary)",
-                    fontSize: "0.9rem",
-                    minWidth: "150px"
-                  }}
-                >
-                  <option value="">Toutes spécialités</option>
-                  <option value="Augmentation dommage">Augmentation dommage</option>
-                  <option value="Mixte">Mixte</option>
-                  <option value="Single Car">Single Car</option>
-                  <option value="Damage Reduction">Damage Reduction</option>
-                  <option value="HQ Defense">HQ Defense</option>
-                  <option value="Rassemblement">Rassemblement</option>
-                  <option value="Économie">Économie</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Grid - Full Portraits */}
-            <div style={{ 
-              display: "grid", 
-              gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", 
-              gap: "12px" 
-            }}>
-              {filteredArtists
-                .sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank])
-                .map((artist) => (
-                  <button
-                    key={artist.id}
-                    onClick={() => selectArtist(artist)}
-                    style={{
-                      background: selectedArtist?.id === artist.id 
-                        ? `${rankColors[artist.rank]}22`
-                        : "var(--bg-card)",
-                      border: `2px solid ${selectedArtist?.id === artist.id ? rankColors[artist.rank] : "var(--border)"}`,
-                      borderRadius: "var(--radius-md)",
-                      padding: "0",
-                      cursor: "pointer",
-                      transition: "all 0.2s ease",
-                      aspectRatio: "3/4",
-                      overflow: "hidden",
-                      position: "relative"
-                    }}
-                  >
-                    {artist.image ? (
-                      <img 
-                        src={`/assets/images/artists/${artist.image}`}
-                        alt={artist.name}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover"
-                        }}
-                      />
-                    ) : (
-                      <div style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "100%",
-                        width: "100%",
-                        background: `linear-gradient(135deg, ${rankColors[artist.rank]}33, var(--bg-subtle))`
-                      }}>
-                        <span style={{ fontSize: "2.5rem", fontWeight: 800, color: rankColors[artist.rank] }}>{artist.name.charAt(0)}</span>
-                      </div>
-                    )}
-                    {/* Rank badge overlay */}
-                    <div style={{
-                      position: "absolute",
-                      bottom: "6px",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      padding: "4px 10px",
-                      borderRadius: "var(--radius-full)",
-                      fontSize: "0.65rem",
-                      fontWeight: 700,
-                      background: rankColors[artist.rank],
-                      color: "#000",
-                      whiteSpace: "nowrap"
-                    }}>
-                      {artist.rank}
-                    </div>
-                  </button>
-                ))}
-            </div>
-
-            {filteredArtists.length === 0 && (
-              <div className="text-center" style={{ padding: "60px", color: "var(--text-muted)" }}>
-                <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🔍</div>
-                <p>Aucun artiste trouvé</p>
-              </div>
-            )}
-          </div>
-
-          {/* Team Builder */}
-          <div className="glass-card" style={{ 
-            position: "sticky", 
-            top: "100px", 
-            height: "fit-content",
-            padding: "0",
-            overflow: "hidden",
-            marginTop: "24px"
-          }}>
+            {/* Team Builder */}
             <div style={{ 
               padding: "20px", 
-              borderBottom: "1px solid var(--border)",
-              background: "linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15))"
+              borderTop: "1px solid var(--border)",
+              background: "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))"
             }}>
-              <span style={{ fontWeight: 600, fontSize: "0.9rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px" }}>
+              <div style={{ fontWeight: 600, fontSize: "0.85rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "16px" }}>
                 Team Builder ({team.length}/5)
-              </span>
-            </div>
-
-            <div style={{ padding: "16px" }}>
-              {/* Team slots */}
-              <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
+              </div>
+              
+              <div style={{ display: "flex", gap: "6px", marginBottom: "16px", flexWrap: "wrap" }}>
                 {[0,1,2,3,4].map(i => (
                   <div
                     key={i}
                     onClick={() => team[i] && removeFromTeam(team[i].id)}
                     style={{
-                      width: "50px",
-                      height: "65px",
+                      width: "48px",
+                      height: "60px",
                       borderRadius: "var(--radius)",
                       border: `2px solid ${team[i] ? rankColors[team[i].rank] : "var(--border)"}`,
                       background: team[i] ? `linear-gradient(135deg, ${rankColors[team[i].rank]}22, var(--bg-subtle))` : "var(--bg-subtle)",
@@ -547,60 +500,62 @@ export default function DatabasePage() {
                           style={{ width: "100%", height: "100%", objectFit: "cover" }}
                         />
                       ) : (
-                        <span style={{ fontSize: "1.5rem", fontWeight: 800, color: rankColors[team[i].rank] }}>
+                        <span style={{ fontSize: "1.3rem", fontWeight: 800, color: rankColors[team[i].rank] }}>
                           {team[i].name.charAt(0)}
                         </span>
                       )
                     ) : (
-                      <span style={{ color: "var(--text-dim)", fontSize: "1.2rem" }}>+</span>
+                      <span style={{ color: "var(--text-dim)", fontSize: "1rem" }}>+</span>
                     )}
                   </div>
                 ))}
               </div>
 
-              {/* Team stats */}
               {team.length > 0 && (
                 <div style={{ 
                   background: "var(--bg-subtle)", 
                   borderRadius: "var(--radius)",
-                  padding: "12px"
+                  padding: "12px",
+                  marginBottom: "12px"
                 }}>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginBottom: "8px", textTransform: "uppercase" }}>
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginBottom: "8px", textTransform: "uppercase" }}>
                     Stats combinés
                   </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", fontSize: "0.8rem" }}>
-                    <div style={{ color: "var(--primary)" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", fontSize: "0.75rem" }}>
+                    <div style={{ color: "#ff6b6b" }}>
                       ⚔️ Skill Dmg: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamagePercent}%</span>
                     </div>
-                    <div style={{ color: "var(--secondary)" }}>
+                    <div style={{ color: "#4ecdc4" }}>
                       👊 Basic Atk: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.basicAttackPercent}%</span>
                     </div>
-                    <div style={{ color: "var(--accent)" }}>
+                    <div style={{ color: "#ffe66d" }}>
+                      🗡️ Skill Dmg%: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillDamagePercent}%</span>
+                    </div>
+                    <div style={{ color: "#95e1d3" }}>
                       🛡️ Atk Resist: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.attackResist}%</span>
                     </div>
-                    <div style={{ color: "var(--accent-yellow)" }}>
+                    <div style={{ color: "#a29bfe" }}>
                       ✨ Skill Resist: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.skillResist}%</span>
                     </div>
-                    <div style={{ color: "#ff69b4", gridColumn: "span 2" }}>
-                      💥 Passive Dmg: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.passiveDamage}%</span>
+                    <div style={{ color: "#fd79a8" }}>
+                      💥 Passive: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.passiveDamage}%</span>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Add to team button */}
               {selectedArtist && !team.find(a => a.id === selectedArtist.id) && team.length < 5 && (
                 <button
                   onClick={() => addToTeam(selectedArtist)}
                   style={{
                     width: "100%",
-                    marginTop: "12px",
                     padding: "10px",
                     borderRadius: "var(--radius)",
                     border: "none",
-                    background: "linear-gradient(135deg, var(--primary), #ff80ab)",
+                    background: "linear-gradient(135deg, #8b5cf6, #06b6d4)",
                     color: "#fff",
                     fontWeight: 600,
+                    fontSize: "0.85rem",
                     cursor: "pointer"
                   }}
                 >
@@ -619,7 +574,7 @@ export default function DatabasePage() {
                     border: "1px solid var(--border)",
                     background: "transparent",
                     color: "var(--text-muted)",
-                    fontSize: "0.8rem",
+                    fontSize: "0.75rem",
                     cursor: "pointer"
                   }}
                 >
@@ -628,13 +583,109 @@ export default function DatabasePage() {
               )}
             </div>
           </div>
+
+          {/* Artists Grid */}
+          <div className="grid-container">
+            {filteredArtists
+              .sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank])
+              .map((artist) => (
+                <button
+                  key={artist.id}
+                  onClick={() => selectArtist(artist)}
+                  style={{
+                    background: selectedArtist?.id === artist.id 
+                      ? `${rankColors[artist.rank]}22`
+                      : "var(--bg-card)",
+                    border: `2px solid ${selectedArtist?.id === artist.id ? rankColors[artist.rank] : "var(--border)"}`,
+                    borderRadius: "var(--radius-md)",
+                    padding: "0",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                    aspectRatio: "3/4",
+                    overflow: "hidden",
+                    position: "relative"
+                  }}
+                >
+                  {artist.image ? (
+                    <img 
+                      src={`/assets/images/artists/${artist.image}`}
+                      alt={artist.name}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover"
+                      }}
+                    />
+                  ) : (
+                    <div style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      height: "100%",
+                      width: "100%",
+                      background: `linear-gradient(135deg, ${rankColors[artist.rank]}33, var(--bg-subtle))`
+                    }}>
+                      <span style={{ fontSize: "2.5rem", fontWeight: 800, color: rankColors[artist.rank] }}>{artist.name.charAt(0)}</span>
+                    </div>
+                  )}
+                  <div style={{
+                    position: "absolute",
+                    bottom: "6px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    padding: "4px 10px",
+                    borderRadius: "var(--radius-full)",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    background: rankColors[artist.rank],
+                    color: "#000",
+                    whiteSpace: "nowrap"
+                  }}>
+                    {artist.rank}
+                  </div>
+                </button>
+              ))}
+          </div>
+
+          {filteredArtists.length === 0 && (
+            <div className="text-center" style={{ padding: "60px", color: "var(--text-muted)" }}>
+              <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🔍</div>
+              <p>Aucun artiste trouvé</p>
+            </div>
+          )}
         </div>
       </div>
 
       <style jsx>{`
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 12px;
+        }
+        @media (max-width: 1400px) {
+          .grid-container {
+            grid-template-columns: repeat(5, 1fr) !important;
+          }
+        }
+        @media (max-width: 1100px) {
+          .grid-container {
+            grid-template-columns: repeat(4, 1fr) !important;
+          }
+        }
         @media (max-width: 900px) {
           .grid {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .grid-container {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .grid-container {
+            grid-template-columns: repeat(2, 1fr) !important;
           }
         }
       `}</style>

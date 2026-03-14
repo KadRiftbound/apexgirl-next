@@ -24,16 +24,39 @@ export default function CookieConsent() {
     const consent = localStorage.getItem('cookie_consent');
     if (!consent) {
       setShow(true);
+    } else if (consent === 'accepted' && typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted'
+      });
     }
   }, []);
 
   const accept = () => {
     localStorage.setItem('cookie_consent', 'accepted');
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted'
+      });
+    }
     setShow(false);
   };
 
   const decline = () => {
     localStorage.setItem('cookie_consent', 'declined');
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+    }
     setShow(false);
   };
 
