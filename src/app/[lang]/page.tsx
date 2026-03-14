@@ -136,7 +136,7 @@ export default function HomePage() {
           <p style={{ fontSize: "1.125rem", color: "var(--text-muted)", marginBottom: "32px" }} dangerouslySetInnerHTML={{ __html: text.subtitle }} />
           
           <div className="grid grid-cols-3" style={{ maxWidth: "800px", margin: "0 auto", gap: "16px" }}>
-            <Link href={`/${lang}/database/`} className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+            <Link href={`/${lang}/artists/`} className="btn" style={{ padding: "24px", fontSize: "1.125rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
               <span style={{ fontSize: "2.5rem" }}>🎤</span>
               {text.discoverArtists}
             </Link>
@@ -346,7 +346,7 @@ export default function HomePage() {
           <h2 className="section-title text-center" style={{ marginBottom: "40px" }}>{text.exploreSite}</h2>
 
           <div className="grid grid-cols-4">
-            <Link href={`/${lang}/database/`} className="glass-card" style={{ 
+            <Link href={`/${lang}/artists/`} className="glass-card" style={{ 
               display: "block", 
               textAlign: "center", 
               textDecoration: "none",
@@ -407,7 +407,7 @@ export default function HomePage() {
           <p className="text-muted" style={{ marginBottom: "24px", maxWidth: "500px", margin: "0 auto 24px" }}>
             {text.unlockPotential}
           </p>
-          <Link href={`/${lang}/database/`} className="btn" style={{ padding: "16px 40px", fontSize: "1rem" }}>
+          <Link href={`/${lang}/artists/`} className="btn" style={{ padding: "16px 40px", fontSize: "1rem" }}>
             {text.startNow}
           </Link>
         </section>

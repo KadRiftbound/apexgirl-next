@@ -1,0 +1,143 @@
+const { Redis } = require('@upstash/redis');
+
+const redis = new Redis({
+  url: 'https://exotic-jay-72019.upstash.io',
+  token: 'gQAAAAAAARlTAAIncDE4ODViYTI5ZjcyZTY0YWMzYmQ4ZDBkMzU4NzIyNWE2N3AxNzIwMTk'
+});
+
+const votes = [
+  { artist_id: 33, artist_name: 'Alexandra', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 34, artist_name: 'Anastasia', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 36, artist_name: 'Beatrice', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 39, artist_name: 'Elizabeth', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 40, artist_name: 'Gabriella', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 41, artist_name: 'Genevieve', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 37, artist_name: 'Isadora', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 35, artist_name: 'Josephine', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 38, artist_name: 'Marguerite', rank: 'UR', count: 0, week_count: 0 },
+  { artist_id: 43, artist_name: 'Ayuni', rank: 'UR Bali', count: 0, week_count: 0 },
+  { artist_id: 42, artist_name: 'Bunga', rank: 'UR Bali', count: 0, week_count: 0 },
+  { artist_id: 44, artist_name: 'Putri', rank: 'UR Bali', count: 0, week_count: 0 },
+  { artist_id: 3, artist_name: 'Alice', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 68, artist_name: 'Antonia', rank: 'SSR', count: 2, week_count: 2 },
+  { artist_id: 6, artist_name: 'Anya', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 10, artist_name: 'Audrey', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 61, artist_name: 'Aurelia', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 15, artist_name: 'Aurora', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 11, artist_name: 'Avery', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 51, artist_name: 'Aya', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 12, artist_name: 'Ayaka', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 17, artist_name: 'Brooklyn', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 14, artist_name: 'Chizuru', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 4, artist_name: 'Cindy', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 26, artist_name: 'Claire', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 64, artist_name: 'Claudius', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 65, artist_name: 'Cornelia', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 45, artist_name: 'Dewi', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 37, artist_name: 'Eirene', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 66, artist_name: 'Eri', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 2, artist_name: 'Everly', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 57, artist_name: 'Flora', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 39, artist_name: 'Haruki', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 47, artist_name: 'Hestia', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 60, artist_name: 'Hikari', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 58, artist_name: 'Isla', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 22, artist_name: 'Julia', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 30, artist_name: 'Kasha', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 50, artist_name: 'Kelly', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 24, artist_name: 'Kesnia', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 1, artist_name: 'Kokoro', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 32, artist_name: 'Leilani', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 46, artist_name: 'Lestari', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 55, artist_name: 'Margot', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 63, artist_name: 'Marina', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 38, artist_name: 'Megan', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 40, artist_name: 'Mellissa', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 53, artist_name: 'Mio', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 42, artist_name: 'Miyuki', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 19, artist_name: 'Moana', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 8, artist_name: 'Nastassja', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 44, artist_name: 'Ningsih', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 43, artist_name: 'Noora', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 21, artist_name: 'Nova', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 59, artist_name: 'Octavia', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 27, artist_name: 'Paisley', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 25, artist_name: 'Ratih', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 41, artist_name: 'Riku', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 62, artist_name: 'Rin', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 49, artist_name: 'Rosemary', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 48, artist_name: 'Ruby', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 7, artist_name: 'Sari', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 16, artist_name: 'Savannah', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 54, artist_name: 'Sienna', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 29, artist_name: 'Skylar', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 23, artist_name: 'Sora', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 31, artist_name: 'Talia', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 56, artist_name: 'Valentina', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 67, artist_name: 'Vivienne', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 33, artist_name: 'Xenia', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 52, artist_name: 'Yumeno', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 28, artist_name: 'Yuuko', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 20, artist_name: 'Zendaya', rank: 'SSR', count: 0, week_count: 0 },
+  { artist_id: 13, artist_name: 'Bella', rank: 'SSR VIP', count: 0, week_count: 0 },
+  { artist_id: 9, artist_name: 'Caroline', rank: 'SSR VIP', count: 0, week_count: 0 },
+  { artist_id: 5, artist_name: 'Longkui', rank: 'SSR AH', count: 0, week_count: 0 },
+  { artist_id: 18, artist_name: 'Monica', rank: 'SSR AH', count: 0, week_count: 0 },
+  { artist_id: 57, artist_name: 'Abigail', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 58, artist_name: 'Angelina', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 62, artist_name: 'Aria', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 64, artist_name: 'Chloe', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 45, artist_name: 'Eleanor', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 50, artist_name: 'Ella', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 56, artist_name: 'Emily', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 54, artist_name: 'Evelyn', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 66, artist_name: 'Grace', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 65, artist_name: 'Hailey', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 61, artist_name: 'Hazel', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 49, artist_name: 'Lily', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 47, artist_name: 'Luna', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 48, artist_name: 'Madison', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 55, artist_name: 'Natalie', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 59, artist_name: 'Penelope', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 60, artist_name: 'Samantha', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 51, artist_name: 'Sarah', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 63, artist_name: 'Scarlett', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 53, artist_name: 'Stella', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 46, artist_name: 'Victoria', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 52, artist_name: 'Violet', rank: 'SR', count: 0, week_count: 0 },
+  { artist_id: 1001, artist_name: 'Charlotte', rank: 'R', count: 0, week_count: 0 },
+  { artist_id: 1002, artist_name: 'Harper', rank: 'R', count: 0, week_count: 0 },
+  { artist_id: 1003, artist_name: 'Olivia', rank: 'R', count: 0, week_count: 0 },
+  { artist_id: 1004, artist_name: 'Isabella', rank: 'R', count: 0, week_count: 0 },
+  { artist_id: 1005, artist_name: 'Ava', rank: 'R', count: 0, week_count: 0 },
+  { artist_id: 1006, artist_name: 'Emma', rank: 'R', count: 0, week_count: 0 },
+  { artist_id: 1007, artist_name: 'Sophia', rank: 'R', count: 0, week_count: 0 },
+  { artist_id: 1008, artist_name: 'Mia', rank: 'R', count: 0, week_count: 0 },
+  { artist_id: 1009, artist_name: 'Annabelle', rank: 'R', count: 0, week_count: 0 },
+];
+
+async function seed() {
+  try {
+    await redis.set('votes:all', JSON.stringify(votes));
+    console.log('Votes seeded successfully!');
+    
+    const result = await redis.get('votes:all');
+    console.log('Verified:', JSON.parse(result).length, 'artists in database');
+    
+    await redis.set('weekly_top', JSON.stringify({
+      artist_id: 68,
+      artist_name: 'Antonia',
+      rank: 'SSR',
+      count: 2,
+      week_count: 2,
+      week_start: '2026-03-09'
+    }));
+    console.log('Weekly top set!');
+    
+    console.log('\\nVoting system is now ready!');
+  } catch (e) {
+    console.error('Error:', e.message);
+  }
+}
+
+seed();

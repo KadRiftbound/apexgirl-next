@@ -63,12 +63,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     icons: {
       icon: [
-        { url: "/assets/images/favicon.png", sizes: "48x48" },
-        { url: "/assets/images/favicon.png", sizes: "96x96" },
-        { url: "/assets/images/favicon.png", sizes: "192x192" },
-        { url: "/assets/images/favicon.png", sizes: "512x512" },
+        { url: "/assets/favicon.png", sizes: "48x48" },
+        { url: "/assets/favicon.png", sizes: "96x96" },
+        { url: "/assets/favicon.png", sizes: "192x192" },
+        { url: "/assets/favicon.png", sizes: "512x512" },
       ],
-      apple: { url: "/assets/images/favicon.png" },
+      apple: { url: "/assets/favicon.png" },
     },
     robots: {
       index: true,
@@ -162,7 +162,7 @@ export default async function LocaleLayout({
       <header className="header" role="banner">
         <div className="header-inner">
           <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
-            <img src="/assets/images/logo.png" alt="TopGirl" />
+            <img src="/assets/logo.png" alt="TopGirl" />
             <span>TopGirl Guide</span>
           </Link>
           <nav className="nav" role="navigation" aria-label="Main navigation">
@@ -198,7 +198,7 @@ export default async function LocaleLayout({
             <h4>{lang === "fr" ? "Navigation" : "Navigation"}</h4>
             <Link href={`/${lang}/`}>{lang === "fr" ? "Accueil" : "Home"}</Link>
             <Link href={`/${lang}/codes/`}>{lang === "fr" ? "Codes" : "Codes"}</Link>
-            <Link href={`/${lang}/database/`}>{lang === "fr" ? "Artistes" : "Artists"}</Link>
+            <Link href={`/${lang}/artists/`}>{lang === "fr" ? "Artistes" : "Artists"}</Link>
             <Link href={`/${lang}/tools/`}>{lang === "fr" ? "Outils" : "Tools"}</Link>
             <Link href={`/${lang}/tierlist/`}>Tier List</Link>
           </div>
@@ -209,9 +209,10 @@ export default async function LocaleLayout({
           </div>
           <div>
             <h4>{lang === "fr" ? "Légal" : "Legal"}</h4>
-            <a href="#">{lang === "fr" ? "Mentions Légales" : "Terms of Service"}</a>
-            <a href="#">{lang === "fr" ? "Confidentialité" : "Privacy Policy"}</a>
-            <a href="#">{lang === "fr" ? "Contact" : "Contact"}</a>
+            <Link href={`/${lang}/mentions-legales`}>{lang === "fr" ? "Mentions Légales" : "Legal Notice"}</Link>
+            <Link href={`/${lang}/confidentialite`}>{lang === "fr" ? "Confidentialité" : "Privacy Policy"}</Link>
+            <Link href={`/${lang}/cookie-settings`}>{lang === "fr" ? "Cookies" : "Cookies"}</Link>
+            <Link href={`/${lang}/contact`}>Contact</Link>
           </div>
         </div>
         <div className="footer-bottom">

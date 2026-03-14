@@ -55,8 +55,8 @@
       "offensive": [],
       "hp": [],
       "defense": [
-        "12% Reduce Skill Damage Taken",
-        "12% Reduction Normal Attack Damage"
+        "12% Skill Damage Reduction",
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -188,8 +188,8 @@
       "offensive": [],
       "hp": [],
       "defense": [
-        "12% Reduce Skill Damage Taken",
-        "12% Reduction Normal Attack Damage"
+        "12% Skill Damage Reduction",
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -221,7 +221,7 @@
       "offensive": [],
       "hp": [],
       "defense": [
-        "12% Reduction Normal Attack Damage",
+        "12% Basic Damage Reduction",
         "12% Skill Damage Reduction"
       ],
       "speed": []
@@ -522,7 +522,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -661,7 +661,7 @@
       "hp": [],
       "defense": [
         "12% Skill Damage Reduction",
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -730,7 +730,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage",
+        "12% Basic Damage Reduction",
         "12% Skill Damage Reduction"
       ],
       "speed": []
@@ -871,7 +871,7 @@
       ],
       "hp": [],
       "defense": [
-        "15% Reduction Basic Attack Damage"
+        "15% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -1077,7 +1077,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -1113,7 +1113,7 @@
         "12% Fan Capacity"
       ],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -1146,7 +1146,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage",
+        "12% Basic Damage Reduction",
         "12% Skill Damage Reduction"
       ],
       "speed": []
@@ -1183,7 +1183,7 @@
         "12% Fan Capacity"
       ],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -1740,7 +1740,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -1774,7 +1774,7 @@
       ],
       "hp": [],
       "defense": [
-        "15% Reduction Basic Attack Damage"
+        "15% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -1807,7 +1807,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage",
+        "12% Basic Damage Reduction",
         "12% Skill Damage Reduction"
       ],
       "speed": []
@@ -2018,7 +2018,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage",
+        "12% Basic Damage Reduction",
         "12% Skill Damage Reduction"
       ],
       "speed": []
@@ -2054,7 +2054,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -2089,7 +2089,7 @@
       ],
       "hp": [],
       "defense": [
-        "15% Reduction Basic Attack Damage"
+        "15% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -2438,7 +2438,7 @@
         "14% Fan Capacity"
       ],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -2543,7 +2543,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -2577,7 +2577,7 @@
       ],
       "hp": [],
       "defense": [
-        "12% Reduction Basic Attack Damage"
+        "12% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -2971,7 +2971,7 @@
     "genre": "Pop",
     "skills": [
       "10 sec/800 Damage",
-      "5% Reduce Skill Damage Taken",
+      "5% Skill Damage Reduction",
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Dancer from Echo.",
@@ -2988,7 +2988,7 @@
       ],
       "hp": [],
       "defense": [
-        "5% Reduce Skill Damage Taken"
+        "5% Skill Damage Reduction"
       ],
       "speed": []
     },
@@ -3038,7 +3038,7 @@
     "genre": "Rock",
     "skills": [
       "10 sec/800 Damage",
-      "5% Reduce Normal Damage Taken",
+      "5% Damage Reduction",
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Sparkle Artists.",
@@ -3055,7 +3055,7 @@
       ],
       "hp": [],
       "defense": [
-        "5% Reduce Normal Damage Taken"
+        "5% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -3137,7 +3137,7 @@
     "genre": "Hip Hop",
     "skills": [
       "10 sec/800 Damage",
-      "5% Reduce Normal Damage Taken",
+      "5% Damage Reduction",
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Luna.",
@@ -3154,7 +3154,7 @@
         "2% Fan Capacity"
       ],
       "defense": [
-        "5% Reduce Normal Damage Taken"
+        "5% Basic Damage Reduction"
       ],
       "speed": []
     },
@@ -3170,7 +3170,7 @@
     "genre": "EDM",
     "skills": [
       "10 sec/800 Damage",
-      "5% Reduce Normal Damage Taken",
+      "5% Damage Reduction",
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Fantasy Vibes.",
@@ -3185,7 +3185,7 @@
       "offensive": [],
       "hp": [],
       "defense": [
-        "5% Reduce Normal Damage Taken"
+        "5% Basic Damage Reduction"
       ],
       "speed": [
         "40% Drive Speed Increase"
@@ -3203,7 +3203,7 @@
     "genre": "EDM",
     "skills": [
       "10 sec/800 Damage",
-      "5% Reduce Skill Damage Taken",
+      "5% Skill Damage Reduction",
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Fantasy Vibes.",
@@ -3220,7 +3220,7 @@
       ],
       "hp": [],
       "defense": [
-        "5% Reduce Skill Damage Taken"
+        "5% Skill Damage Reduction"
       ],
       "speed": []
     },
@@ -3303,7 +3303,7 @@
     "genre": "R&B",
     "skills": [
       "10 sec/800 Damage",
-      "5% Reduce Skill Damage Taken",
+      "5% Skill Damage Reduction",
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Radiance.",
@@ -3318,7 +3318,7 @@
       "offensive": [],
       "hp": [],
       "defense": [
-        "5% Reduce Skill Damage Taken"
+        "5% Skill Damage Reduction"
       ],
       "speed": [
         "40% Drive Speed Increase"
@@ -3368,7 +3368,7 @@
     "genre": "Rock",
     "skills": [
       "10 sec/800 Damage",
-      "5% Reduce Skill Damage Taken",
+      "5% Skill Damage Reduction",
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Neon.",
@@ -3385,7 +3385,7 @@
         "2% Fan Capacity"
       ],
       "defense": [
-        "5% Reduce Skill Damage Taken"
+        "5% Skill Damage Reduction"
       ],
       "speed": []
     },
@@ -3565,7 +3565,7 @@
     "genre": "Hip Hop",
     "skills": [
       "10 sec/300 Damage",
-      "5% Reduce Normal Damage Taken",
+      "5% Damage Reduction",
       "None"
     ],
     "description": "A talented Center from None.",
@@ -3580,7 +3580,7 @@
       "offensive": [],
       "hp": [],
       "defense": [
-        "5% Reduce Normal Damage Taken"
+        "5% Basic Damage Reduction"
       ],
       "speed": []
     },

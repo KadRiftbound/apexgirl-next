@@ -31,6 +31,7 @@ type Artist = {
 
 const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
 const RANKS = ['UR', 'SSR', 'SR', 'R', 'UR Bali'];
+const SPECIALTIES = ['Augmentation dommage', 'Damage Reduction', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'];
 
 export default function ArtistsPage() {
   const params = useParams();
@@ -40,6 +41,7 @@ export default function ArtistsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
+  const [filterSpecialty, setFilterSpecialty] = useState("");
   const [mounted, setMounted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
@@ -122,12 +124,14 @@ export default function ArtistsPage() {
       const matchesSearch = !q || artist.name.toLowerCase().includes(q);
       const matchesRank = !filterRank || artist.rank === filterRank;
       const matchesGenre = !filterGenre || artist.genre === filterGenre;
-      return matchesSearch && matchesRank && matchesGenre;
+      const matchesSpecialty = !filterSpecialty || artist.specialty === filterSpecialty;
+      return matchesSearch && matchesRank && matchesGenre && matchesSpecialty;
     });
-  }, [searchQuery, filterRank, filterGenre]);
+  }, [searchQuery, filterRank, filterGenre, filterSpecialty]);
 
   const rankOrder: Record<string, number> = { UR: 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4 };
   const getRankSort = (r: string) => rankOrder[r] || 99;
+  const sortedArtists = [...filteredArtists].sort((a, b) => getRankSort(a.rank) - getRankSort(b.rank));
 
   if (!mounted) {
     return <div style={{ padding: "100px", textAlign: "center", color: "#fff" }}>Loading...</div>;
@@ -151,7 +155,7 @@ export default function ArtistsPage() {
         <div style={{ position: "relative" }}>
           
           {/* LEFT: Fixed Panel */}
-          <div ref={panelRef} className="left-panel">
+          <div ref={panelRef} style={{ position: "absolute", top: "110px", left: "0px" }} className="left-panel">
                
               {/* Artist Overview Card - compact */}
               <div style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: 0, marginBottom: "6px", overflow: "hidden" }}>
@@ -315,14 +319,33 @@ export default function ArtistsPage() {
                     <option key={genre} value={genre} style={{ color: "#fff" }}>{genre}</option>
                   ))}
                 </select>
+                <select 
+                  value={filterSpecialty} 
+                  onChange={(e) => setFilterSpecialty(e.target.value)} 
+                  style={{ 
+                    flex: 1,
+                    padding: "10px", 
+                    background: "#0f0f1a", 
+                    border: "1px solid #333", 
+                    borderRadius: "8px", 
+                    color: "#fff", 
+                    fontSize: "0.9rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  <option value="">Toutes spécialités</option>
+                  {SPECIALTIES.map(spec => (
+                    <option key={spec} value={spec} style={{ color: "#fff" }}>{spec}</option>
+                  ))}
+                </select>
               </div>
               <div style={{ marginTop: "10px", fontSize: "0.85rem", color: "#888" }}>
                 {filteredArtists.length} artistes trouvés
               </div>
             </div>
 
-            <div className="artists-grid">
-              {filteredArtists.sort((a: Artist, b: Artist) => getRankSort(a.rank) - getRankSort(b.rank)).map((artist: Artist) => (
+            <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
+              {sortedArtists.map((artist: Artist) => (
                 <button key={artist.id} onClick={() => setSelectedArtist(artist)} style={{ background: selectedArtist?.id === artist.id ? `${rankColors[artist.rank]}22` : "rgba(30,30,50,0.9)", border: `2px solid ${selectedArtist?.id === artist.id ? rankColors[artist.rank] : "rgba(255,255,255,0.1)"}`, borderRadius: "12px", padding: 0, cursor: "pointer", aspectRatio: "3/4", overflow: "hidden", position: "relative" }}>
                   {artist.image ? (
                     <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -339,40 +362,35 @@ export default function ArtistsPage() {
 
       <style jsx>{`
         .left-panel {
-          position: absolute;
-          top: 110px;
-          left: 16px;
-          width: 560px;
-          z-index: 10;
+          width: 45%;
+          max-width: 600px;
         }
         .artists-container {
-          margin-left: 580px;
+          margin-left: 48%;
+          width: 52%;
           min-height: 100vh;
         }
         .artists-grid {
           display: grid;
-          grid-template-columns: repeat(9, 1fr);
-          gap: 8px;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 6px;
         }
         @media (max-width: 2200px) {
-          .artists-grid { grid-template-columns: repeat(8, 1fr); }
-        }
-        @media (max-width: 1900px) {
-          .artists-grid { grid-template-columns: repeat(7, 1fr); }
-        }
-        @media (max-width: 1600px) {
           .artists-grid { grid-template-columns: repeat(6, 1fr); }
         }
-        @media (max-width: 1300px) {
+        @media (max-width: 1900px) {
           .artists-grid { grid-template-columns: repeat(5, 1fr); }
         }
-        @media (max-width: 1000px) {
+        @media (max-width: 1600px) {
+          .artists-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        @media (max-width: 1300px) {
           .artists-grid { grid-template-columns: repeat(4, 1fr); }
         }
-        @media (max-width: 700px) {
+        @media (max-width: 1000px) {
           .artists-grid { grid-template-columns: repeat(3, 1fr); }
         }
-        @media (max-width: 500px) {
+        @media (max-width: 700px) {
           .artists-grid { grid-template-columns: repeat(2, 1fr); }
         }
       `}</style>
