@@ -62,8 +62,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       description: meta.description,
     },
     icons: {
-      icon: "/assets/images/favicon.png",
-      apple: "/assets/images/favicon.png",
+      icon: [
+        { url: "/assets/images/favicon.png", sizes: "48x48" },
+        { url: "/assets/images/favicon.png", sizes: "96x96" },
+        { url: "/assets/images/favicon.png", sizes: "192x192" },
+        { url: "/assets/images/favicon.png", sizes: "512x512" },
+      ],
+      apple: { url: "/assets/images/favicon.png" },
     },
     robots: {
       index: true,
@@ -91,10 +96,10 @@ export default async function LocaleLayout({
   const { lang } = await params;
   
   const navItems = [
-    { href: `/${lang}/`, label: lang === "fr" ? "Accueil" : lang === "en" ? "Home" : getNavLabel(lang, "home") },
     { href: `/${lang}/codes/`, label: lang === "fr" ? "Codes" : lang === "en" ? "Codes" : getNavLabel(lang, "codes") },
-    { href: `/${lang}/database/`, label: lang === "fr" ? "Artistes" : lang === "en" ? "Artists" : getNavLabel(lang, "database") },
+    { href: `/${lang}/artists/`, label: lang === "fr" ? "Artistes" : lang === "en" ? "Artists" : getNavLabel(lang, "database") },
     { href: `/${lang}/tierlist/`, label: lang === "fr" ? "Tier List" : "Tier List" },
+    { href: `/${lang}/guides/`, label: lang === "fr" ? "Guides" : "Guides" },
     { href: `/${lang}/events/`, label: lang === "fr" ? "Événements" : lang === "en" ? "Events" : getNavLabel(lang, "events") },
     { href: `/${lang}/tools/`, label: lang === "fr" ? "Outils" : lang === "en" ? "Tools" : getNavLabel(lang, "tools"), cta: true },
   ];
@@ -158,7 +163,7 @@ export default async function LocaleLayout({
         <div className="header-inner">
           <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
             <img src="/assets/images/logo.png" alt="TopGirl" />
-            <span>TopGirl</span>
+            <span>TopGirl Guide</span>
           </Link>
           <nav className="nav" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => (

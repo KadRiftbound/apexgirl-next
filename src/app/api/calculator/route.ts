@@ -197,50 +197,128 @@ export async function GET() {
       if (items.length > 0) result["Collection Gems"] = items;
     }
 
-    // Assets
+    // Assets - Jewelry, Car, Property with levels
     if (wb.Sheets["Assets"]) {
       const raw = XLSX.utils.sheet_to_json(wb.Sheets["Assets"], { header: 1 }) as unknown[][];
-      const items: CalcItem[] = [];
-      for (const row of raw) {
+      const itemsJewelry: CalcItem[] = [];
+      const itemsCar: CalcItem[] = [];
+      const itemsProperty: CalcItem[] = [];
+      
+      for (let rowIdx = 2; rowIdx < raw.length; rowIdx++) {
+        const row = raw[rowIdx];
         if (!Array.isArray(row)) continue;
+        
         const level = Number(row[0]);
-        const cost = Number(row[1]) || 0;
-        if (level > 0 && cost > 0) {
-          items.push({ category: "Assets", item: "Asset", level, resources: { Coins: cost } });
+        if (!level || level < 1) continue;
+        
+        // Basic Gold Assets columns: Jewelry(col 1), Car(col 2), Property(col 3)
+        const jewelryCost = Number(row[1]) || 0;
+        const carCost = Number(row[2]) || 0;
+        const propertyCost = Number(row[3]) || 0;
+        
+        if (jewelryCost > 0) {
+          itemsJewelry.push({ category: "Assets", item: "Jewelry", tier: "Basic Gold", level, resources: { Coins: jewelryCost } });
+        }
+        if (carCost > 0) {
+          itemsCar.push({ category: "Assets", item: "Car", tier: "Basic Gold", level, resources: { Coins: carCost } });
+        }
+        if (propertyCost > 0) {
+          itemsProperty.push({ category: "Assets", item: "Property", tier: "Basic Gold", level, resources: { Coins: propertyCost } });
+        }
+        
+        // Abroad Adventures columns: Jewelry(col 5), Car(col 6), Property(col 7)
+        const jewelryCost2 = Number(row[5]) || 0;
+        const carCost2 = Number(row[6]) || 0;
+        const propertyCost2 = Number(row[7]) || 0;
+        
+        if (jewelryCost2 > 0) {
+          itemsJewelry.push({ category: "Assets", item: "Jewelry", tier: "Abroad Adventures", level, resources: { Coins: jewelryCost2 } });
+        }
+        if (carCost2 > 0) {
+          itemsCar.push({ category: "Assets", item: "Car", tier: "Abroad Adventures", level, resources: { Coins: carCost2 } });
+        }
+        if (propertyCost2 > 0) {
+          itemsProperty.push({ category: "Assets", item: "Property", tier: "Abroad Adventures", level, resources: { Coins: propertyCost2 } });
+        }
+        
+        // Auction columns: Car(col 10), Property(col 11)
+        const carCost3 = Number(row[10]) || 0;
+        const propertyCost3 = Number(row[11]) || 0;
+        
+        if (carCost3 > 0) {
+          itemsCar.push({ category: "Assets", item: "Car", tier: "Auction", level, resources: { Coins: carCost3 } });
+        }
+        if (propertyCost3 > 0) {
+          itemsProperty.push({ category: "Assets", item: "Property", tier: "Auction", level, resources: { Coins: propertyCost3 } });
         }
       }
-      if (items.length > 0) result["Assets"] = items;
+      
+      if (itemsJewelry.length > 0) result["Assets"] = itemsJewelry;
+      if (itemsCar.length > 0) result["Assets"] = [...(result["Assets"] || []), ...itemsCar];
+      if (itemsProperty.length > 0) result["Assets"] = [...(result["Assets"] || []), ...itemsProperty];
     }
 
-    // Blueprints
-    if (wb.Sheets["Others"]) {
-      const raw = XLSX.utils.sheet_to_json(wb.Sheets["Others"], { header: 1 }) as unknown[][];
-      const items: CalcItem[] = [];
-      for (const row of raw) {
-        if (!Array.isArray(row)) continue;
-        const level = Number(row[0]);
-        const cost = Number(row[2]) || 0;
-        if (level > 0 && cost > 0) {
-          items.push({ category: "Blueprints", item: "Blueprint", level, resources: { Blueprints: cost } });
+    // Blueprints - Tier 1-21
+    if (wb.Sheets["Blueprints"]) {
+      const raw = XLSX.utils.sheet_to_json(wb.Sheets["Blueprints"], { header: 1 }) as unknown[][];
+      
+      // Parse the tiers from first row
+      const tiers: string[] = [];
+      if (raw[0]) {
+        for (let i = 0; i <= 20; i++) {
+          const tierName = String(raw[0][i] || "");
+          if (tierName && tierName.includes("Tier")) {
+            tiers[i] = tierName;
+          }
         }
       }
-      if (items.length > 0) result["Blueprints"] = items;
+      
+      // Parse data rows
+      for (let rowIdx = 1; rowIdx < raw.length; rowIdx++) {
+        const row = raw[rowIdx];
+        if (!Array.isArray(row)) continue;
+        
+        const level = Number(row[0]);
+        if (!level || level < 1) continue;
+        
+        for (let colIdx = 0; colIdx < tiers.length; colIdx++) {
+          const cost = Number(row[colIdx]) || 0;
+          if (cost > 0 && tiers[colIdx]) {
+            result["Blueprints"] = result["Blueprints"] || [];
+            result["Blueprints"].push({ 
+              category: "Blueprints", 
+              item: tiers[colIdx], 
+              level, 
+              resources: { Blueprints: cost } 
+            });
+          }
+        }
+      }
     }
 
-    // Car Parts
+    // Car Parts - Rank and Stars
     if (wb.Sheets["Car Parts"]) {
       const raw = XLSX.utils.sheet_to_json(wb.Sheets["Car Parts"], { header: 1 }) as unknown[][];
-      const items: CalcItem[] = [];
-      for (const row of raw) {
+      
+      for (let rowIdx = 1; rowIdx < raw.length; rowIdx++) {
+        const row = raw[rowIdx];
         if (!Array.isArray(row)) continue;
-        const partType = String(row[0] || "");
-        if (!partType || partType === "null") continue;
-        const cost = Number(row[1]) || 0;
-        if (cost > 0) {
-          items.push({ category: "Car Parts", item: `Part ${partType}`, level: 1, resources: { Coins: cost } });
+        
+        const rank = String(row[0] || "");
+        const stars = String(row[1] || "");
+        const total = Number(row[6]) || 0; // Total per part
+        
+        if (rank && rank !== "null" && total > 0) {
+          const starStr = stars === "0" ? "" : stars;
+          result["Car Parts"] = result["Car Parts"] || [];
+          result["Car Parts"].push({ 
+            category: "Car Parts", 
+            item: `${rank}${starStr}`, 
+            level: 1, 
+            resources: { Coins: total } 
+          });
         }
       }
-      if (items.length > 0) result["Car Parts"] = items;
     }
 
     // Villa Suite (Drones)

@@ -110,9 +110,10 @@ const categoryConfig = [
   { id: "Artists", label: "Artist EXP" },
   { id: "HQ Glass", label: "HQ Glass" },
   { id: "Collection Gems", label: "Collection Gems" },
-  { id: "Assets", label: "Assets" },
-  { id: "Blueprints", label: "Blueprints" },
-  { id: "Car Parts", label: "Car Parts" },
+  { id: "Assets", label: "Assets", tiers: ["Jewelry", "Car", "Property"], assetTypes: ["Basic Gold", "Abroad Adventures", "Auction"] },
+  { id: "Blueprints", label: "Blueprints", tiers: ["Tier 1", "Tier 2", "Tier 3", "Tier 4", "Tier 5", "Tier 6", "Tier 7", "Tier 8", "Tier 9", "Tier 10", "Tier 11", "Tier 12", "Tier 13", "Tier 14", "Tier 15", "Tier 16", "Tier 17", "Tier 18", "Tier 19", "Tier 20", "Tier 21"] },
+  { id: "Car Parts", label: "Car Parts", tiers: ["A", "B", "C", "D", "E", "S"] },
+  { id: "Villa Suite", label: "Villa" },
 ];
 
 export default function ApexCalculator() {
@@ -125,6 +126,7 @@ export default function ApexCalculator() {
   const [error, setError] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("HQ Floors");
   const [selectedTier, setSelectedTier] = useState("Floor 1");
+  const [selectedAssetType, setSelectedAssetType] = useState("Basic Gold");
   const [fromLevel, setFromLevel] = useState(1);
   const [toLevel, setToLevel] = useState(60);
 
@@ -134,18 +136,29 @@ export default function ApexCalculator() {
       .then((result) => {
         if (result.error) throw new Error(result.error);
         setData(result);
+        
+        // Set default tier for the new category
+        const config = categoryConfig.find((c) => c.id === activeCategory);
+        if (config && "tiers" in config && config.tiers) {
+          setSelectedTier(config.tiers[0]);
+        }
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [activeCategory]);
 
   const currentConfig = categoryConfig.find((c) => c.id === activeCategory);
   const hasTiers = currentConfig && "tiers" in currentConfig;
+  const hasAssetTypes = currentConfig && "assetTypes" in currentConfig;
 
   const getFilteredItems = () => {
     const items = data[activeCategory] || [];
     if (hasTiers && selectedTier) {
-      return items.filter((i) => i.item === selectedTier);
+      let filtered = items.filter((i) => i.item === selectedTier);
+      if (hasAssetTypes && selectedAssetType) {
+        filtered = filtered.filter((i) => i.tier === selectedAssetType);
+      }
+      return filtered;
     }
     return items;
   };
@@ -235,6 +248,30 @@ export default function ApexCalculator() {
               }}
             >
               {tier}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Asset Type Selector (for Assets category) */}
+      {hasAssetTypes && currentConfig && (
+        <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+          <span style={{ color: "#9ca3af", fontSize: "0.9rem" }}>Type:</span>
+          {(currentConfig.assetTypes || []).map((type: string) => (
+            <button
+              key={type}
+              onClick={() => setSelectedAssetType(type)}
+              style={{
+                padding: "6px 12px",
+                borderRadius: "4px",
+                border: selectedAssetType === type ? "1px solid #8b5cf6" : "1px solid #374151",
+                background: selectedAssetType === type ? "rgba(139, 92, 246, 0.2)" : "#1f2937",
+                color: "#fff",
+                cursor: "pointer",
+                fontSize: "0.8rem",
+              }}
+            >
+              {type}
             </button>
           ))}
         </div>

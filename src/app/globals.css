@@ -676,3 +676,21 @@ img {
 .skip-link:focus {
   top: 0;
 }
+
+
+/* Artists Page Sticky Panel */
+.artists-panel {
+  width: 360px;
+  flex-shrink: 0;
+}
+
+.artists-panel-inner {
+  position: sticky;
+  top: 80px;
+}
+
+@media (max-width: 800px) {
+  .artists-panel {
+    width: 100%;
+  }
+}

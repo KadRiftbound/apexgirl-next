@@ -59,6 +59,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "TopGirl ApexGirl",
+    "url": "https://apexgirlguide.com",
+    "logo": "https://apexgirlguide.com/assets/images/logo.png",
+    "description": "TopGirl (ApexGirl) fansite officiel - Tous les codes promo et redeem codes. 112+ artistes, guides complets, calculateurs et outils exclusifs.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "A3Games",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://apexgirlguide.com/assets/images/logo.png"
+      }
+    }
+  };
+
   return (
     <html lang="fr">
       <head>
@@ -69,6 +86,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <meta name="google-adsense-account" content="ca-pub-5737915177617454" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5737915177617454&consent_ad_storage=denied" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body>
         {children}

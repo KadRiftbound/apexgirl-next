@@ -95,8 +95,8 @@
       "artist_id": 68,
       "artist_name": "Antonia",
       "rank": "SSR",
-      "count": 1,
-      "week_count": 1
+      "count": 2,
+      "week_count": 2
     },
     {
       "artist_id": 6,
@@ -780,7 +780,7 @@
   ],
   "ip_votes": {
     "::1": {
-      "last_vote": "2026-03-13",
+      "last_vote": "2026-03-14",
       "votes_today": 1
     }
   },
@@ -788,7 +788,7 @@
     "artist_id": 68,
     "artist_name": "Antonia",
     "rank": "SSR",
-    "count": 1,
+    "count": 2,
     "week_start": "2026-03-09"
   }
 }
