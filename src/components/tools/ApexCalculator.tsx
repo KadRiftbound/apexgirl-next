@@ -30,8 +30,8 @@ export default function ApexCalculator() {
   const [data, setData] = useState<Record<string, CalcItem[]>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeCategory, setActiveCategory] = useState("Artists");
-  const [selectedTier, setSelectedTier] = useState<string>("");
+  const [activeCategory, setActiveCategory] = useState("HQ Floors");
+  const [selectedTier, setSelectedTier] = useState<string>("Floor 1");
   const [selections, setSelections] = useState<Record<string, Record<string, { from: number; to: number }>>>({});
 
   useEffect(() => {
