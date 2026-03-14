@@ -29,7 +29,6 @@ export default function ToolsPage() {
 
       <div style={{ 
         minHeight: "100vh", 
-        background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
         padding: "0"
       }}>
         {/* Header */}
@@ -101,13 +100,9 @@ export default function ToolsPage() {
 
           {/* Tool Content - KTS Style Card */}
           <div style={{
-            background: "linear-gradient(135deg, rgba(88, 28, 135, 0.4), rgba(134, 25, 143, 0.3))",
             borderRadius: "24px",
-            border: "1px solid rgba(168, 85, 247, 0.4)",
             padding: "24px",
             minHeight: "500px",
-            boxShadow: "0 0 60px rgba(168, 85, 247, 0.2)",
-            backdropFilter: "blur(10px)",
           }}>
             {activeTab === "calculator" && (
               <div>
