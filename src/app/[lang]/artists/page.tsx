@@ -3,6 +3,7 @@
 import Head from "next/head";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 
@@ -190,15 +191,32 @@ export default function ArtistsPage() {
                       </div>
                     </div>
 
-                    <div style={{ marginTop: "8px" }}>
-                      <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.4)", marginBottom: "3px", textTransform: "uppercase" }}>Compétences</p>
-                      <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                        {selectedArtist.skills?.slice(0,3).map((skill, i) => (
-                          <div key={i} style={{ padding: "4px 6px", background: "rgba(255,255,255,0.03)", borderRadius: "4px", fontSize: "0.5rem", borderLeft: `2px solid ${rankColors[selectedArtist.rank]}`, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{skill}</div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                     <div style={{ marginTop: "8px" }}>
+                       <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.4)", marginBottom: "3px", textTransform: "uppercase" }}>Compétences</p>
+                       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                         {selectedArtist.skills?.slice(0,3).map((skill, i) => (
+                           <div key={i} style={{ padding: "4px 6px", background: "rgba(255,255,255,0.03)", borderRadius: "4px", fontSize: "0.5rem", borderLeft: `2px solid ${rankColors[selectedArtist.rank]}`, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{skill}</div>
+                         ))}
+                       </div>
+                     </div>
+                     {/* Lien vers la page détaillée de l'artiste */}
+                     <div style={{ textAlign: 'center', marginTop: '16px' }}>
+                       <Link 
+                         href={`/${lang}/artist/${selectedArtist.id}`} 
+                         style={{
+                           display: 'inline-block',
+                           padding: '8px 16px',
+                           background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                           color: 'white',
+                           borderRadius: '6px',
+                           fontSize: '0.85rem',
+                           fontWeight: 500
+                         }}
+                       >
+                         Voir la fiche complète
+                       </Link>
+                     </div>
+                   </div>
                 ) : (
                   <div style={{ padding: "20px", textAlign: "center", color: "rgba(255,255,255,0.4)" }}>
                     <div style={{ fontSize: "1.4rem", marginBottom: "4px" }}>👆</div>

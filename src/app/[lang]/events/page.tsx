@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
 
 type Event = {
@@ -42,12 +44,13 @@ const typeColors: Record<string, { bg: string; text: string; border: string }> =
 };
 
 export default function EventsPage() {
+  const params = useParams();
+  const lang = params?.lang as string || "fr";
   const [events, setEvents] = useState<Event[]>([]);
   const [filtered, setFiltered] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
-  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
   useEffect(() => {
     fetch("/database/data/events.json")
@@ -176,10 +179,11 @@ export default function EventsPage() {
           gap: "16px",
         }}>
           {filtered.map((event) => {
+            const slug = event.name.toLowerCase().replace(/\s+/g, "-");
             return (
               <React.Fragment key={event.id}>
-              <div
-                onClick={() => setSelectedEvent(event)}
+              <Link
+                href={`/${lang}/events/${slug}`}
                 style={{
                   background: "rgba(30, 30, 50, 0.8)",
                   borderRadius: "16px",
@@ -187,6 +191,8 @@ export default function EventsPage() {
                   overflow: "hidden",
                   cursor: "pointer",
                   transition: "all 0.2s ease",
+                  textDecoration: "none",
+                  display: "block",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
@@ -274,7 +280,7 @@ export default function EventsPage() {
                     )}
                   </div>
                 </div>
-              </div>
+              </Link>
               </React.Fragment>
             );
           })}
@@ -287,143 +293,6 @@ export default function EventsPage() {
           </div>
         )}
       </div>
-
-      {/* Modal */}
-      {selectedEvent && (
-        <div
-          onClick={() => setSelectedEvent(null)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.8)",
-            zIndex: 1000,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "20px",
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "rgba(20, 20, 35, 0.98)",
-              borderRadius: "20px",
-              border: "1px solid rgba(139, 92, 246, 0.4)",
-              maxWidth: "600px",
-              width: "100%",
-              maxHeight: "80vh",
-              overflow: "auto",
-            }}
-          >
-            <div style={{
-              height: "120px",
-              background: eventImages[selectedEvent.type] || eventImages.recurring,
-              position: "relative",
-            }}>
-              <button
-                onClick={() => setSelectedEvent(null)}
-                style={{
-                  position: "absolute",
-                  top: "12px",
-                  right: "12px",
-                  background: "rgba(0,0,0,0.5)",
-                  border: "none",
-                  borderRadius: "50%",
-                  width: "36px",
-                  height: "36px",
-                  color: "#fff",
-                  fontSize: "1.2rem",
-                  cursor: "pointer",
-                }}
-              >
-                ✕
-              </button>
-            </div>
-            
-            <div style={{ padding: "24px" }}>
-              <h2 style={{ fontSize: "1.5rem", fontWeight: 800, marginBottom: "12px", color: "#fff" }}>
-                {selectedEvent.name}
-              </h2>
-              
-              <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
-                <span style={{
-                  padding: "4px 12px",
-                  borderRadius: "8px",
-                  fontSize: "0.75rem",
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  background: typeColors[selectedEvent.type]?.bg,
-                  color: typeColors[selectedEvent.type]?.text,
-                }}>
-                  {selectedEvent.type}
-                </span>
-                {selectedEvent.duration && (
-                  <span style={{ padding: "4px 12px", borderRadius: "8px", fontSize: "0.75rem", background: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.7)" }}>
-                    ⏱️ {selectedEvent.duration}
-                  </span>
-                )}
-              </div>
-
-              <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.6, marginBottom: "20px" }}>
-                {selectedEvent.description}
-              </p>
-
-              {selectedEvent.rewards && selectedEvent.rewards.length > 0 && (
-                <div style={{ marginBottom: "20px" }}>
-                  <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "rgba(255,255,255,0.9)" }}>
-                    🎁 Récompenses
-                  </h4>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                    {selectedEvent.rewards.map((r, i) => (
-                      <span key={i} style={{
-                        padding: "6px 12px",
-                        background: "rgba(139, 92, 246, 0.2)",
-                        borderRadius: "8px",
-                        fontSize: "0.8rem",
-                        color: "rgba(255,255,255,0.9)",
-                      }}>
-                        {r}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {selectedEvent.bestArtists && selectedEvent.bestArtists.length > 0 && (
-                <div style={{ marginBottom: "20px" }}>
-                  <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "rgba(255,255,255,0.9)" }}>
-                    ⭐ Meilleures artistes
-                  </h4>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                    {selectedEvent.bestArtists.map((artist, i) => (
-                      <span key={i} style={{
-                        padding: "6px 12px",
-                        background: "rgba(236, 72, 153, 0.2)",
-                        borderRadius: "8px",
-                        fontSize: "0.8rem",
-                        color: "rgba(255,255,255,0.9)",
-                      }}>
-                        {artist}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {selectedEvent.tips && (
-                <div>
-                  <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "rgba(255,255,255,0.9)" }}>
-                    💡 Conseils
-                  </h4>
-                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem", lineHeight: 1.5 }}>
-                    {selectedEvent.tips}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

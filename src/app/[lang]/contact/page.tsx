@@ -178,10 +178,11 @@ export default function Contact() {
                 )}
 
                 <div>
-                  <label style={{ display: 'block', color: 'rgba(255,255,255,0.7)', marginBottom: '6px', fontSize: '0.9rem' }}>
+                  <label htmlFor="name" style={{ display: "block", color: "rgba(255,255,255,0.7)", marginBottom: "6px", fontSize: "0.9rem" }}>
                     {content.form.name} *
                   </label>
                   <input
+                    id="name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -200,10 +201,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', color: 'rgba(255,255,255,0.7)', marginBottom: '6px', fontSize: '0.9rem' }}>
+                  <label htmlFor="email" style={{ display: "block", color: "rgba(255,255,255,0.7)", marginBottom: "6px", fontSize: "0.9rem" }}>
                     {content.form.email} *
                   </label>
                   <input
+                    id="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -222,10 +224,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', color: 'rgba(255,255,255,0.7)', marginBottom: '6px', fontSize: '0.9rem' }}>
+                  <label htmlFor="subject" style={{ display: "block", color: "rgba(255,255,255,0.7)", marginBottom: "6px", fontSize: "0.9rem" }}>
                     {content.form.subject}
                   </label>
                   <select
+                    id="subject"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     style={{
@@ -250,10 +253,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', color: 'rgba(255,255,255,0.7)', marginBottom: '6px', fontSize: '0.9rem' }}>
+                  <label htmlFor="message" style={{ display: "block", color: "rgba(255,255,255,0.7)", marginBottom: "6px", fontSize: "0.9rem" }}>
                     {content.form.message} *
                   </label>
                   <textarea
+                    id="message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder={content.form.messagePlaceholder}

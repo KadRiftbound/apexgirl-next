@@ -41,40 +41,41 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       id: "/id",
       ru: "/ru",
     },
+    canonical: `https://apexgirlguide.com/${lang}`,
   };
 
-  return {
-    title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords.split(", "),
-    alternates,
-    openGraph: {
-      title: meta.title,
-      description: meta.description,
-      url: `https://apexgirlguide.com/${lang}`,
-      siteName: "TopGirl",
-      locale: localeNames[lang] || "fr-FR",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: meta.title,
-      description: meta.description,
-    },
-    icons: {
-      icon: [
-        { url: "/assets/favicon.png", sizes: "48x48" },
-        { url: "/assets/favicon.png", sizes: "96x96" },
-        { url: "/assets/favicon.png", sizes: "192x192" },
-        { url: "/assets/favicon.png", sizes: "512x512" },
-      ],
-      apple: { url: "/assets/favicon.png" },
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-  };
+   return {
+     title: meta.title,
+     description: meta.description,
+     keywords: meta.keywords.split(", "),
+     alternates,
+     openGraph: {
+       title: meta.title,
+       description: meta.description,
+       url: `https://apexgirlguide.com/${lang}`,
+       siteName: "TopGirl",
+       locale: localeNames[lang] || "fr-FR",
+       type: "website",
+     },
+     twitter: {
+       card: "summary_large_image",
+       title: meta.title,
+       description: meta.description,
+     },
+     icons: {
+       icon: [
+         { url: "/assets/favicon.png", sizes: "48x48" },
+         { url: "/assets/favicon.png", sizes: "96x96" },
+         { url: "/assets/favicon.png", sizes: "192x192" },
+         { url: "/assets/favicon.png", sizes: "512x512" },
+       ],
+       apple: { url: "/assets/favicon.png" },
+     },
+     robots: {
+       index: true,
+       follow: true,
+     },
+   };
 }
 
 export async function generateStaticParams() {
