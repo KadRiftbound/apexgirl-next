@@ -282,10 +282,17 @@ export default function ApexCalculator() {
         </div>
       </div>
 
-      {/* Grand Total */}
-      <div style={{ textAlign: "center", padding: "16px", background: "linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(168, 85, 247, 0.15))", borderRadius: "12px", border: "1px solid rgba(244, 114, 182, 0.3)", marginBottom: "20px" }}>
-        <div style={{ fontSize: "0.8rem", color: "#9ca3af", marginBottom: "4px", textTransform: "uppercase" }}>{t.totalCost}</div>
-        <div style={{ fontSize: "2rem", fontWeight: 700, color: "#f472b6", fontFamily: "monospace" }}>{grandTotal.toLocaleString()}</div>
+      {/* Totals by Resource Type */}
+      <div style={{ marginBottom: "20px" }}>
+        <div style={{ fontSize: "0.8rem", color: "#9ca3af", marginBottom: "8px", textTransform: "uppercase" }}>{t.totalCost}</div>
+        <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+          {Object.entries(totals).map(([resource, total]) => (
+            <div key={resource} style={{ textAlign: "center", padding: "12px 20px", background: "#374151", borderRadius: "8px", minWidth: "100px" }}>
+              <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>{resource}</div>
+              <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#f472b6", fontFamily: "monospace" }}>{total.toLocaleString()}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Resource Breakdown by Type */}
