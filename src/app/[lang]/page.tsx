@@ -340,7 +340,7 @@ export default function HomePage() {
             </div>
 
             <p className="text-center text-muted" style={{ marginTop: "24px", fontSize: "0.875rem" }}>
-              {text.enterInGame} • <Link href={`/${lang}/guides/`} style={{ color: "var(--primary)" }}>{text.codeGuide}</Link>
+              {text.enterInGame} • <Link href={`/${lang}/codes/`} style={{ color: "var(--primary)" }}>Voir tous les codes</Link>
             </p>
           </div>
         </section>

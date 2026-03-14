@@ -91,10 +91,10 @@ export default async function LocaleLayout({
   
   const navItems = [
     { href: `/${lang}/`, label: lang === "fr" ? "Accueil" : lang === "en" ? "Home" : getNavLabel(lang, "home") },
+    { href: `/${lang}/codes/`, label: lang === "fr" ? "Codes" : lang === "en" ? "Codes" : getNavLabel(lang, "codes") },
     { href: `/${lang}/database/`, label: lang === "fr" ? "Artistes" : lang === "en" ? "Artists" : getNavLabel(lang, "database") },
     { href: `/${lang}/tierlist/`, label: lang === "fr" ? "Tier List" : "Tier List" },
     { href: `/${lang}/events/`, label: lang === "fr" ? "Événements" : lang === "en" ? "Events" : getNavLabel(lang, "events") },
-    { href: `/${lang}/guides/`, label: lang === "fr" ? "Guides" : "Guides" },
     { href: `/${lang}/tools/`, label: lang === "fr" ? "Outils" : lang === "en" ? "Tools" : getNavLabel(lang, "tools"), cta: true },
   ];
 
@@ -170,16 +170,15 @@ export default async function LocaleLayout({
           <div>
             <h4>{lang === "fr" ? "Navigation" : "Navigation"}</h4>
             <Link href={`/${lang}/`}>{lang === "fr" ? "Accueil" : "Home"}</Link>
+            <Link href={`/${lang}/codes/`}>{lang === "fr" ? "Codes" : "Codes"}</Link>
             <Link href={`/${lang}/database/`}>{lang === "fr" ? "Artistes" : "Artists"}</Link>
-            <Link href={`/${lang}/guides/`}>Guides</Link>
             <Link href={`/${lang}/tools/`}>{lang === "fr" ? "Outils" : "Tools"}</Link>
             <Link href={`/${lang}/tierlist/`}>Tier List</Link>
           </div>
           <div>
             <h4>{lang === "fr" ? "Ressources" : "Resources"}</h4>
             <Link href={`/${lang}/events/`}>{lang === "fr" ? "Événements" : "Events"}</Link>
-            <a href="#">{lang === "fr" ? "Codes Promo" : "Promo Codes"}</a>
-            <a href="#">{lang === "fr" ? "Actualités" : "News"}</a>
+            <Link href={`/${lang}/guides/`}>{lang === "fr" ? "Guides" : "Guides"}</Link>
           </div>
           <div>
             <h4>{lang === "fr" ? "Légal" : "Legal"}</h4>
@@ -198,12 +197,12 @@ export default async function LocaleLayout({
 
 function getNavLabel(lang: string, key: string): string {
   const translations: Record<string, Record<string, string>> = {
-    it: { home: "Home", database: "Artisti", events: "Eventi", tools: "Strumenti" },
-    es: { home: "Inicio", database: "Artistas", events: "Eventos", tools: "Herramientas" },
-    pt: { home: "Início", database: "Artistas", events: "Eventos", tools: "Ferramentas" },
-    pl: { home: "Strona", database: "Artyści", events: "Wydarzenia", tools: "Narzędzia" },
-    id: { home: "Beranda", database: "Artis", events: "Acara", tools: "Alat" },
-    ru: { home: "Главная", database: "Артисты", events: "События", tools: "Инструменты" },
+    it: { home: "Home", database: "Artisti", events: "Eventi", tools: "Strumenti", codes: "Codici" },
+    es: { home: "Inicio", database: "Artistas", events: "Eventos", tools: "Herramientas", codes: "Códigos" },
+    pt: { home: "Início", database: "Artistas", events: "Eventos", tools: "Ferramentas", codes: "Códigos" },
+    pl: { home: "Strona", database: "Artyści", events: "Wydarzenia", tools: "Narzędzia", codes: "Kody" },
+    id: { home: "Beranda", database: "Artis", events: "Acara", tools: "Alat", codes: "Kode" },
+    ru: { home: "Главная", database: "Артисты", events: "События", tools: "Инструменты", codes: "Коды" },
   };
   return translations[lang]?.[key] || key;
 }
