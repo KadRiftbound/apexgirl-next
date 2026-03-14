@@ -30,7 +30,7 @@ const translations: Record<string, any> = {
     title: 'Codes Promo',
     subtitle: 'Tous les codes disponibles pour TopGirl / ApexGirl',
     enterGame: 'Entrez les codes dans le jeu: Menu > Réglages > Cadeaux',
-    activeCodes: 'Codes Actifs',
+    latestCodes: 'Codes Actifs',
     expiredCodes: 'Codes Expirés',
     rewards: 'Récompenses',
     expires: 'Expire',
@@ -45,7 +45,7 @@ const translations: Record<string, any> = {
     title: 'Promo Codes',
     subtitle: 'All available codes for TopGirl / ApexGirl',
     enterGame: 'Enter codes in game: Menu > Settings > Gifts',
-    activeCodes: 'Active Codes',
+    latestCodes: 'Latest Codes',
     expiredCodes: 'Expired Codes',
     rewards: 'Rewards',
     expires: 'Expires',
@@ -60,7 +60,7 @@ const translations: Record<string, any> = {
     title: 'Codici Promo',
     subtitle: 'Tutti i codici disponibili per TopGirl / ApexGirl',
     enterGame: 'Inserisci i codici nel gioco: Menu > Impostazioni > Regali',
-    activeCodes: 'Codici Attivi',
+    latestCodes: 'Codici Attivi',
     expiredCodes: 'Codici Scaduti',
     rewards: 'Ricompense',
     expires: 'Scade',
@@ -75,7 +75,7 @@ const translations: Record<string, any> = {
     title: 'Códigos Promo',
     subtitle: 'Todos los códigos disponibles para TopGirl / ApexGirl',
     enterGame: 'Introduce los códigos en el juego: Menú > Ajustes > Regalos',
-    activeCodes: 'Códigos Activos',
+    latestCodes: 'Códigos Activos',
     expiredCodes: 'Códigos Expirados',
     rewards: 'Recompensas',
     expires: 'Expira',
@@ -90,7 +90,7 @@ const translations: Record<string, any> = {
     title: 'Códigos Promo',
     subtitle: 'Todos os códigos disponíveis para TopGirl / ApexGirl',
     enterGame: 'Insira os códigos no jogo: Menu > Configurações > Presentes',
-    activeCodes: 'Códigos Ativos',
+    latestCodes: 'Códigos Ativos',
     expiredCodes: 'Códigos Expirados',
     rewards: 'Recompensas',
     expires: 'Expira',
@@ -105,7 +105,7 @@ const translations: Record<string, any> = {
     title: 'Kody Promo',
     subtitle: 'Wszystkie dostępne kody dla TopGirl / ApexGirl',
     enterGame: 'Wpisz kody w grze: Menu > Ustawienia > Prezenty',
-    activeCodes: 'Aktywne Kody',
+    latestCodes: 'Aktywne Kody',
     expiredCodes: 'Wygasłe Kody',
     rewards: 'Nagrody',
     expires: 'Wygasa',
@@ -120,7 +120,7 @@ const translations: Record<string, any> = {
     title: 'Kode Promo',
     subtitle: 'Semua kode yang tersedia untuk TopGirl / ApexGirl',
     enterGame: 'Masukkan kode dalam game: Menu > Pengaturan > Hadiah',
-    activeCodes: 'Kode Aktif',
+    latestCodes: 'Kode Aktif',
     expiredCodes: 'Kode Kedaluwarsa',
     rewards: 'Hadiah',
     expires: 'Kedaluwarsa',
@@ -135,7 +135,7 @@ const translations: Record<string, any> = {
     title: 'Промокоды',
     subtitle: 'Все доступные коды для TopGirl / ApexGirl',
     enterGame: 'Введите коды в игре: Меню > Настройки > Подарки',
-    activeCodes: 'Активные Коды',
+    latestCodes: 'Активные Коды',
     expiredCodes: 'Истекшие Коды',
     rewards: 'Награды',
     expires: 'Истекает',
@@ -197,19 +197,20 @@ export default function CodesPage() {
         </p>
       </section>
 
-      {/* Active Codes */}
+      {/* All Codes */}
       <section style={{ marginBottom: '48px', maxWidth: '800px', margin: '0 auto' }}>
         <h2 style={{ fontSize: '1.5rem', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span>✅</span> {t.activeCodes}
-          <span style={{ fontSize: '0.875rem', color: 'var(--accent-green)', fontWeight: 600 }}>({codesData.active.length})</span>
+          <span>✅</span> {t.latestCodes}
+          <span style={{ fontSize: '0.875rem', color: 'var(--accent-green)', fontWeight: 600 }}>({codesData.active.length + codesData.expired.length})</span>
         </h2>
 
-        {codesData.active.length === 0 ? (
+        {codesData.active.length + codesData.expired.length === 0 ? (
           <p className="text-muted text-center" style={{ padding: '40px' }}>
             {t.noActive}
           </p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {/* Active codes first */}
             {codesData.active.map((item, index) => (
               <div
                 key={item.code}
@@ -266,58 +267,65 @@ export default function CodesPage() {
                 </button>
               </div>
             ))}
+
+            {/* Expired codes */}
+            {codesData.expired.map((item, index) => (
+              <div
+                key={item.code}
+                style={{
+                  padding: '20px 24px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '12px',
+                  opacity: 0.7
+                }}
+              >
+                <div style={{ flex: 1, minWidth: '200px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                    <span style={{ 
+                      fontWeight: 600, 
+                      fontSize: '1.1rem',
+                      color: 'var(--text-muted)',
+                      textDecoration: 'line-through'
+                    }}>
+                      {item.code}
+                    </span>
+                    {item.rarity && (
+                      <span style={{ 
+                        fontSize: '0.7rem', 
+                        padding: '2px 8px',
+                        background: 'rgba(251, 191, 36, 0.2)',
+                        color: 'var(--accent-yellow)',
+                        borderRadius: '4px',
+                        fontWeight: 600
+                      }}>
+                        {item.rarity.toUpperCase()}
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-muted" style={{ fontSize: '0.875rem' }}>
+                    {item.rewards}
+                  </span>
+                </div>
+                <span className="badge" style={{ 
+                  background: 'rgba(239, 68, 68, 0.15)', 
+                  color: 'var(--error)',
+                  border: '1px solid rgba(239, 68, 68, 0.2)'
+                }}>
+                  {t.expires}: {item.expires}
+                </span>
+              </div>
+            ))}
           </div>
         )}
       </section>
 
       <AdBanner />
-
-      {/* Expired Codes */}
-      <section style={{ marginTop: '48px', maxWidth: '800px', margin: '48px auto 0', opacity: 0.7 }}>
-        <h2 style={{ fontSize: '1.25rem', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-muted)' }}>
-          <span>❌</span> {t.expiredCodes}
-        </h2>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {codesData.expired.map((item, index) => (
-            <div
-              key={item.code}
-              style={{
-                padding: '16px 20px',
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap',
-                gap: '12px'
-              }}
-            >
-              <div>
-                <span style={{ 
-                  fontWeight: 600, 
-                  fontSize: '1rem',
-                  color: 'var(--text-muted)',
-                  textDecoration: 'line-through'
-                }}>
-                  {item.code}
-                </span>
-                <span className="text-muted" style={{ marginLeft: '16px', fontSize: '0.875rem' }}>
-                  {item.rewards}
-                </span>
-              </div>
-              <span className="badge" style={{ 
-                background: 'rgba(239, 68, 68, 0.15)', 
-                color: 'var(--error)',
-                border: '1px solid rgba(239, 68, 68, 0.2)'
-              }}>
-                {t.expires}: {item.expires}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* SEO Schema */}
       <script
