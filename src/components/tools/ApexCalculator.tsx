@@ -56,7 +56,7 @@ export default function ApexCalculator() {
     const itemLevels = categoryItems.filter((i) => i.item === itemName);
     
     let total = 0;
-    for (let l = fromLevel + 1; l <= toLevel; l++) {
+    for (let l = fromLevel; l <= toLevel; l++) {
       const levelData = itemLevels.find((i) => i.level === l);
       if (levelData) {
         total += levelData.cost;
@@ -224,8 +224,8 @@ export default function ApexCalculator() {
                 .sort((a, b) => a.level - b.level);
               
               const selection = selections[activeCategory]?.[itemName];
-              const fromLevel = selection?.from || 0;
-              const toLevel = selection?.to || 0;
+              const fromLevel = selection?.from || 1;
+              const toLevel = selection?.to || 1;
               const hasSelection = toLevel > fromLevel;
               
               return (
@@ -258,7 +258,7 @@ export default function ApexCalculator() {
                         width: "80px"
                       }}
                     >
-                      <option value={0}>0</option>
+                      <option value={1}>1</option>
                       {itemLevels.map((lvl) => (
                         <option key={lvl.level} value={lvl.level}>
                           {lvl.level}
@@ -281,7 +281,7 @@ export default function ApexCalculator() {
                         width: "80px"
                       }}
                     >
-                      <option value={0}>-</option>
+                      <option value={1}>-</option>
                       {itemLevels.map((lvl) => (
                         <option key={lvl.level} value={lvl.level}>
                           {lvl.level}
