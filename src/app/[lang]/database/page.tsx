@@ -196,6 +196,8 @@ export default function DatabasePage() {
     let attackResist = 0;
     let skillResist = 0;
     let passive = 0;
+    let fanCapacity = 0;
+    let rallyCapacity = 0;
 
     team.forEach(artist => {
       const basePassive = 200;
@@ -205,6 +207,18 @@ export default function DatabasePage() {
         const match = skill.match(/(\d+)\s*Damage/);
         if (match && !skill.toLowerCase().includes('%')) {
           skillDamageRaw += parseInt(match[1]);
+        }
+      });
+
+      [...(artist.skillCategories?.hp || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('fan capacity') && skill.toLowerCase().includes('rally')) {
+            rallyCapacity += val;
+          } else if (skill.toLowerCase().includes('fan capacity')) {
+            fanCapacity += val;
+          }
         }
       });
 
@@ -242,6 +256,8 @@ export default function DatabasePage() {
       attackResist, 
       skillResist, 
       passive,
+      fanCapacity,
+      rallyCapacity,
       genreCounts
     };
   }, [team]);
@@ -553,6 +569,12 @@ export default function DatabasePage() {
                     <div style={{ color: "#fd79a8" }}>
                       💫 Passive: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.passive}</span>
                     </div>
+                    <div style={{ color: "#ffd700" }}>
+                      🎵 Fan Cap: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.fanCapacity}%</span>
+                    </div>
+                    <div style={{ color: "#00ff88" }}>
+                      🚀 Rally: <span style={{ fontWeight: 700, color: "#fff" }}>{teamStats.rallyCapacity}%</span>
+                    </div>
                   </div>
                 </div>
               )}
@@ -631,7 +653,91 @@ export default function DatabasePage() {
           </div>
 
           {/* Artists Grid */}
-          <div className="grid-container">
+          <div>
+            <div className="glass-card" style={{ marginBottom: "24px", padding: "20px" }}>
+              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                <input
+                  type="text"
+                  placeholder={t.search}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{
+                    flex: "1",
+                    minWidth: "180px",
+                    padding: "12px 16px",
+                    background: "var(--bg-subtle)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem"
+                  }}
+                />
+                <select
+                  value={filterRank}
+                  onChange={(e) => setFilterRank(e.target.value)}
+                  style={{
+                    padding: "12px 16px",
+                    background: "var(--bg-subtle)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem",
+                    minWidth: "100px"
+                  }}
+                >
+                  <option value="">{t.all}</option>
+                  <option value="UR">UR</option>
+                  <option value="SSR">SSR</option>
+                  <option value="SR">SR</option>
+                  <option value="R">R</option>
+                </select>
+                <select
+                  value={filterGenre}
+                  onChange={(e) => setFilterGenre(e.target.value)}
+                  style={{
+                    padding: "12px 16px",
+                    background: "var(--bg-subtle)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem",
+                    minWidth: "130px"
+                  }}
+                >
+                  <option value="">{t.allGenres}</option>
+                  <option value="Pop">Pop</option>
+                  <option value="Hip Hop">Hip Hop</option>
+                  <option value="R&B">R&B</option>
+                  <option value="Rock">Rock</option>
+                  <option value="Electronic">Electronic</option>
+                </select>
+                <select
+                  value={filterSpecialty}
+                  onChange={(e) => setFilterSpecialty(e.target.value)}
+                  style={{
+                    padding: "12px 16px",
+                    background: "var(--bg-subtle)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius)",
+                    color: "var(--text-primary)",
+                    fontSize: "0.9rem",
+                    minWidth: "150px"
+                  }}
+                >
+                  <option value="">{t.allSpecialties}</option>
+                  <option value="Augmentation dommage">Augmentation dommage</option>
+                  <option value="Mixte">Mixte</option>
+                  <option value="Single Car">Single Car</option>
+                  <option value="Damage Reduction">Damage Reduction</option>
+                  <option value="HQ Defense">HQ Defense</option>
+                  <option value="Rassemblement">Rassemblement</option>
+                  <option value="Économie">Économie</option>
+                </select>
+              </div>
+            </div>
+            </div>
+
+            <div className="grid-container">
             {filteredArtists
               .sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank])
               .map((artist) => (
