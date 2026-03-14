@@ -221,7 +221,7 @@ export async function GET() {
         const level = Number(row[0]);
         const cost = Number(row[2]) || 0;
         if (level > 0 && cost > 0) {
-          items.push({ category: "Blueprints", item: "Blueprint", level, resources: { Coins: cost } });
+          items.push({ category: "Blueprints", item: "Blueprint", level, resources: { Blueprints: cost } });
         }
       }
       if (items.length > 0) result["Blueprints"] = items;

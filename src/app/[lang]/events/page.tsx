@@ -25,6 +25,16 @@ const eventImages: Record<string, string> = {
   permanent: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
 };
 
+const eventIconMap: Record<string, string> = {
+  "Ultimate CEO": "ultimate-ceo.webp",
+  "Grammy Contest": "grammy-contest.webp",
+  "Radio Battle": "radio-battle.webp",
+  "Daily Express": "daily-express.webp",
+  "Luxury Auto Show": "luxury-auto-show.webp",
+  "Business Battle Pass": "business-battle-pass.webp",
+  "Ultimate Group": "ultimate-group.webp",
+};
+
 const typeColors: Record<string, { bg: string; text: string; border: string }> = {
   recurring: { bg: "rgba(34, 197, 94, 0.15)", text: "#22c55e", border: "rgba(34, 197, 94, 0.4)" },
   seasonal: { bg: "rgba(245, 158, 11, 0.15)", text: "#f59e0b", border: "rgba(245, 158, 11, 0.4)" },
