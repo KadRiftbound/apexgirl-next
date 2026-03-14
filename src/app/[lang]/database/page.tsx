@@ -226,10 +226,12 @@ export default function DatabasePage() {
         const match = skill.match(/(\d+)%/);
         if (match) {
           const val = parseInt(match[1]);
-          if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('resist') && !skill.toLowerCase().includes('taken')) {
+          if (skill.toLowerCase().includes('damage to player')) {
             skillDamage += val;
-          }
-          if (skill.toLowerCase().includes('basic attack') && !skill.toLowerCase().includes('taken')) {
+            basicAttackPercent += val;
+          } else if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('resist') && !skill.toLowerCase().includes('taken')) {
+            skillDamage += val;
+          } else if (skill.toLowerCase().includes('basic attack') && !skill.toLowerCase().includes('taken')) {
             basicAttackPercent += val;
           }
           if (skill.toLowerCase().includes('resist') || skill.toLowerCase().includes('taken')) {
@@ -325,23 +327,20 @@ export default function DatabasePage() {
 
         <AdBanner />
 
-        <div className="grid" style={{ gridTemplateColumns: "270px 1fr", gap: "24px", marginTop: "32px" }}>
+        <div className="grid" style={{ gridTemplateColumns: "400px 1fr", gap: "24px", marginTop: "32px" }}>
           {/* Left Panel - Sticky */}
           <div style={{ position: "sticky", top: "100px", height: "fit-content", alignSelf: "start" }}>
             <div className="glass-card" style={{ 
               padding: "0",
               overflow: "hidden",
-              marginBottom: "24px",
-              transform: "scale(0.75)",
-              transformOrigin: "top left",
-              width: "133.33%"
+              marginBottom: "24px"
             }}>
             <div style={{ 
-              padding: "20px", 
+              padding: "16px", 
               borderBottom: "1px solid var(--border)",
               background: "linear-gradient(135deg, rgba(255, 77, 141, 0.15), rgba(139, 92, 246, 0.15))"
             }}>
-              <span style={{ fontWeight: 600, fontSize: "0.9rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px" }}>
+              <span style={{ fontWeight: 600, fontSize: "0.8rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px" }}>
                 Artist Overview
               </span>
             </div>
@@ -500,10 +499,7 @@ export default function DatabasePage() {
             <div style={{ 
               padding: "20px", 
               borderTop: "1px solid var(--border)",
-              background: "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))",
-              transform: "scale(1.15)",
-              transformOrigin: "top left",
-              width: "86.96%"
+              background: "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))"
             }}>
               <div style={{ fontWeight: 600, fontSize: "0.85rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "16px" }}>
                 Team Builder ({team.length}/5)
