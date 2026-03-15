@@ -806,7 +806,7 @@ export default function ArtistsPage() {
           font-weight: 800;
         }
         
-        /* Mobile - Same as Desktop */
+        /* Mobile - 20/40/40 columns */
         @media (max-width: 900px) {
           .page-header {
             display: none;
@@ -819,9 +819,45 @@ export default function ArtistsPage() {
             position: sticky;
             top: 0;
           }
-          .panel-col-1 { width: 30%; }
-          .panel-col-2 { width: 35%; }
-          .panel-col-3 { width: 35%; }
+          .panel-col-1 { width: 20%; }
+          .panel-col-2 { width: 40%; }
+          .panel-col-3 { width: 40%; }
+          
+          /* Mobile artist preview - smaller image, buttons below */
+          .artist-preview-content {
+            flex-direction: column;
+            align-items: center;
+          }
+          .artist-preview-image-large {
+            width: 60px;
+            height: 80px;
+          }
+          .artist-preview-info {
+            font-size: 0.6rem;
+          }
+          .artist-preview-details {
+            display: none;
+          }
+          .artist-preview-nav {
+            margin-bottom: 4px;
+          }
+          .view-profile-btn, .add-buttons {
+            width: 100%;
+            margin-top: 4px;
+          }
+          .add-buttons {
+            flex-direction: column;
+            gap: 4px;
+          }
+          .add-team-btn {
+            width: 100%;
+          }
+          
+          /* Remove select buttons in teams on mobile */
+          .team-header button {
+            display: none;
+          }
+          
           .artists-bottom {
             padding-bottom: 100px;
             min-height: 100vh;

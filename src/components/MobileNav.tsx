@@ -31,41 +31,68 @@ export function MobileNav() {
 
   return (
     <div className="mobile-nav" style={{ display: 'none' }}>
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        style={{
-          position: 'fixed',
-          top: '8px',
-          right: '10px',
-          zIndex: 1001,
-          background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
-          border: 'none',
-          borderRadius: '8px',
-          padding: '8px 12px',
-          color: '#fff',
-          fontSize: '16px',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-          boxShadow: '0 4px 15px rgba(255, 77, 141, 0.4)'
-        }}
-        aria-label="Menu"
-      >
-        ☰
-        <span style={{ fontSize: '12px', fontWeight: 500 }}>MENU</span>
-      </button>
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '50px',
+        background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 16px',
+        zIndex: 1000,
+        borderBottom: '1px solid rgba(255,255,255,0.1)'
+      }}>
+        {/* Logo */}
+        <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
+          <span style={{ fontSize: '24px' }}>🎮</span>
+        </Link>
+        
+        {/* Title */}
+        <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
+          <span style={{ 
+            color: '#fff', 
+            fontSize: '16px', 
+            fontWeight: 700,
+            background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
+            TopGirlGuide
+          </span>
+        </Link>
+        
+        {/* Menu Button */}
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          style={{
+            background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
+            border: 'none',
+            borderRadius: '8px',
+            padding: '8px 14px',
+            color: '#fff',
+            fontSize: '14px',
+            cursor: 'pointer',
+            fontWeight: 600,
+            boxShadow: '0 2px 10px rgba(255, 77, 141, 0.3)'
+          }}
+        >
+          {isOpen ? '✕' : '☰ MENU'}
+        </button>
+      </div>
 
       {isOpen && (
         <div style={{
           position: 'fixed',
-          top: '0',
+          top: '50px',
           left: '0',
           right: '0',
           bottom: '0',
           background: 'rgba(10, 10, 20, 0.98)',
           zIndex: 999,
-          padding: '80px 20px 20px',
+          padding: '20px',
           overflowY: 'auto'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
