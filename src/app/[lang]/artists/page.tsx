@@ -477,17 +477,18 @@ export default function ArtistsPage() {
           {/* Column 2: Team 1 (35%) */}
           <div className="panel-col panel-col-2">
             <div className="team-card team-1">
-              <div className="team-header">
-                <span>Équipe 1</span>
-                <button onClick={() => setActiveTeam(1)} className={activeTeam === 1 ? "active" : ""}>Sélectionner</button>
-              </div>
               <div className="team-slots">
                 {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team1[i] && setSelectedArtist(team1[i])} className="team-slot">
+                  <div key={i} onClick={() => team1[i] && removeFromTeam1(team1[i].id)} className="team-slot" title="Cliquer pour retirer">
                     {team1[i] ? (
                       team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
+                ))}
+              </div>
+              <div className="team-genres">
+                {Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
+                  <span key={genre} className="genre-badge">{genre} {count}</span>
                 ))}
               </div>
               <div className="team-stats">
@@ -522,17 +523,18 @@ export default function ArtistsPage() {
           {/* Column 3: Team 2 (35%) */}
           <div className="panel-col panel-col-3">
             <div className="team-card team-2">
-              <div className="team-header">
-                <span>Équipe 2</span>
-                <button onClick={() => setActiveTeam(2)} className={activeTeam === 2 ? "active" : ""}>Sélectionner</button>
-              </div>
               <div className="team-slots">
                 {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team2[i] && setSelectedArtist(team2[i])} className="team-slot">
+                  <div key={i} onClick={() => team2[i] && removeFromTeam2(team2[i].id)} className="team-slot" title="Cliquer pour retirer">
                     {team2[i] ? (
                       team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
+                ))}
+              </div>
+              <div className="team-genres">
+                {Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
+                  <span key={genre} className="genre-badge">{genre} {count}</span>
                 ))}
               </div>
               <div className="team-stats">
@@ -682,6 +684,7 @@ export default function ArtistsPage() {
           flex-direction: column;
           justify-content: center;
           font-size: 0.7rem;
+          overflow: hidden;
         }
         .artist-preview-details {
           display: flex;
@@ -827,28 +830,48 @@ export default function ArtistsPage() {
         
         .team-slots {
           display: flex;
-          gap: 4px;
+          gap: 6px;
           margin-bottom: 8px;
           justify-content: center;
         }
         .team-slot {
-          width: 40px;
-          height: 50px;
-          border-radius: 4px;
-          border: 2px solid rgba(255,255,255,0.1);
+          width: 55px;
+          height: 70px;
+          border-radius: 6px;
+          border: 2px solid rgba(255,255,255,0.15);
           background: rgba(255,255,255,0.05);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
           overflow: hidden;
-          font-size: 0.7rem;
+          font-size: 0.8rem;
           color: rgba(255,255,255,0.2);
+          transition: transform 0.2s;
+        }
+        .team-slot:hover {
+          transform: scale(1.05);
+          border-color: rgba(255,255,255,0.3);
         }
         .team-slot img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+        }
+        
+        .team-genres {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+          margin-bottom: 8px;
+          justify-content: center;
+        }
+        .genre-badge {
+          padding: 2px 6px;
+          background: rgba(139,92,246,0.3);
+          border-radius: 10px;
+          font-size: 0.6rem;
+          color: #fff;
         }
         
         .team-stats {
