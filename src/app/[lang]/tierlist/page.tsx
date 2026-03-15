@@ -7,6 +7,8 @@ import { useParams } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 
+const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
 const tierlistTranslations: Record<string, any> = {
   fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un vote par jour par IP.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voted aujourd'hui !" },
   en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day per IP.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today!" },
@@ -286,14 +288,14 @@ export default function TierListPage() {
                     gap: "8px",
                     padding: "16px"
                   }}>
-                     {tierArtists
-                       .sort((a, b) => getTierOrder(a.rating) - getTierOrder(b.rating))
-                       .map(artist => (
-                         <Link key={artist.id} href={`/${lang}/artist/${artist.id}`} style={{
-                           textDecoration: 'none',
-                           display: 'inline-block',
-                           width: '90px'
-                         }}>
+                      {tierArtists
+                        .sort((a, b) => getTierOrder(a.rating) - getTierOrder(b.rating))
+                        .map(artist => (
+                          <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}`} style={{
+                            textDecoration: 'none',
+                            display: 'inline-block',
+                            width: '90px'
+                          }}>
                            <div style={{
                              width: "112px",
                              height: "140px",
@@ -740,7 +742,7 @@ export default function TierListPage() {
                     const isDisabled = votedToday || isVoting;
                     
                     return (
-                         <Link key={artist.id} href={`/${lang}/artist/${artist.id}`} style={{
+                         <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}`} style={{
                            textDecoration: 'none',
                            display: 'block'
                          }}>

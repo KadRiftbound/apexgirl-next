@@ -44,26 +44,32 @@ type Artist = {
   danceStat?: number;
 };
 
+const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+const unslugify = (slug: string) => {
+  const artist = artistsData.find((a: Artist) => slugify(a.name) === slug);
+  return artist?.name || slug;
+};
+
 export default function ArtistDetailPage() {
-  const { lang, id } = useParams<{ lang: string; id: string }>();
+  const { lang, slug } = useParams<{ lang: string; slug: string }>();
   const router = useRouter();
 
-  // Handle missing id parameter
-  if (!id) {
-    router.push(`/(${lang})/artists`);
-    return null; // Prevent rendering while redirecting
+  // Handle missing slug parameter
+  if (!slug) {
+    router.push(`/${lang}/artists`);
+    return null;
   }
 
-  const artistId = parseInt(id);
+  const artistName = unslugify(slug);
   const [artist, setArtist] = useState<Artist | null>(null);
   const [loading, setLoading] = useState(true);
   const t = artistTranslations[lang] || artistTranslations.en;
 
   useEffect(() => {
-    const artist = artistsData.find((a: Artist) => a.id === artistId);
+    const artist = artistsData.find((a: Artist) => slugify(a.name) === slug);
     setArtist(artist ?? null);
     setLoading(false);
-  }, [artistId]);
+  }, [slug]);
 
   if (loading) {
     return (
@@ -81,7 +87,7 @@ export default function ArtistDetailPage() {
       <div style={{ padding: '40px 20px', textAlign: 'center' }}>
         <h2 className="section-title">{t.notFound}</h2>
         <p className="text-muted">
-          {t.notFoundDesc} {artistId} {t.notFoundId}
+          {t.notFoundDesc} "{artistName}" {t.notFoundId}
         </p>
         <Link href={`/${lang}/artists`} style={{
           display: 'inline-block',

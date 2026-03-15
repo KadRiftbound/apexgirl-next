@@ -7,6 +7,8 @@ import Link from "next/link";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 
+const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
 const filterTranslations: Record<string, any> = {
   fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités" },
   en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties" },
@@ -205,11 +207,11 @@ export default function ArtistsPage() {
                          ))}
                        </div>
                      </div>
-                     {/* Lien vers la page détaillée de l'artiste */}
-                     <div style={{ textAlign: 'center', marginTop: '16px' }}>
-                       <Link 
-                         href={`/${lang}/artist/${selectedArtist.id}`} 
-                         style={{
+                      {/* Lien vers la page détaillée de l'artiste */}
+                      <div style={{ textAlign: 'center', marginTop: '16px' }}>
+                        <Link 
+                          href={`/${lang}/artist/${slugify(selectedArtist.name)}`} 
+                          style={{
                            display: 'inline-block',
                            padding: '8px 16px',
                            background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
