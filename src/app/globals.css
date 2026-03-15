@@ -616,6 +616,10 @@ img {
     display: none;
   }
   
+  .mobile-nav {
+    display: block !important;
+  }
+  
   .hero h1 {
     font-size: 2.5rem;
   }

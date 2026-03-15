@@ -4,6 +4,7 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 import { BackgroundManager } from "@/components/BackgroundManager";
 import CookieConsent from "@/components/CookieConsent";
 import { Analytics } from "@vercel/analytics/react";
+import { MobileNav } from "@/components/MobileNav";
 
 const localeNames: Record<string, string> = {
   fr: "fr-FR",
@@ -182,6 +183,7 @@ export default async function LocaleLayout({
           </nav>
         </div>
       </header>
+      <MobileNav />
       <main id="main-content" className="main-content" role="main" tabIndex={-1}>
         {children}
       </main>
