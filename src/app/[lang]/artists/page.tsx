@@ -293,65 +293,64 @@ export default function ArtistsPage() {
           <div ref={panelRef} style={{ position: "absolute", top: "110px", left: "0px" }} className="left-panel">
                
               {/* Artist Overview Card - compact */}
-              <div className="artist-overview-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: 0, marginBottom: "6px", overflow: "hidden" }}>
-                <div className="artist-overview-title" style={{ padding: "10px", borderBottom: "1px solid rgba(255,255,255,0.1)", background: "linear-gradient(135deg, rgba(255,77,141,0.15), rgba(139,92,246,0.15))" }}>
-                  <span style={{ fontWeight: 600, fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{t.artistOverview}</span>
+              <div className="artist-overview-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "8px", border: "1px solid rgba(139,92,246,0.3)", padding: 0, marginBottom: "4px", overflow: "hidden" }}>
+                <div className="artist-overview-title" style={{ padding: "6px", borderBottom: "1px solid rgba(255,255,255,0.1)", background: "linear-gradient(135deg, rgba(255,77,141,0.15), rgba(139,92,246,0.15))" }}>
+                  <span style={{ fontWeight: 600, fontSize: "0.7rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{t.artistOverview}</span>
                 </div>
 
                 {selectedArtist ? (
-                  <div className="artist-overview-content" style={{ padding: "10px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                      <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i > 0) setSelectedArtist(filteredArtists[i-1]); }} style={{ width: "28px", height: "28px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", cursor: "pointer", fontSize: "0.7rem" }}>◀</button>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <h2 style={{ fontSize: "1rem", fontWeight: 700, color: rankColors[selectedArtist.rank], marginBottom: "2px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textAlign: "center" }}>{selectedArtist.name}</h2>
-                        <p style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.5)", textAlign: "center" }}>{selectedArtist.group}</p>
-                      </div>
-                      <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i < filteredArtists.length-1) setSelectedArtist(filteredArtists[i+1]); }} style={{ width: "28px", height: "28px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", cursor: "pointer", fontSize: "0.7rem" }}>▶</button>
-                    </div>
-
-                    <div style={{ display: "flex", gap: "12px", marginTop: "10px" }}>
-                      <div className="artist-image" style={{ width: "120px", height: "160px", borderRadius: "12px", border: `3px solid ${rankColors[selectedArtist.rank]}`, background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, rgba(30,30,50,1))`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
+                  <div className="artist-overview-content" style={{ padding: "6px" }}>
+                    {/* Image on left, full height */}
+                    <div style={{ display: "flex", gap: "8px" }}>
+                      <div className="artist-image" style={{ width: "70px", height: "90px", borderRadius: "6px", border: `2px solid ${rankColors[selectedArtist.rank]}`, background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, rgba(30,30,50,1))`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
                         {selectedArtist.image ? (
                           <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                         ) : (
-                          <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
+                          <span style={{ fontSize: "1.8rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
                         )}
                       </div>
+                      
+                      {/* Info on right */}
                       <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.6)", marginBottom: "3px" }}><span style={{ color: "#f472b6" }}>🎯</span> {selectedArtist.position}</p>
-                        <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.6)", marginBottom: "3px" }}><span style={{ color: "#8b5cf6" }}>⭐</span> {selectedArtist.build}</p>
-                        <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.6)", marginBottom: "3px" }}><span style={{ color: "#06b6d4" }}>💎</span> {selectedArtist.specialty || selectedArtist.genre}</p>
-                        <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.5)" }}><span style={{ color: "#22c55e" }}>🎵</span> {selectedArtist.genre}</p>
+                        <div style={{ display: "flex", alignItems: "center", gap: "4px", marginBottom: "2px" }}>
+                          <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i > 0) setSelectedArtist(filteredArtists[i-1]); }} style={{ width: "20px", height: "20px", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", cursor: "pointer", fontSize: "0.6rem", padding: 0 }}>◀</button>
+                          <h2 style={{ flex: 1, fontSize: "0.75rem", fontWeight: 700, color: rankColors[selectedArtist.rank], whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textAlign: "center" }}>{selectedArtist.name}</h2>
+                          <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i < filteredArtists.length-1) setSelectedArtist(filteredArtists[i+1]); }} style={{ width: "20px", height: "20px", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", cursor: "pointer", fontSize: "0.6rem", padding: 0 }}>▶</button>
+                        </div>
+                        <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.5)", textAlign: "center", marginBottom: "2px" }}>{selectedArtist.group}</p>
+                        <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.6)" }}>🎯 {selectedArtist.position} • {selectedArtist.specialty || selectedArtist.genre}</p>
+                        <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.5)" }}>🎵 {selectedArtist.genre}</p>
                       </div>
                     </div>
-
-                     <div style={{ marginTop: "10px" }}>
-                       <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.4)", marginBottom: "3px", textTransform: "uppercase" }}>{t.skills}</p>
-                       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                         {selectedArtist.skills?.slice(0,3).map((skill, i) => (
-                           <div key={i} style={{ padding: "4px 6px", background: "rgba(255,255,255,0.03)", borderRadius: "4px", fontSize: "0.55rem", borderLeft: `2px solid ${rankColors[selectedArtist.rank]}`, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{skill}</div>
-                         ))}
-                       </div>
-                     </div>
-                       {/* Lien vers la page détaillée de l'artiste */}
-                       <div style={{ textAlign: 'center', marginTop: '12px' }}>
-                         <Link 
-                           href={`/${lang}/artist/${slugify(selectedArtist.name)}`} 
-                           className="view-profile-btn"
-                           style={{
-                            display: 'inline-block',
-                            padding: '8px 16px',
-                            background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-                            color: 'white',
-                            borderRadius: '6px',
-                            fontSize: '0.85rem',
-                            fontWeight: 500
-                          }}
-                         >
-                           {t.viewFullProfile}
-                        </Link>
+                    
+                    {/* Skills and link */}
+                    <div style={{ marginTop: "4px" }}>
+                      <p style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.4)", marginBottom: "2px" }}>{t.skills}</p>
+                      <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+                        {selectedArtist.skills?.slice(0,2).map((skill, i) => (
+                          <div key={i} style={{ padding: "2px 4px", background: "rgba(255,255,255,0.03)", borderRadius: "3px", fontSize: "0.5rem", borderLeft: `2px solid ${rankColors[selectedArtist.rank]}`, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{skill}</div>
+                        ))}
                       </div>
                     </div>
+                    {/* Link to artist page */}
+                    <div style={{ textAlign: 'center', marginTop: '4px' }}>
+                      <Link 
+                        href={`/${lang}/artist/${slugify(selectedArtist.name)}`} 
+                        style={{
+                          display: 'inline-block',
+                          padding: '4px 10px',
+                          background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                          color: 'white',
+                          borderRadius: '4px',
+                          fontSize: '0.6rem',
+                          fontWeight: 500,
+                          textDecoration: 'none'
+                        }}
+                      >
+                        {t.viewFullProfile}
+                     </Link>
+                    </div>
+                  </div>
                 ) : (
                   <div style={{ padding: "20px", textAlign: "center", color: "rgba(255,255,255,0.4)" }}>
                     <div style={{ fontSize: "1.4rem", marginBottom: "4px" }}>👆</div>
@@ -361,7 +360,7 @@ export default function ArtistsPage() {
               </div>
 
               {/* Team Builder Card - Two Teams Side by Side */}
-              <div className="team-builder-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: "10px" }}>
+              <div className="team-builder-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: "15px" }}>
                 {/* Two Columns: Team 1 | Team 2 */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
                   
@@ -553,24 +552,14 @@ export default function ArtistsPage() {
         .artists-container {
           margin-left: 56%;
           width: 44%;
-          min-height: 100vh;
         }
         .artists-grid {
           display: grid;
-          grid-template-columns: repeat(7, 1fr);
+          grid-template-columns: repeat(6, 1fr);
           gap: 4px;
         }
         @media (max-width: 1200px) {
-          .artists-grid { grid-template-columns: repeat(6, 1fr); }
-        }
-        @media (max-width: 1000px) {
           .artists-grid { grid-template-columns: repeat(5, 1fr); }
-        }
-        @media (max-width: 800px) {
-          .artists-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-        @media (max-width: 600px) {
-          .artists-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 900px) {
           .left-panel {
@@ -584,6 +573,10 @@ export default function ArtistsPage() {
             width: 100%;
             padding-bottom: 20px;
           }
+          .artists-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 600px) {
+          .artists-grid { grid-template-columns: repeat(3, 1fr); }
         }
         }
         @media (max-width: 2200px) {
