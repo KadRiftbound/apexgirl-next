@@ -49,15 +49,40 @@ export default function ArtistsPage() {
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [team1, setTeam1] = useState<Artist[]>(() => {
     if (typeof window !== 'undefined') {
+      try {
         const saved = localStorage.getItem('team1');
-        return saved ? JSON.parse(saved) : [];
+        if (saved) {
+          const ids: number[] = JSON.parse(saved);
+          const team: Artist[] = [];
+          ids.forEach((id: number) => {
+            const artist = artistsData.find((a: Artist) => a.id === id);
+            if (artist) team.push(artist);
+          });
+          return team;
+        }
+      } catch (e) {
+        console.warn('Échec du chargement de l\'équipe 1', e);
+      }
     }
     return [];
   });
+
   const [team2, setTeam2] = useState<Artist[]>(() => {
     if (typeof window !== 'undefined') {
+      try {
         const saved = localStorage.getItem('team2');
-        return saved ? JSON.parse(saved) : [];
+        if (saved) {
+          const ids: number[] = JSON.parse(saved);
+          const team: Artist[] = [];
+          ids.forEach((id: number) => {
+            const artist = artistsData.find((a: Artist) => a.id === id);
+            if (artist) team.push(artist);
+          });
+          return team;
+        }
+      } catch (e) {
+        console.warn('Échec du chargement de l\'équipe 2', e);
+      }
     }
     return [];
   });
@@ -97,45 +122,79 @@ export default function ArtistsPage() {
   }, []);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
     const handleScroll = () => {
-      if (window.innerWidth <= 900) return;
-      
-      const header = document.querySelector('.header') as HTMLElement;
-      const scrollY = window.scrollY;
-      
-      if (header) {
-        if (scrollY > 100) {
-          header.style.transform = 'translateY(-100%)';
-        } else {
-          header.style.transform = 'translateY(0)';
-        }
-      }
-      
-      if (!panelRef.current) return;
-      const headerHeight = scrollY > 100 ? 0 : 70;
-      const startY = scrollY > 100 ? 0 : 110;
-      if (scrollY > 110 || scrollY > 100) {
-        panelRef.current.style.position = 'fixed';
-        panelRef.current.style.top = headerHeight + 'px';
-      } else {
-        panelRef.current.style.position = 'absolute';
-        panelRef.current.style.top = startY + 'px';
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const header = document.querySelector('.header') as HTMLElement;
+          
+          // Toggle header hidden class
+          if (header) {
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+              header.classList.add('header-hidden');
+            } else {
+              header.classList.remove('header-hidden');
+            }
+          }
+          
+          // Panel fixed behavior for both mobile and desktop
+          const isPanelFixed = currentScrollY > 50;
+          setPanelFixed(isPanelFixed);
+          
+          if (panelRef.current) {
+            const headerHeight = currentScrollY > 100 ? 0 : 70;
+            if (currentScrollY > 110 || currentScrollY > 100) {
+              panelRef.current.style.position = 'fixed';
+              panelRef.current.style.top = headerHeight + 'px';
+            } else {
+              panelRef.current.style.position = 'absolute';
+              panelRef.current.style.top = '110px';
+            }
+          }
+          
+          // Mobile search bar visibility
+          if (window.innerWidth <= 900) {
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+              setSearchBarVisible(false);
+            } else {
+              setSearchBarVisible(true);
+            }
+          }
+          
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Save teams to localStorage when they change
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('team1', JSON.stringify(team1));
+      try {
+        const ids = team1.map((artist: Artist) => artist.id);
+        localStorage.setItem('team1', JSON.stringify(ids));
+      } catch (e) {
+        console.warn('Échec de la sauvegarde de l\'équipe 1', e);
+      }
     }
   }, [team1]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('team2', JSON.stringify(team2));
+      try {
+        const ids = team2.map((artist: Artist) => artist.id);
+        localStorage.setItem('team2', JSON.stringify(ids));
+      } catch (e) {
+        console.warn('Échec de la sauvegarde de l\'équipe 2', e);
+      }
     }
   }, [team2]);
 
@@ -290,30 +349,8 @@ export default function ArtistsPage() {
     });
   }, [searchQuery, filterRank, filterGenre, filterSpecialty]);
 
-  const [panelFixed, setPanelFixed] = useState(false);
   const [searchBarVisible, setSearchBarVisible] = useState(true);
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setPanelFixed(currentScrollY > 50);
-      
-      // On mobile, hide search bar when scrolling down
-      if (window.innerWidth <= 900) {
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          setSearchBarVisible(false);
-        } else {
-          setSearchBarVisible(true);
-        }
-      }
-      lastScrollY = currentScrollY;
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [panelFixed, setPanelFixed] = useState(false);
 
   const rankOrder: Record<string, number> = { UR: 1, "UR Roma": 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4 };
   const getRankSort = (r: string) => rankOrder[r] || 99;
@@ -356,9 +393,21 @@ export default function ArtistsPage() {
                   </div>
                   <div className="artist-preview-info">
                     <div className="artist-preview-nav">
-                      <button onClick={() => { const i = sortedArtists.findIndex(a => a.id === selectedArtist.id); if (i > 0) setSelectedArtist(sortedArtists[i-1]); }}>◀</button>
+                      <button 
+                        onClick={() => {
+                          const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
+                          if (idx > 0) setSelectedArtist(sortedArtists[idx - 1]);
+                        }}
+                        disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) === 0}
+                      >◀</button>
                       <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.name}</span>
-                      <button onClick={() => { const i = sortedArtists.findIndex(a => a.id === selectedArtist.id); if (i < sortedArtists.length-1) setSelectedArtist(sortedArtists[i+1]); }}>▶</button>
+                      <button 
+                        onClick={() => {
+                          const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
+                          if (idx >= 0 && idx < sortedArtists.length - 1) setSelectedArtist(sortedArtists[idx + 1]);
+                        }}
+                        disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) >= sortedArtists.length - 1}
+                      >▶</button>
                     </div>
                     <div className="artist-preview-details">
                       <div className="detail-col">
@@ -633,6 +682,12 @@ export default function ArtistsPage() {
           color: #fff;
           cursor: pointer;
           font-size: 0.6rem;
+          opacity: 1;
+          transition: opacity 0.2s;
+        }
+        .artist-preview-nav button:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
         }
         .artist-preview-nav span {
           flex: 1;
@@ -642,10 +697,7 @@ export default function ArtistsPage() {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          background: var(--rank-gradient);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          display: inline-block;
         }
         .artist-preview-info p {
           color: rgba(255,255,255,0.5);
@@ -967,7 +1019,9 @@ export default function ArtistsPage() {
             right: 0;
             margin-bottom: 0;
             z-index: 101;
-            width: 100%;
+            width: 100vw !important;
+            padding: 8px 12px !important;
+            box-sizing: border-box !important;
             transition: transform 0.3s ease;
           }
           .search-bar.hidden {
@@ -980,14 +1034,23 @@ export default function ArtistsPage() {
             grid-template-columns: repeat(6, 1fr);
           }
           
-          /* Hide MobileNav and background logo on mobile */
-          .mobile-nav, [class*="MobileNav"], nav, header {
+          /* Hide MobileNav and background logo on mobile - but NOT the main header */
+          .mobile-nav, [class*="MobileNav"] {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
           }
           body {
             background-image: none !important;
+          }
+          
+          /* Nav buttons styling */
+          .artist-preview-nav button {
+            opacity: 1;
+          }
+          .artist-preview-nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
           }
         }
       `}</style>
