@@ -61,6 +61,14 @@ export default function ArtistsPage() {
 
   useEffect(() => {
     const handleScroll = () => {
+      const header = document.querySelector('.header') as HTMLElement;
+      if (header) {
+        if (window.scrollY > 100) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+      }
       if (!panelRef.current) return;
       const headerHeight = 70;
       const scrollY = window.scrollY;
