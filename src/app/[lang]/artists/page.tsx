@@ -734,12 +734,12 @@ export default function ArtistsPage() {
           min-height: 100vh;
         }
         .top-panel.fixed + .artists-bottom {
-          padding-top: calc(40vh + 8px);
+          padding-top: 0;
         }
         .search-bar {
           display: flex;
           gap: 8px;
-          margin-bottom: 8px;
+          margin-bottom: 0;
           padding: 8px;
           background: #0f0f1a;
           z-index: 99;
@@ -781,7 +781,6 @@ export default function ArtistsPage() {
         }
         .artists-grid button {
           aspect-ratio: 3/4;
-          max-width: 80px;
           border-radius: 8px;
           border: 2px solid rgba(255,255,255,0.1);
           background: rgba(30,30,50,0.9);
