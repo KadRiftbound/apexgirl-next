@@ -581,11 +581,25 @@ export default function ArtistsPage() {
           .artists-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 700px) {
-          .artists-grid { grid-template-columns: repeat(2, 1fr); }
+          .artists-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+        }
+        @media (max-width: 500px) {
+          .artists-grid { grid-template-columns: repeat(4, 1fr); gap: 3px; }
         }
         
         /* Mobile left panel fixes */
         @media (max-width: 900px) {
+          .left-panel {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 10px;
+          }
+          .artists-container {
+            margin-left: 0;
+            width: 100%;
+            padding-bottom: 80px;
+          }
           .artist-overview-card {
             padding: 6px !important;
             margin-bottom: 4px !important;
@@ -617,8 +631,8 @@ export default function ArtistsPage() {
             margin-bottom: 4px !important;
           }
           .team-slot {
-            width: 48px !important;
-            height: 55px !important;
+            width: 28px !important;
+            height: 34px !important;
           }
           .team-stats {
             padding: 4px !important;
