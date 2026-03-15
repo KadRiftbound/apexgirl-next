@@ -72,23 +72,19 @@ export default function ArtistDetailPage() {
   }, [slug]);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    const header = document.querySelector('.header');
-    
-    const updateHeader = () => {
-      const currentScrollY = window.scrollY;
+    const handleScroll = () => {
+      const header = document.querySelector('.header') as HTMLElement;
       if (header) {
-        if (currentScrollY > 100) {
-          header.classList.add('header-hidden');
+        if (window.scrollY > 100) {
+          header.style.transform = 'translateY(-100%)';
         } else {
-          header.classList.remove('header-hidden');
+          header.style.transform = 'translateY(0)';
         }
       }
-      lastScrollY = currentScrollY;
     };
 
-    window.addEventListener('scroll', updateHeader, { passive: true });
-    return () => window.removeEventListener('scroll', updateHeader);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   if (loading) {
