@@ -59,48 +59,6 @@ export default function ArtistsPage() {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const header = document.querySelector('.header') as HTMLElement;
-      const mainContent = document.querySelector('.artists-main') as HTMLElement;
-      if (header) {
-        if (window.scrollY > 100) {
-          header.style.transform = 'translateY(-100%)';
-          if (panelRef.current) {
-            panelRef.current.style.top = '0px';
-          }
-          if (mainContent) {
-            mainContent.style.paddingBottom = '80px';
-          }
-        } else {
-          header.style.transform = 'translateY(0)';
-          if (panelRef.current) {
-            panelRef.current.style.top = '110px';
-          }
-          if (mainContent) {
-            mainContent.style.paddingBottom = '0';
-          }
-        }
-      }
-      if (!panelRef.current) return;
-      const headerHeight = 70;
-      const scrollY = window.scrollY;
-      const startY = 110;
-      if (scrollY > startY && window.scrollY <= 100) {
-        panelRef.current.style.position = 'fixed';
-        panelRef.current.style.top = headerHeight + 'px';
-      } else if (window.scrollY <= 100 && scrollY > startY) {
-        panelRef.current.style.position = 'fixed';
-        panelRef.current.style.top = '0px';
-      } else if (scrollY <= startY) {
-        panelRef.current.style.position = 'absolute';
-        panelRef.current.style.top = startY + 'px';
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const addToTeam = (artist: Artist) => {
     if (team.length < 5 && !team.find(a => a.id === artist.id)) {
       setTeam([...team, artist]);
@@ -176,7 +134,7 @@ export default function ArtistsPage() {
         <title>Artistes - TopGirl</title>
       </Head>
 
-      <div className="container artists-main" style={{ padding: "40px 20px" }}>
+      <div className="container" style={{ padding: "40px 20px" }}>
         <h1 style={{ textAlign: "center", marginBottom: "10px", background: "linear-gradient(135deg, #f472b6, #c084fc, #818cf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: "2.5rem", fontWeight: 800 }}>
           🎤 Artistes
         </h1>
