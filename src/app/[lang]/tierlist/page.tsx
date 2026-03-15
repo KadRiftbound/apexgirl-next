@@ -297,6 +297,7 @@ export default function TierListPage() {
                 <option value="">Toutes spécialités</option>
                 <option value="Augmentation dommage">Augmentation dommage</option>
                 <option value="Dommage réduction">Dommage réduction</option>
+                <option value="Vitesse de conduite">Vitesse de conduite</option>
                 <option value="Solo car">Solo car</option>
                 <option value="Mixte">Mixte</option>
                 <option value="Rassemblement">Rassemblement</option>

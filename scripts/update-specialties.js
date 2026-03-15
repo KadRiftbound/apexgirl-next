@@ -25,13 +25,16 @@ for (const artist of artists) {
 
   const hasAnyDamage = hasSkillDamage || hasBasicDamage || hasPlayerDamage;
   const hasAnyReduction = hasSkillReduction || hasBasicReduction;
+  const hasDriveSpeed = hasSkill(skills, ['drive speed', 'drive speed increase']);
 
-  if (hasRallyFanCap) {
+  if (hasDriveSpeed) {
+    newSpecialty = 'Vitesse de conduite';
+  } else if (hasRallyFanCap) {
     newSpecialty = 'Rassemblement';
   } else if (hasFanCap && !hasRallyFanCap) {
     newSpecialty = 'Solo car';
   } else if (hasSkillReduction && hasBasicReduction) {
-    newSpecialty = 'Defense';
+    newSpecialty = 'Dommage réduction';
   } else if (hasAnyReduction && hasAnyDamage) {
     newSpecialty = 'Mixte';
   } else if (hasAnyDamage) {

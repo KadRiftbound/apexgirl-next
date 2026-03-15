@@ -1241,7 +1241,7 @@
     "rating": "C",
     "thoughts": "",
     "image": "Julia.jpg",
-    "specialty": "Augmentation dommage",
+    "specialty": "Vitesse de conduite",
     "event": "Original",
     "singStat": 25851,
     "danceStat": 19076
@@ -2502,7 +2502,7 @@
     "rating": "C",
     "thoughts": "",
     "image": "Zendayah.jpg",
-    "specialty": "Augmentation dommage",
+    "specialty": "Vitesse de conduite",
     "event": "Original",
     "singStat": 19076,
     "danceStat": 25851
@@ -2776,7 +2776,7 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage",
+    "specialty": "Vitesse de conduite",
     "image": "Chloe.jpg"
   },
   {
@@ -2845,7 +2845,7 @@
     },
     "calculatedTier": "C",
     "image": "Ella.jpg",
-    "specialty": "Augmentation dommage"
+    "specialty": "Vitesse de conduite"
   },
   {
     "id": 56,
@@ -3082,7 +3082,7 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Mixte",
+    "specialty": "Vitesse de conduite",
     "image": "Luna.jpg"
   },
   {
@@ -3218,7 +3218,7 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Mixte",
+    "specialty": "Vitesse de conduite",
     "image": "Samantha.jpg"
   },
   {
@@ -3251,7 +3251,7 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Économie",
+    "specialty": "Vitesse de conduite",
     "image": "Sarah.jpg"
   },
   {
@@ -3451,7 +3451,7 @@
     },
     "calculatedTier": "C",
     "image": "Harper.jpg",
-    "specialty": "Économie"
+    "specialty": "Vitesse de conduite"
   },
   {
     "id": 1003,
