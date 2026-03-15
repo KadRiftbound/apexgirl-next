@@ -1,0 +1,5218 @@
+
+  en: {
+    "equipment": `
+## Equipment Guide - TopGirl
+
+### Accessories
+Jewelry is essential for boosting your main stats. Here are the priorities:
+
+** Necklace ** - +Voice Bonus
+** Ring ** - +Dance Bonus
+** Watch ** - +Charm Bonus
+
+### Vehicles
+Cars offer massive bonuses but are expensive:
+- Starter Car: 500,000 Gold
+- Sports Car: 2,000,000 Gold
+- Luxury Car: 10,000,000 Gold
+
+### Properties
+Properties generate passive income:
+- Apartment: 50,000 Gold/day
+- House: 200,000 Gold/day
+- Mansion: 1,000,000 Gold/day
+
+### Gold vs. Purple Comparison
+
+| Equipment | Gold Stats | Purple Stats |
+|------------|------------|-------------|
+| Necklace | +500 Voice | +300 Voice |
+| Ring | +500 Dance | +300 Dance |
+| Watch | +500 Charm | +300 Charm |
+`,
+    "team-builder": `
+## Team Builder - TopGirl
+
+### Team Composition
+An optimal team contains 5 artists with well-defined roles:
+
+1. **Vocalist (Lead)** - Highest stats, genre bonus
+2. **Dancer (Support)** - Team buffs
+3. **Center** - Balance
+4. **Makestar** - Fan generation
+5. **Support** - Defense/utility
+
+### Genre Synergies
+Genre bonuses apply when you have 2+ artists of the same genre:
+
+- **Pop + Pop**: +15% Vocal
+- **EDM + EDM**: +15% Dance
+- **Hip Hop + Hip Hop**: +15% Charm
+
+### Equipment Bonuses
+Equipment synergizes with roles:
+
+- Jewelry set: +20% main stat
+- Vehicle set: +15% secondary stat
+- Property set: +10% all stats
+
+### Build Types
+**Offensive:** 3 Offense / 1 Defense / 1 Support
+**Defensive:** 2 Offense / 3 Defense / 0 Support
+**Balanced:** 2 Offense / 2 Defense / 1 Support
+
+`,
+    "recommended-teams": `
+## Recommended Teams - TopGirl
+
+### Top UR Teams
+
+**Team 1 - Hyper Offense:**
+- Kokoro (Vocalist)
+- Aurora (Dancer)
+- Claire (Center)
+- Anastasia (Defense)
+- Beatrice (Support)
+
+**Team 2 - Balance:**
+- Alexandra (Vocalist)
+- Elizabeth (Dancer)
+- Genevieve (Center)
+- Marguerite (Defense)
+- Gabriella (Support)
+
+### Top SSR Teams
+
+**Team 1 - Budget Meta:**
+- Alice (Vocalist)
+- Hestia (Dancer)
+- Hikari (Center)
+- Eri (Defense)
+- Flora (Support)
+
+### Strategies
+
+**Offensive:** Maximize damage dealers
+- Focus: Skill Damage + Basic Attack
+- Meta: Kokoro, Aurora, Claire
+
+**Defensive:** Focus on survival
+- Focus: Damage Reduction + HP
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Balanced:** Mix of both
+- Focus: Distribution stats
+- Meta: Elizabeth, Gabriella
+
+`,
+    "leveling-ssr": `
+## SSR Level Up - TopGirl
+
+### Cards Required Per Level
+
+| Level | SSR Cards | Total |
+
+|--------|-----------|-------|
+| 1-10 | 10 | 10 |
+| 10-20 | 20 | 30 |
+| 20-40 | 40 | 70 |
+| 40-60 | 60 | 130 |
+| 60-80 | 80 | 210 |
+| 80-100 | 100 | 310 |
+
+| 100-115 | 150 | 460 |
+
+### Level Up Tips
+- Use excess SSR cards
+- Focus on your main characters first
+- Level up during x2 XP events
+- Prioritize artists with high therapists
+
+### Gold Cost
+The gold cost increases with level:
+- Levels 1-40: ~500,000 Gold
+- Levels 40-70: ~2,000,000 Gold
+- Levels 70-100: ~8,000,000 Gold
+- Levels 100-115: ~25,000,000 Gold
+
+`,
+    "blueprints": `
+## Guide Blueprints - TopGirl
+
+
+### Installation Tiers
+
+| Tier | Blueprints | Gold | Effet |
+|------|-----------|------|-------|
+| 1-3 | 50-100 | 10K | +5% stats |
+| 4-6 | 150-300 | 50K | +10% stats |
+| 7-9 | 500-800 | 200K | +15% stats |
+| 10-12 | 1000-1500 | 500K | +20% stats |
+| 13-15 | 2000-3000 | 1M | +25% stats |
+| 16-18 | 4000-5000 | 3M | +30% stats |
+| 19-21 | 7000+ | 10M | +35% stats |
+
+### Priorités
+1. **Studio** - Production de songs
+2. **Training** - Level up artists
+3. **Fan Hall** - Génération fans
+4. **Marketing** - Revenus passifs
+
+### Tips
+- Focus tier 7-12 Gold en premier
+- Attend les événements pour les discounts
+- Upgrade uniformément pour éviter le瓶颈
+    `,
+    "hq-upgrade": `HQ Guide - TopGirl
+
+HQ Cards by Level
+
+| Level | Cards | Gold Cost |
+
+|-------|--------|----------|
+| 1 | 50 | 1,000 |
+| 2 | 100 | 2,500 |
+| 3 | 200 | 5,000 |
+| 4 | 400 | 10,000 |
+| 5 | 800 | 25,000 |
+| 6 | 1,500 | 50,000 |
+| 7 | 2,500 | 100,000 |
+| 8 | 4,000 | 200,000 |
+| 9 | 6,000 | 400,000 |
+| 10 | 8,000 | 800,000 |
+
+**Total for HQ Level 10:** ~29,922 cards / ~1.6M Gold
+
+### HQ Bonus
+- Level 5: Unlock additional events
+- Level 7: +10% to all stats
+- Level 10: Maximum bonus
+
+`,
+    "vehicle-system": `
+## Vehicle System - TopGirl
+
+### Vehicle Types
+
+** Starter (Free) **
+- Speed: 100
+- Bonus Stats: +500
+
+** Sports (50,000 Gold) **
+- Speed: 150
+- Bonus Stats: +1,500
+
+** Luxury (500,000 Gold) **
+- Speed: 200
+- Bonus Stats: +5,000
+
+** Super (5,000,000 Gold) **
+- Speed: 300
+- Bonus Stats: +15,000
+
+### Upgrade Parts
+
+| Part | Effect | Max Tier |
+
+|-------|-------|----------|
+
+| Engine | +Speed | 10 |
+
+| Chassis | +Handling | 10 |
+
+| Suspension | +Comfort | 10 |
+
+| Rims | +Style | 10 |
+
+### Skins
+Skins are unlocked at certain vehicle levels:
+
+- Level 5: Bronze Skin
+- Level 10: Silver Skin
+- Level 20: Gold Skin
+- Level 30: Platinum Skin
+
+`,
+    "gold-equipment": `
+## Gold Optimal Equipment - TopGirl
+
+### Gold Vocalist Setup
+
+**Jewelry:**
+- Necklace: Gold Diamond Necklace (+3,000 Vocals)
+- Ring: Gold Diamond Ring (+2,500 Vocals)
+- Watch: Gold Chronograph (+2,000 Vocals)
+
+**Vehicle:**
+- Supercar (+15,000 all stats)
+
+**Property:**
+- Luxury Mansion (+5,000 all stats)
+
+**Total: +27,500 Vocals / +20,000 other / 86,000 fans**
+
+### Gold Dancer Setup
+
+**Jewelry:**
+- Necklace: Gold Diamond Necklace (+3,000 Dance)
+- Ring: Gold Diamond Ring (+2,500 Dance)
+- Watch: Gold Chronograph (+2,000 Dance)
+
+**Vehicle:** Supercar
+**Property:** Luxury Mansion
+
+**Total: +27,500 Dance**
+
+### Gold Center Setup
+
+**Jewelry:**
+
+- Necklace: Gold Diamond Necklace (+3,000 Vocal)
+- Ring: Gold Diamond Ring (+2,500 Dance)
+- Watch: Gold Chronograph (+2,000 Charm)
+
+**Vehicle + Property:** Same
+
+**Total: +27,500 Dance stats**
+
+### Total Cost
+~50,000,000 Gold per character with full Gold
+
+`,
+    "purple-equipment": `
+## Équipement Purple - TopGirl
+
+### Setup Purple Vocalist
+
+**Bijoux:**
+- Collier: Purple Gem Necklace (+2,000 Vocal)
+- Bague: Purple Gem Ring (+1,500 Vocal)
+- Montre: Purple Watch (+1,200 Vocal)
+
+**Véhicule:** Sports Car (+1,500 all stats)
+
+**Propriété:** House (+3,000 all stats)
+
+**Total: +9,700 Vocal / +6,500 autre / 0 fans**
+
+### Setup Purple Dancer
+
+Similar to Vocalist but:
+- Collier: +2,000 Dance
+- Bague: +1,500 Dance
+- Montre: +1,200 Dance
+
+**Total: +9,700 Dance**
+
+### Stratégie Gold/Purple Mix
+
+**Option 1: Budget Optimal**
+- 2 Gold Jewelry + Purple Car + Purple Property
+- Coût: ~15M Gold
+- Stats: ~70% du full Gold
+
+**Option 2: Purple Only**
+- Tout Purple
+- Coût: ~5M Gold
+- Stats: ~50% du full Gold
+
+### Avantages Purple
+- Plus accessible
+- Bon rapport qualité/prix
+- Still competitive en mid-game
+    `,
+    "event-ancient-rome": `
+## Ancient Rome Guide - TopGirl
+
+### Overview
+The **Adventure Abroad: Rome** event is a 12-day seasonal event set in Ancient Rome. The goal is to collect ROMA items through 3 phases and exchange them for exclusive rewards.
+
+### Event Phases
+
+**Phase 1: Colosseum (Days 1-4)**
+- **Objective:** Collect ROMA items
+- **Rewards:** ROMA Items, Diamonds
+- **Tip:** Focus on the Battles to accumulate quickly
+
+**Phase 2: Forum (Days 5-8)**
+- **Objective:** Complete songs
+- **Rewards:** SSR Cards, ROMA Items
+- **Tip:** Use your best teams to maximize rewards
+
+**Phase 3: Emperor (Days 9-12)**
+- **Objective:** Trade rewards
+- **Rewards:** UR Token, SSR+ Cards
+- **Tip:** Keep enough ROMA Items for the best trades
+
+### Strategy
+1. **Days 1-4:** Maximize item collection ROMA
+2. **Days 5-8:** Focus on song completions
+3. **Days 9-12:** Exchange for the best rewards
+
+### Top Artists
+- Cornelia, Aurelia, Xenia (Rome bonus)
+
+`,
+    "event-radio-battle": `
+## Radio Battle Guide - TopGirl
+
+### Overview
+The **Radio Battle** is a recurring event where you compete against other players via radio. The more listeners you have, the higher your score.
+
+### The 5 Phases
+
+**Phase 1: Opening (Day 1)**
+- Prepare your radio station
+- Reward: 100 Radio Coins
+
+**Phase 2: Heat 1 (Days 1-2)**
+- Accumulate listeners
+- Reward: 200 Radio Coins
+
+**Phase 3: Heat 2 (Days 2-3)**
+- Challenge other stations
+- Reward: 300 Radio Coins
+
+**Phase 4: Finals (Days 3-4)**
+- Final battle
+- Reward: SSR Cards
+
+**Phase 5: Exchange (Days 4-5)**
+- Exchange your Radio Coins
+- Rewards: UR Tokens, SSR+
+
+### Strategy
+1. **Release during peak hours** (evening)
+2. **Use artists with Charisma skills**
+3. **Combine different genres** to Attract more listeners
+
+### Top Artists
+- Skylar, Nova, Sora, Evelyn
+
+`,
+    "event-grammy": `
+## Guide Grammy Awards - TopGirl
+
+### Présentation
+Le **Grammy Contest** est un événement hebdomadaire de competition musicale avec 8 catégories différentes. Créez la meilleure chanson en combinant différents genres et artists.
+
+### Les 8 Catégories
+
+| Catégorie | Genre Requis | Meilleure Stratégie |
+|-----------|--------------|---------------------|
+| Best New Artist | Tous | Use rising stars avec high potential |
+| Record of the Year | Pop + EDM | Combinez Pop + EDM pour max score |
+| Album of the Year | Tous | Balancez tous les stats |
+| Song of the Year | Tous | Focus sur Charisma skills |
+| Best Pop | Pop only | Équipe 100% Pop |
+| Best Hip Hop | Hip Hop only | Équipe Hip Hop |
+| Best R&B | R&B only | Specialists R&B |
+| Best Rock | Rock only | Équipe Rock |
+
+### Stratégie
+1. **Utilisez des artists avec high Singing stats**
+2. **Combinez lead vocalist + supporting dancers**
+3. **Pop et EDM ont tendance à scorer plus haut**
+
+### Meilleures Artists
+- Lestari, Brooklyn, Alice, Bella (general)
+- Artists par genre: vérifier les stats
+    `,
+    "event-ultimate-ceo": `
+## Ultimate CEO Guide - TopGirl
+
+### Overview
+The **Ultimate CEO** is a 5-day weekly event where you face off against the CEO to earn exclusive rewards.
+
+### Phases
+
+**Phase 1 (Day 1)**
+- Accumulate CEO Points
+- Rewards: Common Cards
+
+**Phase 2 (Day 2)**
+- Challenge the CEO
+- Rewards: SSR Cards
+
+**Phase 3 (Days 3-5)**
+- Redeem your rewards
+- Rewards: UR Tokens, CEO Cards
+
+### Strategy
+1. **Focus on teams with high DPS**
+2. **Balance attack and defense artists**
+3. **Use artists with Fan Capacity bonuses**
+
+### Best Artists
+- Kokoro, Aurora, Claire, Alice
+`,
+    "event-echo-death-match": `
+## Guide Echo Death Match - TopGirl
+
+### Présentation
+Le **Echo Death Match** est un événement où vous affrontez des échos. Accumulez des Echo Stones à travers des battles solo et team.
+
+### Phases
+
+**Phase 1 (Jour 1-2)**
+- Solo battles
+- Objectif: Accumuler Echo Stones
+- Reward: Echo Stones x500
+
+**Phase 2 (Jour 3-5)**
+- Team battles
+- Objectif: Bonus Echo Stones
+- Reward: Echo Stones x1000, SSR Shards
+
+**Phase 3 (Jour 6-7)**
+- Échange des rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Stratégie
+1. **Phase 1:** Focus sur solo battles pour stocker
+2. **Phase 2:** Team battles pour bonus
+3. **Gardez des Echo Stones** pour les meilleurs échanges
+    `,
+    "event-chamber-territory": `
+## Chamber Territory Guide - TopGirl
+
+### Overview
+The **Chamber Territory** is a territory-based event. Capture and defend different chambers to earn rewards.
+
+### Phases
+
+**Phase 1 (Days 1-3)**
+- Capture territories
+- Reward: 300 Territory Tokens
+
+**Phase 2 (Days 4-7)**
+- Defend and collect
+- Reward: 500 SSR Cards, Tokens
+
+**Phase 3 (Days 8-10)**
+- Redeem your rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Strategy
+1. **Capture high-value territories early**
+2. **Defend your territories** for bonuses
+3. **Cooperate with other players**
+
+`,
+    "event-cleanup-party": `
+## Cleanup Party Guide - TopGirl
+
+### Overview
+The **Cleanup Party** is an event where you clean up the city by collecting trash.
+
+### Phases
+
+**Phase 1 (Days 1-2)**
+- Collect trash
+- Reward: 200 Trash
+
+**Phase 2 (Days 3-5)**
+- Cleanup Missions
+- Reward: 400 Trash, SSR Shards
+
+**Phase 3 (Days 6-7)**
+- Redeem Rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Strategy
+1. **Complete cleaning missions** for bonuses
+2. **Team up** for faster collection
+3. **Redeem** your trash for the best rewards
+`,
+    "event-metro-subway": `
+## Metro & Subway Guide - TopGirl
+
+### Overview
+The **Metro & Subway** is an event where you ride the subway to collect tickets and earn rewards.
+
+### Phases
+
+**Phase 1 (Days 1-2)**
+- Collect tickets
+- Reward: 150 Tickets
+
+**Phase 2 (Days 3-5)**
+- Complete lines
+- Reward: 300 Tickets, SSR Shards
+
+**Phase 3 (Days 6-7)**
+- Redeem rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Strategy
+1. **Complete subway lines** for bonus tickets
+2. **Different lines** have different rewards
+3. **Redeem** your tickets for the best rewards
+
+`,
+    "event-vs-group": `
+## VS Group Event Guide - TopGirl
+
+### Timeline
+- **5 DAYS OF PREPARATION** (Daily Themes) followed by the **DAY 6 FINAL BATTLE**
+- **DAILY DUEL**: Earn points via specific tasks
+- **VICTORY**: The group with the highest accumulated score after 6 days claims ULTIMATE VICTORY
+
+### Participation Requirements
+- **LEVEL REQUIREMENT**: CEO LEVEL MUST AT LEAST REACH LEVEL 20
+- **GROUP QUALIFICATION**: Only groups with HIGH FINANCIAL POWER RANKINGS are ELIGIBLE FOR MATCHING
+- **CHANGING GROUPS DURING THE EVENT**: Prevents contributing group points for 1 day, but personal points remain UNAFFECTED
+
+### Rewards & Blueprints
+- **Unlock 9 tiers of rewards**
+- Top players and victorious groups receive GRAND REWARDS via mail
+- **TIERS 4-9 REQUIRE MASTER BLUEPRINTS**
+- Use Master Blueprints to boost point efficiency and unlock permanent stat bonuses
+
+### Rush Attack (Day 6)
+- **INVASION**: On the 6th day, free teleportation to LANDMARKS (2, 3, 4) is enabled
+- **ELIMINATION**: Defeat rival members in their territory to harvest MASSIVE BONUS POINTS
+    `,
+    "event-fishing": `
+## Fishing Event Guide - TopGirl
+
+### Tips
+
+**1. Feed your fish regularly**
+- Keep voucher generation at full speed
+- Avoid slowdown
+
+**2. Focus on catching higher-star fish**
+- They earn MORE vouchers
+- Replace weaker ones automatically
+
+**3. Visit other players' aquariums**
+- You get 5 visits per day
+- If someone likes your aquarium, you'll receive shells
+
+**4. The more fish you have, the higher your income**
+- Keep expanding your aquarium
+
+**5. Fish with a crown**
+- Give the highest CRS and voucher income
+- Keep them in your aquarium as long as possible
+
+**6. Don't waste your bait**
+- Time your clicks carefully
+- The fish will eat it automatically
+    `,
+    "world-building": `
+## World Building Guide - TopGirl
+
+[Happy to be completed]
+
+### Overview
+Build and develop your world in the game. This guide covers the basics of world building mechanics.
+
+(Content from WorldBuildingGuide.jpg to be added)
+    `,
+    "vip-level": `
+## VIP Level Guide - TopGirl
+
+### Overview
+Detailed guide on points required for each VIP level.
+
+### VIP Benefits
+- VIP players receive various bonuses and exclusive rewards
+- Higher VIP levels unlock more benefits
+
+(Content from VIPLevelGuide.jpg to be added)
+    `,
+    "ceo-coins": `
+## CEO Coins Purchase Guide - TopGirl
+
+### How to Purchase CEO Coins
+
+**Step 1: Visit Payment Website**
+Using your mobile browser, visit: https://pay2.a3games.com/topgirl
+
+**Step 2: Select Region**
+In the upper right corner of the page, select your region and set the payment currency to a supported currency
+
+**Step 3: Enter Account Info**
+Enter your ID and nickname
+(Please make sure that the ID and nickname you enter are correct, otherwise you may not be able to receive CEO coins normally)
+
+**Step 4: Select Amount**
+Select the amount of CEO coins you want to purchase and add a bank card to complete the payment
+
+**Step 5: Redeem in Game**
+After completing the purchase of CEO coins, enter the game, select the gift package you need, click the gift package price, and choose to use CEO coins to complete the redemption.
+    `,
+    "alliance-management": `
+## Alliance Management Guide - TopGirl
+
+### Group Responsibilities
+
+#### Leadership & Strategy
+- **Strategist / Meta Analyst**: Sets long-term server goals, advises build & expansion focus
+- **Builder / Group Developer**: Oversees club construction, gathers progression resources, plans club growth paths
+- **Rally Leader / War General**: Launches rallies & attacks, chooses targets & timing, coordinates war operations
+- **Trainer / Mentor**: Supports new players, guides artist development, helps with squad formation
+
+#### Communication & Diplomacy
+- **Group Communicator**: Posts announcements, summarizes updates, manages Discord & In-game mail
+- **Diplomat / Alliance Manager**: Manages alliances & NAPs, handles negotiations, coordinates cooperation
+- **Recruiter / HR**: Recruits new members, screens applicants, onboards members
+
+#### Intel & Support
+- **Intel Officer / Spy**: Scans enemy clubs, tracks activity & movement, monitors deployments
+- **Event Organizer**: Supports radio battles, assists wars & events
+- **Fanmeeting Coordinator**: Manages fan interactions and events
+
+### Strategy & War
+Develop your alliance through careful planning and coordination with members.
+    `,
+    "peak-level": `
+## Peak Level Guide - TopGirl
+
+### Overview
+Peak Level is a late-game progression system for SSR girls. Each SSR girl with 3 skills and 5x (gold stars) becomes eligible for Peak Level upgrades.
+
+### Key Points
+- **Focus on Total Peak Level**, not only your main team
+- Push top SSR girls as high as possible (100-400+) for strong milestone buffs
+- Important milestones: Lv40 / Lv70 / Lv100 / Lv300 / Lv400
+- Use SSR Universal Photos freely - efficiency > saving
+
+### Minimum Goal
+Your minimum goal is to bring EVERY SSR girl to Peak Level 10.
+Each SSR at Peak Lv10 gives +0.5% Sing & +0.5% Dance (global buff)
+
+### For F2P Players
+Best Peak candidates (easy photo access):
+- **Zendaya** (Stock Shop)
+- **Skylar** (Group Shop)
+- **Claire** (Rewards Collection)
+
+Aim for Peak Lv5-10 on 1-2 girls max. Max your main team before investing more into Peak Levels.
+
+Peak Level is a long-term global power system, perfect for whales.
+    `,
+    "group-shop": `
+## Group Shop Guide - TopGirl
+
+### What to Buy
+
+**1. Promotion Manuals**
+- Always buy them first
+- Very few of them are available
+- Frequently required if you fight often
+
+**2. SSR Promote Cards**
+- Promote cards will always be required
+- New SSR artists are added every event
+
+**3. Asset Coins**
+- A lot of asset coins will be required to max the promoted assets
+
+**4. Vehicle Parts**
+- Buy them if you haven't maxed your car yet
+
+**5. Skylar Photos**
+- Only buy them if you intend to max Skylar
+- Very expensive
+
+**6. HQ Cards**
+- Buy them if your HQ isn't maxed yet
+
+**7. Migration Tickets**
+- Buy them if you want to migrate to another server
+    `,
+  },
+
+  it: {
+    "equipment": `## Guida all'equipaggiamento - TopGirl
+
+### Accessori
+I gioielli sono essenziali per potenziare le tue statistiche principali. Ecco le priorità:
+
+** Collana ** - +Bonus Voce
+** Anello ** - +Bonus Danza
+** Orologio ** - +Bonus Fascino
+
+### Veicoli
+Le auto offrono bonus enormi ma sono costose:
+- Auto base: 500.000 Oro
+- Auto sportiva: 2.000.000 Oro
+- Auto di lusso: 10.000.000 Oro
+
+### Immobili
+Gli immobili generano un reddito passivo:
+- Appartamento: 50.000 Oro/giorno
+- Casa: 200.000 Oro/giorno
+- Villa: 1.000.000 Oro/giorno
+
+### Confronto Oro vs. Viola
+
+| Equipaggiamento | Statistiche Oro | Statistiche Viola |
+
+|------------|------------|-------------|
+
+| Collana | +500 Voce | +300 Voce |
+
+Anello | +500 Danza | +300 Danza |
+
+Orologio | +500 Fascino | +300 Fascino |
+
+`,
+    "team-builder": `## Creazione della squadra - TopGirl
+
+### Composizione della squadra
+Una squadra ottimale è composta da 5 artisti con ruoli ben definiti:
+
+1. **Vocalist (Leader)** - Statistiche più alte, bonus di genere
+2. **Ballerina (Supporto)** - Buff di squadra
+3. **Centro** - Equilibrio
+4. **Makestar** - Generazione di fan
+5. **Supporto** - Difesa/utilità
+
+### Sinergie di genere
+I bonus di genere si applicano quando hai 2 o più artisti dello stesso genere:
+
+- **Pop + Pop**: +15% Voce
+- **EDM + EDM**: +15% Danza
+- **Hip Hop + Hip Hop**: +15% Fascino
+
+### Bonus equipaggiamento
+L'equipaggiamento crea sinergia con i ruoli:
+
+- Set di gioielli: +20% statistica principale
+- Set di veicoli: +15% statistica secondaria
+- Set di proprietà: +10% tutte le statistiche
+
+### Creazione Tipologie
+**Offensiva:** 3 Attacco / 1 Difesa / 1 Supporto
+**Difensiva:** 2 Attacco / 3 Difesa / 0 Supporto
+**Bilanciata:** 2 Attacco / 2 Difesa / 1 Supporto
+
+
+`,
+    "recommended-teams": `## Squadre consigliate - TopGirl
+
+### Squadre UR migliori
+
+**Squadra 1 - Iper Attacco:**
+- Kokoro (Cantante)
+- Aurora (Ballerina)
+- Claire (Centro)
+- Anastasia (Difesa)
+- Beatrice (Supporto)
+
+**Squadra 2 - Bilanciata:**
+- Alexandra (Cantante)
+- Elizabeth (Ballerina)
+- Genevieve (Centro)
+- Marguerite (Difesa)
+- Gabriella (Supporto)
+
+### Squadre SSR migliori
+
+**Squadra 1 - Meta Economica:**
+- Alice (Cantante)
+- Hestia (Ballerina)
+- Hikari (Centro)
+- Eri (Difesa)
+- Flora (Supporto)
+
+### Strategie
+
+**Offensiva:** Massimizzare i personaggi che infliggono danni
+- Focus: Danni Abilità + Attacco Base
+- Meta: Kokoro, Aurora, Claire
+
+**Difensiva:** Concentrarsi su Sopravvivenza
+- Obiettivo: Riduzione del danno + Punti vita
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Bilanciato:** Un mix di entrambi
+- Obiettivo: Distribuzione delle statistiche
+- Meta: Elizabeth, Gabriella
+
+
+`,
+    "leveling-ssr": `
+## Montée en Niveau SSR - TopGirl
+
+### Cartes nécessaires par niveau
+
+| Niveau | Cartes SSR | Total |
+|--------|-----------|-------|
+| 1-10 | 10 | 10 |
+| 10-20 | 20 | 30 |
+| 20-40 | 40 | 70 |
+| 40-60 | 60 | 130 |
+| 60-80 | 80 | 210 |
+| 80-100 | 100 | 310 |
+| 100-115 | 150 | 460 |
+
+### Tips Level Up
+- Utilisez les cartes SSR excédentaires
+- Focus sur vos mains first
+- Level up pendant les événements x2 XP
+- Priorisez les artistes avec haute thérapeutisten
+
+### Coût Gold
+Le coût en gold augmente avec le niveau:
+- Niv 1-40: ~500,000 Gold
+- Niv 40-70: ~2,000,000 Gold  
+- Niv 70-100: ~8,000,000 Gold
+- Niv 100-115: ~25,000,000 Gold
+    `,
+    "blueprints": `
+## Guide Blueprints - TopGirl
+
+
+### Installation Tiers
+
+| Tier | Blueprints | Gold | Effet |
+|------|-----------|------|-------|
+| 1-3 | 50-100 | 10K | +5% stats |
+| 4-6 | 150-300 | 50K | +10% stats |
+| 7-9 | 500-800 | 200K | +15% stats |
+| 10-12 | 1000-1500 | 500K | +20% stats |
+| 13-15 | 2000-3000 | 1M | +25% stats |
+| 16-18 | 4000-5000 | 3M | +30% stats |
+| 19-21 | 7000+ | 10M | +35% stats |
+
+### Priorités
+1. **Studio** - Production de songs
+2. **Training** - Level up artists
+3. **Fan Hall** - Génération fans
+4. **Marketing** - Revenus passifs
+
+### Tips
+- Focus tier 7-12 Gold en premier
+- Attend les événements pour les discounts
+- Upgrade uniformément pour éviter le瓶颈
+    `,
+    "hq-upgrade": `Guida HQ - TopGirl
+
+Carte HQ per Livello
+
+| Livello | Carte | Costo in Oro |
+
+|-------|--------|----------|
+| 1 | 50 | 1.000 |
+
+| 2 | 100 | 2.500 |
+
+| 3 | 200 | 5.000 |
+
+| 4 | 400 | 10.000 |
+
+| 5 | 800 | 25.000 |
+
+| 6 | 1.500 | 50.000 |
+
+| 7 | 2.500 | 100.000 |
+
+| 8 | 4.000 | 200.000 |
+
+| 9 | 6.000 | 400.000 |
+
+| 10 | 8.000 | 800.000 |
+
+
+**Totale per il Quartier Generale di Livello 10:** ~29.922 carte / ~1,6 milioni di oro
+
+### Bonus Quartier Generale
+- Livello 5: Sblocca eventi aggiuntivi
+- Livello 7: +10% a tutte le statistiche
+- Livello 10: Bonus massimo
+
+
+`,
+    "vehicle-system": `## Sistema Veicoli - TopGirl
+
+### Tipi di Veicoli
+
+** Base (Gratis) **
+- Velocità: 100
+- Bonus Statistiche: +500
+
+** Sportiva (50.000 Oro) **
+- Velocità: 150
+- Bonus Statistiche: +1.500
+
+** Lusso (500.000 Oro) **
+- Velocità: 200
+- Bonus Statistiche: +5.000
+
+** Super (5.000.000 Oro) **
+- Velocità: 300
+- Bonus Statistiche: +15.000
+
+### Parti di Potenziamento
+
+| Parte | Effetto | Livello Massimo |
+
+|-------|-------|----------|
+
+| Motore | +Velocità | 10 |
+
+| Telaio | +Maneggevolezza | 10 |
+
+| Sospensioni | +Comfort | 10 |
+
+| Cerchi | +Stile | 10 | ### Skin
+Le skin si sbloccano a determinati livelli del veicolo:
+
+- Livello 5: Skin Bronzo
+- Livello 10: Skin Argento
+- Livello 20: Skin Oro
+- Livello 30: Skin Platino
+
+
+`,
+    "gold-equipment": `## Equipaggiamento ottimale Oro - TopGirl
+
+### Configurazione Vocalist Oro
+
+**Gioielli:**
+- Collana: Collana d'oro con diamanti (+3.000 Voce)
+- Anello: Anello d'oro con diamanti (+2.500 Voce)
+- Orologio: Cronografo d'oro (+2.000 Voce)
+
+**Veicolo:**
+- Supercar (+15.000 tutte le statistiche)
+
+**Proprietà:**
+- Villa di lusso (+5.000 tutte le statistiche)
+
+**Totale: +27.500 Voce / +20.000 altre statistiche / 86.000 fan**
+
+### Configurazione Ballerina Oro
+
+**Gioielli:**
+- Collana: Collana d'oro con diamanti (+3.000 Danza)
+- Anello: Anello d'oro con diamanti (+2.500 Danza)
+- Orologio: Cronografo d'oro (+2.000 Danza)
+
+**Veicolo:** Supercar
+**Proprietà:** Lusso Villa
+
+**Totale: +27.500 Danza**
+
+### Configurazione Centro Oro
+
+**Gioielli:**
+
+- Collana: Collana d'oro con diamanti (+3.000 Voce)
+- Anello: Anello d'oro con diamanti (+2.500 Danza)
+- Orologio: Cronografo d'oro (+2.000 Fascino)
+
+**Veicolo + Proprietà:** Uguali
+
+**Totale: +27.500 statistiche di Danza**
+
+### Costo totale
+~50.000.000 Oro per personaggio con Oro al massimo
+
+`,
+    "purple-equipment": `
+## Equipaggiamento Viola - TopGirl
+
+### Configurazione Cantante Viola
+
+**Gioielli:**
+- Collana: Collana con Gemma Viola (+2.000 Voce)
+- Anello: Anello con Gemma Viola (+1.500 Voce)
+- Orologio: Orologio Viola (+1.200 Voce)
+
+**Veicolo:** Auto Sportiva (+1.500 tutte le statistiche)
+
+**Proprietà:** Casa (+3.000 tutte le statistiche)
+
+**Totale: +9.700 Voce / +6.500 altro / 0 fan**
+
+### Configurazione Ballerina Viola
+
+Simile alla Cantante, ma:
+- Collana: +2.000 Danze
+- Anello: +1.500 Danze
+- Orologio: +1.200 Danze
+
+**Totale: +9.700 Danze**
+
+### Strategia Mix Oro/Viola
+
+**Opzione 1: Budget Ottimale**
+- 2 Gioielli Oro + Auto Viola + Proprietà Viola
+- Costo: ~15 milioni di oro
+- Statistiche: ~70% dell'oro completo
+
+**Opzione 2: Solo Viola**
+- Tutto Viola
+- Costo: ~5 milioni di oro
+- Statistiche: ~50% dell'oro completo
+
+### Vantaggi del Viola
+- Più accessibile
+- Buon rapporto qualità-prezzo
+- Rimane competitivo a metà partita
+
+`,
+    "event-ancient-rome": `## Guida all'Antica Roma - TopGirl
+
+### Panoramica
+L'evento **Avventura all'Estero: Roma** è un evento stagionale di 12 giorni ambientato nell'Antica Roma. L'obiettivo è collezionare oggetti ROMA attraverso 3 fasi e scambiarli con ricompense esclusive.
+
+
+### Fasi dell'evento
+
+**Fase 1: Colosseo (Giorni 1-4)**
+- **Obiettivo:** Raccogli oggetti ROMA
+- **Ricompense:** Oggetti ROMA, Diamanti
+- **Suggerimento:** Concentrati sulle battaglie per accumulare velocemente
+
+**Fase 2: Foro (Giorni 5-8)**
+- **Obiettivo:** Completa le canzoni
+- **Ricompense:** Carte SSR, Oggetti ROMA
+- **Suggerimento:** Usa le tue squadre migliori per massimizzare le ricompense
+
+**Fase 3: Imperatore (Giorni 9-12)**
+- **Obiettivo:** Scambia le ricompense
+- **Ricompense:** Gettoni UR, Carte SSR+
+- **Suggerimento:** Conserva abbastanza Oggetti ROMA per gli scambi migliori
+
+### Strategia
+1. **Giorni 1-4:** Massimizza la raccolta di oggetti ROMA
+2. **Giorni 5-8:** Concentrati sul completamento delle canzoni
+3. **Giorni 9-12:** Scambia Per le migliori ricompense
+
+### Artisti migliori
+- Cornelia, Aurelia, Xenia (bonus Roma)
+
+
+`,
+    "event-radio-battle": `
+## Guide Radio Battle - TopGirl
+
+### Présentation
+Le **Radio Battle** est un événement récurrent où vous affrontez d'autres joueurs via la radio. Plus vous avez d'auditeurs, plus votre score est élevé.
+
+### Les 5 Phases
+
+**Phase 1: Opening (Day 1)**
+- Préparez votre station radio
+- Reward: Radio Coins x100
+
+**Phase 2: Heat 1 (Day 1-2)**
+- Accumulez des listeners
+- Reward: Radio Coins x200
+
+**Phase 3: Heat 2 (Day 2-3)**
+- Défiez d'autres stations
+- Reward: Radio Coins x300
+
+**Phase 4: Finals (Day 3-4)**
+- Bataille finale
+- Reward: SSR Cards
+
+**Phase 5: Exchange (Day 4-5)**
+- Échangez vos Radio Coins
+- Rewards: UR Tokens, SSR+
+
+### Stratégie
+1. **Releasez pendant les heures de pointe** (soir)
+2. **Utilisez des artists avec compétences Charisma**
+3. **Combinez différents genres** pour attract plus d'auditeurs
+
+### Meilleures Artists
+- Skylar, Nova, Sora, Evelyn
+    `,
+    "event-grammy": `
+## Guide Grammy Awards - TopGirl
+
+### Présentation
+Le **Grammy Contest** est un événement hebdomadaire de competition musicale avec 8 catégories différentes. Créez la meilleure chanson en combinant différents genres et artists.
+
+### Les 8 Catégories
+
+| Catégorie | Genre Requis | Meilleure Stratégie |
+|-----------|--------------|---------------------|
+| Best New Artist | Tous | Use rising stars avec high potential |
+| Record of the Year | Pop + EDM | Combinez Pop + EDM pour max score |
+| Album of the Year | Tous | Balancez tous les stats |
+| Song of the Year | Tous | Focus sur Charisma skills |
+| Best Pop | Pop only | Équipe 100% Pop |
+| Best Hip Hop | Hip Hop only | Équipe Hip Hop |
+| Best R&B | R&B only | Specialists R&B |
+| Best Rock | Rock only | Équipe Rock |
+
+### Stratégie
+1. **Utilisez des artists avec high Singing stats**
+2. **Combinez lead vocalist + supporting dancers**
+3. **Pop et EDM ont tendance à scorer plus haut**
+
+### Meilleures Artists
+- Lestari, Brooklyn, Alice, Bella (general)
+- Artists par genre: vérifier les stats
+    `,
+    "event-ultimate-ceo": `## Guida definitiva al CEO - TopGirl
+
+### Panoramica
+L'**Evento CEO definitivo** è un evento settimanale di 5 giorni in cui affronterai il CEO per ottenere ricompense esclusive.
+
+### Fasi
+
+**Fase 1 (Giorno 1)**
+- Accumula Punti CEO
+- Ricompense: Carte comuni
+
+**Fase 2 (Giorno 2)**
+- Sfida il CEO
+- Ricompense: Carte SSR
+
+**Fase 3 (Giorni 3-5)**
+- Riscatta le tue ricompense
+- Ricompense: Gettoni UR, Carte CEO
+
+### Strategia
+1. **Concentrati su squadre con DPS elevato**
+2. **Bilancia artisti d'attacco e di difesa**
+3. **Usa artisti con bonus alla capacità di fan**
+
+### Migliori artisti
+- Kokoro, Aurora, Claire, Alice
+
+`,
+    "event-echo-death-match": `## Guida all'Echo Death Match - TopGirl
+
+### Panoramica
+L'**Echo Death Match** è un evento in cui affronti gli echi. Raccogli le Pietre dell'Eco attraverso battaglie individuali e di squadra.
+
+
+### Fasi
+
+**Fase 1 (Giorni 1-2)**
+
+- Battaglie in solitario
+- Obiettivo: Accumulare Pietre Eco
+- Ricompensa: 500 Pietre Eco
+
+**Fase 2 (Giorni 3-5)**
+
+- Battaglie a squadre
+- Obiettivo: Pietre Eco bonus
+- Ricompensa: 1000 Pietre Eco, Frammenti SSR
+
+**Fase 3 (Giorni 6-7)**
+- Scambio ricompense
+- Ricompense: Gettoni UR, Carte SSR+
+
+### Strategia
+1. **Fase 1:** Concentrati sulle battaglie in solitario per accumulare Pietre Eco
+2. **Fase 2:** Battaglie a squadre per ottenere bonus
+3. **Conserva le Pietre Eco** per scambi migliori
+
+`,
+    "event-chamber-territory": `## Guida al Territorio della Camera - TopGirl
+
+### Panoramica
+Il **Territorio della Camera** è un evento basato sul territorio. Conquista e difendi diverse camere per ottenere ricompense.
+
+### Fasi
+
+**Fase 1 (Giorni 1-3)**
+- Conquista i territori
+- Ricompensa: 300 Gettoni Territorio
+
+**Fase 2 (Giorni 4-7)**
+- Difendi e raccogli
+- Ricompensa: 500 Carte SSR, Gettoni
+
+**Fase 3 (Giorni 8-10)**
+- Riscatta le tue ricompense
+- Ricompense: Gettoni UR, Carte SSR+
+
+### Strategia
+1. **Conquista i territori di maggior valore all'inizio**
+2. **Difendi i tuoi territori** per ottenere bonus
+3. **Collabora con gli altri giocatori**
+
+`,
+    "event-cleanup-party": `## Guida alla Festa di Pulizia - TopGirl
+
+### Panoramica
+La **Festa di Pulizia** è un evento in cui devi ripulire la città raccogliendo i rifiuti.
+
+### Fasi
+
+**Fase 1 (Giorni 1-2)**
+- Raccogli i rifiuti
+- Ricompensa: 200 Rifiuti
+
+**Fase 2 (Giorni 3-5)**
+- Missioni di Pulizia
+- Ricompensa: 400 Rifiuti, Frammenti SSR
+
+**Fase 3 (Giorni 6-7)**
+- Riscatta le Ricompense
+- Ricompense: Gettoni UR, Carte SSR+
+
+### Strategia
+1. **Completa le missioni di pulizia** per ottenere bonus
+2. **Collabora con altri** per una raccolta più rapida
+3. **Riscatta** i tuoi rifiuti per ottenere le migliori ricompense
+
+`,
+    "event-metro-subway": `## Guida alla metropolitana - TopGirl
+
+### Panoramica
+L'evento **Metro & Subway** ti permette di viaggiare in metropolitana per raccogliere biglietti e ottenere ricompense.
+
+### Fasi
+
+**Fase 1 (Giorni 1-2)**
+- Raccogli i biglietti
+- Ricompensa: 150 biglietti
+
+**Fase 2 (Giorni 3-5)**
+- Completa le linee
+- Ricompensa: 300 biglietti, frammenti SSR
+
+**Fase 3 (Giorni 6-7)**
+- Riscatta le ricompense
+- Ricompense: Gettoni UR, carte SSR+
+
+### Strategia
+1. **Completa le linee della metropolitana** per ottenere biglietti bonus
+2. **Ogni linea** offre ricompense diverse
+3. **Riscatta** i tuoi biglietti per ottenere le ricompense migliori
+
+`,
+    "event-vs-group": `## Guida all'evento di gruppo VS - TopGirl
+
+### Cronologia
+- **5 GIORNI DI PREPARAZIONE** (Temi giornalieri) seguiti dalla **BATTAGLIA FINALE DEL GIORNO 6**
+- **DUELLO GIORNALIERO**: Guadagna punti completando compiti specifici
+- **VITTORIA**: Il gruppo con il punteggio cumulativo più alto dopo 6 giorni si aggiudica la VITTORIA FINALE
+
+### Requisiti di partecipazione
+- **REQUISITO DI LIVELLO**: IL LIVELLO CEO DEVE RAGGIUNGERE ALMENO IL LIVELLO 20
+- **QUALIFICAZIONE DEL GRUPPO**: Solo i gruppi con un ALTO CLASSIFICATO DI POTERE FINANZIARIO POSSONO PARTECIPARE ALL'ACCESSO
+- **CAMBIO DI GRUPPO DURANTE L'EVENTO**: Impedisce di contribuire con punti di gruppo per 1 giorno, ma i punti personali rimangono INVARIATI
+
+### Premi e progetti
+- **Sblocca 9 livelli di premi**
+- I migliori giocatori e i gruppi vincitori riceveranno GRANDI PREMI via email
+- **PROGETTI MAESTRO RICHIESTI PER I LIVELLI 4-9**
+- Usa i Progetti Maestri per aumentare l'efficienza dei punti e sbloccare bonus permanenti alle statistiche
+
+###Attacco Rapido (Giorno 6)
+- **INVASIONE**: Il sesto giorno, è abilitato il teletrasporto gratuito ai PUNTI DI RIFERIMENTO (2, 3, 4)
+- **ELIMINAZIONE**: Sconfiggi i membri rivali nel loro territorio per ottenere ENORMI PUNTI BONUS
+
+`,
+    "event-fishing": `
+## Fishing Event Guide - TopGirl
+
+### Tips
+
+**1. Feed your fish regularly**
+- Keep voucher generation at full speed
+- Avoid slowdown
+
+**2. Focus on catching higher-star fish**
+- They earn MORE vouchers
+- Replace weaker ones automatically
+
+**3. Visit other players' aquariums**
+- You get 5 visits per day
+- If someone likes your aquarium, you'll receive shells
+
+**4. The more fish you have, the higher your income**
+- Keep expanding your aquarium
+
+**5. Fish with a crown**
+- Give the highest CRS and voucher income
+- Keep them in your aquarium as long as possible
+
+**6. Don't waste your bait**
+- Time your clicks carefully
+- The fish will eat it automatically
+    `,
+    "world-building": `## Guida alla creazione del mondo - TopGirl
+
+[Felice di aver completato la guida]
+
+### Panoramica
+Costruisci e sviluppa il tuo mondo nel gioco. Questa guida illustra le basi delle meccaniche di creazione del mondo.
+
+(Contenuto da WorldBuildingGuide.jpg da aggiungere)
+
+`,
+    "vip-level": `## Guida ai livelli VIP - TopGirl
+
+### Panoramica
+Guida dettagliata sui punti necessari per ogni livello VIP.
+
+### Vantaggi VIP
+- I giocatori VIP ricevono vari bonus e premi esclusivi
+- Livelli VIP più alti sbloccano ulteriori vantaggi
+
+(Contenuto da VIPLevelGuide.jpg da aggiungere)
+
+`,
+    "ceo-coins": `## Guida all'acquisto di CEO Coin - TopGirl
+
+### Come acquistare CEO Coin
+
+**Passaggio 1: Visita il sito di pagamento**
+Utilizzando il browser del tuo dispositivo mobile, visita: https://pay2.a3games.com/topgirl
+
+**Passaggio 2: Seleziona la regione**
+Nell'angolo in alto a destra della pagina, seleziona la tua regione e imposta la valuta di pagamento su una valuta supportata.
+
+**Passaggio 3: Inserisci i dati dell'account**
+Inserisci il tuo ID e il tuo nickname.
+(Assicurati che l'ID e il nickname inseriti siano corretti, altrimenti potresti non essere in grado di ricevere CEO Coin normalmente).
+
+**Passaggio 4: Seleziona l'importo**
+Seleziona la quantità di CEO Coin che desideri acquistare e aggiungi una carta di credito per completare il pagamento.
+
+**Passaggio 5: Riscatta nel gioco**
+Dopo aver completato l'acquisto di CEO Coin, accedi al gioco, seleziona il pacchetto regalo desiderato, clicca sul prezzo del pacchetto regalo e scegli di utilizzare i CEO Coin per completare il riscatto.
+
+`,
+    "alliance-management": `
+## Guida alla gestione delle alleanze - TopGirl
+
+### Responsabilità del gruppo
+
+#### Leadership e strategia
+- **Stratega / Analista di meta**: definisce gli obiettivi a lungo termine del server, consiglia la costruzione e l'espansione
+- **Costruttore / Sviluppatore del gruppo**: supervisiona la costruzione del club, raccoglie le risorse per la progressione, pianifica i percorsi di crescita del club
+- **Capo raduno / Generale di guerra**: lancia raduni e attacchi, sceglie i bersagli e i tempi, coordina le operazioni di guerra
+- **Allenatore / Mentore**: supporta i nuovi giocatori, guida lo sviluppo degli artisti, aiuta con l'addestramento della squadra
+
+#### Comunicazione e diplomazia
+- **Comunicatore del gruppo**: pubblica annunci, riassume gli aggiornamenti, gestisce Discord e la posta in gioco
+- **Diplomatico / Gestore delle alleanze**: gestisce le alleanze e i patti di non aggressione, gestisce le negoziazioni, coordina la cooperazione
+- **Reclutatore / Risorse umane**: recluta nuovi membri, seleziona i candidati, integra i membri
+
+#### Intelligence e supporto
+- **Ufficiale dell'intelligence / Spia**: Scansiona i club nemici, traccia attività e movimenti, monitora gli schieramenti
+- **Organizzatore di eventi**: Supporta le battaglie radio, assiste guerre ed eventi
+- **Coordinatore di incontri con i fan**: Gestisce le interazioni con i fan e gli eventi
+
+### Strategia e guerra
+Sviluppa la tua alleanza attraverso un'attenta pianificazione e coordinamento con i membri.
+
+### Strategia e guerra
+Sviluppa la tua alleanza attraverso un'attenta pianificazione e coordinamento con i membri.
+
+### Strategia e guerra
+Sviluppa la tua alleanza attraverso un'attenta pianificazione e coordinamento con i membri.`,
+    "peak-level": `
+## Peak Level Guide - TopGirl
+
+### Overview
+Peak Level is a late-game progression system for SSR girls. Each SSR girl with 3 skills and 5x (gold stars) becomes eligible for Peak Level upgrades.
+
+### Key Points
+- **Focus on Total Peak Level**, not only your main team
+- Push top SSR girls as high as possible (100-400+) for strong milestone buffs
+- Important milestones: Lv40 / Lv70 / Lv100 / Lv300 / Lv400
+- Use SSR Universal Photos freely - efficiency > saving
+
+### Minimum Goal
+Your minimum goal is to bring EVERY SSR girl to Peak Level 10.
+Each SSR at Peak Lv10 gives +0.5% Sing & +0.5% Dance (global buff)
+
+### For F2P Players
+Best Peak candidates (easy photo access):
+- **Zendaya** (Stock Shop)
+- **Skylar** (Group Shop)
+- **Claire** (Collection Rewards)
+
+Aim for Peak Lv5-10 on 1-2 girls max. Max your main team before investing more into Peak Levels.
+
+Peak Level is a long-term global power system, perfect for whales.
+    `,
+    "group-shop": `## Guida al Negozio di Gruppo - TopGirl
+
+### Cosa Comprare
+
+**1. Manuali di Promozione**
+- Acquistali sempre per primi
+- Sono disponibili in quantità limitata
+- Spesso necessari se combatti spesso
+
+**2. Carte Promozionali SSR**
+- Le carte promozionali saranno sempre necessarie
+- Nuovi artisti SSR vengono aggiunti a ogni evento
+
+**3. Monete Risorse**
+- Saranno necessarie molte monete risorse per potenziare al massimo le risorse promosse
+
+**4. Parti di Veicolo**
+- Acquistale se non hai ancora potenziato al massimo la tua auto
+
+**5. Foto di Skylar**
+- Acquistale solo se intendi potenziare al massimo Skylar
+- Molto costose
+
+**6. Carte Quartier Generale**
+- Acquistale se il tuo Quartier Generale non è ancora al massimo
+
+**7. Biglietti di Migrazione**
+- Acquistali se vuoi migrare su un altro server
+
+`,
+  },
+
+  es: {
+    "equipment": `## Guía de Equipamiento - TopGirl
+
+### Accesorios
+Las joyas son esenciales para potenciar tus estadísticas principales. Estas son las prioridades:
+
+** Collar ** - + Bonificación de Voz
+** Anillo ** - + Bonificación de Baile
+** Reloj ** - + Bonificación de Encanto
+
+### Vehículos
+Los coches ofrecen grandes bonificaciones, pero son caros:
+- Coche Inicial: 500.000 de Oro
+- Coche Deportivo: 2.000.000 de Oro
+- Coche de Lujo: 10.000.000 de Oro
+
+### Propiedades
+Las propiedades generan ingresos pasivos:
+- Apartamento: 50.000 de Oro/día
+- Casa: 200.000 de Oro/día
+- Mansión: 1.000.000 de Oro/día
+
+### Comparación Oro vs. Morado
+
+| Equipamiento | Estadísticas Oro | Estadísticas Morado |
+
+|------------|------------|-------------|
+
+| Collar | +500 Voz | +300 Voz |
+
+| Anillo | +500 Baile | +300 Baile |
+
+| Reloj | +500 Encanto | +300 Encanto |
+`,
+    "team-builder": `
+## Team Builder - TopGirl
+
+### Composition d'équipe
+Une équipe optimale contient 5 artistes avec des rôles bien définis:
+
+1. **Vocalist (Lead)** - Highest stats, genre bonus
+2. **Dancer (Support)** - Team buffs
+3. **Center** - Balance
+4. **Makestar** - Fan generation
+5. **Support** - Defense/utility
+
+### Synergies de Genre
+Le bonus de genre s'applique quand vous avez 2+ artistes du même genre:
+
+- **Pop + Pop**: +15% Vocal
+- **EDM + EDM**: +15% Dance
+- **Hip Hop + Hip Hop**: +15% Charm
+
+### Bonus d'Équipement
+Les équipements synergisent avec les rôles:
+- Jewelry set: +20% main stat
+- Vehicle set: +15% secondary stat
+- Property set: +10% all stats
+
+### Build Types
+**Offensif:** 3 Offense / 1 Defense / 1 Support
+**Défensif:** 2 Offense / 3 Defense / 0 Support
+**Équilibré:** 2 Offense / 2 Defense / 1 Support
+    `,
+    "recommended-teams": `## Equipos Recomendados - TopGirl
+
+### Mejores Equipos UR
+
+**Equipo 1 - Ataque Extremo:**
+- Kokoro (Vocalista)
+- Aurora (Bailarina)
+- Claire (Centro)
+- Anastasia (Defensa)
+- Beatrice (Apoyo)
+
+**Equipo 2 - Equilibrio:**
+- Alexandra (Vocalista)
+- Elizabeth (Bailarina)
+- Genevieve (Centro)
+- Marguerite (Defensa)
+- Gabriella (Apoyo)
+
+### Mejores Equipos SSR
+
+**Equipo 1 - Meta Económico:**
+- Alice (Vocalista)
+- Hestia (Bailarina)
+- Hikari (Centro)
+- Eri (Defensa)
+- Flora (Apoyo)
+
+### Estrategias
+
+**Ofensivo:** Maximizar el daño
+- Enfoque: Daño de Habilidad + Ataque Básico
+- Meta: Kokoro, Aurora, Claire
+
+**Defensiva:** Enfoque en la supervivencia
+- Enfoque: Reducción de daño + HP
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Equilibrada:** Combinación de ambas
+- Enfoque: Distribución de estadísticas
+- Meta: Elizabeth, Gabriella
+
+`,
+    "leveling-ssr": `
+## Montée en Niveau SSR - TopGirl
+
+### Cartes nécessaires par niveau
+
+| Niveau | Cartes SSR | Total |
+|--------|-----------|-------|
+| 1-10 | 10 | 10 |
+| 10-20 | 20 | 30 |
+| 20-40 | 40 | 70 |
+| 40-60 | 60 | 130 |
+| 60-80 | 80 | 210 |
+| 80-100 | 100 | 310 |
+| 100-115 | 150 | 460 |
+
+### Tips Level Up
+- Utilisez les cartes SSR excédentaires
+- Focus sur vos mains first
+- Level up pendant les événements x2 XP
+- Priorisez les artistes avec haute thérapeutisten
+
+### Coût Gold
+Le coût en gold augmente avec le niveau:
+- Niv 1-40: ~500,000 Gold
+- Niv 40-70: ~2,000,000 Gold  
+- Niv 70-100: ~8,000,000 Gold
+- Niv 100-115: ~25,000,000 Gold
+    `,
+    "blueprints": `## Guía de planos - TopGirl
+
+### Instalación de terceros
+
+| Nivel | Planos | Oro | Efecto |
+
+|------|----------|------|-------|
+
+| 1-3 | 50-100 | 10K | +5% estadísticas |
+
+| 4-6 | 150-300 | 50K | +10% estadísticas |
+
+| 7-9 | 500-800 | 200K | +15% estadísticas |
+
+| 10-12 | 1000-1500 | 500K | +20% estadísticas |
+
+| 13-15 | 2000-3000 | 1M | +25% estadísticas |
+
+| 16-18 | 4000-5000 | 3M | +30% estadísticas |
+
+| 19-21 | 7000+ | 10M | +35% estadísticas |
+
+### Prioridades
+1. **Estudio** - Producción musical
+2. **Entrenamiento** - Subir de nivel a los artistas
+3. **Salón de fans** - Aumentar la base de fans
+4. **Marketing** - Ingresos pasivos
+
+### Consejos
+- Prioriza los niveles 7-12 de oro
+- Espera a los eventos para obtener descuentos
+- Mejora de forma uniforme para evitar trucos
+
+`,
+    "hq-upgrade": `Guía de HQ - TopGirl
+
+Cartas HQ por Nivel
+
+| Nivel | Cartas | Coste en Oro |
+
+|-------|--------|----------|
+
+| 1 | 50 | 1.000 |
+
+| 2 | 100 | 2.500 |
+
+| 3 | 200 | 5.000 |
+
+| 4 | 400 | 10.000 |
+
+| 5 | 800 | 25.000 |
+
+| 6 | 1.500 | 50.000 |
+
+| 7 | 2.500 | 100.000 |
+
+| 8 | 4.000 | 200.000 |
+
+| 9 | 6.000 | 400.000 |
+
+| 10 | 8.000 | 800.000 |
+
+**Total para el Cuartel General Nivel 10:** ~29 922 cartas / ~1,6 millones de oro
+
+### Bonificación del Cuartel General
+- Nivel 5: Desbloquea eventos adicionales
+- Nivel 7: +10 % a todas las estadísticas
+- Nivel 10: Bonificación máxima
+
+`,
+    "vehicle-system": `## Sistema de Vehículos - TopGirl
+
+### Tipos de Vehículos
+
+** Inicial (Gratis) **
+- Velocidad: 100
+- Estadísticas adicionales: +500
+
+** Deportivo (50.000 de oro) **
+- Velocidad: 150
+- Estadísticas adicionales: +1.500
+
+** Lujo (500.000 de oro) **
+- Velocidad: 200
+- Estadísticas adicionales: +5.000
+
+** Súper (5.000.000 de oro) **
+- Velocidad: 300
+- Estadísticas adicionales: +15.000
+
+### Piezas de Mejora
+
+| Pieza | Efecto | Nivel Máximo |
+
+|-------|-------|----------|
+
+| Motor | +Velocidad | 10 |
+
+| Chasis | +Manejo | 10 |
+
+| Suspensión | +Comodidad | 10 |
+
+| Llantas | +Estilo | 10 |
+
+### Aspectos
+Los aspectos se desbloquean en ciertos niveles del vehículo:
+
+- Nivel 5: Aspecto Bronce
+- Nivel 10: Aspecto Plata
+- Nivel 20: Aspecto Oro
+- Nivel 30: Aspecto Platino
+
+`,
+    "gold-equipment": `
+## Equipo Óptimo Oro - TopGirl
+
+### Configuración de Vocalista Oro
+
+**Joyas:**
+- Collar: Collar de Diamantes Oro (+3000 Voz)
+- Anillo: Anillo de Diamantes Oro (+2500 Voz)
+- Reloj: Cronógrafo Oro (+2000 Voz)
+
+**Vehículo:**
+- Supercoche (+15 000 en todas las estadísticas)
+
+**Propiedad:**
+- Mansión de Lujo (+5000 en todas las estadísticas)
+
+**Total: +27 500 Voz / +20 000 en otras estadísticas / 86 000 fans**
+
+### Configuración de Bailarina Oro
+
+**Joyas:**
+- Collar: Collar de Diamantes Oro (+3000 Baile)
+- Anillo: Anillo de Diamantes Oro (+2500 Baile)
+- Reloj: Cronógrafo Oro (+2000 Baile)
+
+**Vehículo:** Supercoche
+**Propiedad:** Lujosa Mansión
+
+**Total: +27.500 de Baile**
+
+### Configuración del Centro de Oro
+
+**Joyas:**
+
+- Collar: Collar de Oro con Diamantes (+3.000 de Voz)
+- Anillo: Anillo de Oro con Diamantes (+2.500 de Baile)
+- Reloj: Cronógrafo de Oro (+2.000 de Encanto)
+
+**Vehículo + Propiedad:** Igual
+
+**Total: +27.500 de estadísticas de Baile**
+
+### Coste total
+~50.000.000 de Oro por personaje con Oro completo
+
+`,
+    "purple-equipment": `
+## Equipo Morado - TopGirl
+
+### Configuración de Vocalista Morada
+
+**Joyas:**
+
+- Collar: Collar de Gema Morada (+2000 Voz)
+- Anillo: Anillo de Gema Morada (+1500 Voz)
+- Reloj: Reloj Morado (+1200 Voz)
+
+**Vehículo:** Coche Deportivo (+1500 en todas las estadísticas)
+
+**Propiedad:** Casa (+3000 en todas las estadísticas)
+
+**Total: +9700 Voz / +6500 otras estadísticas / 0 fans**
+
+### Configuración de Bailarina Morada
+
+Similar a la de Vocalista, pero:
+- Collar: +2000 Bailes
+- Anillo: +1500 Bailes
+- Reloj: +1200 Bailes
+
+**Total: +9700 Bailes**
+
+### Estrategia de Mezcla Oro/Morada
+
+**Opción 1: Presupuesto Óptimo**
+- 2 Joyas de Oro + Coche morado + Propiedad morada
+- Coste: ~15 millones de oro
+- Estadísticas: ~70% del valor máximo de oro
+
+**Opción 2: Solo morado**
+- Todo morado
+- Coste: ~5 millones de oro
+- Estadísticas: ~50% del valor máximo de oro
+
+### Ventajas del morado
+- Más accesible
+- Buena relación calidad-precio
+- Sigue siendo competitivo en la fase intermedia del juego
+`,
+    "event-ancient-rome": `## Guía de la Antigua Roma - TopGirl
+
+### Resumen
+El evento **Aventura en el Extranjero: Roma** es un evento de temporada de 12 días ambientado en la Antigua Roma. El objetivo es coleccionar objetos ROMA a lo largo de 3 fases e intercambiarlos por recompensas exclusivas.
+
+### Fases del evento
+
+**Fase 1: Coliseo (Días 1-4)**
+- **Objetivo:** Recolectar objetos ROMA
+- **Recompensas:** Objetos ROMA, Diamantes
+- **Consejo:** Concéntrate en las batallas para acumular rápidamente
+
+**Fase 2: Foro (Días 5-8)**
+
+- **Objetivo:** Completar canciones
+- **Recompensas:** Cartas SSR, Objetos ROMA
+- **Consejo:** Usa tus mejores equipos para maximizar las recompensas
+
+**Fase 3: Emperador (Días 9-12)**
+
+- **Objetivo:** Intercambiar recompensas
+- **Recompensas:** Ficha UR, Cartas SSR+
+- **Consejo:** Guarda suficientes objetos ROMA para los mejores intercambios
+
+### Estrategia
+1. **Días 1-4:** Maximiza la recolección de objetos ROMA
+2. **Días 5-8:** Concéntrate en completar canciones
+3. **Días 9-12:** 9-12:** Canjea por las mejores recompensas
+
+### Artistas destacados
+- Cornelia, Aurelia, Xenia (bonificación de Roma)
+
+`,
+    "event-radio-battle": `## Guía de Batallas Radiofónicas - TopGirl
+
+### Descripción general
+La **Batalla Radiofónica** es un evento recurrente donde compites contra otros jugadores a través de la radio. Cuantos más oyentes tengas, mayor será tu puntuación.
+
+### Las 5 Fases
+
+**Fase 1: Apertura (Día 1)**
+- Prepara tu emisora de radio
+- Recompensa: 100 Monedas de Radio
+
+**Fase 2: Eliminatoria 1 (Días 1-2)**
+- Acumula oyentes
+- Recompensa: 200 Monedas de Radio
+
+**Fase 3: Eliminatoria 2 (Días 2-3)**
+- Desafía a otras emisoras
+- Recompensa: 300 Monedas de Radio
+
+**Fase 4: Finales (Días 3-4)**
+- Batalla final
+- Recompensa: Cartas SSR
+
+**Fase 5: Intercambio (Días 4-5)**
+- Intercambia tus Monedas de Radio
+- Recompensas: Fichas UR, SSR+
+
+### Estrategia
+1. **Lanza durante las horas pico** (noche)
+2. **Usa artistas con habilidades de Carisma**
+
+3. **Combina diferentes géneros** para atraer más audiencia oyentes
+
+### Artistas destacados
+- Skylar, Nova, Sora, Evelyn
+
+`,
+    "event-grammy": `## Guía de los Premios Grammy - TopGirl
+
+### Resumen
+El **Concurso Grammy** es una competencia musical semanal con 8 categorías diferentes. Crea la mejor canción combinando distintos géneros y artistas.
+
+### Las 8 Categorías
+
+| Categoría | Género requerido | Mejor estrategia |
+
+|-----------|--------------|---------------------|
+
+| Mejor Artista Revelación | Todos | Usa estrellas emergentes con alto potencial |
+
+| Grabación del Año | Pop + EDM | Combina Pop + EDM para obtener la máxima puntuación |
+
+| Álbum del Año | Todos | Usa todas las estadísticas |
+
+| Canción del Año | Todos | Enfócate en la habilidad de Carisma |
+
+| Mejor Pop | Solo Pop | Equipo 100% Pop |
+
+| Mejor Hip Hop | Solo Hip Hop | Equipo Hip Hop |
+
+| Mejor R&B | Solo R&B | Especialistas en R&B |
+
+| Mejor Rock | Solo Rock | Equipo Rock |
+
+### Estrategia
+1. **Utiliza artistas con altas estadísticas de canto**
+2. **Combina vocalista principal con bailarines de apoyo**
+3. **El pop y la música electrónica suelen obtener puntuaciones más altas**
+
+### Mejores artistas
+- Lestari, Brooklyn, Alice, Bella (general)
+- Artistas por género: consulta las estadísticas
+
+`,
+    "event-ultimate-ceo": `## Guía Definitiva de la CEO - TopGirl
+
+### Resumen
+El **Ejecutivo Definitivo** es un evento semanal de 5 días donde te enfrentas a la CEO para ganar recompensas exclusivas.
+
+### Fases
+
+**Fase 1 (Día 1)**
+- Acumula Puntos de CEO
+- Recompensas: Cartas Comunes
+
+**Fase 2 (Día 2)**
+- Desafía a la CEO
+- Recompensas: Cartas SSR
+
+**Fase 3 (Días 3-5)**
+- Canjea tus recompensas
+- Recompensas: Fichas UR, Cartas de CEO
+
+### Estrategia
+1. **Céntrate en equipos con alto DPS**
+
+2. **Equilibra artistas de ataque y defensa**
+
+3. **Usa artistas con bonificaciones de Capacidad de Fan**
+
+### Mejores Artistas
+- Kokoro, Aurora, Claire, Alice
+`,
+    "event-echo-death-match": `## Guía del Combate a Muerte de Ecos - TopGirl
+
+### Resumen
+El **Combate a Muerte de Ecos** es un evento donde luchas contra ecos. Consigue Piedras de Eco en combates individuales y por equipos.
+
+### Fases
+
+**Fase 1 (Días 1-2)**
+
+- Combates individuales
+- Objetivo: Acumular Piedras de Eco
+- Recompensa: 500 Piedras de Eco
+
+**Fase 2 (Días 3-5)**
+
+- Combates por equipos
+- Objetivo: Piedras de Eco adicionales
+- Recompensa: 1000 Piedras de Eco, Fragmentos SSR
+
+**Fase 3 (Días 6-7)**
+- Intercambio de recompensas
+- Recompensas: Ficha UR, Cartas SSR+
+
+### Estrategia
+1. **Fase 1:** Concéntrate en combates individuales para acumular Piedras de Eco
+2. **Fase 2:** Combates por equipos para obtener bonificaciones
+3. **Guarda Piedras de Eco** para mejores intercambios
+
+`,
+    "event-chamber-territory": `## Guía de Territorios de Cámara - TopGirl
+
+### Resumen
+El **Territorio de Cámara** es un evento territorial. Captura y defiende diferentes cámaras para obtener recompensas.
+
+### Fases
+
+**Fase 1 (Días 1-3)**
+- Captura territorios
+- Recompensa: 300 Fichas de Territorio
+
+**Fase 2 (Días 4-7)**
+- Defiende y recolecta
+- Recompensa: 500 Cartas SSR, Fichas
+
+**Fase 3 (Días 8-10)**
+- Canjea tus recompensas
+- Recompensas: Ficha UR, Cartas SSR+
+
+### Estrategia
+1. **Captura territorios de alto valor cuanto antes**
+2. **Defiende tus territorios** para obtener bonificaciones
+3. **Coopera con otros jugadores**
+
+`,
+    "event-cleanup-party": `## Guía de la Fiesta de Limpieza - TopGirl
+
+### Resumen
+La **Fiesta de Limpieza** es un evento donde limpias la ciudad recogiendo basura.
+
+### Fases
+
+**Fase 1 (Días 1-2)**
+- Recoge basura
+- Recompensa: 200 de basura
+
+**Fase 2 (Días 3-5)**
+- Misiones de limpieza
+- Recompensa: 400 de basura, fragmentos SSR
+
+**Fase 3 (Días 6-7)**
+- Canjea recompensas
+- Recompensas: ficha UR, cartas SSR+
+
+### Estrategia
+1. **Completa las misiones de limpieza** para obtener bonificaciones
+2. **Forma equipo** para recoger más rápido
+3. **Canjea** tu basura para obtener las mejores recompensas
+`,
+    "event-metro-subway": `## Guía del Metro - TopGirl
+
+### Resumen
+El **Metro** es un evento donde viajas en metro para conseguir billetes y obtener recompensas.
+
+### Fases
+
+**Fase 1 (Días 1-2)**
+- Consigue billetes
+- Recompensa: 150 billetes
+
+**Fase 2 (Días 3-5)**
+- Completa las líneas
+- Recompensa: 300 billetes, fragmentos SSR
+
+**Fase 3 (Días 6-7)**
+- Canjea recompensas
+- Recompensas: ficha UR, cartas SSR+
+
+### Estrategia
+1. **Completa las líneas de metro** para conseguir billetes extra
+2. **Cada línea** tiene recompensas diferentes
+3. **Canjea** tus billetes para obtener las mejores recompensas
+
+`,
+    "event-vs-group": `## Guía del evento grupal VS - TopGirl
+
+### Cronograma
+- **5 DÍAS DE PREPARACIÓN** (Temas diarios) seguidos de la **BATALLA FINAL DEL DÍA 6**
+- **DUELO DIARIO**: Gana puntos mediante tareas específicas
+- **VICTORIA**: El grupo con la puntuación acumulada más alta después de 6 días se alza con la VICTORIA DEFINITIVA
+
+### Requisitos de participación
+- **REQUISITO DE NIVEL**: El NIVEL DE CEO DEBE AL MENOS ALCANZAR EL NIVEL 20
+- **CALIFICACIÓN DE GRUPO**: Solo los grupos con ALTO PODER FINANCIERO son ELEGIBLES PARA PARTICIPAR
+- **CAMBIAR DE GRUPO DURANTE EL EVENTO**: Impide contribuir con puntos de grupo durante 1 día, pero los puntos personales NO SE AFECTAN
+
+### Recompensas y planos
+- **Desbloquea 9 niveles de recompensas**
+- Los mejores jugadores y los grupos victoriosos reciben GRANDES RECOMPENSAS por correo electrónico
+- **NIVEL** 4-9 PLANOS MAESTROS REQUERIDOS**
+- Usa los planos maestros para aumentar la eficiencia de puntos y desbloquear bonificaciones de estadísticas permanentes.
+
+###Ataque Rápido (Día 6)
+- **INVASIÓN**: El sexto día, se habilita la teletransportación gratuita a los PUNTOS DE REFERENCIA (2, 3, 4).
+- **ELIMINACIÓN**: Derrota a los miembros rivales en su territorio para obtener ENORMES PUNTOS DE BONIFICACIÓN.
+`,
+    "event-fishing": `## Guía del evento de pesca - TopGirl
+
+### Consejos
+
+**1. Alimenta a tus peces con regularidad**
+- Mantén la generación de cupones al máximo
+- Evita ralentizaciones
+
+**2. Céntrate en pescar peces de mayor estrella**
+- Generan MÁS cupones
+- Reemplazan automáticamente a los más débiles
+
+**3. Visita los acuarios de otros jugadores**
+- Tienes 5 visitas al día
+- Si a alguien le gusta tu acuario, recibirás conchas
+
+**4. Cuantos más peces tengas, mayores serán tus ingresos**
+- Sigue ampliando tu acuario
+
+**5. Pesca peces con corona**
+- Otorga la mayor cantidad de CRS y cupones
+- Mantenlos en tu acuario el mayor tiempo posible
+
+**6. No desperdicies tu cebo**
+- Haz clic en el momento preciso
+- Los peces lo comerán automáticamente
+`,
+    "world-building": `## Guía de Creación de Mundos - TopGirl
+
+[¡Listo!]
+
+### Resumen
+Crea y desarrolla tu mundo en el juego. Esta guía cubre los fundamentos de la mecánica de creación de mundos.
+
+(Se añadirá contenido de WorldBuildingGuide.jpg)
+`,
+    "vip-level": `## Guía de Niveles VIP - TopGirl
+
+### Resumen
+Guía detallada sobre los puntos necesarios para cada nivel VIP.
+
+### Beneficios VIP
+- Los jugadores VIP reciben diversas bonificaciones y recompensas exclusivas.
+- Los niveles VIP más altos desbloquean más beneficios.
+
+(Se añadirá el contenido de VIPLevelGuide.jpg)
+`,
+    "ceo-coins": `## Guía para comprar monedas CEO - TopGirl
+
+### Cómo comprar monedas CEO
+
+**Paso 1: Visita la página web de pago**
+Desde tu navegador móvil, visita: https://pay2.a3games.com/topgirl
+
+**Paso 2: Selecciona tu región**
+En la esquina superior derecha de la página, selecciona tu región y elige una moneda compatible como método de pago.
+
+**Paso 3: Introduce la información de tu cuenta**
+Introduce tu ID y tu apodo.
+(Asegúrate de que el ID y el apodo que introduzcas sean correctos; de lo contrario, es posible que no puedas recibir las monedas CEO).
+
+**Paso 4: Selecciona la cantidad**
+Selecciona la cantidad de monedas CEO que deseas comprar y añade una tarjeta bancaria para completar el pago.
+
+**Paso 5: Canjea en el juego**
+Tras completar la compra de monedas CEO, entra en el juego, selecciona el paquete de regalo que necesitas, haz clic en el precio del paquete y elige usar las monedas CEO para canjearlas.`,
+    "alliance-management": `
+## Guía de Gestión de Alianzas - TopGirl
+
+### Responsabilidades del Grupo
+
+#### Liderazgo y Estrategia
+- **Estratega / Analista Meta**: Establece los objetivos a largo plazo del servidor, asesora sobre el enfoque de construcción y expansión.
+- **Constructor / Desarrollador de Grupo**: Supervisa la construcción del club, reúne recursos de progresión, planifica las rutas de crecimiento del club.
+- **Líder de Reagrupamiento / General de Guerra**: Lanza reagrupamientos y ataques, elige objetivos y horarios, coordina las operaciones de guerra.
+- **Entrenador / Mentor**: Apoya a los nuevos jugadores, guía el desarrollo artístico, ayuda con el entrenamiento del escuadrón.
+
+#### Comunicación y Diplomacia
+- **Comunicador del Grupo**: Publica anuncios, resume actualizaciones, administra Discord y el correo del juego.
+- **Diplomático / Gestor de Alianzas**: Administra alianzas y acuerdos de no agresión (ANA), maneja negociaciones, coordina la cooperación.
+- **Reclutador / RRHH**: Recluta nuevos miembros, evalúa a los solicitantes, integra a los miembros.
+
+#### Inteligencia y Soporte
+- **Oficial de Inteligencia / Espía**: Escanea clubes enemigos, rastrea la actividad y el movimiento, y supervisa los despliegues.
+- **Organizador de eventos**: Apoya las batallas por radio, asiste en guerras y eventos.
+- **Coordinador de encuentros con fans**: Gestiona las interacciones y eventos con los fans.
+### Estrategia y guerra
+Desarrolla tu alianza mediante una planificación cuidadosa y la coordinación con los miembros.
+`,
+    "peak-level": `## Guía de Nivel Máximo - TopGirl
+
+### Resumen
+El Nivel Máximo es un sistema de progresión avanzado para las chicas SSR. Cada chica SSR con 3 habilidades y 5 estrellas doradas puede optar a las mejoras de Nivel Máximo.
+
+### Puntos clave
+- **Concéntrate en el Nivel Máximo Total**, no solo en tu equipo principal.
+- Sube a tus chicas SSR más altas lo máximo posible (100-400+) para obtener bonificaciones de hitos importantes.
+- Hitos importantes: Nivel 40 / Nivel 70 / Nivel 100 / Nivel 300 / Nivel 400
+- Usa las Fotos Universales SSR libremente: eficiencia > ahorro.
+
+### Objetivo mínimo
+Tu objetivo mínimo es subir a TODAS las chicas SSR al Nivel Máximo 10.
+Cada SSR en Nivel Máximo 10 otorga +0.5% de Canto y +0.5% de Baile (bonificación global).
+
+### Para jugadores F2P
+Mejores candidatas al Nivel Máximo (fácil acceso a fotos):
+- **Zendaya** (Tienda de Stock)
+- **Skylar** (Tienda de Grupo)
+- **Claire** (Colección de Recompensas)
+
+Intenta subir al Nivel Máximo 5-10 a un máximo de 1 o 2 chicas. Maximiza tu equipo principal antes de invertir más en Niveles Máximos.
+
+Peak Level es un sistema energético global a largo plazo, perfecto para las ballenas.`,
+    "group-shop": `## Guía de la Tienda del Grupo - TopGirl
+
+### Qué Comprar
+
+**1. Manuales de Promoción**
+- Cómpralos siempre primero
+- Hay muy pocos disponibles
+- Se necesitan con frecuencia si participas en combates a menudo
+
+**2. Cartas de Promoción SSR**
+- Las cartas de promoción siempre serán necesarias
+- Se añaden nuevos artistas SSR en cada evento
+
+**3. Monedas de Activos**
+- Se necesitan muchas monedas de activos para maximizar los activos promocionados
+
+**4. Piezas de Vehículo**
+
+- Cómpralas si aún no has maximizado tu coche
+
+**5. Fotos de Skylar**
+- Cómpralas solo si quieres maximizar a Skylar
+- Son muy caras
+
+**6. Cartas de HQ**
+- Cómpralas si tu HQ aún no está maximizado
+
+**7. Tickets de Migración**
+- Cómpralos si quieres migrar a otro servidor
+`,
+  },
+
+  pt: {
+    "equipment": `## Guia de Equipamentos - TopGirl
+
+### Acessórios
+Joias são essenciais para aumentar seus atributos principais. Aqui estão as prioridades:
+
+** Colar ** - Bônus de Voz
+** Anel ** - Bônus de Dança
+** Relógio ** - Bônus de Charme
+
+### Veículos
+Carros oferecem bônus enormes, mas são caros:
+- Carro Inicial: 500.000 de Ouro
+- Carro Esportivo: 2.000.000 de Ouro
+- Carro de Luxo: 10.000.000 de Ouro
+
+### Propriedades
+Propriedades geram renda passiva:
+- Apartamento: 50.000 de Ouro/dia
+- Casa: 200.000 de Ouro/dia
+- Mansão: 1.000.000 de Ouro/dia
+
+### Comparação Ouro vs. Roxo
+
+| Equipamento | Atributos de Ouro | Atributos de Roxo |
+
+|------------|------------|-------------|
+
+| Colar | +500 de Voz | +300 Voz |
+| Toque | +500 Dança | +300 Dança |
+| Assistir | +500 Charme | +300 Charme |
+`,
+    "team-builder": `
+## Montador de Equipe - TopGirl
+
+### Composição da Equipe
+Uma equipe ideal contém 5 artistas com funções bem definidas:
+
+1. **Vocalista (Líder)** - Maiores atributos, bônus de gênero
+2. **Dançarina (Apoio)** - Buffs para a equipe
+3. **Centro** - Equilíbrio
+4. **Criadora de Talentos** - Geração de fãs
+5. **Apoio** - Defesa/utilidade
+
+### Sinergias de Gênero
+Bônus de gênero se aplicam quando você tem 2 ou mais artistas do mesmo gênero:
+
+- **Pop + Pop**: +15% Vocal
+- **EDM + EDM**: +15% Dança
+- **Hip Hop + Hip Hop**: +15% Charme
+
+### Bônus de Equipamento
+Equipamentos têm sinergia com as funções:
+
+- Conjunto de joias: +20% no atributo principal
+- Conjunto de veículo: +15% no atributo secundário
+- Conjunto de propriedade: +10% em todos os atributos
+
+### Tipos de Construção
+**Ofensiva:** 3 Ataque / 1 Defesa / 1 Suporte
+**Defensivo:** 2 Ataque / 3 Defesa / 0 Suporte
+**Equilibrado:** 2 Ataque / 2 Defesa / 1 Suporte
+
+**`,
+    "recommended-teams": `## Equipes Recomendadas - TopGirl
+
+### Melhores Equipes UR
+
+**Equipe 1 - Hiper Ofensiva:**
+- Kokoro (Vocalista)
+- Aurora (Dançarina)
+- Claire (Central)
+- Anastasia (Defensora)
+- Beatrice (Suporte)
+
+**Equipe 2 - Balanceada:**
+- Alexandra (Vocalista)
+- Elizabeth (Dançarina)
+- Genevieve (Central)
+- Marguerite (Defensora)
+- Gabriella (Suporte)
+
+### Melhores Equipes SSR
+
+**Equipe 1 - Meta Econômica:**
+- Alice (Vocalista)
+- Hestia (Dançarina)
+- Hikari (Central)
+- Eri (Defensora)
+- Flora (Suporte)
+
+### Estratégias
+
+**Ofensiva:** Maximizar o dano dos personagens
+- Foco: Dano de Habilidade + Ataque Básico
+- Meta: Kokoro, Aurora, Claire
+
+**Defensiva:** Foco na sobrevivência
+- Foco: Redução de dano + HP
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Equilibrada:** Mistura das duas
+- Foco: Distribuição de atributos
+- Meta: Elizabeth, Gabriella
+
+**Equilibrada:** Mistura das duas
+- Foco: Distribuição de atributos`,
+    "leveling-ssr": `## Aprimoramento de SSR - TopGirl
+
+### Cartas Necessárias por Nível
+
+| Nível | Cartas SSR | Total |
+
+|--------|-----------|-------|
+
+| 1-10 | 10 | 10 |
+
+| 10-20 | 20 | 30 |
+
+| 20-40 | 40 | 70 |
+
+| 40-60 | 60 | 130 |
+
+| 60-80 | 80 | 210 |
+
+| 80-100 | 100 | 310 |
+
+| 100-115 | 150 | 460 |
+
+### Dicas para Subir de Nível
+- Use cartas SSR extras
+- Foque primeiro nos seus personagens principais
+- Suba de nível durante eventos de XP em dobro
+- Priorize artistas com alta habilidade terapêutica
+
+### Custo em Ouro
+O custo em ouro aumenta com o nível:
+- Níveis 1-40: ~500.000 de Ouro
+- Níveis 40-70: ~2.000.000 de Ouro
+- Níveis 70-100: ~8.000.000 de Ouro
+- Níveis 100-115: ~25.000.000 de Ouro
+
+`,
+    "blueprints": `## Guia de Projetos - TopGirl
+
+### Instalação de Terceiros
+
+| Nível | Projetos | Ouro | Efeito |
+
+|------|----------|------|-------|
+
+| 1-3 | 50-100 | 10K | +5% de atributos |
+| 4-6 | 150-300 | 50K | +10% de atributos |
+| 7-9 | 500-800 | 200K | +15% de atributos |
+| 10-12 | 1000-1500 | 500K | +20% de atributos |
+| 13-15 | 2000-3000 | 1M | +25% de atributos |
+| 16-18 | 4000-5000 | 3M | +30% de atributos |
+
+| 19-21 | 7000+ | 10M | +35% nas estatísticas |
+
+### Prioridades
+1. **Estúdio** - Produção musical
+2. **Treinamento** - Aprimoramento de artistas
+3. **Sala dos Fãs** - Construção de uma base de fãs
+4. **Marketing** - Renda passiva
+
+### Dicas
+- Foque primeiro nos níveis Ouro 7 a 12
+- Aguarde eventos para descontos
+- Aprimore seus personagens de forma equilibrada para evitar surpresas desagradáveis
+
+`,
+    "hq-upgrade": `Guia de Cartas HQ - TopGirl
+
+Cartas HQ por Nível
+
+| Nível | Cartas | Custo em Ouro |
+
+|-------|--------|----------|
+
+| 1 | 50 | 1.000 |
+
+| 2 | 100 | 2.500 |
+
+| 3 | 200 | 5.000 |
+
+| 4 | 400 | 10.000 |
+
+| 5 | 800 | 25.000 |
+
+| 6 | 1.500 | 50.000 |
+
+| 7 | 2.500 | 100.000 |
+
+| 8 | 4.000 | 200.000 |
+
+| 9 | 6.000 | 400.000 |
+
+| 10 | 8.000 | 800.000 |
+
+**Total para o Nível 10 da Sede:** ~29.922 cartas / ~1,6 milhão de ouro
+
+### Bônus da Sede
+- Nível 5: Desbloqueia eventos adicionais
+- Nível 7: +10% em todos os atributos
+- Nível 10: Bônus máximo
+
+`,
+    "vehicle-system": `## Sistema de Veículos - TopGirl
+
+### Tipos de Veículos
+
+** Inicial (Grátis) **
+- Velocidade: 100
+- Bônus de Atributos: +500
+
+** Esportivo (50.000 Ouro) **
+- Velocidade: 150
+- Bônus de Atributos: +1.500
+
+** Luxo (500.000 Ouro) **
+- Velocidade: 200
+- Bônus de Atributos: +5.000
+
+** Super (5.000.000 Ouro) **
+- Velocidade: 300
+- Bônus de Atributos: +15.000
+
+### Peças de Melhoria
+
+| Peça | Efeito | Nível Máximo |
+
+|-------|-------|----------|
+
+| Motor | +Velocidade | 10 |
+
+| Chassi | +Dirigibilidade | 10 |
+
+| Suspensão | +Conforto | 10 |
+
+| Rodas | +Estilo | 10 |
+
+### Skins
+As skins são desbloqueadas em determinados níveis do veículo:
+
+- Nível 5: Skin Bronze
+- Nível 10: Skin Prata
+- Nível 20: Skin Ouro
+- Nível 30: Skin Platina
+
+-`,
+    "gold-equipment": `## Equipamento Ideal de Ouro - TopGirl
+
+### Configuração de Ouro para Vocalista
+
+**Joias:**
+- Colar: Colar de Ouro com Diamantes (+3.000 Vocais)
+- Anel: Anel de Ouro com Diamantes (+2.500 Vocais)
+- Relógio: Cronógrafo de Ouro (+2.000 Vocais)
+
+**Veículo:**
+- Supercarro (+15.000 em todos os atributos)
+
+**Propriedade:**
+- Mansão de Luxo (+5.000 em todos os atributos)
+
+**Total: +27.500 Vocais / +20.000 em outros atributos / 86.000 fãs**
+
+### Configuração de Ouro para Dançarina
+
+**Joias:**
+
+- Colar: Colar de Ouro com Diamantes (+3.000 Dança)
+- Anel: Anel de Ouro com Diamantes (+2.500 Dança)
+- Relógio: Cronógrafo de Ouro (+2.000 Dança)
+
+**Veículo:** Supercarro
+**Propriedade:** Mansão de Luxo
+
+**Total: +27.500 Dança**
+
+### Configuração do Centro de Ouro
+
+**Joias:**
+
+- Colar: Colar de Ouro com Diamantes (+3.000 Vocal)
+- Anel: Anel de Ouro com Diamantes (+2.500 Dança)
+- Relógio: Cronógrafo de Ouro (+2.000 Charme)
+
+**Veículo + Propriedade:** Iguais
+
+**Total: +27.500 em atributos de Dança**
+
+### Custo Total
+~50.000.000 de Ouro por personagem com Ouro completo
+
+`,
+    "purple-equipment": `
+## Equipamento Roxo - TopGirl
+
+### Configuração da Vocalista Roxa
+
+**Joias:**
+- Colar: Colar com Gema Roxa (+2.000 Vocais)
+- Anel: Anel com Gema Roxa (+1.500 Vocais)
+- Relógio: Relógio Roxo (+1.200 Vocais)
+
+**Veículo:** Carro Esportivo (+1.500 em todos os atributos)
+
+**Propriedade:** Casa (+3.000 em todos os atributos)
+
+**Total: +9.700 Vocais / +6.500 em outros atributos / 0 fãs**
+
+### Configuração da Dançarina Roxa
+
+Semelhante à Vocalista, mas:
+- Colar: +2.000 Danças
+- Anel: +1.500 Danças
+- Relógio: +1.200 Danças
+
+**Total: +9.700 Danças**
+
+### Estratégia de Mistura Ouro/Roxo
+
+**Opção 1: Orçamento Ideal**
+- 2 Joias de Ouro + Carro Roxo + Propriedade Roxa
+- Custo: ~15 milhões de ouro
+- Atributos: ~70% do ouro total
+
+**Opção 2: Somente Roxo**
+- Tudo Roxo
+- Custo: ~5 milhões de ouro
+- Atributos: ~50% do ouro total
+
+### Vantagens do Roxo
+- Mais acessível
+- Bom custo-benefício
+- Ainda competitivo no meio do jogo
+`,
+    "event-ancient-rome": `## Guia da Roma Antiga - TopGirl
+
+### Visão Geral
+O evento **Aventura no Exterior: Roma** é um evento sazonal de 12 dias ambientado na Roma Antiga. O objetivo é coletar itens de ROMA ao longo de 3 fases e trocá-los por recompensas exclusivas.
+
+## ### Fases do Evento
+
+**Fase 1: Coliseu (Dias 1-4)**
+- **Objetivo:** Coletar itens ROMA
+- **Recompensas:** Itens ROMA, Diamantes
+- **Dica:** Concentre-se nas Batalhas para acumular rapidamente
+
+**Fase 2: Fórum (Dias 5-8)**
+- **Objetivo:** Completar músicas
+- **Recompensas:** Cartas SSR, Itens ROMA
+- **Dica:** Use suas melhores equipes para maximizar as recompensas
+
+**Fase 3: Imperador (Dias 9-12)**
+- **Objetivo:** Trocar recompensas
+- **Recompensas:** Ficha UR, Cartas SSR+
+- **Dica:** Guarde Itens ROMA suficientes para as melhores trocas
+
+### Estratégia
+1. **Dias 1-4:** Maximize a coleta de itens ROMA
+2. **Dias 5-8:** Concentre-se em completar músicas
+3. **Dias 9-12:** Troque para obter as melhores recompensas
+
+### Artistas Principais
+- Cornélia, Aurélia, Xênia (Bônus de Roma)
+
+`,
+    "event-radio-battle": `## Guia da Batalha de Rádio - TopGirl
+
+### Visão Geral
+A **Batalha de Rádio** é um evento recorrente onde você compete contra outros jogadores via rádio. Quanto mais ouvintes você tiver, maior será sua pontuação.
+
+### Visão Geral ### As 5 Fases
+
+**Fase 1: Abertura (Dia 1)**
+- Prepare sua estação de rádio
+- Recompensa: 100 Moedas de Rádio
+
+**Fase 2: Eliminatória 1 (Dias 1-2)**
+- Acumule ouvintes
+- Recompensa: 200 Moedas de Rádio
+
+**Fase 3: Eliminatória 2 (Dias 2-3)**
+- Desafie outras estações
+- Recompensa: 300 Moedas de Rádio
+
+**Fase 4: Finais (Dias 3-4)**
+- Batalha final
+- Recompensa: Cartas SSR
+
+**Fase 5: Troca (Dias 4-5)**
+- Troque suas Moedas de Rádio
+- Recompensas: Fichas UR, SSR+
+
+### Estratégia
+1. **Lance durante os horários de pico** (noite)
+2. **Use artistas com habilidades de Carisma**
+3. **Combine diferentes gêneros** para atrair mais ouvintes Ouvintes
+
+### Artistas Principais
+- Skylar, Nova, Sora, Evelyn
+
+`,
+    "event-grammy": `## Guia do Grammy - TopGirl
+
+### Visão Geral
+O **Concurso Grammy** é uma competição musical semanal com 8 categorias diferentes. Crie a melhor música combinando diferentes gêneros e artistas.
+
+### As 8 Categorias
+
+| Categoria | Gênero Obrigatório | Melhor Estratégia |
+
+|-----------|--------------|---------------------|
+
+| Melhor Artista Revelação | Todos | Use artistas em ascensão com alto potencial |
+
+| Gravação do Ano | Pop + EDM | Combine Pop + EDM para obter a pontuação máxima |
+
+| Álbum do Ano | Todos | Use todos os atributos |
+
+| Música do Ano | Todos | Foque na habilidade Carisma |
+
+| Melhor Pop | Somente Pop | Equipe 100% Pop |
+
+| Melhor Hip Hop | Somente Hip Hop | Equipe Hip Hop |
+
+| Melhor R&B | Somente R&B | Especialistas em R&B |
+
+| Melhor Rock | Somente Rock | Equipe Rock |
+
+### Estratégia
+1. **Use artistas com atributos altos em Canto**
+2. **Combine vocalista principal + dançarinos de apoio**
+3. **Pop e EDM tendem a ter pontuações mais altas**
+
+### Melhores Artistas
+- Lestari, Brooklyn, Alice, Bella (geral)
+- Artistas por gênero: verifique as estatísticas
+
+`,
+    "event-ultimate-ceo": `
+## Guide Ultimate CEO - TopGirl
+
+### Présentation
+L'**Ultimate CEO** est un événement hebdomadaire de 5 jours où vous affrontez le CEO pour earn des rewards exclusifs.
+
+### Phases
+
+**Phase 1 (Day 1)**
+- Accumulez des CEO Points
+- Rewards: Cartes communes
+
+**Phase 2 (Day 2)**
+- Défiez le CEO
+- Rewards: Cartes SSR
+
+**Phase 3 (Day 3-5)**
+- Échangez vos rewards
+- Rewards: UR Tokens, CEO Cards
+
+### Stratégie
+1. **Focus sur teams avec high DPS**
+2. **Equilibrez attack et defense artists**
+3. **Utilisez des artists avec Fan Capacity bonuses**
+
+### Meilleures Artists
+- Kokoro, Aurora, Claire, Alice
+    `,
+    "event-echo-death-match": `## Guia do Echo Death Match - TopGirl
+
+### Visão Geral
+O **Echo Death Match** é um evento onde você batalha contra ecos. Colete Pedras de Eco em batalhas solo e em equipe.
+
+### Fases
+
+**Fase 1 (Dias 1-2)**
+
+- Batalhas Solo
+- Objetivo: Acumular Pedras de Eco
+- Recompensa: 500 Pedras de Eco
+
+**Fase 2 (Dias 3-5)**
+
+- Batalhas em Equipe
+- Objetivo: Pedras de Eco Bônus
+- Recompensa: 1000 Pedras de Eco, Fragmentos SSR
+
+**Fase 3 (Dias 6-7)**
+
+- Troca de Recompensas
+- Recompensas: Ficha UR, Cartas SSR+
+
+### Estratégia
+1. **Fase 1:** Foque em batalhas solo para acumular Pedras de Eco
+2. **Fase 2:** Batalhas em equipe para obter bônus
+3. **Guarde Pedras de Eco** para melhores trocas
+
+`,
+    "event-chamber-territory": `## Guia de Territórios da Câmara - TopGirl
+
+### Visão Geral
+O **Território da Câmara** é um evento baseado em territórios. Capture e defenda diferentes câmaras para ganhar recompensas.
+
+### Fases
+
+**Fase 1 (Dias 1-3)**
+- Capture territórios
+- Recompensa: 300 Fichas de Território
+
+**Fase 2 (Dias 4-7)**
+- Defenda e colete
+- Recompensa: 500 Cartas SSR, Fichas
+
+**Fase 3 (Dias 8-10)**
+- Resgate suas recompensas
+- Recompensas: Ficha UR, Cartas SSR+
+
+### Estratégia
+1. **Capture territórios de alto valor no início**
+2. **Defenda seus territórios** para obter bônus
+3. **Coopere com outros jogadores**
+
+`,
+    "event-cleanup-party": `## Guia da Festa da Limpeza - TopGirl
+
+### Visão Geral
+A **Festa da Limpeza** é um evento onde você limpa a cidade coletando lixo.
+
+### Fases
+
+**Fase 1 (Dias 1-2)**
+- Colete lixo
+- Recompensa: 200 Lixo
+
+**Fase 2 (Dias 3-5)**
+- Missões de Limpeza
+- Recompensa: 400 Lixo, Fragmentos SSR
+
+**Fase 3 (Dias 6-7)**
+- Resgate Recompensas
+- Recompensas: Ficha UR, Cartas SSR+
+
+### Estratégia
+1. **Complete missões de limpeza** para obter bônus
+2. **Junte-se a outros jogadores** para coletar mais rápido
+3. **Resgate** seu lixo para obter as melhores recompensas
+`,
+    "event-metro-subway": `
+## Guide Metro & Subway - TopGirl
+
+### Présentation
+Le **Metro & Subway** est un événement où vous prenez le métro pour collecter des tickets et earn des rewards.
+
+### Phases
+
+**Phase 1 (Jour 1-2)**
+- Collectez les tickets
+- Reward: Tickets x150
+
+**Phase 2 (Jour 3-5)**
+- Complétez les lignes
+- Reward: Tickets x300, SSR Shards
+
+**Phase 3 (Jour 6-7)**
+- Échangez les rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Stratégie
+1. **Complétez les lignes de métro** pour bonus tickets
+2. **Différentes lignes** ont différentes rewards
+3. **Échangez** vos tickets pour les meilleures rewards
+    `,
+    "event-vs-group": `## Guia do Evento de Grupo VS - TopGirl
+
+### Cronograma
+- **5 DIAS DE PREPARAÇÃO** (Temas Diários) seguidos pela **BATALHA FINAL DO DIA 6**
+- **DUELO DIÁRIO**: Ganhe pontos através de tarefas específicas
+- **VITÓRIA**: O grupo com a maior pontuação acumulada após 6 dias conquista a VITÓRIA SUPREMA
+
+### Requisitos de Participação
+- **REQUISITO DE NÍVEL**: O NÍVEL DE CEO DEVE SER PELO MENOS 20
+- **QUALIFICAÇÃO DE GRUPO**: Apenas grupos com ALTO PODER FINANCEIRO são ELEGÍVEIS para o pareamento
+- **TROCA DE GRUPO DURANTE O EVENTO**: Impede a contribuição de pontos de grupo por 1 dia, mas os pontos pessoais permanecem INAFEITOS
+
+### Recompensas e Projetos
+- **Desbloqueie 9 níveis de recompensas**
+- Os melhores jogadores e grupos vitoriosos recebem GRANDES RECOMPENSAS por e-mail
+- **PROJETOS MESTRE NÍVEIS 4-9 NECESSÁRIOS**
+- Use Projetos Mestre para aumentar a eficiência de pontos e desbloquear bônus de atributos permanentes
+
+### Ataque Relâmpago (Dia 6)
+- **INVASÃO**: No 6º dia, o teletransporte gratuito para os MARCOS (2, 3, 4) é ativado
+- **ELIMAÇÃO**: Derrote membros rivais em seus territórios para obter PONTOS DE BÔNUS ENORMES
+`,
+    "event-fishing": `## Guia do Evento de Pesca - TopGirl
+
+### Dicas
+
+**1. Alimente seus peixes regularmente**
+- Mantenha a geração de vouchers em velocidade máxima
+- Evite lentidão
+
+**2. Concentre-se em pescar peixes de estrelas mais altas**
+- Eles rendem MAIS vouchers
+- Substitui automaticamente os mais fracos
+
+**3. Visite os aquários de outros jogadores**
+- Você recebe 5 visitas por dia
+- Se alguém curtir seu aquário, você receberá conchas
+
+**4. Quanto mais peixes você tiver, maior será sua renda**
+- Continue expandindo seu aquário
+
+**5. Peixes com coroa**
+- Oferecem a maior pontuação de classificação (CRS) e renda de vouchers
+- Mantenha-os em seu aquário o máximo de tempo possível
+
+**6. Não desperdice sua isca**
+- Cronometre seus cliques com cuidado
+- Os peixes a comerão automaticamente
+`,
+    "world-building": `## Guia de Criação de Mundo - TopGirl
+
+[Feliz por estar completo]
+
+### Visão Geral
+Construa e desenvolva seu mundo no jogo. Este guia aborda os fundamentos da mecânica de criação de mundo.
+
+(Conteúdo de WorldBuildingGuide.jpg a ser adicionado)
+
+`,
+    "vip-level": `## Guia de Níveis VIP - TopGirl
+
+### Visão Geral
+Guia detalhado sobre os pontos necessários para cada nível VIP.
+
+### Benefícios VIP
+- Jogadores VIP recebem diversos bônus e recompensas exclusivas.
+- Níveis VIP mais altos desbloqueiam mais benefícios.
+
+(Conteúdo de VIPLevelGuide.jpg a ser adicionado)
+
+`,
+    "ceo-coins": `## Guia de Compra de Moedas CEO - TopGirl
+
+### Como Comprar Moedas CEO
+
+**Passo 1: Acesse o Site de Pagamento**
+Usando o navegador do seu celular, acesse: https://pay2.a3games.com/topgirl
+
+**Passo 2: Selecione a Região**
+No canto superior direito da página, selecione sua região e defina a moeda de pagamento para uma moeda compatível.
+
+**Passo 3: Insira as Informações da Conta**
+Insira seu ID e apelido.
+(Certifique-se de que o ID e o apelido inseridos estejam corretos, caso contrário, você poderá não conseguir receber as Moedas CEO normalmente.)
+
+**Passo 4: Selecione a Quantidade**
+Selecione a quantidade de Moedas CEO que deseja comprar e adicione um cartão bancário para concluir o pagamento.
+
+**Passo 5: Resgate no Jogo**
+Após concluir a compra das Moedas CEO, entre no jogo, selecione o pacote de presentes desejado, clique no preço do pacote e escolha usar as Moedas CEO para concluir o resgate.
+
+**Passo 4: Selecione a Quantidade**`,
+    "alliance-management": `
+## Alliance Management Guide - TopGirl
+
+### Group Responsibilities
+
+#### Leadership & Strategy
+- **Strategist / Meta Analyst**: Sets long-term server goals, advises build & expansion focus
+- **Builder / Group Developer**: Oversees club construction, gathers progression resources, plans club growth paths
+- **Rally Leader / War General**: Launches rallies & attacks, chooses targets & timing, coordinates war operations
+- **Trainer / Mentor**: Supports new players, guides artist development, helps with squad formation
+
+#### Communication & Diplomacy
+- **Group Communicator**: Posts announcements, summarizes updates, manages Discord & In-game mail
+- **Diplomat / Alliance Manager**: Manages alliances & NAPs, handles negotiations, coordinates cooperation
+- **Recruiter / HR**: Recruits new members, screens applicants, onboards members
+
+#### Intel & Support
+- **Intel Officer / Spy**: Scans enemy clubs, tracks activity & movement, monitors deployments
+- **Event Organizer**: Supports radio battles, assists wars & events
+- **Fanmeeting Coordinator**: Manages fan interactions and events
+
+### Strategy & War
+Develop your alliance through careful planning and coordination with members.
+    `,
+    "peak-level": `## Guia de Nível Máximo - TopGirl
+
+### Visão Geral
+O Nível Máximo é um sistema de progressão para garotas SSR no final do jogo. Cada garota SSR com 3 habilidades e 5 estrelas douradas (x) torna-se elegível para melhorias de Nível Máximo.
+
+## Guia de Nível Máximo - TopGirl ### Pontos-chave
+- **Foque no Nível Máximo Total**, não apenas no seu time principal
+- Eleve o nível das garotas SSR mais altas possível (100-400+) para obter bônus de marcos importantes
+- Marcos importantes: Nv40 / Nv70 / Nv100 / Nv300 / Nv400
+- Use as Fotos Universais de SSR livremente - eficiência > economia
+
+### Objetivo Mínimo
+Seu objetivo mínimo é levar TODAS as garotas SSR ao Nível Máximo 10.
+Cada SSR no Nível Máximo 10 concede +0,5% de Canto e +0,5% de Dança (bônus global)
+
+### Para Jogadores F2P
+Melhores candidatas para o Nível Máximo (acesso fácil às fotos):
+- **Zendaya** (Loja de Estoque)
+- **Skylar** (Loja de Grupo)
+- **Claire** (Coleção de Recompensas)
+
+Tente alcançar o Nível Máximo 5-10 em no máximo 1 ou 2 garotas. Maximize seu time principal antes de investir mais em Níveis Máximos.
+
+Peak Level é um sistema de energia global de longo prazo, perfeito para baleias.
+`,
+    "group-shop": `
+## Group Shop Guide - TopGirl
+
+### What to Buy
+
+**1. Promotion Manuals**
+- Always buy them first
+- Very few of them are available
+- Frequently required if you fight often
+
+**2. SSR Promote Cards**
+- Promote cards will always be required
+- New SSR artists are added every event
+
+**3. Asset Coins**
+- A lot of asset coins will be required to max the promoted assets
+
+**4. Vehicle Parts**
+- Buy them if you haven't maxed your car yet
+
+**5. Skylar Photos**
+- Only buy them if you intend to max Skylar
+- Very expensive
+
+**6. HQ Cards**
+- Buy them if your HQ isn't maxed yet
+
+**7. Migration Tickets**
+- Buy them if you want to migrate to another server
+    `,
+  },
+
+  pl: {
+    "equipment": `
+## Przewodnik po wyposażeniu - TopGirl
+
+### Akcesoria
+Biżuteria jest niezbędna do zwiększenia twoich głównych statystyk. Oto priorytety:
+
+** Naszyjnik ** - + Bonus Głosowy
+** Pierścień ** - + Bonus Taneczny
+** Zegarek ** - + Bonus Talizman
+
+### Pojazdy
+Samochody oferują ogromne bonusy, ale są drogie:
+- Samochód startowy: 500 000 złota
+- Samochód sportowy: 2 000 000 złota
+- Samochód luksusowy: 10 000 000 złota
+
+### Nieruchomości
+Nieruchomości generują pasywny dochód:
+- Apartament: 50 000 złota/dzień
+- Dom: 200 000 złota/dzień
+- Rezydencja: 1 000 000 złota/dzień
+
+### Porównanie złota i fioletu
+
+| Wyposażenie | Statystyki złota | Statystyki fioletu |
+|------------|-----------|-------------|
+| Naszyjnik | +500 Głos | +300 Głos |
+| Pierścień | +500 Taniec | +300 Taniec |
+| Zegarek | +500 Talizman | +300 Talizman |
+`,
+    "team-builder": `
+## Budowanie zespołu - TopGirl
+
+### Skład zespołu
+Optymalny zespół składa się z 5 artystów z jasno określonymi rolami:
+
+1. **Wokalista (Lider)** - Najwyższe statystyki, bonus gatunkowy
+2. **Tancerz (Wsparcie)** - Wzmocnienia zespołu
+3. **Środek** - Balans
+4. **Gwiazda Makijażu** - Generowanie fanów
+5. **Wsparcie** - Obrona/Użyteczność
+
+### Synergie gatunkowe
+Bonusy gatunkowe obowiązują, gdy masz 2 lub więcej artystów tego samego gatunku:
+
+- **Pop + Pop**: +15% Wokal
+- **EDM + EDM**: +15% Taniec
+- **Hip Hop + Hip Hop**: +15% Urok
+
+### Bonusy ekwipunku
+Ekwipunek synergizuje się z rolami:
+
+- Zestaw biżuterii: +20% statystyka główna
+- Zestaw pojazdu: +15% statystyka drugorzędna
+- Zestaw nieruchomości: +10% do wszystkich statystyk
+
+### Typy buildów
+**Ofensywny:** 3 Atak / 1 Obrona / 1 Wsparcie
+**Obronny:** 2 Atak / 3 Obrona / 0 Wsparcia
+**Zrównoważony:** 2 Atak / 2 Obrona / 1 Wsparcie
+
+`,
+    "recommended-teams": `
+## Polecane drużyny - TopGirl
+
+### Najlepsze drużyny UR
+
+**Drużyna 1 - Hiper Atak:**
+- Kokoro (Wokalistka)
+- Aurora (Tancerka)
+- Claire (Środkowa)
+- Anastasia (Obrona)
+- Beatrice (Wsparcie)
+
+**Drużyna 2 - Balans:**
+- Alexandra (Wokalistka)
+- Elizabeth (Tancerka)
+- Genevieve (Środkowa)
+- Marguerite (Obrona)
+- Gabriella (Wsparcie)
+
+### Najlepsze drużyny SSR
+
+**Drużyna 1 - Meta Budżetowa:**
+- Alice (Wokalistka)
+- Hestia (Tancerka)
+- Hikari (Środkowa)
+- Eri (Obrona)
+- Flora (Wsparcie)
+
+### Strategie
+
+**Ofensywa:** Maksymalizacja obrażeń zadawanych przez graczy
+- Skupienie: Obrażenia od umiejętności + Atak podstawowy
+- Meta: Kokoro, Aurora, Claire
+
+**Obrona:** Nacisk na przetrwanie
+- Nacisk: Redukcja obrażeń + PW
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Zrównoważony:** Połączenie obu
+- Nacisk: Statystyki dystrybucji
+- Meta: Elizabeth, Gabriella
+
+`,
+    "leveling-ssr": `
+## Montée en Niveau SSR - TopGirl
+
+### Cartes nécessaires par niveau
+
+| Niveau | Cartes SSR | Total |
+|--------|-----------|-------|
+| 1-10 | 10 | 10 |
+| 10-20 | 20 | 30 |
+| 20-40 | 40 | 70 |
+| 40-60 | 60 | 130 |
+| 60-80 | 80 | 210 |
+| 80-100 | 100 | 310 |
+| 100-115 | 150 | 460 |
+
+### Tips Level Up
+- Utilisez les cartes SSR excédentaires
+- Focus sur vos mains first
+- Level up pendant les événements x2 XP
+- Priorisez les artistes avec haute thérapeutisten
+
+### Coût Gold
+Le coût en gold augmente avec le niveau:
+- Niv 1-40: ~500,000 Gold
+- Niv 40-70: ~2,000,000 Gold  
+- Niv 70-100: ~8,000,000 Gold
+- Niv 100-115: ~25,000,000 Gold
+    `,
+    "blueprints": `
+## Przewodnik po projektach - TopGirl
+
+### Instalacja zewnętrzna
+
+| Poziom | Projekty | Złoto | Efekt |
+|------|---------|------|-------|
+| 1-3 | 50-100 | 10 tys. | +5% statystyk |
+| 4-6 | 150-300 | 50 tys. | +10% statystyk |
+| 7-9 | 500-800 | 200 tys. | +15% statystyk |
+| 10-12 | 1000-1500 | 500 tys. | +20% statystyk |
+| 13-15 | 2000-3000 | 1 mln | +25% statystyk |
+| 16-18 | 4000-5000 | 3 mln | +30% statystyk |
+| 19-21 | 7000+ | 10 mln | +35% statystyk |
+
+### Priorytety
+1. **Studio** – Produkcja piosenek
+2. **Szkolenie** – Awansowanie artystów
+3. **Fan Hall** – Budowanie fanowskiej społeczności
+4. **Marketing** – Dochód pasywny
+
+### Wskazówki
+- Skup się najpierw na poziomach 7-12 złota
+- Czekaj na wydarzenia, aby skorzystać ze zniżek
+- Ulepszaj poziom równomiernie, aby uniknąć sztuczek
+
+`,
+    "hq-upgrade": `
+## Guide HQ - TopGirl
+
+### Cartes par Niveau HQ
+
+| Niveau | Cartes | Coût Gold |
+|-------|--------|----------|
+| 1 | 50 | 1,000 |
+| 2 | 100 | 2,500 |
+| 3 | 200 | 5,000 |
+| 4 | 400 | 10,000 |
+| 5 | 800 | 25,000 |
+| 6 | 1,500 | 50,000 |
+| 7 | 2,500 | 100,000 |
+| 8 | 4,000 | 200,000 |
+| 9 | 6,000 | 400,000 |
+| 10 | 8,000 | 800,000 |
+
+**Total pour HQ Level 10:** ~29,922 cartes / ~1.6M Gold
+
+### Bonus HQ
+- Level 5: Unlock events supplémentaires
+- Level 7: +10% toutes stats
+- Level 10: Maximum bonus
+    `,
+    "vehicle-system": `
+## System pojazdów - TopGirl
+
+### Typy pojazdów
+
+** Starter (darmowy) **
+- Prędkość: 100
+- Statystyki bonusowe: +500
+
+** Sportowy (50 000 złota) **
+- Prędkość: 150
+- Statystyki bonusowe: +1500
+
+** Luksusowy (500 000 złota) **
+- Prędkość: 200
+- Statystyki bonusowe: +5000
+
+** Super (5 000 000 złota) **
+- Prędkość: 300
+- Statystyki bonusowe: +15 000
+
+### Części ulepszeń
+
+| Część | Efekt | Maksymalny poziom |
+
+|-------|-------|----------|
+
+| Silnik | +Prędkość | 10 |
+
+| Podwozie | +Prowadzenie | 10 |
+
+| Zawieszenie | +Komfort | 10 |
+
+| Felgi | +Styl | 10 |
+
+### Skórki
+Skórki odblokowują się na określonych poziomach pojazdu:
+
+- Poziom 5: Brązowa skórka
+- Poziom 10: Srebrna skórka
+- Poziom 20: Złota skórka
+- Poziom 30: Platynowa skórka
+
+`,
+    "gold-equipment": `
+## Złoty Optymalny Sprzęt - TopGirl
+
+### Złoty Zestaw Wokalisty
+
+**Biżuteria:**
+- Naszyjnik: Złoty Naszyjnik z Diamentami (+3000 Wokali)
+- Pierścionek: Złoty Pierścień z Diamentami (+2500 Wokali)
+- Zegarek: Złoty Chronograf (+2000 Wokali)
+
+**Pojazd:**
+- Supersamochód (+15000 wszystkich statystyk)
+
+**Nieruchomość:**
+- Luksusowa Rezydencja (+5000 wszystkich statystyk)
+
+**Razem: +27500 Wokali / +20000 innych / 86000 fanów**
+
+### Złoty Zestaw Tancerza
+
+**Biżuteria:**
+- Naszyjnik: Złoty Naszyjnik z Diamentami (+3000 Tańca)
+- Pierścionek: Złoty Pierścień z Diamentami (+2500 Tańca)
+- Zegarek: Złoty Chronograf (+2000 Taniec)
+
+**Pojazd:** Supersamochód
+**Nieruchomość:** Luksusowa rezydencja
+
+**Razem: +27 500 Taniec**
+
+### Konfiguracja Złotego Centrum
+
+**Biżuteria:**
+
+- Naszyjnik: Złoty naszyjnik z diamentami (+3000 Wokal)
+- Pierścionek: Złoty pierścionek z diamentami (+2500 Taniec)
+- Zegarek: Złoty chronograf (+2000 Talizman)
+
+**Pojazd + Nieruchomość:** To samo
+
+**Razem: +27 500 Statystyki tańca**
+
+### Całkowity koszt
+~50 000 000 złota na postać z pełnym złotem
+
+`,
+    "purple-equipment": `
+## Équipement Purple - TopGirl
+
+### Setup Purple Vocalist
+
+**Bijoux:**
+- Collier: Purple Gem Necklace (+2,000 Vocal)
+- Bague: Purple Gem Ring (+1,500 Vocal)
+- Montre: Purple Watch (+1,200 Vocal)
+
+**Véhicule:** Sports Car (+1,500 all stats)
+
+**Propriété:** House (+3,000 all stats)
+
+**Total: +9,700 Vocal / +6,500 autre / 0 fans**
+
+### Setup Purple Dancer
+
+Similar to Vocalist but:
+- Collier: +2,000 Dance
+- Bague: +1,500 Dance
+- Montre: +1,200 Dance
+
+**Total: +9,700 Dance**
+
+### Stratégie Gold/Purple Mix
+
+**Option 1: Budget Optimal**
+- 2 Gold Jewelry + Purple Car + Purple Property
+- Coût: ~15M Gold
+- Stats: ~70% du full Gold
+
+**Option 2: Purple Only**
+- Tout Purple
+- Coût: ~5M Gold
+- Stats: ~50% du full Gold
+
+### Avantages Purple
+- Plus accessible
+- Bon rapport qualité/prix
+- Still competitive en mid-game
+    `,
+    "event-ancient-rome": `
+## Przewodnik po Starożytnym Rzymie - TopGirl
+
+### Przegląd
+Wydarzenie **Przygoda za Granicą: Rzym** to 12-dniowe wydarzenie sezonowe, którego akcja rozgrywa się w Starożytnym Rzymie. Celem jest zbieranie przedmiotów z ROMA w 3 fazach i wymiana ich na ekskluzywne nagrody.
+
+### Fazy wydarzenia
+
+**Faza 1: Koloseum (dni 1-4)**
+- **Cel:** Zbieraj przedmioty ROMA
+- **Nagrody:** Przedmioty ROMA, Diamenty
+- **Wskazówka:** Skup się na bitwach, aby szybko gromadzić
+
+**Faza 2: Forum (dni 5-8)**
+- **Cel:** Ukończ utwory
+- **Nagrody:** Karty SSR, przedmioty ROMA
+- **Wskazówka:** Wykorzystaj swoje najlepsze drużyny, aby zmaksymalizować nagrody
+
+**Faza 3: Cesarz (dni 9-12)**
+- **Cel:** Nagrody za wymianę
+- **Nagrody:** Token UR, karty SSR+
+- **Wskazówka:** Zachowaj wystarczającą liczbę przedmiotów ROMA na najlepsze wymiany
+
+### Strategia
+1. **Dni 1-4:** Zmaksymalizuj kolekcję przedmiotów ROMA
+2. **Dni 5-8:** Skup się na ukończeniu utworów
+3. **Dni 9-12:** Wymiana na najlepsze nagrody
+
+### Najlepsi artyści
+- Cornelia, Aurelia, Xenia (bonus Rzym)
+
+`,
+    "event-radio-battle": `
+## Poradnik do Bitwy Radiowej - TopGirl
+
+### Przegląd
+**Bitwa Radiowa** to cykliczne wydarzenie, w którym rywalizujesz z innymi graczami za pośrednictwem radia. Im więcej słuchaczy masz, tym wyższy wynik.
+
+### 5 faz
+
+**Faza 1: Otwarcie (Dzień 1)**
+- Przygotuj swoją stację radiową
+- Nagroda: 100 Monet Radiowych
+
+**Faza 2: Etap 1 (Dni 1-2)**
+- Zbierz słuchaczy
+- Nagroda: 200 Monet Radiowych
+
+**Faza 3: Etap 2 (Dni 2-3)**
+- Rzuć wyzwanie innym stacjom
+- Nagroda: 300 Monet Radiowych
+
+**Faza 4: Finały (Dni 3-4)**
+- Finałowa bitwa
+- Nagroda: Karty SSR
+
+**Faza 5: Wymiana (Dni 4-5)**
+- Wymień swoje Monety Radiowe
+- Nagrody: Żetony UR, SSR+
+
+### Strategia
+1. **Wypuść w godzinach szczytu** (wieczorem)
+2. **Użyj artystów z umiejętnościami Charyzmy**
+3. **Połącz różne gatunki**, aby przyciągnąć więcej słuchaczy
+
+### Najlepsi artyści
+- Skylar, Nova, Sora, Evelyn
+
+`,
+    "event-grammy": `
+## Przewodnik po nagrodach Grammy - TopGirl
+
+### Przegląd
+**Konkurs Grammy** to cotygodniowy konkurs muzyczny z 8 różnymi kategoriami. Stwórz najlepszy utwór, łącząc różne gatunki i artystów.
+
+### 8 kategorii
+
+| Kategoria | Wymagany gatunek | Najlepsza strategia |
+
+|-----------|--------------|---------------------|
+
+| Najlepszy nowy artysta | Wszystkie | Wykorzystaj wschodzące gwiazdy o dużym potencjale |
+
+| Płyta roku | Pop + EDM | Połącz pop + EDM, aby uzyskać maksymalny wynik |
+
+| Album roku | Wszystkie | Wykorzystaj wszystkie statystyki |
+
+| Piosenka roku | Wszystkie | Skup się na umiejętnościach charyzmy |
+
+| Najlepszy pop | Tylko pop | Zespół 100% pop |
+
+| Najlepszy hip-hop | Tylko hip-hop | Zespół hip-hopowy |
+
+| Najlepszy R&B | Tylko R&B | Specjaliści R&B |
+
+| Najlepszy rock | Tylko rock | Zespół Rockowy |
+
+### Strategia
+1. **Wykorzystaj artystów z wysokimi statystykami śpiewu**
+2. **Połącz wokalistę prowadzącego + tancerzy wspierających**
+3. **Pop i EDM zazwyczaj uzyskują wyższe wyniki**
+
+### Najlepsi artyści
+- Lestari, Brooklyn, Alice, Bella (ogólnie)
+- Artyści według gatunku: sprawdź statystyki
+
+`,
+    "event-ultimate-ceo": `
+## Najlepszy poradnik CEO - TopGirl
+
+### Przegląd
+**Najlepszy CEO** to 5-dniowe cotygodniowe wydarzenie, w którym zmierzysz się z CEO, aby zdobyć ekskluzywne nagrody.
+
+### Fazy
+
+**Faza 1 (Dzień 1)**
+- Zbieraj punkty CEO
+- Nagrody: Karty Zwykłe
+
+**Faza 2 (Dzień 2)**
+- Rzuć wyzwanie CEO
+- Nagrody: Karty SSR
+
+**Faza 3 (Dni 3-5)**
+- Odbierz swoje nagrody
+- Nagrody: Tokeny UR, Karty CEO
+
+### Strategia
+1. **Skup się na drużynach z wysokim DPS**
+2. **Zrównoważ artystów ataku i obrony**
+3. **Używaj artystów z premiami za pojemność fanów**
+
+### Najlepsi artyści
+- Kokoro, Aurora, Claire, Alice
+`,
+    "event-echo-death-match": `## Poradnik do Echo Death Match - TopGirl
+
+### Przegląd
+**Echo Death Match** to wydarzenie, w którym walczysz z echami. Zbieraj Kamienie Echa w pojedynkach indywidualnych i drużynowych.
+
+### Fazy
+
+**Faza 1 (dni 1-2)**
+
+- Bitwy solo
+- Cel: Zbierz Kamienie Echa
+- Nagroda: 500 Kamieni Echa
+
+**Faza 2 (dni 3-5)**
+
+- Bitwy drużynowe
+- Cel: Bonusowe Kamienie Echa
+- Nagroda: 1000 Kamieni Echa, Odłamki SSR
+
+**Faza 3 (dni 6-7)**
+- Nagrody za wymianę
+- Nagrody: Żeton UR, Karty SSR+
+
+### Strategia
+1. **Faza 1:** Skup się na bitwach solo, aby zebrać Kamienie Echa
+2. **Faza 2:** Bitwy drużynowe dla bonusów
+3. **Przechowywanie Kamieni Echa** dla lepszych wymian
+
+`,
+    "event-chamber-territory": `
+## Przewodnik po Terytorium Komnaty - TopGirl
+
+### Przegląd
+**Terytorium Komnaty** to wydarzenie oparte na terytoriach. Zdobywaj i broń różnych komnat, aby zdobywać nagrody.
+
+### Fazy
+
+**Faza 1 (dni 1-3)**
+- Zdobywaj terytoria
+- Nagroda: 300 Żetonów Terytoriów
+
+**Faza 2 (dni 4-7)**
+- Broń i zbieraj
+- Nagroda: 500 Kart SSR, Żetonów
+
+**Faza 3 (dni 8-10)**
+- Odbierz swoje nagrody
+- Nagrody: Żeton UR, Karty SSR+
+
+### Strategia
+1. **Wcześnie zdobądź terytoria o wysokiej wartości**
+2. **Broń swoich terytoriów**, aby zdobyć bonusy
+3. **Współpracuj z innymi graczami**
+
+`,
+    "event-cleanup-party": `
+## Przewodnik po imprezie sprzątającej - TopGirl
+
+### Przegląd
+**Impreza sprzątająca** to wydarzenie, w którym sprzątasz miasto, zbierając śmieci.
+
+### Fazy
+
+**Faza 1 (dni 1-2)**
+- Zbieraj śmieci
+- Nagroda: 200 śmieci
+
+**Faza 2 (dni 3-5)**
+- Misje sprzątające
+- Nagroda: 400 śmieci, odłamki SSR
+
+**Faza 3 (dni 6-7)**
+- Odbieraj nagrody
+- Nagrody: żeton UR, karty SSR+
+
+### Strategia
+1. **Wykonuj misje sprzątające**, aby zdobyć bonusy
+2. **Połącz siły**, aby szybciej zbierać
+3. **Odbieraj** swoje śmieci, aby zdobyć najlepsze nagrody
+`,
+    "event-metro-subway": `
+## Przewodnik po metrze i metrze - TopGirl
+
+### Przegląd
+**Metro i metro** to wydarzenie, w którym jeździsz metrem, aby zbierać bilety i zdobywać nagrody.
+
+### Fazy
+
+**Faza 1 (dni 1-2)**
+- Zbieraj bilety
+- Nagroda: 150 biletów
+
+**Faza 2 (dni 3-5)**
+- Ukończ linie
+- Nagroda: 300 biletów, odłamki SSR
+
+**Faza 3 (dni 6-7)**
+- Odbierz nagrody
+- Nagrody: token UR, karty SSR+
+
+### Strategia
+1. **Ukończ linie metra**, aby zdobyć bilety bonusowe
+2. **Różne linie** oferują różne nagrody
+3. **Odbierz** swoje bilety, aby zdobyć najlepsze nagrody
+
+`,
+    "event-vs-group": `
+## Przewodnik po wydarzeniu VS Group - TopGirl
+
+### Harmonogram
+- **5 DNI PRZYGOTOWAŃ** (Tematy dnia), a następnie **OSTATNIA BITWA DNIA 6**
+- **POJEDYNEK DNIA**: Zdobywaj punkty wykonując określone zadania
+- **ZWYCIĘSTWO**: Grupa z największą liczbą punktów po 6 dniach zdobywa NAJWYŻSZE ZWYCIĘSTWO
+
+### Wymagania dotyczące uczestnictwa
+- **WYMAGANY POZIOM**: POZIOM CEO MUSI OSIĄGNĄĆ PRZYNAJMNIEJ 20 POZIOM
+- **KWALIFIKACJE DO GRUPY**: Tylko grupy z WYSOKĄ POZYCJĄ W RANKINGU SIŁY FINANSOWEJ MOGĄ BRAĆ UDZIAŁ W DOPASOWANIU
+- **ZMIANA GRUP W TRAKCIE WYDARZENIA**: Uniemożliwia zdobywanie punktów grupowych przez 1 dzień, ale punkty osobiste pozostają NIEZMIENIONE
+
+### Nagrody i Plany
+- **Odblokuj 9 Poziomy nagród**
+- Najlepsi gracze i zwycięskie grupy otrzymują WIELKIE NAGRODY e-mailem
+- **WYMAGANE MISTRZOWSKIE SCHEMATY POZIOMÓW 4-9**
+- Użyj Mistrzowskich Planów, aby zwiększyć efektywność punktową i odblokować stałe bonusy do statystyk
+
+###Atak Szturmowy (Dzień 6)
+- **INWAZJA**: Szóstego dnia włączona jest darmowa teleportacja do PUNKTÓW WIDOKOWYCH (2, 3, 4)
+- **ELIMINACJA**: Pokonaj rywalizujących członków na ich terytorium, aby zdobyć OGROMNE PUNKTY BONUSOWE
+`,
+    "event-fishing": `
+## Przewodnik po wydarzeniach wędkarskich - TopGirl
+
+### Wskazówki
+
+**1. Regularnie karm ryby**
+- Utrzymuj pełną wydajność generowania kuponów
+- Unikaj spowolnień
+
+**2. Skup się na łowieniu ryb o wyższej gwiazdce**
+- Zdobywają WIĘCEJ kuponów
+- Automatycznie zastępuj słabsze ryby
+
+**3. Odwiedzaj akwaria innych graczy**
+- Otrzymujesz 5 wizyt dziennie
+- Jeśli komuś spodoba się Twoje akwarium, otrzymasz muszle
+
+**4. Im więcej ryb, tym większy dochód**
+- Stale powiększaj swoje akwarium
+
+**5. Łów ryby z koroną**
+- Zapewniaj najwyższy CRS i dochód z kuponów
+- Utrzymuj je w akwarium jak najdłużej
+
+**6. Nie marnuj przynęty**
+- Ostrożnie wymierzaj kliknięcia
+- Ryby zjedzą ją automatycznie
+`,
+    "world-building": `
+## World Building Guide - TopGirl
+
+[Content to be completed]
+
+### Overview
+Build and develop your world in the game. This guide covers the basics of world building mechanics.
+
+(Content from WorldBuildingGuide.jpg to be added)
+    `,
+    "vip-level": `
+## VIP Level Guide - TopGirl
+
+### Overview
+Detailed guide on points required for each VIP level.
+
+### VIP Benefits
+- VIP players receive various bonuses and exclusive rewards
+- Higher VIP levels unlock more benefits
+
+(Content from VIPLevelGuide.jpg to be added)
+    `,
+    "ceo-coins": `
+## CEO Coins Purchase Guide - TopGirl
+
+### How to Purchase CEO Coins
+
+**Step 1: Visit Payment Website**
+Using your mobile browser, visit: https://pay2.a3games.com/topgirl
+
+**Step 2: Select Region**
+In the upper right corner of the page, select your region and set the payment currency to a supported currency
+
+**Step 3: Enter Account Info**
+Enter your ID and nickname
+(Please make sure that the ID and nickname you enter are correct, otherwise you may not be able to receive CEO coins normally)
+
+**Step 4: Select Amount**
+Select the amount of CEO coins you want to purchase and add a bank card to complete the payment
+
+**Step 5: Redeem in Game**
+After completing the purchase of CEO coins, enter the game, select the gift package you need, click the gift package price, and choose to use CEO coins to complete the redemption.
+    `,
+    "alliance-management": `
+## Przewodnik po zarządzaniu sojuszem - TopGirl
+
+### Obowiązki w grupie
+
+#### Przywództwo i strategia
+- **Strateg / Metaanalityk**: Wyznacza długoterminowe cele serwera, doradza w zakresie rozbudowy i rozwoju
+- **Budowniczy / Twórca grupy**: Nadzoruje budowę klubu, gromadzi zasoby do rozwoju, planuje ścieżki rozwoju klubu
+- **Przywódca rajdu / Generał wojny**: Rozpoczyna rajdy i ataki, wybiera cele i harmonogram, koordynuje operacje wojenne
+- **Trener / Mentor**: Wspiera nowych graczy, kieruje rozwojem artystów, pomaga w szkoleniu drużyny
+
+#### Komunikacja i dyplomacja
+- **Komunikator grupy**: Publikuje ogłoszenia, podsumowuje aktualizacje, zarządza Discordem i pocztą w grze
+- **Dyplomata / Menedżer sojuszu**: Zarządza sojuszami i NAP-ami, prowadzi negocjacje, koordynuje współpracę
+- **Rekruter / Dział HR**: Rekrutuje nowych członków, weryfikuje kandydatów, Wprowadzanie członków
+
+#### Wywiad i wsparcie
+- **Oficer Wywiadu / Szpieg**: Skanuje wrogie kluby, śledzi aktywność i ruch, monitoruje rozmieszczenie
+- **Organizator Wydarzeń**: Wspiera bitwy radiowe, asystuje w wojnach i wydarzeniach
+- **Koordynator Fanmeetingu**: Zarządza interakcjami z fanami i wydarzeniami
+
+### Strategia i Wojna
+Rozwijaj swój sojusz poprzez staranne planowanie i koordynację z członkami.`,
+    "peak-level": `
+## Przewodnik po poziomach szczytowych - TopGirl
+
+### Przegląd
+Poziom szczytowy to system progresji dla dziewczyn w SSR w późnej fazie gry. Każda dziewczyna SSR z 3 umiejętnościami i 5 (złotymi gwiazdkami) kwalifikuje się do ulepszeń poziomu szczytowego.
+
+### Kluczowe punkty
+- **Skup się na całym poziomie szczytowym**, nie tylko na swojej głównej drużynie
+- Awansuj na najlepsze dziewczyny SSR tak wysoko, jak to możliwe (100-400+), aby uzyskać silne wzmocnienia kamieni milowych
+- Ważne kamienie milowe: poziom 40 / poziom 70 / poziom 100 / poziom 300 / poziom 400
+- Korzystaj swobodnie z uniwersalnych zdjęć SSR - efektywność > oszczędność
+
+### Cel minimalny
+Twoim minimalnym celem jest doprowadzenie KAŻDEJ dziewczyny SSR do poziomu szczytowego 10.
+Każde SSR na poziomie szczytowym 10 daje +0,5% śpiewu i +0,5% tańca (wzmocnienie globalne)
+
+### Dla graczy F2P
+Najlepsze kandydatki do poziomu szczytowego (łatwy dostęp do zdjęć):
+- **Zendaya** (Sklep Stock)
+- **Skylar** (Sklep Grupowy)
+- **Claire** (Kolekcja Nagród)
+
+Dąż do osiągnięcia poziomu szczytowego 5-10 dla maksymalnie 1-2 dziewczyn. Zmaksymalizuj swój główny zespół, zanim zainwestujesz więcej w Peak Levels.
+
+Peak Level to długoterminowy globalny system energetyczny, idealny dla wielorybów.
+`,
+    "group-shop": `
+## Group Shop Guide - TopGirl
+
+### What to Buy
+
+**1. Promotion Manuals**
+- Always buy them first
+- Very few of them are available
+- Frequently required if you fight often
+
+**2. SSR Promote Cards**
+- Promote cards will always be required
+- New SSR artists are added every event
+
+**3. Asset Coins**
+- A lot of asset coins will be required to max the promoted assets
+
+**4. Vehicle Parts**
+- Buy them if you haven't maxed your car yet
+
+**5. Skylar Photos**
+- Only buy them if you intend to max Skylar
+- Very expensive
+
+**6. HQ Cards**
+- Buy them if your HQ isn't maxed yet
+
+**7. Migration Tickets**
+- Buy them if you want to migrate to another server
+    `,
+  },
+
+  id: {
+    "equipment": `
+## Panduan Perlengkapan - TopGirl
+
+### Aksesoris
+Perhiasan sangat penting untuk meningkatkan statistik utama Anda. Berikut prioritasnya:
+
+** Kalung ** - Bonus Suara
+** Cincin ** - Bonus Tarian
+** Jam Tangan ** - Bonus Pesona
+
+### Kendaraan
+Mobil menawarkan bonus besar tetapi mahal:
+- Mobil Pemula: 500.000 Emas
+- Mobil Sport: 2.000.000 Emas
+- Mobil Mewah: 10.000.000 Emas
+
+### Properti
+Properti menghasilkan pendapatan pasif:
+- Apartemen: 50.000 Emas/hari
+- Rumah: 200.000 Emas/hari
+- Rumah Besar: 1.000.000 Emas/hari
+
+### Perbandingan Emas vs. Ungu
+
+| Perlengkapan | Statistik Emas | Statistik Ungu |
+
+|------------|------------|-------------|
+
+| Kalung | +500 Suara | +300 Suara |
+
+| Dering | +500 Tarian | +300 Tarian |
+
+| Jam Tangan | +500 Pesona | +300 Pesona |
+
+`,
+    "team-builder": `
+## Pembangun Tim - TopGirl
+
+### Komposisi Tim
+Tim yang optimal terdiri dari 5 artis dengan peran yang jelas:
+
+1. **Vokalis (Pemimpin)** - Statistik tertinggi, bonus genre
+2. **Penari (Pendukung)** - Buff tim
+3. **Center** - Keseimbangan
+4. **Makestar** - Pembangkitan penggemar
+5. **Pendukung** - Pertahanan/utilitas
+
+### Sinergi Genre
+Bonus genre berlaku jika Anda memiliki 2+ artis dengan genre yang sama:
+
+- **Pop + Pop**: +15% Vokal
+- **EDM + EDM**: +15% Tari
+- **Hip Hop + Hip Hop**: +15% Pesona
+
+### Bonus Peralatan
+Peralatan bersinergi dengan peran:
+
+- Set Perhiasan: +20% statistik utama
+- Set Kendaraan: +15% statistik sekunder
+- Set Properti: +10% semua statistik
+
+### Tipe Build
+**Serangan:** 3 Serangan / 1 Pertahanan / 1 Dukungan
+**Bertahan:** 2 Serangan / 3 Pertahanan / 0 Dukungan
+**Seimbang:** 2 Serangan / 2 Pertahanan / 1 Dukungan
+
+`,
+    "recommended-teams": `
+## Tim yang Direkomendasikan - TopGirl
+
+### Tim UR Terbaik
+
+**Tim 1 - Serangan Super:**
+- Kokoro (Vokalis)
+- Aurora (Penari)
+- Claire (Center)
+- Anastasia (Pertahanan)
+- Beatrice (Pendukung)
+
+**Tim 2 - Seimbang:**
+- Alexandra (Vokalis)
+- Elizabeth (Penari)
+- Genevieve (Center)
+- Marguerite (Pertahanan)
+- Gabriella (Pendukung)
+
+### Tim SSR Terbaik
+
+**Tim 1 - Meta Hemat:**
+- Alice (Vokalis)
+- Hestia (Penari)
+- Hikari (Center)
+- Eri (Pertahanan)
+- Flora (Pendukung)
+
+### Strategi
+
+**Serangan:** Maksimalkan pemberi kerusakan
+- Fokus: Kerusakan Skill + Serangan Dasar
+- Meta: Kokoro, Aurora, Claire
+
+**Pertahanan:** Fokus pada bertahan hidup
+- Fokus: Pengurangan Kerusakan + HP
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Seimbang:** Campuran keduanya
+- Fokus: Distribusi statistik
+- Meta: Elizabeth, Gabriella
+
+`,
+    "leveling-ssr": `## Menaikkan Level SSR - TopGirl
+
+### Kartu yang Dibutuhkan Per Level
+
+| Level | Kartu SSR | Total |
+
+|--------|-----------|-------|
+
+| 1-10 | 10 | 10 |
+
+| 10-20 | 20 | 30 |
+
+| 20-40 | 40 | 70 |
+
+| 40-60 | 60 | 130 |
+
+| 60-80 | 80 | 210 |
+
+| 80-100 | 100 | 310 |
+
+| 100-115 | 150 | 460 |
+
+### Tips Menaikkan Level
+- Gunakan kartu SSR berlebih
+- Fokus pada karakter utama Anda terlebih dahulu
+- Naikkan level selama event XP x2
+- Prioritaskan artis dengan terapis tinggi
+
+### Biaya Emas
+Biaya emas meningkat seiring level:
+- Level 1-40: ~500.000 Emas
+- Level 40-70: ~2.000.000 Emas
+- Level 70-100: ~8.000.000 Emas
+- Level 100-115: ~25.000.000 Emas
+
+`,
+    "blueprints": `
+## Guide Blueprints - TopGirl
+
+
+### Installation Tiers
+
+| Tier | Blueprints | Gold | Effet |
+|------|-----------|------|-------|
+| 1-3 | 50-100 | 10K | +5% stats |
+| 4-6 | 150-300 | 50K | +10% stats |
+| 7-9 | 500-800 | 200K | +15% stats |
+| 10-12 | 1000-1500 | 500K | +20% stats |
+| 13-15 | 2000-3000 | 1M | +25% stats |
+| 16-18 | 4000-5000 | 3M | +30% stats |
+| 19-21 | 7000+ | 10M | +35% stats |
+
+### Priorités
+1. **Studio** - Production de songs
+2. **Training** - Level up artists
+3. **Fan Hall** - Génération fans
+4. **Marketing** - Revenus passifs
+
+### Tips
+- Focus tier 7-12 Gold en premier
+- Attend les événements pour les discounts
+- Upgrade uniformément pour éviter le瓶颈
+    `,
+    "hq-upgrade": `Panduan HQ - TopGirl
+
+Kartu HQ berdasarkan Level
+
+| Level | Kartu | Biaya Emas |
+
+|-------|--------|----------|
+
+| 1 | 50 | 1.000 |
+
+| 2 | 100 | 2.500 |
+
+| 3 | 200 | 5.000 |
+
+| 4 | 400 | 10.000 |
+
+| 5 | 800 | 25.000 |
+
+| 6 | 1.500 | 50.000 |
+
+| 7 | 2.500 | 100.000 |
+
+| 8 | 4.000 | 200.000 |
+
+| 9 | 6.000 | 400.000 |
+
+| 10 | 8.000 | 800.000 |
+
+**Total untuk Markas Besar Level 10:** ~29.922 kartu / ~1,6 juta Emas
+
+### Bonus Markas Besar
+- Level 5: Buka event tambahan
+- Level 7: +10% untuk semua statistik
+- Level 10: Bonus maksimum
+
+`,
+    "vehicle-system": `
+## Sistem Kendaraan - TopGirl
+
+### Jenis Kendaraan
+
+** Pemula (Gratis) **
+- Kecepatan: 100
+- Bonus Statistik: +500
+
+** Sport (50.000 Emas) **
+- Kecepatan: 150
+- Bonus Statistik: +1.500
+
+** Mewah (500.000 Emas) **
+- Kecepatan: 200
+- Bonus Statistik: +5.000
+
+** Super (5.000.000 Emas) **
+- Kecepatan: 300
+- Bonus Statistik: +15.000
+
+### Komponen Upgrade
+
+| Komponen | Efek | Tingkat Maksimum |
+
+|-------|-------|----------|
+
+| Mesin | +Kecepatan | 10 |
+
+| Sasis | +Pengendalian | 10 |
+
+| Suspensi | +Kenyamanan | 10 |
+
+| Pelek | +Gaya | 10 |
+
+### Skin
+Skin dibuka pada level kendaraan tertentu:
+
+- Level 5: Skin Perunggu
+- Level 10: Skin Perak
+- Level 20: Skin Emas
+- Level 30: Skin Platinum
+
+`,
+    "gold-equipment": `
+## Perlengkapan Optimal Emas - TopGirl
+
+### Pengaturan Vokalis Emas
+
+**Perhiasan:**
+- Kalung: Kalung Berlian Emas (+3.000 Vokal)
+- Cincin: Cincin Berlian Emas (+2.500 Vokal)
+- Jam Tangan: Kronograf Emas (+2.000 Vokal)
+
+**Kendaraan:**
+- Mobil Super (+15.000 semua statistik)
+
+**Properti:**
+- Rumah Mewah (+5.000 semua statistik)
+
+**Total: +27.500 Vokal / +20.000 lainnya / 86.000 penggemar**
+
+### Pengaturan Penari Emas
+
+**Perhiasan:**
+- Kalung: Kalung Berlian Emas (+3.000 Tarian)
+- Cincin: Cincin Berlian Emas (+2.500 Tarian)
+- Jam Tangan: Kronograf Emas (+2.000 Tarian)
+
+**Kendaraan:** Mobil Super
+**Properti:** Mewah Rumah Mewah
+
+**Total: +27.500 Tarian**
+
+### Pengaturan Pusat Emas
+
+**Perhiasan:**
+
+- Kalung: Kalung Berlian Emas (+3.000 Vokal)
+- Cincin: Cincin Berlian Emas (+2.500 Tarian)
+- Jam Tangan: Kronograf Emas (+2.000 Pesona)
+
+**Kendaraan + Properti:** Sama
+
+**Total: +27.500 statistik Tarian**
+
+### Total Biaya
+~50.000.000 Emas per karakter dengan Emas penuh
+
+`,
+    "purple-equipment": `
+## Perlengkapan Ungu - TopGirl
+
+### Perlengkapan Vokalis Ungu
+
+**Perhiasan:**
+- Kalung: Kalung Permata Ungu (+2.000 Vokal)
+- Cincin: Cincin Permata Ungu (+1.500 Vokal)
+- Jam Tangan: Jam Tangan Ungu (+1.200 Vokal)
+
+**Kendaraan:** Mobil Sport (+1.500 semua statistik)
+
+**Properti:** Rumah (+3.000 semua statistik)
+
+**Total: +9.700 Vokal / +6.500 lainnya / 0 penggemar**
+
+### Perlengkapan Penari Ungu
+
+Mirip dengan Vokalis tetapi:
+- Kalung: +2.000 Tarian
+- Cincin: +1.500 Tarian
+- Jam Tangan: +1.200 Tarian
+
+**Total: +9.700 Tarian**
+
+### Strategi Campuran Emas/Ungu
+
+**Opsi 1: Anggaran Optimal**
+- 2 Perhiasan Emas + Ungu Mobil + Properti Ungu
+- Biaya: ~15 Juta Emas
+- Statistik: ~70% dari Emas penuh
+
+**Opsi 2: Hanya Ungu**
+- Semua Ungu
+- Biaya: ~5 Juta Emas
+- Statistik: ~50% dari Emas penuh
+
+### Keunggulan Ungu
+- Lebih mudah diakses
+- Nilai yang baik untuk uang
+- Tetap kompetitif di pertengahan permainan
+`,
+    "event-ancient-rome": `
+## Panduan Roma Kuno - TopGirl
+
+### Gambaran Umum
+Acara **Petualangan di Luar Negeri: Roma** adalah acara musiman selama 12 hari yang berlatar di Roma Kuno. Tujuannya adalah mengumpulkan item ROMA melalui 3 fase dan menukarkannya dengan hadiah eksklusif.
+
+### Fase Acara
+
+**Fase 1: Koloseum (Hari 1-4)**
+- **Tujuan:** Kumpulkan item ROMA
+- **Hadiah:** Item ROMA, Berlian
+- **Tips:** Fokus pada Pertempuran untuk mengumpulkan item dengan cepat
+
+**Fase 2: Forum (Hari 5-8)**
+- **Tujuan:** Selesaikan lagu
+- **Hadiah:** Kartu SSR, Item ROMA
+- **Tips:** Gunakan tim terbaik Anda untuk memaksimalkan hadiah
+
+**Fase 3: Kaisar (Hari 9-12)**
+- **Tujuan:** Tukar hadiah
+- **Hadiah:** Token UR, Kartu SSR+
+- **Tips:** Simpan cukup Item ROMA untuk pertukaran terbaik
+
+### Strategi
+1. **Hari 1-4:** Maksimalkan pengumpulan item ROMA
+2. **Hari 5-8:** Fokus pada penyelesaian lagu
+3. **Hari ke-9-12:** Tukarkan dengan hadiah terbaik
+
+### Artis Terbaik
+- Cornelia, Aurelia, Xenia (Bonus Roma)
+
+`,
+    "event-radio-battle": `
+## Guide Radio Battle - TopGirl
+
+### Présentation
+Le **Radio Battle** est un événement récurrent où vous affrontez d'autres joueurs via la radio. Plus vous avez d'auditeurs, plus votre score est élevé.
+
+### Les 5 Phases
+
+**Phase 1: Opening (Day 1)**
+- Préparez votre station radio
+- Reward: Radio Coins x100
+
+**Phase 2: Heat 1 (Day 1-2)**
+- Accumulez des listeners
+- Reward: Radio Coins x200
+
+**Phase 3: Heat 2 (Day 2-3)**
+- Défiez d'autres stations
+- Reward: Radio Coins x300
+
+**Phase 4: Finals (Day 3-4)**
+- Bataille finale
+- Reward: SSR Cards
+
+**Phase 5: Exchange (Day 4-5)**
+- Échangez vos Radio Coins
+- Rewards: UR Tokens, SSR+
+
+### Stratégie
+1. **Releasez pendant les heures de pointe** (soir)
+2. **Utilisez des artists avec compétences Charisma**
+3. **Combinez différents genres** pour attract plus d'auditeurs
+
+### Meilleures Artists
+- Skylar, Nova, Sora, Evelyn
+    `,
+    "event-grammy": `
+## Panduan Grammy Awards - TopGirl
+
+### Gambaran Umum
+**Kontes Grammy** adalah acara kompetisi musik mingguan dengan 8 kategori berbeda. Ciptakan lagu terbaik dengan menggabungkan berbagai genre dan artis.
+
+### 8 Kategori
+
+| Kategori | Genre yang Diperlukan | Strategi Terbaik |
+
+|-----------|--------------|---------------------|
+
+| Artis Pendatang Baru Terbaik | Semua | Gunakan bintang yang sedang naik daun dengan potensi tinggi |
+
+| Rekaman Terbaik Tahun Ini | Pop + EDM | Gabungkan Pop + EDM untuk skor maksimal |
+
+| Album Terbaik Tahun Ini | Semua | Gunakan semua statistik |
+
+| Lagu Terbaik Tahun Ini | Semua | Fokus pada keterampilan Karisma |
+
+| Pop Terbaik | Hanya Pop | Tim Pop 100% |
+
+| Hip Hop Terbaik | Hanya Hip Hop | Tim Hip Hop |
+
+| R&B Terbaik | Khusus R&B | Spesialis R&B |
+
+| Rock Terbaik | Khusus Rock | Tim Rock |
+
+### Strategi
+1. **Gunakan artis dengan statistik menyanyi tinggi**
+2. **Gabungkan vokalis utama + penari pendukung**
+3. **Pop dan EDM cenderung mendapat skor lebih tinggi**
+
+### Artis Terbaik
+- Lestari, Brooklyn, Alice, Bella (umum)
+- Artis berdasarkan genre: periksa statistik
+
+`,
+    "event-ultimate-ceo": `
+## Guide Ultimate CEO - TopGirl
+
+### Présentation
+L'**Ultimate CEO** est un événement hebdomadaire de 5 jours où vous affrontez le CEO pour earn des rewards exclusifs.
+
+### Phases
+
+**Phase 1 (Day 1)**
+- Accumulez des CEO Points
+- Rewards: Cartes communes
+
+**Phase 2 (Day 2)**
+- Défiez le CEO
+- Rewards: Cartes SSR
+
+**Phase 3 (Day 3-5)**
+- Échangez vos rewards
+- Rewards: UR Tokens, CEO Cards
+
+### Stratégie
+1. **Focus sur teams avec high DPS**
+2. **Equilibrez attack et defense artists**
+3. **Utilisez des artists avec Fan Capacity bonuses**
+
+### Meilleures Artists
+- Kokoro, Aurora, Claire, Alice
+    `,
+    "event-echo-death-match": `
+## Panduan Echo Death Match - TopGirl
+
+### Gambaran Umum
+**Echo Death Match** adalah event di mana Anda bertarung melawan echo. Kumpulkan Echo Stone melalui pertarungan solo dan tim.
+
+### Fase
+
+**Fase 1 (Hari 1-2)**
+
+- Pertarungan Solo
+- Tujuan: Mengumpulkan Echo Stone
+- Hadiah: 500 Echo Stone
+
+**Fase 2 (Hari 3-5)**
+
+- Pertarungan Tim
+- Tujuan: Bonus Echo Stone
+- Hadiah: 1000 Echo Stone, SSR Shards
+
+**Fase 3 (Hari 6-7)**
+- Penukaran Hadiah
+- Hadiah: Token UR, Kartu SSR+
+
+### Strategi
+1. **Fase 1:** Fokus pada pertarungan solo untuk mengumpulkan Echo Stone
+2. **Fase 2:** Pertarungan tim untuk bonus
+3. **Simpan Echo Stone** untuk penukaran yang lebih baik
+
+`,
+    "event-chamber-territory": `
+## Panduan Wilayah Kamar - TopGirl
+
+### Gambaran Umum
+**Wilayah Kamar** adalah acara berbasis wilayah. Rebut dan pertahankan berbagai kamar untuk mendapatkan hadiah.
+
+### Fase
+
+**Fase 1 (Hari 1-3)**
+- Rebut wilayah
+- Hadiah: 300 Token Wilayah
+
+**Fase 2 (Hari 4-7)**
+- Pertahankan dan kumpulkan
+- Hadiah: 500 Kartu SSR, Token
+
+**Fase 3 (Hari 8-10)**
+- Tukarkan hadiah Anda
+- Hadiah: Token UR, Kartu SSR+
+
+### Strategi
+1. **Rebut wilayah bernilai tinggi di awal**
+2. **Pertahankan wilayah Anda** untuk mendapatkan bonus
+3. **Bekerja sama dengan pemain lain**
+
+`,
+    "event-cleanup-party": `
+## Panduan Pesta Bersih-Bersih - TopGirl
+
+### Gambaran Umum
+**Pesta Bersih-Bersih** adalah acara di mana Anda membersihkan kota dengan mengumpulkan sampah.
+
+### Tahapan
+
+**Tahap 1 (Hari 1-2)**
+- Kumpulkan sampah
+- Hadiah: 200 Sampah
+
+**Tahap 2 (Hari 3-5)**
+- Misi Bersih-Bersih
+- Hadiah: 400 Sampah, Shard SSR
+
+**Tahap 3 (Hari 6-7)**
+- Tukarkan Hadiah
+- Hadiah: Token UR, Kartu SSR+
+
+### Strategi
+1. **Selesaikan misi bersih-bersih** untuk mendapatkan bonus
+2. **Gabung tim** untuk pengumpulan yang lebih cepat
+3. **Tukarkan** sampah Anda untuk mendapatkan hadiah terbaik
+
+`,
+    "event-metro-subway": `
+## Guide Metro & Subway - TopGirl
+
+### Présentation
+Le **Metro & Subway** est un événement où vous prenez le métro pour collecter des tickets et earn des rewards.
+
+### Phases
+
+**Phase 1 (Jour 1-2)**
+- Collectez les tickets
+- Reward: Tickets x150
+
+**Phase 2 (Jour 3-5)**
+- Complétez les lignes
+- Reward: Tickets x300, SSR Shards
+
+**Phase 3 (Jour 6-7)**
+- Échangez les rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Stratégie
+1. **Complétez les lignes de métro** pour bonus tickets
+2. **Différentes lignes** ont différentes rewards
+3. **Échangez** vos tickets pour les meilleures rewards
+    `,
+    "event-vs-group": `
+## Panduan Acara Grup VS - TopGirl
+
+### Garis Waktu
+- **5 HARI PERSIAPAN** (Tema Harian) diikuti oleh **PERTEMPURAN FINAL HARI KE-6**
+- **DUEL HARIAN**: Dapatkan poin melalui tugas-tugas tertentu
+- **KEMENANGAN**: Grup dengan skor akumulasi tertinggi setelah 6 hari akan meraih KEMENANGAN UTAMA
+
+### Persyaratan Partisipasi
+- **PERSYARATAN LEVEL**: LEVEL CEO MINIMAL HARUS MENCAPAI LEVEL 20
+- **KUALIFIKASI GRUP**: Hanya grup dengan PERINGKAT KEKUATAN KEUANGAN TINGGI yang BERHAK UNTUK DIPASANGKAN
+- **MENGGANTI GRUP SELAMA ACARA**: Mencegah kontribusi poin grup selama 1 hari, tetapi poin pribadi tetap TIDAK TERPENGARUH
+
+### Hadiah & Cetak Biru
+- **Buka 9 tingkatan hadiah**
+- Pemain top dan grup pemenang menerima HADIAH UTAMA melalui email
+- **DIPERLUKAN CETAK BIRU UTAMA TINGKAT 4-9**
+- Gunakan Cetak Biru Utama untuk meningkatkan efisiensi poin dan membuka bonus stat permanen
+
+###Serangan Cepat (Hari ke-6)
+- **INVASI**: Pada hari ke-6, teleportasi gratis ke LANDMARK (2, 3, 4) diaktifkan
+- **ELIMINASI**: Kalahkan anggota lawan di wilayah mereka untuk mendapatkan POIN BONUS BESAR
+`,
+    "event-fishing": `
+## Panduan Acara Memancing - TopGirl
+
+### Tips
+
+**1. Beri makan ikan Anda secara teratur**
+- Pertahankan kecepatan pembuatan voucher tetap maksimal
+- Hindari perlambatan
+
+**2. Fokus pada menangkap ikan bintang tinggi**
+- Mereka menghasilkan LEBIH BANYAK voucher
+- Ganti ikan yang lebih lemah secara otomatis
+
+**3. Kunjungi akuarium pemain lain**
+- Anda mendapatkan 5 kunjungan per hari
+- Jika seseorang menyukai akuarium Anda, Anda akan menerima kerang
+
+**4. Semakin banyak ikan yang Anda miliki, semakin tinggi pendapatan Anda**
+- Terus perluas akuarium Anda
+
+**5. Pancing dengan mahkota**
+- Memberikan CRS dan pendapatan voucher tertinggi
+- Pertahankan mereka di akuarium Anda selama mungkin
+
+**6. Jangan buang umpan Anda**
+- Atur waktu klik Anda dengan hati-hati
+- Ikan akan memakannya secara otomatis
+
+**`,
+    "world-building": `
+## Panduan Membangun Dunia - TopGirl
+
+[Senang bisa diselesaikan]
+
+### Gambaran Umum
+Bangun dan kembangkan dunia Anda dalam game. Panduan ini mencakup dasar-dasar mekanisme pembangunan dunia.
+
+(Konten dari WorldBuildingGuide.jpg akan ditambahkan)
+
+`,
+    "vip-level": `
+## Panduan Level VIP - TopGirl
+
+### Gambaran Umum
+Panduan detail tentang poin yang dibutuhkan untuk setiap level VIP.
+
+### Manfaat VIP
+- Pemain VIP menerima berbagai bonus dan hadiah eksklusif
+- Level VIP yang lebih tinggi membuka lebih banyak manfaat
+
+(Konten dari VIPLevelGuide.jpg akan ditambahkan)
+
+`,
+    "ceo-coins": `## Panduan Pembelian Koin CEO - TopGirl
+
+### Cara Membeli Koin CEO
+
+**Langkah 1: Kunjungi Situs Pembayaran**
+Gunakan browser seluler Anda, kunjungi: https://pay2.a3games.com/topgirl
+
+**Langkah 2: Pilih Wilayah**
+Di pojok kanan atas halaman, pilih wilayah Anda dan atur mata uang pembayaran ke mata uang yang didukung
+
+**Langkah 3: Masukkan Info Akun**
+Masukkan ID dan nama panggilan Anda
+(Pastikan ID dan nama panggilan yang Anda masukkan benar, jika tidak, Anda mungkin tidak dapat menerima koin CEO secara normal)
+
+**Langkah 4: Pilih Jumlah**
+Pilih jumlah koin CEO yang ingin Anda beli dan tambahkan kartu bank untuk menyelesaikan pembayaran
+
+**Langkah 5: Tukarkan di Dalam Game**
+Setelah menyelesaikan pembelian koin CEO, masuk ke dalam game, pilih paket hadiah yang Anda butuhkan, klik harga paket hadiah, dan pilih untuk menggunakan koin CEO untuk menyelesaikan penukaran.
+
+`,
+    "alliance-management": `
+## Panduan Manajemen Aliansi - TopGirl
+
+### Tanggung Jawab Grup
+
+#### Kepemimpinan & Strategi
+- **Ahli Strategi / Analis Meta**: Menetapkan tujuan server jangka panjang, memberikan saran fokus pembangunan & ekspansi
+- **Pembangun / Pengembang Grup**: Mengawasi pembangunan klub, mengumpulkan sumber daya progres, merencanakan jalur pertumbuhan klub
+- **Pemimpin Reli / Jenderal Perang**: Melancarkan reli & serangan, memilih target & waktu, mengoordinasikan operasi perang
+- **Pelatih / Mentor**: Mendukung pemain baru, membimbing pengembangan artis, membantu pelatihan regu
+
+#### Komunikasi & Diplomasi
+- **Komunikator Grup**: Memposting pengumuman, meringkas pembaruan, mengelola Discord & email dalam game
+- **Diplomat / Manajer Aliansi**: Mengelola aliansi & NAP, menangani negosiasi, mengoordinasikan kerja sama
+- **Perekrut / SDM**: Merekrut anggota baru, menyeleksi pelamar, melakukan onboarding anggota
+
+#### Intelijen & Dukungan
+- **Petugas Intelijen / Mata-mata**: Memindai klub musuh, melacak aktivitas & pergerakan, memantau penempatan
+- **Penyelenggara Acara**: Mendukung pertempuran radio, membantu perang & acara
+- **Koordinator Fanmeeting**: Mengelola interaksi dan acara penggemar
+
+### Strategi & Perang
+Kembangkan aliansi Anda melalui perencanaan dan koordinasi yang cermat dengan anggota.
+
+`,
+    "peak-level": `
+## Panduan Level Puncak - TopGirl
+
+### Gambaran Umum
+Level Puncak adalah sistem progres akhir permainan untuk karakter SSR. Setiap karakter SSR dengan 3 skill dan 5x (bintang emas) berhak untuk ditingkatkan ke Level Puncak.
+
+### Poin Penting
+- **Fokus pada Total Level Puncak**, bukan hanya tim utama Anda
+- Tingkatkan level SSR perempuan terbaik setinggi mungkin (100-400+) untuk mendapatkan buff pencapaian yang kuat
+- Pencapaian penting: Lv40 / Lv70 / Lv100 / Lv300 / Lv400
+- Gunakan Foto Universal SSR secara bebas - efisiensi > penghematan
+
+### Tujuan Minimum
+Tujuan minimum Anda adalah membawa SETIAP perempuan SSR ke Level Puncak 10.
+Setiap SSR di Level Puncak 10 memberikan +0,5% Nyanyi & +0,5% Tari (buff global)
+
+### Untuk Pemain F2P
+Kandidat Puncak Terbaik (akses foto mudah):
+- **Zendaya** (Toko Stok)
+- **Skylar** (Toko Grup)
+- **Claire** (Koleksi Hadiah)
+
+Bidik Level Puncak 5-10 pada maksimal 1-2 perempuan. Maksimalkan tim utama Anda sebelum berinvestasi lebih banyak ke Level Puncak.
+
+Peak Level adalah sistem tenaga listrik global jangka panjang, yang sempurna untuk paus.
+
+`,
+    "group-shop": `
+## Group Shop Guide - TopGirl
+
+### What to Buy
+
+**1. Promotion Manuals**
+- Always buy them first
+- Very few of them are available
+- Frequently required if you fight often
+
+**2. SSR Promote Cards**
+- Promote cards will always be required
+- New SSR artists are added every event
+
+**3. Asset Coins**
+- A lot of asset coins will be required to max the promoted assets
+
+**4. Vehicle Parts**
+- Buy them if you haven't maxed your car yet
+
+**5. Skylar Photos**
+- Only buy them if you intend to max Skylar
+- Very expensive
+
+**6. HQ Cards**
+- Buy them if your HQ isn't maxed yet
+
+**7. Migration Tickets**
+- Buy them if you want to migrate to another server
+    `,
+  },
+
+  ru: {
+    "equipment": `## Руководство по экипировке - TopGirl
+
+### Аксессуары
+Украшения необходимы для повышения основных характеристик. Вот приоритеты:
+
+** Ожерелье ** - + Бонус к голосу
+** Кольцо ** - + Бонус к танцу
+** Часы ** - + Бонус к обаянию
+
+### Транспортные средства
+Автомобили дают огромные бонусы, но стоят дорого:
+- Стартовый автомобиль: 500 000 золота
+- Спортивный автомобиль: 2 000 000 золота
+- Роскошный автомобиль: 10 000 000 золота
+
+### Недвижимость
+Недвижимость приносит пассивный доход:
+- Квартира: 50 000 золота/день
+- Дом: 200 000 золота/день
+- Особняк: 1 000 000 золота/день
+
+### Сравнение золота и фиолетового
+
+| Экипировка | Статистика золота | Статистика фиолетового |
+
+|------------|------------|-------------|
+
+| Ожерелье | +500 Голос | +300 Голос |
+
+| Кольцо | +500 Танец | +300 Танец |
+
+| Часы | +500 Очарование | +300 Очарование |
+
+`,
+    "team-builder": `## Конструктор команд - TopGirl
+
+### Состав команды
+Оптимальная команда состоит из 5 исполнителей с четко определенными ролями:
+
+1. **Вокалист (Лидер)** - Высочайшие характеристики, бонус жанра
+2. **Танцовщица (Поддержка)** - Усиления команды
+3. **Центр** - Баланс
+4. **Мейкерстар** - Генерация фанатов
+5. **Поддержка** - Защита/полезность
+
+### Синергия жанров
+Бонусы жанров применяются, если у вас есть 2 и более исполнителей одного жанра:
+
+- **Поп + Поп**: +15% Вокал
+- **EDM + EDM**: +15% Танцы
+- **Хип-хоп + Хип-хоп**: +15% Обаяние
+
+### Бонусы экипировки
+Экипировка синергична с ролями:
+
+- Набор украшений: +20% основной характеристики
+- Набор транспортных средств: +15% второстепенной характеристики
+- Набор недвижимости: +10% ко всем характеристикам
+
+### Типы билдов
+**Наступательный:** 3 атаки / 1 защита / 1 поддержка
+**Защитный:** 2 атаки / 3 защиты / 0 поддержки
+**Сбалансированный:** 2 атаки / 2 защиты / 1 поддержка
+
+`,
+    "recommended-teams": `
+## Équipes Recommandées - TopGirl
+
+### Top UR Teams
+
+**Team 1 - Hyper Offense:**
+- Kokoro (Vocalist)
+- Aurora (Dancer)
+- Claire (Center)
+- Anastasia (Defense)
+- Beatrice (Support)
+
+**Team 2 - Balance:**
+- Alexandra (Vocalist)
+- Elizabeth (Dancer)
+- Genevieve (Center)
+- Marguerite (Defense)
+- Gabriella (Support)
+
+### Top SSR Teams
+
+**Team 1 - Budget Meta:**
+- Alice (Vocalist)
+- Hestia (Dancer)
+- Hikari (Center)
+- Eri (Defense)
+- Flora (Support)
+
+### Stratégies
+
+**Offensive:** Maximisez les damage dealers
+- Focus: Skill Damage + Basic Attack
+- Meta: Kokoro, Aurora, Claire
+
+**Défensive:** Focus survival
+- Focus: Damage Reduction + HP
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Équilibrée:** Mix des deux
+- Focus: Stats distribution
+- Meta: Elizabeth, Gabriella
+    `,
+    "leveling-ssr": `## Повышение уровня SSR - TopGirl
+
+### Количество карт, необходимых для каждого уровня
+
+| Уровень | Количество карт SSR | Всего |
+
+|--------|-----------|-------|
+
+| 1-10 | 10 | 10 |
+
+| 10-20 | 20 | 30 |
+
+| 20-40 | 40 | 70 |
+
+| 40-60 | 60 | 130 |
+
+| 60-80 | 80 | 210 |
+
+| 80-100 | 100 | 310 |
+
+| 100-115 | 150 | 460 |
+
+### Советы по прокачке уровня
+- Используйте лишние SSR-карты
+- В первую очередь сосредоточьтесь на основных персонажах
+- Прокачивайте уровень во время событий с удвоенным опытом
+- Отдавайте приоритет художникам с высоким уровнем терапевтов
+
+### Стоимость золота
+Стоимость золота увеличивается с уровнем:
+- Уровни 1-40: ~500 000 золота
+- Уровни 40-70: ~2 000 000 золота
+- Уровни 70-100: ~8 000 000 золота
+- Уровни 100-115: ~25 000 000 золота
+
+`,
+    "blueprints": `## Руководство по чертежам - TopGirl
+
+### Установка сторонних разработчиков
+
+| Уровень | Чертежи | Золото | Эффект |
+
+|------|----------|------|-------|
+
+| 1-3 | 50-100 | 10K | +5% к характеристикам |
+
+| 4-6 | 150-300 | 50K | +10% к характеристикам |
+
+| 7-9 | 500-800 | 200K | +15% к характеристикам |
+
+| 10-12 | 1000-1500 | 500K | +20% к характеристикам |
+
+| 13-15 | 2000-3000 | 1M | +25% к характеристикам |
+
+| 16-18 | 4000-5000 | 3 млн | +30% к характеристикам |
+
+| 19-21 | 7000+ | 10 млн | +35% к характеристикам |
+
+### Приоритеты
+1. **Студия** - Создание песен
+2. **Обучение** - Повышение уровня артистов
+3. **Фан-холл** - Привлечение поклонников
+4. **Маркетинг** - Пассивный доход
+
+### Советы
+- В первую очередь сосредоточьтесь на золотых уровнях 7-12
+- Ждите событий для скидок
+- Прокачивайте равномерно, чтобы избежать уловок
+
+
+`,
+    "hq-upgrade": `Руководство по HQ-картам - TopGirl
+
+HQ-карты по уровням
+
+| Уровень | Карты | Стоимость в золоте |
+
+|-------|--------|----------|
+
+| 1 | 50 | 1000 |
+
+| 2 | 100 | 2500 |
+
+| 3 | 200 | 5000 |
+
+| 4 | 400 | 10000 |
+
+| 5 | 800 | 25000 |
+
+| 6 | 1500 | 50000 |
+
+| 7 | 2500 | 100000 |
+
+| 8 | 4000 | 200000 |
+
+| 9 | 6000 | 400000 |
+
+| 10 | 8000 | 800000 |
+
+**Всего для 10-го уровня штаб-квартиры:** ~29 922 карты / ~1,6 млн золота
+
+### Бонус штаб-квартиры
+- Уровень 5: Разблокировка дополнительных событий
+- Уровень 7: +10% ко всем характеристикам
+- Уровень 10: Максимальный бонус
+
+`,
+    "vehicle-system": `## Система транспортных средств - TopGirl
+
+### Типы транспортных средств
+
+** Стартовый (бесплатно) **
+- Скорость: 100
+- Бонусные характеристики: +500
+
+** Спортивный (50 000 золота) **
+- Скорость: 150
+- Бонусные характеристики: +1500
+
+** Роскошный (500 000 золота) **
+- Скорость: 200
+- Бонусные характеристики: +5000
+
+** Супер (5 000 000 золота) **
+- Скорость: 300
+- Бонусные характеристики: +15000
+
+### Детали для улучшения
+
+| Деталь | Эффект | Максимальный уровень |
+
+|-------|-------|----------|
+
+| Двигатель | +Скорость | 10 |
+
+| Шасси | +Управляемость | 10 |
+
+| Подвеска | +Комфорт | 10 |
+
+| Диски | +Стиль | 10 |
+
+### Скины
+Скины разблокируются на определенных уровнях автомобиля:
+
+- Уровень 5: Бронзовый скин
+- Уровень 10: Серебряный скин
+- Уровень 20: Золотой скин
+- Уровень 30: Платиновый скин
+
+`,
+    "gold-equipment": `## Оптимальное золотое снаряжение - TopGirl
+
+### Золотая вокалистка
+
+**Украшения:**
+- Колье: Золотое бриллиантовое колье (+3000 к вокалу)
+- Кольцо: Золотое бриллиантовое кольцо (+2500 к вокалу)
+- Часы: Золотой хронограф (+2000 к вокалу)
+
+**Транспортное средство:**
+- Суперкар (+15000 ко всем характеристикам)
+
+**Недвижимость:**
+- Роскошный особняк (+5000 ко всем характеристикам)
+
+**Итого: +27500 к вокалу / +20000 к другим характеристикам / 86000 поклонников**
+
+### Золотая танцовщица
+
+**Украшения:**
+- Колье: Золотое бриллиантовое колье (+3000 к танцу)
+- Кольцо: Золотое бриллиантовое кольцо (+2500 к танцу)
+- Часы: Золотой хронограф (+2000 к танцу)
+
+**Транспортное средство:** Суперкар
+**Объект недвижимости:** Роскошный особняк
+
+**Итого: +27 500 Танца**
+
+### Настройка Золотого Центра
+
+**Украшения:**
+
+- Колье: Золотое колье с бриллиантами (+3000 Вокала)
+- Кольцо: Золотое кольцо с бриллиантами (+2500 Танца)
+- Часы: Золотой хронограф (+2000 Подвески)
+
+**Транспортное средство + Объект недвижимости:** То же самое
+
+**Итого: +27 500 Танцевальных характеристик**
+
+### Общая стоимость
+~50 000 000 золота на персонажа при полной оплате золота
+
+`,
+    "purple-equipment": `## Фиолетовое снаряжение - ТопГёрл
+
+### Настройка фиолетовой вокалистки
+
+**Украшения:**
+- Ожерелье: Ожерелье с фиолетовыми камнями (+2000 к вокалу)
+- Кольцо: Кольцо с фиолетовыми камнями (+1500 к вокалу)
+- Часы: Фиолетовые часы (+1200 к вокалу)
+
+**Транспортное средство:** Спортивный автомобиль (+1500 ко всем характеристикам)
+
+**Недвижимость:** Дом (+3000 ко всем характеристикам)
+
+**Итого: +9700 к вокалу / +6500 к другим характеристикам / 0 поклонников**
+
+### Настройка фиолетовой танцовщицы
+
+Аналогично Вокалистке, но:
+- Ожерелье: +2000 к танцам
+- Кольцо: +1500 к танцам
+- Часы: +1200 к танцам
+
+**Итого: +9700 к танцам**
+
+### Стратегия смешивания золота и фиолетового
+
+**Вариант 1: Оптимальный Бюджет**
+- 2 золотых украшения + Фиолетовая машина + Фиолетовая недвижимость
+- Стоимость: ~15 млн золота
+- Характеристики: ~70% от полного золота
+
+**Вариант 2: Только фиолетовый**
+- Все фиолетовое
+- Стоимость: ~5 млн золота
+- Характеристики: ~50% от полного золота
+
+### Преимущества фиолетового
+- Более доступный
+- Хорошее соотношение цены и качества
+- Остается конкурентоспособным в середине игры
+`,
+    "event-ancient-rome": `## Руководство по Древнему Риму - TopGirl
+
+### Обзор
+Событие **Приключения за границей: Рим** — это 12-дневное сезонное событие, действие которого разворачивается в Древнем Риме. Цель — собрать предметы ROMA в 3 этапа и обменять их на эксклюзивные награды.
+
+### Этапы события
+
+**Этап 1: Колизей (Дни 1-4)**
+- **Цель:** Собрать предметы ROMA
+- **Награды:** Предметы ROMA, алмазы
+- **Совет:** Сосредоточьтесь на битвах, чтобы быстро накапливать предметы
+
+**Этап 2: Форум (Дни 5-8)**
+- **Цель:** Пройти все песни
+- **Награды:** SSR-карты, предметы ROMA
+- **Совет:** Используйте лучшие команды, чтобы максимизировать награды
+
+**Этап 3: Император (Дни 9-12)**
+- **Цель:** Обмен наградами
+- **Награды:** UR-токены, SSR+-карты
+- **Совет:** Держите достаточно предметов ROMA для выгодных обменов
+
+### Стратегия
+1. **Дни 1-4:** Максимально соберите предметы ROMA
+2. **Дни 5-8:** Сосредоточьтесь на завершении песен
+3. **Дни 9-12:** Обменяйте на лучшие награды
+
+### Лучшие исполнители
+- Корнелия, Аурелия, Ксения (бонус Рим)
+
+`,
+    "event-radio-battle": `## Руководство по радиобитве - TopGirl
+
+### Обзор
+**Радиобитва** — это повторяющееся событие, в котором вы соревнуетесь с другими игроками по радио. Чем больше у вас слушателей, тем выше ваш счет.
+
+
+### 5 этапов
+
+**Этап 1: Открытие (День 1)**
+- Подготовка вашей радиостанции
+- Награда: 100 радиомонет
+
+**Этап 2: Первый этап (Дни 1-2)**
+- Накопление слушателей
+- Награда: 200 радиомонет
+
+**Этап 3: Второй этап (Дни 2-3)**
+- Бросьте вызов другим станциям
+- Награда: 300 радиомонет
+
+**Этап 4: Финал (Дни 3-4)**
+- Финальная битва
+- Награда: SSR-карты
+
+**Этап 5: Обмен (Дни 4-5)**
+- Обменяйте свои радиомонеты
+- Награды: UR-токены, SSR+
+
+### Стратегия
+1. **Выпускайте в часы пик** (вечером)
+2. **Используйте артистов с навыками Харизмы**
+3. **Комбинируйте разные жанры** для привлечения большего количества слушателей
+
+### Лучшие исполнители
+- Скайлар, Нова, Сора, Эвелин
+
+`,
+    "event-grammy": `## Руководство по премии «Грэмми» - TopGirl
+
+### Обзор
+**Конкурс «Грэмми»** — это еженедельное музыкальное соревнование с 8 различными категориями. Создайте лучшую песню, комбинируя разные жанры и исполнителей.
+
+### 8 категорий
+
+| Категория | Требуемый жанр | Лучшая стратегия |
+
+|-----------|---------------|---------------------|
+
+| Лучший новый исполнитель | Все | Используйте восходящих звезд с высоким потенциалом |
+
+| Запись года | Поп + EDM | Комбинируйте поп + EDM для максимального результата |
+
+| Альбом года | Все | Используйте все характеристики |
+
+| Песня года | Все | Сосредоточьтесь на навыках харизмы |
+
+| Лучшая поп-музыка | Только поп | 100% поп-команда |
+
+| Лучший хип-хоп | Только хип-хоп | Хип-хоп команда |
+
+| Лучший R&B | Только R&B | Специалисты по R&B |
+
+| Лучший рок | Только рок | Рок-команда |
+
+### Стратегия
+1. **Используйте артистов с высокими показателями вокала**
+2. **Сочетайте ведущего вокалиста и танцоров поддержки**
+3. **Поп и EDM, как правило, получают более высокие оценки**
+
+### Лучшие артисты
+- Лестари, Бруклин, Элис, Белла (общие)
+- Артисты по жанрам: проверьте статистику
+
+`,
+    "event-ultimate-ceo": `## Руководство по режиму "Главный генеральный директор" - TopGirl
+
+### Обзор
+Событие "Главный генеральный директор" — это еженедельное событие, которое длится 5 дней, в ходе которого вы сражаетесь с генеральным директором, чтобы заработать эксклюзивные награды.
+
+### Этапы
+
+**Этап 1 (День 1)**
+- Накопление очков генерального директора
+- Награды: Обычные карты
+
+**Этап 2 (День 2)**
+- Вызов генерального директора
+- Награды: SSR-карты
+
+**Этап 3 (Дни 3-5)**
+- Получение наград
+- Награды: UR-токены, карты генерального директора
+
+### Стратегия
+1. **Сосредоточьтесь на командах с высоким уроном**
+2. **Сбалансируйте атакующих и защитных персонажей**
+3. **Используйте персонажей с бонусами к вместимости фанатов**
+
+### Лучшие персонажи
+- Кокоро, Аврора, Клэр, Алиса
+
+`,
+    "event-echo-death-match": `## Руководство по событию «Смертельный поединок с эхом» — TopGirl
+
+### Обзор
+**«Смертельный поединок с эхом»** — это событие, в котором вы сражаетесь с эхом. Собирайте камни эха в одиночных и командных боях.
+
+### Этапы
+
+**Этап 1 (Дни 1-2)**
+
+- Одиночные сражения
+- Цель: Накопить камни Эха
+- Награда: 500 камней Эха
+
+**Этап 2 (Дни 3-5)**
+
+- Командные сражения
+- Цель: Бонусные камни Эха
+- Награда: 1000 камней Эха, осколки SSR
+
+**Этап 3 (Дни 6-7)**
+- Обмен наград
+- Награды: жетоны UR, карты SSR+
+
+### Стратегия
+1. **Этап 1:** Сосредоточьтесь на одиночных сражениях, чтобы накопить камни Эха
+2. **Этап 2:** Командные сражения для получения бонусов
+3. **Придерживайте камни Эха** для более выгодного обмена
+
+`,
+    "event-chamber-territory": `
+## Guide Chamber Territory - TopGirl
+
+### Présentation
+Le **Chamber Territory** est un événement de territoire. Capturez et défendez différentes chambres pour earn des rewards.
+
+### Phases
+
+**Phase 1 (Jour 1-3)**
+- Capturez des territoires
+- Reward: Territory Tokens x300
+
+**Phase 2 (Jour 4-7)**
+- Défendez et collectez
+- Reward: SSR Cards, Tokens x500
+
+**Phase 3 (Jour 8-10)**
+- Échangez vos rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Stratégie
+1. **Capturez tôt** les territoires à haute valeur
+2. **Défendez vos territoires** pour des bonus
+3. **Coopérez avec d'autres joueurs**
+    `,
+    "event-cleanup-party": `## Руководство по «Вечеринке уборки» — TopGirl
+
+### Обзор
+**Вечеринка уборки** — это событие, в котором вы убираете город, собирая мусор.
+
+### Этапы
+
+**Этап 1 (Дни 1-2)**
+- Сбор мусора
+- Награда: 200 мусора
+
+**Этап 2 (Дни 3-5)**
+- Миссии по уборке
+- Награда: 400 мусора, осколки SSR
+
+**Этап 3 (Дни 6-7)**
+- Получение наград
+- Награды: жетоны UR, карты SSR+
+
+### Стратегия
+1. **Выполняйте миссии по уборке** для получения бонусов
+2. **Объединяйтесь** для более быстрого сбора мусора
+3. **Обменивайте** свой мусор на лучшие награды
+
+`,
+    "event-metro-subway": `## Руководство по метро и подземке - TopGirl
+
+### Обзор
+**Метро и подземка** — это событие, в котором вы ездите на метро, чтобы собирать билеты и получать награды.
+
+### Этапы
+
+**Этап 1 (Дни 1-2)**
+- Сбор билетов
+- Награда: 150 билетов
+
+**Этап 2 (Дни 3-5)**
+- Прохождение линий
+- Награда: 300 билетов, осколки SSR
+
+**Этап 3 (Дни 6-7)**
+- Обмен наград
+- Награды: жетоны UR, карты SSR+
+
+### Стратегия
+1. **Проходите линии метро**, чтобы получить бонусные билеты
+2. **Разные линии** дают разные награды
+3. **Обменивайте** свои билеты на лучшие награды
+
+
+`,
+    "event-vs-group": `## Руководство по групповому событию VS - TopGirl
+
+### Хронология
+- **5 ДНЕЙ ПОДГОТОВКИ** (Ежедневные темы), за которыми следует **ФИНАЛЬНАЯ БИТВА 6-ГО ДНЯ**
+- **ЕЖЕДНЕВНАЯ ДУЭЛЬ**: Зарабатывайте очки за выполнение определенных заданий
+- **ПОБЕДА**: Группа с наибольшим накопленным счетом после 6 дней одерживает ГЛАВНУЮ ПОБЕДУ
+
+### Требования к участию
+- **ТРЕБОВАНИЯ К УРОВНЮ**: УРОВЕНЬ ГЕНЕРАЛЬНОГО ДИРЕКТОРА ДОЛЖЕН БЫТЬ НЕ МЕНЕЕ 20
+- **КВАЛИФИКАЦИЯ ГРУПП**: Только группы с ВЫСОКИМ РЕЙТИНГОМ ФИНАНСОВОЙ МОЩНОСТИ ИМЕЮТ ПРАВО НА УЧАСТИЕ
+- **СМЕНА ГРУПП ВО ВРЕМЯ СОБЫТИЯ**: Запрещает начисление групповых очков в течение 1 дня, но личные очки остаются НЕИЗМЕННЫМИ
+
+### Награды и чертежи
+- **Разблокировать 9** Уровни наград**
+- Лучшие игроки и победившие группы получают ГЛАВНЫЕ НАГРАДЫ по электронной почте
+- **ДЛЯ УРОВНЕЙ 4-9 ТРЕБУЮТСЯ МАСТЕРСКИЕ ЧЕРТЕЖИ**
+- Используйте мастерские чертежи, чтобы повысить эффективность использования очков и разблокировать постоянные бонусы к характеристикам
+
+### Атака (День 6)
+- **ВТОРЖЕНИЕ**: На 6-й день становится доступна бесплатная телепортация к ДОСТОПРИМЕЧАТЕЛЬНОСТЯМ (2, 3, 4)
+- **УНИЧТОЖЕНИЕ**: Победите членов команды соперника на их территории, чтобы получить ОГРОМНЫЕ БОНУСНЫЕ ОЧКИ
+
+`,
+    "event-fishing": `## Руководство по рыболовному событию - TopGirl
+
+### Советы
+
+**1. Регулярно кормите рыбу**
+- Поддерживайте высокую скорость генерации ваучеров
+- Избегайте замедления
+
+**2. Сосредоточьтесь на ловле рыбы с более высоким рейтингом**
+- Они приносят БОЛЬШЕ ваучеров
+- Автоматически заменяйте более слабых
+
+**3. Посещайте аквариумы других игроков**
+- У вас 5 посещений в день
+- Если кому-то понравится ваш аквариум, вы получите ракушки
+
+**4. Чем больше у вас рыбы, тем выше ваш доход**
+- Постоянно расширяйте свой аквариум
+
+**5. Ловите рыбу с короной**
+- Приносите максимальный доход в виде CRS и ваучеров
+- Держите их в своем аквариуме как можно дольше
+
+**6. Не тратьте наживку**
+- Тщательно рассчитывайте время кликов
+- Рыба съест ее автоматически
+
+**`,
+    "world-building": `## Руководство по созданию мира - TopGirl
+
+[Довольно завершено]
+
+### Обзор
+Создавайте и развивайте свой мир в игре. Это руководство охватывает основы механики создания мира.
+
+(Содержание файла WorldBuildingGuide.jpg будет добавлено)
+
+`,
+    "vip-level": `## Руководство по VIP-уровням - TopGirl
+
+### Обзор
+Подробное руководство по количеству очков, необходимых для каждого VIP-уровня.
+
+### Преимущества VIP-игроков
+- VIP-игроки получают различные бонусы и эксклюзивные награды
+- Более высокие VIP-уровни открывают больше преимуществ
+
+(Содержание файла VIPLevelGuide.jpg будет добавлено позже)
+
+`,
+    "ceo-coins": `## Руководство по покупке монет CEO - TopGirl
+
+### Как купить монеты CEO
+
+**Шаг 1: Перейдите на сайт оплаты**
+Используя мобильный браузер, перейдите по ссылке: https://pay2.a3games.com/topgirl
+
+**Шаг 2: Выберите регион**
+В правом верхнем углу страницы выберите свой регион и установите валюту платежа на поддерживаемую валюту.
+
+**Шаг 3: Введите данные учетной записи**
+Введите свой ID и никнейм
+(Пожалуйста, убедитесь, что введенные вами ID и никнейм верны, иначе вы можете не получить монеты CEO обычным способом)
+
+**Шаг 4: Выберите сумму**
+Выберите количество монет CEO, которое вы хотите приобрести, и добавьте банковскую карту для завершения платежа.
+
+**Шаг 5: Используйте в игре**
+После завершения покупки монет CEO войдите в игру, выберите необходимый подарочный пакет, нажмите на цену подарочного пакета и выберите использование монет CEO для завершения обмена.
+
+**Шаг 2: Выберите регион**`,
+    "alliance-management": `## Руководство по управлению альянсом - TopGirl
+
+### Обязанности группы
+
+#### Лидерство и стратегия
+- **Стратег / Мета-аналитик**: Устанавливает долгосрочные цели сервера, консультирует по вопросам строительства и расширения.
+- **Строитель / Разработчик группы**: Контролирует строительство клуба, собирает ресурсы для развития, планирует пути роста клуба.
+- **Лидер рейдов / Военный генерал**: Запускает рейды и атаки, выбирает цели и время, координирует военные операции.
+- **Тренер / Наставник**: Поддерживает новых игроков, помогает в развитии художников, помогает в обучении отрядов.
+
+#### Коммуникация и дипломатия
+- **Коммуникатор группы**: Публикует объявления, подводит итоги обновлений, управляет Discord и внутриигровой почтой.
+- **Дипломат / Менеджер альянса**: Управляет альянсами и соглашениями о ненападении, ведет переговоры, координирует сотрудничество.
+- **Рекрутер / HR**: Набирает новых членов, проводит отбор кандидатов, принимает новых членов.
+
+#### Разведка и Поддержка
+- **Офицер разведки / Шпион**: Сканирует вражеские клубы, отслеживает активность и перемещения, контролирует развертывание войск.
+- **Организатор мероприятий**: Поддерживает радиопереговоры, помогает в войнах и мероприятиях.
+- **Координатор фан-встреч**: Управляет взаимодействием с фанатами и мероприятиями.
+
+### Стратегия и война
+Развивайте свой альянс посредством тщательного планирования и координации с членами.
+
+`,
+    "peak-level": `## Руководство по пиковому уровню - TopGirl
+
+### Обзор
+Пиковый уровень — это система прогресса для девушек SSR на поздних этапах игры. Каждая девушка SSR с 3 навыками и 5 золотыми звёздами получает право на улучшение до пикового уровня.
+
+### Ключевые моменты
+- **Сосредоточьтесь на общем пиковом уровне**, а не только на вашей основной команде
+- Прокачайте лучших SSR-девушек до максимально возможного уровня (100-400+) для получения сильных бонусов за достижение определенных этапов
+- Важные этапы: Lv40 / Lv70 / Lv100 / Lv300 / Lv400
+- Используйте универсальные фотографии SSR бесплатно - эффективность важнее экономии
+
+### Минимальная цель
+Ваша минимальная цель - прокачать КАЖДУЮ SSR-девушку до пикового уровня 10.
+Каждая SSR-девушка на пиковом уровне 10 дает +0,5% к пению и +0,5% к танцам (глобальный бонус)
+
+### Для игроков F2P
+Лучшие кандидаты на пиковый уровень (легкий доступ к фотографиям):
+- **Зендая** (магазин товаров)
+- **Скайлар** (групповой магазин)
+- **Клэр** (коллекция наград)
+
+Стремитесь к пиковому уровню 5-10 максимум для 1-2 девушек. Прокачайте свою основную команду до максимума, прежде чем вкладывать больше средств в Peak Levels.
+
+Peak Level — это долгосрочная глобальная система силы, идеально подходящая для игроков, вкладывающих большие деньги в игру.
+
+Peak Level — это долгосрочная глобальная система силы, идеально подходящая для тех, кто тратит много денег.
+`,
+    "group-shop": `## Руководство по групповому магазину - TopGirl
+
+### Что купить
+
+**1. Руководства по продвижению**
+- Всегда покупайте их в первую очередь
+- Их очень мало
+- Часто требуются, если вы часто сражаетесь
+
+**2. Карты продвижения SSR**
+- Карты продвижения всегда будут необходимы
+- Новые SSR-артисты добавляются с каждым событием
+
+**3. Монеты ресурсов**
+- Для максимального улучшения продаваемых ресурсов потребуется много монет ресурсов
+
+**4. Детали для автомобилей**
+- Покупайте их, если вы еще не прокачали свой автомобиль до максимума
+
+**5. Фотографии Скайлар**
+- Покупайте их только если вы собираетесь прокачать Скайлар до максимума
+
+- Очень дорогие
+
+**6. Карты HQ**
+- Покупайте их, если ваш HQ еще не прокачан до максимума
+
+**7. Билеты миграции**
+- Покупайте их, если вы хотите мигрировать на другой сервер
+
+`,
+  },

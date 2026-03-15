@@ -1,0 +1,717 @@
+const guideTranslations: Record<string, Record<string, { title: string; description: string }>> = {
+  fr: {},
+  en: {
+      'equipment': {
+            'title': 'Equipment Guide',
+            'description': 'Jewelry, Cars, and Properties to optimize your statistics. Gold vs. Purple comparison and buying priorities.'
+      },
+      'team-builder': {
+            'title': 'Team Builder',
+            'description': 'How to build the perfect team. Calculating gender synergies and equipment bonuses.'
+      },
+      'recommended-teams': {
+            'title': 'Équipes Recommandées',
+            'description': 'The best UR and SSR team compositions. Offensive, balanced and defensive strategies.'
+      },
+      'leveling-ssr': {
+            'title': 'Montée en Niveau SSR',
+            'description': 'Nombre de cartes nécessaires pour level up vos personnages SSR jusqu'au niveau 115.'
+      },
+      'blueprints': {
+            'title': 'Guide Blueprints',
+            'description': 'Blueprint requirements by tier (1-21) to improve your facilities. Tier 7-12 Gold.'
+      },
+      'hq-upgrade': {
+            'title': 'HQ Guide (Headquarters)',
+            'description': 'Building cards required for each level of the HQ. Total requirement: 29,922 cards.'
+      },
+      'vehicle-system': {
+            'title': 'Système de Véhicules',
+            'description': 'Complete system: Progression, Parts (Engine, Chassis, Suspension, Rims), Skins unlocked.'
+      },
+      'gold-equipment': {
+            'title': 'Équipement Gold Optimal',
+            'description': 'Complete Gold setup for Vocalist, Dancer and Center. +19,730 stats and 86,000 fans per character.'
+      },
+      'purple-equipment': {
+            'title': 'Guide Équipement Purple',
+            'description': 'Best purple gear and how to get it.'
+      },
+      'event-ancient-rome': {
+            'title': 'Guide to Ancient Rome',
+            'description': 'Complete guide to the Adventure Abroad Rome event. Phases, strategies and rewards.'
+      },
+      'event-radio-battle': {
+            'title': 'Radio Battle Guide',
+            'description': 'Complete guide to Radio Battle. 5 phases, strategies to maximize your Radio Coins.'
+      },
+      'event-grammy': {
+            'title': 'Grammy Awards Guide',
+            'description': 'Guide des 8 catégories Grammy. Meilleures équipes et stratégies pour gagner des medals.'
+      },
+      'event-ultimate-ceo': {
+            'title': 'Guide Ultimate CEO',
+            'description': 'The Ultimate CEO Complete Guide: How to Defeat the CEO and Get the Best Rewards.'
+      },
+      'event-echo-death-match': {
+            'title': 'Echo Death Match Guide',
+            'description': 'Guide du Echo Death Match. Accumulez des Echo Stones et échangez pour des rewards SSR+.'
+      },
+      'event-chamber-territory': {
+            'title': 'Guide Chamber Territory',
+            'description': 'Guide du Chamber Territory. Capturez et défendez des territoires pour des rewards.'
+      },
+      'event-cleanup-party': {
+            'title': 'Guide Cleanup Party',
+            'description': 'Cleanup Party Guide. Collect trash and exchange it for rewards.'
+      },
+      'event-metro-subway': {
+            'title': 'Metro & Subway Guide',
+            'description': 'Guide du Metro & Subway. Collectez des tickets et montez dans le métro pour des rewards.'
+      },
+      'event-vs-group': {
+            'title': 'Guide vs. Group Event',
+            'description': 'VS Group Event Guide. Battle between groups with 5 days of preparation and 1 day of final combat.'
+      },
+      'event-fishing': {
+            'title': 'Fishing Event Guide',
+            'description': 'Fishing Event Guide. Set up your aquarium, catch fish and win rewards.'
+      },
+      'world-building': {
+            'title': 'World Building Guide',
+            'description': 'World Building Guide. Build and develop your world in the game.'
+      },
+      'vip-level': {
+            'title': 'VIP Level Guide',
+            'description': 'VIP Level Guide. Details of the points required for each VIP level.'
+      },
+      'ceo-coins': {
+            'title': 'CEO Coins Purchase Guide',
+            'description': 'Guide to purchasing CEO Coins via the official payment website.'
+      },
+      'alliance-management': {
+            'title': 'Alliance Management Guide',
+            'description': 'Guide de gestion d'alliance. Rôles, responsabilités et stratégies pour gérer votre guilde.'
+      },
+      'peak-level': {
+            'title': 'Peak Level Guide',
+            'description': 'Peak Level Guide. Late-game progression system for 5-star SSR girls.'
+      },
+      'group-shop': {
+            'title': 'Group Shop Guide',
+            'description': 'Guide Group Shop. Чтоacheter dans la boutique de guilde pour optimiser vos progrès.'
+      }
+},
+  it: {
+      'equipment': {
+            'title': 'Guide Équipement',
+            'description': 'Gioielli, auto e immobili per ottimizzare le tue statistiche. Confronto tra oro e porpora e priorità di acquisto.'
+      },
+      'team-builder': {
+            'title': 'Costruttore di team',
+            'description': 'Come costruire la squadra perfetta. Calcolo delle sinergie di genere e dei bonus equipaggiamento.'
+      },
+      'recommended-teams': {
+            'title': 'Équipes Recommandées',
+            'description': 'Le migliori composizioni di squadra UR e SSR. Strategie offensive, equilibrate e difensive.'
+      },
+      'leveling-ssr': {
+            'title': 'Montée en Niveau SSR',
+            'description': 'Numero di carte necessarie per portare i tuoi personaggi SSR al livello 115.'
+      },
+      'blueprints': {
+            'title': 'Guide Blueprints',
+            'description': 'Requisiti del progetto per livello (1-21) per migliorare le tue strutture. Livello 7-12 Oro.'
+      },
+      'hq-upgrade': {
+            'title': 'Guide HQ (Quartier Général)',
+            'description': 'Sono necessarie carte edificio per ogni livello del quartier generale. Totale richiesto: 29.922 carte.'
+      },
+      'vehicle-system': {
+            'title': 'Sistema del veicolo',
+            'description': 'Sistema completo: progressione, componenti (motore, telaio, sospensioni, cerchi), skin sbloccate.'
+      },
+      'gold-equipment': {
+            'title': 'Equipaggiamento ottimale per l'oro',
+            'description': 'Configurazione Oro completa per Vocalist, Dancer e Center. +19.730 statistiche e 86.000 fan per personaggio.'
+      },
+      'purple-equipment': {
+            'title': 'Guida agli ingranaggi viola',
+            'description': 'Il miglior equipaggiamento viola e come ottenerlo.'
+      },
+      'event-ancient-rome': {
+            'title': 'Guida all'antica Roma',
+            'description': 'Guida completa all'evento Avventura all'estero a Roma. Fasi, strategie e ricompense.'
+      },
+      'event-radio-battle': {
+            'title': 'Guida alla battaglia radio',
+            'description': 'Guida completa a Radio Battle. 5 fasi, strategie per massimizzare le tue Radio Coin.'
+      },
+      'event-grammy': {
+            'title': 'Guida ai Grammy Awards',
+            'description': 'Guida alle 8 categorie dei Grammy. I migliori team e le strategie per vincere le medaglie.'
+      },
+      'event-ultimate-ceo': {
+            'title': 'Guide Ultimate CEO',
+            'description': 'La guida definitiva per CEO: come sconfiggere il CEO e ottenere i migliori risultati.'
+      },
+      'event-echo-death-match': {
+            'title': 'Guida alla partita Deathmatch di Echo',
+            'description': 'Guida alla modalità Deathmatch Echo. Colleziona Pietre Echo e scambiale con ricompense SSR+.'
+      },
+      'event-chamber-territory': {
+            'title': 'Territorio della Camera di Commercio',
+            'description': 'Guida al territorio della Camera. Conquista e difendi i territori per ottenere ricompense.'
+      },
+      'event-cleanup-party': {
+            'title': 'Guida per la festa di pulizia',
+            'description': 'Guide du Cleanup Party. Collectez des poubelles et échangez pour des rewards.'
+      },
+      'event-metro-subway': {
+            'title': 'Guide Metro & Subway',
+            'description': 'Guida alla metropolitana. Raccogli i biglietti e viaggia in metropolitana per ottenere premi.'
+      },
+      'event-vs-group': {
+            'title': 'Guide VS Group Event',
+            'description': 'Guide du VS Group Event. Bataille entre groupes avec 5 jours de préparation et 1 jour de combat final.'
+      },
+      'event-fishing': {
+            'title': 'Guida agli eventi di pesca',
+            'description': 'Guida all'evento di pesca. Allestisci il tuo acquario, pesca e vinci premi.'
+      },
+      'world-building': {
+            'title': 'Guida alla costruzione del mondo',
+            'description': 'Guida alla creazione del mondo. Costruisci e sviluppa il tuo mondo nel gioco.'
+      },
+      'vip-level': {
+            'title': 'Guida al livello VIP',
+            'description': 'Guide VIP Level. Détails des points requis pour chaque niveau VIP.'
+      },
+      'ceo-coins': {
+            'title': 'Guida all'acquisto di CEO Coins',
+            'description': 'Guida all'acquisto di CEO Coins tramite il sito web ufficiale per i pagamenti.'
+      },
+      'alliance-management': {
+            'title': 'Alliance Management Guide',
+            'description': 'Guide de gestion d'alliance. Rôles, responsabilités et stratégies pour gérer votre guilde.'
+      },
+      'peak-level': {
+            'title': 'Guida al livello di picco',
+            'description': 'Guida al livello massimo. Sistema di progressione di fine gioco per le ragazze SSR a 5 stelle.'
+      },
+      'group-shop': {
+            'title': 'Group Shop Guide',
+            'description': 'Negozio del gruppo guida. Acquista dal negozio della gilda per ottimizzare i tuoi progressi.'
+      }
+},
+  es: {
+      'equipment': {
+            'title': 'Guía de equipos',
+            'description': 'Joyas, coches y propiedades para optimizar tus estadísticas. Comparación entre oro y púrpura y prioridades de compra.'
+      },
+      'team-builder': {
+            'title': 'Team Builder',
+            'description': 'Comment construire l'équipe parfaite. Calcul des synergies de genre et bonus d'équipement.'
+      },
+      'recommended-teams': {
+            'title': 'Equipos recomendados',
+            'description': 'Las mejores composiciones de equipo UR y SSR. Estrategias ofensivas, equilibradas y defensivas.'
+      },
+      'leveling-ssr': {
+            'title': 'Actualización al nivel SSR',
+            'description': 'Nombre de cartes nécessaires pour level up vos personnages SSR jusqu'au niveau 115.'
+      },
+      'blueprints': {
+            'title': 'Guide Blueprints',
+            'description': 'Requisitos de planos por nivel (1-21) para mejorar sus instalaciones. Nivel 7-12 Oro.'
+      },
+      'hq-upgrade': {
+            'title': 'Guía de la sede central (HQ)',
+            'description': 'Se requieren tarjetas de construcción para cada nivel del cuartel general. Requisito total: 29.922 tarjetas.'
+      },
+      'vehicle-system': {
+            'title': 'Système de Véhicules',
+            'description': 'Sistema completo: Progresión, Piezas (Motor, Chasis, Suspensión, Llantas), Diseños desbloqueados.'
+      },
+      'gold-equipment': {
+            'title': 'Équipement Gold Optimal',
+            'description': 'Configuración Oro completa para Vocalista, Bailarina y Centro. +19.730 estadísticas y 86.000 fans por personaje.'
+      },
+      'purple-equipment': {
+            'title': 'Guía de Purple Gear',
+            'description': 'El mejor equipo morado y cómo conseguirlo.'
+      },
+      'event-ancient-rome': {
+            'title': 'Guía de la Antigua Roma',
+            'description': 'Guía completa del evento Aventura en el Extranjero en Roma. Fases, estrategias y recompensas.'
+      },
+      'event-radio-battle': {
+            'title': 'Guía de batallas radiofónicas',
+            'description': 'Guide complet du Radio Battle. 5 phases, stratégies pour maximiser vos Radio Coins.'
+      },
+      'event-grammy': {
+            'title': 'Guide Grammy Awards',
+            'description': 'Guía de las 8 categorías de los premios Grammy. Los mejores equipos y estrategias para ganar medallas.'
+      },
+      'event-ultimate-ceo': {
+            'title': 'La guía definitiva para directores ejecutivos',
+            'description': 'Guide complet de l'Ultimate CEO. Comment vaincre le CEO et获取 les meilleures rewards.'
+      },
+      'event-echo-death-match': {
+            'title': 'Guide Echo Death Match',
+            'description': 'Guide du Echo Death Match. Accumulez des Echo Stones et échangez pour des rewards SSR+.'
+      },
+      'event-chamber-territory': {
+            'title': 'Territorio de la Cámara de Comercio Guía',
+            'description': 'Guía de territorios de la Cámara. Captura y defiende territorios para obtener recompensas.'
+      },
+      'event-cleanup-party': {
+            'title': 'Guía para la limpieza del grupo',
+            'description': 'Guía para la jornada de limpieza. Recoge basura y cámbiala por recompensas.'
+      },
+      'event-metro-subway': {
+            'title': 'Guía del metro y del subterráneo',
+            'description': 'Guide du Metro & Subway. Collectez des tickets et montez dans le métro pour des rewards.'
+      },
+      'event-vs-group': {
+            'title': 'Guía vs. Evento en grupo',
+            'description': 'Guía del evento grupal VS. Batalla entre grupos con 5 días de preparación y 1 día de combate final.'
+      },
+      'event-fishing': {
+            'title': 'Guía de eventos de pesca',
+            'description': 'Guide du Fishing Event. Configurez votre aquarium, attrapez des poissons et gagnez des récompenses.'
+      },
+      'world-building': {
+            'title': 'Guía para la creación de mundos',
+            'description': 'Guide World Building. Construisez et développez votre monde dans le jeu.'
+      },
+      'vip-level': {
+            'title': 'Guía de nivel VIP',
+            'description': 'Guía de niveles VIP. Detalles de los puntos necesarios para cada nivel VIP.'
+      },
+      'ceo-coins': {
+            'title': 'Guía de compra de CEO Coins',
+            'description': 'Guía para comprar CEO Coins a través del sitio web de pago oficial.'
+      },
+      'alliance-management': {
+            'title': 'Alliance Management Guide',
+            'description': 'Guía de gestión de alianzas. Roles, responsabilidades y estrategias para administrar tu gremio.'
+      },
+      'peak-level': {
+            'title': 'Guía de nivel máximo',
+            'description': 'Guía de nivel máximo. Sistema de progresión en la fase final del juego para chicas SSR de 5 estrellas.'
+      },
+      'group-shop': {
+            'title': 'Group Shop Guide',
+            'description': 'Guide Group Shop. Чтоacheter dans la boutique de guilde pour optimiser vos progrès.'
+      }
+},
+  pt: {
+      'equipment': {
+            'title': 'Guia de Equipamentos',
+            'description': 'Joias, carros e imóveis para otimizar suas estatísticas. Comparação entre ouro e roxo e prioridades de compra.'
+      },
+      'team-builder': {
+            'title': 'Team Builder',
+            'description': 'Como montar a equipe perfeita. Calculando sinergias de gênero e bônus de equipamentos.'
+      },
+      'recommended-teams': {
+            'title': 'Equipes recomendadas',
+            'description': 'As melhores composições de equipe para heróis UR e SSR. Estratégias ofensivas, balanceadas e defensivas.'
+      },
+      'leveling-ssr': {
+            'title': 'Montée en Niveau SSR',
+            'description': 'Número de cartas necessárias para elevar seus personagens SSR ao nível 115.'
+      },
+      'blueprints': {
+            'title': 'Guia de Projetos',
+            'description': 'Requirements en blueprints par tier (1-21) pour améliorer vos installations. Tier 7-12 Gold.'
+      },
+      'hq-upgrade': {
+            'title': 'Guia da Sede (Quartel-General)',
+            'description': 'Cartes de bâtiment nécessaires pour chaque niveau du HQ. Requirement total: 29,922 cartes.'
+      },
+      'vehicle-system': {
+            'title': 'Sistema do veículo',
+            'description': 'Système complet: Avancement, Pièces (Moteur, Châssé, Suspension, Jantes), Skins débloqués.'
+      },
+      'gold-equipment': {
+            'title': 'Equipamento ideal para ouro',
+            'description': 'Setup complet Gold pour Vocalist, Dancer et Center. +19,730 stats et 86,000 fans par personnage.'
+      },
+      'purple-equipment': {
+            'title': 'Guia de Equipamentos Roxos',
+            'description': 'Os melhores equipamentos roxos e como consegui-los.'
+      },
+      'event-ancient-rome': {
+            'title': 'Guia da Roma Antiga',
+            'description': 'Guia completo do evento Aventura no Exterior em Roma. Fases, estratégias e recompensas.'
+      },
+      'event-radio-battle': {
+            'title': 'Guide Radio Battle',
+            'description': 'Guia completo para a Batalha de Rádio. 5 fases, estratégias para maximizar suas Moedas de Rádio.'
+      },
+      'event-grammy': {
+            'title': 'Guia do Grammy Awards',
+            'description': 'Guia das 8 categorias do Grammy. Melhores equipes e estratégias para ganhar medalhas.'
+      },
+      'event-ultimate-ceo': {
+            'title': 'Guide Ultimate CEO',
+            'description': 'Guide complet de l'Ultimate CEO. Comment vaincre le CEO et获取 les meilleures rewards.'
+      },
+      'event-echo-death-match': {
+            'title': 'Guia do Echo Death Match',
+            'description': 'Guide du Echo Death Match. Accumulez des Echo Stones et échangez pour des rewards SSR+.'
+      },
+      'event-chamber-territory': {
+            'title': 'Território da Câmara Guia',
+            'description': 'Guia de Territórios da Câmara. Capture e defenda territórios para obter recompensas.'
+      },
+      'event-cleanup-party': {
+            'title': 'Guide Cleanup Party',
+            'description': 'Guide du Cleanup Party. Collectez des poubelles et échangez pour des rewards.'
+      },
+      'event-metro-subway': {
+            'title': 'Guide Metro & Subway',
+            'description': 'Guia do Metrô. Colecione bilhetes e use o metrô para ganhar recompensas.'
+      },
+      'event-vs-group': {
+            'title': 'Evento guiado vs. evento em grupo',
+            'description': 'Guide du VS Group Event. Bataille entre groupes avec 5 jours de préparation et 1 jour de combat final.'
+      },
+      'event-fishing': {
+            'title': 'Guide Fishing Event',
+            'description': 'Guide du Fishing Event. Configurez votre aquarium, attrapez des poissons et gagnez des récompenses.'
+      },
+      'world-building': {
+            'title': 'World Building Guide',
+            'description': 'Guia de Criação de Mundo. Construa e desenvolva seu mundo no jogo.'
+      },
+      'vip-level': {
+            'title': 'Guia de Nível VIP',
+            'description': 'Guide VIP Level. Détails des points requis pour chaque niveau VIP.'
+      },
+      'ceo-coins': {
+            'title': 'CEO Coins Purchase Guide',
+            'description': 'Guia para comprar CEO Coins através do site oficial de pagamentos.'
+      },
+      'alliance-management': {
+            'title': 'Alliance Management Guide',
+            'description': 'Guide de gestion d'alliance. Rôles, responsabilités et stratégies pour gérer votre guilde.'
+      },
+      'peak-level': {
+            'title': 'Peak Level Guide',
+            'description': 'Guide Peak Level. Système de progression late-game pour SSR girls avec 5 étoiles.'
+      },
+      'group-shop': {
+            'title': 'Group Shop Guide',
+            'description': 'Guide Group Shop. Чтоacheter dans la boutique de guilde pour optimiser vos progrès.'
+      }
+},
+  pl: {
+      'equipment': {
+            'title': 'Guide Équipement',
+            'description': 'Biżuteria, samochody i nieruchomości, aby zoptymalizować statystyki. Porównanie złota i fioletu oraz priorytety zakupowe.'
+      },
+      'team-builder': {
+            'title': 'Budowniczy zespołu',
+            'description': 'Comment construire l'équipe parfaite. Calcul des synergies de genre et bonus d'équipement.'
+      },
+      'recommended-teams': {
+            'title': 'Équipes Recommandées',
+            'description': 'Najlepsze składy drużyn UR i SSR. Ofensywne, zrównoważone i defensywne strategie.'
+      },
+      'leveling-ssr': {
+            'title': 'Montée en Niveau SSR',
+            'description': 'Liczba kart potrzebnych do podniesienia poziomu postaci SSR do poziomu 115.'
+      },
+      'blueprints': {
+            'title': 'Guide Blueprints',
+            'description': 'Wymagania dotyczące projektu według poziomu (1-21) w celu ulepszenia twoich obiektów. Poziom 7-12: złoto.'
+      },
+      'hq-upgrade': {
+            'title': 'Przewodnik po siedzibie głównej (siedziba główna)',
+            'description': 'Karty budynków wymagane na każdym poziomie Kwatery Głównej. Łączne zapotrzebowanie: 29 922 karty.'
+      },
+      'vehicle-system': {
+            'title': 'Système de Véhicules',
+            'description': 'Kompletny system: Postęp, Części (Silnik, Podwozie, Zawieszenie, Felgi), Odblokowane skórki.'
+      },
+      'gold-equipment': {
+            'title': 'Optymalny sprzęt do złota',
+            'description': 'Setup complet Gold pour Vocalist, Dancer et Center. +19,730 stats et 86,000 fans par personnage.'
+      },
+      'purple-equipment': {
+            'title': 'Przewodnik po fioletowym sprzęcie',
+            'description': 'Meilleur équipement purple et comment l'obtenir.'
+      },
+      'event-ancient-rome': {
+            'title': 'Przewodnik po starożytnym Rzymie',
+            'description': 'Guide complet de l'événement Adventure Abroad Rome. Phases, stratégies et rewards.'
+      },
+      'event-radio-battle': {
+            'title': 'Guide Radio Battle',
+            'description': 'Guide complet du Radio Battle. 5 phases, stratégies pour maximiser vos Radio Coins.'
+      },
+      'event-grammy': {
+            'title': 'Przewodnik po nagrodach Grammy',
+            'description': 'Przewodnik po 8 kategoriach Grammy. Najlepsze drużyny i strategie zdobywania medali.'
+      },
+      'event-ultimate-ceo': {
+            'title': 'Najlepszy przewodnik dla dyrektorów generalnych',
+            'description': 'Guide complet de l'Ultimate CEO. Comment vaincre le CEO et获取 les meilleures rewards.'
+      },
+      'event-echo-death-match': {
+            'title': 'Guide Echo Death Match',
+            'description': 'Guide du Echo Death Match. Accumulez des Echo Stones et échangez pour des rewards SSR+.'
+      },
+      'event-chamber-territory': {
+            'title': 'Przewodnik po Izbie Terytorialnej',
+            'description': 'Przewodnik po terytoriach Izby. Zdobywaj i broń terytoriów, aby zdobywać nagrody.'
+      },
+      'event-cleanup-party': {
+            'title': 'Przewodnik po imprezie sprzątającej',
+            'description': 'Przewodnik po imprezie sprzątającej. Zbieraj śmieci i wymieniaj je na nagrody.'
+      },
+      'event-metro-subway': {
+            'title': 'Przewodnik po metrze i podziemnym transporcie',
+            'description': 'Przewodnik po metrze. Zbieraj bilety i jedź metrem, aby zdobywać nagrody.'
+      },
+      'event-vs-group': {
+            'title': 'Wydarzenie przewodnikowe kontra grupowe',
+            'description': 'Przewodnik po wydarzeniach VS Group. Bitwy między grupami, 5 dni przygotowań i 1 dzień ostatecznej walki.'
+      },
+      'event-fishing': {
+            'title': 'Guide Fishing Event',
+            'description': 'Przewodnik po imprezach wędkarskich. Załóż akwarium, złowij ryby i wygraj nagrody.'
+      },
+      'world-building': {
+            'title': 'World Building Guide',
+            'description': 'Guide World Building. Construisez et développez votre monde dans le jeu.'
+      },
+      'vip-level': {
+            'title': 'VIP Level Guide',
+            'description': 'Guide VIP Level. Détails des points requis pour chaque niveau VIP.'
+      },
+      'ceo-coins': {
+            'title': 'Przewodnik po zakupie monet CEO',
+            'description': 'Przewodnik po zakupie CEO Coins za pośrednictwem oficjalnej strony płatności.'
+      },
+      'alliance-management': {
+            'title': 'Przewodnik po zarządzaniu sojuszami',
+            'description': 'Przewodnik po zarządzaniu sojuszem. Role, obowiązki i strategie zarządzania gildią.'
+      },
+      'peak-level': {
+            'title': 'Przewodnik po poziomie szczytowym',
+            'description': 'Guide Peak Level. Système de progression late-game pour SSR girls avec 5 étoiles.'
+      },
+      'group-shop': {
+            'title': 'Group Shop Guide',
+            'description': 'Sklep grupowy przewodnika. Kupuj w sklepie gildii, aby zoptymalizować swoje postępy.'
+      }
+},
+  id: {
+      'equipment': {
+            'title': 'Panduan Peralatan',
+            'description': 'Bijoux, Voitures et Propriétés pour optimiser vos statistiques. Comparaison Gold vs Purple et priorités d'achat.'
+      },
+      'team-builder': {
+            'title': 'Pembangun Tim',
+            'description': 'Cara membangun tim yang sempurna. Menghitung sinergi gender dan bonus peralatan.'
+      },
+      'recommended-teams': {
+            'title': 'Tim yang Direkomendasikan',
+            'description': 'Susunan tim UR dan SSR terbaik. Strategi ofensif, seimbang, dan defensif.'
+      },
+      'leveling-ssr': {
+            'title': 'Tingkatkan ke Level SSR',
+            'description': 'Jumlah kartu yang dibutuhkan untuk menaikkan level karakter SSR Anda hingga level 115.'
+      },
+      'blueprints': {
+            'title': 'Guide Blueprints',
+            'description': 'Requirements en blueprints par tier (1-21) pour améliorer vos installations. Tier 7-12 Gold.'
+      },
+      'hq-upgrade': {
+            'title': 'Panduan Markas Besar (Kantor Pusat)',
+            'description': 'Kartu bangunan yang dibutuhkan untuk setiap level markas besar. Total kebutuhan: 29.922 kartu.'
+      },
+      'vehicle-system': {
+            'title': 'Sistem Kendaraan',
+            'description': 'Sistem lengkap: Kemajuan, Komponen (Mesin, Sasis, Suspensi, Pelek), Skin terbuka.'
+      },
+      'gold-equipment': {
+            'title': 'Équipement Gold Optimal',
+            'description': 'Setup complet Gold pour Vocalist, Dancer et Center. +19,730 stats et 86,000 fans par personnage.'
+      },
+      'purple-equipment': {
+            'title': 'Panduan Perlengkapan Ungu',
+            'description': 'Meilleur équipement purple et comment l'obtenir.'
+      },
+      'event-ancient-rome': {
+            'title': 'Panduan ke Roma Kuno',
+            'description': 'Panduan lengkap untuk acara Adventure Abroad Rome. Tahapan, strategi, dan hadiah.'
+      },
+      'event-radio-battle': {
+            'title': 'Panduan Pertempuran Radio',
+            'description': 'Panduan lengkap untuk Radio Battle. 5 fase, strategi untuk memaksimalkan Koin Radio Anda.'
+      },
+      'event-grammy': {
+            'title': 'Panduan Penghargaan Grammy',
+            'description': 'Panduan untuk 8 kategori Grammy. Tim terbaik dan strategi untuk memenangkan medali.'
+      },
+      'event-ultimate-ceo': {
+            'title': 'Panduan CEO Terlengkap',
+            'description': 'Panduan Lengkap CEO Terbaik: Cara Mengalahkan CEO dan Mendapatkan Hadiah Terbaik.'
+      },
+      'event-echo-death-match': {
+            'title': 'Guide Echo Death Match',
+            'description': 'Panduan Echo Death Match. Kumpulkan Echo Stone dan tukarkan dengan hadiah SSR+.'
+      },
+      'event-chamber-territory': {
+            'title': 'Guide Chamber Territory',
+            'description': 'Panduan Wilayah Kamar Dagang. Rebut dan pertahankan wilayah untuk mendapatkan hadiah.'
+      },
+      'event-cleanup-party': {
+            'title': 'Panduan Pesta Bersih-Bersih',
+            'description': 'Panduan Pesta Bersih-Bersih. Kumpulkan sampah dan tukarkan dengan hadiah.'
+      },
+      'event-metro-subway': {
+            'title': 'Panduan Metro & Subway',
+            'description': 'Panduan Metro & Subway. Kumpulkan tiket dan naik kereta bawah tanah untuk mendapatkan hadiah.'
+      },
+      'event-vs-group': {
+            'title': 'Guide VS Group Event',
+            'description': 'Panduan Acara Grup VS. Pertempuran antar grup dengan 5 hari persiapan dan 1 hari pertempuran final.'
+      },
+      'event-fishing': {
+            'title': 'Guide Fishing Event',
+            'description': 'Panduan Acara Memancing. Siapkan akuarium Anda, tangkap ikan, dan menangkan hadiah.'
+      },
+      'world-building': {
+            'title': 'Panduan Membangun Dunia',
+            'description': 'Panduan Membangun Dunia. Bangun dan kembangkan duniamu dalam game.'
+      },
+      'vip-level': {
+            'title': 'VIP Level Guide',
+            'description': 'Panduan Level VIP. Detail poin yang dibutuhkan untuk setiap level VIP.'
+      },
+      'ceo-coins': {
+            'title': 'Panduan Pembelian CEO Coins',
+            'description': 'Panduan untuk membeli CEO Coin melalui situs pembayaran resmi.'
+      },
+      'alliance-management': {
+            'title': 'Panduan Manajemen Aliansi',
+            'description': 'Guide de gestion d'alliance. Rôles, responsabilités et stratégies pour gérer votre guilde.'
+      },
+      'peak-level': {
+            'title': 'Peak Level Guide',
+            'description': 'Panduan Level Puncak. Sistem perkembangan akhir permainan untuk karakter SSR bintang 5.'
+      },
+      'group-shop': {
+            'title': 'Group Shop Guide',
+            'description': 'Guide Group Shop. Чтоacheter dans la boutique de guilde pour optimiser vos progrès.'
+      }
+},
+  ru: {
+      'equipment': {
+            'title': 'Руководство по оборудованию',
+            'description': 'Bijoux, Voitures et Propriétés pour optimiser vos statistiques. Comparaison Gold vs Purple et priorités d'achat.'
+      },
+      'team-builder': {
+            'title': 'Конструктор команд',
+            'description': 'Как создать идеальную команду. Расчет гендерной синергии и бонусов за оборудование.'
+      },
+      'recommended-teams': {
+            'title': 'Рекомендуемые команды',
+            'description': 'Лучшие составы команд для UR и SSR персонажей. Стратегии нападения, сбалансированные и оборонительные стратегии.'
+      },
+      'leveling-ssr': {
+            'title': 'Повысить уровень до SSR',
+            'description': 'Количество карт, необходимых для прокачки ваших SSR-персонажей до 115 уровня.'
+      },
+      'blueprints': {
+            'title': 'Guide Blueprints',
+            'description': 'Требования к чертежам по уровням (1-21) для улучшения ваших объектов. Уровни 7-12: золото.'
+      },
+      'hq-upgrade': {
+            'title': 'Руководство по штаб-квартире (HQ Guide)',
+            'description': 'Для каждого уровня штаб-квартиры требуется несколько карточек зданий. Всего необходимо 29 922 карточки.'
+      },
+      'vehicle-system': {
+            'title': 'Система транспортного средства',
+            'description': 'Système complet: Avancement, Pièces (Moteur, Châssé, Suspension, Jantes), Skins débloqués.'
+      },
+      'gold-equipment': {
+            'title': 'Оптимальное золотое оборудование',
+            'description': 'Setup complet Gold pour Vocalist, Dancer et Center. +19,730 stats et 86,000 fans par personnage.'
+      },
+      'purple-equipment': {
+            'title': 'Руководство по фиолетовому снаряжению',
+            'description': 'Лучшее фиолетовое снаряжение и как его получить.'
+      },
+      'event-ancient-rome': {
+            'title': 'Путеводитель по Древнему Риму',
+            'description': 'Guide complet de l'événement Adventure Abroad Rome. Phases, stratégies et rewards.'
+      },
+      'event-radio-battle': {
+            'title': 'Руководство по радиосвязи',
+            'description': 'Полное руководство по игре Radio Battle. 5 этапов, стратегии для максимизации ваших радиомонет.'
+      },
+      'event-grammy': {
+            'title': 'Путеводитель по премии «Грэмми»',
+            'description': 'Путеводитель по 8 категориям премии «Грэмми». Лучшие команды и стратегии для завоевания медалей.'
+      },
+      'event-ultimate-ceo': {
+            'title': 'Полное руководство для генерального директора',
+            'description': 'Полное руководство для руководителей высшего звена: как победить генерального директора и получить лучшие награды.'
+      },
+      'event-echo-death-match': {
+            'title': 'Guide Echo Death Match',
+            'description': 'Guide du Echo Death Match. Accumulez des Echo Stones et échangez pour des rewards SSR+.'
+      },
+      'event-chamber-territory': {
+            'title': 'Территория Торговой палаты гидов',
+            'description': 'Руководство по захвату и защите территорий Торговой палаты. Захватывайте и защищайте территории, чтобы получать награды.'
+      },
+      'event-cleanup-party': {
+            'title': 'Guide Cleanup Party',
+            'description': 'Руководство по проведению вечеринки по уборке мусора. Собирайте мусор и обменивайте его на награды.'
+      },
+      'event-metro-subway': {
+            'title': 'Путеводитель по метро и подземке',
+            'description': 'Путеводитель по метро. Собирайте билеты и пользуйтесь метро, чтобы получать награды.'
+      },
+      'event-vs-group': {
+            'title': 'Гид против группового мероприятия',
+            'description': 'Руководство по групповому событию VS. Битва между группами с 5 днями подготовки и 1 днем финального боя.'
+      },
+      'event-fishing': {
+            'title': 'Guide Fishing Event',
+            'description': 'Guide du Fishing Event. Configurez votre aquarium, attrapez des poissons et gagnez des récompenses.'
+      },
+      'world-building': {
+            'title': 'Руководство по созданию мира',
+            'description': 'Guide World Building. Construisez et développez votre monde dans le jeu.'
+      },
+      'vip-level': {
+            'title': 'VIP Level Guide',
+            'description': 'Руководство по VIP-уровням. Подробная информация о баллах, необходимых для каждого VIP-уровня.'
+      },
+      'ceo-coins': {
+            'title': 'Руководство по покупке монет CEO',
+            'description': 'Инструкция по покупке CEO Coins через официальный сайт оплаты.'
+      },
+      'alliance-management': {
+            'title': 'Alliance Management Guide',
+            'description': 'Руководство по управлению альянсом. Роли, обязанности и стратегии управления вашей гильдией.'
+      },
+      'peak-level': {
+            'title': 'Peak Level Guide',
+            'description': 'Руководство по достижению максимального уровня. Система прокачки 5-звездочных SSR-девушек на поздних этапах игры.'
+      },
+      'group-shop': {
+            'title': 'Путеводитель по групповым магазинам',
+            'description': 'Магазин гильдии. Покупайте в магазине гильдии, чтобы оптимизировать свой прогресс.'
+      }
+},
+};
