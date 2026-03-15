@@ -58,7 +58,26 @@ export default function ArtistsPage() {
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const team = activeTeam === 1 ? team1 : team2;
-  const setTeam = activeTeam === 1 ? setTeam1 : setTeam2;
+
+  const addToTeam = (artist: Artist) => {
+    if (activeTeam === 1) {
+      if (team1.length < 5 && !team1.find(a => a.id === artist.id)) {
+        setTeam1([...team1, artist]);
+      }
+    } else {
+      if (team2.length < 5 && !team2.find(a => a.id === artist.id)) {
+        setTeam2([...team2, artist]);
+      }
+    }
+  };
+
+  const removeFromTeam = (id: number) => {
+    if (activeTeam === 1) {
+      setTeam1(team1.filter(a => a.id !== id));
+    } else {
+      setTeam2(team2.filter(a => a.id !== id));
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -91,16 +110,6 @@ export default function ArtistsPage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const addToTeam = (artist: Artist) => {
-    if (team.length < 5 && !team.find(a => a.id === artist.id)) {
-      setTeam([...team, artist]);
-    }
-  };
-
-  const removeFromTeam = (id: number) => {
-    setTeam(team.filter(a => a.id !== id));
-  };
 
   const teamStats = useMemo(() => {
     let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, passive = 0, fanCapacity = 0, rallyCapacity = 0;
@@ -389,18 +398,20 @@ export default function ArtistsPage() {
 
                 {/* Current Team Slots */}
                 <div style={{ display: "flex", gap: "4px", marginBottom: "8px", justifyContent: "center" }}>
-                  {[0,1,2,3,4].map(i => (
-                    <div className="team-slot" key={i} onClick={() => activeTeam === 1 ? (team1[i] && removeFromTeam1(team1[i].id)) : (team2[i] && removeFromTeam2(team2[i].id))} style={{ width: "50px", height: "58px", borderRadius: "6px", border: `2px solid ${activeTeam === 1 ? (team[i] ? rankColors[team[i].rank] : "rgba(255,255,255,0.1)") : (team[i] ? rankColors[team[i].rank] : "rgba(255,255,255,0.1)")}`, background: team[i] ? `linear-gradient(135deg, ${rankColors[team[i].rank]}22, rgba(30,30,50,1))` : "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", cursor: team[i] ? "pointer" : "default", overflow: "hidden" }}>
-                      {team[i] ? (
-                        team[i].image ? <img src={`/assets/images/artists/${team[i].image}`} alt={team[i].name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: "1.1rem", fontWeight: 800, color: rankColors[team[i].rank] }}>{team[i].name.charAt(0)}</span>
+                  {[0,1,2,3,4].map(i => {
+                    const currentTeamMember = activeTeam === 1 ? team1[i] : team2[i];
+                    return (
+                    <div className="team-slot" key={i} onClick={() => currentTeamMember && removeFromTeam(currentTeamMember.id)} style={{ width: "50px", height: "58px", borderRadius: "6px", border: `2px solid ${currentTeamMember ? rankColors[currentTeamMember.rank] : "rgba(255,255,255,0.1)"}`, background: currentTeamMember ? `linear-gradient(135deg, ${rankColors[currentTeamMember.rank]}22, rgba(30,30,50,1))` : "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", cursor: currentTeamMember ? "pointer" : "default", overflow: "hidden" }}>
+                      {currentTeamMember ? (
+                        currentTeamMember.image ? <img src={`/assets/images/artists/${currentTeamMember.image}`} alt={currentTeamMember.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: "1.1rem", fontWeight: 800, color: rankColors[currentTeamMember.rank] }}>{currentTeamMember.name.charAt(0)}</span>
                       ) : <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.8rem" }}>+</span>}
                     </div>
-                  ))}
+                  )})}
                 </div>
 
                 {/* Add to Team Button */}
                 {selectedArtist && !team.find(a => a.id === selectedArtist.id) && team.length < 5 && (
-                  <button className="add-to-team-btn" onClick={() => activeTeam === 1 ? addToTeam1(selectedArtist) : addToTeam2(selectedArtist)} style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "none", background: activeTeam === 1 ? "linear-gradient(135deg, #8b5cf6, #06b6d4)" : "linear-gradient(135deg, #06b6d4, #8b5cf6)", color: "#fff", fontWeight: 600, fontSize: "0.7rem", cursor: "pointer", marginBottom: "8px" }}>+ Ajouter à l'équipe {activeTeam}</button>
+                  <button className="add-to-team-btn" onClick={() => addToTeam(selectedArtist)} style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "none", background: activeTeam === 1 ? "linear-gradient(135deg, #8b5cf6, #06b6d4)" : "linear-gradient(135deg, #06b6d4, #8b5cf6)", color: "#fff", fontWeight: 600, fontSize: "0.7rem", cursor: "pointer", marginBottom: "8px" }}>+ Ajouter à l'équipe {activeTeam}</button>
                 )}
 
                 {/* Clear Team Button */}
