@@ -361,72 +361,6 @@ export default function TierListPage() {
         {/* Voting Tab */}
         {activeTab === "vote" && (
           <div>
-         {/* Weekly Top Artist */}
-             {voteData?.weekly_top && (
-               <Link href={`/${lang}/artist/${artistsData.find(a => a.name === voteData.weekly_top.artist_name)?.id || 0}`} style={{
-                 textDecoration: 'none',
-                 display: 'inline-block',
-                 width: '100%',
-                 maxWidth: '400px'
-               }}>
-                 <div style={{
-                   padding: "32px",
-                   borderRadius: "var(--radius-lg)",
-                   background: "linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05))",
-                   border: "2px solid rgba(255, 215, 0, 0.5)",
-                   marginBottom: "32px",
-                   textAlign: "center",
-                   position: "relative",
-                   overflow: "hidden"
-                 }}>
-                   <div style={{
-                     position: "absolute",
-                     top: "-20px",
-                     right: "-20px",
-                     width: "100px",
-                     height: "100px",
-                     background: "radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%)",
-                     borderRadius: "50%"
-                   }} />
-                   <div style={{ fontSize: "3rem", marginBottom: "8px", position: "relative" }}>👑</div>
-                   <div style={{ 
-                     fontSize: "0.85rem", 
-                     color: "#ffd700", 
-                     textTransform: "uppercase",
-                     letterSpacing: "2px",
-                     marginBottom: "8px",
-                     fontWeight: 600,
-                     position: "relative"
-                   }}>
-                     Artiste de la semaine
-                   </div>
-                   <div style={{ 
-                     fontSize: "2rem", 
-                     fontWeight: 800, 
-                     color: "#fff",
-                     marginBottom: "8px",
-                     position: "relative"
-                   }}>
-                     {voteData.weekly_top.artist_name}
-                   </div>
-                   <div style={{ 
-                     display: "inline-flex",
-                     alignItems: "center",
-                     gap: "8px",
-                     padding: "8px 20px",
-                     background: "rgba(255, 215, 0, 0.2)",
-                     borderRadius: "var(--radius-full)",
-                     position: "relative"
-                   }}>
-                     <span style={{ fontSize: "1.25rem" }}>⭐</span>
-                     <span style={{ fontWeight: 700, color: "#ffd700" }}>
-                       {voteData.weekly_top.count} votes
-                     </span>
-                   </div>
-                 </div>
-               </Link>
-             )}
-
             {/* Vote Status Banner */}
             {votedToday ? (
               <div style={{
@@ -794,9 +728,9 @@ export default function TierListPage() {
                              }}>
                                {artist.name}
                              </div>
-                             <button
-                               onClick={() => !isDisabled && handleVote(artist.id)}
-                               disabled={isDisabled}
+                              <button
+                                onClick={(e) => { e.preventDefault(); e.stopPropagation(); !isDisabled && handleVote(artist.id); }}
+                                disabled={isDisabled}
                                style={{
                                  width: "100%",
                                  padding: "6px 10px",
