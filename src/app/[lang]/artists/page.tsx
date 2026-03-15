@@ -264,6 +264,16 @@ export default function ArtistsPage() {
     });
   }, [searchQuery, filterRank, filterGenre, filterSpecialty]);
 
+  const [panelFixed, setPanelFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setPanelFixed(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const rankOrder: Record<string, number> = { UR: 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4 };
   const getRankSort = (r: string) => rankOrder[r] || 99;
   const sortedArtists = [...filteredArtists].sort((a, b) => getRankSort(a.rank) - getRankSort(b.rank));
@@ -278,383 +288,579 @@ export default function ArtistsPage() {
         <title>Artistes - TopGirl</title>
       </Head>
 
-      <div className="container" style={{ padding: "20px 12px" }}>
-        <h1 style={{ textAlign: "center", marginBottom: "10px", background: "linear-gradient(135deg, #f472b6, #c084fc, #818cf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: "2.5rem", fontWeight: 800 }}>
-          🎤 Artistes
-        </h1>
-        <p style={{ textAlign: "center", color: "rgba(255,255,255,0.6)", marginBottom: "30px" }}>Découvrez tous les personnages</p>
+      <div className="page-container">
+        {/* Header with title and ads */}
+        <div className="page-header">
+          <h1 className="page-title">🎤 Artistes</h1>
+          <p className="page-subtitle">Découvrez tous les personnages</p>
+          <AdBanner />
+        </div>
 
-        <AdBanner />
-
-        {/* MAIN LAYOUT: Left Panel + Right Grid */}
-        <div style={{ position: "relative" }}>
-          
-          {/* LEFT: Fixed Panel */}
-          <div ref={panelRef} style={{ position: "absolute", top: "110px", left: "0px" }} className="left-panel">
-               
-              {/* Artist Overview Card - compact */}
-              <div className="artist-overview-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "8px", border: "1px solid rgba(139,92,246,0.3)", padding: 0, marginBottom: "4px", overflow: "hidden" }}>
-                <div className="artist-overview-title" style={{ padding: "6px", borderBottom: "1px solid rgba(255,255,255,0.1)", background: "linear-gradient(135deg, rgba(255,77,141,0.15), rgba(139,92,246,0.15))" }}>
-                  <span style={{ fontWeight: 600, fontSize: "0.7rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{t.artistOverview}</span>
-                </div>
-
-                {selectedArtist ? (
-                  <div className="artist-overview-content" style={{ padding: "6px" }}>
-                    {/* Image on left, full height */}
-                    <div style={{ display: "flex", gap: "8px" }}>
-                      <div className="artist-image" style={{ width: "70px", height: "90px", borderRadius: "6px", border: `2px solid ${rankColors[selectedArtist.rank]}`, background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, rgba(30,30,50,1))`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
-                        {selectedArtist.image ? (
-                          <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                        ) : (
-                          <span style={{ fontSize: "1.8rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
-                        )}
-                      </div>
-                      
-                      {/* Info on right */}
-                      <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: "4px", marginBottom: "2px" }}>
-                          <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i > 0) setSelectedArtist(filteredArtists[i-1]); }} style={{ width: "20px", height: "20px", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", cursor: "pointer", fontSize: "0.6rem", padding: 0 }}>◀</button>
-                          <h2 style={{ flex: 1, fontSize: "0.75rem", fontWeight: 700, color: rankColors[selectedArtist.rank], whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", textAlign: "center" }}>{selectedArtist.name}</h2>
-                          <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i < filteredArtists.length-1) setSelectedArtist(filteredArtists[i+1]); }} style={{ width: "20px", height: "20px", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", cursor: "pointer", fontSize: "0.6rem", padding: 0 }}>▶</button>
-                        </div>
-                        <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.5)", textAlign: "center", marginBottom: "2px" }}>{selectedArtist.group}</p>
-                        <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.6)" }}>🎯 {selectedArtist.position} • {selectedArtist.specialty || selectedArtist.genre}</p>
-                        <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.5)" }}>🎵 {selectedArtist.genre}</p>
-                      </div>
-                    </div>
-                    
-                    {/* Skills and link */}
-                    <div style={{ marginTop: "4px" }}>
-                      <p style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.4)", marginBottom: "2px" }}>{t.skills}</p>
-                      <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
-                        {selectedArtist.skills?.slice(0,2).map((skill, i) => (
-                          <div key={i} style={{ padding: "2px 4px", background: "rgba(255,255,255,0.03)", borderRadius: "3px", fontSize: "0.5rem", borderLeft: `2px solid ${rankColors[selectedArtist.rank]}`, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{skill}</div>
-                        ))}
-                      </div>
-                    </div>
-                    {/* Link to artist page */}
-                    <div style={{ textAlign: 'center', marginTop: '4px' }}>
-                      <Link 
-                        href={`/${lang}/artist/${slugify(selectedArtist.name)}`} 
-                        style={{
-                          display: 'inline-block',
-                          padding: '4px 10px',
-                          background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-                          color: 'white',
-                          borderRadius: '4px',
-                          fontSize: '0.6rem',
-                          fontWeight: 500,
-                          textDecoration: 'none'
-                        }}
-                      >
-                        {t.viewFullProfile}
-                     </Link>
-                    </div>
-                  </div>
-                ) : (
-                  <div style={{ padding: "20px", textAlign: "center", color: "rgba(255,255,255,0.4)" }}>
-                    <div style={{ fontSize: "1.4rem", marginBottom: "4px" }}>👆</div>
-                    <p style={{ fontSize: "0.75rem" }}>{t.selectArtist}</p>
-                  </div>
-                )}
+        {/* TOP PANEL - Fixed 40vh */}
+        <div className={`top-panel ${panelFixed ? 'fixed' : ''}`}>
+          {/* Column 1: Artist Preview (30%) */}
+          <div className="panel-col panel-col-1">
+            <div className="artist-preview-card">
+              <div className="artist-preview-title">
+                <span>{t.artistOverview}</span>
               </div>
-
-              {/* Team Builder Card - Two Teams Side by Side */}
-              <div className="team-builder-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: "15px" }}>
-                {/* Two Columns: Team 1 | Team 2 */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
-                  
-                  {/* TEAM 1 */}
-                  <div style={{ background: "rgba(139,92,246,0.1)", borderRadius: "8px", padding: "8px", border: activeTeam === 1 ? "2px solid #8b5cf6" : "1px solid rgba(139,92,246,0.3)" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
-                      <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#8b5cf6" }}>Équipe 1</span>
-                      <button onClick={() => setActiveTeam(1)} style={{ padding: "2px 8px", fontSize: "0.6rem", borderRadius: "4px", border: "1px solid #8b5cf6", background: activeTeam === 1 ? "#8b5cf6" : "transparent", color: "#fff", cursor: "pointer" }}>Sélectionner</button>
-                    </div>
-                    
-                    {/* Team 1 Images */}
-                    <div style={{ display: "flex", gap: "3px", marginBottom: "6px", justifyContent: "center" }}>
-                      {[0,1,2,3,4].map(i => (
-                        <div key={i} onClick={() => team1[i] && setSelectedArtist(team1[i])} style={{ width: "36px", height: "44px", borderRadius: "4px", border: `2px solid ${team1[i] ? rankColors[team1[i].rank] : "rgba(255,255,255,0.1)"}`, background: team1[i] ? `linear-gradient(135deg, ${rankColors[team1[i].rank]}22, rgba(30,30,50,1))` : "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", cursor: team1[i] ? "pointer" : "default", overflow: "hidden" }}>
-                          {team1[i] ? (
-                            team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: "0.9rem", fontWeight: 800, color: rankColors[team1[i].rank] }}>{team1[i].name.charAt(0)}</span>
-                          ) : <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.6rem" }}>+</span>}
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* Team 1 Stats */}
-                    <div style={{ fontSize: "0.5rem" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#ff6b6b" }}><span>⚔️ Skill DMG</span><span>{team1Stats.skillDamage}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#ff8c42" }}><span>💥 DMG Factor</span><span>{team1Stats.skillDamageRaw}</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#4ecdc4" }}><span>👊 Basic ATK</span><span>{team1Stats.basicAttackPercent}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#95e1d3" }}><span>🛡️ Resistance</span><span>{team1Stats.attackResist}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#a29bfe" }}><span>✨ S.Resist</span><span>{team1Stats.skillResist}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#ffd700" }}><span>🎵 Fan Cap</span><span>{team1Stats.fanCapacity}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#00ff88" }}><span>🚀 Rally Cap</span><span>{team1Stats.rallyCapacity}%</span></div>
-                      <button onClick={() => setTeam1([])} style={{ width: "100%", marginTop: "4px", padding: "4px", fontSize: "0.5rem", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "rgba(255,255,255,0.4)", cursor: "pointer" }}>🗑️ Effacer</button>
-                    </div>
+              {selectedArtist ? (
+                <div className="artist-preview-content">
+                  <div className="artist-preview-image-large">
+                    {selectedArtist.image ? (
+                      <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} />
+                    ) : (
+                      <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
+                    )}
                   </div>
-
-                  {/* TEAM 2 */}
-                  <div style={{ background: "rgba(6,182,212,0.1)", borderRadius: "8px", padding: "8px", border: activeTeam === 2 ? "2px solid #06b6d4" : "1px solid rgba(6,182,212,0.3)" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
-                      <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#06b6d4" }}>Équipe 2</span>
-                      <button onClick={() => setActiveTeam(2)} style={{ padding: "2px 8px", fontSize: "0.6rem", borderRadius: "4px", border: "1px solid #06b6d4", background: activeTeam === 2 ? "#06b6d4" : "transparent", color: "#fff", cursor: "pointer" }}>Sélectionner</button>
+                  <div className="artist-preview-info">
+                    <div className="artist-preview-nav">
+                      <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i > 0) setSelectedArtist(filteredArtists[i-1]); }}>◀</button>
+                      <span style={{ color: rankColors[selectedArtist.rank] }}>{selectedArtist.name}</span>
+                      <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i < filteredArtists.length-1) setSelectedArtist(filteredArtists[i+1]); }}>▶</button>
                     </div>
-                    
-                    {/* Team 2 Images */}
-                    <div style={{ display: "flex", gap: "3px", marginBottom: "6px", justifyContent: "center" }}>
-                      {[0,1,2,3,4].map(i => (
-                        <div key={i} onClick={() => team2[i] && setSelectedArtist(team2[i])} style={{ width: "36px", height: "44px", borderRadius: "4px", border: `2px solid ${team2[i] ? rankColors[team2[i].rank] : "rgba(255,255,255,0.1)"}`, background: team2[i] ? `linear-gradient(135deg, ${rankColors[team2[i].rank]}22, rgba(30,30,50,1))` : "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", cursor: team2[i] ? "pointer" : "default", overflow: "hidden" }}>
-                          {team2[i] ? (
-                            team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: "0.9rem", fontWeight: 800, color: rankColors[team2[i].rank] }}>{team2[i].name.charAt(0)}</span>
-                          ) : <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.6rem" }}>+</span>}
-                        </div>
-                      ))}
+                    <div className="artist-preview-details">
+                      <div className="detail-col">
+                        <p>🏠 {selectedArtist.group}</p>
+                        <p>🎯 {selectedArtist.position}</p>
+                        <p>💎 {selectedArtist.specialty || selectedArtist.genre}</p>
+                      </div>
+                      <div className="detail-col">
+                        <p>🎵 {selectedArtist.genre}</p>
+                        <p>📊 Rang: <span style={{ color: rankColors[selectedArtist.rank] }}>{selectedArtist.rank}</span></p>
+                      </div>
                     </div>
-                    
-                    {/* Team 2 Stats */}
-                    <div style={{ fontSize: "0.5rem" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#ff6b6b" }}><span>⚔️ Skill DMG</span><span>{team2Stats.skillDamage}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#ff8c42" }}><span>💥 DMG Factor</span><span>{team2Stats.skillDamageRaw}</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#4ecdc4" }}><span>👊 Basic ATK</span><span>{team2Stats.basicAttackPercent}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#95e1d3" }}><span>🛡️ Resistance</span><span>{team2Stats.attackResist}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#a29bfe" }}><span>✨ S.Resist</span><span>{team2Stats.skillResist}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#ffd700" }}><span>🎵 Fan Cap</span><span>{team2Stats.fanCapacity}%</span></div>
-                      <div style={{ display: "flex", justifyContent: "space-between", color: "#00ff88" }}><span>🚀 Rally Cap</span><span>{team2Stats.rallyCapacity}%</span></div>
-                      <button onClick={() => setTeam2([])} style={{ width: "100%", marginTop: "4px", padding: "4px", fontSize: "0.5rem", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "rgba(255,255,255,0.4)", cursor: "pointer" }}>🗑️ Effacer</button>
+                    <Link href={`/${lang}/artist/${slugify(selectedArtist.name)}`} className="view-profile-btn">
+                      {t.viewFullProfile}
+                    </Link>
+                    <div className="add-buttons">
+                      {selectedArtist && !team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && (
+                        <button onClick={() => { setActiveTeam(1); addToTeam(selectedArtist); }} className="add-team-btn team1">+ Équipe 1</button>
+                      )}
+                      {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && (
+                        <button onClick={() => { setActiveTeam(2); addToTeam(selectedArtist); }} className="add-team-btn team2">+ Équipe 2</button>
+                      )}
                     </div>
                   </div>
                 </div>
-
-                {/* Add to Selected Team */}
-                {selectedArtist && (
-                  <div style={{ marginTop: "10px" }}>
-                    {selectedArtist && !team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && activeTeam === 1 && (
-                      <button onClick={() => addToTeam(selectedArtist)} style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "none", background: "linear-gradient(135deg, #8b5cf6, #06b6d4)", color: "#fff", fontWeight: 600, fontSize: "0.7rem", cursor: "pointer" }}>+ Ajouter {selectedArtist.name} à l'équipe 1</button>
-                    )}
-                    {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && activeTeam === 2 && (
-                      <button onClick={() => addToTeam(selectedArtist)} style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "none", background: "linear-gradient(135deg, #06b6d4, #8b5cf6)", color: "#fff", fontWeight: 600, fontSize: "0.7rem", cursor: "pointer" }}>+ Ajouter {selectedArtist.name} à l'équipe 2</button>
-                    )}
-                  </div>
-                )}
-              </div>
-
+              ) : (
+                <div className="artist-preview-empty">
+                  <p>{t.selectArtist}</p>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* RIGHT: Artists Grid */}
-          <div className="artists-container">
-            {/* BARRE DE RECHERCHE */}
-            <div style={{ background: "#1a1a2e", borderRadius: "12px", padding: "16px", marginBottom: "16px" }}>
-              <input
-                type="text"
-                placeholder={t.search}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "12px 16px",
-                  background: "#0f0f1a",
-                  border: "1px solid #333",
-                  borderRadius: "8px",
-                  color: "#fff",
-                  fontSize: "1rem",
-                  marginBottom: "12px",
-                  outline: "none",
-                }}
-              />
-              <div style={{ display: "flex", gap: "8px" }}>
-                <select 
-                  value={filterRank} 
-                  onChange={(e) => setFilterRank(e.target.value)} 
-                  style={{ 
-                    flex: 1,
-                    padding: "10px", 
-                    background: "#0f0f1a", 
-                    border: "1px solid #333", 
-                    borderRadius: "8px", 
-                    color: "#fff", 
-                    fontSize: "0.9rem",
-                    cursor: "pointer",
-                  }}
-                >
-                  <option value="">{t.allRanks}</option>
-                  {RANKS.map(rank => (
-                    <option key={rank} value={rank} style={{ color: "#fff" }}>{rank}</option>
-                  ))}
-                </select>
-                <select 
-                  value={filterGenre} 
-                  onChange={(e) => setFilterGenre(e.target.value)} 
-                  style={{ 
-                    flex: 1,
-                    padding: "10px", 
-                    background: "#0f0f1a", 
-                    border: "1px solid #333", 
-                    borderRadius: "8px", 
-                    color: "#fff", 
-                    fontSize: "0.9rem",
-                    cursor: "pointer",
-                  }}
-                >
-                  <option value="">{t.allGenres}</option>
-                  {GENRES.map(genre => (
-                    <option key={genre} value={genre} style={{ color: "#fff" }}>{genre}</option>
-                  ))}
-                </select>
-                <select 
-                  value={filterSpecialty} 
-                  onChange={(e) => setFilterSpecialty(e.target.value)} 
-                  style={{ 
-                    flex: 1,
-                    padding: "10px", 
-                    background: "#0f0f1a", 
-                    border: "1px solid #333", 
-                    borderRadius: "8px", 
-                    color: "#fff", 
-                    fontSize: "0.9rem",
-                    cursor: "pointer",
-                  }}
-                >
-                  <option value="">{t.allSpecialties}</option>
-                  {SPECIALTIES.map(spec => (
-                    <option key={spec} value={spec} style={{ color: "#fff" }}>{spec}</option>
-                  ))}
-                </select>
+          {/* Column 2: Team 1 (35%) */}
+          <div className="panel-col panel-col-2">
+            <div className="team-card team-1">
+              <div className="team-header">
+                <span>Équipe 1</span>
+                <button onClick={() => setActiveTeam(1)} className={activeTeam === 1 ? "active" : ""}>Sélectionner</button>
               </div>
-              <div style={{ marginTop: "10px", fontSize: "0.85rem", color: "#888" }}>
-                {filteredArtists.length} artistes trouvés
+              <div className="team-slots">
+                {[0,1,2,3,4].map(i => (
+                  <div key={i} onClick={() => team1[i] && setSelectedArtist(team1[i])} className="team-slot">
+                    {team1[i] ? (
+                      team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} /> : <span style={{ color: rankColors[team1[i].rank] }}>{team1[i].name.charAt(0)}</span>
+                    ) : <span>+</span>}
+                  </div>
+                ))}
+              </div>
+              <div className="team-stats">
+                {(() => {
+                  const stats = [
+                    { label: "💥 DMG Factor", v1: team1Stats.skillDamageRaw, v2: team2Stats.skillDamageRaw },
+                    { label: "⚔️ Skill DMG", v1: team1Stats.skillDamage, v2: team2Stats.skillDamage, suffix: "%" },
+                    { label: "👊 Basic ATK", v1: team1Stats.basicAttackPercent, v2: team2Stats.basicAttackPercent, suffix: "%" },
+                    { label: "🛡️ Resistance", v1: team1Stats.attackResist, v2: team2Stats.attackResist, suffix: "%" },
+                    { label: "✨ S.Resist", v1: team1Stats.skillResist, v2: team2Stats.skillResist, suffix: "%" },
+                    { label: "🎵 Fan Cap", v1: team1Stats.fanCapacity, v2: team2Stats.fanCapacity, suffix: "%" },
+                    { label: "🚀 Rally Cap", v1: team1Stats.rallyCapacity, v2: team2Stats.rallyCapacity, suffix: "%" },
+                  ];
+                  const colors = ["#ff8c42", "#ff6b6b", "#4ecdc4", "#95e1d3", "#a29bfe", "#ffd700", "#00ff88"];
+                  return stats.map((stat, i) => {
+                    const diff = stat.v1 - stat.v2;
+                    const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.4)";
+                    const sign = diff > 0 ? "+" : "";
+                    return (
+                      <div key={i} style={{ display: "flex", justifyContent: "space-between", color: colors[i], fontSize: "0.7rem" }}>
+                        <span>{stat.label}</span>
+                        <span>{stat.v1}{stat.suffix || ""} <span style={{ color: diffColor, fontWeight: 600 }}>({sign}{diff})</span></span>
+                      </div>
+                    );
+                  });
+                })()}
+                <button onClick={() => setTeam1([])} className="clear-btn">🗑️ Effacer</button>
               </div>
             </div>
+          </div>
 
-            <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
-              {sortedArtists.map((artist: Artist) => (
-                <button key={artist.id} onClick={() => setSelectedArtist(artist)} style={{ background: selectedArtist?.id === artist.id ? `${rankColors[artist.rank]}22` : "rgba(30,30,50,0.9)", border: `2px solid ${selectedArtist?.id === artist.id ? rankColors[artist.rank] : "rgba(255,255,255,0.1)"}`, borderRadius: "12px", padding: 0, cursor: "pointer", aspectRatio: "3/4", overflow: "hidden", position: "relative" }}>
-                  {artist.image ? (
-                    <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  ) : (
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", background: `linear-gradient(135deg, ${rankColors[artist.rank]}33, rgba(30,30,50,1))` }}>
-                      <span style={{ fontSize: "2rem", fontWeight: 800, color: rankColors[artist.rank] }}>{artist.name.charAt(0)}</span>
-                    </div>
-                  )}
-                </button>
-              ))}
+          {/* Column 3: Team 2 (35%) */}
+          <div className="panel-col panel-col-3">
+            <div className="team-card team-2">
+              <div className="team-header">
+                <span>Équipe 2</span>
+                <button onClick={() => setActiveTeam(2)} className={activeTeam === 2 ? "active" : ""}>Sélectionner</button>
+              </div>
+              <div className="team-slots">
+                {[0,1,2,3,4].map(i => (
+                  <div key={i} onClick={() => team2[i] && setSelectedArtist(team2[i])} className="team-slot">
+                    {team2[i] ? (
+                      team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} /> : <span style={{ color: rankColors[team2[i].rank] }}>{team2[i].name.charAt(0)}</span>
+                    ) : <span>+</span>}
+                  </div>
+                ))}
+              </div>
+              <div className="team-stats">
+                <div style={{ display: "flex", justifyContent: "space-between", color: "#ff8c42", fontSize: "0.7rem" }}><span>💥 DMG Factor</span><span>{team2Stats.skillDamageRaw}</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between", color: "#ff6b6b", fontSize: "0.7rem" }}><span>⚔️ Skill DMG</span><span>{team2Stats.skillDamage}%</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between", color: "#4ecdc4", fontSize: "0.7rem" }}><span>👊 Basic ATK</span><span>{team2Stats.basicAttackPercent}%</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between", color: "#95e1d3", fontSize: "0.7rem" }}><span>🛡️ Resistance</span><span>{team2Stats.attackResist}%</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between", color: "#a29bfe", fontSize: "0.7rem" }}><span>✨ S.Resist</span><span>{team2Stats.skillResist}%</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between", color: "#ffd700", fontSize: "0.7rem" }}><span>🎵 Fan Cap</span><span>{team2Stats.fanCapacity}%</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between", color: "#00ff88", fontSize: "0.7rem" }}><span>🚀 Rally Cap</span><span>{team2Stats.rallyCapacity}%</span></div>
+                <button onClick={() => setTeam2([])} className="clear-btn">🗑️ Effacer</button>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Add to Selected Team */}
+        {selectedArtist && (
+          <div className="add-to-team-bar">
+            {selectedArtist && !team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && activeTeam === 1 && (
+              <button onClick={() => addToTeam(selectedArtist)}>+ Ajouter {selectedArtist.name} à l'équipe 1</button>
+            )}
+            {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && activeTeam === 2 && (
+              <button onClick={() => addToTeam(selectedArtist)}>+ Ajouter {selectedArtist.name} à l'équipe 2</button>
+            )}
+          </div>
+        )}
+
+        {/* BOTTOM - Artists Grid (scrollable) */}
+        <div className="artists-bottom">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder={t.search}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <select value={filterRank} onChange={(e) => setFilterRank(e.target.value)}>
+              <option value="">{t.allRanks}</option>
+              {RANKS.map(rank => (<option key={rank} value={rank}>{rank}</option>))}
+            </select>
+            <select value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
+              <option value="">{t.allGenres}</option>
+              {GENRES.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
+            </select>
+            <select value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
+              <option value="">{t.allSpecialties}</option>
+              {SPECIALTIES.map(spec => (<option key={spec} value={spec}>{spec}</option>))}
+            </select>
+          </div>
+          <div className="artists-count">{filteredArtists.length} artistes trouvés</div>
+
+          <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
+            {sortedArtists.map((artist: Artist) => (
+              <button key={artist.id} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
+                {artist.image ? (
+                  <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} />
+                ) : (
+                  <div className="artist-placeholder">
+                    <span style={{ color: rankColors[artist.rank] }}>{artist.name.charAt(0)}</span>
+                  </div>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <style jsx>{`
-        .left-panel {
-          width: 55%;
-          max-width: 700px;
+        .page-container {
+          min-height: 100vh;
         }
-        .artists-container {
-          margin-left: 56%;
-          width: 44%;
+        .page-header {
+          padding: 20px 12px;
+          text-align: center;
         }
-        .artists-grid {
-          display: grid;
-          grid-template-columns: repeat(6, 1fr);
+        .page-title {
+          margin-bottom: 10px;
+          background: linear-gradient(135deg, #f472b6, #c084fc, #818cf8);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-size: 2.5rem;
+          font-weight: 800;
+        }
+        .page-subtitle {
+          color: rgba(255,255,255,0.6);
+          margin-bottom: 20px;
+        }
+        .top-panel {
+          display: flex;
+          width: 100%;
+          height: 40vh;
+          min-height: 300px;
+          gap: 8px;
+          padding: 8px;
+          background: #0f0f1a;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+        .top-panel.fixed {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .panel-col {
+          height: 100%;
+          overflow: hidden;
+        }
+        .panel-col-1 { width: 30%; }
+        .panel-col-2 { width: 35%; }
+        .panel-col-3 { width: 35%; }
+        
+        .artist-preview-card {
+          background: rgba(30,30,50,0.95);
+          border-radius: 8px;
+          border: 1px solid rgba(139,92,246,0.3);
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        .artist-preview-title {
+          padding: 8px;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
+          background: linear-gradient(135deg, rgba(255,77,141,0.15), rgba(139,92,246,0.15));
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: rgba(255,255,255,0.6);
+          text-transform: uppercase;
+        }
+        .artist-preview-content {
+          padding: 8px;
+          display: flex;
+          gap: 12px;
+          flex: 1;
+        }
+        .artist-preview-image-large {
+          width: 100px;
+          height: 130px;
+          border-radius: 8px;
+          border: 2px solid;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          flex-shrink: 0;
+        }
+        .artist-preview-image-large img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .artist-preview-info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          font-size: 0.7rem;
+        }
+        .artist-preview-details {
+          display: flex;
+          gap: 8px;
+          margin-top: 4px;
+        }
+        .detail-col {
+          flex: 1;
+        }
+        .detail-col p {
+          margin: 2px 0;
+          color: rgba(255,255,255,0.6);
+        }
+        .artist-preview-nav {
+          display: flex;
+          align-items: center;
           gap: 4px;
+          margin-bottom: 4px;
         }
-        @media (max-width: 1200px) {
-          .artists-grid { grid-template-columns: repeat(5, 1fr); }
+        .artist-preview-nav button {
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+          border: 1px solid rgba(255,255,255,0.2);
+          background: rgba(255,255,255,0.05);
+          color: #fff;
+          cursor: pointer;
+          font-size: 0.6rem;
         }
-        @media (max-width: 900px) {
-          .left-panel {
-            position: static;
-            width: 100%;
-            max-width: 100%;
-            margin-bottom: 10px;
-          }
-          .artists-container {
-            margin-left: 0;
-            width: 100%;
-            padding-bottom: 20px;
-          }
-          .artists-grid { grid-template-columns: repeat(4, 1fr); }
+        .artist-preview-nav span {
+          flex: 1;
+          text-align: center;
+          font-weight: 700;
+          font-size: 0.85rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
-        @media (max-width: 600px) {
-          .artists-grid { grid-template-columns: repeat(3, 1fr); }
+        .artist-preview-info p {
+          color: rgba(255,255,255,0.5);
+          margin: 2px 0;
         }
+        .view-profile-btn {
+          display: inline-block;
+          margin-top: 8px;
+          padding: 6px 12px;
+          background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+          color: white;
+          border-radius: 4px;
+          font-size: 0.65rem;
+          text-decoration: none;
+          text-align: center;
         }
-        @media (max-width: 2200px) {
-          .artists-grid { grid-template-columns: repeat(6, 1fr); }
+        .add-buttons {
+          display: flex;
+          gap: 6px;
+          margin-top: 6px;
         }
-        @media (max-width: 1900px) {
-          .artists-grid { grid-template-columns: repeat(5, 1fr); }
+        .add-team-btn {
+          flex: 1;
+          padding: 6px 8px;
+          border-radius: 4px;
+          border: none;
+          color: white;
+          font-size: 0.6rem;
+          font-weight: 600;
+          cursor: pointer;
         }
-        @media (max-width: 1600px) {
-          .artists-grid { grid-template-columns: repeat(5, 1fr); }
+        .add-team-btn.team1 {
+          background: #8b5cf6;
         }
-        @media (max-width: 1300px) {
-          .artists-grid { grid-template-columns: repeat(4, 1fr); }
+        .add-team-btn.team2 {
+          background: #06b6d4;
         }
-        @media (max-width: 1000px) {
-          .artists-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 700px) {
-          .artists-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
-        }
-        @media (max-width: 500px) {
-          .artists-grid { grid-template-columns: repeat(4, 1fr); gap: 3px; }
+        .artist-preview-empty {
+          padding: 20px;
+          text-align: center;
+          color: rgba(255,255,255,0.4);
+          font-size: 0.8rem;
         }
         
-        /* Mobile left panel fixes */
+        .team-card {
+          background: rgba(30,30,50,0.95);
+          border-radius: 8px;
+          border: 1px solid rgba(139,92,246,0.3);
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          padding: 8px;
+        }
+        .team-1 { border-color: rgba(139,92,246,0.5); }
+        .team-2 { border-color: rgba(6,182,212,0.5); }
+        
+        .team-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 8px;
+          font-size: 0.8rem;
+          font-weight: 700;
+        }
+        .team-1 .team-header span { color: #8b5cf6; }
+        .team-2 .team-header span { color: #06b6d4; }
+        .team-header button {
+          padding: 2px 8px;
+          font-size: 0.6rem;
+          border-radius: 4px;
+          border: 1px solid;
+          background: transparent;
+          color: #fff;
+          cursor: pointer;
+        }
+        .team-1 .team-header button { border-color: #8b5cf6; }
+        .team-2 .team-header button { border-color: #06b6d4; }
+        .team-header button.active {
+          background: #8b5cf6;
+          border-color: #8b5cf6;
+        }
+        .team-2 .team-header button.active {
+          background: #06b6d4;
+          border-color: #06b6d4;
+        }
+        
+        .team-slots {
+          display: flex;
+          gap: 4px;
+          margin-bottom: 8px;
+          justify-content: center;
+        }
+        .team-slot {
+          width: 40px;
+          height: 50px;
+          border-radius: 4px;
+          border: 2px solid rgba(255,255,255,0.1);
+          background: rgba(255,255,255,0.05);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          overflow: hidden;
+          font-size: 0.7rem;
+          color: rgba(255,255,255,0.2);
+        }
+        .team-slot img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        .team-stats {
+          flex: 1;
+          overflow-y: auto;
+        }
+        .team-stats > div {
+          padding: 2px 0;
+        }
+        .clear-btn {
+          width: 100%;
+          margin-top: 8px;
+          padding: 4px;
+          font-size: 0.55rem;
+          border-radius: 4px;
+          border: 1px solid rgba(255,255,255,0.1);
+          background: transparent;
+          color: rgba(255,255,255,0.4);
+          cursor: pointer;
+        }
+        
+        .add-to-team-bar {
+          padding: 8px;
+          display: flex;
+          gap: 8px;
+          justify-content: center;
+          background: #0f0f1a;
+        }
+        .add-to-team-bar button {
+          padding: 8px 16px;
+          border-radius: 6px;
+          border: none;
+          background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+          color: #fff;
+          font-weight: 600;
+          font-size: 0.75rem;
+          cursor: pointer;
+        }
+        
+        .artists-bottom {
+          padding: 8px;
+          padding-top: 40vh;
+          padding-bottom: 100px;
+          min-height: 100vh;
+        }
+        .top-panel.fixed + .artists-bottom {
+          padding-top: calc(40vh + 8px);
+        }
+        .search-bar {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 8px;
+          padding: 8px;
+          background: #0f0f1a;
+          z-index: 99;
+        }
+        .top-panel.fixed + .artists-bottom .search-bar {
+          position: fixed;
+          top: 40vh;
+          left: 0;
+          right: 0;
+        }
+        .search-bar input {
+          flex: 1;
+          padding: 10px 12px;
+          background: #0f0f1a;
+          border: 1px solid #333;
+          border-radius: 8px;
+          color: #fff;
+          font-size: 0.9rem;
+        }
+        .search-bar select {
+          padding: 10px;
+          background: #0f0f1a;
+          border: 1px solid #333;
+          border-radius: 8px;
+          color: #fff;
+          font-size: 0.85rem;
+          cursor: pointer;
+        }
+        .artists-count {
+          font-size: 0.85rem;
+          color: #888;
+          margin-bottom: 8px;
+        }
+        
+        .artists-grid {
+          display: grid;
+          grid-template-columns: repeat(9, 1fr);
+          gap: 4px;
+        }
+        .artists-grid button {
+          aspect-ratio: 3/4;
+          border-radius: 8px;
+          border: 2px solid rgba(255,255,255,0.1);
+          background: rgba(30,30,50,0.9);
+          padding: 0;
+          cursor: pointer;
+          overflow: hidden;
+        }
+        .artists-grid button.selected {
+          border-width: 2px;
+        }
+        .artists-grid button img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .artist-placeholder {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          font-weight: 800;
+        }
+        
+        /* Mobile */
         @media (max-width: 900px) {
-          .left-panel {
-            position: relative;
+          .page-header {
+            display: none;
+          }
+          .top-panel {
+            flex-direction: column;
+            height: auto;
+            max-height: 50vh;
+            min-height: auto;
+            position: sticky;
+            top: 0;
+          }
+          .panel-col-1, .panel-col-2, .panel-col-3 {
             width: 100%;
-            max-width: 100%;
-            margin-bottom: 10px;
           }
-          .artists-container {
-            margin-left: 0;
-            width: 100%;
-            padding-bottom: 80px;
+          .artists-bottom {
+            padding-bottom: 100px;
+            min-height: 100vh;
           }
-          .artist-overview-card {
-            padding: 6px !important;
-            margin-bottom: 4px !important;
+          .search-bar {
+            position: sticky;
+            top: 50vh;
           }
-          .artist-overview-title {
-            font-size: 0.7rem !important;
-            padding: 6px !important;
-          }
-          .artist-overview-content {
-            padding: 6px !important;
-          }
-          .artist-image {
-            width: 50px !important;
-            height: 65px !important;
-          }
-          .artist-info {
-            font-size: 0.55rem !important;
-          }
-          .view-profile-btn {
-            padding: 4px 8px !important;
-            font-size: 0.7rem !important;
-            margin-top: 8px !important;
-          }
-          .team-builder-card {
-            padding: 6px !important;
-          }
-          .team-builder-title {
-            font-size: 0.7rem !important;
-            margin-bottom: 4px !important;
-          }
-          .team-slot {
-            width: 28px !important;
-            height: 34px !important;
-          }
-          .team-stats {
-            padding: 4px !important;
-            font-size: 0.55rem !important;
-          }
-          .add-to-team-btn {
-            padding: 6px !important;
-            font-size: 0.65rem !important;
+          .artists-grid {
+            grid-template-columns: repeat(6, 1fr);
           }
         }
       `}</style>

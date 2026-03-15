@@ -75,13 +75,57 @@ const getTierOrder = (tier: string): number => {
 
 const getEffectiveTier = (artist: any): string => {
   const skills = artist.skills || [];
-  const has50Basic = skills.some((s: string) => s.toLowerCase().includes('50% basic'));
-  const has20Skill = skills.some((s: string) => s.toLowerCase().includes('20% skill'));
+  const currentTier = (artist.rating || 'F').toUpperCase();
   
-  if (artist.specialty === 'Dommage réduction' || (has50Basic && has20Skill)) {
+  // Parse skills for damage types
+  const hasPlayerDamage = skills.some((s: string) => 
+    s.toLowerCase().includes('player damage') || s.toLowerCase().includes('damage to player')
+  );
+  
+  // Extract attack damage percentage (basic attack)
+  const basicAttackMatch = skills.find((s: string) => 
+    s.toLowerCase().includes('basic attack damage') || s.toLowerCase().includes('basic attack')
+  );
+  const basicAttackPercent = basicAttackMatch ? parseInt(basicAttackMatch.match(/\d+/)?.[0] || '0') : 0;
+  
+  // Check for skill damage
+  const hasSkillDamage = skills.some((s: string) => 
+    s.toLowerCase().includes('skill damage') && !s.toLowerCase().includes('reduction')
+  );
+  const skillDamageMatch = skills.find((s: string) => 
+    s.toLowerCase().includes('skill damage') && !s.toLowerCase().includes('reduction')
+  );
+  const skillDamagePercent = skillDamageMatch ? parseInt(skillDamageMatch.match(/\d+/)?.[0] || '0') : 0;
+  
+  // Check for resistance skills (defense)
+  const hasResistanceSkill = skills.some((s: string) => 
+    s.toLowerCase().includes('damage reduction') || s.toLowerCase().includes('reduction')
+  );
+  const hasSkillResistance = skills.some((s: string) => 
+    s.toLowerCase().includes('skill damage reduction')
+  );
+  const hasBasicResistance = skills.some((s: string) => 
+    s.toLowerCase().includes('basic damage reduction')
+  );
+  const hasAnyResistance = hasSkillResistance || hasBasicResistance;
+  
+  // Rule 1: NOT S+ AND (player damage) AND (attack OR skill OR resistance)
+  // If artist has player damage AND (attack damage > 0 OR skill damage > 0 OR resistance)
+  if (currentTier !== 'S+' && hasPlayerDamage && (basicAttackPercent > 0 || skillDamagePercent > 0 || hasResistanceSkill)) {
+    return 'S';
+  }
+  
+  // Rule 2: attack >= 60% AND (skill resistance OR basic resistance)
+  if (basicAttackPercent >= 60 && hasAnyResistance) {
     return 'A';
   }
-  return (artist.rating || 'F').toUpperCase();
+  
+  // Rule 3: attack = 50% AND (skill resistance OR basic resistance)
+  if (basicAttackPercent === 50 && hasAnyResistance) {
+    return 'B';
+  }
+  
+  return currentTier;
 };
 
 export default function TierListPage() {
