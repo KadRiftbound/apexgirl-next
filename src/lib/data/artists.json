@@ -62,7 +62,7 @@
       "speed": []
     },
     "calculatedTier": "S",
-    "specialty": "Mixte",
+    "specialty": "Defense",
     "singStat": 19076,
     "danceStat": 25851
   },
@@ -95,7 +95,7 @@
       "speed": []
     },
     "calculatedTier": "S",
-    "specialty": "Mixte",
+    "specialty": "Defense",
     "image": "Isadora.jpg",
     "singStat": 22464,
     "danceStat": 22464
@@ -165,7 +165,8 @@
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "image": "Marguerite.jpg"
   },
   {
     "id": 43,
@@ -541,7 +542,7 @@
     "rating": "B",
     "thoughts": "Damage Reduction",
     "image": "Avery.jpg",
-    "specialty": "Damage Reduction",
+    "specialty": "Defense",
     "event": "Original",
     "singStat": 19076,
     "danceStat": 25851
@@ -611,7 +612,7 @@
     "rating": "B",
     "thoughts": "Damage Reduction",
     "image": "Ayaka.jpg",
-    "specialty": "Damage Reduction",
+    "specialty": "Defense",
     "event": "Tokyo 1",
     "singStat": 29023,
     "danceStat": 20893
@@ -716,7 +717,7 @@
     "rating": "A",
     "thoughts": "Rally",
     "image": "Chizuru.jpg",
-    "specialty": "Solo car",
+    "specialty": "Rassemblement",
     "event": "Tokyo 1",
     "singStat": 24959,
     "danceStat": 24959
@@ -855,7 +856,7 @@
     "rating": "C",
     "thoughts": "HQ Defense",
     "image": "Cornelia.jpg",
-    "specialty": "HQ Defense",
+    "specialty": "Mixte",
     "event": "Rome 2",
     "singStat": 25071,
     "danceStat": 34827
@@ -1029,7 +1030,7 @@
     "rating": "B",
     "thoughts": "Damage Reduction",
     "image": "Everly.jpg",
-    "specialty": "Damage Reduction",
+    "specialty": "Mixte",
     "event": "Original",
     "singStat": 22464,
     "danceStat": 22464
@@ -1135,7 +1136,7 @@
     "rating": "A",
     "thoughts": "Rally",
     "image": "Hestia.jpg",
-    "specialty": "Solo car",
+    "specialty": "Rassemblement",
     "event": "Special",
     "singStat": 24959,
     "danceStat": 24959
@@ -1170,7 +1171,7 @@
     "rating": "A",
     "thoughts": "Damage Reduction",
     "image": "Hikari.jpg",
-    "specialty": "Damage Reduction",
+    "specialty": "Mixte",
     "event": "Tokyo 3",
     "singStat": 29950,
     "danceStat": 29950
@@ -1622,7 +1623,7 @@
     "description": "A talented Dancer from None.",
     "rating": "A",
     "thoughts": "Damage Reduction",
-    "specialty": "Damage Reduction",
+    "specialty": "Mixte",
     "event": "Tokyo 4",
     "image": "Mio.jpg",
     "singStat": 28069,
@@ -1692,10 +1693,11 @@
     "description": "A talented Vocalist from Coral.",
     "rating": "B",
     "thoughts": "Damage Reduction",
-    "specialty": "Damage Reduction",
+    "specialty": "Defense",
     "event": "Bali 1",
     "singStat": 29023,
-    "danceStat": 20893
+    "danceStat": 20893,
+    "image": "Moana.jpg"
   },
   {
     "id": 8,
@@ -1727,7 +1729,7 @@
     "rating": "A",
     "thoughts": "Rally",
     "image": "Nastassja.jpg",
-    "specialty": "Solo car",
+    "specialty": "Rassemblement",
     "event": "Special",
     "singStat": 29023,
     "danceStat": 20893
@@ -1833,7 +1835,7 @@
     "rating": "B",
     "thoughts": "HQ Defense",
     "image": "Nova.jpg",
-    "specialty": "HQ Defense",
+    "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 22464,
     "danceStat": 22464
@@ -1904,7 +1906,7 @@
     "rating": "B",
     "thoughts": "Damage Reduction",
     "image": "Paisley.jpg",
-    "specialty": "Damage Reduction",
+    "specialty": "Defense",
     "event": "Original",
     "singStat": 19076,
     "danceStat": 25851
@@ -2113,7 +2115,7 @@
     "rating": "A",
     "thoughts": "Rally",
     "image": "Sari.jpg",
-    "specialty": "Solo car",
+    "specialty": "Rassemblement",
     "event": "Bali 1",
     "singStat": 29023,
     "danceStat": 20893
@@ -2183,7 +2185,7 @@
     "description": "A talented Dancer from None.",
     "rating": "A",
     "thoughts": "Damage Reduction",
-    "specialty": "Damage Reduction",
+    "specialty": "Mixte",
     "event": "Bali 4",
     "image": "Sienna.jpg",
     "singStat": 33542,
@@ -2360,7 +2362,7 @@
     "rating": "C",
     "thoughts": "HQ Defense",
     "image": "Vivienne.jpg",
-    "specialty": "HQ Defense",
+    "specialty": "Mixte",
     "event": "Bali 3",
     "singStat": 25071,
     "danceStat": 34827
@@ -2395,7 +2397,7 @@
     "rating": "A",
     "thoughts": "Rally",
     "image": "Xenia.jpg",
-    "specialty": "Solo car",
+    "specialty": "Rassemblement",
     "event": "Rome 1",
     "singStat": 20893,
     "danceStat": 29023
@@ -2429,7 +2431,7 @@
     "description": "A talented Vocalist from None.",
     "rating": "A",
     "thoughts": "Damage Reduction",
-    "specialty": "Damage Reduction",
+    "specialty": "Mixte",
     "event": "Tokyo 4",
     "image": "Yumeno.jpg",
     "singStat": 42437,
@@ -2572,7 +2574,8 @@
     "specialty": "Solo car",
     "event": "VIP 10",
     "singStat": 19076,
-    "danceStat": 25851
+    "danceStat": 25851,
+    "image": "Caroline.jpg"
   },
   {
     "id": 5,
@@ -2672,7 +2675,8 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage"
+    "specialty": "Augmentation dommage",
+    "image": "Abigail.jpg"
   },
   {
     "id": 58,
@@ -2705,7 +2709,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage"
+    "specialty": "Augmentation dommage",
+    "image": "Angelina.jpg"
   },
   {
     "id": 62,
@@ -2771,7 +2776,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage"
+    "specialty": "Augmentation dommage",
+    "image": "Chloe.jpg"
   },
   {
     "id": 45,
@@ -2872,7 +2878,8 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "specialty": "Mixte"
+    "specialty": "Mixte",
+    "image": "Emily.jpg"
   },
   {
     "id": 54,
@@ -2939,7 +2946,8 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "specialty": "Mixte"
+    "specialty": "Mixte",
+    "image": "Grace.jpg"
   },
   {
     "id": 65,
@@ -2972,7 +2980,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage"
+    "specialty": "Augmentation dommage",
+    "image": "Hailey.jpg"
   },
   {
     "id": 61,
@@ -3005,7 +3014,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage"
+    "specialty": "Augmentation dommage",
+    "image": "Hazel.jpg"
   },
   {
     "id": 49,
@@ -3038,7 +3048,8 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "specialty": "Solo car"
+    "specialty": "Solo car",
+    "image": "Lily.jpg"
   },
   {
     "id": 47,
@@ -3071,7 +3082,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Mixte"
+    "specialty": "Mixte",
+    "image": "Luna.jpg"
   },
   {
     "id": 48,
@@ -3138,7 +3150,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage"
+    "specialty": "Augmentation dommage",
+    "image": "Natalie.jpg"
   },
   {
     "id": 59,
@@ -3171,7 +3184,8 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "specialty": "Solo car"
+    "specialty": "Solo car",
+    "image": "Penelope.jpg"
   },
   {
     "id": 60,
@@ -3204,7 +3218,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Mixte"
+    "specialty": "Mixte",
+    "image": "Samantha.jpg"
   },
   {
     "id": 51,
@@ -3236,7 +3251,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Économie"
+    "specialty": "Économie",
+    "image": "Sarah.jpg"
   },
   {
     "id": 63,
@@ -3269,7 +3285,8 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "specialty": "Solo car"
+    "specialty": "Solo car",
+    "image": "Scarlett.jpg"
   },
   {
     "id": 53,
@@ -3302,7 +3319,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage"
+    "specialty": "Augmentation dommage",
+    "image": "Stella.jpg"
   },
   {
     "id": 46,
@@ -3560,7 +3578,8 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "specialty": "Augmentation dommage"
+    "specialty": "Augmentation dommage",
+    "image": "Emma.jpg"
   },
   {
     "id": 1007,
@@ -3655,7 +3674,8 @@
       ]
     },
     "calculatedTier": "C",
-    "specialty": "Économie"
+    "specialty": "Économie",
+    "image": "Annabelle.jpg"
   },
   {
     "id": 67,
@@ -3687,7 +3707,7 @@
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
     "event": "Rome 3",
-    "image": "Nike.jpg",
+    "image": "Sarah.jpg",
     "singStat": 34827,
     "danceStat": 25071
   },
@@ -3859,7 +3879,7 @@
       "speed": []
     },
     "calculatedTier": "S",
-    "specialty": "Damage Reduction",
+    "specialty": "Mixte",
     "event": "Roma 3",
     "image": "Valerie.jpg",
     "singStat": 14083,
