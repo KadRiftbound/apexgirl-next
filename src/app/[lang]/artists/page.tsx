@@ -2,7 +2,7 @@
 
 import Head from "next/head";
 import { useState, useMemo, useEffect, useRef } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
@@ -21,7 +21,7 @@ const filterTranslations: Record<string, any> = {
 };
 
 const rankColors: Record<string, string> = {
-  UR: "#fbbf24", "UR Roma": "#ef4444", "UR Bali": "#10b981", SSR: "#a855f7", SR: "#3b82f6", R: "#22c55e",
+  UR: "#ff6b6b", "UR Roma": "#fbbf24", "UR Bali": "#10b981", SSR: "#fbbf24", SR: "#8b5cf6", R: "#3b82f6",
 };
 
 type Artist = {
@@ -44,6 +44,7 @@ const SPECIALTIES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de c
 
 export default function ArtistsPage() {
   const params = useParams();
+  const router = useRouter();
   const lang = (params?.lang as string) || "fr";
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [team1, setTeam1] = useState<Artist[]>([]);
@@ -265,11 +266,26 @@ export default function ArtistsPage() {
   }, [searchQuery, filterRank, filterGenre, filterSpecialty]);
 
   const [panelFixed, setPanelFixed] = useState(false);
+  const [searchBarVisible, setSearchBarVisible] = useState(true);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    
     const handleScroll = () => {
-      setPanelFixed(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setPanelFixed(currentScrollY > 50);
+      
+      // On mobile, hide search bar when scrolling down
+      if (window.innerWidth <= 900) {
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setSearchBarVisible(false);
+        } else {
+          setSearchBarVisible(true);
+        }
+      }
+      lastScrollY = currentScrollY;
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -315,9 +331,9 @@ export default function ArtistsPage() {
                   </div>
                   <div className="artist-preview-info">
                     <div className="artist-preview-nav">
-                      <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i > 0) setSelectedArtist(filteredArtists[i-1]); }}>◀</button>
-                      <span style={{ color: rankColors[selectedArtist.rank] }}>{selectedArtist.name}</span>
-                      <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i < filteredArtists.length-1) setSelectedArtist(filteredArtists[i+1]); }}>▶</button>
+                      <button onClick={() => { const i = sortedArtists.findIndex(a => a.id === selectedArtist.id); if (i > 0) setSelectedArtist(sortedArtists[i-1]); }}>◀</button>
+                      <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.name}</span>
+                      <button onClick={() => { const i = sortedArtists.findIndex(a => a.id === selectedArtist.id); if (i < sortedArtists.length-1) setSelectedArtist(sortedArtists[i+1]); }}>▶</button>
                     </div>
                     <div className="artist-preview-details">
                       <div className="detail-col">
@@ -327,18 +343,23 @@ export default function ArtistsPage() {
                       </div>
                       <div className="detail-col">
                         <p>🎵 {selectedArtist.genre}</p>
-                        <p>📊 Rang: <span style={{ color: rankColors[selectedArtist.rank] }}>{selectedArtist.rank}</span></p>
+                        <p>📊 Rang: <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.rank}</span></p>
                       </div>
                     </div>
-                    <Link href={`/${lang}/artist/${slugify(selectedArtist.name)}`} className="view-profile-btn">
-                      {t.viewFullProfile}
-                    </Link>
+                    <div className="artist-preview-skills">
+                      {selectedArtist.skills?.slice(0, 3).map((skill, i) => (
+                        <p key={i} className="skill-line">{i === 0 ? "⚔️ " : "✨ "}{skill}</p>
+                      ))}
+                    </div>
+                    <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)} className="view-profile-btn">
+                      Fiche
+                    </button>
                     <div className="add-buttons">
                       {selectedArtist && !team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && (
-                        <button onClick={() => { setActiveTeam(1); addToTeam(selectedArtist); }} className="add-team-btn team1">+ Équipe 1</button>
+                        <button onClick={() => addToTeam1(selectedArtist)} className="add-team-btn team1">+ Équipe 1</button>
                       )}
                       {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && (
-                        <button onClick={() => { setActiveTeam(2); addToTeam(selectedArtist); }} className="add-team-btn team2">+ Équipe 2</button>
+                        <button onClick={() => addToTeam2(selectedArtist)} className="add-team-btn team2">+ Équipe 2</button>
                       )}
                     </div>
                   </div>
@@ -362,7 +383,7 @@ export default function ArtistsPage() {
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team1[i] && setSelectedArtist(team1[i])} className="team-slot">
                     {team1[i] ? (
-                      team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} /> : <span style={{ color: rankColors[team1[i].rank] }}>{team1[i].name.charAt(0)}</span>
+                      team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
                 ))}
@@ -407,7 +428,7 @@ export default function ArtistsPage() {
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team2[i] && setSelectedArtist(team2[i])} className="team-slot">
                     {team2[i] ? (
-                      team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} /> : <span style={{ color: rankColors[team2[i].rank] }}>{team2[i].name.charAt(0)}</span>
+                      team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
                 ))}
@@ -429,7 +450,7 @@ export default function ArtistsPage() {
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid (scrollable) */}
         <div className="artists-bottom">
-          <div className="search-bar">
+          <div className={`search-bar ${!searchBarVisible ? 'hidden' : ''}`}>
             <input
               type="text"
               placeholder={t.search}
@@ -458,7 +479,7 @@ export default function ArtistsPage() {
                   <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} />
                 ) : (
                   <div className="artist-placeholder">
-                    <span style={{ color: rankColors[artist.rank] }}>{artist.name.charAt(0)}</span>
+                    <span style={{ color: rankColors[artist.rank], fontWeight: 800 }}>{artist.name.charAt(0)}</span>
                   </div>
                 )}
               </button>
@@ -596,10 +617,27 @@ export default function ArtistsPage() {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          background: var(--rank-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
         .artist-preview-info p {
           color: rgba(255,255,255,0.5);
           margin: 2px 0;
+        }
+        .artist-preview-skills {
+          margin-top: 6px;
+          padding-top: 6px;
+          border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .skill-line {
+          font-size: 0.6rem;
+          color: rgba(255,255,255,0.7);
+          margin: 2px 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .view-profile-btn {
           display: inline-block;
@@ -838,6 +876,9 @@ export default function ArtistsPage() {
           .artist-preview-details {
             display: none;
           }
+          .artist-preview-skills {
+            display: none;
+          }
           .artist-preview-nav {
             margin-bottom: 4px;
           }
@@ -849,6 +890,8 @@ export default function ArtistsPage() {
             font-weight: 600;
             border-radius: 6px;
             text-align: center;
+            border: none;
+            cursor: pointer;
           }
           .view-profile-btn {
             background: linear-gradient(135deg, #f472b6, #c084fc);
@@ -885,18 +928,37 @@ export default function ArtistsPage() {
           .artists-bottom {
             padding-bottom: 100px;
             min-height: 100vh;
-            padding-top: 0;
+            padding-top: 45vh;
           }
           .top-panel.fixed + .artists-bottom {
-            padding-top: 0;
+            padding-top: 45vh;
           }
           .search-bar {
             position: sticky;
             top: 40vh;
             margin-bottom: 0;
+            z-index: 101;
+            width: 100%;
+            transition: transform 0.3s ease;
+          }
+          .search-bar.hidden {
+            transform: translateY(-100%);
+          }
+          .top-panel {
+            z-index: 100;
           }
           .artists-grid {
             grid-template-columns: repeat(6, 1fr);
+          }
+          
+          /* Hide MobileNav and background logo on mobile */
+          .mobile-nav, [class*="MobileNav"], nav, header {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+          }
+          body {
+            background-image: none !important;
           }
         }
       `}</style>
