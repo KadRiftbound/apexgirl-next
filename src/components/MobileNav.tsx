@@ -36,7 +36,7 @@ export function MobileNav() {
         top: 0,
         left: 0,
         right: 0,
-        height: '50px',
+        height: '56px',
         background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
         display: 'flex',
         alignItems: 'center',
@@ -50,7 +50,7 @@ export function MobileNav() {
           <img 
             src="/assets/images/logo.png" 
             alt="TopGirlGuide" 
-            style={{ height: '32px', objectFit: 'contain' }}
+            style={{ height: '44px', width: 'auto', maxWidth: '160px', objectFit: 'contain' }}
           />
         </Link>
         
@@ -90,7 +90,7 @@ export function MobileNav() {
       {isOpen && (
         <div style={{
           position: 'fixed',
-          top: '50px',
+          top: '56px',
           left: '0',
           right: '0',
           bottom: '0',
