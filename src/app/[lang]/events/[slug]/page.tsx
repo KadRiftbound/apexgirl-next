@@ -189,6 +189,27 @@ export default function EventDetailPage() {
             </div>
           </div>
         )}
+
+        {event.guideId && (
+          <div style={{ marginTop: "24px" }}>
+            <Link 
+              href={`/${lang}/guides/${event.guideId}/`}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 24px",
+                background: "linear-gradient(135deg, #8b5cf6, #06b6d4)",
+                borderRadius: "8px",
+                color: "#fff",
+                textDecoration: "none",
+                fontWeight: 600
+              }}
+            >
+              📖 {lang === "fr" ? "Voir le guide complet" : lang === "en" ? "View full guide" : "View guide"}
+            </Link>
+          </div>
+        )}
       </div>
 
       <AdBanner />

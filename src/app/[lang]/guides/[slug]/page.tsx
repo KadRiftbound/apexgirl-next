@@ -414,6 +414,303 @@ Similar to Vocalist but:
 - Still competitive en mid-game
     `
   },
+  {
+    id: "event-ancient-rome",
+    title: "Guide Ancient Rome",
+    description: "Guide complet de l'événement Adventure Abroad Rome",
+    icon: "🏛️",
+    color: "#f97316",
+    category: "Événements",
+    readTime: "10 min",
+    content: `
+## Guide Ancient Rome - TopGirl
+
+### Présentation
+L'événement **Adventure Abroad: Rome** est un événement saisonnier de 12 jours qui se déroule dans la Rome antique. Le but est de收集 des items ROMA à travers 3 phases et de les échanger contre des rewards exclusifs.
+
+### Phases de l'événement
+
+**Phase 1: Colosseum (Jour 1-4)**
+- **Objectif:** Collecter les items ROMA
+- **Rewards:** ROMA Items, Diamonds
+- **Conseil:** Focus sur les快速 battles pour accumuler rapidement
+
+**Phase 2: Forum (Jour 5-8)**
+- **Objectif:** Compléter des chansons
+- **Rewards:** SSR Cards, ROMA Items
+- **Conseil:** Utilisez vos meilleures équipes pour maximize les rewards
+
+**Phase 3: Emperor (Jour 9-12)**
+- **Objectif:** Échanger les rewards
+- **Rewards:** UR Token, SSR+ Cards
+- **Conseil:** Gardez enough ROMA Items pour les meilleurs échanges
+
+### Stratégie
+1. **Jour 1-4:** Maximisez la collecte d'items ROMA
+2. **Jour 5-8:** Concentrez-vous sur les chanson completions
+3. **Jour 9-12:** Échangez pour les meilleures rewards
+
+### Meilleures Artists
+- Cornelia, Aurelia, Xenia (bonus Rome)
+    `
+  },
+  {
+    id: "event-radio-battle",
+    title: "Guide Radio Battle",
+    description: "Guide complet du Radio Battle",
+    icon: "📻",
+    color: "#06b6d4",
+    category: "Événements",
+    readTime: "8 min",
+    content: `
+## Guide Radio Battle - TopGirl
+
+### Présentation
+Le **Radio Battle** est un événement récurrent où vous affrontez d'autres joueurs via la radio. Plus vous avez d'auditeurs, plus votre score est élevé.
+
+### Les 5 Phases
+
+**Phase 1: Opening (Day 1)**
+- Préparez votre station radio
+- Reward: Radio Coins x100
+
+**Phase 2: Heat 1 (Day 1-2)**
+- Accumulez des listeners
+- Reward: Radio Coins x200
+
+**Phase 3: Heat 2 (Day 2-3)**
+- Défiez d'autres stations
+- Reward: Radio Coins x300
+
+**Phase 4: Finals (Day 3-4)**
+- Bataille finale
+- Reward: SSR Cards
+
+**Phase 5: Exchange (Day 4-5)**
+- Échangez vos Radio Coins
+- Rewards: UR Tokens, SSR+
+
+### Stratégie
+1. **Releasez pendant les heures de pointe** (soir)
+2. **Utilisez des artists avec compétences Charisma**
+3. **Combinez différents genres** pour attract plus d'auditeurs
+
+### Meilleures Artists
+- Skylar, Nova, Sora, Evelyn
+    `
+  },
+  {
+    id: "event-grammy",
+    title: "Guide Grammy Awards",
+    description: "Guide des 8 catégories Grammy",
+    icon: "🏆",
+    color: "#fbbf24",
+    category: "Événements",
+    readTime: "10 min",
+    content: `
+## Guide Grammy Awards - TopGirl
+
+### Présentation
+Le **Grammy Contest** est un événement hebdomadaire de competition musicale avec 8 catégories différentes. Créez la meilleure chanson en combinant différents genres et artists.
+
+### Les 8 Catégories
+
+| Catégorie | Genre Requis | Meilleure Stratégie |
+|-----------|--------------|---------------------|
+| Best New Artist | Tous | Use rising stars avec high potential |
+| Record of the Year | Pop + EDM | Combinez Pop + EDM pour max score |
+| Album of the Year | Tous | Balancez tous les stats |
+| Song of the Year | Tous | Focus sur Charisma skills |
+| Best Pop | Pop only | Équipe 100% Pop |
+| Best Hip Hop | Hip Hop only | Équipe Hip Hop |
+| Best R&B | R&B only | Specialists R&B |
+| Best Rock | Rock only | Équipe Rock |
+
+### Stratégie
+1. **Utilisez des artists avec high Singing stats**
+2. **Combinez lead vocalist + supporting dancers**
+3. **Pop et EDM ont tendance à scorer plus haut**
+
+### Meilleures Artists
+- Lestari, Brooklyn, Alice, Bella (general)
+- Artists par genre: vérifier les stats
+    `
+  },
+  {
+    id: "event-ultimate-ceo",
+    title: "Guide Ultimate CEO",
+    description: "Guide complet de l'Ultimate CEO",
+    icon: "💼",
+    color: "#ef4444",
+    category: "Événements",
+    readTime: "8 min",
+    content: `
+## Guide Ultimate CEO - TopGirl
+
+### Présentation
+L'**Ultimate CEO** est un événement hebdomadaire de 5 jours où vous affrontez le CEO pour earn des rewards exclusifs.
+
+### Phases
+
+**Phase 1 (Day 1)**
+- Accumulez des CEO Points
+- Rewards: Cartes communes
+
+**Phase 2 (Day 2)**
+- Défiez le CEO
+- Rewards: Cartes SSR
+
+**Phase 3 (Day 3-5)**
+- Échangez vos rewards
+- Rewards: UR Tokens, CEO Cards
+
+### Stratégie
+1. **Focus sur teams avec high DPS**
+2. **Equilibrez attack et defense artists**
+3. **Utilisez des artists avec Fan Capacity bonuses**
+
+### Meilleures Artists
+- Kokoro, Aurora, Claire, Alice
+    `
+  },
+  {
+    id: "event-echo-death-match",
+    title: "Guide Echo Death Match",
+    description: "Guide du Echo Death Match",
+    icon: "👻",
+    color: "#8b5cf6",
+    category: "Événements",
+    readTime: "8 min",
+    content: `
+## Guide Echo Death Match - TopGirl
+
+### Présentation
+Le **Echo Death Match** est un événement où vous affrontez des échos. Accumulez des Echo Stones à travers des battles solo et team.
+
+### Phases
+
+**Phase 1 (Jour 1-2)**
+- Solo battles
+- Objectif: Accumuler Echo Stones
+- Reward: Echo Stones x500
+
+**Phase 2 (Jour 3-5)**
+- Team battles
+- Objectif: Bonus Echo Stones
+- Reward: Echo Stones x1000, SSR Shards
+
+**Phase 3 (Jour 6-7)**
+- Échange des rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Stratégie
+1. **Phase 1:** Focus sur solo battles pour stocker
+2. **Phase 2:** Team battles pour bonus
+3. **Gardez des Echo Stones** pour les meilleurs échanges
+    `
+  },
+  {
+    id: "event-chamber-territory",
+    title: "Guide Chamber Territory",
+    description: "Guide du Chamber Territory",
+    icon: "🏰",
+    color: "#14b8a6",
+    category: "Événements",
+    readTime: "8 min",
+    content: `
+## Guide Chamber Territory - TopGirl
+
+### Présentation
+Le **Chamber Territory** est un événement de territoire. Capturez et défendez différentes chambres pour earn des rewards.
+
+### Phases
+
+**Phase 1 (Jour 1-3)**
+- Capturez des territoires
+- Reward: Territory Tokens x300
+
+**Phase 2 (Jour 4-7)**
+- Défendez et collectez
+- Reward: SSR Cards, Tokens x500
+
+**Phase 3 (Jour 8-10)**
+- Échangez vos rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Stratégie
+1. **Capturez tôt** les territoires à haute valeur
+2. **Défendez vos territoires** pour des bonus
+3. **Coopérez avec d'autres joueurs**
+    `
+  },
+  {
+    id: "event-cleanup-party",
+    title: "Guide Cleanup Party",
+    description: "Guide du Cleanup Party",
+    icon: "🧹",
+    color: "#22c55e",
+    category: "Événements",
+    readTime: "5 min",
+    content: `
+## Guide Cleanup Party - TopGirl
+
+### Présentation
+Le **Cleanup Party** est un événement où vous nettoyez la ville en collectant des poubelles.
+
+### Phases
+
+**Phase 1 (Jour 1-2)**
+- Collectez les poubelles
+- Reward: Trash x200
+
+**Phase 2 (Jour 3-5)**
+- Missions de nettoyage
+- Reward: Trash x400, SSR Shards
+
+**Phase 3 (Jour 6-7)**
+- Échangez les rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Stratégie
+1. **Complétez les missions** de nettoyage pour bonus
+2. **Team up** pour une collecte plus rapide
+3. **Échangez** vos trash pour les meilleures rewards
+    `
+  },
+  {
+    id: "event-metro-subway",
+    title: "Guide Metro & Subway",
+    description: "Guide du Metro & Subway",
+    icon: "🚇",
+    color: "#3b82f6",
+    category: "Événements",
+    readTime: "5 min",
+    content: `
+## Guide Metro & Subway - TopGirl
+
+### Présentation
+Le **Metro & Subway** est un événement où vous prenez le métro pour collecter des tickets et earn des rewards.
+
+### Phases
+
+**Phase 1 (Jour 1-2)**
+- Collectez les tickets
+- Reward: Tickets x150
+
+**Phase 2 (Jour 3-5)**
+- Complétez les lignes
+- Reward: Tickets x300, SSR Shards
+
+**Phase 3 (Jour 6-7)**
+- Échangez les rewards
+- Rewards: UR Token, SSR+ Cards
+
+### Stratégie
+1. **Complétez les lignes de métro** pour bonus tickets
+2. **Différentes lignes** ont différentes rewards
+3. **Échangez** vos tickets pour les meilleures rewards
+    `
+  },
 ];
 
 export default function GuideDetailPage() {

@@ -9,7 +9,13 @@
     "bestArtists": ["Kokoro", "Aurora", "Claire", "Alice"],
     "active": true,
     "duration": "5 days",
-    "frequency": "Weekly"
+    "frequency": "Weekly",
+    "guideId": "event-ultimate-ceo",
+    "phases": [
+      { "name": "Phase 1", "duration": "Day 1", "objective": "Accumuler des CEO Points", "rewards": "Cartes communes" },
+      { "name": "Phase 2", "duration": "Day 2", "objective": "Défier le CEO", "rewards": "Cartes SSR" },
+      { "name": "Phase 3", "duration": "Day 3-5", "objective": "Échanger les rewards", "rewards": "UR Tokens, CEO Cards" }
+    ]
   },
   {
     "id": 2,
@@ -22,7 +28,18 @@
     "active": true,
     "duration": "7 days",
     "frequency": "Weekly",
-    "genre": "Music Competition"
+    "genre": "Music Competition",
+    "guideId": "event-grammy",
+    "categories": [
+      { "name": "Best New Artist", "reward": "Medals", "strategy": "Use rising stars with high potential" },
+      { "name": "Record of the Year", "reward": "Medals", "strategy": "Combine Pop + EDM for max score" },
+      { "name": "Album of the Year", "reward": "Medals", "strategy": "Balance all stats" },
+      { "name": "Song of the Year", "reward": "Medals", "strategy": "Focus on Charisma skills" },
+      { "name": "Best Pop", "reward": "SSR Shards", "strategy": "Pure Pop team required" },
+      { "name": "Best Hip Hop", "reward": "SSR Shards", "strategy": "Hip Hop genre only" },
+      { "name": "Best R&B", "reward": "SSR Shards", "strategy": "R&B specialists" },
+      { "name": "Best Rock", "reward": "SSR Shards", "strategy": "Rock genre artists" }
+    ]
   },
   {
     "id": 3,
@@ -34,7 +51,15 @@
     "bestArtists": ["Skylar", "Nova", "Sora", "Evelyn"],
     "active": true,
     "duration": "3-5 days",
-    "frequency": "Weekly"
+    "frequency": "Weekly",
+    "guideId": "event-radio-battle",
+    "phases": [
+      { "name": "Phase 1: Opening", "duration": "Day 1", "objective": "Préparer la station", "rewards": "Radio Coins x100" },
+      { "name": "Phase 2: Heat 1", "duration": "Day 1-2", "objective": "Accumuler les listeners", "rewards": "Radio Coins x200" },
+      { "name": "Phase 3: Heat 2", "duration": "Day 2-3", "objective": "Défier d'autres stations", "rewards": "Radio Coins x300" },
+      { "name": "Phase 4: Finals", "duration": "Day 3-4", "objective": "Final battle", "rewards": "SSR Cards" },
+      { "name": "Phase 5: Exchange", "duration": "Day 4-5", "objective": "Échanger les rewards", "rewards": "UR Tokens, SSR+" }
+    ]
   },
   {
     "id": 4,
@@ -351,8 +376,82 @@
     "rewards": ["Rome Landmarks", "Italian Artists", "Roman Outfits", "Exclusive Items"],
     "tips": "Build iconic Roman landmarks. Coordinate with your group for territorial control.",
     "bestArtists": ["Cornelia", "Aurelia", "Xenia"],
-    "active": false,
-    "duration": "21 days",
-    "region": "Rome"
+    "active": true,
+    "duration": "12 days",
+    "region": "Rome",
+    "guideId": "event-ancient-rome",
+    "phases": [
+      { "name": "Phase 1: Colosseum", "duration": "Jour 1-4", "objective": "Collecter les items ROMA", "rewards": "ROMA Items, Diamonds" },
+      { "name": "Phase 2: Forum", "duration": "Jour 5-8", "objective": "Compléter des chansons", "rewards": "SSR Cards, ROMA Items" },
+      { "name": "Phase 3: Emperor", "duration": "Jour 9-12", "objective": "Échanger les rewards", "rewards": "UR Token, SSR+ Cards" }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Echo Death Match",
+    "type": "seasonal",
+    "description": "Survive and compete in the ultimate echo battle. Accumulate Echo Stones through solo and team battles.",
+    "rewards": ["Echo Stones", "SSR Artist Shards", "UR Tokens", "Exclusive Items"],
+    "tips": "Focus on solo battles early to stock up, then team battles for bonus rewards.",
+    "bestArtists": ["Claire", "Kokoro", "Aurora"],
+    "active": true,
+    "duration": "7 days",
+    "guideId": "event-echo-death-match",
+    "phases": [
+      { "name": "Phase 1", "duration": "Jour 1-2", "objective": "Solo battles - Accumuler Echo Stones", "rewards": "Echo Stones x500" },
+      { "name": "Phase 2", "duration": "Jour 3-5", "objective": "Team battles - Bonus Echo Stones", "rewards": "Echo Stones x1000, SSR Shards" },
+      { "name": "Phase 3", "duration": "Jour 6-7", "objective": "Échanger les rewards", "rewards": "UR Token, SSR+ Cards" }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Chamber Territory",
+    "type": "seasonal",
+    "description": "Control different territories in the Chamber. Collect tokens and cards through territorial battles.",
+    "rewards": ["Territory Tokens", "SSR Artist Cards", "UR Tokens", "Exclusive Items"],
+    "tips": "Focus on capturing high-value territories early. Defend your territories for bonus rewards.",
+    "bestArtists": ["Cornelia", "Aurelia", "Lestari"],
+    "active": true,
+    "duration": "10 days",
+    "guideId": "event-chamber-territory",
+    "phases": [
+      { "name": "Phase 1", "duration": "Jour 1-3", "objective": "Capturer des territoires", "rewards": "Territory Tokens x300" },
+      { "name": "Phase 2", "duration": "Jour 4-7", "objective": "Défendre et collecter", "rewards": "SSR Cards, Tokens x500" },
+      { "name": "Phase 3", "duration": "Jour 8-10", "objective": "Échanger les rewards", "rewards": "UR Token, SSR+ Cards" }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Cleanup Party",
+    "type": "seasonal",
+    "description": "Clean up the city! Collect trash items and exchange them for rewards.",
+    "rewards": ["Trash Items", "SSR Artist Shards", "UR Tokens", "Exclusive Items"],
+    "tips": "Complete cleaning missions for bonus trash. Team up for faster collection.",
+    "bestArtists": ["Bella", "Everly", "Megan"],
+    "active": true,
+    "duration": "7 days",
+    "guideId": "event-cleanup-party",
+    "phases": [
+      { "name": "Phase 1", "duration": "Jour 1-2", "objective": "Collecter les poubelles", "rewards": "Trash x200" },
+      { "name": "Phase 2", "duration": "Jour 3-5", "objective": "Missions de nettoyage", "rewards": "Trash x400, SSR Shards" },
+      { "name": "Phase 3", "duration": "Jour 6-7", "objective": "Échanger les rewards", "rewards": "UR Token, SSR+ Cards" }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Metro & Subway",
+    "type": "seasonal",
+    "description": "Ride the Metro! Collect tickets and ride different lines to earn rewards.",
+    "rewards": ["Metro Tickets", "SSR Artist Shards", "UR Tokens", "Exclusive Items"],
+    "tips": "Focus on completing metro lines for bonus tickets. Different lines have different rewards.",
+    "bestArtists": ["Skylar", "Nova", "Sora"],
+    "active": true,
+    "duration": "7 days",
+    "guideId": "event-metro-subway",
+    "phases": [
+      { "name": "Phase 1", "duration": "Jour 1-2", "objective": "Collecter les tickets", "rewards": "Tickets x150" },
+      { "name": "Phase 2", "duration": "Jour 3-5", "objective": "Compléter les lignes", "rewards": "Tickets x300, SSR Shards" },
+      { "name": "Phase 3", "duration": "Jour 6-7", "objective": "Échanger les rewards", "rewards": "UR Token, SSR+ Cards" }
+    ]
   }
 ]
