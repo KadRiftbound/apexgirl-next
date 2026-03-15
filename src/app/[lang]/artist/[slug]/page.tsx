@@ -134,6 +134,57 @@ export default function ArtistDetailPage() {
         <title>{artist.name} - TopGirl</title>
         <meta name="description" content={`Découvrez tout sur l'artiste ${artist.name} de TopGirl`} />
       </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": `Quel est le rang de ${artist.name} ?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `${artist.name} est un personnage de rang ${artist.rank} dans TopGirl.`
+                }
+              },
+              {
+                "@type": "Question",
+                "name": `Quelle est la position de ${artist.name} ?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `${artist.name} occupe la position de ${artist.position} dans l'équipe.`
+                }
+              },
+              {
+                "@type": "Question",
+                "name": `Quel est le genre musical de ${artist.name} ?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `${artist.name} est de genre ${artist.genre}.`
+                }
+              },
+              {
+                "@type": "Question",
+                "name": `Quel est le build recommandé pour ${artist.name} ?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": artist.build || "Contactez notre guide Team Builder pour les meilleurs builds."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": `Quel est le tier de ${artist.name} ?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `${artist.name} est classé ${artist.calculatedTier || 'N/A'} dans notre tier list.`
+                }
+              }
+            ]
+          })
+        }}
+      />
 
       <div className="container" style={{ padding: '40px 20px', maxWidth: '1200px' }}>
         {/* Header */}

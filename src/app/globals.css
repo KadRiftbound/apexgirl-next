@@ -249,7 +249,7 @@ img {
 
 @media (max-width: 900px) {
   .header {
-    height: 50px;
+    display: none !important;
   }
   .logo {
     gap: 8px;
