@@ -646,35 +646,40 @@ Le **Chamber Territory** est un événement de territoire. Capturez et défendez
   {
     id: "event-cleanup-party",
     title: "Guide Cleanup Party",
-    description: "Guide du Cleanup Party",
+    title_en: "Cleanup Party Guide",
+    description: "Guide du Cleanup Party - Comment jouer et optimiser vos rewards",
+    description_en: "Cleanup Party Guide - How to play and optimize your rewards",
     icon: "🧹",
     color: "#22c55e",
     category: "Événements",
+    category_en: "Events",
     readTime: "5 min",
     content: `
-## Guide Cleanup Party - TopGirl
+## Cleanup Party Event Guide - TopGirl
 
-### Présentation
-Le **Cleanup Party** est un événement où vous nettoyez la ville en collectant des poubelles.
+### Overview
+In **Cleanup Party**, the goal is to clear the entire board by matching tiles. Players select tiles from the board and place them into 7 available slots. When three identical tiles are placed, they are automatically cleared, freeing space for new tiles. Be careful not to fill all 7 slots with unmatched tiles, or the attempt will fail.
 
-### Phases
+### How to Play
+- Each stage attempt consumes Stamina
+- Clearing stages increases the Girl's Affection
+- Reaching the maximum affection grants an additional Gift
+- If you need items, you can request help from other players through the City, Group, or Chamber channels
 
-**Phase 1 (Jour 1-2)**
-- Collectez les poubelles
-- Reward: Trash x200
+### Quests
+- **Daily Quests**: Complete daily tasks for additional rewards
+- **Target Quests**: Special event objectives with bonus rewards
 
-**Phase 2 (Jour 3-5)**
-- Missions de nettoyage
-- Reward: Trash x400, SSR Shards
+### Ranking
+- Each cleared stage grants points for the event ranking
+- Higher rankings receive better rewards
 
-**Phase 3 (Jour 6-7)**
-- Échangez les rewards
-- Rewards: UR Token, SSR+ Cards
-
-### Stratégie
-1. **Complétez les missions** de nettoyage pour bonus
-2. **Team up** pour une collecte plus rapide
-3. **Échangez** vos trash pour les meilleures rewards
+### Tips
+1. **Before selecting a tile**, check the board for at least three identical tiles to clear them quickly
+2. **Prioritize tiles** that already have two or more visible matches
+3. **Try to keep 2-3 slots free** whenever possible
+4. **Daily and Target Quests** help you progress faster and earn extra rewards
+5. **Request assistance daily**, even if you don't need it yet, so you can save it for harder levels later
     `
   },
   {
