@@ -32,6 +32,7 @@ type Artist = {
   calculatedTier: string;
   build: string;
   rating: string;
+  specialty?: string;
 };
 
 const rankColors: Record<string, string> = {
@@ -40,6 +41,14 @@ const rankColors: Record<string, string> = {
   SR: "#60a5fa",
   R: "#4ade80",
   N: "#94a3b8",
+};
+
+const genreColors: Record<string, string> = {
+  "Pop": "#ec4899",
+  "Rock": "#ef4444",
+  "EDM": "#8b5cf6",
+  "Hip Hop": "#f59e0b",
+  "R&B": "#06b6d4",
 };
 
 const tierColors: Record<string, { bg: string; border: string; text: string }> = {
@@ -74,6 +83,8 @@ export default function TierListPage() {
   const [votedToday, setVotedToday] = useState(false);
   const [voteMessage, setVoteMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [votingArtist, setVotingArtist] = useState<number | null>(null);
+  const [filterGenre, setFilterGenre] = useState<string>("");
+  const [filterSpecialty, setFilterSpecialty] = useState<string>("");
 
   useEffect(() => {
     fetchVoteData();
@@ -214,12 +225,14 @@ export default function TierListPage() {
         {/* Classic Tier List Tab */}
         {activeTab === "classic" && (
           <div>
+            {/* Filters */}
             <div style={{ 
               display: "flex", 
               gap: "12px", 
               marginBottom: "24px",
               flexWrap: "wrap",
-              justifyContent: "center"
+              justifyContent: "center",
+              alignItems: "center"
             }}>
               {tierOrder.map(tier => (
                 <div
@@ -237,12 +250,71 @@ export default function TierListPage() {
                   Tier {tier}
                 </div>
               ))}
+              <select
+                value={filterGenre}
+                onChange={(e) => setFilterGenre(e.target.value)}
+                style={{
+                  padding: "8px 12px",
+                  borderRadius: "var(--radius)",
+                  border: "1px solid var(--border)",
+                  background: "var(--bg-card)",
+                  color: "var(--text-primary)",
+                  fontWeight: 500,
+                  fontSize: "0.85rem",
+                  cursor: "pointer"
+                }}
+              >
+                <option value="">Tous les genres</option>
+                {Object.keys(genreColors).map(g => (
+                  <option key={g} value={g}>{g}</option>
+                ))}
+              </select>
+              <select
+                value={filterSpecialty}
+                onChange={(e) => setFilterSpecialty(e.target.value)}
+                style={{
+                  padding: "8px 12px",
+                  borderRadius: "var(--radius)",
+                  border: "1px solid var(--border)",
+                  background: "var(--bg-card)",
+                  color: "var(--text-primary)",
+                  fontWeight: 500,
+                  fontSize: "0.85rem",
+                  cursor: "pointer"
+                }}
+              >
+                <option value="">Toutes spécialités</option>
+                <option value="Augmentation dommage">Augmentation dommage</option>
+                <option value="Defense">Defense</option>
+                <option value="Solo car">Solo car</option>
+                <option value="Mixte">Mixte</option>
+                <option value="Rassemblement">Rassemblement</option>
+                <option value="Économie">Économie</option>
+              </select>
+            </div>
+
+            {/* Genre Legend */}
+            <div style={{ 
+              display: "flex", 
+              gap: "16px", 
+              marginBottom: "24px",
+              flexWrap: "wrap",
+              justifyContent: "center"
+            }}>
+              {Object.entries(genreColors).map(([genre, color]) => (
+                <div key={genre} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: color }} />
+                  <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{genre}</span>
+                </div>
+              ))}
             </div>
 
             {tierOrder.map(tier => {
               const tierArtists = artists.filter(a => 
                 (a.rating || "F").toUpperCase() === tier
                 && (a.rank === "UR" || a.rank === "SSR")
+                && (!filterGenre || a.genre === filterGenre)
+                && (!filterSpecialty || a.specialty === filterSpecialty)
               );
               
               if (tierArtists.length === 0) return null;
@@ -324,22 +396,25 @@ export default function TierListPage() {
                                }}>
                                  {artist.name.charAt(0)}
                                </span>
-                             )}
-                             <div style={{
-                               position: "absolute",
-                               top: "4px",
-                               right: "4px",
-                               background: "rgba(0,0,0,0.7)",
-                               padding: "2px 6px",
-                               borderRadius: "4px",
-                               fontSize: "0.65rem",
-                               fontWeight: 700,
-                               color: tierColors[artist.rating]?.text
-                             }}>
-                               {artist.rating}
-                             </div>
-                           </div>
-                           <div style={{
+                              )}
+                              <div style={{
+                                position: "absolute",
+                                bottom: "4px",
+                                left: "4px",
+                                right: "4px",
+                                background: genreColors[artist.genre] || "#666",
+                                padding: "2px 6px",
+                                borderRadius: "4px",
+                                fontSize: "0.6rem",
+                                fontWeight: 600,
+                                color: "#fff",
+                                textAlign: "center",
+                                textTransform: "uppercase"
+                              }}>
+                                {artist.genre}
+                              </div>
+                            </div>
+                            <div style={{
                              fontSize: "0.7rem",
                              fontWeight: 600,
                              color: "var(--text-primary)",
