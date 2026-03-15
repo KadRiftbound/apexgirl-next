@@ -3783,5 +3783,109 @@
     },
     "calculatedTier": "C",
     "specialty": "Économie"
+  },
+  {
+    "id": 67,
+    "name": "Nike",
+    "group": "None",
+    "rank": "UR",
+    "position": "Vocalist",
+    "genre": "EDM",
+    "skills": [
+      "↑24% player damage",
+      "↑24% player damage"
+    ],
+    "description": "A talented Vocalist from None.",
+    "rating": "S",
+    "thoughts": "",
+    "build": "Recommended",
+    "photos": "Rome3",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "24% Damage to Player",
+        "24% Damage to Player"
+      ],
+      "hp": [],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage",
+    "event": "Rome 3",
+    "image": "Nike.jpg",
+    "singStat": 34827,
+    "danceStat": 25071
+  },
+  {
+    "id": 68,
+    "name": "Lysistrata",
+    "group": "None",
+    "rank": "UR",
+    "position": "Dancer",
+    "genre": "Hip Hop",
+    "skills": [
+      "↑24% skill damage",
+      "↑12% fan cap"
+    ],
+    "description": "A talented Dancer from None.",
+    "rating": "S",
+    "thoughts": "",
+    "build": "Recommended",
+    "photos": "Rome3",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "24% Skill Damage"
+      ],
+      "hp": [
+        "12% Fan Capacity"
+      ],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Solo car",
+    "event": "Rome 3",
+    "image": "Lysistrata.jpg",
+    "singStat": 25071,
+    "danceStat": 34827
+  },
+  {
+    "id": 69,
+    "name": "Selene",
+    "group": "None",
+    "rank": "UR",
+    "position": "Center",
+    "genre": "Pop",
+    "skills": [
+      "↑50% basic attack damage dealt",
+      "↑12% fan cap"
+    ],
+    "description": "A talented Center from None.",
+    "rating": "S",
+    "thoughts": "",
+    "build": "Recommended",
+    "photos": "Rome3",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "50% Basic Attack Damage"
+      ],
+      "hp": [
+        "12% Fan Capacity"
+      ],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Solo car",
+    "event": "Rome 3",
+    "image": "Selene.jpg",
+    "singStat": 29950,
+    "danceStat": 29950
   }
 ]
