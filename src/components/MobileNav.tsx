@@ -47,7 +47,11 @@ export function MobileNav() {
       }}>
         {/* Logo */}
         <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
-          <span style={{ fontSize: '24px' }}>🎮</span>
+          <img 
+            src="/assets/images/logo.png" 
+            alt="TopGirlGuide" 
+            style={{ height: '32px', objectFit: 'contain' }}
+          />
         </Link>
         
         {/* Title */}

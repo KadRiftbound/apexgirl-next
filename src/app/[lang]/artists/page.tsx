@@ -819,9 +819,9 @@ export default function ArtistsPage() {
             position: sticky;
             top: 0;
           }
-          .panel-col-1 { width: 20%; }
+          .panel-col-1 { width: 28%; }
           .panel-col-2 { width: 40%; }
-          .panel-col-3 { width: 40%; }
+          .panel-col-3 { width: 32%; }
           
           /* Mobile artist preview - smaller image, buttons below */
           .artist-preview-content {
@@ -829,11 +829,11 @@ export default function ArtistsPage() {
             align-items: center;
           }
           .artist-preview-image-large {
-            width: 60px;
-            height: 80px;
+            width: 50px;
+            height: 70px;
           }
           .artist-preview-info {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
           }
           .artist-preview-details {
             display: none;
@@ -843,14 +843,38 @@ export default function ArtistsPage() {
           }
           .view-profile-btn, .add-buttons {
             width: 100%;
-            margin-top: 4px;
+            margin-top: 3px;
+            padding: 6px 10px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-align: center;
+          }
+          .view-profile-btn {
+            background: linear-gradient(135deg, #f472b6, #c084fc);
+            color: white;
+            text-decoration: none;
+            display: block;
           }
           .add-buttons {
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
           }
           .add-team-btn {
             width: 100%;
+            padding: 6px 10px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: none;
+          }
+          .add-team-btn.team1 {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            color: white;
+          }
+          .add-team-btn.team2 {
+            background: linear-gradient(135deg, #06b6d4, #22d3ee);
+            color: white;
           }
           
           /* Remove select buttons in teams on mobile */
@@ -861,11 +885,15 @@ export default function ArtistsPage() {
           .artists-bottom {
             padding-bottom: 100px;
             min-height: 100vh;
-            padding-top: 40vh;
+            padding-top: 0;
+          }
+          .top-panel.fixed + .artists-bottom {
+            padding-top: 0;
           }
           .search-bar {
             position: sticky;
             top: 40vh;
+            margin-bottom: 0;
           }
           .artists-grid {
             grid-template-columns: repeat(6, 1fr);
