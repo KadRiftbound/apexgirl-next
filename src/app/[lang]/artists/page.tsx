@@ -401,6 +401,16 @@ export default function ArtistsPage() {
           grid-template-columns: repeat(6, 1fr);
           gap: 6px;
         }
+        @media (max-width: 900px) {
+          .left-panel {
+            display: none;
+          }
+          .artists-container {
+            margin-left: 0;
+            width: 100%;
+            padding-bottom: 100px;
+          }
+        }
         @media (max-width: 2200px) {
           .artists-grid { grid-template-columns: repeat(6, 1fr); }
         }

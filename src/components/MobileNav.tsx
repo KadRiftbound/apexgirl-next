@@ -35,19 +35,21 @@ export function MobileNav() {
         onClick={() => setIsOpen(!isOpen)}
         style={{
           position: 'fixed',
-          top: '70px',
-          right: '16px',
-          zIndex: 1000,
-          background: 'rgba(20, 20, 35, 0.95)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
+          top: '8px',
+          right: '10px',
+          zIndex: 1001,
+          background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
+          border: 'none',
           borderRadius: '8px',
-          padding: '10px 14px',
+          padding: '8px 12px',
           color: '#fff',
-          fontSize: '20px',
+          fontSize: '16px',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
-          gap: '8px'
+          gap: '6px',
+          boxShadow: '0 4px 15px rgba(255, 77, 141, 0.4)'
+        }}
         }}
         aria-label="Menu"
       >

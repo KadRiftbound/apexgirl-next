@@ -242,6 +242,12 @@ img {
   z-index: 1000;
 }
 
+@media (max-width: 900px) {
+  .header {
+    height: 50px;
+  }
+}
+
 .header-inner {
   max-width: var(--max-width);
   margin: 0 auto;
