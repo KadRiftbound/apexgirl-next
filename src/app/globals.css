@@ -57,7 +57,7 @@
   --header-height: 70px;
   
   --background: #0a0a12;
-  --background-image: url('/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.jpg');
+  --background-image: url('/assets/images/bgs/background.png');
   --foreground: #ffffff;
   
   --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -107,27 +107,27 @@ body {
 
 /* Background with Images - Default */
 body {
-  --bg-image: url('/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.jpg');
+  --bg-image: url('/assets/images/bgs/background.png');
 }
 
 /* Page-specific backgrounds */
 body.bg-home {
-  --bg-image: url('/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.jpg');
+  --bg-image: url('/assets/images/bgs/background.png');
 }
 body.bg-database {
-  --bg-image: url('/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.jpg');
+  --bg-image: url('/assets/images/bgs/background.png');
 }
 body.bg-tierlist {
-  --bg-image: url('/assets/images/bgs/PZa0kXg48tUA95eC40v6--1--40zmy.jpg');
+  --bg-image: url('/assets/images/bgs/background.png');
 }
 body.bg-events {
-  --bg-image: url('/assets/images/bgs/Screenshot_20260213_103558_ChatGPT.jpg');
+  --bg-image: url('/assets/images/bgs/background.png');
 }
 body.bg-guides {
-  --bg-image: url('/assets/images/bgs/file_000000002bbc722fa8aecd2660d92f4b.png');
+  --bg-image: url('/assets/images/bgs/background.png');
 }
 body.bg-tools {
-  --bg-image: url('/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.jpg');
+  --bg-image: url('/assets/images/bgs/background.png');
 }
 
 /* Background with Images */
@@ -139,7 +139,7 @@ body::before {
   right: 0;
   bottom: 0;
   background: 
-    url('/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.jpg') center top / cover no-repeat,
+    url('/assets/images/bgs/background.png') center top / cover no-repeat,
     linear-gradient(180deg, rgba(10, 10, 18, 0.92) 0%, rgba(10, 10, 18, 0.88) 50%, rgba(10, 10, 18, 0.95) 100%);
   pointer-events: none;
   z-index: -2;

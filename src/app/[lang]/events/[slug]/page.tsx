@@ -28,6 +28,7 @@ type Event = {
   duration: string;
   frequency?: string;
   region?: string;
+  guideId?: string;
   date?: string;
   image?: string;
 };

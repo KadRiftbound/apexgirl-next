@@ -359,6 +359,72 @@ export default function TierListPage() {
         {/* Voting Tab */}
         {activeTab === "vote" && (
           <div>
+         {/* Weekly Top Artist */}
+             {voteData?.weekly_top && (
+               <Link href={`/${lang}/artist/${artistsData.find(a => a.name === voteData.weekly_top.artist_name)?.id || 0}`} style={{
+                 textDecoration: 'none',
+                 display: 'inline-block',
+                 width: '100%',
+                 maxWidth: '400px'
+               }}>
+                 <div style={{
+                   padding: "32px",
+                   borderRadius: "var(--radius-lg)",
+                   background: "linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05))",
+                   border: "2px solid rgba(255, 215, 0, 0.5)",
+                   marginBottom: "32px",
+                   textAlign: "center",
+                   position: "relative",
+                   overflow: "hidden"
+                 }}>
+                   <div style={{
+                     position: "absolute",
+                     top: "-20px",
+                     right: "-20px",
+                     width: "100px",
+                     height: "100px",
+                     background: "radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%)",
+                     borderRadius: "50%"
+                   }} />
+                   <div style={{ fontSize: "3rem", marginBottom: "8px", position: "relative" }}>👑</div>
+                   <div style={{ 
+                     fontSize: "0.85rem", 
+                     color: "#ffd700", 
+                     textTransform: "uppercase",
+                     letterSpacing: "2px",
+                     marginBottom: "8px",
+                     fontWeight: 600,
+                     position: "relative"
+                   }}>
+                     Artiste de la semaine
+                   </div>
+                   <div style={{ 
+                     fontSize: "2rem", 
+                     fontWeight: 800, 
+                     color: "#fff",
+                     marginBottom: "8px",
+                     position: "relative"
+                   }}>
+                     {voteData.weekly_top.artist_name}
+                   </div>
+                   <div style={{ 
+                     display: "inline-flex",
+                     alignItems: "center",
+                     gap: "8px",
+                     padding: "8px 20px",
+                     background: "rgba(255, 215, 0, 0.2)",
+                     borderRadius: "var(--radius-full)",
+                     position: "relative"
+                   }}>
+                     <span style={{ fontSize: "1.25rem" }}>⭐</span>
+                     <span style={{ fontWeight: 700, color: "#ffd700" }}>
+                       {voteData.weekly_top.count} votes
+                     </span>
+                   </div>
+                 </div>
+               </Link>
+             )}
+
             {/* Vote Status Banner */}
             {votedToday ? (
               <div style={{
@@ -400,13 +466,13 @@ export default function TierListPage() {
                 🏅 Podium - Cette semaine
               </h3>
               
-               {/* Top 3 with Images */}
+              {/* Top 3 with Images */}
               <div style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "flex-end",
-                gap: "24px",
-                marginBottom: "32px"
+                gap: "16px",
+                marginBottom: "24px"
               }}>
                  {/* 2nd Place */}
                  {voteData?.rankings?.this_week?.[1] && (
@@ -419,11 +485,11 @@ export default function TierListPage() {
                        transform: "translateY(20px)"
                      }}>
                        <div style={{
-                         width: "120px",
-                         height: "120px",
+                         width: "90px",
+                         height: "90px",
                          margin: "0 auto 8px",
                          borderRadius: "50%",
-                         border: "4px solid #c0c0c0",
+                         border: "3px solid #c0c0c0",
                          background: "var(--bg-card)",
                          overflow: "hidden",
                          display: "flex",
@@ -475,14 +541,14 @@ export default function TierListPage() {
                    }}>
                      <div style={{
                        textAlign: "center",
-                       transform: "scale(1.15)"
+                       transform: "scale(1.1)"
                      }}>
                        <div style={{
-                         width: "150px",
-                         height: "150px",
+                         width: "120px",
+                         height: "120px",
                        margin: "0 auto 8px",
                        borderRadius: "50%",
-                       border: "5px solid #ffd700",
+                       border: "4px solid #ffd700",
                        background: "var(--bg-card)",
                        overflow: "hidden",
                        display: "flex",
@@ -538,11 +604,11 @@ export default function TierListPage() {
                        transform: "translateY(40px)"
                      }}>
                        <div style={{
-                         width: "130px",
-                         height: "130px",
+                         width: "112px",
+                         height: "112px",
                          margin: "0 auto 8px",
                        borderRadius: "50%",
-                       border: "4px solid #cd7f32",
+                       border: "3px solid #cd7f32",
                        background: "var(--bg-card)",
                        overflow: "hidden",
                        display: "flex",
@@ -674,87 +740,84 @@ export default function TierListPage() {
                     const isDisabled = votedToday || isVoting;
                     
                     return (
-                      <div key={artist.id} style={{
-                        textDecoration: 'none',
-                        display: 'block'
-                      }}>
-                        <div
-                          style={{
-                            textAlign: "center",
-                            padding: "12px 8px",
-                            borderRadius: "var(--radius-md)",
-                            background: "var(--bg-card)",
-                            border: "1px solid var(--border)",
-                            transition: "all 0.2s"
-                          }}
-                        >
-                          <Link href={`/${lang}/artist/${artist.id}`} style={{
-                            textDecoration: 'none',
-                            display: 'block'
-                          }}>
-                            <div style={{
-                              width: "70px",
-                              height: "85px",
-                              margin: "0 auto 8px",
-                              borderRadius: "var(--radius-sm)",
-                              border: `2px solid ${rankColors[artist.rank]}`,
-                              overflow: "hidden",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center"
-                            }}>
-                            {artist.image ? (
-                              <img 
-                                src={`/assets/images/artists/${artist.image}`}
-                                alt={artist.name}
-                                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                              />
-                            ) : (
-                              <span style={{ 
-                                fontSize: "1.75rem", 
-                                fontWeight: 800, 
-                                color: rankColors[artist.rank] 
-                              }}>
-                                {artist.name.charAt(0)}
-                              </span>
-                            )}
-                            </div>
-                            <div style={{
-                              fontSize: "0.7rem",
-                              fontWeight: 600,
-                              color: "var(--text-primary)",
-                              whiteSpace: "nowrap",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                              marginBottom: "4px"
-                            }}>
-                              {artist.name}
-                            </div>
-                          </Link>
-                          <button
-                            onClick={(e) => { e.preventDefault(); !isDisabled && handleVote(artist.id); }}
-                            disabled={isDisabled}
-                            style={{
-                              width: "100%",
-                              padding: "6px 10px",
-                              fontSize: "0.7rem",
-                              fontWeight: 600,
-                              borderRadius: "var(--radius-sm)",
-                              border: "none",
-                              background: isVoting 
-                                ? "linear-gradient(135deg, #a78bfa, #8b5cf6)" 
-                              : isDisabled 
-                                ? "rgba(148, 163, 184, 0.3)" 
-                                : "linear-gradient(135deg, var(--primary), #ff80ab)",
-                              color: "#fff",
-                              cursor: isDisabled ? "not-allowed" : "pointer",
-                              transition: "all 0.2s"
-                            }}
-                        >
-                          {isVoting ? "..." : isDisabled ? "✓" : "❤️ Vote"}
-                        </button>
-                      </div>
-                  )}
+                         <Link key={artist.id} href={`/${lang}/artist/${artist.id}`} style={{
+                           textDecoration: 'none',
+                           display: 'block'
+                         }}>
+                           <div
+                             style={{
+                               textAlign: "center",
+                               padding: "12px 8px",
+                               borderRadius: "var(--radius-md)",
+                               background: "var(--bg-card)",
+                               border: "1px solid var(--border)",
+                               transition: "all 0.2s"
+                             }}
+                           >
+                             <div style={{
+                               width: "70px",
+                               height: "85px",
+                               margin: "0 auto 8px",
+                               borderRadius: "var(--radius-sm)",
+                               border: `2px solid ${rankColors[artist.rank]}`,
+                               overflow: "hidden",
+                               display: "flex",
+                               alignItems: "center",
+                               justifyContent: "center"
+                             }}>
+                             {artist.image ? (
+                               <img 
+                                 src={`/assets/images/artists/${artist.image}`}
+                                 alt={artist.name}
+                                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                               />
+                             ) : (
+                               <span style={{ 
+                                 fontSize: "1.75rem", 
+                                 fontWeight: 800, 
+                                 color: rankColors[artist.rank] 
+                               }}>
+                                 {artist.name.charAt(0)}
+                               </span>
+                             )}
+                             </div>
+                             <div style={{
+                               fontSize: "0.7rem",
+                               fontWeight: 600,
+                               color: "var(--text-primary)",
+                               whiteSpace: "nowrap",
+                               overflow: "hidden",
+                               textOverflow: "ellipsis",
+                               marginBottom: "4px"
+                             }}>
+                               {artist.name}
+                             </div>
+                             <button
+                               onClick={() => !isDisabled && handleVote(artist.id)}
+                               disabled={isDisabled}
+                               style={{
+                                 width: "100%",
+                                 padding: "6px 10px",
+                                 fontSize: "0.7rem",
+                                 fontWeight: 600,
+                                 borderRadius: "var(--radius-sm)",
+                                 border: "none",
+                                 background: isVoting 
+                                   ? "linear-gradient(135deg, #a78bfa, #8b5cf6)" 
+                                 : isDisabled 
+                                   ? "rgba(148, 163, 184, 0.3)" 
+                                   : "linear-gradient(135deg, var(--primary), #ff80ab)",
+                                 color: "#fff",
+                                 cursor: isDisabled ? "not-allowed" : "pointer",
+                                 transition: "all 0.2s"
+                               }}
+                           >
+                             {isVoting ? "..." : isDisabled ? "✓" : "❤️ Vote"}
+                           </button>
+                         </div>
+                       </Link>
+                    );
+                  })}
               </div>
             </div>
           </div>
