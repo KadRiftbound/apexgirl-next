@@ -18,10 +18,13 @@ const guideTranslations: Record<string, any> = {
 type Guide = {
   id: string;
   title: string;
+  title_en?: string;
   description: string;
+  description_en?: string;
   icon: string;
   color: string;
   category: string;
+  category_en?: string;
   readTime: string;
   content?: string;
 };
