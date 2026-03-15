@@ -50,7 +50,6 @@ export function MobileNav() {
           gap: '6px',
           boxShadow: '0 4px 15px rgba(255, 77, 141, 0.4)'
         }}
-        }}
         aria-label="Menu"
       >
         ☰
