@@ -1062,12 +1062,7 @@ export default function ArtistsPage() {
             grid-template-columns: repeat(6, 1fr);
           }
           
-          /* Hide MobileNav and background logo on mobile - but NOT the main header */
-          .mobile-nav, [class*="MobileNav"] {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-          }
+          /* Background handling */
           body {
             background-image: none !important;
           }

@@ -1,21 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const params = useParams();
+  const pathname = usePathname();
   const lang = (params?.lang as string) || "fr";
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    // Reset state when route changes
+    setIsOpen(false);
+    setIsVisible(true);
+    lastScrollY.current = 0;
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Only on mobile
+      if (window.innerWidth <= 900) {
+        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+          // Scrolling down - hide nav
+          setIsVisible(false);
+        } else {
+          // Scrolling up or at top - show nav
+          setIsVisible(true);
+        }
+      } else {
+        setIsVisible(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pathname]);
 
   const navItems = [
-    { href: `/${lang}/codes/`, label: lang === "fr" ? "Codes" : lang === "en" ? "Codes" : "Codes" },
-    { href: `/${lang}/artists/`, label: lang === "fr" ? "Artistes" : lang === "en" ? "Artists" : "Artists" },
+    { href: `/${lang}/codes/`, label: lang === "fr" ? "Codes" : "Codes" },
+    { href: `/${lang}/artists/`, label: lang === "fr" ? "Artistes" : "Artists" },
     { href: `/${lang}/tierlist/`, label: "Tier List" },
     { href: `/${lang}/guides/`, label: "Guides" },
-    { href: `/${lang}/events/`, label: lang === "fr" ? "Événements" : lang === "en" ? "Events" : "Events" },
-    { href: `/${lang}/tools/`, label: lang === "fr" ? "Outils" : lang === "en" ? "Tools" : "Tools", cta: true },
+    { href: `/${lang}/events/`, label: lang === "fr" ? "Événements" : "Events" },
+    { href: `/${lang}/tools/`, label: lang === "fr" ? "Outils" : "Tools", cta: true },
   ];
 
   const languages = [
@@ -30,19 +62,26 @@ export function MobileNav() {
   ];
 
   return (
-    <div className="mobile-nav" style={{ display: 'none' }}>
-      <div style={{
+    <div 
+      className="mobile-nav"
+      style={{
         position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
+        zIndex: 9999,
+        transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
+        transition: 'transform 0.3s ease',
+      }}
+    >
+      <div style={{
+        position: 'relative',
         height: '56px',
         background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 16px',
-        zIndex: 1000,
         borderBottom: '1px solid rgba(255,255,255,0.1)'
       }}>
         {/* Logo */}
@@ -50,22 +89,8 @@ export function MobileNav() {
           <img 
             src="/assets/images/logo.png" 
             alt="TopGirlGuide" 
-            style={{ height: '44px', width: 'auto', maxWidth: '160px', objectFit: 'contain' }}
+            style={{ height: '40px', width: 'auto', maxWidth: '140px', objectFit: 'contain' }}
           />
-        </Link>
-        
-        {/* Title */}
-        <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
-          <span style={{ 
-            color: '#fff', 
-            fontSize: '16px', 
-            fontWeight: 700,
-            background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>
-            TopGirlGuide
-          </span>
         </Link>
         
         {/* Menu Button */}
@@ -95,7 +120,7 @@ export function MobileNav() {
           right: '0',
           bottom: '0',
           background: 'rgba(10, 10, 20, 0.98)',
-          zIndex: 999,
+          zIndex: 9998,
           padding: '20px',
           overflowY: 'auto'
         }}>

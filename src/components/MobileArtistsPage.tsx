@@ -260,16 +260,6 @@ export default function MobileArtistsPage() {
         <title>Artistes - TopGirl</title>
       </Head>
 
-      {/* Hide the main header on mobile via CSS */}
-      <style jsx global>{`
-        .header {
-          display: none !important;
-        }
-        body {
-          background-image: none !important;
-        }
-      `}</style>
-
       <div className="mobile-page-container">
         {/* Layer 1: Header section with title that scrolls away */}
         <div className="mobile-header-section" ref={headerSectionRef}>
@@ -372,7 +362,7 @@ export default function MobileArtistsPage() {
               {/* FULL stats - each on single line */}
               <div className="mobile-team-stats">
                 <div className="mobile-stat-row">
-                  <span style={{ color: "#ff8c42" }}>💥 DMG</span>
+                  <span style={{ color: "#ff8c42", fontSize: "0.55rem" }}>DMG</span>
                   <span style={{ color: "#fff" }}>{team1Stats.skillDamageRaw}</span>
                   <span style={{ color: team1Stats.skillDamageRaw > team2Stats.skillDamageRaw ? "#4ade80" : team1Stats.skillDamageRaw < team2Stats.skillDamageRaw ? "#f87171" : "#888" }}>
                     ({team1Stats.skillDamageRaw - team2Stats.skillDamageRaw >= 0 ? "+" : ""}{team1Stats.skillDamageRaw - team2Stats.skillDamageRaw})
@@ -443,7 +433,7 @@ export default function MobileArtistsPage() {
               {/* FULL stats - each on single line */}
               <div className="mobile-team-stats">
                 <div className="mobile-stat-row">
-                  <span style={{ color: "#ff8c42" }}>💥 DMG</span>
+                  <span style={{ color: "#ff8c42", fontSize: "0.55rem" }}>DMG</span>
                   <span style={{ color: "#fff" }}>{team2Stats.skillDamageRaw}</span>
                   <span style={{ color: team2Stats.skillDamageRaw > team1Stats.skillDamageRaw ? "#4ade80" : team2Stats.skillDamageRaw < team1Stats.skillDamageRaw ? "#f87171" : "#888" }}>
                     ({team2Stats.skillDamageRaw - team1Stats.skillDamageRaw >= 0 ? "+" : ""}{team2Stats.skillDamageRaw - team1Stats.skillDamageRaw})
@@ -541,14 +531,15 @@ export default function MobileArtistsPage() {
       <style jsx>{`
         .mobile-page-container {
           min-height: 100vh;
-          background: #0f0f1a;
+          background: transparent;
+          padding-top: 56px;
         }
         
         /* Layer 1: Header section that scrolls away */
         .mobile-header-section {
           padding: 20px 12px;
           text-align: center;
-          background: #0f0f1a;
+          background: transparent;
           z-index: 50;
         }
         .mobile-page-title {
@@ -571,7 +562,7 @@ export default function MobileArtistsPage() {
           flex-direction: row;
           gap: 4px;
           padding: 4px;
-          background: #0f0f1a;
+          background: transparent;
           z-index: 100;
           height: 40vh;
           min-height: 300px;
