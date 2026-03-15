@@ -21,7 +21,7 @@ const filterTranslations: Record<string, any> = {
 };
 
 const rankColors: Record<string, string> = {
-  UR: "#ff6b6b", "UR Roma": "#fbbf24", "UR Bali": "#10b981", SSR: "#fbbf24", SR: "#8b5cf6", R: "#3b82f6",
+  UR: "#ff6b6b", "UR Roma": "#ef4444", "UR Bali": "#ef4444", SSR: "#fbbf24", SR: "#8b5cf6", R: "#3b82f6",
 };
 
 type Artist = {
@@ -47,8 +47,20 @@ export default function ArtistsPage() {
   const router = useRouter();
   const lang = (params?.lang as string) || "fr";
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
-  const [team1, setTeam1] = useState<Artist[]>([]);
-  const [team2, setTeam2] = useState<Artist[]>([]);
+  const [team1, setTeam1] = useState<Artist[]>(() => {
+    if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem('team1');
+        return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
+  const [team2, setTeam2] = useState<Artist[]>(() => {
+    if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem('team2');
+        return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
   const [activeTeam, setActiveTeam] = useState<1 | 2>(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
@@ -113,6 +125,19 @@ export default function ArtistsPage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Save teams to localStorage when they change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('team1', JSON.stringify(team1));
+    }
+  }, [team1]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('team2', JSON.stringify(team2));
+    }
+  }, [team2]);
 
   const teamStats = useMemo(() => {
     let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, passive = 0, fanCapacity = 0, rallyCapacity = 0;
@@ -854,8 +879,10 @@ export default function ArtistsPage() {
             height: 40vh;
             min-height: 300px;
             max-height: none;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
           }
           .panel-col-1 { width: 28%; }
           .panel-col-2 { width: 40%; }
@@ -928,14 +955,16 @@ export default function ArtistsPage() {
           .artists-bottom {
             padding-bottom: 100px;
             min-height: 100vh;
-            padding-top: 45vh;
+            padding-top: 48vh;
           }
           .top-panel.fixed + .artists-bottom {
-            padding-top: 45vh;
+            padding-top: 48vh;
           }
           .search-bar {
-            position: sticky;
+            position: fixed;
             top: 40vh;
+            left: 0;
+            right: 0;
             margin-bottom: 0;
             z-index: 101;
             width: 100%;

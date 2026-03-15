@@ -122,7 +122,7 @@ export default function ArtistDetailPage() {
   const rankColors: Record<string, string> = {
     UR: '#fbbf24',
     'UR Roma': '#ef4444',
-    'UR Bali': '#10b981',
+    'UR Bali': '#ef4444',
     SSR: '#a855f7',
     SR: '#3b82f6',
     R: '#22c55e'
