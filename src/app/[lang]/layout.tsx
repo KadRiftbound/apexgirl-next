@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { BackgroundManager } from "@/components/BackgroundManager";
 import CookieConsent from "@/components/CookieConsent";
+import { Analytics } from "@vercel/analytics/react";
 
 const localeNames: Record<string, string> = {
   fr: "fr-FR",
@@ -118,6 +119,7 @@ export default async function LocaleLayout({
 
   return (
     <>
+      <Analytics />
       <script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-Y082CPMLKJ"

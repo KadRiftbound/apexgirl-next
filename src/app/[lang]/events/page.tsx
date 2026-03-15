@@ -6,14 +6,14 @@ import { useParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
 
 const eventListTranslations: Record<string, any> = {
-  fr: { searchPlaceholder: "🔍 Rechercher un événement..." },
-  en: { searchPlaceholder: "🔍 Search for an event..." },
-  it: { searchPlaceholder: "🔍 Cerca un evento..." },
-  es: { searchPlaceholder: "🔍 Buscar un evento..." },
-  pt: { searchPlaceholder: "🔍 Pesquisar um evento..." },
-  pl: { searchPlaceholder: "🔍 Szukaj wydarzenia..." },
-  id: { searchPlaceholder: "🔍 Cari acara..." },
-  ru: { searchPlaceholder: "🔍 Поиск события..." },
+  fr: { searchPlaceholder: "🔍 Rechercher un événement...", filterAll: "Tous", filterRecurring: "Récurrents", filterSeasonal: "Saisonniers", filterPermanent: "Permanents", title: "Événements", subtitle: "Calendrier et récompenses des événements" },
+  en: { searchPlaceholder: "🔍 Search for an event...", filterAll: "All", filterRecurring: "Recurring", filterSeasonal: "Seasonal", filterPermanent: "Permanent", title: "Events", subtitle: "Event schedule and rewards" },
+  it: { searchPlaceholder: "🔍 Cerca un evento...", filterAll: "Tutti", filterRecurring: "Ricorrenti", filterSeasonal: "Stagionali", filterPermanent: "Permanenti", title: "Eventi", subtitle: "Calendario e ricompense degli eventi" },
+  es: { searchPlaceholder: "🔍 Buscar un evento...", filterAll: "Todos", filterRecurring: "Recurrentes", filterSeasonal: "Temporales", filterPermanent: "Permanentes", title: "Eventos", subtitle: "Calendario y recompensas de eventos" },
+  pt: { searchPlaceholder: "🔍 Pesquisar um evento...", filterAll: "Todos", filterRecurring: "Recorrentes", filterSeasonal: "Sazonais", filterPermanent: "Permanentes", title: "Eventos", subtitle: "Calendário e recompensas dos eventos" },
+  pl: { searchPlaceholder: "🔍 Szukaj wydarzenia...", filterAll: "Wszystkie", filterRecurring: "Powtarzające się", filterSeasonal: "Sezonowe", filterPermanent: "Stałe", title: "Wydarzenia", subtitle: "Harmonogram i nagrody wydarzeń" },
+  id: { searchPlaceholder: "🔍 Cari acara...", filterAll: "Semua", filterRecurring: "Berulang", filterSeasonal: "Musiman", filterPermanent: "Permanen", title: "Acara", subtitle: "Jadwal dan hadiah acara" },
+  ru: { searchPlaceholder: "🔍 Поиск события...", filterAll: "Все", filterRecurring: "Повторяющиеся", filterSeasonal: "Сезонные", filterPermanent: "Постоянные", title: "События", subtitle: "Расписание и награды событий" },
 };
 
 type Event = {
@@ -126,10 +126,10 @@ export default function EventsPage() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}>
-            🎉 Événements
+            🎉 {t.title}
           </h1>
           <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem" }}>
-            Calendrier et récompenses des événements
+            {t.subtitle}
           </p>
         </div>
       </div>
@@ -140,10 +140,10 @@ export default function EventsPage() {
         {/* Filters */}
         <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
           {[
-            { id: "all", label: "Tous" },
-            { id: "recurring", label: "Récurrents" },
-            { id: "seasonal", label: "Saisonniers" },
-            { id: "permanent", label: "Permanents" }
+            { id: "all", label: t.filterAll },
+            { id: "recurring", label: t.filterRecurring },
+            { id: "seasonal", label: t.filterSeasonal },
+            { id: "permanent", label: t.filterPermanent }
           ].map((f) => (
             <button
               key={f.id}

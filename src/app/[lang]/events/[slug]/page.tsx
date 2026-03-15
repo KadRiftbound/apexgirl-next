@@ -6,14 +6,14 @@ import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
 
 const eventTranslations: Record<string, any> = {
-  fr: { notFound: "Événement non trouvé", backToEvents: "← Retour aux événements", loading: "Chargement...", otherEvents: "Autres événements", viewGuide: "Voir le guide complet" },
-  en: { notFound: "Event not found", backToEvents: "← Back to Events", loading: "Loading...", otherEvents: "Other Events", viewGuide: "View full guide" },
-  it: { notFound: "Evento non trovato", backToEvents: "← Torna agli eventi", loading: "Caricamento...", otherEvents: "Altri eventi", viewGuide: "Vedi guida completa" },
-  es: { notFound: "Evento no encontrado", backToEvents: "← Volver a los eventos", loading: "Cargando...", otherEvents: "Otros eventos", viewGuide: "Ver guía completa" },
-  pt: { notFound: "Evento não encontrado", backToEvents: "← Voltar aos eventos", loading: "Carregando...", otherEvents: "Outros eventos", viewGuide: "Ver guia completo" },
-  pl: { notFound: "Wydarzenie nie znalezione", backToEvents: "← Wróć do wydarzeń", loading: "Ładowanie...", otherEvents: "Inne wydarzenia", viewGuide: "Zobacz pełny poradnik" },
-  id: { notFound: "Acara tidak ditemukan", backToEvents: "← Kembali ke acara", loading: "Memuat...", otherEvents: "Acara lain", viewGuide: "Lihat panduan lengkap" },
-  ru: { notFound: "Событие не найдено", backToEvents: "← Вернуться к событиям", loading: "Загрузка...", otherEvents: "Другие события", viewGuide: "Посмотреть полный гайд" },
+  fr: { notFound: "Événement non trouvé", backToEvents: "← Retour aux événements", loading: "Chargement...", otherEvents: "Autres événements", viewGuide: "Voir le guide complet", rewards: "Récompenses", tips: "Conseils", bestArtists: "Meilleurs Artistes", active: "Actif", duration: "Durée", frequency: "Fréquence" },
+  en: { notFound: "Event not found", backToEvents: "← Back to Events", loading: "Loading...", otherEvents: "Other Events", viewGuide: "View full guide", rewards: "Rewards", tips: "Tips", bestArtists: "Best Artists", active: "Active", duration: "Duration", frequency: "Frequency" },
+  it: { notFound: "Evento non trovato", backToEvents: "← Torna agli eventi", loading: "Caricamento...", otherEvents: "Altri eventi", viewGuide: "Vedi guida completa", rewards: "Ricompense", tips: "Consigli", bestArtists: "Migliori Artisti", active: "Attivo", duration: "Durata", frequency: "Frequenza" },
+  es: { notFound: "Evento no encontrado", backToEvents: "← Volver a los eventos", loading: "Cargando...", otherEvents: "Otros eventos", viewGuide: "Ver guía completa", rewards: "Recompensas", tips: "Consejos", bestArtists: "Mejores Artistas", active: "Activo", duration: "Duración", frequency: "Frecuencia" },
+  pt: { notFound: "Evento não encontrado", backToEvents: "← Voltar aos eventos", loading: "Carregando...", otherEvents: "Outros eventos", viewGuide: "Ver guia completo", rewards: "Recompensas", tips: "Dicas", bestArtists: "Melhores Artistas", active: "Ativo", duration: "Duração", frequency: "Frequência" },
+  pl: { notFound: "Wydarzenie nie znalezione", backToEvents: "← Wróć do wydarzeń", loading: "Ładowanie...", otherEvents: "Inne wydarzenia", viewGuide: "Zobacz pełny poradnik", rewards: "Nagrody", tips: "Porady", bestArtists: "Najlepsi Artyści", active: "Aktywny", duration: "Czas trwania", frequency: "Częstotliwość" },
+  id: { notFound: "Acara tidak ditemukan", backToEvents: "← Kembali ke acara", loading: "Memuat...", otherEvents: "Acara lain", viewGuide: "Lihat panduan lengkap", rewards: "Hadiah", tips: "Tips", bestArtists: "Artis Terbaik", active: "Aktif", duration: "Durasi", frequency: "Frekuensi" },
+  ru: { notFound: "Событие не найдено", backToEvents: "← Вернуться к событиям", loading: "Загрузка...", otherEvents: "Другие события", viewGuide: "Посмотреть полный гайд", rewards: "Награды", tips: "Советы", bestArtists: "Лучшие Артисты", active: "Активно", duration: "Продолжительность", frequency: "Частота" },
 };
 
 type Event = {
@@ -121,7 +121,7 @@ export default function EventDetailPage() {
               fontSize: "0.75rem",
               fontWeight: 600
             }}>
-              Active
+{t.active}
             </span>
           )}
         </div>
@@ -138,8 +138,8 @@ export default function EventDetailPage() {
         </h1>
 
         <div style={{ display: "flex", gap: "16px", marginBottom: "24px", color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}>
-          <span>📅 {event.duration}</span>
-          {event.frequency && <span>🔄 {event.frequency}</span>}
+          <span>📅 {t.duration}: {event.duration}</span>
+          {event.frequency && <span>🔄 {t.frequency}: {event.frequency}</span>}
         </div>
 
         <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: "24px" }}>
@@ -147,7 +147,7 @@ export default function EventDetailPage() {
         </p>
 
         <div style={{ marginBottom: "24px" }}>
-          <h3 style={{ color: "#fff", marginBottom: "12px", fontSize: "1.1rem" }}>🎁 Rewards</h3>
+          <h3 style={{ color: "#fff", marginBottom: "12px", fontSize: "1.1rem" }}>🎁 {t.rewards}</h3>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {event.rewards.map((reward, i) => (
               <span key={i} style={{ 
@@ -165,7 +165,7 @@ export default function EventDetailPage() {
 
         {event.tips && (
           <div style={{ marginBottom: "24px" }}>
-            <h3 style={{ color: "#fff", marginBottom: "12px", fontSize: "1.1rem" }}>💡 Tips</h3>
+            <h3 style={{ color: "#fff", marginBottom: "12px", fontSize: "1.1rem" }}>💡 {t.tips}</h3>
             <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.6, padding: "16px", background: "rgba(251, 191, 36, 0.1)", borderRadius: "8px", borderLeft: "3px solid #fbbf24" }}>
               {event.tips}
             </p>
@@ -174,7 +174,7 @@ export default function EventDetailPage() {
 
         {event.bestArtists && event.bestArtists.length > 0 && (
           <div>
-            <h3 style={{ color: "#fff", marginBottom: "12px", fontSize: "1.1rem" }}>⭐ Best Artists</h3>
+            <h3 style={{ color: "#fff", marginBottom: "12px", fontSize: "1.1rem" }}>⭐ {t.bestArtists}</h3>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
               {event.bestArtists.map((artist, i) => (
                 <span key={i} style={{ 
