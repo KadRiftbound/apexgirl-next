@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
+import { AdBanner } from "@/components/AdSense";
 
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
@@ -41,19 +42,18 @@ export default function MobileArtistsPage() {
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [team1, setTeam1] = useState<Artist[]>([]);
   const [team2, setTeam2] = useState<Artist[]>([]);
-  const [activeTeam, setActiveTeam] = useState<1 | 2>(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [mounted, setMounted] = useState(false);
   const [searchBarVisible, setSearchBarVisible] = useState(true);
+  const [panelFixed, setPanelFixed] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   useEffect(() => {
     setMounted(true);
-    // Charger les équipes depuis localStorage
     if (typeof window !== 'undefined') {
       try {
         const saved1 = localStorage.getItem('team1');
@@ -77,14 +77,39 @@ export default function MobileArtistsPage() {
   useEffect(() => {
     let lastScrollY = 0;
     let ticking = false;
+    const headerThreshold = 100;
     
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
           
-          // Mobile search bar visibility
-          if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Hide header when scrolling down past threshold, show when scrolling up
+          const header = document.querySelector('.header') as HTMLElement;
+          if (header) {
+            if (currentScrollY > lastScrollY && currentScrollY > headerThreshold) {
+              header.style.transform = 'translateY(-100%)';
+            } else {
+              header.style.transform = 'translateY(0)';
+            }
+          }
+          
+          // Panel becomes fixed after scrolling past threshold
+          const isPanelFixed = currentScrollY > headerThreshold;
+          setPanelFixed(isPanelFixed);
+          
+          if (panelRef.current) {
+            if (isPanelFixed) {
+              panelRef.current.style.position = 'fixed';
+              panelRef.current.style.top = '0';
+            } else {
+              panelRef.current.style.position = 'absolute';
+              panelRef.current.style.top = '120px';
+            }
+          }
+          
+          // Search bar visibility based on scroll direction
+          if (currentScrollY > lastScrollY && currentScrollY > headerThreshold) {
             setSearchBarVisible(false);
           } else {
             setSearchBarVisible(true);
@@ -219,7 +244,7 @@ export default function MobileArtistsPage() {
         <title>Artistes - TopGirl</title>
       </Head>
 
-      {/* Hide the main header on mobile */}
+      {/* Hide the main header on mobile via CSS */}
       <style jsx global>{`
         .header {
           display: none !important;
@@ -230,9 +255,15 @@ export default function MobileArtistsPage() {
       `}</style>
 
       <div className="mobile-page-container">
-        {/* TOP PANEL - Always fixed at top */}
-        <div className="mobile-top-panel" ref={panelRef}>
-          {/* Column 1: Artist Preview */}
+        {/* Initial scrollable section with title and ads */}
+        <div className="mobile-header-section">
+          <h1 className="mobile-page-title">🎤 Artistes</h1>
+          <p className="mobile-page-subtitle">Découvrez tous les personnages</p>
+        </div>
+
+        {/* TOP PANEL - Fixed at top after scrolling */}
+        <div className={`mobile-top-panel ${panelFixed ? 'fixed' : ''}`} ref={panelRef}>
+          {/* Column 1: Artist Preview - ONLY name, skills, genre */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
               <div className="mobile-preview-title">{t.artistOverview}</div>
@@ -245,6 +276,25 @@ export default function MobileArtistsPage() {
                       <span style={{ fontSize: "2rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
                     )}
                   </div>
+                  
+                  {/* Artist name with rank color */}
+                  <div className="mobile-preview-name" style={{ color: rankColors[selectedArtist.rank] }}>
+                    {selectedArtist.name}
+                  </div>
+                  
+                  {/* Genre only */}
+                  <div className="mobile-preview-genre">
+                    🎵 {selectedArtist.genre}
+                  </div>
+                  
+                  {/* Skills/Sorts only */}
+                  <div className="mobile-preview-skills">
+                    {selectedArtist.skills?.slice(0, 3).map((skill, i) => (
+                      <p key={i} className="mobile-skill-line">{i === 0 ? "⚔️ " : "✨ "}{skill}</p>
+                    ))}
+                  </div>
+                  
+                  {/* Navigation arrows */}
                   <div className="mobile-preview-nav">
                     <button 
                       onClick={() => {
@@ -253,7 +303,6 @@ export default function MobileArtistsPage() {
                       }}
                       disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) === 0}
                     >◀</button>
-                    <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.name}</span>
                     <button 
                       onClick={() => {
                         const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
@@ -262,6 +311,8 @@ export default function MobileArtistsPage() {
                       disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) >= sortedArtists.length - 1}
                     >▶</button>
                   </div>
+                  
+                  {/* Action buttons */}
                   <div className="mobile-preview-actions">
                     <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)} className="mobile-profile-btn">
                       Fiche
@@ -282,7 +333,7 @@ export default function MobileArtistsPage() {
             </div>
           </div>
 
-          {/* Column 2: Team 1 */}
+          {/* Column 2: Team 1 - Full stats like desktop */}
           <div className="mobile-panel-col mobile-panel-2">
             <div className="mobile-team-card mobile-team-1">
               <div className="mobile-team-header">
@@ -297,17 +348,37 @@ export default function MobileArtistsPage() {
                   </div>
                 ))}
               </div>
+              {/* FULL STATS like desktop - all 7 stats with comparison */}
               <div className="mobile-team-stats">
-                <div style={{ color: "#ff8c42", fontSize: "0.65rem" }}>💥 {team1Stats.skillDamageRaw}</div>
-                <div style={{ color: "#ff6b6b", fontSize: "0.65rem" }}>⚔️ {team1Stats.skillDamage}%</div>
-                <div style={{ color: "#4ecdc4", fontSize: "0.65rem" }}>👊 {team1Stats.basicAttackPercent}%</div>
-                <div style={{ color: "#95e1d3", fontSize: "0.65rem" }}>🛡️ {team1Stats.attackResist}%</div>
-                <button onClick={() => setTeam1([])} className="mobile-clear-btn">🗑️</button>
+                {(() => {
+                  const stats = [
+                    { label: "💥 DMG Factor", v1: team1Stats.skillDamageRaw, v2: team2Stats.skillDamageRaw },
+                    { label: "⚔️ Skill DMG", v1: team1Stats.skillDamage, v2: team2Stats.skillDamage, suffix: "%" },
+                    { label: "👊 Basic ATK", v1: team1Stats.basicAttackPercent, v2: team2Stats.basicAttackPercent, suffix: "%" },
+                    { label: "🛡️ Resistance", v1: team1Stats.attackResist, v2: team2Stats.attackResist, suffix: "%" },
+                    { label: "✨ S.Resist", v1: team1Stats.skillResist, v2: team2Stats.skillResist, suffix: "%" },
+                    { label: "🎵 Fan Cap", v1: team1Stats.fanCapacity, v2: team2Stats.fanCapacity, suffix: "%" },
+                    { label: "🚀 Rally Cap", v1: team1Stats.rallyCapacity, v2: team2Stats.rallyCapacity, suffix: "%" },
+                  ];
+                  const colors = ["#ff8c42", "#ff6b6b", "#4ecdc4", "#95e1d3", "#a29bfe", "#ffd700", "#00ff88"];
+                  return stats.map((stat, i) => {
+                    const diff = stat.v1 - stat.v2;
+                    const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.4)";
+                    const sign = diff > 0 ? "+" : "";
+                    return (
+                      <div key={i} style={{ display: "flex", justifyContent: "space-between", color: colors[i], fontSize: "0.65rem" }}>
+                        <span>{stat.label}</span>
+                        <span>{stat.v1}{stat.suffix || ""} <span style={{ color: diffColor, fontWeight: 600 }}>({sign}{diff})</span></span>
+                      </div>
+                    );
+                  });
+                })()}
+                <button onClick={() => setTeam1([])} className="mobile-clear-btn">🗑️ Effacer</button>
               </div>
             </div>
           </div>
 
-          {/* Column 3: Team 2 */}
+          {/* Column 3: Team 2 - Full stats like desktop */}
           <div className="mobile-panel-col mobile-panel-3">
             <div className="mobile-team-card mobile-team-2">
               <div className="mobile-team-header">
@@ -322,18 +393,38 @@ export default function MobileArtistsPage() {
                   </div>
                 ))}
               </div>
+              {/* FULL STATS like desktop - all 7 stats with comparison */}
               <div className="mobile-team-stats">
-                <div style={{ color: "#ff8c42", fontSize: "0.65rem" }}>💥 {team2Stats.skillDamageRaw}</div>
-                <div style={{ color: "#ff6b6b", fontSize: "0.65rem" }}>⚔️ {team2Stats.skillDamage}%</div>
-                <div style={{ color: "#4ecdc4", fontSize: "0.65rem" }}>👊 {team2Stats.basicAttackPercent}%</div>
-                <div style={{ color: "#95e1d3", fontSize: "0.65rem" }}>🛡️ {team2Stats.attackResist}%</div>
-                <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️</button>
+                {(() => {
+                  const stats = [
+                    { label: "💥 DMG Factor", v1: team2Stats.skillDamageRaw, v2: team1Stats.skillDamageRaw },
+                    { label: "⚔️ Skill DMG", v1: team2Stats.skillDamage, v2: team1Stats.skillDamage, suffix: "%" },
+                    { label: "👊 Basic ATK", v1: team2Stats.basicAttackPercent, v2: team1Stats.basicAttackPercent, suffix: "%" },
+                    { label: "🛡️ Resistance", v1: team2Stats.attackResist, v2: team1Stats.attackResist, suffix: "%" },
+                    { label: "✨ S.Resist", v1: team2Stats.skillResist, v2: team1Stats.skillResist, suffix: "%" },
+                    { label: "🎵 Fan Cap", v1: team2Stats.fanCapacity, v2: team1Stats.fanCapacity, suffix: "%" },
+                    { label: "🚀 Rally Cap", v1: team2Stats.rallyCapacity, v2: team1Stats.rallyCapacity, suffix: "%" },
+                  ];
+                  const colors = ["#ff8c42", "#ff6b6b", "#4ecdc4", "#95e1d3", "#a29bfe", "#ffd700", "#00ff88"];
+                  return stats.map((stat, i) => {
+                    const diff = stat.v1 - stat.v2;
+                    const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.4)";
+                    const sign = diff > 0 ? "+" : "";
+                    return (
+                      <div key={i} style={{ display: "flex", justifyContent: "space-between", color: colors[i], fontSize: "0.65rem" }}>
+                        <span>{stat.label}</span>
+                        <span>{stat.v1}{stat.suffix || ""} <span style={{ color: diffColor, fontWeight: 600 }}>({sign}{diff})</span></span>
+                      </div>
+                    );
+                  });
+                })()}
+                <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️ Effacer</button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* SEARCH BAR - Fixed below panel */}
+        {/* SEARCH BAR - Fixed below panel with all filters */}
         <div className={`mobile-search-bar ${!searchBarVisible ? 'hidden' : ''}`}>
           <input
             type="text"
@@ -349,11 +440,15 @@ export default function MobileArtistsPage() {
             <option value="">{t.allGenres}</option>
             {GENRES.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
           </select>
+          <select value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
+            <option value="">{t.allSpecialties}</option>
+            {SPECIALTIES.map(spec => (<option key={spec} value={spec}>{spec}</option>))}
+          </select>
         </div>
 
         {/* ARTISTS GRID - Scrollable */}
         <div className="mobile-artists-bottom">
-          <div className="mobile-artists-count">{filteredArtists.length} artistes</div>
+          <div className="mobile-artists-count">{filteredArtists.length} artistes trouvés</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist) => (
               <button key={artist.id} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
@@ -376,10 +471,30 @@ export default function MobileArtistsPage() {
           background: #0f0f1a;
         }
         
-        /* Top Panel - Always fixed */
+        /* Initial header section that scrolls */
+        .mobile-header-section {
+          padding: 20px 12px;
+          text-align: center;
+          background: #0f0f1a;
+        }
+        .mobile-page-title {
+          margin-bottom: 10px;
+          background: linear-gradient(135deg, #f472b6, #c084fc, #818cf8);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-size: 2rem;
+          font-weight: 800;
+        }
+        .mobile-page-subtitle {
+          color: rgba(255,255,255,0.6);
+          margin-bottom: 10px;
+          font-size: 0.85rem;
+        }
+        
+        /* Top Panel */
         .mobile-top-panel {
-          position: fixed;
-          top: 0;
+          position: absolute;
+          top: 120px;
           left: 0;
           right: 0;
           height: 40vh;
@@ -390,6 +505,10 @@ export default function MobileArtistsPage() {
           padding: 4px;
           background: #0f0f1a;
           z-index: 100;
+        }
+        .mobile-top-panel.fixed {
+          position: fixed;
+          top: 0;
         }
         
         .mobile-panel-col {
@@ -411,7 +530,7 @@ export default function MobileArtistsPage() {
         }
         .mobile-preview-title {
           padding: 4px;
-          font-size: 0.6rem;
+          font-size: 0.55rem;
           font-weight: 600;
           color: rgba(255,255,255,0.6);
           text-transform: uppercase;
@@ -423,11 +542,12 @@ export default function MobileArtistsPage() {
           flex-direction: column;
           align-items: center;
           flex: 1;
-          gap: 4px;
+          gap: 3px;
+          overflow-y: auto;
         }
         .mobile-preview-image {
-          width: 45px;
-          height: 60px;
+          width: 40px;
+          height: 50px;
           border-radius: 4px;
           border: 2px solid;
           display: flex;
@@ -440,14 +560,39 @@ export default function MobileArtistsPage() {
           height: 100%;
           object-fit: cover;
         }
+        .mobile-preview-name {
+          font-weight: 700;
+          font-size: 0.65rem;
+          text-align: center;
+        }
+        .mobile-preview-genre {
+          font-size: 0.5rem;
+          color: rgba(255,255,255,0.6);
+        }
+        .mobile-preview-skills {
+          margin-top: 2px;
+          padding-top: 2px;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          width: 100%;
+          overflow-y: auto;
+          flex: 1;
+        }
+        .mobile-skill-line {
+          font-size: 0.45rem;
+          color: rgba(255,255,255,0.7);
+          margin: 1px 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
         .mobile-preview-nav {
           display: flex;
-          align-items: center;
-          gap: 2px;
+          gap: 4px;
           width: 100%;
+          justify-content: center;
         }
         .mobile-preview-nav button {
-          width: 18px;
+          width: 20px;
           height: 18px;
           border-radius: 3px;
           border: 1px solid rgba(255,255,255,0.2);
@@ -460,24 +605,18 @@ export default function MobileArtistsPage() {
           opacity: 0.3;
           cursor: not-allowed;
         }
-        .mobile-preview-nav span {
-          flex: 1;
-          text-align: center;
-          font-weight: 700;
-          font-size: 0.7rem;
-        }
         .mobile-preview-actions {
           width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 3px;
+          gap: 2px;
         }
         .mobile-profile-btn {
-          padding: 4px 8px;
+          padding: 3px 6px;
           background: linear-gradient(135deg, #8b5cf6, #06b6d4);
           color: white;
-          border-radius: 4px;
-          font-size: 0.5rem;
+          border-radius: 3px;
+          font-size: 0.45rem;
           border: none;
           cursor: pointer;
         }
@@ -487,25 +626,21 @@ export default function MobileArtistsPage() {
           gap: 2px;
         }
         .mobile-add-team {
-          padding: 3px 6px;
+          padding: 2px 4px;
           border-radius: 3px;
           border: none;
           color: white;
-          font-size: 0.45rem;
+          font-size: 0.4rem;
           font-weight: 600;
           cursor: pointer;
         }
-        .mobile-team1 {
-          background: #8b5cf6;
-        }
-        .mobile-team2 {
-          background: #06b6d4;
-        }
+        .mobile-team1 { background: #8b5cf6; }
+        .mobile-team2 { background: #06b6d4; }
         .mobile-preview-empty {
-          padding: 10px;
+          padding: 8px;
           text-align: center;
           color: rgba(255,255,255,0.4);
-          font-size: 0.6rem;
+          font-size: 0.5rem;
         }
         
         /* Team Cards */
@@ -525,7 +660,7 @@ export default function MobileArtistsPage() {
           justify-content: space-between;
           align-items: center;
           margin-bottom: 4px;
-          font-size: 0.65rem;
+          font-size: 0.6rem;
           font-weight: 700;
         }
         .mobile-team-1 .mobile-team-header span { color: #8b5cf6; }
@@ -538,8 +673,8 @@ export default function MobileArtistsPage() {
           justify-content: center;
         }
         .mobile-team-slot {
-          width: 32px;
-          height: 40px;
+          width: 30px;
+          height: 38px;
           border-radius: 3px;
           border: 1px solid rgba(255,255,255,0.1);
           background: rgba(255,255,255,0.05);
@@ -548,7 +683,7 @@ export default function MobileArtistsPage() {
           justify-content: center;
           cursor: pointer;
           overflow: hidden;
-          font-size: 0.6rem;
+          font-size: 0.55rem;
           color: rgba(255,255,255,0.2);
         }
         .mobile-team-slot img {
@@ -561,13 +696,14 @@ export default function MobileArtistsPage() {
           flex: 1;
           display: flex;
           flex-direction: column;
-          gap: 2px;
+          gap: 1px;
+          overflow-y: auto;
         }
         .mobile-clear-btn {
           width: 100%;
-          margin-top: auto;
+          margin-top: 4px;
           padding: 2px;
-          font-size: 0.5rem;
+          font-size: 0.45rem;
           border-radius: 3px;
           border: 1px solid rgba(255,255,255,0.1);
           background: transparent;
@@ -577,42 +713,48 @@ export default function MobileArtistsPage() {
         
         /* Search Bar */
         .mobile-search-bar {
-          position: fixed;
-          top: 40vh;
+          position: absolute;
           left: 0;
           right: 0;
           display: flex;
-          gap: 4px;
-          padding: 6px 8px;
+          gap: 3px;
+          padding: 6px;
           background: #0f0f1a;
           z-index: 99;
           transition: transform 0.3s ease;
+          flex-wrap: wrap;
+        }
+        .mobile-top-panel.fixed + .mobile-search-bar {
+          position: fixed;
+          top: 40vh;
         }
         .mobile-search-bar.hidden {
           transform: translateY(-100%);
         }
         .mobile-search-bar input {
           flex: 1;
-          padding: 8px;
+          min-width: 100px;
+          padding: 6px 8px;
           background: #1a1a2e;
           border: 1px solid #333;
           border-radius: 4px;
           color: #fff;
-          font-size: 0.8rem;
+          font-size: 0.75rem;
         }
         .mobile-search-bar select {
-          padding: 8px 4px;
+          padding: 6px 4px;
           background: #1a1a2e;
           border: 1px solid #333;
           border-radius: 4px;
           color: #fff;
-          font-size: 0.7rem;
+          font-size: 0.65rem;
           cursor: pointer;
+          min-width: 60px;
         }
         
         /* Artists Bottom */
         .mobile-artists-bottom {
-          padding: 44vh 6px 100px 6px;
+          padding: 48vh 6px 100px 6px;
           min-height: 100vh;
         }
         .mobile-artists-count {
@@ -648,7 +790,7 @@ export default function MobileArtistsPage() {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           font-weight: 800;
         }
       `}</style>
