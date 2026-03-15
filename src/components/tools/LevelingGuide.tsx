@@ -16,6 +16,7 @@ const translations: Record<string, any> = {
     purple: "Purple",
     gold: "Gold",
     cards: "cartes",
+    rarity: "Rareté",
   },
   en: {
     title: "Leveling Guide",
@@ -29,7 +30,92 @@ const translations: Record<string, any> = {
     purple: "Purple",
     gold: "Gold",
     cards: "cards",
-  }
+    rarity: "Rarity",
+  },
+  it: {
+    title: "Guida Leveling",
+    ssrLeveling: "Leveling SSR",
+    blueprints: "Blueprint",
+    hqUpgrade: "Upgrade HQ",
+    level: "Livello",
+    required: "Richiesto",
+    total: "Totale",
+    tier: "Tier",
+    purple: "Purple",
+    gold: "Gold",
+    cards: "carte",
+    rarity: "Rarità",
+  },
+  es: {
+    title: "Guía de Leveling",
+    ssrLeveling: "Leveling SSR",
+    blueprints: "Blueprints",
+    hqUpgrade: "Upgrade HQ",
+    level: "Nivel",
+    required: "Requerido",
+    total: "Total",
+    tier: "Tier",
+    purple: "Purple",
+    gold: "Gold",
+    cards: "cartas",
+    rarity: "Rareza",
+  },
+  pt: {
+    title: "Guia de Leveling",
+    ssrLeveling: "Leveling SSR",
+    blueprints: "Blueprints",
+    hqUpgrade: "Upgrade HQ",
+    level: "Nível",
+    required: "Requerido",
+    total: "Total",
+    tier: "Tier",
+    purple: "Purple",
+    gold: "Gold",
+    cards: "cartas",
+    rarity: "Raridade",
+  },
+  pl: {
+    title: "Przewodnik Leveling",
+    ssrLeveling: "Leveling SSR",
+    blueprints: "Blueprinty",
+    hqUpgrade: "Upgrade HQ",
+    level: "Poziom",
+    required: "Wymagane",
+    total: "Suma",
+    tier: "Tier",
+    purple: "Purple",
+    gold: "Gold",
+    cards: "kart",
+    rarity: "Rzadkość",
+  },
+  id: {
+    title: "Panduan Leveling",
+    ssrLeveling: "Leveling SSR",
+    blueprints: "Blueprint",
+    hqUpgrade: "Upgrade HQ",
+    level: "Level",
+    required: "Dibutuhkan",
+    total: "Total",
+    tier: "Tier",
+    purple: "Purple",
+    gold: "Gold",
+    cards: "kartu",
+    rarity: "Kelangkaan",
+  },
+  ru: {
+    title: "Гайд по Прокачке",
+    ssrLeveling: "Прокачка SSR",
+    blueprints: "Чертежи",
+    hqUpgrade: "Апгрейд Штаба",
+    level: "Уровень",
+    required: "Требуется",
+    total: "Всего",
+    tier: "Тиер",
+    purple: "Purple",
+    gold: "Gold",
+    cards: "карт",
+    rarity: "Редкость",
+  },
 };
 
 const ssrLeveling = [
@@ -149,7 +235,7 @@ export default function LevelingGuide() {
             <thead>
               <tr style={{ background: "#374151" }}>
                 <th style={{ padding: "12px", textAlign: "left", borderRadius: "8px 0 0 0" }}>{t.tier}</th>
-                <th style={{ padding: "12px", textAlign: "center" }}>Rarity</th>
+                <th style={{ padding: "12px", textAlign: "center" }}>{t.rarity}</th>
                 <th style={{ padding: "12px", textAlign: "right", borderRadius: "0 8px 0 0" }}>Total {t.cards}</th>
               </tr>
             </thead>

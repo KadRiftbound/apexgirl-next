@@ -7,6 +7,17 @@ import { useParams } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 
+const tierlistTranslations: Record<string, any> = {
+  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil" },
+  en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile" },
+  it: { title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo" },
+  es: { title: "Tier List", subtitle: "Clasificaciones de artistas y votos comunitarios", classic: "Clásico", vote: "Votar", viewProfile: "Ver perfil" },
+  pt: { title: "Tier List", subtitle: "Ranking de artistas e votos da comunidade", classic: "Clássico", vote: "Votar", viewProfile: "Ver perfil" },
+  pl: { title: "Tier List", subtitle: "Rankingi artystów i głosy społeczności", classic: "Klasyczny", vote: "Głosuj", viewProfile: "Zobacz profil" },
+  id: { title: "Tier List", subtitle: "Peringkat artis dan suara komunitas", classic: "Klasik", vote: "Vote", viewProfile: "Lihat profil" },
+  ru: { title: "Tier List", subtitle: "Рейтинги артистов и голоса сообщества", classic: "Классика", vote: "Голосовать", viewProfile: "Посмотреть профиль" },
+};
+
 type Artist = {
   id: number;
   name: string;
@@ -54,6 +65,7 @@ const getTierOrder = (tier: string): number => {
 export default function TierListPage() {
   const params = useParams();
   const lang = (params?.lang as string) || "fr";
+  const t = tierlistTranslations[lang] || tierlistTranslations.en;
   const [activeTab, setActiveTab] = useState<"classic" | "vote">("classic");
   const [voteData, setVoteData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -118,8 +130,8 @@ export default function TierListPage() {
 
       <div className="container" style={{ paddingTop: "40px" }}>
         <div className="text-center" style={{ marginBottom: "40px" }}>
-          <h1 className="section-title">🏆 Tier List</h1>
-          <p className="section-subtitle">Classement des artistes et votes communautaires</p>
+          <h1 className="section-title">🏆 {t.title}</h1>
+          <p className="section-subtitle">{t.subtitle}</p>
         </div>
 
         <AdBanner />

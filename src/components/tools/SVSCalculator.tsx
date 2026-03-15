@@ -1,6 +1,22 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useParams } from "next/navigation";
+
+const translations: Record<string, any> = {
+  fr: { item: "Article", qty: "Qté", price: "Prix", subtotal: "Total", reset: "Réinitialiser" },
+  en: { item: "Item", qty: "Qty", price: "Price", subtotal: "Subtotal", reset: "Reset" },
+  it: { item: "Articolo", qty: "Qtà", price: "Prezzo", subtotal: "Totale", reset: "Reset" },
+  es: { item: "Artículo", qty: "Cant", price: "Precio", subtotal: "Subtotal", reset: "Reiniciar" },
+  pt: { item: "Item", qty: "Qtd", price: "Preço", subtotal: "Subtotal", reset: "Resetar" },
+  pl: { item: "Przedmiot", qty: "Ilość", price: "Cena", subtotal: "Suma", reset: "Resetuj" },
+  id: { item: "Barang", qty: "Jml", price: "Harga", subtotal: "Subtotal", reset: "Reset" },
+  ru: { item: "Предмет", qty: "Кол-во", price: "Цена", subtotal: "Итого", reset: "Сбросить" },
+};
+
+function getT(lang: string) {
+  return translations[lang] || translations.en;
+}
 
 type ShopItem = {
   inCart: boolean;
@@ -42,6 +58,9 @@ function fmt(v: number): string {
 }
 
 function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
+  const params = useParams();
+  const lang = (params?.lang as string) || "en";
+  const t = getT(lang);
   const scheme = colorSchemes[color] || colorSchemes.GOLD;
 
   const [items, setItems] = useState<{ inCart: boolean; quantity: number }[]>(() =>
@@ -108,10 +127,10 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
           <thead>
             <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
               <th style={{ padding: "8px", textAlign: "left", width: "30px", color: "rgba(255,255,255,0.5)" }}></th>
-              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.5)" }}>Item</th>
-              <th style={{ padding: "8px", textAlign: "center", width: "80px", color: "rgba(255,255,255,0.5)" }}>Qty</th>
-              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)" }}>Price</th>
-              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)" }}>Subtotal</th>
+              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.5)" }}>{t.item}</th>
+              <th style={{ padding: "8px", textAlign: "center", width: "80px", color: "rgba(255,255,255,0.5)" }}>{t.qty}</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)" }}>{t.price}</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)" }}>{t.subtotal}</th>
             </tr>
           </thead>
           <tbody>

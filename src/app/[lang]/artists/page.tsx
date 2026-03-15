@@ -8,8 +8,14 @@ import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 
 const filterTranslations: Record<string, any> = {
-  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher..." },
-  en: { all: "All", allGenres: "All genres", search: "Search..." },
+  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités" },
+  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties" },
+  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità" },
+  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades" },
+  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades" },
+  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności" },
+  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis" },
+  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации" },
 };
 
 const rankColors: Record<string, string> = {
@@ -161,7 +167,7 @@ export default function ArtistsPage() {
               {/* Artist Overview Card - compact */}
               <div style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: 0, marginBottom: "6px", overflow: "hidden" }}>
                 <div style={{ padding: "10px", borderBottom: "1px solid rgba(255,255,255,0.1)", background: "linear-gradient(135deg, rgba(255,77,141,0.15), rgba(139,92,246,0.15))" }}>
-                  <span style={{ fontWeight: 600, fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>Artist Overview</span>
+                  <span style={{ fontWeight: 600, fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{t.artistOverview}</span>
                 </div>
 
                 {selectedArtist ? (
@@ -192,7 +198,7 @@ export default function ArtistsPage() {
                     </div>
 
                      <div style={{ marginTop: "8px" }}>
-                       <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.4)", marginBottom: "3px", textTransform: "uppercase" }}>Compétences</p>
+                       <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.4)", marginBottom: "3px", textTransform: "uppercase" }}>{t.skills}</p>
                        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
                          {selectedArtist.skills?.slice(0,3).map((skill, i) => (
                            <div key={i} style={{ padding: "4px 6px", background: "rgba(255,255,255,0.03)", borderRadius: "4px", fontSize: "0.5rem", borderLeft: `2px solid ${rankColors[selectedArtist.rank]}`, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{skill}</div>
@@ -213,21 +219,21 @@ export default function ArtistsPage() {
                            fontWeight: 500
                          }}
                        >
-                         Voir la fiche complète
+                          {t.viewFullProfile}
                        </Link>
                      </div>
                    </div>
                 ) : (
                   <div style={{ padding: "20px", textAlign: "center", color: "rgba(255,255,255,0.4)" }}>
                     <div style={{ fontSize: "1.4rem", marginBottom: "4px" }}>👆</div>
-                    <p style={{ fontSize: "0.75rem" }}>Sélectionnez un artiste</p>
+                    <p style={{ fontSize: "0.75rem" }}>{t.selectArtist}</p>
                   </div>
                 )}
               </div>
 
               {/* Team Builder Card */}
               <div style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: "12px" }}>
-                <div style={{ fontWeight: 600, fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase", marginBottom: "10px" }}>Team Builder ({team.length}/5)</div>
+                <div style={{ fontWeight: 600, fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase", marginBottom: "10px" }}>{t.teamBuilder} ({team.length}/5)</div>
                 
                 <div style={{ display: "flex", gap: "5px", marginBottom: "10px" }}>
                   {[0,1,2,3,4].map(i => (
@@ -241,7 +247,7 @@ export default function ArtistsPage() {
 
                 {team.length > 0 && (
                   <div style={{ background: "rgba(255,255,255,0.05)", borderRadius: "8px", padding: "10px", marginBottom: "10px" }}>
-                    <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.4)", marginBottom: "4px", textTransform: "uppercase" }}>Stats combinés</p>
+                    <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.4)", marginBottom: "4px", textTransform: "uppercase" }}>{t.combinedStats}</p>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", fontSize: "0.7rem" }}>
                       <div style={{ color: "#ff6b6b" }}>⚔️ Skill damage: {teamStats.skillDamage}%</div>
                       <div style={{ color: "#ff8c42" }}>💥 DMG Factor: {teamStats.skillDamageRaw}</div>
@@ -264,7 +270,7 @@ export default function ArtistsPage() {
 
                 {team.length > 0 && (
                   <div style={{ marginTop: "8px", padding: "8px", background: "linear-gradient(135deg, rgba(139,92,246,0.2), rgba(6,182,212,0.2))", borderRadius: "8px" }}>
-                    <p style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.4)", marginBottom: "4px", textTransform: "uppercase" }}>Genres</p>
+                    <p style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.4)", marginBottom: "4px", textTransform: "uppercase" }}>{t.genres}</p>
                     <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
                       {Object.entries(teamStats.genreCounts).map(([g, c]) => (
                         <span key={g} style={{ padding: "3px 8px", borderRadius: "10px", fontSize: "0.65rem", fontWeight: 600, background: "rgba(0,0,0,0.4)", color: "#fff" }}>{c} {g}</span>
@@ -313,7 +319,7 @@ export default function ArtistsPage() {
                     cursor: "pointer",
                   }}
                 >
-                  <option value="">Tous les ranks</option>
+                  <option value="">{t.allRanks}</option>
                   {RANKS.map(rank => (
                     <option key={rank} value={rank} style={{ color: "#fff" }}>{rank}</option>
                   ))}
@@ -332,7 +338,7 @@ export default function ArtistsPage() {
                     cursor: "pointer",
                   }}
                 >
-                  <option value="">Tous les genres</option>
+                  <option value="">{t.allGenres}</option>
                   {GENRES.map(genre => (
                     <option key={genre} value={genre} style={{ color: "#fff" }}>{genre}</option>
                   ))}
@@ -351,7 +357,7 @@ export default function ArtistsPage() {
                     cursor: "pointer",
                   }}
                 >
-                  <option value="">Toutes spécialités</option>
+                  <option value="">{t.allSpecialties}</option>
                   {SPECIALTIES.map(spec => (
                     <option key={spec} value={spec} style={{ color: "#fff" }}>{spec}</option>
                   ))}

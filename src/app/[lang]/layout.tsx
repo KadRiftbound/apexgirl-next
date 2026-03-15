@@ -164,7 +164,7 @@ export default async function LocaleLayout({
         <div className="header-inner">
           <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
             <img src="/assets/logo.png" alt="TopGirl" />
-            <span>TopGirl Guide</span>
+            <span>{lang === "fr" ? "Guide" : lang === "en" ? "Guide" : getNavLabel(lang, "home")}</span>
           </Link>
           <nav className="nav" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => (
@@ -189,7 +189,7 @@ export default async function LocaleLayout({
           <div>
             <h4 style={{ background: "linear-gradient(135deg, var(--primary), #ff80ab)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>TopGirl</h4>
             <p className="text-sm text-muted" style={{ marginBottom: "16px" }}>
-              {lang === "fr" ? "Le fansite non-officiel de TopGirl/ApexGirl par A3Games." : lang === "en" ? "The unofficial fansite for TopGirl/ApexGirl by A3Games." : getFooterText(lang, "title")}
+              { lang === "fr" ? "Le fansite non-officiel de TopGirl/ApexGirl par A3Games." : lang === "en" ? "The unofficial fansite for TopGirl/ApexGirl by A3Games." : getFooterText(lang, "title") }
             </p>
             <p className="text-sm text-muted">
               {lang === "fr" ? "Fansite dédié aux joueurs avec guides, outils et codes promo." : lang === "en" ? "Fansite dedicated to players with guides, tools and promo codes." : getFooterText(lang, "subtitle")}
@@ -201,7 +201,7 @@ export default async function LocaleLayout({
             <Link href={`/${lang}/codes/`}>{lang === "fr" ? "Codes" : "Codes"}</Link>
             <Link href={`/${lang}/artists/`}>{lang === "fr" ? "Artistes" : "Artists"}</Link>
             <Link href={`/${lang}/tools/`}>{lang === "fr" ? "Outils" : "Tools"}</Link>
-            <Link href={`/${lang}/tierlist/`}>Tier List</Link>
+            <Link href={`/${lang}/tierlist/`}>{lang === "fr" ? "Tier List" : lang === "en" ? "Tier List" : getNavLabel(lang, "tierList")}</Link>
           </div>
           <div>
             <h4>{lang === "fr" ? "Ressources" : "Resources"}</h4>
@@ -213,7 +213,7 @@ export default async function LocaleLayout({
             <Link href={`/${lang}/mentions-legales`}>{lang === "fr" ? "Mentions Légales" : "Legal Notice"}</Link>
             <Link href={`/${lang}/confidentialite`}>{lang === "fr" ? "Confidentialité" : "Privacy Policy"}</Link>
             <Link href={`/${lang}/cookie-settings`}>{lang === "fr" ? "Cookies" : "Cookies"}</Link>
-            <Link href={`/${lang}/contact`}>Contact</Link>
+            <Link href={`/${lang}/contact`}>{lang === "fr" ? "Contact" : lang === "en" ? "Contact" : getFooterText(lang, "contact")}</Link>
           </div>
         </div>
         <div className="footer-bottom">
@@ -238,12 +238,24 @@ function getNavLabel(lang: string, key: string): string {
 
 function getFooterText(lang: string, key: string): string {
   const translations: Record<string, Record<string, string>> = {
-    it: { title: "Il fansite non ufficiale di TopGirl/ApexGirl di A3Games.", subtitle: "Fansite dedicato ai giocatori con guide, strumenti e codici promozionali." },
-    es: { title: "El fansite no oficial de TopGirl/ApexGirl por A3Games.", subtitle: "Fansite dedicado a jugadores con guías, herramientas y códigos promocionales." },
-    pt: { title: "O fansite não oficial da TopGirl/ApexGirl pela A3Games.", subtitle: "Fansite dedicado a jogadores com guias, ferramentas e códigos promocionais." },
-    pl: { title: "Nieoficjalny serwis fanowski TopGirl/ApexGirl stworzony przez A3Games.", subtitle: "Serwis dla graczy z przewodnikami, narzędziami i kodami promocyjnymi." },
-    id: { title: "Fansite tidak resmi untuk TopGirl/ApexGirl oleh A3Games.", subtitle: "Fansite untuk pemain dengan panduan, alat, dan kode promo." },
-    ru: { title: "Неофициальный фан-сайт TopGirl/ApexGirl от A3Games.", subtitle: "Фан-сайт для игроков с гайдами, инструментами и промокодами." },
+    it: { home: "Home", codes: "Codici", artists: "Artisti", tools: "Strumenti", tierList: "Tier List", events: "Eventi", guides: "Guide", legal: "Legale", legalNotice: "Note Legali", privacy: "Privacy", cookies: "Cookies", contact: "Contatto", title: "Il fansite non ufficiale di TopGirl/ApexGirl.", subtitle: "Fansite dedicato ai giocatori con guide, strumenti e codici promo.", copyright: "© 2026 TopGirl Fansite. Tutti i diritti riservati. Questo è un fansite non ufficiale." },
+    es: { home: "Inicio", codes: "Códigos", artists: "Artistas", tools: "Herramientas", tierList: "Tier List", events: "Eventos", guides: "Guías", legal: "Legal", legalNotice: "Aviso Legal", privacy: "Privacidad", cookies: "Cookies", contact: "Contacto", title: "El fansite no oficial de TopGirl/ApexGirl.", subtitle: "Fansite dedicado a jugadores con guías, herramientas y códigos promo.", copyright: "© 2026 TopGirl Fansite. Todos los derechos reservados. Este es un fansite no oficial." },
+    pt: { home: "Início", codes: "Códigos", artists: "Artistas", tools: "Ferramentas", tierList: "Tier List", events: "Eventos", guides: "Guias", legal: "Legal", legalNotice: "Aviso Legal", privacy: "Privacidade", cookies: "Cookies", contact: "Contato", title: "O fansite não oficial da TopGirl/ApexGirl.", subtitle: "Fansite dedicado a jogadores com guias, ferramentas e códigos promo.", copyright: "© 2026 TopGirl Fansite. Todos os direitos reservados. Este é um fansite não oficial." },
+    pl: { home: "Strona", codes: "Kody", artists: "Artyści", tools: "Narzędzia", tierList: "Tier List", events: "Wydarzenia", guides: "Poradniki", legal: "Prawne", legalNotice: "Nota Prawna", privacy: "Prywatność", cookies: "Cookies", contact: "Kontakt", title: "Nieoficjalny serwis TopGirl/ApexGirl.", subtitle: "Serwis dla graczy z poradnikami, narzędziami i kodami promocyjnymi.", copyright: "© 2026 TopGirl Fansite. Wszelkie prawa zastrzeżone. To jest nieoficjalny serwis." },
+    id: { home: "Beranda", codes: "Kode", artists: "Artis", tools: "Alat", tierList: "Tier List", events: "Acara", guides: "Panduan", legal: "Hukum", legalNotice: "Ketentuan", privacy: "Privasi", cookies: "Cookies", contact: "Kontak", title: "Fansite resmi TopGirl/ApexGirl.", subtitle: "Fansite untuk pemain dengan panduan, alat, dan kode promo.", copyright: "© 2026 TopGirl Fansite. Semua hak dilindungi. Ini adalah fansite tidak resmi." },
+    ru: { home: "Главная", codes: "Коды", artists: "Артисты", tools: "Инструменты", tierList: "Tier List", events: "События", guides: "Гайды", legal: "Право", legalNotice: "Юридическая Информация", privacy: "Конфиденциальность", cookies: "Cookies", contact: "Контакт", title: "Неофициальный фан-сайт TopGirl/ApexGirl.", subtitle: "Фан-сайт для игроков с гайдами, инструментами и промокодами.", copyright: "© 2026 TopGirl Fansite. Все права защищены. Это неофициальный фан-сайт." },
   };
-  return translations[lang]?.[key] || "";
+  return translations[lang]?.[key] || translations.fr?.[key] || key;
+}
+
+function getNavLabel(lang: string, key: string): string {
+  const translations: Record<string, Record<string, string>> = {
+    it: { home: "Home", database: "Artisti", events: "Eventi", tools: "Strumenti", codes: "Codici", tierList: "Tier List", guides: "Guide" },
+    es: { home: "Inicio", database: "Artistas", events: "Eventos", tools: "Herramientas", codes: "Códigos", tierList: "Tier List", guides: "Guías" },
+    pt: { home: "Início", database: "Artistas", events: "Eventos", tools: "Ferramentas", codes: "Códigos", tierList: "Tier List", guides: "Guias" },
+    pl: { home: "Strona", database: "Artyści", events: "Wydarzenia", tools: "Narzędzia", codes: "Kody", tierList: "Tier List", guides: "Poradniki" },
+    id: { home: "Beranda", database: "Artis", events: "Acara", tools: "Alat", codes: "Kode", tierList: "Tier List", guides: "Panduan" },
+    ru: { home: "Главная", database: "Артисты", events: "События", tools: "Инструменты", codes: "Коды", tierList: "Tier List", guides: "Гайды" },
+  };
+  return translations[lang]?.[key] || key;
 }

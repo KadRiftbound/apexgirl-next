@@ -1,6 +1,22 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useParams } from "next/navigation";
+
+const translations: Record<string, any> = {
+  fr: { task: "Tâche", used: "Utilisé", points: "Points", total: "Total", reset: "Réinitialiser" },
+  en: { task: "Task", used: "Used", points: "Points", total: "Total", reset: "Reset" },
+  it: { task: "Compito", used: "Usato", points: "Punti", total: "Totale", reset: "Reset" },
+  es: { task: "Tarea", used: "Usado", points: "Puntos", total: "Total", reset: "Reiniciar" },
+  pt: { task: "Tarefa", used: "Usado", points: "Pontos", total: "Total", reset: "Resetar" },
+  pl: { task: "Zadanie", used: "Użyte", points: "Punkty", total: "Suma", reset: "Resetuj" },
+  id: { task: "Tugas", used: "Dipakai", points: "Poin", total: "Total", reset: "Reset" },
+  ru: { task: "Задача", used: "Использовано", points: "Очки", total: "Всего", reset: "Сбросить" },
+};
+
+function getT(lang: string) {
+  return translations[lang] || translations.en;
+}
 
 type EventItem = {
   task: string;
@@ -96,10 +112,10 @@ function EventSection({
         <table style={{ width: "100%", fontSize: "0.85rem", borderCollapse: "collapse" }}>
           <thead>
             <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>Task</th>
-              <th style={{ padding: "8px", textAlign: "center", color: "rgba(255,255,255,0.5)", fontWeight: 500, width: "80px" }}>Used</th>
-              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>Points</th>
-              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>Total</th>
+              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>{t.task}</th>
+              <th style={{ padding: "8px", textAlign: "center", color: "rgba(255,255,255,0.5)", fontWeight: 500, width: "80px" }}>{t.used}</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>{t.points}</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>{t.total}</th>
             </tr>
           </thead>
           <tbody>
@@ -154,6 +170,9 @@ function EventSection({
 }
 
 export default function CEOCalculator() {
+  const params = useParams();
+  const lang = (params?.lang as string) || "en";
+  const t = getT(lang);
   const [events, setEvents] = useState<EventData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

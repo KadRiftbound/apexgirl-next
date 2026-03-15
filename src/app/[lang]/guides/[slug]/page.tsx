@@ -4,6 +4,17 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
 
+const guideTranslations: Record<string, any> = {
+  fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides" },
+  en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides" },
+  it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide" },
+  es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías" },
+  pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias" },
+  pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki" },
+  id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain" },
+  ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды" },
+};
+
 type Guide = {
   id: string;
   title: string;
@@ -409,15 +420,16 @@ export default function GuideDetailPage() {
   const params = useParams();
   const slug = params?.slug as string;
   const lang = params?.lang as string || "fr";
+  const t = guideTranslations[lang] || guideTranslations.en;
   
   const guide = guides.find(g => g.id === slug);
 
   if (!guide) {
     return (
       <div className="container" style={{ padding: "40px 20px", textAlign: "center" }}>
-        <h1 style={{ color: "#fff", marginBottom: "20px" }}>Guide not found</h1>
+        <h1 style={{ color: "#fff", marginBottom: "20px" }}>{t.notFound}</h1>
         <Link href={`/${lang}/guides/`} style={{ color: "#8b5cf6" }}>
-          ← Back to Guides
+          {t.backToGuides}
         </Link>
       </div>
     );
@@ -426,7 +438,7 @@ export default function GuideDetailPage() {
   return (
     <div className="container" style={{ padding: "40px 20px", maxWidth: "800px", margin: "0 auto" }}>
       <Link href={`/${lang}/guides/`} style={{ color: "rgba(255,255,255,0.6)", marginBottom: "20px", display: "inline-block" }}>
-        ← Back to Guides
+        {t.backToGuides}
       </Link>
 
       <div style={{ 
@@ -500,7 +512,7 @@ export default function GuideDetailPage() {
       <AdBanner />
 
       <div style={{ marginTop: "32px" }}>
-        <h3 style={{ color: "#fff", marginBottom: "16px" }}>Other Guides</h3>
+        <h3 style={{ color: "#fff", marginBottom: "16px" }}>{t.otherGuides}</h3>
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
           {guides.filter(g => g.id !== guide.id).slice(0, 4).map(g => (
             <Link 

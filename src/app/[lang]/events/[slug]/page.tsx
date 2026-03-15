@@ -5,6 +5,17 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
 
+const eventTranslations: Record<string, any> = {
+  fr: { notFound: "Événement non trouvé", backToEvents: "← Retour aux événements", loading: "Chargement...", otherEvents: "Autres événements" },
+  en: { notFound: "Event not found", backToEvents: "← Back to Events", loading: "Loading...", otherEvents: "Other Events" },
+  it: { notFound: "Evento non trovato", backToEvents: "← Torna agli eventi", loading: "Caricamento...", otherEvents: "Altri eventi" },
+  es: { notFound: "Evento no encontrado", backToEvents: "← Volver a los eventos", loading: "Cargando...", otherEvents: "Otros eventos" },
+  pt: { notFound: "Evento não encontrado", backToEvents: "← Voltar aos eventos", loading: "Carregando...", otherEvents: "Outros eventos" },
+  pl: { notFound: "Wydarzenie nie znalezione", backToEvents: "← Wróć do wydarzeń", loading: "Ładowanie...", otherEvents: "Inne wydarzenia" },
+  id: { notFound: "Acara tidak ditemukan", backToEvents: "← Kembali ke acara", loading: "Memuat...", otherEvents: "Acara lain" },
+  ru: { notFound: "Событие не найдено", backToEvents: "← Вернуться к событиям", loading: "Загрузка...", otherEvents: "Другие события" },
+};
+
 type Event = {
   id: number;
   name: string;
@@ -37,6 +48,7 @@ export default function EventDetailPage() {
   const params = useParams();
   const slug = params?.slug as string;
   const lang = params?.lang as string || "fr";
+  const t = eventTranslations[lang] || eventTranslations.en;
   const [event, setEvent] = useState<Event | null>(null);
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
@@ -56,7 +68,7 @@ export default function EventDetailPage() {
   if (loading) {
     return (
       <div className="container" style={{ padding: "40px 20px", textAlign: "center" }}>
-        <div style={{ color: "#fff" }}>Loading...</div>
+        <div style={{ color: "#fff" }}>{t.loading}</div>
       </div>
     );
   }
@@ -64,9 +76,9 @@ export default function EventDetailPage() {
   if (!event) {
     return (
       <div className="container" style={{ padding: "40px 20px", textAlign: "center" }}>
-        <h1 style={{ color: "#fff", marginBottom: "20px" }}>Event not found</h1>
+        <h1 style={{ color: "#fff", marginBottom: "20px" }}>{t.notFound}</h1>
         <Link href={`/${lang}/events/`} style={{ color: "#8b5cf6" }}>
-          ← Back to Events
+          {t.backToEvents}
         </Link>
       </div>
     );
@@ -77,7 +89,7 @@ export default function EventDetailPage() {
   return (
     <div className="container" style={{ padding: "40px 20px", maxWidth: "800px", margin: "0 auto" }}>
       <Link href={`/${lang}/events/`} style={{ color: "rgba(255,255,255,0.6)", marginBottom: "20px", display: "inline-block" }}>
-        ← Back to Events
+        {t.backToEvents}
       </Link>
 
       <div style={{ 
