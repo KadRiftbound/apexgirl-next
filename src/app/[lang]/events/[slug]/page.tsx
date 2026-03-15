@@ -126,6 +126,36 @@ export default function EventDetailPage() {
           )}
         </div>
 
+        <div style={{ marginBottom: "24px" }}>
+          {event.guideId === "event-cleanup-party" ? (
+            <span style={{ 
+              background: "linear-gradient(135deg, #10b981, #059669)", 
+              color: "white", 
+              padding: "4px 12px", 
+              borderRadius: "20px", 
+              fontSize: "0.85rem", 
+              fontWeight: "600",
+              display: "inline-block",
+              marginBottom: "12px"
+            }}>
+              Nouveau
+            </span>
+          ) : (
+            <span style={{ 
+              background: "linear-gradient(135deg, #f59e0b, #d97706)", 
+              color: "white", 
+              padding: "4px 12px", 
+              borderRadius: "20px", 
+              fontSize: "0.85rem", 
+              fontWeight: "600",
+              display: "inline-block",
+              marginBottom: "12px"
+            }}>
+              En cours d'élaboration
+            </span>
+          )}
+        </div>
+        
         <h1 style={{ 
           fontSize: "2rem", 
           fontWeight: 800, 
