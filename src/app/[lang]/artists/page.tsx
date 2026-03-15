@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
+import MobileArtistsPage from "@/components/MobileArtistsPage";
 
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
@@ -363,6 +364,16 @@ export default function ArtistsPage() {
 
   const [searchBarVisible, setSearchBarVisible] = useState(true);
   const [panelFixed, setPanelFixed] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth <= 900;
 
   const rankOrder: Record<string, number> = { UR: 1, "UR Roma": 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4 };
   const getRankSort = (r: string) => rankOrder[r] || 99;
@@ -370,6 +381,11 @@ export default function ArtistsPage() {
 
   if (!mounted) {
     return <div style={{ padding: "100px", textAlign: "center", color: "#fff" }}>Loading...</div>;
+  }
+
+  // Render mobile version on small screens
+  if (isMobile) {
+    return <MobileArtistsPage />;
   }
 
   return (
