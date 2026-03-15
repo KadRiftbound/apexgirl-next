@@ -19,14 +19,33 @@ type Guide = {
   id: string;
   title: string;
   title_en?: string;
+  title_it?: string;
+  title_es?: string;
+  title_pt?: string;
+  title_pl?: string;
+  title_id?: string;
+  title_ru?: string;
   description: string;
   description_en?: string;
+  description_it?: string;
+  description_es?: string;
+  description_pt?: string;
+  description_pl?: string;
+  description_id?: string;
+  description_ru?: string;
   icon: string;
   color: string;
   category: string;
   category_en?: string;
   readTime: string;
   content?: string;
+  content_en?: string;
+  content_it?: string;
+  content_es?: string;
+  content_pt?: string;
+  content_pl?: string;
+  content_id?: string;
+  content_ru?: string;
 };
 
 const guides: Guide[] = [
@@ -650,14 +669,26 @@ Le **Chamber Territory** est un événement de territoire. Capturez et défendez
     id: "event-cleanup-party",
     title: "Guide Cleanup Party",
     title_en: "Cleanup Party Guide",
+    title_it: "Guida alla Pulizia della Festa",
+    title_es: "Guía de la Fiesta de Limpieza",
+    title_pt: "Guia da Festa de Limpeza",
+    title_pl: "Przewodnik po imprezie sprzątającej",
+    title_id: "Panduan Pesta Bersih",
+    title_ru: "Гид по уборке вечеринки",
     description: "Guide du Cleanup Party - Comment jouer et optimiser vos rewards",
     description_en: "Cleanup Party Guide - How to play and optimize your rewards",
+    description_it: "Guida alla Pulizia della Festa - Come giocare e ottimizzare le ricompense",
+    description_es: "Guía de la Fiesta de Limpieza - Cómo jugar y optimizar tus recompensas",
+    description_pt: "Guia da Festa de Limpeza - Como jogar e otimizar suas recompensas",
+    description_pl: "Przewodnik po imprezie sprzątającej - Jak grać i optymalizować nagrody",
+    description_id: "Panduan Pesta Bersih - Cara bermain dan mengoptimalkan reward",
+    description_ru: "Гид по уборке вечеринки - Как играть и оптимизировать награды",
     icon: "🧹",
     color: "#22c55e",
     category: "Événements",
     category_en: "Events",
     readTime: "5 min",
-    content: `
+content: `
 ## Cleanup Party Event Guide - TopGirl
 
 ### Overview
@@ -683,7 +714,196 @@ In **Cleanup Party**, the goal is to clear the entire board by matching tiles. P
 3. **Try to keep 2-3 slots free** whenever possible
 4. **Daily and Target Quests** help you progress faster and earn extra rewards
 5. **Request assistance daily**, even if you don't need it yet, so you can save it for harder levels later
-    `
+`,
+  content_en: `
+## Cleanup Party Event Guide - TopGirl
+
+### Overview
+In **Cleanup Party**, the goal is to clear the entire board by matching tiles. Players select tiles from the board and place them into 7 available slots. When three identical tiles are placed, they are automatically cleared, freeing space for new tiles. Be careful not to fill all 7 slots with unmatched tiles, or the attempt will fail.
+
+### How to Play
+- Each stage attempt consumes Stamina
+- Clearing stages increases the Girl's Affection
+- Reaching the maximum affection grants an additional Gift
+- If you need items, you can request help from other players through the City, Group, or Chamber channels
+
+### Quests
+- **Daily Quests**: Complete daily tasks for additional rewards
+- **Target Quests**: Special event objectives with bonus rewards
+
+### Ranking
+- Each cleared stage grants points for the event ranking
+- Higher rankings receive better rewards
+
+### Tips
+1. **Before selecting a tile**, check the board for at least three identical tiles to clear them quickly
+2. **Prioritize tiles** that already have two or more visible matches
+3. **Try to keep 2-3 slots free** whenever possible
+4. **Daily and Target Quests** help you progress faster and earn extra rewards
+5. **Request assistance daily**, even if you don't need it yet, so you can save it for harder levels later
+`,
+  content_it: `
+## Guida all'evento Pulizia della Festa - TopGirl
+
+### Panoramica
+Nel **Cleanup Party**, l'obiettivo è cancellare l'intero tabellone facendo corrispondere le tessere. I giocatori selezionano le tessere dal tabellone e le posizionano negli 7 slot disponibili. Quando tre tessere identiche vengono posizionate, vengono automaticamente cancellate, liberando spazio per nuove tessere. Fai attenzione a non riempire tutti i 7 slot con tessere non corrispondenti, altrimenti il tentativo fallirà.
+
+### Come Giocare
+- Ogni tentativo di stage consuma Stamina
+- Cancellare le fasi aumenta l'Affetto della Ragazza
+- Raggiungere l'affetto massimo concede un ulteriore Regalo
+- Se hai bisogno di oggetti, puoi chiedere aiuto ad altri giocatori attraverso i canali City, Group o Chamber
+
+### Missioni
+- **Missioni Giornaliere**: Completa le attività giornaliere per ricompense aggiuntive
+- **Missioni Obiettivo**: Obiettivi speciali dell'evento con ricompense bonus
+
+### Classifica
+- Ogni fase cancellata assegna punti per il ranking dell'evento
+- Le classifiche più alte ricevono ricompense migliori
+
+### Consigli
+1. **Prima di selezionare una tessera**, controlla il tabellone per almeno tre tessere identiche per cancellarle rapidamente
+2. **Dai priorità alle tessere** che già hanno due o più corrispondenze visibili
+3. **Prova a mantenere liberi 2-3 slot** ogni volta che è possibile
+4. **Le missioni giornaliere e obiettivo** aiutano a progredire più velocemente e a guadagnare ricompense extra
+5. **Richiedi assistenza quotidianamente**, anche se non ne hai bisogno ancora, così puoi salvarla per i livelli più difficili successivi
+`,
+  content_es: `
+## Guía del Evento de Fiesta de Limpieza - TopGirl
+
+### Resumen
+En **Cleanup Party**, el objetivo es limpiar todo el tablero coincidiendo las fichas. Los jugadores seleccionan fichas del tablero y las colocan en los 7 espacios disponibles. Cuando se colocan tres fichas idénticas, se eliminan automáticamente, liberando espacio para nuevas fichas. Ten cuidado de no llenar los 7 espacios con fichas que no coinciden, o el intento fallará.
+
+### Cómo Jugar
+- Cada intento de fase consume Stamina
+- Limpiar las fases aumenta el Afecto de la Chica
+- Alcanzar el afecto máximo otorga un Regalo adicional
+- Si necesitas objetos, puedes pedir ayuda a otros jugadores a través de los canales City, Group o Chamber
+
+### Misiones
+- **Misiones Diarias**: Completa las tareas diarias para obtener recompensas adicionales
+- **Misiones Objetivo**: Objetivos especiales del evento con recompensas bonus
+
+### Clasificación
+- Cada fase eliminada otorga puntos para el ranking del evento
+- Las clasificaciones más altas reciben mejores recompensas
+
+### Consejos
+1. **Antes de seleccionar una ficha**, verifica el tablero para al menos tres fichas idénticas para eliminarlas rápidamente
+2. **Da prioridad a las fichas** que ya tengan dos o más coincidencias visibles
+3. **Intenta mantener libres 2-3 espacios** siempre que sea posible
+4. **Las misiones diarias y de objetivo** te ayudan a progresar más rápido y a obtener recompensas extra
+5. **Solicita asistencia diariamente**, incluso si no la necesitas todavía, así podrás guardarla para niveles más difíciles más adelante
+`,
+  content_pt: `
+## Guia do Evento de Festa de Limpeza - TopGirl
+
+### Visão Geral
+Em **Cleanup Party**, o objetivo é limpar todo o quadro combinando as peças. Os jogadores selecionam peças do quadro e as colocam nos 7 slots disponíveis. Quando três peças idênticas são colocadas, elas são automaticamente limpas, liberando espaço para novas peças. Cuidado para não preencher todos os 7 slots com peças que não combinam, ou a tentativa falhará.
+
+### Como Jogar
+- Cada tentativa de fase consome Stamina
+- Limpar as fases aumenta o Afeto da Menina
+- Alcançar o afeto máximo concede um Presente adicional
+- Se você precisar de itens, pode pedir ajuda a outros jogadores através dos canais City, Group ou Chamber
+
+### Missões
+- **Missões Diárias**: Complete as tarefas diárias para recompensas adicionais
+- **Missões de Alvo**: Objetivos especiais do evento com recompensas bônus
+
+### Classificação
+- Cada fase limpa concede pontos para o ranking do evento
+- Classificações mais altas recebem recompensas melhores
+
+### Dicas
+1. **Antes de selecionar uma peça**, verifique o tabuleiro por pelo menos três peças idênticas para limpá-las rapidamente
+2. **Priorize peças** que já tenham duas ou mais correspondências visíveis
+3. **Tente manter 2-3 slots livres** sempre que possível
+4. **Missões diárias e de alvo** ajudam você a progredir mais rápido e a ganhar recompensas extras
+5. **Solicite assistência diariamente**, mesmo que você não precise dela ainda, assim você pode salvá-la para níveis mais difíceis posteriormente
+`,
+  content_pl: `
+## Przewodnik po imprezie sprzątającej - TopGirl
+
+### Przegląd
+W **Cleanup Party**, celem jest wyczyszczenie całej planszy poprzez dopasowanie kafelków. Gracze wybierają kafelki z planszy i umieszczają je w 7 dostępnych slotach. Gdy zostaną umieszczone trzy identyczne kafelki, są one automatycznie usuwane, zwalniając miejsce dla nowych kafelków. Uważaj, aby nie wypełnić wszystkich 7 slotów kafelkami niezgodnymi, w przeciwnym razie próba się nie powiedzie.
+
+### Jak Grać
+- Każda próba etapu zużywa Stamina
+- Czyszczenie etapów zwiększa Ukochane Dziewczyny
+- Osiągnięcie maksymalnego uczucia przyznaje dodatkowy Prezent
+- Jeśli potrzebujesz przedmiotów, możesz poprosić o pomoc innych graczy poprzez kanały City, Group lub Chamber
+
+### Zadania
+- **Zadania Codzienne**: Wykonaj dzienne zadania, aby uzyskać dodatkowe nagrody
+- **Zadania Celowe**: Specjalne cele wydarzeń z dodatkowymi nagrodami
+
+### Ranking
+- Każdy wyczyszczony etap przyznaje punkty do rankingu wydarzenia
+- Wyższe pozycje otrzymują lepsze nagrody
+
+### Wskazówki
+1. **Przed wybraniem kafelka**, sprawdź planszę pod kątem co najmniej trzech identycznych kafelków, aby je szybko usunąć
+2. **Priorytetowo traktuj kafelki**, które już mają dwa lub więcej widocznych dopasowań
+3. **Staraj się utrzymywać wolne 2-3 sloty** whenever possible
+4. **Codzienne i Celowe Zadania** pomagają ci postępować szybciej i zarabiać dodatkowe nagrody
+5. **Proś o pomoc codziennie**, nawet jeśli jej jeszcze nie potrzebujesz, abyś mógł ją zaoszczędzić na trudniejsze poziomy później
+`,
+  content_id: `
+## Panduan Pesta Bersih - TopGirl
+
+### Ringkasan
+Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencocokkan tegak. Pemain memilih tegak dari papan dan menempatkannya ke dalam 7 slot yang tersedia. Ketika tiga tegak identik ditempatkan, mereka akan otomatis dibersihkan, membebaskan ruang untuk tegak baru. Hati-hati untuk tidak mengisi semua 7 slot dengan tegak yang tidak cocok, atau percobaan akan gagal.
+
+### Cara Bermain
+- Setiap upaya tahap mengonsumsi Stamina
+- Menghapus tahap meningkatkan Cintaan Gadis
+- Mencapai cintaan maksimum memberikan Hadiah tambahan
+- Jika Anda memerlukan item, Anda dapat meminta bantuan dari pemain lain melalui saluran City, Group, atau Chamber
+
+### Misi
+- **Misi Harian**: Selesaikan tugas harian untuk mendapatkan hadiah tambahan
+- **Misi Target**: Tujuan spesial acara dengan hadiah bonus
+
+### Peringkat
+- Setiap tahap yang berhasil dibersihkan memberikan poin untuk peringkat acara
+- Peringkat yang lebih tinggi menerima hadiah yang lebih baik
+
+### Tips
+1. **Sebelum memilih tegak**, periksa papan untuk setidaknya tiga tegak identik untuk menghapusnya dengan cepat
+2. **Berikan prioritas pada tegak** yang sudah memiliki dua atau lebih kecocokan yang terlihat
+3. **Coba menjaga 2-3 slot bebas** setiap kali mungkin
+4. **Misi harian dan target** membantu Anda berkembang lebih cepat dan mendapatkan hadiah tambahan
+5. **Meminta bantuan setiap hari**, bahkan jika Anda belum membutuhkannya, sehingga Anda dapat menyimpannya untuk level yang lebih sulit nanti
+`,
+  content_ru: `
+## Руководство по уборке вечеринки - TopGirl
+
+### Обзор
+В **Cleanup Party**, цель состоит в том, чтобы очистить всю доску, совмещая плитки. Игроки выбирают плитки с доски и размещают их в 7 доступных слотах. Когда три идентичные плитки размещаются, они автоматически удаляются, освобождая место для новых плиток. Будьте осторожны, чтобы не заполнить все 7 слотов неподходящими плитками, или попытка потерпит неудачу.
+
+### Как Играть
+- Каждая попытка уровня потребляет Stamina
+- Очистка уровней увеличивает Привязанность Девушки
+- Достижение максимальной привязанности дает дополнительный Подарок
+- Если вам нужны предметы, вы можете попросить помощи у других игроков через каналы City, Group или Chamber
+
+### Квесты
+- **Ежедневные квесты**: Выполняйте ежедневные задачи для дополнительных наград
+- **Целевые квесты**: Специальные цели события с бонусными наградами
+
+### Ранжирование
+- Каждый очищенный уровень дает очки для ранжирования события
+- Более высокие позиции получают лучшие награды
+
+### Советы
+1. **Перед выбором плитки**, проверьте доску на наличие как минимум трех идентичных плиток, чтобы быстро их удалить
+2. **Приоритетом являются плитки**, которые уже имеют два или более видимых совпадений
+3. **Постарайтесь держать 2-3 слота свободными** whenever possible
+4. **Ежедневные и целевые квесты** помогут вам прогрессировать быстрее и получить дополнительные награды
+5. **Запрашивайте помощь ежедневно**, даже если вам она еще не нужна, чтобы вы могли сохранить её для более сложных уровней позже
+`,
   },
   {
     id: "event-metro-subway",
