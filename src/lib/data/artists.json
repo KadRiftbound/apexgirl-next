@@ -3884,5 +3884,137 @@
     "image": "Valerie.jpg",
     "singStat": 14083,
     "danceStat": 28166
+  },
+  {
+    "id": 1010,
+    "name": "Anastasia",
+    "group": "No Group",
+    "rank": "UR",
+    "position": "Center",
+    "genre": "Pop",
+    "skills": [
+      "↑20% skill damage",
+      "↑50% basic attack damage dealt"
+    ],
+    "description": "A talented Center from No Group.",
+    "rating": "S",
+    "thoughts": "Yes",
+    "build": "Recommended",
+    "photos": "Universal",
+    "skillCategories": {
+      "dps": [
+        "10 sec/1800 Damage"
+      ],
+      "offensive": [
+        "20% Skill Damage",
+        "50% Basic Attack Damage"
+      ],
+      "hp": [],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage",
+    "singStat": 25851,
+    "danceStat": 19076
+  },
+  {
+    "id": 1011,
+    "name": "Beatrice",
+    "group": "No Group",
+    "rank": "UR",
+    "position": "Singer",
+    "genre": "Pop",
+    "skills": [
+      "↑20% skill damage",
+      "↑50% basic attack damage dealt"
+    ],
+    "description": "A talented Singer from No Group.",
+    "rating": "S",
+    "thoughts": "Yes",
+    "build": "Recommended",
+    "photos": "Universal",
+    "skillCategories": {
+      "dps": [
+        "10 sec/1800 Damage"
+      ],
+      "offensive": [
+        "20% Skill Damage",
+        "50% Basic Attack Damage"
+      ],
+      "hp": [],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage",
+    "singStat": 25851,
+    "danceStat": 19076
+  },
+  {
+    "id": 1012,
+    "name": "Elizabeth",
+    "group": "No Group",
+    "rank": "UR",
+    "position": "Visual",
+    "genre": "Pop",
+    "skills": [
+      "↑20% skill damage",
+      "↑50% basic attack damage dealt"
+    ],
+    "description": "A talented Visual from No Group.",
+    "rating": "S",
+    "thoughts": "Yes",
+    "build": "Recommended",
+    "photos": "Universal",
+    "skillCategories": {
+      "dps": [
+        "10 sec/1800 Damage"
+      ],
+      "offensive": [
+        "20% Skill Damage",
+        "50% Basic Attack Damage"
+      ],
+      "hp": [],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage",
+    "singStat": 25851,
+    "danceStat": 19076
+  },
+  {
+    "id": 1013,
+    "name": "Gabriella",
+    "group": "No Group",
+    "rank": "UR",
+    "position": "Dancer",
+    "genre": "Pop",
+    "skills": [
+      "↑20% skill damage",
+      "↑50% basic attack damage dealt"
+    ],
+    "description": "A talented Dancer from No Group.",
+    "rating": "S",
+    "thoughts": "Yes",
+    "build": "Recommended",
+    "photos": "Universal",
+    "skillCategories": {
+      "dps": [
+        "10 sec/1800 Damage"
+      ],
+      "offensive": [
+        "20% Skill Damage",
+        "50% Basic Attack Damage"
+      ],
+      "hp": [],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage",
+    "singStat": 25851,
+    "danceStat": 19076
   }
 ]
