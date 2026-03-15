@@ -85,6 +85,8 @@ export default function ArtistsPage() {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (window.innerWidth <= 900) return;
+      
       const header = document.querySelector('.header') as HTMLElement;
       const scrollY = window.scrollY;
       
@@ -545,12 +547,12 @@ export default function ArtistsPage() {
 
       <style jsx>{`
         .left-panel {
-          width: 38%;
-          max-width: 500px;
+          width: 55%;
+          max-width: 700px;
         }
         .artists-container {
-          margin-left: 40%;
-          width: 60%;
+          margin-left: 56%;
+          width: 44%;
           min-height: 100vh;
         }
         .artists-grid {
@@ -558,17 +560,25 @@ export default function ArtistsPage() {
           grid-template-columns: repeat(6, 1fr);
           gap: 4px;
         }
+        @media (max-width: 1200px) {
+          .left-panel { width: 48%; }
+          .artists-container { margin-left: 50%; width: 50%; }
+        }
         @media (max-width: 900px) {
           .left-panel {
-            position: relative;
+            position: sticky;
+            top: 0;
             width: 100%;
             max-width: 100%;
             margin-bottom: 10px;
+            z-index: 1000;
           }
           .artists-container {
             margin-left: 0;
             width: 100%;
             padding-bottom: 80px;
+            position: relative;
+            z-index: 1;
           }
         }
         @media (max-width: 2200px) {
