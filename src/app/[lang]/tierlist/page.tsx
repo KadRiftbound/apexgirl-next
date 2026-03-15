@@ -73,6 +73,17 @@ const getTierOrder = (tier: string): number => {
   return tierOrder[tier] ?? 3;
 };
 
+const getEffectiveTier = (artist: any): string => {
+  const skills = artist.skills || [];
+  const has50Basic = skills.some((s: string) => s.toLowerCase().includes('50% basic'));
+  const has20Skill = skills.some((s: string) => s.toLowerCase().includes('20% skill'));
+  
+  if (artist.specialty === 'Dommage réduction' || (has50Basic && has20Skill)) {
+    return 'A';
+  }
+  return (artist.rating || 'F').toUpperCase();
+};
+
 export default function TierListPage() {
   const params = useParams();
   const lang = (params?.lang as string) || "fr";
@@ -285,7 +296,7 @@ export default function TierListPage() {
               >
                 <option value="">Toutes spécialités</option>
                 <option value="Augmentation dommage">Augmentation dommage</option>
-                <option value="Defense">Defense</option>
+                <option value="Dommage réduction">Dommage réduction</option>
                 <option value="Solo car">Solo car</option>
                 <option value="Mixte">Mixte</option>
                 <option value="Rassemblement">Rassemblement</option>
@@ -311,7 +322,7 @@ export default function TierListPage() {
 
             {tierOrder.map(tier => {
               const tierArtists = artists.filter(a => 
-                (a.rating || "F").toUpperCase() === tier
+                getEffectiveTier(a) === tier
                 && (a.rank === "UR" || a.rank === "SSR")
                 && (!filterGenre || a.genre === filterGenre)
                 && (!filterSpecialty || a.specialty === filterSpecialty)

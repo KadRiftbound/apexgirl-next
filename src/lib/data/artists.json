@@ -62,7 +62,7 @@
       "speed": []
     },
     "calculatedTier": "S",
-    "specialty": "Defense",
+    "specialty": "Dommage réduction",
     "singStat": 19076,
     "danceStat": 25851
   },
@@ -95,7 +95,7 @@
       "speed": []
     },
     "calculatedTier": "S",
-    "specialty": "Defense",
+    "specialty": "Dommage réduction",
     "image": "Isadora.jpg",
     "singStat": 22464,
     "danceStat": 22464
@@ -542,7 +542,7 @@
     "rating": "B",
     "thoughts": "Damage Reduction",
     "image": "Avery.jpg",
-    "specialty": "Defense",
+    "specialty": "Dommage réduction",
     "event": "Original",
     "singStat": 19076,
     "danceStat": 25851
@@ -612,7 +612,7 @@
     "rating": "B",
     "thoughts": "Damage Reduction",
     "image": "Ayaka.jpg",
-    "specialty": "Defense",
+    "specialty": "Dommage réduction",
     "event": "Tokyo 1",
     "singStat": 29023,
     "danceStat": 20893
@@ -1693,7 +1693,7 @@
     "description": "A talented Vocalist from Coral.",
     "rating": "B",
     "thoughts": "Damage Reduction",
-    "specialty": "Defense",
+    "specialty": "Dommage réduction",
     "event": "Bali 1",
     "singStat": 29023,
     "danceStat": 20893,
@@ -1906,7 +1906,7 @@
     "rating": "B",
     "thoughts": "Damage Reduction",
     "image": "Paisley.jpg",
-    "specialty": "Defense",
+    "specialty": "Dommage réduction",
     "event": "Original",
     "singStat": 19076,
     "danceStat": 25851
