@@ -40,7 +40,7 @@ type Artist = {
 
 const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
 const RANKS = ['UR', 'SSR', 'SR', 'R', 'UR Bali'];
-const SPECIALTIES = ['Augmentation dommage', 'Damage Reduction', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'];
+const SPECIALTIES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de conduite', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'];
 
 export default function ArtistsPage() {
   const params = useParams();
