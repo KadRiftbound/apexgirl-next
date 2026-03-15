@@ -59,6 +59,59 @@ const categoryMap: Record<string, Record<string, string>> = {
   ru: { "Tous": "Все", "Débutant": "Начинающий", "Intermédiaire": "Средний", "Avancé": "Продвинутый", "Événements": "События" },
 };
 
+const guideTranslations: Record<string, Record<string, { title: string; description: string }>> = {
+  fr: {},
+  en: {
+    "equipment": { title: "Equipment Guide", description: "Jewelry, Cars and Properties to optimize your stats. Gold vs Purple comparison and purchase priorities." },
+    "team-builder": { title: "Team Builder", description: "How to build the perfect team. Genre synergy calculation and equipment bonuses." },
+    "recommended-teams": { title: "Recommended Teams", description: "Best UR and SSR team compositions. Offensive, balanced and defensive strategies." },
+    "leveling-ssr": { title: "SSR Leveling Guide", description: "Number of cards needed to level up your SSR characters to level 115." },
+    "blueprints": { title: "Blueprints Guide", description: "Blueprint requirements by tier (1-21) to upgrade your facilities. Tier 7-12 Gold." },
+    "hq-upgrade": { title: "HQ Upgrade Guide", description: "Building cards needed for each HQ level. Total requirement: 29,922 cards." },
+    "vehicle-system": { title: "Vehicle System Guide", description: "Complete guide to the vehicle system. Cars, parts and upgrades." },
+    "gold-equipment": { title: "Gold Equipment Guide", description: "Best gold equipment choices and strategies for late game." },
+    "purple-equipment": { title: "Purple Equipment Guide", description: "Best purple equipment choices and how to obtain them." },
+    "event-cleanup-party": { title: "Cleanup Party Guide", description: "Collect trash cans and exchange for rewards." },
+    "event-metro-subway": { title: "Metro & Subway Guide", description: "Collect tickets and ride the subway for rewards." },
+    "event-vs-group": { title: "VS Group Event Guide", description: "Group battle event with 5 days preparation and 1 day final combat." },
+    "event-fishing": { title: "Fishing Event Guide", description: "Set up your aquarium, catch fish and earn rewards." },
+    "world-building": { title: "World Building Guide", description: "Build and develop your world in the game." },
+    "vip-level": { title: "VIP Level Guide", description: "Details of points required for each VIP level." },
+    "ceo-coins": { title: "CEO Coins Purchase Guide", description: "Guide to purchasing CEO Coins via the official payment site." },
+    "alliance-management": { title: "Alliance Management Guide", description: "Roles, responsibilities and strategies for managing your guild." },
+    "peak-level": { title: "Peak Level Guide", description: "Late-game progression system for SSR girls with 5 stars." },
+    "group-shop": { title: "Group Shop Guide", description: "What to buy in the guild shop to optimize your progress." },
+  },
+  it: {
+    "equipment": { title: "Guida Equipaggiamento", description: "Gioielli, Auto e Proprietà per ottimizzare le tue statistiche." },
+    "team-builder": { title: "Team Builder", description: "Come costruire il team perfetto." },
+    "recommended-teams": { title: "Team Consigliati", description: "Migliori composizioni di team UR e SSR." },
+    "event-vs-group": { title: "Guida Evento VS Group", description: "Evento di battaglia tra gruppi." },
+    "event-fishing": { title: "Guida Evento Fishing", description: "Configura il tuo acquario, cattura pesci e guadagna ricompense." },
+    "peak-level": { title: "Guida Peak Level", description: "Sistema di progressione late-game per SSR girls." },
+    "group-shop": { title: "Guida Group Shop", description: "Cosa acquistare nel negozio della gilda." },
+  },
+  es: {
+    "equipment": { title: "Guía de Equipamiento", description: "Joyas, Coches y Propiedades para optimizar tus estadísticas." },
+    "team-builder": { title: "Team Builder", description: "Cómo construir el equipo perfecto." },
+    "event-vs-group": { title: "Guía Evento VS Group", description: "Evento de batalla entre grupos." },
+    "event-fishing": { title: "Guía Evento Fishing", description: "Configura tu acuario, captura peces y gana recompensas." },
+  },
+  pt: {
+    "equipment": { title: "Guia de Equipamento", description: "Joias, Carros e Propriedades para otimizar suas estatísticas." },
+    "team-builder": { title: "Team Builder", description: "Como construir o time perfeito." },
+  },
+  pl: {
+    "equipment": { title: "Poradnik Wyposażenia", description: "Biżuteria, Samochody i Nieruchomości." },
+  },
+  id: {
+    "equipment": { title: "Panduan Peralatan", description: "Perhiasan, Mobil, dan Properti." },
+  },
+  ru: {
+    "equipment": { title: "Гайд по снаряжению", description: "Украшения, машины и недвижимость." },
+  },
+};
+
 type Guide = {
   id: string;
   title: string;
@@ -291,6 +344,14 @@ const guides: Guide[] = [
 
 const categories = ["Tous", "Débutant", "Intermédiaire", "Avancé", "Événements"];
 
+function getGuideTitle(id: string, lang: string, fallback: string): string {
+  return guideTranslations[lang]?.[id]?.title || fallback;
+}
+
+function getGuideDescription(id: string, lang: string, fallback: string): string {
+  return guideTranslations[lang]?.[id]?.description || fallback;
+}
+
 export default function GuidesPage() {
   const params = useParams();
   const lang = params?.lang as string || "fr";
@@ -415,11 +476,11 @@ export default function GuidesPage() {
               </div>
 
               <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, marginBottom: "8px" }}>
-                {guide.title}
+                {getGuideTitle(guide.id, lang, guide.title)}
               </h3>
 
               <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", lineHeight: 1.6, marginBottom: "16px" }}>
-                {guide.description}
+                {getGuideDescription(guide.id, lang, guide.description)}
               </p>
 
               <div style={{ display: "flex", gap: "8px" }}>
