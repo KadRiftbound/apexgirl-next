@@ -5,6 +5,17 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
 
+const eventListTranslations: Record<string, any> = {
+  fr: { searchPlaceholder: "🔍 Rechercher un événement..." },
+  en: { searchPlaceholder: "🔍 Search for an event..." },
+  it: { searchPlaceholder: "🔍 Cerca un evento..." },
+  es: { searchPlaceholder: "🔍 Buscar un evento..." },
+  pt: { searchPlaceholder: "🔍 Pesquisar um evento..." },
+  pl: { searchPlaceholder: "🔍 Szukaj wydarzenia..." },
+  id: { searchPlaceholder: "🔍 Cari acara..." },
+  ru: { searchPlaceholder: "🔍 Поиск события..." },
+};
+
 type Event = {
   id: number;
   name: string;
@@ -46,6 +57,7 @@ const typeColors: Record<string, { bg: string; text: string; border: string }> =
 export default function EventsPage() {
   const params = useParams();
   const lang = params?.lang as string || "fr";
+  const t = eventListTranslations[lang] || eventListTranslations.en;
   const [events, setEvents] = useState<Event[]>([]);
   const [filtered, setFiltered] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
@@ -156,7 +168,7 @@ export default function EventsPage() {
         {/* Search */}
         <input
           type="text"
-          placeholder="🔍 Rechercher un événement..."
+          placeholder={t.searchPlaceholder}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{

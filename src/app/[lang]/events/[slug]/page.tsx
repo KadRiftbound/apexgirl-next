@@ -6,14 +6,14 @@ import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
 
 const eventTranslations: Record<string, any> = {
-  fr: { notFound: "Événement non trouvé", backToEvents: "← Retour aux événements", loading: "Chargement...", otherEvents: "Autres événements" },
-  en: { notFound: "Event not found", backToEvents: "← Back to Events", loading: "Loading...", otherEvents: "Other Events" },
-  it: { notFound: "Evento non trovato", backToEvents: "← Torna agli eventi", loading: "Caricamento...", otherEvents: "Altri eventi" },
-  es: { notFound: "Evento no encontrado", backToEvents: "← Volver a los eventos", loading: "Cargando...", otherEvents: "Otros eventos" },
-  pt: { notFound: "Evento não encontrado", backToEvents: "← Voltar aos eventos", loading: "Carregando...", otherEvents: "Outros eventos" },
-  pl: { notFound: "Wydarzenie nie znalezione", backToEvents: "← Wróć do wydarzeń", loading: "Ładowanie...", otherEvents: "Inne wydarzenia" },
-  id: { notFound: "Acara tidak ditemukan", backToEvents: "← Kembali ke acara", loading: "Memuat...", otherEvents: "Acara lain" },
-  ru: { notFound: "Событие не найдено", backToEvents: "← Вернуться к событиям", loading: "Загрузка...", otherEvents: "Другие события" },
+  fr: { notFound: "Événement non trouvé", backToEvents: "← Retour aux événements", loading: "Chargement...", otherEvents: "Autres événements", viewGuide: "Voir le guide complet" },
+  en: { notFound: "Event not found", backToEvents: "← Back to Events", loading: "Loading...", otherEvents: "Other Events", viewGuide: "View full guide" },
+  it: { notFound: "Evento non trovato", backToEvents: "← Torna agli eventi", loading: "Caricamento...", otherEvents: "Altri eventi", viewGuide: "Vedi guida completa" },
+  es: { notFound: "Evento no encontrado", backToEvents: "← Volver a los eventos", loading: "Cargando...", otherEvents: "Otros eventos", viewGuide: "Ver guía completa" },
+  pt: { notFound: "Evento não encontrado", backToEvents: "← Voltar aos eventos", loading: "Carregando...", otherEvents: "Outros eventos", viewGuide: "Ver guia completo" },
+  pl: { notFound: "Wydarzenie nie znalezione", backToEvents: "← Wróć do wydarzeń", loading: "Ładowanie...", otherEvents: "Inne wydarzenia", viewGuide: "Zobacz pełny poradnik" },
+  id: { notFound: "Acara tidak ditemukan", backToEvents: "← Kembali ke acara", loading: "Memuat...", otherEvents: "Acara lain", viewGuide: "Lihat panduan lengkap" },
+  ru: { notFound: "Событие не найдено", backToEvents: "← Вернуться к событиям", loading: "Загрузка...", otherEvents: "Другие события", viewGuide: "Посмотреть полный гайд" },
 };
 
 type Event = {
@@ -207,7 +207,7 @@ export default function EventDetailPage() {
                 fontWeight: 600
               }}
             >
-              📖 {lang === "fr" ? "Voir le guide complet" : lang === "en" ? "View full guide" : "View guide"}
+              📖 {t.viewGuide}
             </Link>
           </div>
         )}
