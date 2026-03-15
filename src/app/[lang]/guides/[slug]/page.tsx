@@ -711,6 +711,253 @@ Le **Metro & Subway** est un événement où vous prenez le métro pour collecte
 3. **Échangez** vos tickets pour les meilleures rewards
     `
   },
+  // New guides from images
+  {
+    id: "event-vs-group",
+    title: "Guide VS Group Event",
+    description: "Guide du VS Group Event",
+    icon: "⚔️",
+    color: "#ef4444",
+    category: "Événements",
+    readTime: "8 min",
+    content: `
+## VS Group Event Guide - TopGirl
+
+### Timeline
+- **5 DAYS OF PREPARATION** (Daily Themes) followed by the **DAY 6 FINAL BATTLE**
+- **DAILY DUEL**: Earn points via specific tasks
+- **VICTORY**: The group with the highest accumulated score after 6 days claims ULTIMATE VICTORY
+
+### Participation Requirements
+- **LEVEL REQUIREMENT**: CEO LEVEL MUST AT LEAST REACH LEVEL 20
+- **GROUP QUALIFICATION**: Only groups with HIGH FINANCIAL POWER RANKINGS are ELIGIBLE FOR MATCHING
+- **CHANGING GROUPS DURING THE EVENT**: Prevents contributing group points for 1 day, but personal points remain UNAFFECTED
+
+### Rewards & Blueprints
+- **Unlock 9 tiers of rewards**
+- Top players and victorious groups receive GRAND REWARDS via mail
+- **TIERS 4-9 REQUIRE MASTER BLUEPRINTS**
+- Use Master Blueprints to boost point efficiency and unlock permanent stat bonuses
+
+### Rush Attack (Day 6)
+- **INVASION**: On the 6th day, free teleportation to LANDMARKS (2, 3, 4) is enabled
+- **ELIMINATION**: Defeat rival members in their territory to harvest MASSIVE BONUS POINTS
+    `
+  },
+  {
+    id: "event-fishing",
+    title: "Guide Fishing Event",
+    description: "Guide du Fishing Event",
+    icon: "🎣",
+    color: "#06b6d4",
+    category: "Événements",
+    readTime: "6 min",
+    content: `
+## Fishing Event Guide - TopGirl
+
+### Tips
+
+**1. Feed your fish regularly**
+- Keep voucher generation at full speed
+- Avoid slowdown
+
+**2. Focus on catching higher-star fish**
+- They earn MORE vouchers
+- Replace weaker ones automatically
+
+**3. Visit other players' aquariums**
+- You get 5 visits per day
+- If someone likes your aquarium, you'll receive shells
+
+**4. The more fish you have, the higher your income**
+- Keep expanding your aquarium
+
+**5. Fish with a crown**
+- Give the highest CRS and voucher income
+- Keep them in your aquarium as long as possible
+
+**6. Don't waste your bait**
+- Time your clicks carefully
+- The fish will eat it automatically
+    `
+  },
+  {
+    id: "world-building",
+    title: "World Building Guide",
+    description: "Guide World Building",
+    icon: "🌍",
+    color: "#10b981",
+    category: "Intermédiaire",
+    readTime: "10 min",
+    content: `
+## World Building Guide - TopGirl
+
+[Content to be completed]
+
+### Overview
+Build and develop your world in the game. This guide covers the basics of world building mechanics.
+
+(Content from WorldBuildingGuide.jpg to be added)
+    `
+  },
+  {
+    id: "vip-level",
+    title: "VIP Level Guide",
+    description: "Guide VIP Level",
+    icon: "⭐",
+    color: "#f59e0b",
+    category: "Avancé",
+    readTime: "15 min",
+    content: `
+## VIP Level Guide - TopGirl
+
+### Overview
+Detailed guide on points required for each VIP level.
+
+### VIP Benefits
+- VIP players receive various bonuses and exclusive rewards
+- Higher VIP levels unlock more benefits
+
+(Content from VIPLevelGuide.jpg to be added)
+    `
+  },
+  {
+    id: "ceo-coins",
+    title: "CEO Coins Purchase Guide",
+    description: "Guide d'achat de CEO Coins",
+    icon: "💰",
+    color: "#84cc16",
+    category: "Avancé",
+    readTime: "5 min",
+    content: `
+## CEO Coins Purchase Guide - TopGirl
+
+### How to Purchase CEO Coins
+
+**Step 1: Visit Payment Website**
+Using your mobile browser, visit: https://pay2.a3games.com/topgirl
+
+**Step 2: Select Region**
+In the upper right corner of the page, select your region and set the payment currency to a supported currency
+
+**Step 3: Enter Account Info**
+Enter your ID and nickname
+(Please make sure that the ID and nickname you enter are correct, otherwise you may not be able to receive CEO coins normally)
+
+**Step 4: Select Amount**
+Select the amount of CEO coins you want to purchase and add a bank card to complete the payment
+
+**Step 5: Redeem in Game**
+After completing the purchase of CEO coins, enter the game, select the gift package you need, click the gift package price, and choose to use CEO coins to complete the redemption.
+    `
+  },
+  {
+    id: "alliance-management",
+    title: "Alliance Management Guide",
+    description: "Guide de gestion d'alliance",
+    icon: "🏰",
+    color: "#8b5cf6",
+    category: "Avancé",
+    readTime: "12 min",
+    content: `
+## Alliance Management Guide - TopGirl
+
+### Group Responsibilities
+
+#### Leadership & Strategy
+- **Strategist / Meta Analyst**: Sets long-term server goals, advises build & expansion focus
+- **Builder / Group Developer**: Oversees club construction, gathers progression resources, plans club growth paths
+- **Rally Leader / War General**: Launches rallies & attacks, chooses targets & timing, coordinates war operations
+- **Trainer / Mentor**: Supports new players, guides artist development, helps with squad formation
+
+#### Communication & Diplomacy
+- **Group Communicator**: Posts announcements, summarizes updates, manages Discord & In-game mail
+- **Diplomat / Alliance Manager**: Manages alliances & NAPs, handles negotiations, coordinates cooperation
+- **Recruiter / HR**: Recruits new members, screens applicants, onboards members
+
+#### Intel & Support
+- **Intel Officer / Spy**: Scans enemy clubs, tracks activity & movement, monitors deployments
+- **Event Organizer**: Supports radio battles, assists wars & events
+- **Fanmeeting Coordinator**: Manages fan interactions and events
+
+### Strategy & War
+Develop your alliance through careful planning and coordination with members.
+    `
+  },
+  {
+    id: "peak-level",
+    title: "Peak Level Guide",
+    description: "Guide Peak Level",
+    icon: "📊",
+    color: "#ec4899",
+    category: "Avancé",
+    readTime: "15 min",
+    content: `
+## Peak Level Guide - TopGirl
+
+### Overview
+Peak Level is a late-game progression system for SSR girls. Each SSR girl with 3 skills and 5x (gold stars) becomes eligible for Peak Level upgrades.
+
+### Key Points
+- **Focus on Total Peak Level**, not only your main team
+- Push top SSR girls as high as possible (100-400+) for strong milestone buffs
+- Important milestones: Lv40 / Lv70 / Lv100 / Lv300 / Lv400
+- Use SSR Universal Photos freely - efficiency > saving
+
+### Minimum Goal
+Your minimum goal is to bring EVERY SSR girl to Peak Level 10.
+Each SSR at Peak Lv10 gives +0.5% Sing & +0.5% Dance (global buff)
+
+### For F2P Players
+Best Peak candidates (easy photo access):
+- **Zendaya** (Stock Shop)
+- **Skylar** (Group Shop)
+- **Claire** (Collection Rewards)
+
+Aim for Peak Lv5-10 on 1-2 girls max. Max your main team before investing more into Peak Levels.
+
+Peak Level is a long-term global power system, perfect for whales.
+    `
+  },
+  {
+    id: "group-shop",
+    title: "Group Shop Guide",
+    description: "Guide Group Shop",
+    icon: "🛒",
+    color: "#f97316",
+    category: "Débutant",
+    readTime: "5 min",
+    content: `
+## Group Shop Guide - TopGirl
+
+### What to Buy
+
+**1. Promotion Manuals**
+- Always buy them first
+- Very few of them are available
+- Frequently required if you fight often
+
+**2. SSR Promote Cards**
+- Promote cards will always be required
+- New SSR artists are added every event
+
+**3. Asset Coins**
+- A lot of asset coins will be required to max the promoted assets
+
+**4. Vehicle Parts**
+- Buy them if you haven't maxed your car yet
+
+**5. Skylar Photos**
+- Only buy them if you intend to max Skylar
+- Very expensive
+
+**6. HQ Cards**
+- Buy them if your HQ isn't maxed yet
+
+**7. Migration Tickets**
+- Buy them if you want to migrate to another server
+    `
+  },
 ];
 
 export default function GuideDetailPage() {
