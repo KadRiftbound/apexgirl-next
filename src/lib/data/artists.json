@@ -1614,6 +1614,7 @@
     "thoughts": "Single Car",
     "specialty": "Solo car",
     "event": "Bali 4",
+    "image": "Margot.jpg",
     "singStat": 40439,
     "danceStat": 26213
   },
@@ -2314,6 +2315,7 @@
     "thoughts": "Damage Reduction",
     "specialty": "Damage Reduction",
     "event": "Bali 4",
+    "image": "Sienna.jpg",
     "singStat": 33542,
     "danceStat": 33542
   },
@@ -2453,6 +2455,7 @@
     "thoughts": "Single Car",
     "specialty": "Solo car",
     "event": "Bali 4",
+    "image": "Valentina.jpg",
     "singStat": 26071,
     "danceStat": 40154
   },
@@ -3887,5 +3890,109 @@
     "image": "Selene.jpg",
     "singStat": 29950,
     "danceStat": 29950
+  },
+  {
+    "id": 70,
+    "name": "Sloane",
+    "group": "Allura",
+    "rank": "SSR",
+    "position": "Center",
+    "genre": "Pop",
+    "skills": [
+      "↑28% skill damage",
+      "↑28% damage to player"
+    ],
+    "description": "A talented Center from Allura.",
+    "rating": "S",
+    "thoughts": "",
+    "build": "Recommended",
+    "photos": "Roma3",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "28% Skill Damage",
+        "28% Damage to Player"
+      ],
+      "hp": [],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Augmentation dommage",
+    "event": "Roma 3",
+    "image": "Sloane.jpg",
+    "singStat": 21554,
+    "danceStat": 21554
+  },
+  {
+    "id": 71,
+    "name": "Kendell",
+    "group": "Allura",
+    "rank": "SSR",
+    "position": "Vocalist",
+    "genre": "Hip Hop",
+    "skills": [
+      "↑14% fan cap",
+      "↑28% skill damage"
+    ],
+    "description": "A talented Vocalist from Allura.",
+    "rating": "A",
+    "thoughts": "",
+    "build": "Recommended",
+    "photos": "Roma3",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "28% Skill Damage"
+      ],
+      "hp": [
+        "14% Fan Capacity"
+      ],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "specialty": "Solo car",
+    "event": "Roma 3",
+    "image": "Kendell.jpg",
+    "singStat": 2845,
+    "danceStat": 14225
+  },
+  {
+    "id": 72,
+    "name": "Valerie",
+    "group": "Allura",
+    "rank": "SSR",
+    "position": "Dancer",
+    "genre": "Rock",
+    "skills": [
+      "↓12% basic damage reduction",
+      "↑28% skill damage"
+    ],
+    "description": "A talented Dancer from Allura.",
+    "rating": "S",
+    "thoughts": "",
+    "build": "Recommended",
+    "photos": "Roma3",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "28% Skill Damage"
+      ],
+      "hp": [],
+      "defense": [
+        "12% Basic Damage Reduction"
+      ],
+      "speed": []
+    },
+    "calculatedTier": "S",
+    "specialty": "Damage Reduction",
+    "event": "Roma 3",
+    "image": "Valerie.jpg",
+    "singStat": 14083,
+    "danceStat": 28166
   }
 ]
