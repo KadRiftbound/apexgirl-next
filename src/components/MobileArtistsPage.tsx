@@ -172,7 +172,10 @@ export default function MobileArtistsPage() {
 
   const team1Stats = useMemo(() => {
     let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, fanCapacity = 0, rallyCapacity = 0;
+    const genreCounts: Record<string, number> = {};
     team1.forEach(artist => {
+      const g = artist.genre?.toUpperCase() || 'Unknown';
+      genreCounts[g] = (genreCounts[g] || 0) + 1;
       [...(artist.skillCategories?.dps || []), ...(artist.skillCategories?.offensive || [])].forEach(skill => {
         const match = skill.match(/(\d+)\s*Damage/);
         if (match && !skill.toLowerCase().includes('%')) skillDamageRaw += parseInt(match[1]);
@@ -200,12 +203,15 @@ export default function MobileArtistsPage() {
         }
       });
     });
-    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, fanCapacity, rallyCapacity };
+    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, fanCapacity, rallyCapacity, genreCounts };
   }, [team1]);
 
   const team2Stats = useMemo(() => {
     let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, fanCapacity = 0, rallyCapacity = 0;
+    const genreCounts: Record<string, number> = {};
     team2.forEach(artist => {
+      const g = artist.genre?.toUpperCase() || 'Unknown';
+      genreCounts[g] = (genreCounts[g] || 0) + 1;
       [...(artist.skillCategories?.dps || []), ...(artist.skillCategories?.offensive || [])].forEach(skill => {
         const match = skill.match(/(\d+)\s*Damage/);
         if (match && !skill.toLowerCase().includes('%')) skillDamageRaw += parseInt(match[1]);
@@ -233,7 +239,7 @@ export default function MobileArtistsPage() {
         }
       });
     });
-    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, fanCapacity, rallyCapacity };
+    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, fanCapacity, rallyCapacity, genreCounts };
   }, [team2]);
 
   const filteredArtists = useMemo(() => {
@@ -352,11 +358,16 @@ export default function MobileArtistsPage() {
               </div>
               <div className="mobile-team-slots">
                 {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team1[i] && setSelectedArtist(team1[i])} className="mobile-team-slot">
+                  <div key={i} onClick={() => team1[i] && setTeam1(team1.filter(a => a.id !== team1[i].id))} className="mobile-team-slot" title="Cliquer pour retirer">
                     {team1[i] ? (
                       team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
+                ))}
+              </div>
+              <div className="mobile-team-genres">
+                {Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
+                  <span key={genre} className="mobile-genre-badge">{genre} {count}</span>
                 ))}
               </div>
               {/* FULL stats - each on single line */}
@@ -423,11 +434,16 @@ export default function MobileArtistsPage() {
               </div>
               <div className="mobile-team-slots">
                 {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team2[i] && setSelectedArtist(team2[i])} className="mobile-team-slot">
+                  <div key={i} onClick={() => team2[i] && setTeam2(team2.filter(a => a.id !== team2[i].id))} className="mobile-team-slot" title="Cliquer pour retirer">
                     {team2[i] ? (
                       team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
+                ))}
+              </div>
+              <div className="mobile-team-genres">
+                {Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
+                  <span key={genre} className="mobile-genre-badge">{genre} {count}</span>
                 ))}
               </div>
               {/* FULL stats - each on single line */}
@@ -771,6 +787,21 @@ export default function MobileArtistsPage() {
           width: 100%;
           height: 100%;
           object-fit: cover;
+        }
+        
+        .mobile-team-genres {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 3px;
+          margin-bottom: 4px;
+          justify-content: center;
+        }
+        .mobile-genre-badge {
+          padding: 2px 5px;
+          background: rgba(139,92,246,0.3);
+          border-radius: 8px;
+          font-size: 0.5rem;
+          color: #fff;
         }
         
         /* Stats - EACH ON SINGLE LINE */
