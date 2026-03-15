@@ -557,29 +557,34 @@ export default function ArtistsPage() {
         }
         .artists-grid {
           display: grid;
-          grid-template-columns: repeat(6, 1fr);
+          grid-template-columns: repeat(7, 1fr);
           gap: 4px;
         }
         @media (max-width: 1200px) {
-          .left-panel { width: 48%; }
-          .artists-container { margin-left: 50%; width: 50%; }
+          .artists-grid { grid-template-columns: repeat(6, 1fr); }
+        }
+        @media (max-width: 1000px) {
+          .artists-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        @media (max-width: 800px) {
+          .artists-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 600px) {
+          .artists-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 900px) {
           .left-panel {
-            position: sticky;
-            top: 0;
+            position: static;
             width: 100%;
             max-width: 100%;
             margin-bottom: 10px;
-            z-index: 1000;
           }
           .artists-container {
             margin-left: 0;
             width: 100%;
-            padding-bottom: 80px;
-            position: relative;
-            z-index: 1;
+            padding-bottom: 20px;
           }
+        }
         }
         @media (max-width: 2200px) {
           .artists-grid { grid-template-columns: repeat(6, 1fr); }
