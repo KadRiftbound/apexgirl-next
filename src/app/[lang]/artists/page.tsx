@@ -46,7 +46,9 @@ export default function ArtistsPage() {
   const params = useParams();
   const lang = (params?.lang as string) || "fr";
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
-  const [team, setTeam] = useState<Artist[]>([]);
+  const [team1, setTeam1] = useState<Artist[]>([]);
+  const [team2, setTeam2] = useState<Artist[]>([]);
+  const [activeTeam, setActiveTeam] = useState<1 | 2>(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
@@ -54,6 +56,9 @@ export default function ArtistsPage() {
   const [mounted, setMounted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
+
+  const team = activeTeam === 1 ? team1 : team2;
+  const setTeam = activeTeam === 1 ? setTeam1 : setTeam2;
 
   useEffect(() => {
     setMounted(true);
@@ -137,6 +142,106 @@ export default function ArtistsPage() {
     return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
   }, [team]);
 
+  const team1Stats = useMemo(() => {
+    let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, passive = 0, fanCapacity = 0, rallyCapacity = 0;
+    team1.forEach(artist => {
+      passive += 200;
+      [...(artist.skillCategories?.dps || []), ...(artist.skillCategories?.offensive || [])].forEach(skill => {
+        const match = skill.match(/(\d+)\s*Damage/);
+        if (match && !skill.toLowerCase().includes('%')) skillDamageRaw += parseInt(match[1]);
+        const pctMatch = skill.match(/(\d+)%/);
+        if (pctMatch) {
+          const val = parseInt(pctMatch[1]);
+          if (skill.toLowerCase().includes('damage to player') || skill.toLowerCase().includes('player damage')) {
+            skillDamage += val;
+            basicAttackPercent += val;
+          }
+          else if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction') && !skill.toLowerCase().includes('taken')) skillDamage += val;
+          else if (skill.toLowerCase().includes('basic attack') && !skill.toLowerCase().includes('taken')) basicAttackPercent += val;
+        }
+      });
+      [...(artist.skillCategories?.defense || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('skill damage reduction')) skillResist += val;
+          else if (skill.toLowerCase().includes('damage reduction')) attackResist += val;
+        }
+      });
+      [...(artist.skillCategories?.hp || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('fan capacity') && skill.toLowerCase().includes('rally')) rallyCapacity += val;
+          else if (skill.toLowerCase().includes('fan capacity')) fanCapacity += val;
+        }
+      });
+    });
+    const genreCounts: Record<string, number> = {};
+    team1.forEach(artist => { const g = artist.genre?.toUpperCase() || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
+    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
+  }, [team1]);
+
+  const team2Stats = useMemo(() => {
+    let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, passive = 0, fanCapacity = 0, rallyCapacity = 0;
+    team2.forEach(artist => {
+      passive += 200;
+      [...(artist.skillCategories?.dps || []), ...(artist.skillCategories?.offensive || [])].forEach(skill => {
+        const match = skill.match(/(\d+)\s*Damage/);
+        if (match && !skill.toLowerCase().includes('%')) skillDamageRaw += parseInt(match[1]);
+        const pctMatch = skill.match(/(\d+)%/);
+        if (pctMatch) {
+          const val = parseInt(pctMatch[1]);
+          if (skill.toLowerCase().includes('damage to player') || skill.toLowerCase().includes('player damage')) {
+            skillDamage += val;
+            basicAttackPercent += val;
+          }
+          else if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction') && !skill.toLowerCase().includes('taken')) skillDamage += val;
+          else if (skill.toLowerCase().includes('basic attack') && !skill.toLowerCase().includes('taken')) basicAttackPercent += val;
+        }
+      });
+      [...(artist.skillCategories?.defense || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('skill damage reduction')) skillResist += val;
+          else if (skill.toLowerCase().includes('damage reduction')) attackResist += val;
+        }
+      });
+      [...(artist.skillCategories?.hp || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('fan capacity') && skill.toLowerCase().includes('rally')) rallyCapacity += val;
+          else if (skill.toLowerCase().includes('fan capacity')) fanCapacity += val;
+        }
+      });
+    });
+    const genreCounts: Record<string, number> = {};
+    team2.forEach(artist => { const g = artist.genre?.toUpperCase() || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
+    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
+  }, [team2]);
+
+  const addToTeam1 = (artist: Artist) => {
+    if (team1.length < 5 && !team1.find(a => a.id === artist.id)) {
+      setTeam1([...team1, artist]);
+    }
+  };
+
+  const addToTeam2 = (artist: Artist) => {
+    if (team2.length < 5 && !team2.find(a => a.id === artist.id)) {
+      setTeam2([...team2, artist]);
+    }
+  };
+
+  const removeFromTeam1 = (id: number) => {
+    setTeam1(team1.filter(a => a.id !== id));
+  };
+
+  const removeFromTeam2 = (id: number) => {
+    setTeam2(team2.filter(a => a.id !== id));
+  };
+
   const filteredArtists = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
     return artistsData.filter((artist: Artist) => {
@@ -193,49 +298,49 @@ export default function ArtistsPage() {
                       <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i < filteredArtists.length-1) setSelectedArtist(filteredArtists[i+1]); }} style={{ width: "28px", height: "28px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", cursor: "pointer", fontSize: "0.7rem" }}>▶</button>
                     </div>
 
-                    <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "8px" }}>
-                      <div className="artist-image" style={{ width: "75px", height: "100px", borderRadius: "10px", border: `2px solid ${rankColors[selectedArtist.rank]}`, background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, rgba(30,30,50,1))`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
+                    <div style={{ display: "flex", gap: "12px", marginTop: "10px" }}>
+                      <div className="artist-image" style={{ width: "120px", height: "160px", borderRadius: "12px", border: `3px solid ${rankColors[selectedArtist.rank]}`, background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, rgba(30,30,50,1))`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
                         {selectedArtist.image ? (
                           <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                         ) : (
-                          <span style={{ fontSize: "1.8rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
+                          <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
                         )}
                       </div>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.6)", marginBottom: "2px" }}>🎯 {selectedArtist.position}</p>
-                        <p style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.6)", marginBottom: "2px" }}>⭐ {selectedArtist.build}</p>
-                        <p style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.6)", marginBottom: "2px" }}>💎 {selectedArtist.specialty || selectedArtist.genre}</p>
-                        <p style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.5)" }}>🎵 {selectedArtist.genre}</p>
+                      <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.6)", marginBottom: "3px" }}><span style={{ color: "#f472b6" }}>🎯</span> {selectedArtist.position}</p>
+                        <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.6)", marginBottom: "3px" }}><span style={{ color: "#8b5cf6" }}>⭐</span> {selectedArtist.build}</p>
+                        <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.6)", marginBottom: "3px" }}><span style={{ color: "#06b6d4" }}>💎</span> {selectedArtist.specialty || selectedArtist.genre}</p>
+                        <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.5)" }}><span style={{ color: "#22c55e" }}>🎵</span> {selectedArtist.genre}</p>
                       </div>
                     </div>
 
-                     <div style={{ marginTop: "8px" }}>
+                     <div style={{ marginTop: "10px" }}>
                        <p style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.4)", marginBottom: "3px", textTransform: "uppercase" }}>{t.skills}</p>
                        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
                          {selectedArtist.skills?.slice(0,3).map((skill, i) => (
-                           <div key={i} style={{ padding: "4px 6px", background: "rgba(255,255,255,0.03)", borderRadius: "4px", fontSize: "0.5rem", borderLeft: `2px solid ${rankColors[selectedArtist.rank]}`, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{skill}</div>
+                           <div key={i} style={{ padding: "4px 6px", background: "rgba(255,255,255,0.03)", borderRadius: "4px", fontSize: "0.55rem", borderLeft: `2px solid ${rankColors[selectedArtist.rank]}`, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{skill}</div>
                          ))}
                        </div>
                      </div>
-                      {/* Lien vers la page détaillée de l'artiste */}
-                      <div style={{ textAlign: 'center', marginTop: '16px' }}>
-                        <Link 
-                          href={`/${lang}/artist/${slugify(selectedArtist.name)}`} 
-                          className="view-profile-btn"
-                          style={{
-                           display: 'inline-block',
-                           padding: '8px 16px',
-                           background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-                           color: 'white',
-                           borderRadius: '6px',
-                           fontSize: '0.85rem',
-                           fontWeight: 500
-                         }}
-                        >
-                          {t.viewFullProfile}
-                       </Link>
-                     </div>
-                   </div>
+                       {/* Lien vers la page détaillée de l'artiste */}
+                       <div style={{ textAlign: 'center', marginTop: '12px' }}>
+                         <Link 
+                           href={`/${lang}/artist/${slugify(selectedArtist.name)}`} 
+                           className="view-profile-btn"
+                           style={{
+                            display: 'inline-block',
+                            padding: '8px 16px',
+                            background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                            color: 'white',
+                            borderRadius: '6px',
+                            fontSize: '0.85rem',
+                            fontWeight: 500
+                          }}
+                         >
+                           {t.viewFullProfile}
+                        </Link>
+                      </div>
+                    </div>
                 ) : (
                   <div style={{ padding: "20px", textAlign: "center", color: "rgba(255,255,255,0.4)" }}>
                     <div style={{ fontSize: "1.4rem", marginBottom: "4px" }}>👆</div>
@@ -244,53 +349,107 @@ export default function ArtistsPage() {
                 )}
               </div>
 
-              {/* Team Builder Card */}
-              <div className="team-builder-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: "12px" }}>
-                <div className="team-builder-title" style={{ fontWeight: 600, fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase", marginBottom: "10px" }}>{t.teamBuilder} ({team.length}/5)</div>
-                
-                <div style={{ display: "flex", gap: "5px", marginBottom: "10px" }}>
+              {/* Team Builder Card - Two Teams */}
+              <div className="team-builder-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: "10px" }}>
+                {/* Team Selector */}
+                <div style={{ display: "flex", gap: "6px", marginBottom: "10px" }}>
+                  <button 
+                    onClick={() => setActiveTeam(1)} 
+                    style={{ 
+                      flex: 1, 
+                      padding: "8px", 
+                      borderRadius: "6px", 
+                      border: activeTeam === 1 ? "2px solid #8b5cf6" : "1px solid rgba(255,255,255,0.1)", 
+                      background: activeTeam === 1 ? "rgba(139,92,246,0.2)" : "rgba(255,255,255,0.05)", 
+                      color: activeTeam === 1 ? "#fff" : "rgba(255,255,255,0.5)", 
+                      fontWeight: 600, 
+                      fontSize: "0.75rem",
+                      cursor: "pointer"
+                    }}
+                  >
+                    Équipe 1 ({team1.length}/5)
+                  </button>
+                  <button 
+                    onClick={() => setActiveTeam(2)} 
+                    style={{ 
+                      flex: 1, 
+                      padding: "8px", 
+                      borderRadius: "6px", 
+                      border: activeTeam === 2 ? "2px solid #06b6d4" : "1px solid rgba(255,255,255,0.1)", 
+                      background: activeTeam === 2 ? "rgba(6,182,212,0.2)" : "rgba(255,255,255,0.05)", 
+                      color: activeTeam === 2 ? "#fff" : "rgba(255,255,255,0.5)", 
+                      fontWeight: 600, 
+                      fontSize: "0.75rem",
+                      cursor: "pointer"
+                    }}
+                  >
+                    Équipe 2 ({team2.length}/5)
+                  </button>
+                </div>
+
+                {/* Current Team Slots */}
+                <div style={{ display: "flex", gap: "4px", marginBottom: "8px", justifyContent: "center" }}>
                   {[0,1,2,3,4].map(i => (
-                    <div className="team-slot" key={i} onClick={() => team[i] && removeFromTeam(team[i].id)} style={{ width: "62px", height: "70px", borderRadius: "8px", border: `2px solid ${team[i] ? rankColors[team[i].rank] : "rgba(255,255,255,0.1)"}`, background: team[i] ? `linear-gradient(135deg, ${rankColors[team[i].rank]}22, rgba(30,30,50,1))` : "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", cursor: team[i] ? "pointer" : "default", overflow: "hidden" }}>
+                    <div className="team-slot" key={i} onClick={() => activeTeam === 1 ? (team1[i] && removeFromTeam1(team1[i].id)) : (team2[i] && removeFromTeam2(team2[i].id))} style={{ width: "50px", height: "58px", borderRadius: "6px", border: `2px solid ${activeTeam === 1 ? (team[i] ? rankColors[team[i].rank] : "rgba(255,255,255,0.1)") : (team[i] ? rankColors[team[i].rank] : "rgba(255,255,255,0.1)")}`, background: team[i] ? `linear-gradient(135deg, ${rankColors[team[i].rank]}22, rgba(30,30,50,1))` : "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", cursor: team[i] ? "pointer" : "default", overflow: "hidden" }}>
                       {team[i] ? (
-                        team[i].image ? <img src={`/assets/images/artists/${team[i].image}`} alt={team[i].name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: "1.3rem", fontWeight: 800, color: rankColors[team[i].rank] }}>{team[i].name.charAt(0)}</span>
-                      ) : <span style={{ color: "rgba(255,255,255,0.2)" }}>+</span>}
+                        team[i].image ? <img src={`/assets/images/artists/${team[i].image}`} alt={team[i].name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: "1.1rem", fontWeight: 800, color: rankColors[team[i].rank] }}>{team[i].name.charAt(0)}</span>
+                      ) : <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.8rem" }}>+</span>}
                     </div>
                   ))}
                 </div>
 
-                {team.length > 0 && (
-                  <div className="team-stats" style={{ background: "rgba(255,255,255,0.05)", borderRadius: "8px", padding: "10px", marginBottom: "10px" }}>
-                    <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.4)", marginBottom: "4px", textTransform: "uppercase" }}>{t.combinedStats}</p>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", fontSize: "0.7rem" }}>
-                      <div style={{ color: "#ff6b6b" }}>⚔️ Skill damage: {teamStats.skillDamage}%</div>
-                      <div style={{ color: "#ff8c42" }}>💥 DMG Factor: {teamStats.skillDamageRaw}</div>
-                      <div style={{ color: "#4ecdc4" }}>👊 Basic attack: {teamStats.basicAttackPercent}%</div>
-                      <div style={{ color: "#95e1d3" }}>🛡️ Res: {teamStats.attackResist}%</div>
-                      <div style={{ color: "#a29bfe" }}>✨ S.Res: {teamStats.skillResist}%</div>
-                      <div style={{ color: "#ffd700" }}>🎵 Fan: {teamStats.fanCapacity}%</div>
-                      <div style={{ color: "#00ff88" }}>🚀 Rally: {teamStats.rallyCapacity}%</div>
-                    </div>
-                  </div>
-                )}
-
+                {/* Add to Team Button */}
                 {selectedArtist && !team.find(a => a.id === selectedArtist.id) && team.length < 5 && (
-                  <button className="add-to-team-btn" onClick={() => addToTeam(selectedArtist)} style={{ width: "100%", padding: "10px", borderRadius: "8px", border: "none", background: "linear-gradient(135deg, #8b5cf6, #06b6d4)", color: "#fff", fontWeight: 600, fontSize: "0.8rem", cursor: "pointer" }}>+ Ajouter {selectedArtist.name}</button>
+                  <button className="add-to-team-btn" onClick={() => activeTeam === 1 ? addToTeam1(selectedArtist) : addToTeam2(selectedArtist)} style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "none", background: activeTeam === 1 ? "linear-gradient(135deg, #8b5cf6, #06b6d4)" : "linear-gradient(135deg, #06b6d4, #8b5cf6)", color: "#fff", fontWeight: 600, fontSize: "0.7rem", cursor: "pointer", marginBottom: "8px" }}>+ Ajouter à l'équipe {activeTeam}</button>
                 )}
 
+                {/* Clear Team Button */}
                 {team.length > 0 && (
-                  <button onClick={() => setTeam([])} style={{ width: "100%", marginTop: "8px", padding: "8px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "rgba(255,255,255,0.4)", fontSize: "0.7rem", cursor: "pointer" }}>🗑️ Tout effacer</button>
+                  <button onClick={() => activeTeam === 1 ? setTeam1([]) : setTeam2([])} style={{ width: "100%", marginBottom: "8px", padding: "6px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "rgba(255,255,255,0.4)", fontSize: "0.65rem", cursor: "pointer" }}>🗑️ Effacer</button>
                 )}
 
+                {/* Current Team Stats */}
                 {team.length > 0 && (
-                  <div style={{ marginTop: "8px", padding: "8px", background: "linear-gradient(135deg, rgba(139,92,246,0.2), rgba(6,182,212,0.2))", borderRadius: "8px" }}>
-                    <p style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.4)", marginBottom: "4px", textTransform: "uppercase" }}>{t.genres}</p>
-                    <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
-                      {Object.entries(teamStats.genreCounts).map(([g, c]) => (
-                        <span key={g} style={{ padding: "3px 8px", borderRadius: "10px", fontSize: "0.65rem", fontWeight: 600, background: "rgba(0,0,0,0.4)", color: "#fff" }}>{c} {g}</span>
-                      ))}
+                  <div className="team-stats" style={{ background: "rgba(255,255,255,0.05)", borderRadius: "6px", padding: "8px", marginBottom: "8px" }}>
+                    <p style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.4)", marginBottom: "4px", textTransform: "uppercase" }}>{t.combinedStats}</p>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", fontSize: "0.6rem" }}>
+                      <div style={{ color: "#ff6b6b" }}>⚔️ {teamStats.skillDamage}%</div>
+                      <div style={{ color: "#ff8c42" }}>💥 {teamStats.skillDamageRaw}</div>
+                      <div style={{ color: "#4ecdc4" }}>👊 {teamStats.basicAttackPercent}%</div>
+                      <div style={{ color: "#95e1d3" }}>🛡️ {teamStats.attackResist}%</div>
+                      <div style={{ color: "#a29bfe" }}>✨ {teamStats.skillResist}%</div>
+                      <div style={{ color: "#ffd700" }}>🎵 {teamStats.fanCapacity}%</div>
                     </div>
                   </div>
                 )}
+
+                {/* Team Comparison */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", marginTop: "8px" }}>
+                  {/* Team 1 Stats */}
+                  <div style={{ background: "rgba(139,92,246,0.1)", borderRadius: "6px", padding: "6px", border: "1px solid rgba(139,92,246,0.2)" }}>
+                    <p style={{ fontSize: "0.55rem", color: "#8b5cf6", marginBottom: "4px", fontWeight: 600 }}>Équipe 1</p>
+                    {team1.length > 0 ? (
+                      <>
+                        <div style={{ fontSize: "0.5rem", color: "#ff6b6b" }}>⚔️ {team1Stats.skillDamage}%</div>
+                        <div style={{ fontSize: "0.5rem", color: "#4ecdc4" }}>👊 {team1Stats.basicAttackPercent}%</div>
+                        <div style={{ fontSize: "0.5rem", color: "#95e1d3" }}>🛡️ {team1Stats.attackResist}%</div>
+                        <div style={{ fontSize: "0.5rem", color: "#ffd700" }}>🎵 {team1Stats.fanCapacity}%</div>
+                      </>
+                    ) : <div style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.3)" }}>Vide</div>}
+                  </div>
+                  {/* Team 2 Stats */}
+                  <div style={{ background: "rgba(6,182,212,0.1)", borderRadius: "6px", padding: "6px", border: "1px solid rgba(6,182,212,0.2)" }}>
+                    <p style={{ fontSize: "0.55rem", color: "#06b6d4", marginBottom: "4px", fontWeight: 600 }}>Équipe 2</p>
+                    {team2.length > 0 ? (
+                      <>
+                        <div style={{ fontSize: "0.5rem", color: "#ff6b6b" }}>⚔️ {team2Stats.skillDamage}%</div>
+                        <div style={{ fontSize: "0.5rem", color: "#4ecdc4" }}>👊 {team2Stats.basicAttackPercent}%</div>
+                        <div style={{ fontSize: "0.5rem", color: "#95e1d3" }}>🛡️ {team2Stats.attackResist}%</div>
+                        <div style={{ fontSize: "0.5rem", color: "#ffd700" }}>🎵 {team2Stats.fanCapacity}%</div>
+                      </>
+                    ) : <div style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.3)" }}>Vide</div>}
+                  </div>
+                </div>
               </div>
 
             </div>
