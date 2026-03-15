@@ -62,21 +62,37 @@ export default function ArtistsPage() {
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector('.header') as HTMLElement;
+      const mainContent = document.querySelector('.artists-main') as HTMLElement;
       if (header) {
         if (window.scrollY > 100) {
           header.style.transform = 'translateY(-100%)';
+          if (panelRef.current) {
+            panelRef.current.style.top = '0px';
+          }
+          if (mainContent) {
+            mainContent.style.paddingBottom = '80px';
+          }
         } else {
           header.style.transform = 'translateY(0)';
+          if (panelRef.current) {
+            panelRef.current.style.top = '110px';
+          }
+          if (mainContent) {
+            mainContent.style.paddingBottom = '0';
+          }
         }
       }
       if (!panelRef.current) return;
       const headerHeight = 70;
       const scrollY = window.scrollY;
       const startY = 110;
-      if (scrollY > startY) {
+      if (scrollY > startY && window.scrollY <= 100) {
         panelRef.current.style.position = 'fixed';
         panelRef.current.style.top = headerHeight + 'px';
-      } else {
+      } else if (window.scrollY <= 100 && scrollY > startY) {
+        panelRef.current.style.position = 'fixed';
+        panelRef.current.style.top = '0px';
+      } else if (scrollY <= startY) {
         panelRef.current.style.position = 'absolute';
         panelRef.current.style.top = startY + 'px';
       }
@@ -160,7 +176,7 @@ export default function ArtistsPage() {
         <title>Artistes - TopGirl</title>
       </Head>
 
-      <div className="container" style={{ padding: "40px 20px" }}>
+      <div className="container artists-main" style={{ padding: "40px 20px" }}>
         <h1 style={{ textAlign: "center", marginBottom: "10px", background: "linear-gradient(135deg, #f472b6, #c084fc, #818cf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: "2.5rem", fontWeight: 800 }}>
           🎤 Artistes
         </h1>
@@ -397,12 +413,12 @@ export default function ArtistsPage() {
 
       <style jsx>{`
         .left-panel {
-          width: 45%;
-          max-width: 600px;
+          width: 49.5%;
+          max-width: 660px;
         }
         .artists-container {
-          margin-left: 48%;
-          width: 52%;
+          margin-left: 52%;
+          width: 48%;
           min-height: 100vh;
         }
         .artists-grid {
