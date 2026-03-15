@@ -59,6 +59,24 @@ export default function ArtistsPage() {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!panelRef.current) return;
+      const headerHeight = 70;
+      const scrollY = window.scrollY;
+      const startY = 110;
+      if (scrollY > startY) {
+        panelRef.current.style.position = 'fixed';
+        panelRef.current.style.top = headerHeight + 'px';
+      } else {
+        panelRef.current.style.position = 'absolute';
+        panelRef.current.style.top = startY + 'px';
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const addToTeam = (artist: Artist) => {
     if (team.length < 5 && !team.find(a => a.id === artist.id)) {
       setTeam([...team, artist]);
