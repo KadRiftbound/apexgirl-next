@@ -5,14 +5,14 @@ import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
 
 const guideTranslations: Record<string, any> = {
-  fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides" },
-  en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides" },
-  it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide" },
-  es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías" },
-  pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias" },
-  pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki" },
-  id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain" },
-  ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды" },
+  fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication" },
+  en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation" },
+  it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione" },
+  es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación" },
+  pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação" },
+  pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie" },
+  id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan" },
+  ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение" },
 };
 
 type Guide = {
@@ -37,6 +37,12 @@ type Guide = {
   color: string;
   category: string;
   category_en?: string;
+  category_it?: string;
+  category_es?: string;
+  category_pt?: string;
+  category_pl?: string;
+  category_id?: string;
+  category_ru?: string;
   readTime: string;
   content?: string;
   content_en?: string;
@@ -46,6 +52,22 @@ type Guide = {
   content_pl?: string;
   content_id?: string;
   content_ru?: string;
+  tips?: string;
+  tips_en?: string;
+  tips_it?: string;
+  tips_es?: string;
+  tips_pt?: string;
+  tips_pl?: string;
+  tips_id?: string;
+  tips_ru?: string;
+  rewards?: string;
+  rewards_en?: string;
+  rewards_it?: string;
+  rewards_es?: string;
+  rewards_pt?: string;
+  rewards_pl?: string;
+  rewards_id?: string;
+  rewards_ru?: string;
 };
 
 const guides: Guide[] = [
@@ -88,6 +110,14 @@ Les propriétés génèrent des revenus passifs:
 | Propriété | +5,000 | +3,500 |
 
 **Recommandation:** Visez d'abord le Gold pour les statistiques max, puis Purple pour le budget.
+    `,
+    tips: `
+- Achetez d'abord les bijoux pour un boost immédiat des stats
+- Concentrez-vous sur une stat principale avant de diversifier
+- Les propriétés sont meilleures pour le revenus passif à long terme
+- Équipements Gold vs Purple: Gold offre +30% de stats en plus
+- Priorisez les voitures pour le bonus de vitesse de conduite
+- during events x2, maximize vos achats d'équipements
     `
   },
   {
@@ -904,6 +934,21 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
 4. **Ежедневные и целевые квесты** помогут вам прогрессировать быстрее и получить дополнительные награды
 5. **Запрашивайте помощь ежедневно**, даже если вам она еще не нужна, чтобы вы могли сохранить её для более сложных уровней позже
 `,
+    tips: `
+- Always check for 3+ matching tiles before selecting
+- Keep 2-3 slots free for better flexibility
+- Prioritize tiles with visible matches
+- Complete daily quests for bonus rewards
+- Request help early, save for harder levels
+    `,
+    rewards: `
+- SSR Artist Cards (rare drop)
+- Gold Coins (100,000 - 500,000)
+- Energy Drinks
+- Skill Enhancement Materials
+- Exclusive Event Avatar Frame
+- Top 100: Additional SSR+ selection box
+    `
   },
   {
     id: "event-metro-subway",
@@ -1279,6 +1324,34 @@ export default function GuideDetailPage() {
             })}
           </div>
         )}
+
+        {guide.tips && (
+          <div style={{ marginTop: "32px", padding: "24px", background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid #22d3ee33" }}>
+            <h2 style={{ color: "#22d3ee", fontSize: "1.3rem", marginBottom: "16px" }}>💡 {t.tips}</h2>
+            <div style={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.8, whiteSpace: "pre-line" }}>
+              {guide.tips.split('\n').map((line, i) => {
+                if (line.startsWith('- ')) {
+                  return <div key={i} style={{ marginLeft: "16px", marginBottom: "8px" }}>• {line.replace('- ', '')}</div>;
+                }
+                return line.trim() ? <div key={i} style={{ marginBottom: "8px" }}>{line}</div> : <div key={i} style={{ height: "8px" }} />;
+              })}
+            </div>
+          </div>
+        )}
+
+        {guide.rewards && (
+          <div style={{ marginTop: "24px", padding: "24px", background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid #22c55e33" }}>
+            <h2 style={{ color: "#22c55e", fontSize: "1.3rem", marginBottom: "16px" }}>🎁 {t.rewards}</h2>
+            <div style={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.8, whiteSpace: "pre-line" }}>
+              {guide.rewards.split('\n').map((line, i) => {
+                if (line.startsWith('- ')) {
+                  return <div key={i} style={{ marginLeft: "16px", marginBottom: "8px" }}>• {line.replace('- ', '')}</div>;
+                }
+                return line.trim() ? <div key={i} style={{ marginBottom: "8px" }}>{line}</div> : <div key={i} style={{ height: "8px" }} />;
+              })}
+            </div>
+          </div>
+        )}
       </div>
 
       <AdBanner />
@@ -1307,6 +1380,48 @@ export default function GuideDetailPage() {
             </Link>
           ))}
         </div>
+      </div>
+
+      {/* Internal Linking Hubs */}
+      <div style={{ marginTop: "32px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+        <Link href={`/${lang}/artists/`} style={{
+          padding: "20px",
+          background: "rgba(244, 114, 182, 0.15)",
+          borderRadius: "12px",
+          border: "1px solid rgba(244, 114, 182, 0.3)",
+          textDecoration: "none",
+          display: "block"
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>🎤</div>
+          <div style={{ color: "#f472b6", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Base de Données Artistes" : "Artist Database"}</div>
+          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Découvrez tous les artistes" : "Discover all artists"}</div>
+        </Link>
+        
+        <Link href={`/${lang}/tierlist/`} style={{
+          padding: "20px",
+          background: "rgba(251, 191, 36, 0.15)",
+          borderRadius: "12px",
+          border: "1px solid rgba(251, 191, 36, 0.3)",
+          textDecoration: "none",
+          display: "block"
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>🏆</div>
+          <div style={{ color: "#fbbf24", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Tier List" : "Tier List"}</div>
+          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Classement des meilleurs artistes" : "Best artists ranking"}</div>
+        </Link>
+        
+        <Link href={`/${lang}/events/`} style={{
+          padding: "20px",
+          background: "rgba(34, 197, 94, 0.15)",
+          borderRadius: "12px",
+          border: "1px solid rgba(34, 197, 94, 0.3)",
+          textDecoration: "none",
+          display: "block"
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>🎉</div>
+          <div style={{ color: "#4ade80", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Événements" : "Events"}</div>
+          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Restez à jour avec les événements" : "Stay updated with events"}</div>
+        </Link>
       </div>
     </div>
   );

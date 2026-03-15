@@ -488,7 +488,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Fixed below panel */}
-        <div className={`mobile-search-bar ${!searchBarVisible ? 'hidden' : ''}`} style={panelFixed ? { position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 99 } : {}}>
+        <div className={`mobile-search-bar ${!searchBarVisible ? 'hidden' : ''}`} style={panelFixed ? { position: 'fixed', top: '48vh', left: 0, right: 0, zIndex: 99 } : {}}>
           <input
             type="text"
             placeholder={t.search}
@@ -510,7 +510,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 4: Artists Grid - Scrollable */}
-        <div className="mobile-artists-bottom" style={panelFixed ? { paddingTop: '48vh' } : {}}>
+        <div className="mobile-artists-bottom" style={panelFixed ? { paddingTop: '56vh' } : {}}>
           <div className="mobile-artists-count">{filteredArtists.length} artistes trouvés</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist) => (
@@ -564,13 +564,16 @@ export default function MobileArtistsPage() {
           padding: 4px;
           background: transparent;
           z-index: 100;
-          height: 40vh;
-          min-height: 300px;
+          height: 48vh;
+          min-height: 350px;
         }
         .mobile-top-panel.fixed {
           position: fixed;
           top: 0;
           left: 0;
+          height: 48vh;
+          min-height: 350px;
+        }
           right: 0;
           height: 40vh;
           min-height: 300px;
@@ -849,6 +852,9 @@ export default function MobileArtistsPage() {
         .mobile-artists-bottom {
           padding: 8px 6px 100px 6px;
           min-height: 100vh;
+        }
+        .mobile-top-panel.fixed + .mobile-search-bar {
+          top: 48vh;
         }
         .mobile-artists-count {
           font-size: 0.8rem;

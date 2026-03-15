@@ -245,6 +245,48 @@ export default function EventDetailPage() {
 
       <AdBanner />
 
+      {/* Internal Linking Hubs */}
+      <div style={{ marginTop: "32px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+        <Link href={`/${lang}/guides/`} style={{
+          padding: "20px",
+          background: "rgba(139, 92, 246, 0.15)",
+          borderRadius: "12px",
+          border: "1px solid rgba(139, 92, 246, 0.3)",
+          textDecoration: "none",
+          display: "block"
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>📖</div>
+          <div style={{ color: "#a78bfa", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Guides & Stratégies" : "Guides & Strategies"}</div>
+          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Apprenez à optimiser votre jeu" : "Learn to optimize your gameplay"}</div>
+        </Link>
+        
+        <Link href={`/${lang}/tierlist/`} style={{
+          padding: "20px",
+          background: "rgba(251, 191, 36, 0.15)",
+          borderRadius: "12px",
+          border: "1px solid rgba(251, 191, 36, 0.3)",
+          textDecoration: "none",
+          display: "block"
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>🏆</div>
+          <div style={{ color: "#fbbf24", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Tier List" : "Tier List"}</div>
+          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Classement des meilleurs artistes" : "Best artists ranking"}</div>
+        </Link>
+        
+        <Link href={`/${lang}/artists/`} style={{
+          padding: "20px",
+          background: "rgba(244, 114, 182, 0.15)",
+          borderRadius: "12px",
+          border: "1px solid rgba(244, 114, 182, 0.3)",
+          textDecoration: "none",
+          display: "block"
+        }}>
+          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>🎤</div>
+          <div style={{ color: "#f472b6", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Base de Données" : "Artist Database"}</div>
+          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Découvrez tous les artistes" : "Discover all artists"}</div>
+        </Link>
+      </div>
+
       <div style={{ marginTop: "32px", display: "flex", gap: "16px", flexWrap: "wrap" }}>
         {events.filter(e => e.id !== event.id).slice(0, 3).map(e => (
           <Link 

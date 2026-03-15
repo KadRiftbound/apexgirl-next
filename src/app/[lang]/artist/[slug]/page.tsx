@@ -520,6 +520,74 @@ export default function ArtistDetailPage() {
             {t.viewTierList} →
           </Link>
         </div>
+
+        {/* Internal Linking Hubs */}
+        <div style={{ marginTop: '32px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+          <Link href={`/${lang}/guides/`} style={{
+            padding: '20px',
+            background: 'rgba(139, 92, 246, 0.15)',
+            borderRadius: '12px',
+            border: '1px solid rgba(139, 92, 246, 0.3)',
+            textDecoration: 'none',
+            display: 'block'
+          }}>
+            <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>📖</div>
+            <div style={{ color: '#a78bfa', fontWeight: 600, marginBottom: '4px' }}>{lang === 'fr' ? 'Guides & Stratégies' : 'Guides & Strategies'}</div>
+            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>{lang === 'fr' ? 'Apprenez à optimiser votre jeu' : 'Learn to optimize your gameplay'}</div>
+          </Link>
+          
+          <Link href={`/${lang}/events/`} style={{
+            padding: '20px',
+            background: 'rgba(34, 197, 94, 0.15)',
+            borderRadius: '12px',
+            border: '1px solid rgba(34, 197, 94, 0.3)',
+            textDecoration: 'none',
+            display: 'block'
+          }}>
+            <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>🎉</div>
+            <div style={{ color: '#4ade80', fontWeight: 600, marginBottom: '4px' }}>{lang === 'fr' ? 'Événements' : 'Events'}</div>
+            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>{lang === 'fr' ? 'Restez à jour avec les événements' : 'Stay updated with events'}</div>
+          </Link>
+          
+          <Link href={`/${lang}/tools/`} style={{
+            padding: '20px',
+            background: 'rgba(59, 130, 246, 0.15)',
+            borderRadius: '12px',
+            border: '1px solid rgba(59, 130, 246, 0.3)',
+            textDecoration: 'none',
+            display: 'block'
+          }}>
+            <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>🛠️</div>
+            <div style={{ color: '#60a5fa', fontWeight: 600, marginBottom: '4px' }}>{lang === 'fr' ? 'Outils' : 'Tools'}</div>
+            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>{lang === 'fr' ? 'Calculateurs et plus' : 'Calculators and more'}</div>
+          </Link>
+        </div>
+
+        {/* Related Artists by Genre */}
+        <div style={{ marginTop: '32px' }}>
+          <h3 style={{ color: '#fff', marginBottom: '16px', fontSize: '1.2rem' }}>{lang === 'fr' ? 'Artistes du même genre' : 'Artists of the same genre'}</h3>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            {artistsData.filter((a: Artist) => a.genre === artist.genre && a.id !== artist.id).slice(0, 5).map((relatedArtist: Artist) => (
+              <Link 
+                key={relatedArtist.id}
+                href={`/${lang}/artist/${slugify(relatedArtist.name)}/`}
+                style={{
+                  padding: '12px 16px',
+                  background: 'rgba(30,30,50,0.9)',
+                  borderRadius: '8px',
+                  textDecoration: 'none',
+                  border: `1px solid ${rankColors[relatedArtist.rank] || '#6b7280'}33`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                <span style={{ color: rankColors[relatedArtist.rank] || '#fff', fontWeight: 600, fontSize: '0.8rem' }}>{relatedArtist.rank}</span>
+                <span style={{ color: '#fff', fontSize: '0.9rem' }}>{relatedArtist.name}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

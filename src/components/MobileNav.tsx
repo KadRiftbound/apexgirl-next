@@ -23,11 +23,11 @@ export function MobileNav() {
       
       // Only on mobile
       if (window.innerWidth <= 900) {
-        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-          // Scrolling down - hide nav
+        if (currentScrollY > 50) {
+          // Hide nav when scrolled down
           setIsVisible(false);
         } else {
-          // Scrolling up or at top - show nav
+          // Show nav only at very top
           setIsVisible(true);
         }
       } else {
@@ -75,7 +75,8 @@ export function MobileNav() {
       }}
     >
       <div style={{
-        position: 'relative',
+        position: 'sticky',
+        top: 0,
         height: '56px',
         background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
         display: 'flex',
