@@ -61,11 +61,21 @@ export default function ArtistsPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!panelRef.current) return;
-      const headerHeight = 70;
+      const header = document.querySelector('.header') as HTMLElement;
       const scrollY = window.scrollY;
-      const startY = 110;
-      if (scrollY > startY) {
+      
+      if (header) {
+        if (scrollY > 100) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+      }
+      
+      if (!panelRef.current) return;
+      const headerHeight = scrollY > 100 ? 0 : 70;
+      const startY = scrollY > 100 ? 0 : 110;
+      if (scrollY > 110 || scrollY > 100) {
         panelRef.current.style.position = 'fixed';
         panelRef.current.style.top = headerHeight + 'px';
       } else {
