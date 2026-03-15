@@ -49,6 +49,7 @@
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
+    "image": "Genevieve.jpg",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -3902,6 +3903,7 @@
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
+    "image": "Anastasia.jpg",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -3935,6 +3937,7 @@
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
+    "image": "Beatrice.jpg",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -4001,6 +4004,7 @@
     "thoughts": "Yes",
     "build": "Recommended",
     "photos": "Universal",
+    "image": "Gabriella.jpg",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"

@@ -427,17 +427,6 @@ export default function ArtistsPage() {
         </div>
 
         {/* Add to Selected Team */}
-        {selectedArtist && (
-          <div className="add-to-team-bar">
-            {selectedArtist && !team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && activeTeam === 1 && (
-              <button onClick={() => addToTeam(selectedArtist)}>+ Ajouter {selectedArtist.name} à l'équipe 1</button>
-            )}
-            {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && activeTeam === 2 && (
-              <button onClick={() => addToTeam(selectedArtist)}>+ Ajouter {selectedArtist.name} à l'équipe 2</button>
-            )}
-          </div>
-        )}
-
         {/* BOTTOM - Artists Grid (scrollable) */}
         <div className="artists-bottom">
           <div className="search-bar">
@@ -549,8 +538,8 @@ export default function ArtistsPage() {
           flex: 1;
         }
         .artist-preview-image-large {
-          width: 100px;
-          height: 130px;
+          width: 130px;
+          height: 160px;
           border-radius: 8px;
           border: 2px solid;
           display: flex;
@@ -738,24 +727,6 @@ export default function ArtistsPage() {
           cursor: pointer;
         }
         
-        .add-to-team-bar {
-          padding: 8px;
-          display: flex;
-          gap: 8px;
-          justify-content: center;
-          background: #0f0f1a;
-        }
-        .add-to-team-bar button {
-          padding: 8px 16px;
-          border-radius: 6px;
-          border: none;
-          background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-          color: #fff;
-          font-weight: 600;
-          font-size: 0.75rem;
-          cursor: pointer;
-        }
-        
         .artists-bottom {
           padding: 8px;
           padding-top: 40vh;
@@ -810,6 +781,7 @@ export default function ArtistsPage() {
         }
         .artists-grid button {
           aspect-ratio: 3/4;
+          max-width: 80px;
           border-radius: 8px;
           border: 2px solid rgba(255,255,255,0.1);
           background: rgba(30,30,50,0.9);
