@@ -37,6 +37,8 @@ type Artist = {
 
 const rankColors: Record<string, string> = {
   UR: "#ffd700",
+  "UR Roma": "#ef4444",
+  "UR Bali": "#10b981",
   SSR: "#c084fc",
   SR: "#60a5fa",
   R: "#4ade80",

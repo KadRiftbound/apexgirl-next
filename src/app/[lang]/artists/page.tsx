@@ -21,7 +21,7 @@ const filterTranslations: Record<string, any> = {
 };
 
 const rankColors: Record<string, string> = {
-  UR: "#fbbf24", SSR: "#a855f7", SR: "#3b82f6", R: "#22c55e",
+  UR: "#fbbf24", "UR Roma": "#ef4444", "UR Bali": "#10b981", SSR: "#a855f7", SR: "#3b82f6", R: "#22c55e",
 };
 
 type Artist = {
@@ -39,7 +39,7 @@ type Artist = {
 };
 
 const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
-const RANKS = ['UR', 'SSR', 'SR', 'R', 'UR Bali'];
+const RANKS = ['UR', 'UR Roma', 'UR Bali', 'SSR', 'SR', 'R'];
 const SPECIALTIES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de conduite', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'];
 
 export default function ArtistsPage() {
@@ -274,7 +274,7 @@ export default function ArtistsPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const rankOrder: Record<string, number> = { UR: 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4 };
+  const rankOrder: Record<string, number> = { UR: 1, "UR Roma": 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4 };
   const getRankSort = (r: string) => rankOrder[r] || 99;
   const sortedArtists = [...filteredArtists].sort((a, b) => getRankSort(a.rank) - getRankSort(b.rank));
 
@@ -806,29 +806,30 @@ export default function ArtistsPage() {
           font-weight: 800;
         }
         
-        /* Mobile */
+        /* Mobile - Same as Desktop */
         @media (max-width: 900px) {
           .page-header {
             display: none;
           }
           .top-panel {
-            flex-direction: column;
-            height: auto;
-            max-height: 50vh;
-            min-height: auto;
+            flex-direction: row;
+            height: 40vh;
+            min-height: 300px;
+            max-height: none;
             position: sticky;
             top: 0;
           }
-          .panel-col-1, .panel-col-2, .panel-col-3 {
-            width: 100%;
-          }
+          .panel-col-1 { width: 30%; }
+          .panel-col-2 { width: 35%; }
+          .panel-col-3 { width: 35%; }
           .artists-bottom {
             padding-bottom: 100px;
             min-height: 100vh;
+            padding-top: 40vh;
           }
           .search-bar {
             position: sticky;
-            top: 50vh;
+            top: 40vh;
           }
           .artists-grid {
             grid-template-columns: repeat(6, 1fr);
