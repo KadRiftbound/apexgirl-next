@@ -276,7 +276,7 @@ export default function ArtistsPage() {
         <title>Artistes - TopGirl</title>
       </Head>
 
-      <div className="container" style={{ padding: "40px 20px" }}>
+      <div className="container" style={{ padding: "20px 12px" }}>
         <h1 style={{ textAlign: "center", marginBottom: "10px", background: "linear-gradient(135deg, #f472b6, #c084fc, #818cf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: "2.5rem", fontWeight: 800 }}>
           🎤 Artistes
         </h1>
@@ -382,11 +382,14 @@ export default function ArtistsPage() {
                     </div>
                     
                     {/* Team 1 Stats */}
-                    <div style={{ fontSize: "0.55rem" }}>
+                    <div style={{ fontSize: "0.5rem" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", color: "#ff6b6b" }}><span>⚔️ Skill DMG</span><span>{team1Stats.skillDamage}%</span></div>
+                      <div style={{ display: "flex", justifyContent: "space-between", color: "#ff8c42" }}><span>💥 DMG Factor</span><span>{team1Stats.skillDamageRaw}</span></div>
                       <div style={{ display: "flex", justifyContent: "space-between", color: "#4ecdc4" }}><span>👊 Basic ATK</span><span>{team1Stats.basicAttackPercent}%</span></div>
                       <div style={{ display: "flex", justifyContent: "space-between", color: "#95e1d3" }}><span>🛡️ Resistance</span><span>{team1Stats.attackResist}%</span></div>
+                      <div style={{ display: "flex", justifyContent: "space-between", color: "#a29bfe" }}><span>✨ S.Resist</span><span>{team1Stats.skillResist}%</span></div>
                       <div style={{ display: "flex", justifyContent: "space-between", color: "#ffd700" }}><span>🎵 Fan Cap</span><span>{team1Stats.fanCapacity}%</span></div>
+                      <div style={{ display: "flex", justifyContent: "space-between", color: "#00ff88" }}><span>🚀 Rally Cap</span><span>{team1Stats.rallyCapacity}%</span></div>
                       <button onClick={() => setTeam1([])} style={{ width: "100%", marginTop: "4px", padding: "4px", fontSize: "0.5rem", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "rgba(255,255,255,0.4)", cursor: "pointer" }}>🗑️ Effacer</button>
                     </div>
                   </div>
@@ -410,11 +413,14 @@ export default function ArtistsPage() {
                     </div>
                     
                     {/* Team 2 Stats */}
-                    <div style={{ fontSize: "0.55rem" }}>
+                    <div style={{ fontSize: "0.5rem" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", color: "#ff6b6b" }}><span>⚔️ Skill DMG</span><span>{team2Stats.skillDamage}%</span></div>
+                      <div style={{ display: "flex", justifyContent: "space-between", color: "#ff8c42" }}><span>💥 DMG Factor</span><span>{team2Stats.skillDamageRaw}</span></div>
                       <div style={{ display: "flex", justifyContent: "space-between", color: "#4ecdc4" }}><span>👊 Basic ATK</span><span>{team2Stats.basicAttackPercent}%</span></div>
                       <div style={{ display: "flex", justifyContent: "space-between", color: "#95e1d3" }}><span>🛡️ Resistance</span><span>{team2Stats.attackResist}%</span></div>
+                      <div style={{ display: "flex", justifyContent: "space-between", color: "#a29bfe" }}><span>✨ S.Resist</span><span>{team2Stats.skillResist}%</span></div>
                       <div style={{ display: "flex", justifyContent: "space-between", color: "#ffd700" }}><span>🎵 Fan Cap</span><span>{team2Stats.fanCapacity}%</span></div>
+                      <div style={{ display: "flex", justifyContent: "space-between", color: "#00ff88" }}><span>🚀 Rally Cap</span><span>{team2Stats.rallyCapacity}%</span></div>
                       <button onClick={() => setTeam2([])} style={{ width: "100%", marginTop: "4px", padding: "4px", fontSize: "0.5rem", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "rgba(255,255,255,0.4)", cursor: "pointer" }}>🗑️ Effacer</button>
                     </div>
                   </div>
@@ -539,18 +545,18 @@ export default function ArtistsPage() {
 
       <style jsx>{`
         .left-panel {
-          width: 49.5%;
-          max-width: 660px;
+          width: 38%;
+          max-width: 500px;
         }
         .artists-container {
-          margin-left: 52%;
-          width: 48%;
+          margin-left: 40%;
+          width: 60%;
           min-height: 100vh;
         }
         .artists-grid {
           display: grid;
           grid-template-columns: repeat(6, 1fr);
-          gap: 6px;
+          gap: 4px;
         }
         @media (max-width: 900px) {
           .left-panel {
