@@ -410,9 +410,9 @@ export default function TierListPage() {
                 gap: "16px",
                 marginBottom: "24px"
               }}>
-                 {/* 2nd Place */}
-                 {voteData?.rankings?.this_week?.[1] && (
-                   <Link href={`/${lang}/artist/${artistsData.find(a => a.name === voteData?.rankings?.this_week?.[1]?.artist_name)?.id || 0}`} style={{
+               {/* 2nd Place */}
+                  {voteData?.rankings?.this_week?.[1] && (
+                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[1]?.artist_name)?.name || '')}`} style={{
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
@@ -469,9 +469,9 @@ export default function TierListPage() {
                    </Link>
                  )}
 
-                 {/* 1st Place */}
-                 {voteData?.rankings?.this_week?.[0] && (
-                   <Link href={`/${lang}/artist/${artistsData.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name)?.id || 0}`} style={{
+                {/* 1st Place */}
+                  {voteData?.rankings?.this_week?.[0] && (
+                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name)?.name || '')}`} style={{
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
@@ -529,9 +529,9 @@ export default function TierListPage() {
                  </Link>
                  )}
 
-                 {/* 3rd Place */}
-                 {voteData?.rankings?.this_week?.[2] && (
-                   <Link href={`/${lang}/artist/${artistsData.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name)?.id || 0}`} style={{
+                {/* 3rd Place */}
+                  {voteData?.rankings?.this_week?.[2] && (
+                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name)?.name || '')}`} style={{
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
