@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // turbopack disabled for Windows compatibility
-  turbopack: false,
+  turbopack: { },
   async headers() {
     return [
       {
