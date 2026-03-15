@@ -125,37 +125,49 @@ export default function ArtistsPage() {
     let lastScrollY = window.scrollY;
     let ticking = false;
     
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const header = document.querySelector('.header') as HTMLElement;
-          
-          // Toggle header hidden class
-          if (header) {
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-              header.classList.add('header-hidden');
-            } else {
-              header.classList.remove('header-hidden');
+      const handleScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const currentScrollY = window.scrollY;
+            // Essayer plusieurs sélecteurs pour trouver le header
+            const header = document.querySelector('.header') as HTMLElement ||
+                          document.querySelector('header[role="banner"]') as HTMLElement ||
+                          document.querySelector('header') as HTMLElement;
+            
+            // Toggle header hidden class - ONLY on desktop (mobile handled by CSS display)
+            if (header && window.innerWidth > 900) {
+              // Hide header when scrolling down past 100px, show only when at top
+              if (currentScrollY > 100) {
+                header.classList.add('header-hidden');
+              } else {
+                header.classList.remove('header-hidden');
+              }
             }
-          }
           
-          // Panel fixed behavior for both mobile and desktop
+          // Panel fixed behavior - for both mobile and desktop
           const isPanelFixed = currentScrollY > 50;
           setPanelFixed(isPanelFixed);
           
           if (panelRef.current) {
-            const headerHeight = currentScrollY > 100 ? 0 : 70;
-            if (currentScrollY > 110 || currentScrollY > 100) {
-              panelRef.current.style.position = 'fixed';
-              panelRef.current.style.top = headerHeight + 'px';
+            // On desktop: panel becomes fixed after scrolling past initial position
+            // On mobile: panel is always fixed at top: 0
+            if (window.innerWidth > 900) {
+              const headerHeight = currentScrollY > 100 ? 0 : 70;
+              if (currentScrollY > 110) {
+                panelRef.current.style.position = 'fixed';
+                panelRef.current.style.top = headerHeight + 'px';
+              } else {
+                panelRef.current.style.position = 'absolute';
+                panelRef.current.style.top = '110px';
+              }
             } else {
-              panelRef.current.style.position = 'absolute';
-              panelRef.current.style.top = '110px';
+              // Mobile: always fixed at top
+              panelRef.current.style.position = 'fixed';
+              panelRef.current.style.top = '0';
             }
           }
           
-          // Mobile search bar visibility
+          // Mobile search bar visibility - only on mobile
           if (window.innerWidth <= 900) {
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
               setSearchBarVisible(false);
