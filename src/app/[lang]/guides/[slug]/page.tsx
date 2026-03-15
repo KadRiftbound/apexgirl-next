@@ -18,28 +18,35 @@ const guideTranslations: Record<string, any> = {
 type Guide = {
   id: string;
   title: string;
+  title_en?: string;
   description: string;
+  description_en?: string;
   icon: string;
   color: string;
   category: string;
+  category_en?: string;
   readTime: string;
   content?: string;
+  content_en?: string;
 };
 
 const guides: Guide[] = [
   {
     id: "equipment",
     title: "Guide Équipement",
+    title_en: "Equipment Guide",
     description: "Bijoux, Voitures et Propriétés pour optimiser vos statistiques. Comparaison Gold vs Purple et priorités d'achat.",
+    description_en: "Jewelry, Cars and Properties to optimize your stats. Gold vs Purple comparison and purchase priorities.",
     icon: "💍",
     color: "#fbbf24",
     category: "Débutant",
+    category_en: "Beginner",
     readTime: "10 min",
     content: `
 ## Guide Équipement - TopGirl
 
 ### Bijoux (Accessories)
-Les bijoux sont essentiels pour booster vos statistiques principales. Voici les优先级:
+Les bijoux sont essentiels pour booster vos statistiques principales. Voici les priorités:
 
 ** Collier (Necklace) ** - +Bonus Vocal
 ** Bague (Ring) ** - +Bonus Dance  
@@ -60,21 +67,52 @@ Les propriétés génèrent des revenus passifs:
 ### Comparaison Gold vs Purple
 
 | Équipement | Gold Stats | Purple Stats |
-|------------|-----------|-------------|
-| Bijoux | +500 | +350 |
-| Voiture | +2,000 | +1,400 |
-| Propriété | +5,000 | +3,500 |
+|------------|------------|--------------|
+| Collier | +500 Vocal | +300 Vocal |
+| Bague | +500 Dance | +300 Dance |
+| Montre | +500 Charm | +300 Charm |
+`,
+    content_en: `
+## Equipment Guide - TopGirl
 
-**Recommandation:** Visez d'abord le Gold pour les statistiques max, puis Purple pour le budget.
-    `
+### Jewelry (Accessories)
+Jewelry is essential to boost your main stats. Here are the priorities:
+
+** Necklace ** - +Vocal Bonus
+** Ring ** - +Dance Bonus
+** Watch ** - +Charm Bonus
+
+### Vehicles
+Cars offer massive bonuses but are expensive:
+- Starter Car: 500,000 Gold
+- Sports Car: 2,000,000 Gold
+- Luxury Car: 10,000,000 Gold
+
+### Properties
+Properties generate passive income:
+- Apartment: 50,000 Gold/day
+- House: 200,000 Gold/day
+- Mansion: 1,000,000 Gold/day
+
+### Gold vs Purple Comparison
+
+| Equipment | Gold Stats | Purple Stats |
+|-----------|------------|--------------|
+| Necklace | +500 Vocal | +300 Vocal |
+| Ring | +500 Dance | +300 Dance |
+| Watch | +500 Charm | +300 Charm |
+`,
   },
   {
     id: "team-builder",
     title: "Team Builder",
+    title_en: "Team Builder",
     description: "Comment construire l'équipe parfaite. Calcul des synergies de genre et bonus d'équipement.",
+    description_en: "How to build the perfect team. Genre synergy calculation and equipment bonuses.",
     icon: "👥",
     color: "#22d3ee",
     category: "Intermédiaire",
+    category_en: "Intermediate",
     readTime: "15 min",
     content: `
 ## Team Builder - TopGirl
@@ -105,15 +143,48 @@ Les équipements synergisent avec les rôles:
 **Offensif:** 3 Offense / 1 Defense / 1 Support
 **Défensif:** 2 Offense / 3 Defense / 0 Support
 **Équilibré:** 2 Offense / 2 Defense / 1 Support
+    `,
+    content_en: `
+## Team Builder - TopGirl
+
+### Team Composition
+An optimal team contains 5 artists with well-defined roles:
+
+1. **Vocalist (Lead)** - Highest stats, genre bonus
+2. **Dancer (Support)** - Team buffs
+3. **Center** - Balance
+4. **Makestar** - Fan generation
+5. **Support** - Defense/utility
+
+### Genre Synergies
+Genre bonus applies when you have 2+ artists of the same genre:
+
+- **Pop + Pop**: +15% Vocal
+- **EDM + EDM**: +15% Dance
+- **Hip Hop + Hip Hop**: +15% Charm
+
+### Equipment Bonuses
+Equipment synergizes with roles:
+- Jewelry set: +20% main stat
+- Vehicle set: +15% secondary stat
+- Property set: +10% all stats
+
+### Build Types
+**Offensive:** 3 Offense / 1 Defense / 1 Support
+**Defensive:** 2 Offense / 3 Defense / 0 Support
+**Balanced:** 2 Offense / 2 Defense / 1 Support
     `
   },
   {
     id: "recommended-teams",
     title: "Équipes Recommandées",
+    title_en: "Recommended Teams",
     description: "Les meilleures compositions d'équipes UR et SSR. Stratégies offensives, équilibrées et défensives.",
+    description_en: "Best UR and SSR team compositions. Offensive, balanced and defensive strategies.",
     icon: "🏆",
     color: "#f472b6",
     category: "Avancé",
+    category_en: "Advanced",
     readTime: "12 min",
     content: `
 ## Équipes Recommandées - TopGirl
@@ -156,15 +227,60 @@ Les équipements synergisent avec les rôles:
 **Équilibrée:** Mix des deux
 - Focus: Stats distribution
 - Meta: Elizabeth, Gabriella
+    `,
+    content_en: `
+## Recommended Teams - TopGirl
+
+### Top UR Teams
+
+**Team 1 - Hyper Offense:**
+- Kokoro (Vocalist)
+- Aurora (Dancer)
+- Claire (Center)
+- Anastasia (Defense)
+- Beatrice (Support)
+
+**Team 2 - Balance:**
+- Alexandra (Vocalist)
+- Elizabeth (Dancer)
+- Genevieve (Center)
+- Marguerite (Defense)
+- Gabriella (Support)
+
+### Top SSR Teams
+
+**Team 1 - Budget Meta:**
+- Alice (Vocalist)
+- Hestia (Dancer)
+- Hikari (Center)
+- Eri (Defense)
+- Flora (Support)
+
+### Strategies
+
+**Offensive:** Maximize damage dealers
+- Focus: Skill Damage + Basic Attack
+- Meta: Kokoro, Aurora, Claire
+
+**Defensive:** Focus survival
+- Focus: Damage Reduction + HP
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Balanced:** Mix of both
+- Focus: Stats distribution
+- Meta: Elizabeth, Gabriella
     `
   },
   {
     id: "leveling-ssr",
     title: "Montée en Niveau SSR",
+    title_en: "SSR Leveling Guide",
     description: "Nombre de cartes nécessaires pour level up vos personnages SSR jusqu'au niveau 115.",
+    description_en: "Number of cards needed to level up your SSR characters to level 115.",
     icon: "📈",
     color: "#34d399",
     category: "Débutant",
+    category_en: "Beginner",
     readTime: "8 min",
     content: `
 ## Montée en Niveau SSR - TopGirl
@@ -193,18 +309,49 @@ Le coût en gold augmente avec le niveau:
 - Niv 40-70: ~2,000,000 Gold  
 - Niv 70-100: ~8,000,000 Gold
 - Niv 100-115: ~25,000,000 Gold
+    `,
+    content_en: `
+## SSR Leveling Guide - TopGirl
+
+### Cards Needed Per Level
+
+| Level Range | SSR Cards | Gold Cost |
+|-------------|-----------|-----------|
+| 1-20 | 20 | 50 |
+| 20-40 | 40 | 110 |
+| 40-60 | 60 | 130 |
+| 60-80 | 80 | 210 |
+| 80-100 | 100 | 310 |
+| 100-115 | 150 | 460 |
+
+### Level Up Tips
+- Use excess SSR cards
+- Focus on your mains first
+- Level up during 2x XP events
+- Prioritize artists with high therapist
+
+### Gold Cost
+Gold cost increases with level:
+- Lv 1-40: ~500,000 Gold
+- Lv 40-70: ~2,000,000 Gold
+- Lv 70-100: ~8,000,000 Gold
+- Lv 100-115: ~25,000,000 Gold
     `
   },
   {
     id: "blueprints",
     title: "Guide Blueprints",
+    title_en: "Blueprints Guide",
     description: "Requirements en blueprints par tier (1-21) pour améliorer vos installations. Tier 7-12 Gold.",
+    description_en: "Blueprint requirements by tier (1-21) to upgrade your facilities. Tier 7-12 Gold.",
     icon: "🛠️",
     color: "#818cf8",
     category: "Intermédiaire",
+    category_en: "Intermediate",
     readTime: "10 min",
     content: `
 ## Guide Blueprints - TopGirl
+
 
 ### Installation Tiers
 
@@ -262,15 +409,43 @@ Le coût en gold augmente avec le niveau:
 - Level 5: Unlock events supplémentaires
 - Level 7: +10% toutes stats
 - Level 10: Maximum bonus
+    `,
+    content_en: `
+## HQ Upgrade Guide - TopGirl
+
+### Cards Needed Per Level
+
+| Level | Cards | Gold |
+|-------|-------|------|
+| 1 | 50 | 1,000 |
+| 2 | 100 | 2,500 |
+| 3 | 200 | 5,000 |
+| 4 | 400 | 10,000 |
+| 5 | 800 | 25,000 |
+| 6 | 1,500 | 50,000 |
+| 7 | 2,500 | 100,000 |
+| 8 | 4,000 | 200,000 |
+| 9 | 6,000 | 400,000 |
+| 10 | 8,000 | 800,000 |
+
+**Total for HQ Level 10:** ~29,922 cards / ~1.6M Gold
+
+### HQ Bonuses
+- Level 5: Unlock additional events
+- Level 7: +10% all stats
+- Level 10: Maximum bonus
     `
   },
   {
     id: "vehicle-system",
     title: "Système de Véhicules",
+    title_en: "Vehicle System Guide",
     description: "Système complet: Avancement, Pièces (Moteur, Châassis, Suspension, Jantes), Skins débloqués.",
+    description_en: "Complete system: Advancement, Parts (Engine, Chassis, Suspension, Wheels), Unlocked skins.",
     icon: "🚗",
     color: "#f87171",
     category: "Avancé",
+    category_en: "Advanced",
     readTime: "15 min",
     content: `
 ## Système de Véhicules - TopGirl
@@ -1003,7 +1178,7 @@ export default function GuideDetailPage() {
             fontWeight: 600,
             textTransform: "uppercase"
           }}>
-            {guide.category}
+            {(lang === 'en' && guide.category_en) ? guide.category_en : guide.category}
           </span>
           <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem" }}>
             ⏱️ {guide.readTime}
@@ -1018,20 +1193,20 @@ export default function GuideDetailPage() {
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent"
         }}>
-          {guide.title}
+          {(lang === 'en' && guide.title_en) ? guide.title_en : guide.title}
         </h1>
 
         <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1.1rem", marginBottom: "24px" }}>
-          {guide.description}
+          {(lang === 'en' && guide.description_en) ? guide.description_en : guide.description}
         </p>
 
-        {guide.content && (
+        {((lang === 'en' && guide.content_en) ? guide.content_en : (guide.content || '')) && (
           <div style={{ 
             color: "rgba(255,255,255,0.8)", 
             lineHeight: 1.8,
             whiteSpace: "pre-line"
           }}>
-            {guide.content.split('\n').map((line, i) => {
+            {((lang === 'en' && guide.content_en) ? guide.content_en : (guide.content || '')).split('\n').map((line, i) => {
               if (line.startsWith('## ')) {
                 return <h2 key={i} style={{ color: "#fff", fontSize: "1.4rem", marginTop: "24px", marginBottom: "12px" }}>{line.replace('## ', '')}</h2>;
               }
