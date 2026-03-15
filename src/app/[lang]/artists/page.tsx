@@ -167,13 +167,13 @@ export default function ArtistsPage() {
           <div ref={panelRef} style={{ position: "absolute", top: "110px", left: "0px" }} className="left-panel">
                
               {/* Artist Overview Card - compact */}
-              <div style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: 0, marginBottom: "6px", overflow: "hidden" }}>
-                <div style={{ padding: "10px", borderBottom: "1px solid rgba(255,255,255,0.1)", background: "linear-gradient(135deg, rgba(255,77,141,0.15), rgba(139,92,246,0.15))" }}>
+              <div className="artist-overview-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: 0, marginBottom: "6px", overflow: "hidden" }}>
+                <div className="artist-overview-title" style={{ padding: "10px", borderBottom: "1px solid rgba(255,255,255,0.1)", background: "linear-gradient(135deg, rgba(255,77,141,0.15), rgba(139,92,246,0.15))" }}>
                   <span style={{ fontWeight: 600, fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase" }}>{t.artistOverview}</span>
                 </div>
 
                 {selectedArtist ? (
-                  <div style={{ padding: "10px" }}>
+                  <div className="artist-overview-content" style={{ padding: "10px" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                       <button onClick={() => { const i = filteredArtists.findIndex(a => a.id === selectedArtist.id); if (i > 0) setSelectedArtist(filteredArtists[i-1]); }} style={{ width: "28px", height: "28px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", cursor: "pointer", fontSize: "0.7rem" }}>◀</button>
                       <div style={{ flex: 1, minWidth: 0 }}>
@@ -184,7 +184,7 @@ export default function ArtistsPage() {
                     </div>
 
                     <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "8px" }}>
-                      <div style={{ width: "75px", height: "100px", borderRadius: "10px", border: `2px solid ${rankColors[selectedArtist.rank]}`, background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, rgba(30,30,50,1))`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
+                      <div className="artist-image" style={{ width: "75px", height: "100px", borderRadius: "10px", border: `2px solid ${rankColors[selectedArtist.rank]}`, background: `linear-gradient(135deg, ${rankColors[selectedArtist.rank]}22, rgba(30,30,50,1))`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
                         {selectedArtist.image ? (
                           <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                         ) : (
@@ -211,6 +211,7 @@ export default function ArtistsPage() {
                       <div style={{ textAlign: 'center', marginTop: '16px' }}>
                         <Link 
                           href={`/${lang}/artist/${slugify(selectedArtist.name)}`} 
+                          className="view-profile-btn"
                           style={{
                            display: 'inline-block',
                            padding: '8px 16px',
@@ -220,7 +221,7 @@ export default function ArtistsPage() {
                            fontSize: '0.85rem',
                            fontWeight: 500
                          }}
-                       >
+                        >
                           {t.viewFullProfile}
                        </Link>
                      </div>
@@ -234,12 +235,12 @@ export default function ArtistsPage() {
               </div>
 
               {/* Team Builder Card */}
-              <div style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: "12px" }}>
-                <div style={{ fontWeight: 600, fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase", marginBottom: "10px" }}>{t.teamBuilder} ({team.length}/5)</div>
+              <div className="team-builder-card" style={{ background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid rgba(139,92,246,0.3)", padding: "12px" }}>
+                <div className="team-builder-title" style={{ fontWeight: 600, fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", textTransform: "uppercase", marginBottom: "10px" }}>{t.teamBuilder} ({team.length}/5)</div>
                 
                 <div style={{ display: "flex", gap: "5px", marginBottom: "10px" }}>
                   {[0,1,2,3,4].map(i => (
-                    <div key={i} onClick={() => team[i] && removeFromTeam(team[i].id)} style={{ width: "62px", height: "70px", borderRadius: "8px", border: `2px solid ${team[i] ? rankColors[team[i].rank] : "rgba(255,255,255,0.1)"}`, background: team[i] ? `linear-gradient(135deg, ${rankColors[team[i].rank]}22, rgba(30,30,50,1))` : "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", cursor: team[i] ? "pointer" : "default", overflow: "hidden" }}>
+                    <div className="team-slot" key={i} onClick={() => team[i] && removeFromTeam(team[i].id)} style={{ width: "62px", height: "70px", borderRadius: "8px", border: `2px solid ${team[i] ? rankColors[team[i].rank] : "rgba(255,255,255,0.1)"}`, background: team[i] ? `linear-gradient(135deg, ${rankColors[team[i].rank]}22, rgba(30,30,50,1))` : "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", cursor: team[i] ? "pointer" : "default", overflow: "hidden" }}>
                       {team[i] ? (
                         team[i].image ? <img src={`/assets/images/artists/${team[i].image}`} alt={team[i].name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: "1.3rem", fontWeight: 800, color: rankColors[team[i].rank] }}>{team[i].name.charAt(0)}</span>
                       ) : <span style={{ color: "rgba(255,255,255,0.2)" }}>+</span>}
@@ -248,7 +249,7 @@ export default function ArtistsPage() {
                 </div>
 
                 {team.length > 0 && (
-                  <div style={{ background: "rgba(255,255,255,0.05)", borderRadius: "8px", padding: "10px", marginBottom: "10px" }}>
+                  <div className="team-stats" style={{ background: "rgba(255,255,255,0.05)", borderRadius: "8px", padding: "10px", marginBottom: "10px" }}>
                     <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.4)", marginBottom: "4px", textTransform: "uppercase" }}>{t.combinedStats}</p>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", fontSize: "0.7rem" }}>
                       <div style={{ color: "#ff6b6b" }}>⚔️ Skill damage: {teamStats.skillDamage}%</div>
@@ -263,7 +264,7 @@ export default function ArtistsPage() {
                 )}
 
                 {selectedArtist && !team.find(a => a.id === selectedArtist.id) && team.length < 5 && (
-                  <button onClick={() => addToTeam(selectedArtist)} style={{ width: "100%", padding: "10px", borderRadius: "8px", border: "none", background: "linear-gradient(135deg, #8b5cf6, #06b6d4)", color: "#fff", fontWeight: 600, fontSize: "0.8rem", cursor: "pointer" }}>+ Ajouter {selectedArtist.name}</button>
+                  <button className="add-to-team-btn" onClick={() => addToTeam(selectedArtist)} style={{ width: "100%", padding: "10px", borderRadius: "8px", border: "none", background: "linear-gradient(135deg, #8b5cf6, #06b6d4)", color: "#fff", fontWeight: 600, fontSize: "0.8rem", cursor: "pointer" }}>+ Ajouter {selectedArtist.name}</button>
                 )}
 
                 {team.length > 0 && (
@@ -403,12 +404,15 @@ export default function ArtistsPage() {
         }
         @media (max-width: 900px) {
           .left-panel {
-            display: none;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 10px;
           }
           .artists-container {
             margin-left: 0;
             width: 100%;
-            padding-bottom: 100px;
+            padding-bottom: 80px;
           }
         }
         @media (max-width: 2200px) {
@@ -428,6 +432,52 @@ export default function ArtistsPage() {
         }
         @media (max-width: 700px) {
           .artists-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        /* Mobile left panel fixes */
+        @media (max-width: 900px) {
+          .artist-overview-card {
+            padding: 6px !important;
+            margin-bottom: 4px !important;
+          }
+          .artist-overview-title {
+            font-size: 0.7rem !important;
+            padding: 6px !important;
+          }
+          .artist-overview-content {
+            padding: 6px !important;
+          }
+          .artist-image {
+            width: 50px !important;
+            height: 65px !important;
+          }
+          .artist-info {
+            font-size: 0.55rem !important;
+          }
+          .view-profile-btn {
+            padding: 4px 8px !important;
+            font-size: 0.7rem !important;
+            margin-top: 8px !important;
+          }
+          .team-builder-card {
+            padding: 6px !important;
+          }
+          .team-builder-title {
+            font-size: 0.7rem !important;
+            margin-bottom: 4px !important;
+          }
+          .team-slot {
+            width: 48px !important;
+            height: 55px !important;
+          }
+          .team-stats {
+            padding: 4px !important;
+            font-size: 0.55rem !important;
+          }
+          .add-to-team-btn {
+            padding: 6px !important;
+            font-size: 0.65rem !important;
+          }
         }
       `}</style>
     </>
