@@ -4,7 +4,6 @@ import Head from "next/head";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
-import { AdBanner } from "@/components/AdSense";
 
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
@@ -49,12 +48,21 @@ export default function MobileArtistsPage() {
   const [mounted, setMounted] = useState(false);
   const [searchBarVisible, setSearchBarVisible] = useState(true);
   const [panelFixed, setPanelFixed] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const headerSectionRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
+      // Get actual header section height after render
+      setTimeout(() => {
+        if (headerSectionRef.current) {
+          setHeaderHeight(headerSectionRef.current.offsetHeight);
+        }
+      }, 100);
+      
       try {
         const saved1 = localStorage.getItem('team1');
         const saved2 = localStorage.getItem('team2');
@@ -77,39 +85,47 @@ export default function MobileArtistsPage() {
   useEffect(() => {
     let lastScrollY = 0;
     let ticking = false;
-    const headerThreshold = 100;
     
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
+          const threshold = headerHeight > 0 ? headerHeight : 120;
           
-          // Hide header when scrolling down past threshold, show when scrolling up
-          const header = document.querySelector('.header') as HTMLElement;
-          if (header) {
-            if (currentScrollY > lastScrollY && currentScrollY > headerThreshold) {
-              header.style.transform = 'translateY(-100%)';
+          // Handle header section visibility (the scrollable section with title)
+          const headerSection = document.querySelector('.mobile-header-section') as HTMLElement;
+          if (headerSection) {
+            if (currentScrollY > lastScrollY && currentScrollY > threshold) {
+              headerSection.style.position = 'fixed';
+              headerSection.style.top = `-${threshold}px`;
+              headerSection.style.zIndex = '50';
             } else {
-              header.style.transform = 'translateY(0)';
+              headerSection.style.position = 'relative';
+              headerSection.style.top = '0';
+              headerSection.style.zIndex = '50';
             }
           }
           
-          // Panel becomes fixed after scrolling past threshold
-          const isPanelFixed = currentScrollY > headerThreshold;
+          // Panel becomes fixed after scrolling past header
+          const isPanelFixed = currentScrollY > threshold;
           setPanelFixed(isPanelFixed);
           
           if (panelRef.current) {
             if (isPanelFixed) {
               panelRef.current.style.position = 'fixed';
               panelRef.current.style.top = '0';
+              panelRef.current.style.left = '0';
+              panelRef.current.style.right = '0';
+              panelRef.current.style.zIndex = '100';
             } else {
-              panelRef.current.style.position = 'absolute';
-              panelRef.current.style.top = '120px';
+              panelRef.current.style.position = 'relative';
+              panelRef.current.style.top = '0';
+              panelRef.current.style.zIndex = '100';
             }
           }
           
-          // Search bar visibility based on scroll direction
-          if (currentScrollY > lastScrollY && currentScrollY > headerThreshold) {
+          // Search bar visibility
+          if (currentScrollY > lastScrollY && currentScrollY > threshold) {
             setSearchBarVisible(false);
           } else {
             setSearchBarVisible(true);
@@ -124,7 +140,7 @@ export default function MobileArtistsPage() {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [headerHeight]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -255,15 +271,15 @@ export default function MobileArtistsPage() {
       `}</style>
 
       <div className="mobile-page-container">
-        {/* Initial scrollable section with title and ads */}
-        <div className="mobile-header-section">
+        {/* Layer 1: Header section with title that scrolls away */}
+        <div className="mobile-header-section" ref={headerSectionRef}>
           <h1 className="mobile-page-title">🎤 Artistes</h1>
           <p className="mobile-page-subtitle">Découvrez tous les personnages</p>
         </div>
 
-        {/* TOP PANEL - Fixed at top after scrolling */}
+        {/* Layer 2: Fixed 3-column Panel */}
         <div className={`mobile-top-panel ${panelFixed ? 'fixed' : ''}`} ref={panelRef}>
-          {/* Column 1: Artist Preview - ONLY name, skills, genre */}
+          {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
               <div className="mobile-preview-title">{t.artistOverview}</div>
@@ -273,28 +289,33 @@ export default function MobileArtistsPage() {
                     {selectedArtist.image ? (
                       <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} />
                     ) : (
-                      <span style={{ fontSize: "2rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
+                      <span style={{ fontSize: "2.5rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
                     )}
                   </div>
                   
-                  {/* Artist name with rank color */}
+                  {/* Artist name - LARGE */}
                   <div className="mobile-preview-name" style={{ color: rankColors[selectedArtist.rank] }}>
                     {selectedArtist.name}
                   </div>
                   
-                  {/* Genre only */}
+                  {/* Speciality - NEW */}
+                  <div className="mobile-preview-specialty">
+                    💼 {selectedArtist.specialty || selectedArtist.genre}
+                  </div>
+                  
+                  {/* Genre */}
                   <div className="mobile-preview-genre">
                     🎵 {selectedArtist.genre}
                   </div>
                   
-                  {/* Skills/Sorts only */}
+                  {/* Skills/Sorts */}
                   <div className="mobile-preview-skills">
                     {selectedArtist.skills?.slice(0, 3).map((skill, i) => (
                       <p key={i} className="mobile-skill-line">{i === 0 ? "⚔️ " : "✨ "}{skill}</p>
                     ))}
                   </div>
                   
-                  {/* Navigation arrows */}
+                  {/* Navigation */}
                   <div className="mobile-preview-nav">
                     <button 
                       onClick={() => {
@@ -312,7 +333,7 @@ export default function MobileArtistsPage() {
                     >▶</button>
                   </div>
                   
-                  {/* Action buttons */}
+                  {/* Actions */}
                   <div className="mobile-preview-actions">
                     <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)} className="mobile-profile-btn">
                       Fiche
@@ -333,7 +354,7 @@ export default function MobileArtistsPage() {
             </div>
           </div>
 
-          {/* Column 2: Team 1 - Full stats like desktop */}
+          {/* Column 2: Team 1 - FULL stats with comparison */}
           <div className="mobile-panel-col mobile-panel-2">
             <div className="mobile-team-card mobile-team-1">
               <div className="mobile-team-header">
@@ -348,37 +369,63 @@ export default function MobileArtistsPage() {
                   </div>
                 ))}
               </div>
-              {/* FULL STATS like desktop - all 7 stats with comparison */}
+              {/* FULL stats - each on single line */}
               <div className="mobile-team-stats">
-                {(() => {
-                  const stats = [
-                    { label: "💥 DMG Factor", v1: team1Stats.skillDamageRaw, v2: team2Stats.skillDamageRaw },
-                    { label: "⚔️ Skill DMG", v1: team1Stats.skillDamage, v2: team2Stats.skillDamage, suffix: "%" },
-                    { label: "👊 Basic ATK", v1: team1Stats.basicAttackPercent, v2: team2Stats.basicAttackPercent, suffix: "%" },
-                    { label: "🛡️ Resistance", v1: team1Stats.attackResist, v2: team2Stats.attackResist, suffix: "%" },
-                    { label: "✨ S.Resist", v1: team1Stats.skillResist, v2: team2Stats.skillResist, suffix: "%" },
-                    { label: "🎵 Fan Cap", v1: team1Stats.fanCapacity, v2: team2Stats.fanCapacity, suffix: "%" },
-                    { label: "🚀 Rally Cap", v1: team1Stats.rallyCapacity, v2: team2Stats.rallyCapacity, suffix: "%" },
-                  ];
-                  const colors = ["#ff8c42", "#ff6b6b", "#4ecdc4", "#95e1d3", "#a29bfe", "#ffd700", "#00ff88"];
-                  return stats.map((stat, i) => {
-                    const diff = stat.v1 - stat.v2;
-                    const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.4)";
-                    const sign = diff > 0 ? "+" : "";
-                    return (
-                      <div key={i} style={{ display: "flex", justifyContent: "space-between", color: colors[i], fontSize: "0.65rem" }}>
-                        <span>{stat.label}</span>
-                        <span>{stat.v1}{stat.suffix || ""} <span style={{ color: diffColor, fontWeight: 600 }}>({sign}{diff})</span></span>
-                      </div>
-                    );
-                  });
-                })()}
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#ff8c42" }}>💥 DMG</span>
+                  <span style={{ color: "#fff" }}>{team1Stats.skillDamageRaw}</span>
+                  <span style={{ color: team1Stats.skillDamageRaw > team2Stats.skillDamageRaw ? "#4ade80" : team1Stats.skillDamageRaw < team2Stats.skillDamageRaw ? "#f87171" : "#888" }}>
+                    ({team1Stats.skillDamageRaw - team2Stats.skillDamageRaw >= 0 ? "+" : ""}{team1Stats.skillDamageRaw - team2Stats.skillDamageRaw})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#ff6b6b" }}>⚔️ Skill</span>
+                  <span style={{ color: "#fff" }}>{team1Stats.skillDamage}%</span>
+                  <span style={{ color: team1Stats.skillDamage > team2Stats.skillDamage ? "#4ade80" : team1Stats.skillDamage < team2Stats.skillDamage ? "#f87171" : "#888" }}>
+                    ({team1Stats.skillDamage - team2Stats.skillDamage >= 0 ? "+" : ""}{team1Stats.skillDamage - team2Stats.skillDamage})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#4ecdc4" }}>👊 ATK</span>
+                  <span style={{ color: "#fff" }}>{team1Stats.basicAttackPercent}%</span>
+                  <span style={{ color: team1Stats.basicAttackPercent > team2Stats.basicAttackPercent ? "#4ade80" : team1Stats.basicAttackPercent < team2Stats.basicAttackPercent ? "#f87171" : "#888" }}>
+                    ({team1Stats.basicAttackPercent - team2Stats.basicAttackPercent >= 0 ? "+" : ""}{team1Stats.basicAttackPercent - team2Stats.basicAttackPercent})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#95e1d3" }}>🛡️ DEF</span>
+                  <span style={{ color: "#fff" }}>{team1Stats.attackResist}%</span>
+                  <span style={{ color: team1Stats.attackResist > team2Stats.attackResist ? "#4ade80" : team1Stats.attackResist < team2Stats.attackResist ? "#f87171" : "#888" }}>
+                    ({team1Stats.attackResist - team2Stats.attackResist >= 0 ? "+" : ""}{team1Stats.attackResist - team2Stats.attackResist})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#a29bfe" }}>✨ S.RES</span>
+                  <span style={{ color: "#fff" }}>{team1Stats.skillResist}%</span>
+                  <span style={{ color: team1Stats.skillResist > team2Stats.skillResist ? "#4ade80" : team1Stats.skillResist < team2Stats.skillResist ? "#f87171" : "#888" }}>
+                    ({team1Stats.skillResist - team2Stats.skillResist >= 0 ? "+" : ""}{team1Stats.skillResist - team2Stats.skillResist})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#ffd700" }}>🎵 Fan</span>
+                  <span style={{ color: "#fff" }}>{team1Stats.fanCapacity}%</span>
+                  <span style={{ color: team1Stats.fanCapacity > team2Stats.fanCapacity ? "#4ade80" : team1Stats.fanCapacity < team2Stats.fanCapacity ? "#f87171" : "#888" }}>
+                    ({team1Stats.fanCapacity - team2Stats.fanCapacity >= 0 ? "+" : ""}{team1Stats.fanCapacity - team2Stats.fanCapacity})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#00ff88" }}>🚀 Rally</span>
+                  <span style={{ color: "#fff" }}>{team1Stats.rallyCapacity}%</span>
+                  <span style={{ color: team1Stats.rallyCapacity > team2Stats.rallyCapacity ? "#4ade80" : team1Stats.rallyCapacity < team2Stats.rallyCapacity ? "#f87171" : "#888" }}>
+                    ({team1Stats.rallyCapacity - team2Stats.rallyCapacity >= 0 ? "+" : ""}{team1Stats.rallyCapacity - team2Stats.rallyCapacity})
+                  </span>
+                </div>
                 <button onClick={() => setTeam1([])} className="mobile-clear-btn">🗑️ Effacer</button>
               </div>
             </div>
           </div>
 
-          {/* Column 3: Team 2 - Full stats like desktop */}
+          {/* Column 3: Team 2 - FULL stats with comparison */}
           <div className="mobile-panel-col mobile-panel-3">
             <div className="mobile-team-card mobile-team-2">
               <div className="mobile-team-header">
@@ -393,39 +440,65 @@ export default function MobileArtistsPage() {
                   </div>
                 ))}
               </div>
-              {/* FULL STATS like desktop - all 7 stats with comparison */}
+              {/* FULL stats - each on single line */}
               <div className="mobile-team-stats">
-                {(() => {
-                  const stats = [
-                    { label: "💥 DMG Factor", v1: team2Stats.skillDamageRaw, v2: team1Stats.skillDamageRaw },
-                    { label: "⚔️ Skill DMG", v1: team2Stats.skillDamage, v2: team1Stats.skillDamage, suffix: "%" },
-                    { label: "👊 Basic ATK", v1: team2Stats.basicAttackPercent, v2: team1Stats.basicAttackPercent, suffix: "%" },
-                    { label: "🛡️ Resistance", v1: team2Stats.attackResist, v2: team1Stats.attackResist, suffix: "%" },
-                    { label: "✨ S.Resist", v1: team2Stats.skillResist, v2: team1Stats.skillResist, suffix: "%" },
-                    { label: "🎵 Fan Cap", v1: team2Stats.fanCapacity, v2: team1Stats.fanCapacity, suffix: "%" },
-                    { label: "🚀 Rally Cap", v1: team2Stats.rallyCapacity, v2: team1Stats.rallyCapacity, suffix: "%" },
-                  ];
-                  const colors = ["#ff8c42", "#ff6b6b", "#4ecdc4", "#95e1d3", "#a29bfe", "#ffd700", "#00ff88"];
-                  return stats.map((stat, i) => {
-                    const diff = stat.v1 - stat.v2;
-                    const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.4)";
-                    const sign = diff > 0 ? "+" : "";
-                    return (
-                      <div key={i} style={{ display: "flex", justifyContent: "space-between", color: colors[i], fontSize: "0.65rem" }}>
-                        <span>{stat.label}</span>
-                        <span>{stat.v1}{stat.suffix || ""} <span style={{ color: diffColor, fontWeight: 600 }}>({sign}{diff})</span></span>
-                      </div>
-                    );
-                  });
-                })()}
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#ff8c42" }}>💥 DMG</span>
+                  <span style={{ color: "#fff" }}>{team2Stats.skillDamageRaw}</span>
+                  <span style={{ color: team2Stats.skillDamageRaw > team1Stats.skillDamageRaw ? "#4ade80" : team2Stats.skillDamageRaw < team1Stats.skillDamageRaw ? "#f87171" : "#888" }}>
+                    ({team2Stats.skillDamageRaw - team1Stats.skillDamageRaw >= 0 ? "+" : ""}{team2Stats.skillDamageRaw - team1Stats.skillDamageRaw})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#ff6b6b" }}>⚔️ Skill</span>
+                  <span style={{ color: "#fff" }}>{team2Stats.skillDamage}%</span>
+                  <span style={{ color: team2Stats.skillDamage > team1Stats.skillDamage ? "#4ade80" : team2Stats.skillDamage < team1Stats.skillDamage ? "#f87171" : "#888" }}>
+                    ({team2Stats.skillDamage - team1Stats.skillDamage >= 0 ? "+" : ""}{team2Stats.skillDamage - team1Stats.skillDamage})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#4ecdc4" }}>👊 ATK</span>
+                  <span style={{ color: "#fff" }}>{team2Stats.basicAttackPercent}%</span>
+                  <span style={{ color: team2Stats.basicAttackPercent > team1Stats.basicAttackPercent ? "#4ade80" : team2Stats.basicAttackPercent < team1Stats.basicAttackPercent ? "#f87171" : "#888" }}>
+                    ({team2Stats.basicAttackPercent - team1Stats.basicAttackPercent >= 0 ? "+" : ""}{team2Stats.basicAttackPercent - team1Stats.basicAttackPercent})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#95e1d3" }}>🛡️ DEF</span>
+                  <span style={{ color: "#fff" }}>{team2Stats.attackResist}%</span>
+                  <span style={{ color: team2Stats.attackResist > team1Stats.attackResist ? "#4ade80" : team2Stats.attackResist < team1Stats.attackResist ? "#f87171" : "#888" }}>
+                    ({team2Stats.attackResist - team1Stats.attackResist >= 0 ? "+" : ""}{team2Stats.attackResist - team1Stats.attackResist})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#a29bfe" }}>✨ S.RES</span>
+                  <span style={{ color: "#fff" }}>{team2Stats.skillResist}%</span>
+                  <span style={{ color: team2Stats.skillResist > team1Stats.skillResist ? "#4ade80" : team2Stats.skillResist < team1Stats.skillResist ? "#f87171" : "#888" }}>
+                    ({team2Stats.skillResist - team1Stats.skillResist >= 0 ? "+" : ""}{team2Stats.skillResist - team1Stats.skillResist})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#ffd700" }}>🎵 Fan</span>
+                  <span style={{ color: "#fff" }}>{team2Stats.fanCapacity}%</span>
+                  <span style={{ color: team2Stats.fanCapacity > team1Stats.fanCapacity ? "#4ade80" : team2Stats.fanCapacity < team1Stats.fanCapacity ? "#f87171" : "#888" }}>
+                    ({team2Stats.fanCapacity - team1Stats.fanCapacity >= 0 ? "+" : ""}{team2Stats.fanCapacity - team1Stats.fanCapacity})
+                  </span>
+                </div>
+                <div className="mobile-stat-row">
+                  <span style={{ color: "#00ff88" }}>🚀 Rally</span>
+                  <span style={{ color: "#fff" }}>{team2Stats.rallyCapacity}%</span>
+                  <span style={{ color: team2Stats.rallyCapacity > team1Stats.rallyCapacity ? "#4ade80" : team2Stats.rallyCapacity < team1Stats.rallyCapacity ? "#f87171" : "#888" }}>
+                    ({team2Stats.rallyCapacity - team1Stats.rallyCapacity >= 0 ? "+" : ""}{team2Stats.rallyCapacity - team1Stats.rallyCapacity})
+                  </span>
+                </div>
                 <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️ Effacer</button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* SEARCH BAR - Fixed below panel with all filters */}
-        <div className={`mobile-search-bar ${!searchBarVisible ? 'hidden' : ''}`}>
+        {/* Layer 3: Search Bar - Fixed below panel */}
+        <div className={`mobile-search-bar ${!searchBarVisible ? 'hidden' : ''}`} style={panelFixed ? { position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 99 } : {}}>
           <input
             type="text"
             placeholder={t.search}
@@ -446,8 +519,8 @@ export default function MobileArtistsPage() {
           </select>
         </div>
 
-        {/* ARTISTS GRID - Scrollable */}
-        <div className="mobile-artists-bottom">
+        {/* Layer 4: Artists Grid - Scrollable */}
+        <div className="mobile-artists-bottom" style={panelFixed ? { paddingTop: '48vh' } : {}}>
           <div className="mobile-artists-count">{filteredArtists.length} artistes trouvés</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist) => (
@@ -471,11 +544,12 @@ export default function MobileArtistsPage() {
           background: #0f0f1a;
         }
         
-        /* Initial header section that scrolls */
+        /* Layer 1: Header section that scrolls away */
         .mobile-header-section {
           padding: 20px 12px;
           text-align: center;
           background: #0f0f1a;
+          z-index: 50;
         }
         .mobile-page-title {
           margin-bottom: 10px;
@@ -491,24 +565,24 @@ export default function MobileArtistsPage() {
           font-size: 0.85rem;
         }
         
-        /* Top Panel */
+        /* Layer 2: Top Panel */
         .mobile-top-panel {
-          position: absolute;
-          top: 120px;
-          left: 0;
-          right: 0;
-          height: 40vh;
-          min-height: 280px;
           display: flex;
           flex-direction: row;
           gap: 4px;
           padding: 4px;
           background: #0f0f1a;
           z-index: 100;
+          height: 40vh;
+          min-height: 300px;
         }
         .mobile-top-panel.fixed {
           position: fixed;
           top: 0;
+          left: 0;
+          right: 0;
+          height: 40vh;
+          min-height: 300px;
         }
         
         .mobile-panel-col {
@@ -546,8 +620,8 @@ export default function MobileArtistsPage() {
           overflow-y: auto;
         }
         .mobile-preview-image {
-          width: 40px;
-          height: 50px;
+          width: 50px;
+          height: 65px;
           border-radius: 4px;
           border: 2px solid;
           display: flex;
@@ -560,15 +634,28 @@ export default function MobileArtistsPage() {
           height: 100%;
           object-fit: cover;
         }
+        
+        /* LARGER name */
         .mobile-preview-name {
           font-weight: 700;
-          font-size: 0.65rem;
+          font-size: 0.9rem;
           text-align: center;
         }
-        .mobile-preview-genre {
-          font-size: 0.5rem;
-          color: rgba(255,255,255,0.6);
+        
+        /* Speciality - NEW - LARGER */
+        .mobile-preview-specialty {
+          font-size: 0.7rem;
+          color: rgba(255,255,255,0.7);
+          text-align: center;
         }
+        
+        /* Genre - LARGER */
+        .mobile-preview-genre {
+          font-size: 0.7rem;
+          color: rgba(255,255,255,0.6);
+          text-align: center;
+        }
+        
         .mobile-preview-skills {
           margin-top: 2px;
           padding-top: 2px;
@@ -578,7 +665,7 @@ export default function MobileArtistsPage() {
           flex: 1;
         }
         .mobile-skill-line {
-          font-size: 0.45rem;
+          font-size: 0.55rem;
           color: rgba(255,255,255,0.7);
           margin: 1px 0;
           white-space: nowrap;
@@ -587,19 +674,19 @@ export default function MobileArtistsPage() {
         }
         .mobile-preview-nav {
           display: flex;
-          gap: 4px;
+          gap: 8px;
           width: 100%;
           justify-content: center;
         }
         .mobile-preview-nav button {
-          width: 20px;
-          height: 18px;
+          width: 24px;
+          height: 22px;
           border-radius: 3px;
           border: 1px solid rgba(255,255,255,0.2);
           background: rgba(255,255,255,0.05);
           color: #fff;
           cursor: pointer;
-          font-size: 0.5rem;
+          font-size: 0.6rem;
         }
         .mobile-preview-nav button:disabled {
           opacity: 0.3;
@@ -609,14 +696,14 @@ export default function MobileArtistsPage() {
           width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 2px;
+          gap: 3px;
         }
         .mobile-profile-btn {
-          padding: 3px 6px;
+          padding: 5px 8px;
           background: linear-gradient(135deg, #8b5cf6, #06b6d4);
           color: white;
-          border-radius: 3px;
-          font-size: 0.45rem;
+          border-radius: 4px;
+          font-size: 0.6rem;
           border: none;
           cursor: pointer;
         }
@@ -626,11 +713,11 @@ export default function MobileArtistsPage() {
           gap: 2px;
         }
         .mobile-add-team {
-          padding: 2px 4px;
+          padding: 4px 6px;
           border-radius: 3px;
           border: none;
           color: white;
-          font-size: 0.4rem;
+          font-size: 0.55rem;
           font-weight: 600;
           cursor: pointer;
         }
@@ -640,7 +727,7 @@ export default function MobileArtistsPage() {
           padding: 8px;
           text-align: center;
           color: rgba(255,255,255,0.4);
-          font-size: 0.5rem;
+          font-size: 0.55rem;
         }
         
         /* Team Cards */
@@ -660,7 +747,7 @@ export default function MobileArtistsPage() {
           justify-content: space-between;
           align-items: center;
           margin-bottom: 4px;
-          font-size: 0.6rem;
+          font-size: 0.65rem;
           font-weight: 700;
         }
         .mobile-team-1 .mobile-team-header span { color: #8b5cf6; }
@@ -673,8 +760,8 @@ export default function MobileArtistsPage() {
           justify-content: center;
         }
         .mobile-team-slot {
-          width: 30px;
-          height: 38px;
+          width: 32px;
+          height: 40px;
           border-radius: 3px;
           border: 1px solid rgba(255,255,255,0.1);
           background: rgba(255,255,255,0.05);
@@ -683,7 +770,7 @@ export default function MobileArtistsPage() {
           justify-content: center;
           cursor: pointer;
           overflow: hidden;
-          font-size: 0.55rem;
+          font-size: 0.6rem;
           color: rgba(255,255,255,0.2);
         }
         .mobile-team-slot img {
@@ -692,18 +779,40 @@ export default function MobileArtistsPage() {
           object-fit: cover;
         }
         
+        /* Stats - EACH ON SINGLE LINE */
         .mobile-team-stats {
           flex: 1;
           display: flex;
           flex-direction: column;
-          gap: 1px;
+          gap: 2px;
           overflow-y: auto;
+        }
+        .mobile-stat-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 0.65rem;
+          padding: 2px 4px;
+          background: rgba(0,0,0,0.2);
+          border-radius: 2px;
+        }
+        .mobile-stat-row span:first-child {
+          flex: 1;
+        }
+        .mobile-stat-row span:nth-child(2) {
+          flex: 0.5;
+          text-align: center;
+        }
+        .mobile-stat-row span:last-child {
+          flex: 0.8;
+          text-align: right;
+          font-size: 0.6rem;
         }
         .mobile-clear-btn {
           width: 100%;
           margin-top: 4px;
-          padding: 2px;
-          font-size: 0.45rem;
+          padding: 4px;
+          font-size: 0.55rem;
           border-radius: 3px;
           border: 1px solid rgba(255,255,255,0.1);
           background: transparent;
@@ -713,9 +822,6 @@ export default function MobileArtistsPage() {
         
         /* Search Bar */
         .mobile-search-bar {
-          position: absolute;
-          left: 0;
-          right: 0;
           display: flex;
           gap: 3px;
           padding: 6px;
@@ -724,41 +830,37 @@ export default function MobileArtistsPage() {
           transition: transform 0.3s ease;
           flex-wrap: wrap;
         }
-        .mobile-top-panel.fixed + .mobile-search-bar {
-          position: fixed;
-          top: 40vh;
-        }
         .mobile-search-bar.hidden {
           transform: translateY(-100%);
         }
         .mobile-search-bar input {
           flex: 1;
           min-width: 100px;
-          padding: 6px 8px;
+          padding: 8px;
           background: #1a1a2e;
           border: 1px solid #333;
           border-radius: 4px;
           color: #fff;
-          font-size: 0.75rem;
+          font-size: 0.8rem;
         }
         .mobile-search-bar select {
-          padding: 6px 4px;
+          padding: 8px 4px;
           background: #1a1a2e;
           border: 1px solid #333;
           border-radius: 4px;
           color: #fff;
-          font-size: 0.65rem;
+          font-size: 0.7rem;
           cursor: pointer;
-          min-width: 60px;
+          min-width: 55px;
         }
         
         /* Artists Bottom */
         .mobile-artists-bottom {
-          padding: 48vh 6px 100px 6px;
+          padding: 8px 6px 100px 6px;
           min-height: 100vh;
         }
         .mobile-artists-count {
-          font-size: 0.75rem;
+          font-size: 0.8rem;
           color: #888;
           margin-bottom: 6px;
         }
@@ -790,7 +892,7 @@ export default function MobileArtistsPage() {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           font-weight: 800;
         }
       `}</style>
