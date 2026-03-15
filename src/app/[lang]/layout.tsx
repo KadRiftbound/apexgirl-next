@@ -164,7 +164,7 @@ export default async function LocaleLayout({
         <div className="header-inner">
           <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
             <img src="/assets/logo.png" alt="TopGirl" />
-            <span>{lang === "fr" ? "Guide" : lang === "en" ? "Guide" : getNavLabel(lang, "home")}</span>
+            <span>{lang === "fr" ? "Top Girl Guide" : lang === "en" ? "Top Girl Guide" : getNavLabel(lang, "home")}</span>
           </Link>
           <nav className="nav" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => (

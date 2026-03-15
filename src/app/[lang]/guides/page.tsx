@@ -5,6 +5,60 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
 
+const guideListTranslations: Record<string, any> = {
+  fr: { 
+    title: "Guides & Stratégies", 
+    subtitle: "Tutoriels et stratégies pour maîtriser le jeu",
+    categories: ["Tous", "Débutant", "Intermédiaire", "Avancé", "Événements"]
+  },
+  en: { 
+    title: "Guides & Strategies", 
+    subtitle: "Tutorials and strategies to master the game",
+    categories: ["All", "Beginner", "Intermediate", "Advanced", "Events"]
+  },
+  it: { 
+    title: "Guide e Strategie", 
+    subtitle: "Tutoriali e strategie per padroneggiare il gioco",
+    categories: ["Tutti", "Principiante", "Intermedio", "Avanzato", "Eventi"]
+  },
+  es: { 
+    title: "Guías y Estrategias", 
+    subtitle: "Tutoriales y estrategias para dominar el juego",
+    categories: ["Todos", "Principiante", "Intermedio", "Avanzado", "Eventos"]
+  },
+  pt: { 
+    title: "Guias e Estratégias", 
+    subtitle: "Tutoriais e estratégias para dominar o jogo",
+    categories: ["Todos", "Iniciante", "Intermediário", "Avançado", "Eventos"]
+  },
+  pl: { 
+    title: "Poradniki i Strategie", 
+    subtitle: "Samouczki i strategie, aby opanować grę",
+    categories: ["Wszystkie", "Początkujący", "Średniozaawansowany", "Zaawansowany", "Wydarzenia"]
+  },
+  id: { 
+    title: "Panduan dan Strategi", 
+    subtitle: "Tutorial dan strategi untuk menguasai permainan",
+    categories: ["Semua", "Pemula", "Menengah", "Lanjutan", "Acara"]
+  },
+  ru: { 
+    title: "Гайды и Стратегии", 
+    subtitle: "Учебники и стратегии для освоения игры",
+    categories: ["Все", "Начинающий", "Средний", "Продвинутый", "События"]
+  },
+};
+
+const categoryMap: Record<string, Record<string, string>> = {
+  fr: { "Tous": "Tous", "Débutant": "Débutant", "Intermédiaire": "Intermédiaire", "Avancé": "Avancé", "Événements": "Événements" },
+  en: { "Tous": "All", "Débutant": "Beginner", "Intermédiaire": "Intermediate", "Avancé": "Advanced", "Événements": "Events" },
+  it: { "Tous": "Tutti", "Débutant": "Principiante", "Intermédiaire": "Intermedio", "Avancé": "Avanzato", "Événements": "Eventi" },
+  es: { "Tous": "Todos", "Débutant": "Principiante", "Intermédiaire": "Intermedio", "Avancé": "Avanzado", "Événements": "Eventos" },
+  pt: { "Tous": "Todos", "Débutant": "Iniciante", "Intermédiaire": "Intermediário", "Avancé": "Avançado", "Événements": "Eventos" },
+  pl: { "Tous": "Wszystkie", "Débutant": "Początkujący", "Intermédiaire": "Średniozaawansowany", "Avancé": "Zaawansowany", "Événements": "Wydarzenia" },
+  id: { "Tous": "Semua", "Débutant": "Pemula", "Intermédiaire": "Menengah", "Avancé": "Lanjutan", "Événements": "Acara" },
+  ru: { "Tous": "Все", "Débutant": "Начинающий", "Intermédiaire": "Средний", "Avancé": "Продвинутый", "Événements": "События" },
+};
+
 type Guide = {
   id: string;
   title: string;
@@ -167,12 +221,14 @@ const categories = ["Tous", "Débutant", "Intermédiaire", "Avancé", "Événeme
 export default function GuidesPage() {
   const params = useParams();
   const lang = params?.lang as string || "fr";
-  const [activeCategory, setActiveCategory] = useState("Tous");
+  const t = guideListTranslations[lang] || guideListTranslations.en;
+  const activeCategory = t.categories[0];
+  const [activeCategoryState, setActiveCategoryState] = useState(t.categories[0]);
 
   const filteredGuides =
-    activeCategory === "Tous"
+    activeCategoryState === t.categories[0]
       ? guides
-      : guides.filter((g) => g.category === activeCategory);
+      : guides.filter((g) => g.category === categoryMap[lang]?.[activeCategoryState] || g.category === activeCategoryState);
 
   return (
     <div style={{ 
@@ -195,10 +251,10 @@ export default function GuidesPage() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}>
-            📖 Guides
+            📖 {t.title}
           </h1>
           <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem" }}>
-            Tutoriels et stratégies pour maîtriser le jeu
+            {t.subtitle}
           </p>
         </div>
       </div>
@@ -207,16 +263,18 @@ export default function GuidesPage() {
         <AdBanner />
 
         <div style={{ display: "flex", gap: "8px", marginBottom: "24px", flexWrap: "wrap" }}>
-          {categories.map((cat) => (
+          {t.categories.map((cat: string) => {
+            const originalCat = ["Tous", "Débutant", "Intermédiaire", "Avancé", "Événements"][t.categories.indexOf(cat)];
+            return (
             <button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
+              onClick={() => setActiveCategoryState(originalCat || cat)}
               style={{
                 padding: "10px 18px",
                 borderRadius: "10px",
-                border: activeCategory === cat ? "1px solid rgba(236, 72, 153, 0.6)" : "1px solid rgba(255,255,255,0.1)",
-                background: activeCategory === cat ? "linear-gradient(135deg, #ec4899, #a855f7)" : "rgba(30, 30, 50, 0.8)",
-                color: activeCategory === cat ? "#fff" : "rgba(255,255,255,0.6)",
+                border: activeCategoryState === (originalCat || cat) ? "1px solid rgba(236, 72, 153, 0.6)" : "1px solid rgba(255,255,255,0.1)",
+                background: activeCategoryState === (originalCat || cat) ? "linear-gradient(135deg, #ec4899, #a855f7)" : "rgba(30, 30, 50, 0.8)",
+                color: activeCategoryState === (originalCat || cat) ? "#fff" : "rgba(255,255,255,0.6)",
                 cursor: "pointer",
                 fontSize: "0.85rem",
                 fontWeight: 500,
@@ -225,7 +283,7 @@ export default function GuidesPage() {
             >
               {cat}
             </button>
-          ))}
+          )})}
         </div>
 
         <div style={{
