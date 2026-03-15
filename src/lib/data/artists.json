@@ -29,140 +29,7 @@
     },
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
-    "singStat": 22464,
-    "danceStat": 22464
-  },
-  {
-    "id": 34,
-    "name": "Anastasia",
-    "group": "No Group",
-    "rank": "UR",
-    "position": "Dancer",
-    "genre": "Pop",
-    "skills": [
-      "↓12% skill damage taken",
-      "↓12% basic attack damage taken"
-    ],
-    "description": "A talented Dancer from No Group.",
-    "rating": "S",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
-    "skillCategories": {
-      "dps": [
-        "10 sec/1800 Damage"
-      ],
-      "offensive": [],
-      "hp": [],
-      "defense": [
-        "12% Skill Damage Reduction",
-        "12% Basic Damage Reduction"
-      ],
-      "speed": []
-    },
-    "calculatedTier": "S",
-    "specialty": "Mixte",
-    "singStat": 19076,
-    "danceStat": 25851
-  },
-  {
-    "id": 36,
-    "name": "Beatrice",
-    "group": "No Group",
-    "rank": "UR",
-    "position": "Center",
-    "genre": "Hip Hop",
-    "skills": [
-      "↑20% player damage",
-      "↑10% fan cap"
-    ],
-    "description": "A talented Center from No Group.",
-    "rating": "A",
-    "thoughts": "If Nothing Better",
-    "build": "Not Recommended",
-    "photos": "Universal",
-    "skillCategories": {
-      "dps": [
-        "10 sec/1800 Damage"
-      ],
-      "offensive": [
-        "20% Damage to Player"
-      ],
-      "hp": [
-        "10% Fan Capacity"
-      ],
-      "defense": [],
-      "speed": []
-    },
-    "calculatedTier": "A",
-    "specialty": "Solo car",
-    "singStat": 22464,
-    "danceStat": 22464
-  },
-  {
-    "id": 39,
-    "name": "Elizabeth",
-    "group": "No Group",
-    "rank": "UR",
-    "position": "Dancer",
-    "genre": "R&B",
-    "skills": [
-      "↑20% player damage",
-      "↑50% basic attack damage dealt"
-    ],
-    "description": "A talented Dancer from No Group.",
-    "rating": "S",
-    "thoughts": "YES",
-    "build": "Recommended",
-    "photos": "Universal",
-    "skillCategories": {
-      "dps": [
-        "10 sec/1800 Damage"
-      ],
-      "offensive": [
-        "50% Basic Attack Damage",
-        "20% Damage to Player"
-      ],
-      "hp": [],
-      "defense": [],
-      "speed": []
-    },
-    "calculatedTier": "S",
-    "specialty": "Augmentation dommage",
-    "image": "Elizabeth.jpg",
-    "singStat": 19076,
-    "danceStat": 25851
-  },
-  {
-    "id": 40,
-    "name": "Gabriella",
-    "group": "No Group",
-    "rank": "UR",
-    "position": "Vocalist",
-    "genre": "Rock",
-    "skills": [
-      "↑20% player damage",
-      "↑20% skill damage"
-    ],
-    "description": "A talented Vocalist from No Group.",
-    "rating": "S",
-    "thoughts": "YES",
-    "build": "Recommended",
-    "photos": "Universal",
-    "skillCategories": {
-      "dps": [
-        "10 sec/1800 Damage"
-      ],
-      "offensive": [
-        "20% Skill Damage",
-        "20% Damage to Player"
-      ],
-      "hp": [],
-      "defense": [],
-      "speed": []
-    },
-    "calculatedTier": "S",
-    "specialty": "Augmentation dommage",
+    "image": "Marguerite.jpg",
     "singStat": 25851,
     "danceStat": 19076
   },
@@ -263,6 +130,7 @@
     },
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
+    "image": "Josephine.jpg",
     "singStat": 29023,
     "danceStat": 20893
   },
@@ -363,7 +231,8 @@
       "speed": []
     },
     "calculatedTier": "S",
-    "specialty": "Solo car"
+    "specialty": "Solo car",
+    "image": "Bunga.jpg"
   },
   {
     "id": 44,
@@ -1126,6 +995,7 @@
     "thoughts": "",
     "specialty": "Solo car",
     "event": "Tokyo 3",
+    "image": "Eri.jpg",
     "singStat": 25071,
     "danceStat": 34827
   },
