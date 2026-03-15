@@ -754,7 +754,6 @@ export default function TierListPage() {
                           {isVoting ? "..." : isDisabled ? "✓" : "❤️ Vote"}
                         </button>
                       </div>
-                    </div>
                   )}
               </div>
             </div>
