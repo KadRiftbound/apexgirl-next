@@ -634,6 +634,12 @@ img {
 }
 
 /* Mobile Navigation */
+@media (min-width: 901px) {
+  .mobile-nav {
+    display: none !important;
+  }
+}
+
 @media (max-width: 900px) {
   .nav {
     display: none;
