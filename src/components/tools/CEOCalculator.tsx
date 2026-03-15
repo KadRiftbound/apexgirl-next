@@ -40,10 +40,12 @@ function EventSection({
   event,
   color,
   onReset,
+  t,
 }: {
   event: EventData;
   color: typeof colorSchemes[0];
   onReset: () => void;
+  t: Record<string, string>;
 }) {
   const [counts, setCounts] = useState<number[]>(() => {
     // Filter out header rows and initialize counts
@@ -260,6 +262,7 @@ export default function CEOCalculator() {
             event={event}
             color={colorSchemes[i % colorSchemes.length]}
             onReset={() => handleReset(i)}
+            t={t}
           />
         ))}
       </div>

@@ -7,14 +7,14 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 const artistTranslations: Record<string, any> = {
-  fr: { loading: "Chargement de l'artiste...", notFound: "Artiste non trouvé", notFoundDesc: "L'artiste avec l'ID", notFoundId: "n'existe pas.", backToList: "Retour à la liste des artistes", position: "Position", group: "Groupe", genre: "Genre", specialty: "Spécialité", build: "Build recommandé", rating: "Rating", skills: "Compétences", noSkills: "Aucune compétence listée.", skillCategories: "Catégories de compétences", dps: "DPS", offensive: "Offensive", hp: "HP", defense: "Défense", speed: "Vitesse", none: "Aucune", singStat: "Stat de chant", danceStat: "Stat de danse", thoughts: "Pensées", photos: "Photos", combinedStats: "Stats combinés", total: "Total", rank: "Rang", tier: "Tier calculé", stats: "Statistiques", backToArtists: "← Retour aux artistes" },
-  en: { loading: "Loading artist...", notFound: "Artist not found", notFoundDesc: "The artist with ID", notFoundId: "does not exist.", backToList: "Back to artist list", position: "Position", group: "Group", genre: "Genre", specialty: "Specialty", build: "Recommended Build", rating: "Rating", skills: "Skills", noSkills: "No skills listed.", skillCategories: "Skill Categories", dps: "DPS", offensive: "Offensive", hp: "HP", defense: "Defense", speed: "Speed", none: "None", singStat: "Sing Stat", danceStat: "Dance Stat", thoughts: "Thoughts", photos: "Photos", combinedStats: "Combined Stats", total: "Total", rank: "Rank", tier: "Calculated Tier", stats: "Statistics", backToArtists: "← Back to artists" },
-  it: { loading: "Caricamento artista...", notFound: "Artista non trovato", notFoundDesc: "L'artista con ID", notFoundId: "non esiste.", backToList: "Torna alla lista", position: "Posizione", group: "Gruppo", genre: "Genere", specialty: "Specialità", build: "Build consigliato", rating: "Rating", skills: "Abilità", noSkills: "Nessuna abilità elencata.", skillCategories: "Categorie abilità", dps: "DPS", offensive: "Offensivo", hp: "HP", defense: "Difesa", speed: "Velocità", none: "Nessuno", singStat: "Stat Canto", danceStat: "Stat Danza", thoughts: "Pensieri", photos: "Foto", combinedStats: "Stats combinati", total: "Totale", rank: "Rango", tier: "Tier calcolato", stats: "Statistiche", backToArtists: "← Torna agli artisti" },
-  es: { loading: "Cargando artista...", notFound: "Artista no encontrado", notFoundDesc: "El artista con ID", notFoundId: "no existe.", backToList: "Volver a la lista", position: "Posición", group: "Grupo", genre: "Género", specialty: "Especialidad", build: "Build recomendado", rating: "Rating", skills: "Habilidades", noSkills: "Sin habilidades listadas.", skillCategories: "Categorías de habilidades", dps: "DPS", offensive: "Ofensivo", hp: "HP", defense: "Defensa", speed: "Velocidad", none: "Ninguno", singStat: "Stat de Canto", danceStat: "Stat de Baile", thoughts: "Pensamientos", photos: "Fotos", combinedStats: "Stats combinados", total: "Total", rank: "Rango", tier: "Tier calculado", stats: "Estadísticas", backToArtists: "← Volver a artistas" },
-  pt: { loading: "Carregando artista...", notFound: "Artista não encontrado", notFoundDesc: "O artista com ID", notFoundId: "não existe.", backToList: "Voltar à lista", position: "Posição", group: "Grupo", genre: "Gênero", specialty: "Especialidade", build: "Build recomendado", rating: "Rating", skills: "Habilidades", noSkills: "Nenhuma habilidade listada.", skillCategories: "Categorias de habilidades", dps: "DPS", offensive: "Ofensivo", hp: "HP", defense: "Defesa", speed: "Velocidade", none: "Nenhum", singStat: "Stat de Canto", danceStat: "Stat de Dança", thoughts: "Pensamentos", photos: "Fotos", combinedStats: "Stats combinados", total: "Total", rank: "Patente", tier: "Tier calculado", stats: "Estatísticas", backToArtists: "← Voltar aos artistas" },
-  pl: { loading: "Ładowanie artysty...", notFound: "Artysta nie znaleziony", notFoundDesc: "Artysta o ID", notFoundId: "nie istnieje.", backToList: "Wróć do listy", position: "Pozycja", group: "Grupa", genre: "Gatunek", specialty: "Specjalność", build: "Zalecany build", rating: "Rating", skills: "Umiejętności", noSkills: "Brak umiejętności.", skillCategories: "Kategorie umiejętności", dps: "DPS", offensive: "Ofensywa", hp: "HP", defense: "Obrona", speed: "Szybkość", none: "Brak", singStat: "Stat Śpiewu", danceStat: "Stat Tańca", thoughts: "Myśli", photos: "Zdjęcia", combinedStats: "Łączne statystyki", total: "Suma", rank: "Ranga", tier: "Tier obliczony", stats: "Statystyki", backToArtists: "← Wróć do artystów" },
-  id: { loading: "Memuat artis...", notFound: "Artis tidak ditemukan", notFoundDesc: "Artis dengan ID", notFoundId: "tidak ada.", backToList: "Kembali ke daftar", position: "Posisi", group: "Grup", genre: "Genre", specialty: "Spesialitas", build: "Build yang disarankan", rating: "Rating", skills: "Skill", noSkills: "Tidak ada skill.", skillCategories: "Kategori Skill", dps: "DPS", offensive: "Offensif", hp: "HP", defense: "Defensa", speed: "Kecepatan", none: "Tidak ada", singStat: "Stat Nyanyi", danceStat: "Stat Dance", thoughts: "Pikiran", photos: "Foto", combinedStats: "Stats gabungan", total: "Total", rank: "Rank", tier: "Tier dihitung", stats: "Statistik", backToArtists: "← Kembali ke artis" },
-  ru: { loading: "Загрузка артиста...", notFound: "Артист не найден", notFoundDesc: "Артист с ID", notFoundId: "не существует.", backToList: "Вернуться к списку", position: "Позиция", group: "Группа", genre: "Жанр", specialty: "Специализация", build: "Рекомендуемый билд", rating: "Рейтинг", skills: "Навыки", noSkills: "Нет навыков.", skillCategories: "Категории навыков", dps: "DPS", offensive: "Атака", hp: "HP", defense: "Защита", speed: "Скорость", none: "Нет", singStat: "Стат Пения", danceStat: "Стат Танцев", thoughts: "Мысли", photos: "Фото", combinedStats: "Общие статы", total: "Всего", rank: "Ранг", tier: "Тиер рассчитан", stats: "Статистика", backToArtists: "← Вернуться к артистам" },
+  fr: { loading: "Chargement de l'artiste...", notFound: "Artiste non trouvé", notFoundDesc: "L'artiste avec l'ID", notFoundId: "n'existe pas.", backToList: "Retour à la liste des artistes", position: "Position", group: "Groupe", genre: "Genre", specialty: "Spécialité", build: "Build recommandé", rating: "Rating", skills: "Compétences", noSkills: "Aucune compétence listée.", skillCategories: "Catégories de compétences", dps: "DPS", offensive: "Offensive", hp: "HP", defense: "Défense", speed: "Vitesse", none: "Aucune", singStat: "Stat de chant", danceStat: "Stat de danse", photos: "Photos", combinedStats: "Stats combinés", total: "Total", rank: "Rang", tier: "Tier", stats: "Statistiques", backToArtists: "← Retour aux artistes", infoTab: "Informations", skillsTab: "Compétences", statsTab: "Stats", generalInfo: "Informations générales", viewTierList: "Voir la Tier List" },
+  en: { loading: "Loading artist...", notFound: "Artist not found", notFoundDesc: "The artist with ID", notFoundId: "does not exist.", backToList: "Back to artist list", position: "Position", group: "Group", genre: "Genre", specialty: "Specialty", build: "Recommended Build", rating: "Rating", skills: "Skills", noSkills: "No skills listed.", skillCategories: "Skill Categories", dps: "DPS", offensive: "Offensive", hp: "HP", defense: "Defense", speed: "Speed", none: "None", singStat: "Sing Stat", danceStat: "Dance Stat", photos: "Photos", combinedStats: "Combined Stats", total: "Total", rank: "Rank", tier: "Tier", stats: "Statistics", backToArtists: "← Back to artists", infoTab: "Information", skillsTab: "Skills", statsTab: "Stats", generalInfo: "General Information", viewTierList: "View Tier List" },
+  it: { loading: "Caricamento artista...", notFound: "Artista non trovato", notFoundDesc: "L'artista con ID", notFoundId: "non esiste.", backToList: "Torna alla lista", position: "Posizione", group: "Gruppo", genre: "Genere", specialty: "Specialità", build: "Build consigliato", rating: "Rating", skills: "Abilità", noSkills: "Nessuna abilità elencata.", skillCategories: "Categorie abilità", dps: "DPS", offensive: "Offensivo", hp: "HP", defense: "Difesa", speed: "Velocità", none: "Nessuno", singStat: "Stat Canto", danceStat: "Stat Danza", photos: "Foto", combinedStats: "Stats combinati", total: "Totale", rank: "Rango", tier: "Tier", stats: "Statistiche", backToArtists: "← Torna agli artisti", infoTab: "Informazioni", skillsTab: "Abilità", statsTab: "Stats", generalInfo: "Informazioni generali", viewTierList: "Vedi Tier List" },
+  es: { loading: "Cargando artista...", notFound: "Artista no encontrado", notFoundDesc: "El artista con ID", notFoundId: "no existe.", backToList: "Volver a la lista", position: "Posición", group: "Grupo", genre: "Género", specialty: "Especialidad", build: "Build recomendado", rating: "Rating", skills: "Habilidades", noSkills: "Sin habilidades listadas.", skillCategories: "Categorías de habilidades", dps: "DPS", offensive: "Ofensivo", hp: "HP", defense: "Defensa", speed: "Velocidad", none: "Ninguno", singStat: "Stat de Canto", danceStat: "Stat de Baile", photos: "Fotos", combinedStats: "Stats combinados", total: "Total", rank: "Rango", tier: "Tier", stats: "Estadísticas", backToArtists: "← Volver a artistas", infoTab: "Información", skillsTab: "Habilidades", statsTab: "Stats", generalInfo: "Información general", viewTierList: "Ver Tier List" },
+  pt: { loading: "Carregando artista...", notFound: "Artista não encontrado", notFoundDesc: "O artista com ID", notFoundId: "não existe.", backToList: "Voltar à lista", position: "Posição", group: "Grupo", genre: "Gênero", specialty: "Especialidade", build: "Build recomendado", rating: "Rating", skills: "Habilidades", noSkills: "Nenhuma habilidade listada.", skillCategories: "Categorias de habilidades", dps: "DPS", offensive: "Ofensivo", hp: "HP", defense: "Defesa", speed: "Velocidade", none: "Nenhum", singStat: "Stat de Canto", danceStat: "Stat de Dança", photos: "Fotos", combinedStats: "Stats combinados", total: "Total", rank: "Patente", tier: "Tier", stats: "Estatísticas", backToArtists: "← Voltar aos artistas", infoTab: "Informação", skillsTab: "Habilidades", statsTab: "Stats", generalInfo: "Informação geral", viewTierList: "Ver Tier List" },
+  pl: { loading: "Ładowanie artysty...", notFound: "Artysta nie znaleziony", notFoundDesc: "Artysta o ID", notFoundId: "nie istnieje.", backToList: "Wróć do listy", position: "Pozycja", group: "Grupa", genre: "Gatunek", specialty: "Specjalność", build: "Zalecany build", rating: "Rating", skills: "Umiejętności", noSkills: "Brak umiejętności.", skillCategories: "Kategorie umiejętności", dps: "DPS", offensive: "Ofensywa", hp: "HP", defense: "Obrona", speed: "Szybkość", none: "Brak", singStat: "Stat Śpiewu", danceStat: "Stat Tańca", photos: "Zdjęcia", combinedStats: "Łączne statystyki", total: "Suma", rank: "Ranga", tier: "Tier", stats: "Statystyki", backToArtists: "← Wróć do artystów", infoTab: "Informacje", skillsTab: "Umiejętności", statsTab: "Stats", generalInfo: "Informacje ogólne", viewTierList: "Zobacz Tier List" },
+  id: { loading: "Memuat artis...", notFound: "Artis tidak ditemukan", notFoundDesc: "Artis dengan ID", notFoundId: "tidak ada.", backToList: "Kembali ke daftar", position: "Posisi", group: "Grup", genre: "Genre", specialty: "Spesialitas", build: "Build yang disarankan", rating: "Rating", skills: "Skill", noSkills: "Tidak ada skill.", skillCategories: "Kategori Skill", dps: "DPS", offensive: "Offensif", hp: "HP", defense: "Defensa", speed: "Kecepatan", none: "Tidak ada", singStat: "Stat Nyanyi", danceStat: "Stat Dance", photos: "Foto", combinedStats: "Stats gabungan", total: "Total", rank: "Rank", tier: "Tier", stats: "Statistik", backToArtists: "← Kembali ke artis", infoTab: "Informasi", skillsTab: "Skill", statsTab: "Stats", generalInfo: "Informasi umum", viewTierList: "Lihat Tier List" },
+  ru: { loading: "Загрузка артиста...", notFound: "Артист не найден", notFoundDesc: "Артист с ID", notFoundId: "не существует.", backToList: "Вернуться к списку", position: "Позиция", group: "Группа", genre: "Жанр", specialty: "Специализация", build: "Рекомендуемый билд", rating: "Рейтинг", skills: "Навыки", noSkills: "Нет навыков.", skillCategories: "Категории навыков", dps: "DPS", offensive: "Атака", hp: "HP", defense: "Защита", speed: "Скорость", none: "Нет", singStat: "Стат Пения", danceStat: "Стат Танцев", photos: "Фото", combinedStats: "Общие статы", total: "Всего", rank: "Ранг", tier: "Тиер", stats: "Статистика", backToArtists: "← Вернуться к артистам", infoTab: "Информация", skillsTab: "Навыки", statsTab: "Статы", generalInfo: "Общая информация", viewTierList: "Смотреть Tier List" },
 };
 
 type Artist = {
@@ -214,7 +214,7 @@ export default function ArtistDetailPage() {
               transition: 'all 0.2s'
             }}
           >
-            Informations
+            {t.infoTab}
           </button>
           <button
             onClick={() => { /* tab switching logic would go here */ }}
@@ -229,7 +229,7 @@ export default function ArtistDetailPage() {
               transition: 'all 0.2s'
             }}
           >
-            Compétences
+            {t.skillsTab}
           </button>
           <button
             onClick={() => { /* tab switching logic would go here */ }}
@@ -244,7 +244,7 @@ export default function ArtistDetailPage() {
               transition: 'all 0.2s'
             }}
           >
-            Stats
+            {t.statsTab}
           </button>
         </div>
 
@@ -256,7 +256,7 @@ export default function ArtistDetailPage() {
             color: '#f472b6',
             marginBottom: '16px'
           }}>
-            Informations générales
+            {t.generalInfo}
           </h2>
           <div style={{ 
             display: 'grid', 
@@ -365,7 +365,7 @@ export default function ArtistDetailPage() {
           </section>
         )}
 
-        {/* Stats calculées */}
+        {/* Stats */}
         <section style={{ marginBottom: '32px' }}>
           <h2 style={{ 
             fontSize: '1.5rem', 
@@ -411,19 +411,16 @@ export default function ArtistDetailPage() {
               </p>
             </div>
             <div>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '8px' }}>{t.thoughts}</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>{artist.thoughts || 'N/A'}</p>
-            </div>
-            <div>
               <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '8px' }}>{t.photos}</h3>
               <p style={{ color: 'var(--text-secondary)' }}>{artist.photos || 'N/A'}</p>
             </div>
           </div>
         </section>
 
-        {/* Retour à la liste */}
+        {/* Navigation Links */}
         <div style={{ 
-          textAlign: 'center', 
+          display: 'flex', 
+          justifyContent: 'space-between', 
           marginTop: '32px',
           paddingTop: '24px',
           borderTop: '1px solid var(--border)'
@@ -433,9 +430,20 @@ export default function ArtistDetailPage() {
             alignItems: 'center',
             gap: '8px',
             color: 'var(--text-primary)',
-            fontWeight: 500
+            fontWeight: 500,
+            textDecoration: 'none'
           }}>
-            {t.backToArtists}
+            ← {t.backToArtists}
+          </Link>
+          <Link href={`/${lang}/tierlist`} style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: 'var(--text-primary)',
+            fontWeight: 500,
+            textDecoration: 'none'
+          }}>
+            {t.viewTierList} →
           </Link>
         </div>
       </div>

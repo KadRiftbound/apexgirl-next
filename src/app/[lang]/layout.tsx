@@ -224,18 +224,6 @@ export default async function LocaleLayout({
   );
 }
 
-function getNavLabel(lang: string, key: string): string {
-  const translations: Record<string, Record<string, string>> = {
-    it: { home: "Home", database: "Artisti", events: "Eventi", tools: "Strumenti", codes: "Codici" },
-    es: { home: "Inicio", database: "Artistas", events: "Eventos", tools: "Herramientas", codes: "Códigos" },
-    pt: { home: "Início", database: "Artistas", events: "Eventos", tools: "Ferramentas", codes: "Códigos" },
-    pl: { home: "Strona", database: "Artyści", events: "Wydarzenia", tools: "Narzędzia", codes: "Kody" },
-    id: { home: "Beranda", database: "Artis", events: "Acara", tools: "Alat", codes: "Kode" },
-    ru: { home: "Главная", database: "Артисты", events: "События", tools: "Инструменты", codes: "Коды" },
-  };
-  return translations[lang]?.[key] || key;
-}
-
 function getFooterText(lang: string, key: string): string {
   const translations: Record<string, Record<string, string>> = {
     it: { home: "Home", codes: "Codici", artists: "Artisti", tools: "Strumenti", tierList: "Tier List", events: "Eventi", guides: "Guide", legal: "Legale", legalNotice: "Note Legali", privacy: "Privacy", cookies: "Cookies", contact: "Contatto", title: "Il fansite non ufficiale di TopGirl/ApexGirl.", subtitle: "Fansite dedicato ai giocatori con guide, strumenti e codici promo.", copyright: "© 2026 TopGirl Fansite. Tutti i diritti riservati. Questo è un fansite non ufficiale." },
