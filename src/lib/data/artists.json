@@ -29,7 +29,7 @@
     },
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
-    "image": "Marguerite.jpg",
+    "image": "Alexandra.jpg",
     "singStat": 25851,
     "danceStat": 19076
   },
@@ -2742,7 +2742,7 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Ariadne.jpg",
+    "image": "Aria.jpg",
     "specialty": "Augmentation dommage"
   },
   {
@@ -2844,7 +2844,7 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Bella.jpg",
+    "image": "Ella.jpg",
     "specialty": "Augmentation dommage"
   },
   {
