@@ -266,11 +266,6 @@ export default function MobileArtistsPage() {
                     {selectedArtist.name}
                   </div>
                   
-                  {/* Speciality - NEW */}
-                  <div className="mobile-preview-specialty">
-                    💼 {selectedArtist.specialty || selectedArtist.genre}
-                  </div>
-                  
                   {/* Genre */}
                   <div className="mobile-preview-genre">
                     🎵 {selectedArtist.genre}
@@ -281,24 +276,6 @@ export default function MobileArtistsPage() {
                     {selectedArtist.skills?.slice(0, 3).map((skill, i) => (
                       <p key={i} className="mobile-skill-line">{i === 0 ? "⚔️ " : "✨ "}{skill}</p>
                     ))}
-                  </div>
-                  
-                  {/* Navigation */}
-                  <div className="mobile-preview-nav">
-                    <button 
-                      onClick={() => {
-                        const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
-                        if (idx > 0) setSelectedArtist(sortedArtists[idx - 1]);
-                      }}
-                      disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) === 0}
-                    >◀</button>
-                    <button 
-                      onClick={() => {
-                        const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
-                        if (idx >= 0 && idx < sortedArtists.length - 1) setSelectedArtist(sortedArtists[idx + 1]);
-                      }}
-                      disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) >= sortedArtists.length - 1}
-                    >▶</button>
                   </div>
                   
                   {/* Actions */}
@@ -480,7 +457,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Always visible below panel */}
-        <div className="mobile-search-bar" style={{ top: scrolled ? 'calc(46vh)' : 'calc(56px + 46vh)' }}>
+        <div className="mobile-search-bar" style={{ top: scrolled ? 'calc(40vh)' : 'calc(56px + 40vh)' }}>
           <input
             type="text"
             placeholder={t.search}
@@ -502,11 +479,11 @@ export default function MobileArtistsPage() {
         </div>
 
         /* Layer 4: Artists Grid - Scrollable */
-        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? 'calc(46vh + 45px)' : 'calc(56px + 46vh + 45px)' }}>
+        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? 'calc(40vh + 45px)' : 'calc(56px + 40vh + 45px)' }}>
           <div className="mobile-artists-count">{filteredArtists.length} artistes trouvés</div>
           <div className="mobile-artists-grid">
-            {sortedArtists.map((artist: Artist) => (
-              <button key={artist.id} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
+            {sortedArtists.map((artist: Artist, index: number) => (
+              <button key={`${artist.id}-${index}`} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
                 {artist.image ? (
                   <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} />
                 ) : (
@@ -534,8 +511,8 @@ export default function MobileArtistsPage() {
           padding: 4px;
           background: #0f0f1a;
           z-index: 100;
-          height: 46vh;
-          min-height: 340px;
+          height: 40vh;
+          min-height: 300px;
           opacity: 1;
           position: fixed;
           left: 0;
