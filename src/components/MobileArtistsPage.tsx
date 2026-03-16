@@ -534,7 +534,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Fixed below panel */}
-        <div className={`mobile-search-bar ${!searchBarVisible ? 'hidden' : ''}`} style={panelFixed ? { position: 'fixed', top: '48vh', left: 0, right: 0, zIndex: 99 } : {}}>
+        <div className="mobile-search-bar" style={panelFixed ? { position: 'fixed', top: '48vh', left: 0, right: 0, zIndex: 99 } : {}}>
           <input
             type="text"
             placeholder={t.search}
@@ -824,7 +824,8 @@ export default function MobileArtistsPage() {
           display: flex;
           flex-wrap: wrap;
           gap: 3px;
-          margin-bottom: 16px;
+          margin-bottom: 20px;
+          min-height: 28px;
           justify-content: center;
         }
         .mobile-genre-badge {
