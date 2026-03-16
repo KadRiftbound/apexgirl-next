@@ -11,14 +11,14 @@ import MobileArtistsPage from "@/components/MobileArtistsPage";
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 const filterTranslations: Record<string, any> = {
-  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités" },
-  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties" },
-  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità" },
-  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades" },
-  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades" },
-  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności" },
-  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis" },
-  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации" },
+  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", team1Stats: "Stats Équipe 1", team2Stats: "Stats Équipe 2", vs: "VS", total: "Total" },
+  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove", team1Stats: "Team 1 Stats", team2Stats: "Team 2 Stats", vs: "VS", total: "Total" },
+  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità", foundArtists: "artisti trovati", clearTeam: "Cancella", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Scheda", clickToRemove: "Clicca per rimuovere", team1Stats: "Stats Team 1", team2Stats: "Stats Team 2", vs: "VS", total: "Totale" },
+  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades", foundArtists: "artistas encontrados", clearTeam: "Borrar", addTeam1: "+ Equipo 1", addTeam2: "+ Equipo 2", profile: "Perfil", clickToRemove: "Clic para eliminar", team1Stats: "Stats Equipo 1", team2Stats: "Stats Equipo 2", vs: "VS", total: "Total" },
+  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades", foundArtists: "artistas encontrados", clearTeam: "Limpar", addTeam1: "+ Time 1", addTeam2: "+ Time 2", profile: "Perfil", clickToRemove: "Clique para remover", team1Stats: "Stats Time 1", team2Stats: "Stats Time 2", vs: "VS", total: "Total" },
+  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności", foundArtists: "znalezionych artystów", clearTeam: "Wyczyść", addTeam1: "+ Drużyna 1", addTeam2: "+ Drużyna 2", profile: "Profil", clickToRemove: "Kliknij aby usunąć", team1Stats: "Stats Drużyna 1", team2Stats: "Stats Drużyna 2", vs: "VS", total: "Suma" },
+  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis", foundArtists: "artis ditemukan", clearTeam: "Hapus", addTeam1: "+ Tim 1", addTeam2: "+ Tim 2", profile: "Profil", clickToRemove: "Klik untuk hapus", team1Stats: "Stats Tim 1", team2Stats: "Stats Tim 2", vs: "VS", total: "Total" },
+  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации", foundArtists: "артистов найдено", clearTeam: "Очистить", addTeam1: "+ Команда 1", addTeam2: "+ Команда 2", profile: "Профиль", clickToRemove: "Нажмите чтобы убрать", team1Stats: "Stats Команда 1", team2Stats: "Stats Команда 2", vs: "VS", total: "Всего" },
 };
 
 const rankColors: Record<string, string> = {
@@ -458,10 +458,10 @@ export default function ArtistsPage() {
                     </button>
                     <div className="add-buttons">
                       {selectedArtist && !team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && (
-                        <button onClick={() => addToTeam1(selectedArtist)} className="add-team-btn team1">+ Équipe 1</button>
+                        <button onClick={() => addToTeam1(selectedArtist)} className="add-team-btn team1">{t.addTeam1}</button>
                       )}
                       {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && (
-                        <button onClick={() => addToTeam2(selectedArtist)} className="add-team-btn team2">+ Équipe 2</button>
+                        <button onClick={() => addToTeam2(selectedArtist)} className="add-team-btn team2">{t.addTeam2}</button>
                       )}
                     </div>
                   </div>
@@ -515,7 +515,7 @@ export default function ArtistsPage() {
                     );
                   });
                 })()}
-                <button onClick={() => setTeam1([])} className="clear-btn">🗑️ Effacer</button>
+                <button onClick={() => setTeam1([])} className="clear-btn">🗑️ {t.clearTeam}</button>
               </div>
             </div>
           </div>
@@ -545,7 +545,7 @@ export default function ArtistsPage() {
                 <div style={{ display: "flex", justifyContent: "space-between", color: "#a29bfe", fontSize: "0.7rem" }}><span>✨ S.Resist</span><span>{team2Stats.skillResist}%</span></div>
                 <div style={{ display: "flex", justifyContent: "space-between", color: "#ffd700", fontSize: "0.7rem" }}><span>🎵 Fan Cap</span><span>{team2Stats.fanCapacity}%</span></div>
                 <div style={{ display: "flex", justifyContent: "space-between", color: "#00ff88", fontSize: "0.7rem" }}><span>🚀 Rally Cap</span><span>{team2Stats.rallyCapacity}%</span></div>
-                <button onClick={() => setTeam2([])} className="clear-btn">🗑️ Effacer</button>
+                <button onClick={() => setTeam2([])} className="clear-btn">🗑️ {t.clearTeam}</button>
               </div>
             </div>
           </div>
@@ -574,7 +574,7 @@ export default function ArtistsPage() {
               {SPECIALTIES.map(spec => (<option key={spec} value={spec}>{spec}</option>))}
             </select>
           </div>
-          <div className="artists-count">{filteredArtists.length} artistes trouvés</div>
+          <div className="artists-count">{filteredArtists.length} {t.foundArtists}</div>
 
           <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
             {sortedArtists.map((artist: Artist) => (

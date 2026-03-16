@@ -8,8 +8,14 @@ import artistsData from "@/lib/data/artists.json";
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 const filterTranslations: Record<string, any> = {
-  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités" },
-  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties" },
+  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer" },
+  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove" },
+  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità", foundArtists: "artisti trovati", clearTeam: "Cancella", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Scheda", clickToRemove: "Clicca per rimuovere" },
+  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades", foundArtists: "artistas encontrados", clearTeam: "Borrar", addTeam1: "+ Equipo 1", addTeam2: "+ Equipo 2", profile: "Perfil", clickToRemove: "Clic para eliminar" },
+  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades", foundArtists: "artistas encontrados", clearTeam: "Limpar", addTeam1: "+ Time 1", addTeam2: "+ Time 2", profile: "Perfil", clickToRemove: "Clique para remover" },
+  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności", foundArtists: "znalezionych artystów", clearTeam: "Wyczyść", addTeam1: "+ Drużyna 1", addTeam2: "+ Drużyna 2", profile: "Profil", clickToRemove: "Kliknij aby usunąć" },
+  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis", foundArtists: "artis ditemukan", clearTeam: "Hapus", addTeam1: "+ Tim 1", addTeam2: "+ Tim 2", profile: "Profil", clickToRemove: "Klik untuk hapus" },
+  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации", foundArtists: "артистов найдено", clearTeam: "Очистить", addTeam1: "+ Команда 1", addTeam2: "+ Команда 2", profile: "Профиль", clickToRemove: "Нажмите чтобы убрать" },
 };
 
 const rankColors: Record<string, string> = {
@@ -281,14 +287,14 @@ export default function MobileArtistsPage() {
                   {/* Actions */}
                   <div className="mobile-preview-actions">
                     <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)} className="mobile-profile-btn">
-                      Fiche
+                      {t.profile}
                     </button>
                     <div className="mobile-add-buttons">
                       {!team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && (
-                        <button onClick={() => addToTeam1(selectedArtist)} className="mobile-add-team mobile-team1">+ Équipe 1</button>
+                        <button onClick={() => addToTeam1(selectedArtist)} className="mobile-add-team mobile-team1">{t.addTeam1}</button>
                       )}
                       {!team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && (
-                        <button onClick={() => addToTeam2(selectedArtist)} className="mobile-add-team mobile-team2">+ Équipe 2</button>
+                        <button onClick={() => addToTeam2(selectedArtist)} className="mobile-add-team mobile-team2">{t.addTeam2}</button>
                       )}
                     </div>
                   </div>
@@ -304,7 +310,7 @@ export default function MobileArtistsPage() {
             <div className="mobile-team-card mobile-team-1">
               <div className="mobile-team-slots">
                 {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team1[i] && setTeam1(team1.filter(a => a.id !== team1[i].id))} className="mobile-team-slot" title="Cliquer pour retirer">
+                  <div key={i} onClick={() => team1[i] && setTeam1(team1.filter(a => a.id !== team1[i].id))} className="mobile-team-slot" title={t.clickToRemove}>
                     {team1[i] ? (
                       team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
@@ -372,7 +378,7 @@ export default function MobileArtistsPage() {
                     <span key={spec} className="mobile-specialty-badge">{getSpecialtyLabel(spec)} {count}</span>
                   ))}
                 </div>
-                <button onClick={() => setTeam1([])} className="mobile-clear-btn">🗑️ Effacer</button>
+                <button onClick={() => setTeam1([])} className="mobile-clear-btn">🗑️ {t.clearTeam}</button>
               </div>
             </div>
           </div>
@@ -382,7 +388,7 @@ export default function MobileArtistsPage() {
             <div className="mobile-team-card mobile-team-2">
               <div className="mobile-team-slots">
                 {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team2[i] && setTeam2(team2.filter(a => a.id !== team2[i].id))} className="mobile-team-slot" title="Cliquer pour retirer">
+                  <div key={i} onClick={() => team2[i] && setTeam2(team2.filter(a => a.id !== team2[i].id))} className="mobile-team-slot" title={t.clickToRemove}>
                     {team2[i] ? (
                       team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
@@ -450,7 +456,7 @@ export default function MobileArtistsPage() {
                     <span key={spec} className="mobile-specialty-badge">{getSpecialtyLabel(spec)} {count}</span>
                   ))}
                 </div>
-                <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️ Effacer</button>
+                <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️ {t.clearTeam}</button>
               </div>
             </div>
           </div>
@@ -480,7 +486,7 @@ export default function MobileArtistsPage() {
 
         /* Layer 4: Artists Grid - Scrollable */
         <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? 'calc(40vh + 45px)' : 'calc(56px + 40vh + 45px)' }}>
-          <div className="mobile-artists-count">{filteredArtists.length} artistes trouvés</div>
+          <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
               <button key={`${artist.id}-${index}`} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
