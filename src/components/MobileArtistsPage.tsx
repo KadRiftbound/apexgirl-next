@@ -523,59 +523,6 @@ export default function MobileArtistsPage() {
                 </div>
                 <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️ Effacer</button>
               </div>
-              {/* FULL stats - each on single line */}
-              <div className="mobile-team-stats">
-                <div className="mobile-stat-row">
-                  <span style={{ color: "#ff8c42", fontSize: "0.55rem" }}>DMG</span>
-                  <span style={{ color: "#fff" }}>{team2Stats.skillDamageRaw}</span>
-                  <span style={{ color: team2Stats.skillDamageRaw > team1Stats.skillDamageRaw ? "#4ade80" : team2Stats.skillDamageRaw < team1Stats.skillDamageRaw ? "#f87171" : "#888" }}>
-                    ({team2Stats.skillDamageRaw - team1Stats.skillDamageRaw >= 0 ? "+" : ""}{team2Stats.skillDamageRaw - team1Stats.skillDamageRaw})
-                  </span>
-                </div>
-                <div className="mobile-stat-row">
-                  <span style={{ color: "#ff6b6b" }}>⚔️ Skill</span>
-                  <span style={{ color: "#fff" }}>{team2Stats.skillDamage}%</span>
-                  <span style={{ color: team2Stats.skillDamage > team1Stats.skillDamage ? "#4ade80" : team2Stats.skillDamage < team1Stats.skillDamage ? "#f87171" : "#888" }}>
-                    ({team2Stats.skillDamage - team1Stats.skillDamage >= 0 ? "+" : ""}{team2Stats.skillDamage - team1Stats.skillDamage})
-                  </span>
-                </div>
-                <div className="mobile-stat-row">
-                  <span style={{ color: "#4ecdc4" }}>👊 ATK</span>
-                  <span style={{ color: "#fff" }}>{team2Stats.basicAttackPercent}%</span>
-                  <span style={{ color: team2Stats.basicAttackPercent > team1Stats.basicAttackPercent ? "#4ade80" : team2Stats.basicAttackPercent < team1Stats.basicAttackPercent ? "#f87171" : "#888" }}>
-                    ({team2Stats.basicAttackPercent - team1Stats.basicAttackPercent >= 0 ? "+" : ""}{team2Stats.basicAttackPercent - team1Stats.basicAttackPercent})
-                  </span>
-                </div>
-                <div className="mobile-stat-row">
-                  <span style={{ color: "#95e1d3" }}>🛡️ DEF</span>
-                  <span style={{ color: "#fff" }}>{team2Stats.attackResist}%</span>
-                  <span style={{ color: team2Stats.attackResist > team1Stats.attackResist ? "#4ade80" : team2Stats.attackResist < team1Stats.attackResist ? "#f87171" : "#888" }}>
-                    ({team2Stats.attackResist - team1Stats.attackResist >= 0 ? "+" : ""}{team2Stats.attackResist - team1Stats.attackResist})
-                  </span>
-                </div>
-                <div className="mobile-stat-row">
-                  <span style={{ color: "#a29bfe" }}>✨ S.RES</span>
-                  <span style={{ color: "#fff" }}>{team2Stats.skillResist}%</span>
-                  <span style={{ color: team2Stats.skillResist > team1Stats.skillResist ? "#4ade80" : team2Stats.skillResist < team1Stats.skillResist ? "#f87171" : "#888" }}>
-                    ({team2Stats.skillResist - team1Stats.skillResist >= 0 ? "+" : ""}{team2Stats.skillResist - team1Stats.skillResist})
-                  </span>
-                </div>
-                <div className="mobile-stat-row">
-                  <span style={{ color: "#ffd700" }}>🎵 Fan</span>
-                  <span style={{ color: "#fff" }}>{team2Stats.fanCapacity}%</span>
-                  <span style={{ color: team2Stats.fanCapacity > team1Stats.fanCapacity ? "#4ade80" : team2Stats.fanCapacity < team1Stats.fanCapacity ? "#f87171" : "#888" }}>
-                    ({team2Stats.fanCapacity - team1Stats.fanCapacity >= 0 ? "+" : ""}{team2Stats.fanCapacity - team1Stats.fanCapacity})
-                  </span>
-                </div>
-                <div className="mobile-stat-row">
-                  <span style={{ color: "#00ff88" }}>🚀 Rally</span>
-                  <span style={{ color: "#fff" }}>{team2Stats.rallyCapacity}%</span>
-                  <span style={{ color: team2Stats.rallyCapacity > team1Stats.rallyCapacity ? "#4ade80" : team2Stats.rallyCapacity < team1Stats.rallyCapacity ? "#f87171" : "#888" }}>
-                    ({team2Stats.rallyCapacity - team1Stats.rallyCapacity >= 0 ? "+" : ""}{team2Stats.rallyCapacity - team1Stats.rallyCapacity})
-                  </span>
-                </div>
-                <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️ Effacer</button>
-              </div>
             </div>
           </div>
         </div>
