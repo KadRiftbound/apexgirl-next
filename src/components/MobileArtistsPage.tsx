@@ -513,7 +513,7 @@ export default function MobileArtistsPage() {
         </div>
 
         /* Layer 4: Artists Grid - Scrollable */
-        <div className="mobile-artists-bottom" style={{ paddingTop: '52vh' }}>
+        <div className="mobile-artists-bottom" style={{ paddingTop: 'calc(56px + 46vh + 45px)' }}>
           <div className="mobile-artists-count">{filteredArtists.length} artistes trouvés</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist) => (
@@ -535,7 +535,6 @@ export default function MobileArtistsPage() {
         .mobile-page-container {
           min-height: 100vh;
           background: transparent;
-          padding-top: 56px;
         }
         
         /* Layer 1: Header section that scrolls away */
@@ -571,7 +570,7 @@ export default function MobileArtistsPage() {
           min-height: 340px;
           opacity: 1;
           position: fixed;
-          top: 50px;
+          top: 56px;
           left: 0;
           right: 0;
         }
@@ -850,7 +849,7 @@ export default function MobileArtistsPage() {
           background: #0f0f1a;
           z-index: 99;
           position: fixed;
-          top: calc(50px + 46vh);
+          top: calc(56px + 46vh);
           left: 0;
           right: 0;
           align-items: center;
