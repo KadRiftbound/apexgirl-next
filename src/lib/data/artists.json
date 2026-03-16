@@ -319,7 +319,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Dancer from None.",
     "thoughts": "",
     "image": "Antonia.jpg",
@@ -422,7 +422,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "C",
     "description": "A talented Center from WildFlower.",
     "thoughts": "",
     "image": "Audrey.jpg",
@@ -523,7 +523,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "A",
     "description": "A talented Dancer from Luna.",
     "thoughts": "Damage Reduction",
     "image": "Avery.jpg",
@@ -591,7 +591,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
     "thoughts": "Damage Reduction",
     "image": "Ayaka.jpg",
@@ -625,7 +625,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "D",
     "description": "A talented Vocalist from Echo.",
     "thoughts": "HQ Defense",
     "image": "Brooklyn.jpg",
@@ -894,7 +894,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S",
     "description": "A talented Center from Breezara.",
     "thoughts": "",
     "specialty": "Augmentation dommage",
@@ -963,7 +963,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Dancer from None.",
     "thoughts": "",
     "specialty": "Solo car",
@@ -1032,7 +1032,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Center from None.",
     "thoughts": "Single Car",
     "image": "Flora.jpg",
@@ -1100,7 +1100,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S",
     "description": "A talented Center from WildFlower.",
     "thoughts": "Rally",
     "image": "Hestia.jpg",
@@ -1168,7 +1168,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S",
     "description": "A talented Center from None.",
     "thoughts": "",
     "image": "Isla.jpg",
@@ -1202,7 +1202,7 @@
         "75% Drive Speed"
       ]
     },
-    "calculatedTier": "A",
+    "calculatedTier": "C",
     "description": "A talented Vocalist from Radiance.",
     "thoughts": "",
     "image": "Julia.jpg",
@@ -1235,7 +1235,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S",
     "description": "A talented Dancer from Tokyo48.",
     "thoughts": "S+",
     "image": "Kasha.jpg",
@@ -1270,7 +1270,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "D",
     "description": "A talented Vocalist from WildFlower.",
     "thoughts": "Single Car, Rally",
     "image": "Kelly.jpg",
@@ -1304,7 +1304,7 @@
         "40% Gold Brick Gathering Speed"
       ]
     },
-    "calculatedTier": "A",
+    "calculatedTier": "D",
     "description": "A talented Vocalist from Radiance.",
     "thoughts": "",
     "image": "Kesnia.jpg",
@@ -1404,7 +1404,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "D",
     "description": "A talented Vocalist from Breezara.",
     "thoughts": "HQ Defense",
     "image": "Lestari.jpg",
@@ -1473,7 +1473,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "C",
+    "calculatedTier": "D",
     "description": "A talented Vocalist from None.",
     "thoughts": "Single Car",
     "specialty": "Solo car",
@@ -1507,7 +1507,7 @@
         "40% Gold Brick Gathering Speed"
       ]
     },
-    "calculatedTier": "A",
+    "calculatedTier": "C",
     "description": "A talented Dancer from WildFlower.",
     "thoughts": "",
     "image": "Megan.jpg",
@@ -1541,7 +1541,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Center from Neon.",
     "thoughts": "Single Car",
     "image": "Mellissa.jpg",
@@ -1643,7 +1643,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "A",
     "description": "A talented Vocalist from Coral.",
     "thoughts": "Damage Reduction",
     "specialty": "Dommage réduction",
@@ -1712,7 +1712,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "D",
     "description": "A talented Dancer from Breezara.",
     "thoughts": "",
     "image": "Ningsih.jpg",
@@ -1746,7 +1746,7 @@
         "40% Gold Brick Gathering Speed"
       ]
     },
-    "calculatedTier": "A",
+    "calculatedTier": "C",
     "description": "A talented Center from WildFlower.",
     "thoughts": "",
     "image": "Noora.jpg",
@@ -1780,7 +1780,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "A",
     "description": "A talented Dancer from DreamCatcher.",
     "thoughts": "HQ Defense",
     "image": "Nova.jpg",
@@ -1815,7 +1815,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "D",
     "description": "A talented Center from None.",
     "thoughts": "Single Car",
     "image": "Octavia.jpg",
@@ -1849,7 +1849,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "A",
     "description": "A talented Dancer from Neon.",
     "thoughts": "Damage Reduction",
     "image": "Paisley.jpg",
@@ -1917,7 +1917,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S",
     "description": "A talented Vocalist from Rina.",
     "thoughts": "",
     "image": "Riku.jpg",
@@ -1985,7 +1985,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Vocalist from Tokyo48.",
     "thoughts": "Single Car",
     "image": "Rosemary.jpg",
@@ -2087,7 +2087,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "D",
     "description": "A talented Dancer from Echo.",
     "thoughts": "Single Car",
     "image": "Savannah.jpg",
@@ -2154,7 +2154,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "C",
     "description": "A talented Vocalist from Neon.",
     "thoughts": "",
     "image": "Skylar.jpg",
@@ -2188,7 +2188,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Vocalist from Tokyo48.",
     "thoughts": "Single Car",
     "image": "Sora.jpg",
@@ -2222,7 +2222,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Center from Coral.",
     "thoughts": "Single Car",
     "image": "Talia.jpg",
@@ -2257,7 +2257,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Dancer from None.",
     "thoughts": "Single Car",
     "specialty": "Solo car",
@@ -2292,7 +2292,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "A",
     "description": "A talented Dancer from None.",
     "thoughts": "HQ Defense",
     "image": "Vivienne.jpg",
@@ -2428,7 +2428,7 @@
         "20% Damage WG / 50% Drive Speed"
       ]
     },
-    "calculatedTier": "A",
+    "calculatedTier": "C",
     "description": "A talented Center from Radiance.",
     "thoughts": "",
     "image": "Zendayah.jpg",
@@ -2462,7 +2462,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "description": "A talented Vocalist from Luna.",
     "thoughts": "Single Car",
     "image": "Bella.jpg",
@@ -2496,7 +2496,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "C",
     "description": "A talented Dancer from Fantasy Vibes.",
     "thoughts": "Single Car",
     "specialty": "Solo car",
@@ -2529,7 +2529,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S+",
     "description": "A talented Center from Fantasy Vibes.",
     "thoughts": "",
     "image": "Longkui.jpg",
@@ -2562,7 +2562,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S+",
     "description": "A talented Center from Tokyo48.",
     "thoughts": "",
     "image": "Monica.jpg",
@@ -3733,7 +3733,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "B",
     "specialty": "Solo car",
     "event": "Roma 3",
     "image": "Kendell.jpg",
@@ -3767,7 +3767,7 @@
       ],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "A",
     "specialty": "Mixte",
     "event": "Roma 3",
     "image": "Valerie.jpg",
@@ -3802,7 +3802,7 @@
       "defense": [],
       "speed": []
     },
-    "calculatedTier": "S",
+    "calculatedTier": "A",
     "specialty": "Augmentation dommage",
     "singStat": 25851,
     "danceStat": 19076

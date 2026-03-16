@@ -58,7 +58,7 @@ const tierColors: Record<string, { bg: string; border: string; text: string }> =
   A: { bg: "rgba(34, 197, 94, 0.15)", border: "#22c55e", text: "#22c55e" },
   B: { bg: "rgba(59, 130, 246, 0.15)", border: "#3b82f6", text: "#3b82f6" },
   C: { bg: "rgba(245, 158, 11, 0.15)", border: "#f59e0b", text: "#f59e0b" },
-  F: { bg: "rgba(148, 163, 184, 0.15)", border: "#94a3b8", text: "#94a3b8" },
+  D: { bg: "rgba(148, 163, 184, 0.15)", border: "#94a3b8", text: "#94a3b8" },
 };
 
 const tierOrder: Record<string, number> = {
@@ -67,7 +67,7 @@ const tierOrder: Record<string, number> = {
   A: 2,
   B: 3,
   C: 4,
-  F: 5,
+  D: 5,
 };
 
 const getTierOrder = (tier: string): number => {
@@ -75,62 +75,7 @@ const getTierOrder = (tier: string): number => {
 };
 
 const getEffectiveTier = (artist: any): string => {
-  // Use manual tier if available
-  if (artist.calculatedTier && artist.calculatedTier !== '') {
-    return artist.calculatedTier.toUpperCase();
-  }
-  
-  // Fallback: calculate tier from skills
-  const skills = artist.skills || [];
-  
-  // Parse skills for damage types
-  const hasPlayerDamage = skills.some((s: string) => 
-    s.toLowerCase().includes('player damage') || s.toLowerCase().includes('damage to player')
-  );
-  
-  // Extract attack damage percentage (basic attack)
-  const basicAttackMatch = skills.find((s: string) => 
-    s.toLowerCase().includes('basic attack damage') || s.toLowerCase().includes('basic attack')
-  );
-  const basicAttackPercent = basicAttackMatch ? parseInt(basicAttackMatch.match(/\d+/)?.[0] || '0') : 0;
-  
-  // Check for skill damage
-  const hasSkillDamage = skills.some((s: string) => 
-    s.toLowerCase().includes('skill damage') && !s.toLowerCase().includes('reduction')
-  );
-  const skillDamageMatch = skills.find((s: string) => 
-    s.toLowerCase().includes('skill damage') && !s.toLowerCase().includes('reduction')
-  );
-  const skillDamagePercent = skillDamageMatch ? parseInt(skillDamageMatch.match(/\d+/)?.[0] || '0') : 0;
-  
-  // Check for resistance skills (defense)
-  const hasResistanceSkill = skills.some((s: string) => 
-    s.toLowerCase().includes('damage reduction') || s.toLowerCase().includes('reduction')
-  );
-  const hasSkillResistance = skills.some((s: string) => 
-    s.toLowerCase().includes('skill damage reduction')
-  );
-  const hasBasicResistance = skills.some((s: string) => 
-    s.toLowerCase().includes('basic damage reduction')
-  );
-  const hasAnyResistance = hasSkillResistance || hasBasicResistance;
-  
-  // Rule 1: player damage AND (attack OR skill OR resistance) → S
-  if (hasPlayerDamage && (basicAttackPercent > 0 || skillDamagePercent > 0 || hasResistanceSkill)) {
-    return 'S';
-  }
-  
-  // Rule 2: attack >= 60% AND resistance → A
-  if (basicAttackPercent >= 60 && hasAnyResistance) {
-    return 'A';
-  }
-  
-  // Rule 3: attack = 50% AND resistance → B
-  if (basicAttackPercent === 50 && hasAnyResistance) {
-    return 'B';
-  }
-  
-  return 'F';
+  return (artist.calculatedTier || 'D').toUpperCase();
 };
 
 export default function TierListPage() {

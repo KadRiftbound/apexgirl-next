@@ -12,7 +12,7 @@ const tierColors: Record<string, string> = {
   A: "#22c55e",
   B: "#3b82f6",
   C: "#f59e0b",
-  F: "#94a3b8",
+  D: "#94a3b8",
 };
 
 const artistTranslations: Record<string, any> = {
