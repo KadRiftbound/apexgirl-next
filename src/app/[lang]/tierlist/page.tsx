@@ -407,7 +407,7 @@ export default function TierListPage() {
                      borderBottom: `1px solid ${tierColors[tier]?.border}44`,
                      display: "flex",
                      alignItems: "center",
-                     gap: "12px"
+                     justifyContent: "space-between"
                    }}>
                      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                        <span style={{
@@ -418,75 +418,74 @@ export default function TierListPage() {
                        }}>
                          {tier}
                        </span>
-                           <div style={{ position: "relative" }} className="tier-tooltip-container">
-                         <span 
-                           style={{ 
-                             fontSize: "0.85rem", 
-                             fontWeight: 600,
-                             color: tierColors[tier]?.text,
-                             background: tierColors[tier]?.bg,
-                             border: `1px solid ${tierColors[tier]?.border}`,
-                             borderRadius: "50%",
-                             width: "20px",
-                             height: "20px",
-                             display: "flex",
-                             alignItems: "center",
-                             justifyContent: "center",
-                             cursor: "help",
-                             position: "relative",
-                             zIndex: 101
-                           }}
-                         >
-                           ?
-                         </span>
-                         <div style={{
-                           position: "absolute",
-                           top: "100%",
-                           left: "50%",
-                           transform: "translateX(-50%)",
-                           marginTop: "8px",
-                           padding: "12px 16px",
-                           background: "var(--bg-card)",
+                       <span style={{ 
+                         color: "var(--text-muted)", 
+                         fontSize: "0.85rem" 
+                       }}>
+                         {tierArtists.length} artiste{tierArtists.length > 1 ? "s" : ""}
+                       </span>
+                     </div>
+                     <div style={{ position: "relative" }} className="tier-tooltip-container">
+                       <span 
+                         style={{ 
+                           fontSize: "0.85rem", 
+                           fontWeight: 600,
+                           color: tierColors[tier]?.text,
+                           background: tierColors[tier]?.bg,
                            border: `1px solid ${tierColors[tier]?.border}`,
-                           borderRadius: "var(--radius-md)",
-                           boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                           zIndex: 1000,
-                           minWidth: "250px",
-                           maxWidth: "300px",
-                           display: "none"
-                         }} className="tier-tooltip">
-                           <div style={{ 
-                             fontSize: "0.8rem", 
-                             color: tierColors[tier]?.text,
-                             fontWeight: 600,
-                             marginBottom: "4px"
-                           }}>
-                             Tier {tier}
-                           </div>
-                           <div style={{ 
-                             fontSize: "0.75rem", 
-                             color: "var(--text-secondary)",
-                             lineHeight: 1.4
-                           }}>
-                             {getTierDescription(tier, lang)}
-                           </div>
+                           borderRadius: "50%",
+                           width: "20px",
+                           height: "20px",
+                           display: "flex",
+                           alignItems: "center",
+                           justifyContent: "center",
+                           cursor: "help",
+                           position: "relative",
+                           zIndex: 101
+                         }}
+                       >
+                         ?
+                       </span>
+                       <div style={{
+                         position: "absolute",
+                         top: "100%",
+                         right: "0",
+                         marginTop: "8px",
+                         padding: "12px 16px",
+                         background: "var(--bg-card)",
+                         border: `1px solid ${tierColors[tier]?.border}`,
+                         borderRadius: "var(--radius-md)",
+                         boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                         zIndex: 1000,
+                         minWidth: "250px",
+                         maxWidth: "300px",
+                         display: "none"
+                       }} className="tier-tooltip">
+                         <div style={{ 
+                           fontSize: "0.8rem", 
+                           color: tierColors[tier]?.text,
+                           fontWeight: 600,
+                           marginBottom: "4px"
+                         }}>
+                           Tier {tier}
+                         </div>
+                         <div style={{ 
+                           fontSize: "0.75rem", 
+                           color: "var(--text-secondary)",
+                           lineHeight: 1.4
+                         }}>
+                           {getTierDescription(tier, lang)}
                          </div>
                        </div>
                      </div>
-                     <span style={{ 
-                       color: "var(--text-muted)", 
-                       fontSize: "0.85rem" 
-                     }}>
-                       {tierArtists.length} artiste{tierArtists.length > 1 ? "s" : ""}
-                     </span>
                    </div>
-                  
-                  <div style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "8px",
-                    padding: "16px"
-                  }}>
+                   
+                   <div style={{
+                     display: "flex",
+                     flexWrap: "wrap",
+                     gap: "8px",
+                     padding: "16px"
+                   }}>
                       {tierArtists
                         .sort((a, b) => getTierOrder(getEffectiveTier(a)) - getTierOrder(getEffectiveTier(b)))
                         .map(artist => (
