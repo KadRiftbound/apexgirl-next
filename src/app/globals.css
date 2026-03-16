@@ -729,6 +729,6 @@ img {
 }
 
 /* Tier tooltip */
-div[style*="position: relative"]:hover .tier-tooltip {
+.tier-tooltip-container:hover .tier-tooltip {
   display: block !important;
 }

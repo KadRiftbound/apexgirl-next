@@ -201,7 +201,7 @@ export default function TierListPage() {
   };
 
   const artists = artistsData as Artist[];
-  const tierOrder = ["S+", "S", "A", "B", "C", "F"];
+  const tierOrder = ["S+", "S", "A", "B", "C", "D"];
 
   return (
     <>
@@ -418,7 +418,7 @@ export default function TierListPage() {
                        }}>
                          {tier}
                        </span>
-                       <div style={{ position: "relative" }}>
+                           <div style={{ position: "relative" }} className="tier-tooltip-container">
                          <span 
                            style={{ 
                              fontSize: "0.85rem", 
@@ -432,7 +432,9 @@ export default function TierListPage() {
                              display: "flex",
                              alignItems: "center",
                              justifyContent: "center",
-                             cursor: "help"
+                             cursor: "help",
+                             position: "relative",
+                             zIndex: 101
                            }}
                          >
                            ?
@@ -448,7 +450,7 @@ export default function TierListPage() {
                            border: `1px solid ${tierColors[tier]?.border}`,
                            borderRadius: "var(--radius-md)",
                            boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                           zIndex: 100,
+                           zIndex: 1000,
                            minWidth: "250px",
                            maxWidth: "300px",
                            display: "none"
