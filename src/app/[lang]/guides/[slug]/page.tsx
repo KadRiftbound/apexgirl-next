@@ -72,53 +72,1753 @@ type Guide = {
 
 const guides: Guide[] = [
   {
+    id: "structure-du-jeu",
+    title: "Structure du jeu",
+    title_en: "Game Structure",
+    title_it: "Struttura del gioco",
+    title_es: "Estructura del juego",
+    title_pt: "Estrutura do jogo",
+    title_pl: "Struktura gry",
+    title_id: "Struktur permainan",
+    title_ru: "Структура игры",
+    description: "Comprendre la structure du jeu Top Girl. Serveur d'origine, cycles Abroad, City Supremacy et boucle principale.",
+    description_en: "Understand the structure of Top Girl game. Home server, Abroad cycles, City Supremacy and main loop.",
+    description_it: "Comprendi la struttura del gioco Top Girl. Server home, cicli Abroad, City Supremacy e ciclo principale.",
+    description_es: "Comprende la estructura del juego Top Girl. Servidor local, ciclos Abroad, City Supremacy y ciclo principal.",
+    description_pt: "Compreenda a estrutura do jogo Top Girl. Servidor principal, ciclos Abroad, City Supremacy e ciclo principal.",
+    description_pl: "Zrozum strukturę gry Top Girl. Serwer główny, cykle Abroad, City Supremacy i główna pętla.",
+    description_id: "Pahami struktur permainan Top Girl. Server utama, siklus Abroad, City Supremacy dan loop utama.",
+    description_ru: "Понять структуру игры Top Girl. Родной сервер, циклы Abroad, City Supremacy и основной цикл.",
+    icon: "📊",
+    color: "#8b5cf6",
+    category: "Débutant",
+    category_en: "Beginner",
+    category_it: "Principiante",
+    category_es: "Principiante",
+    category_pt: "Iniciante",
+    category_pl: "Początkujący",
+    category_id: "Pemula",
+    category_ru: "Начинающий",
+    readTime: "10 min",
+    content: `
+## Guide : Comprendre la structure du jeu Top Girl
+
+### Explication courte
+Top Girl suit une progression en plusieurs phases.
+Le jeu commence sur un serveur d'origine, où ton groupe évolue pendant les premières semaines. Ensuite, le jeu alterne entre des phases sur le serveur d'origine, des événements comme City Supremacy et Top CEO, et des cycles Abroad comme Tokyo, Bali et Roma.
+Comprendre ce cycle est important pour bien préparer son groupe et planifier ses ressources.
+
+### Explication longue
+
+#### 1. Le début du jeu : le serveur d'origine
+La première grande phase du jeu dure environ 4 semaines.
+
+Pendant les 3 premières semaines, tu commences sur un nouveau serveur situé dans la zone extérieure. Cette phase sert presque de tutoriel, mais elle reste très importante.
+Ton groupe doit recruter, progresser, et avancer vers le centre de la carte pour essayer de conquérir le Burj Khalifa et obtenir le titre de Maire.
+
+À la fin de cette phase, ce serveur devient ton serveur d'origine.
+C'est le serveur auquel ton compte reste lié pour la suite du jeu, sauf en cas de migration.
+
+#### 2. La transition après le début
+À la fin de la troisième semaine, ton serveur doit attendre d'autres serveurs, ou rejoindre d'autres serveurs déjà prêts.
+Pendant cette période, il y a un événement d'environ 1 semaine appelé City Supremacy.
+
+City Supremacy est une phase de type SvS entre 2 ou 3 serveurs.
+
+#### 3. Tokyo Warmup puis Tokyo
+Après cette transition, le jeu entre dans le premier cycle Abroad.
+
+Ce cycle commence avec Tokyo Warmup, un événement de préparation.
+Ensuite commence Tokyo, qui dure environ 3 semaines.
+
+Tokyo se déroule sur une autre carte.
+Ton serveur d'origine ne disparaît pas. Tu peux passer entre les deux grâce aux Passports.
+
+Sur Tokyo, on retrouve une logique proche du début du jeu :
+- progression sur une carte
+- affrontement entre serveurs
+- conquête de zones
+- objectif final autour de la Tokyo Tower
+
+Les serveurs sont répartis en chambers de chaque côté de la carte.
+Le but est donc de progresser avec son groupe dans un cadre Serveur contre Serveur.
+
+#### 4. Retour sur le serveur d'origine
+Après Tokyo, on retourne sur le serveur d'origine.
+
+Cette phase peut durer plus ou moins longtemps.
+Le jeu semble attendre qu'une pool de serveurs soit assez remplie avant de lancer la suite.
+D'après tes infos, cette attente peut durer :
+- parfois 1 semaine
+- parfois jusqu'à 5 ou 6 semaines
+
+Pendant cette période, le jeu alterne surtout entre :
+- City Supremacy
+- Top CEO
+
+Le nombre exact de serveurs nécessaires n'est pas encore totally clair, mais tu estimes qu'il faut environ 40 à 50 serveurs.
+
+#### 5. La boucle principale du jeu
+Une fois assez de serveurs réunis, le jeu entre dans une boucle plus stable.
+
+Cette boucle suit ce modèle :
+- Bali Warmup
+- Bali
+- City Supremacy ou Top CEO
+- Roma Warmup
+- Roma
+- Top CEO ou City Supremacy
+
+Ensuite, la boucle recommence avec :
+- Tokyo Warmup
+- Tokyo
+- City Supremacy ou Top CEO
+- Bali Warmup
+- Bali
+- Top CEO ou City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO ou City Supremacy
+- Puis à nouveau Tokyo Warmup.
+
+#### 6. La notion de "Abroad"
+On peut utiliser Abroad comme terme global pour désigner :
+- Tokyo
+- Bali
+- Roma
+
+Ces trois grandes phases suivent le même principe :
+1. Une semaine de Warmup
+2. Puis 3 semaines d'événement principal
+3. Sur une autre carte
+4. Avec logique de confrontation entre serveurs
+
+Quand un cycle revient, on peut le numéroter :
+- Tokyo 2, Bali 2, Roma 2
+- Puis : Tokyo 3, etc.
+
+#### 7. Les stats importantes à connaître
+Top Girl repose aussi sur 3 stats principales :
+- Sing = Chant
+- Defense = lié à la Danse
+- Economy = lié au Management
+`,
+    content_en: `
+## Guide: Understanding Top Girl Game Structure
+
+### Short Explanation
+Top Girl follows a multi-phase progression.
+The game starts on a home server, where your group evolves during the first few weeks. Then the game alternates between phases on the home server, events like City Supremacy and Top CEO, and Abroad cycles like Tokyo, Bali, and Roma.
+Understanding this cycle is important to properly prepare your group and plan your resources.
+
+### Long Explanation
+
+#### 1. Game Start: The Home Server
+The first major phase lasts about 4 weeks.
+
+During the first 3 weeks, you start on a new server in the outer area. This phase serves almost as a tutorial, but it remains very important.
+Your group must recruit, progress, and move toward the center of the map to try to conquer the Burj Khalifa and get the Mayor title.
+
+At the end of this phase, this server becomes your home server.
+This is the server your account remains linked to for the rest of the game, unless you migrate.
+
+#### 2. Transition After Start
+At the end of the third week, your server must wait for other servers, or join other servers already ready.
+During this period, there's an event of about 1 week called City Supremacy.
+
+City Supremacy is a SvS phase between 2 or 3 servers.
+
+#### 3. Tokyo Warmup Then Tokyo
+After this transition, the game enters the first Abroad cycle.
+
+This cycle starts with Tokyo Warmup, a preparation event.
+Then Tokyo begins, lasting about 3 weeks.
+
+Tokyo takes place on another map.
+Your home server doesn't disappear. You can travel between the two using Passports.
+
+On Tokyo, you find a logic similar to the game start:
+- progression on a map
+- server vs server confrontation
+- zone conquest
+- final objective around the Tokyo Tower
+
+Servers are divided into chambers on each side of the map.
+The goal is to progress with your group in a Server vs Server framework.
+
+#### 4. Return to Home Server
+After Tokyo, you return to the home server.
+
+This phase can last more or less time.
+The game seems to wait until a pool of servers is filled enough before launching the next part.
+According to your info, this wait can last:
+- sometimes 1 week
+- sometimes up to 5 or 6 weeks
+
+During this period, the game mainly alternates between:
+- City Supremacy
+- Top CEO
+
+The exact number of servers needed is not yet totally clear, but you estimate about 40 to 50 servers.
+
+#### 5. Main Game Loop
+Once enough servers are gathered, the game enters a more stable loop.
+
+This loop follows this model:
+- Bali Warmup
+- Bali
+- City Supremacy or Top CEO
+- Roma Warmup
+- Roma
+- Top CEO or City Supremacy
+
+Then the loop restarts with:
+- Tokyo Warmup
+- Tokyo
+- City Supremacy or Top CEO
+- Bali Warmup
+- Bali
+- Top CEO or City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO or City Supremacy
+- Then Tokyo Warmup again.
+
+#### 6. The "Abroad" Concept
+You can use Abroad as an umbrella term to designate:
+- Tokyo
+- Bali
+- Roma
+
+These three major phases follow the same principle:
+1. One week of Warmup
+2. Then 3 weeks of main event
+3. On another map
+4. With server vs server confrontation logic
+
+When a cycle returns, you can number it:
+- Tokyo 2, Bali 2, Roma 2
+- Then: Tokyo 3, etc.
+
+#### 7. Important Stats to Know
+Top Girl also relies on 3 main stats:
+- Sing = Singing
+- Defense = linked to Dance
+- Economy = linked to Management
+`,
+    content_it: `
+## Guida: Comprendere la Struttura del Gioco Top Girl
+
+### Spiegazione Breve
+Top Girl segue una progressione multifase.
+Il gioco inizia su un server home, dove il tuo gruppo evolve durante le prime settimane. Poi il gioco alterna tra fasi sul server home, eventi come City Supremacy e Top CEO, e cicli Abroad come Tokyo, Bali e Roma.
+Comprendere questo ciclo è importante per preparare bene il tuo gruppo e pianificare le tue risorse.
+
+### Spiegazione Dettagliata
+
+#### 1. Inizio del Gioco: Il Server Home
+La prima grande fase dura circa 4 settimane.
+
+Durante le prime 3 settimane, inizi su un nuovo server nell'area esterna. Questa fase serve quasi da tutorial, ma rimane molto importante.
+Il tuo gruppo deve reclutare, progredire e avanzare verso il centro della mappa per cercare di conquistare il Burj Khalifa e ottenere il titolo di Sindaco.
+
+Alla fine di questa fase, questo server diventa il tuo server home.
+Questo è il server a cui il tuo account rimane legato per il resto del gioco, a meno che tu non migri.
+
+#### 2. Transizione Dopo l'Inizio
+Alla fine della terza settimana, il tuo server deve aspettare altri server, o unirsi ad altri server già pronti.
+Durante questo periodo, c'è un evento di circa 1 settimana chiamato City Supremacy.
+
+City Supremacy è una fase di tipo SvS tra 2 o 3 server.
+
+#### 3. Tokyo Warmup Poi Tokyo
+Dopo questa transizione, il gioco entra nel primo ciclo Abroad.
+
+Questo ciclo inizia con Tokyo Warmup, un evento di preparazione.
+Poi inizia Tokyo, che dura circa 3 settimane.
+
+Tokyo si svolge su un'altra mappa.
+Il tuo server home non scompare. Puoi viaggiare tra i due usando i Passports.
+
+Su Tokyo, trovi una logica simile all'inizio del gioco:
+- progressione su una mappa
+- confronto tra server
+- conquista di zone
+- obiettivo finale intorno alla Tokyo Tower
+
+I server sono divisi in chamber su ogni lato della mappa.
+L'obiettivo è quindi progredire con il tuo gruppo in un quadro Server contro Server.
+
+#### 4. Ritorno al Server Home
+Dopo Tokyo, ritorni al server home.
+
+Questa fase può durare più o meno tempo.
+Il gioco sembra aspettare che un pool di server sia abbastanza pieno prima di lanciare la parte successiva.
+Secondo le tue info, questa attesa può durare:
+- a volte 1 settimana
+- a volte fino a 5 o 6 settimane
+
+Durante questo periodo, il gioco alterna principalmente tra:
+- City Supremacy
+- Top CEO
+
+Il numero esatto di server necessari non è ancora del tutto chiaro, ma stimi circa 40-50 server.
+
+#### 5. Loop Principale del Gioco
+Una volta riuniti abbastanza server, il gioco entra in un loop più stabile.
+
+Questo loop segue questo modello:
+- Bali Warmup
+- Bali
+- City Supremacy o Top CEO
+- Roma Warmup
+- Roma
+- Top CEO o City Supremacy
+
+Poi il loop ricomincia con:
+- Tokyo Warmup
+- Tokyo
+- City Supremacy o Top CEO
+- Bali Warmup
+- Bali
+- Top CEO o City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO o City Supremacy
+- Poi Tokyo Warmup di nuovo.
+
+#### 6. Il Concetto di "Abroad"
+Puoi usare Abroad come termine ombrello per indicare:
+- Tokyo
+- Bali
+- Roma
+
+Queste tre fasi principali seguono lo stesso principio:
+1. Una settimana di Warmup
+2. Poi 3 settimane di evento principale
+3. Su un'altra mappa
+4. Con logica di confronto tra server
+
+Quando un ciclo ritorna, puoi numerarlo:
+- Tokyo 2, Bali 2, Roma 2
+- Poi: Tokyo 3, ecc.
+
+#### 7. Statistiche Importanti da Conoscere
+Top Girl si basa anche su 3 statistiche principali:
+- Sing = Canto
+- Defense = legato alla Danza
+- Economy = legato alla Gestione
+`,
+    content_es: `
+## Guía: Comprender la Estructura del Juego Top Girl
+
+### Explicación Corta
+Top Girl sigue una progresión multifase.
+El juego comienza en un servidor local, donde tu grupo evoluciona durante las primeras semanas. Luego el juego alterna entre fases en el servidor local, eventos como City Supremacy y Top CEO, y ciclos Abroad como Tokyo, Bali y Roma.
+Comprender este ciclo es importante para preparar bien tu grupo y planificar tus recursos.
+
+### Explicación Larga
+
+#### 1. Inicio del Juego: El Servidor Local
+La primera gran fase dura aproximadamente 4 semanas.
+
+Durante las primeras 3 semanas,开始在 una zona exterior. Esta fase sirve casi como tutorial, pero sigue siendo muy importante.
+Tu grupo debe reclutar, progresar y avanzar hacia el centro del mapa para intentar conquistar el Burj Khalifa y obtener el título de Alcalde.
+
+Al final de esta fase, este servidor se convierte en tu servidor local.
+Este es el servidor al que tu cuenta permanece vinculada para el resto del juego, a menos que migres.
+
+#### 2. Transición Después del Inicio
+Al final de la tercera semana, tu servidor debe esperar a otros servidores, o unirse a otros servidores ya listos.
+Durante este período, hay un evento de aproximadamente 1 semana llamado City Supremacy.
+
+City Supremacy es una fase de tipo SvS entre 2 o 3 servidores.
+
+#### 3. Tokyo Warmup Luego Tokyo
+Después de esta transición, el juego entra en el primer ciclo Abroad.
+
+Este ciclo comienza con Tokyo Warmup, un evento de preparación.
+Luego comienza Tokyo, que dura aproximadamente 3 semanas.
+
+Tokyo se desarrolla en otro mapa.
+Tu servidor local no desaparece. Puedes viajar entre los dos usando Passports.
+
+En Tokyo, encuentras una lógica similar al inicio del juego:
+- progresión en un mapa
+- confrontación entre servidores
+- conquista de zonas
+- objetivo final alrededor de la Tokyo Tower
+
+Los servidores se dividen en chambers a cada lado del mapa.
+El objetivo es progresar con tu grupo en un marco Servidor contra Servidor.
+
+#### 4. Regreso al Servidor Local
+Después de Tokyo, regresas al servidor local.
+
+Esta fase puede durar más o menos tiempo.
+El juego parece esperar hasta que un grupo de servidores esté lo suficientemente lleno antes de lanzar la siguiente parte.
+Según tus datos, esta espera puede durar:
+- a veces 1 semana
+- a veces hasta 5 o 6 semanas
+
+Durante este período, el juego alterna principalmente entre:
+- City Supremacy
+- Top CEO
+
+El número exacto de servidores necesarios aún no está totalmente claro, pero estimas que se necesitan aproximadamente 40-50 servidores.
+
+#### 5. Bucle Principal del Juego
+Una vez que se reúnen suficientes servidores, el juego entra en un bucle más estable.
+
+Este bucle sigue este modelo:
+- Bali Warmup
+- Bali
+- City Supremacy o Top CEO
+- Roma Warmup
+- Roma
+- Top CEO o City Supremacy
+
+Luego el bucle comienza de nuevo con:
+- Tokyo Warmup
+- Tokyo
+- City Supremacy o Top CEO
+- Bali Warmup
+- Bali
+- Top CEO o City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO o City Supremacy
+- Luego Tokyo Warmup de nuevo.
+
+#### 6. El Concepto de "Abroad"
+Puedes usar Abroad como término general para designar:
+- Tokyo
+- Bali
+- Roma
+
+Estas tres fases principales siguen el mismo principio:
+1. Una semana de Warmup
+2. Luego 3 semanas de evento principal
+3. En otro mapa
+4. Con lógica de confrontación entre servidores
+
+Cuando un ciclo vuelve, puedes numerarlo:
+- Tokyo 2, Bali 2, Roma 2
+- Luego: Tokyo 3, etc.
+
+#### 7. Estadísticas Importantes a Conocer
+Top Girl también se basa en 3 estadísticas principales:
+- Sing = Canto
+- Defense = ligado a la Danza
+- Economy = ligado a la Gestión
+`,
+    content_pt: `
+## Guia: Compreendendo a Estrutura do Jogo Top Girl
+
+### Explicação Curta
+Top Girl segue uma progressão em múltiplas fases.
+O jogo começa em um servidor local, onde seu grupo evolui durante as primeiras semanas. Então o jogo alterna entre fases no servidor local, eventos como City Supremacy e Top CEO, e ciclos Abroad como Tokyo, Bali e Roma.
+Compreender este ciclo é importante para preparar bem seu grupo e planejar seus recursos.
+
+### Explicação Longa
+
+#### 1. Início do Jogo: O Servidor Local
+A primeira grande fase dura cerca de 4 semanas.
+
+Durante as primeiras 3 semanas, você começa em um novo servidor na área externa. Esta fase serve quase como um tutorial, mas permanece muito importante.
+Seu grupo deve recrutar, progredir e avançar em direção ao centro do mapa para tentar conquistar o Burj Khalifa e obter o título de Prefeito.
+
+No final desta fase, este servidor se torna seu servidor local.
+Este é o servidor ao qual sua conta permanece vinculada pelo resto do jogo, a menos que você migre.
+
+#### 2. Transição Após o Início
+No final da terceira semana, seu servidor deve esperar outros servidores ou juntar-se a outros servidores já prontos.
+Durante este período, há um evento de cerca de 1 semana chamado City Supremacy.
+
+City Supremacy é uma fase do tipo SvS entre 2 ou 3 servidores.
+
+#### 3. Tokyo Warmup Depois Tokyo
+Após esta transição, o jogo entra no primeiro ciclo Abroad.
+
+Este ciclo começa com Tokyo Warmup, um evento de preparação.
+Então Tokyo começa, durando cerca de 3 semanas.
+
+Tokyo acontece em outro mapa.
+Seu servidor local não desaparece. Você pode viajar entre os dois usando Passports.
+
+Em Tokyo, você encontra uma lógica próxima ao início do jogo:
+- progressão em um mapa
+- confronto entre servidores
+- conquista de zonas
+- objetivo final ao redor da Tokyo Tower
+
+Os servidores são divididos em chambers de cada lado do mapa.
+O objetivo é progredir com seu grupo em um quadro Servidor contra Servidor.
+
+#### 4. Retorno ao Servidor Local
+Após Tokyo, você retorna ao servidor local.
+
+Esta fase pode durar mais ou menos tempo.
+O jogo parece esperar até que um grupo de servidores esteja preenchido o suficiente antes de lançar a próxima parte.
+De acordo com suas informações, esta espera pode durar:
+- às vezes 1 semana
+- às vezes até 5 ou 6 semanas
+
+Durante este período, o jogo alterna principalmente entre:
+- City Supremacy
+- Top CEO
+
+O número exato de servidores necessários ainda não está totalmente claro, mas você estima cerca de 40-50 servidores.
+
+#### 5. Loop Principal do Jogo
+Uma vez que suficientes servidores são reunidos, o jogo entra em um loop mais estável.
+
+Este loop segue este modelo:
+- Bali Warmup
+- Bali
+- City Supremacy ou Top CEO
+- Roma Warmup
+- Roma
+- Top CEO ou City Supremacy
+
+Então o loop recomeça com:
+- Tokyo Warmup
+- Tokyo
+- City Supremacy ou Top CEO
+- Bali Warmup
+- Bali
+- Top CEO ou City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO ou City Supremacy
+- Depois Tokyo Warmup novamente.
+
+#### 6. O Conceito de "Abroad"
+Você pode usar Abroad como um termo geral para designar:
+- Tokyo
+- Bali
+- Roma
+
+Estas três fases principais seguem o mesmo princípio:
+1. Uma semana de Warmup
+2. Depois 3 semanas de evento principal
+3. Em outro mapa
+4. Com lógica de confronto entre servidores
+
+Quando um ciclo retorna, você pode numerá-lo:
+- Tokyo 2, Bali 2, Roma 2
+- Depois: Tokyo 3, etc.
+
+#### 7. Estatísticas Importantes a Conhecer
+Top Girl também depende de 3 estatísticas principais:
+- Sing = Canto
+- Defense = ligado à Dança
+- Economy = ligado à Gestão
+`,
+    content_pl: `
+## Przewodnik: Zrozumienie Struktury Gry Top Girl
+
+### Krótka wyjaśnienie
+Top Girl podąża za wielofazową progresją.
+Gra zaczyna się na serwerze domowym, gdzie twoja grupa ewoluuje przez pierwsze tygodnie. Następnie gra przełącza się między fazami na serwerze domowym, wydarzeniami takimi jak City Supremacy i Top CEO oraz cyklami Abroad jak Tokyo, Bali i Roma.
+Zrozumienie tego cyklu jest ważne, aby odpowiednio przygotować grupę i zaplanować zasoby.
+
+### Długa wyjaśnienie
+
+#### 1. Początek Gry: Serwer Domowy
+Pierwsza duża faza trwa około 4 tygodni.
+
+Podczas pierwszych 3 tygodni zaczynasz na nowym serwerze w zewnętrznym obszarze. Ta faza służy prawie jako samouczek, ale pozostaje bardzo ważna.
+Twoja grupa musi rekrutować, rozwijać się i zbliżać się do centrum mapy, aby spróbować podbić Burj Khalifa i zdobyć tytuł Prezydenta.
+
+Pod koniec tej fazy, ten serwer staje się twoim serwerem domowym.
+To jest serwer, z którym twoje konto pozostaje powiązane przez resztę gry, chyba że przeprowadzisz migrację.
+
+#### 2. Przejście Po Początku
+Pod koniec trzeciego tygodnia twój serwer musi czekać na inne serwery lub dołączyć do innych serwerów gotowych.
+W tym okresie jest wydarzenie trwające około 1 tygodnia zwane City Supremacy.
+
+City Supremacy to faza typu SvS między 2 lub 3 serwerami.
+
+#### 3. Tokyo Warmup Następnie Tokyo
+Po tym przejściu gra wchodzi w pierwszy cykl Abroad.
+
+Ten cykl zaczyna się od Tokyo Warmup, wydarzenia przygotowawczego.
+Następnie zaczyna się Tokyo, trwające około 3 tygodni.
+
+Tokyo odbywa się na innej mapie.
+Twój serwer domowy nie znika. Możesz podróżować między nimi za pomocą Paszportów.
+
+W Tokyo znajdujesz logikę podobną do początku gry:
+- postęp na mapie
+- konfrontacja między serwerami
+- podbój stref
+- końcowy cel wokół Tokyo Tower
+
+Serwery są podzielone na chambers po obu stronach mapy.
+Celem jest postęp z grupą w ramach Serwer kontra Serwer.
+
+#### 4. Powrót do Serwera Domowego
+Po Tokyo wracasz do serwera domowego.
+
+Ta faza może trwać dłużej lub krócej.
+Gra wydaje się czekać, aż pula serwerów będzie wystarczająco wypełniona, zanim uruchomi następną część.
+Według twoich informacji, to oczekiwanie może trwać:
+- czasami 1 tydzień
+- czasami do 5 lub 6 tygodni
+
+W tym okresie gra głównie przełącza się między:
+- City Supremacy
+- Top CEO
+
+Dokładna liczba potrzebnych serwerów nie jest jeszcze całkiem jasna, ale szacujesz, że potrzeba około 40-50 serwerów.
+
+#### 5. Główna Pętla Gry
+Gdy zebrze się wystarczająco dużo serwerów, gra wchodzi w bardziej stabilną pętlę.
+
+Ta pętla followuje ten model:
+- Bali Warmup
+- Bali
+- City Supremacy lub Top CEO
+- Roma Warmup
+- Roma
+- Top CEO lub City Supremacy
+
+Następnie pętla zaczyna się od nowa:
+- Tokyo Warmup
+- Tokyo
+- City Supremacy lub Top CEO
+- Bali Warmup
+- Bali
+- Top CEO lub City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO lub City Supremacy
+- Następnie Tokyo Warmup ponownie.
+
+#### 6. Pojęcie "Abroad"
+Możesz używać Abroad jako ogólnego terminu do oznaczenia:
+- Tokyo
+- Bali
+- Roma
+
+Te trzy główne fazy followują ten sam princip:
+1. Tydzień Warmup
+2. Następnie 3 tygodnie głównego wydarzenia
+3. Na innej mapie
+4. Z logiką konfrontacji między serwerami
+
+Gdy cykl wraca, możesz go ponumerować:
+- Tokyo 2, Bali 2, Roma 2
+- Następnie: Tokyo 3, itd.
+
+#### 7. Ważne Statystyki do Poznania
+Top Girl opiera się również na 3 głównych statystykach:
+- Sing = Śpiew
+- Defense = związany z Tańcem
+- Economy = związany z Zarządzaniem
+`,
+    content_id: `
+## Panduan: Memahami Struktur Permainan Top Girl
+
+### Penjelasan Singkat
+Top Girl mengikuti progresi multi-fase.
+Permainan dimulai di server rumah, di mana grup Anda berkembang selama beberapa minggu pertama. Kemudian permainan bergantian antara fase di server rumah, acara seperti City Supremacy dan Top CEO, dan siklus Abroad seperti Tokyo, Bali, dan Roma.
+Memahami siklus ini penting untuk mempersiapkan grup Anda dengan baik dan merencanakan sumber daya Anda.
+
+### Penjelasan Panjang
+
+#### 1. Awal Permainan: Server Rumah
+Fase utama pertama berlangsung sekitar 4 minggu.
+
+Selama 3 minggu pertama, Anda memulai di server baru di area luar. Fase ini berfungsi hampir seperti tutorial, tetapi tetap sangat penting.
+Grup Anda harus merekrut, berkembang, dan maju menuju pusat peta untuk mencoba menaklukkan Burj Khalifa dan mendapatkan gelar Wali Kota.
+
+Pada akhir fase ini, server ini menjadi server rumah Anda.
+Ini adalah server yang terhubung dengan akun Anda untuk sisa permainan, kecuali Anda bermigrasi.
+
+#### 2. Transisi Setelah Awal
+Di akhir minggu ketiga, server Anda harus menunggu server lain, atau bergabung dengan server lain yang sudah siap.
+Selama periode ini, ada acara sekitar 1 minggu yang disebut City Supremacy.
+
+City Supremacy adalah fase tipe SvS antara 2 atau 3 server.
+
+#### 3. Tokyo Warmup Kemudian Tokyo
+Setelah transisi ini, permainan memasuki siklus Abroad pertama.
+
+Siklus ini dimulai dengan Tokyo Warmup, acara persiapan.
+Lalu Tokyo dimulai, berlangsung sekitar 3 minggu.
+
+Tokyo berlangsung di peta lain.
+Server rumah Anda tidak menghilang. Anda dapat bepergian di antara keduanya menggunakan Passport.
+
+Di Tokyo, Anda menemukan logika serupa dengan awal permainan:
+- progresi di peta
+- konfrontasi antar server
+- penaklukan zona
+- objetivo akhir di sekitar Tokyo Tower
+
+Server dibagi menjadi chambers di setiap sisi peta.
+Tujuannya adalah untuk berkembang dengan grup Anda dalam kerangka Server vs Server.
+
+#### 4. Kembali ke Server Rumah
+Setelah Tokyo, Anda kembali ke server rumah.
+
+Fase ini bisa bertahan lebih atau kurang lama.
+Permainan tampaknya menunggu sampai kumpulan server cukup terisi sebelum memulai bagian selanjutnya.
+Menurut info Anda, menunggu ini bisa bertahan:
+- kadang 1 minggu
+- kadang sampai 5 atau 6 minggu
+
+Selama periode ini, permainan terutama bergantian antara:
+- City Supremacy
+- Top CEO
+
+Jumlah tepat server yang diperlukan belum sepenuhnya jelas, tetapi Anda memperkirakan sekitar 40-50 server.
+
+#### 5. Loop Utama Permainan
+Setelah cukup banyak server berkumpul, permainan memasuki loop yang lebih stabil.
+
+Loop ini mengikuti model ini:
+- Bali Warmup
+- Bali
+- City Supremacy atau Top CEO
+- Roma Warmup
+- Roma
+- Top CEO atau City Supremacy
+
+Lalu loop dimulai ulang dengan:
+- Tokyo Warmup
+- Tokyo
+- City Supremacy atau Top CEO
+- Bali Warmup
+- Bali
+- Top CEO atau City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO atau City Supremacy
+- Kemudian Tokyo Warmup lagi.
+
+#### 6. Konsep "Abroad"
+Anda dapat menggunakan Abroad sebagai istilah umum untuk menunjukkan:
+- Tokyo
+- Bali
+- Roma
+
+Tiga fase utama ini mengikuti prinsip yang sama:
+1. Seminggu Warmup
+2. Kemudian 3 minggu acara utama
+3. Di peta lain
+4. Dengan logika konfrontasi antar server
+
+Ketika siklus kembali, Anda dapat menomornya:
+- Tokyo 2, Bali 2, Roma 2
+- Kemudian: Tokyo 3, dll.
+
+#### 7. Statistik Penting yang Perlu Diketahui
+Top Girl juga bergantung pada 3 statistik utama:
+- Sing = Nyanyian
+- Defense = Terkait dengan Tari
+- Economy = Terkait dengan Manajemen
+`,
+    content_ru: `
+## Гайд: Понимание Структуры Игры Top Girl
+
+### Краткое объяснение
+Top Girl следует многофазному прогрессу.
+Игра начинается на домашнем сервере, где ваша группа развивается в первые недели. Затем игра чередуется между фазами на домашнем сервере, такими событиями как City Supremacy и Top CEO, и циклами Abroad как Tokyo, Bali и Roma.
+Понимание этого цикла важно для правильной подготовки группы и планирования ресурсов.
+
+### Подробное Объяснение
+
+#### 1. Начало Игры: Домашний Сервер
+Первый большой этап длится около 4 недель.
+
+В течение первых 3 недель вы начинаете на новом сервере во внешней зоне. Этот этап служит почти как обучение, но остается очень важным.
+Ваша группа должна набирать, развиваться и продвигаться к центру карты, чтобы попытаться завоевать Бурдж-Халифа и получить титул Мэра.
+
+В конце этого этапа этот сервер становится вашим домашним сервером.
+Это сервер, с которым ваш аккаунт остается связанным до конца игры, если вы не мигрируете.
+
+#### 2. Переход После Начала
+В конце третьей недели ваш сервер должен ждать другие серверы или присоединяться к другим готовым серверам.
+В этот период проходит событие продолжительностью около 1 недели под названием City Supremacy.
+
+City Supremacy - это фаза типа SvS между 2 или 3 серверами.
+
+#### 3. Tokyo Warmup Затем Tokyo
+После этого перехода игра входит в первый цикл Abroad.
+
+Этот цикл начинается с Tokyo Warmup, события подготовки.
+Затем начинается Tokyo, который длится около 3 недель.
+
+Tokyo проходит на другой карте.
+Ваш домашний сервер не исчезает. Вы можете перемещаться между ними с помощью Passport.
+
+На Tokyo вы находите логику, аналогичную началу игры:
+- продвижение по карте
+- противостояние между серверами
+- завоевание зон
+- финальная цель вокруг Tokyo Tower
+
+Серверы разделены на chambers по обеим сторонам карты.
+Цель состоит в том, чтобы продвигаться с вашей группой в рамках Сервер против Сервера.
+
+#### 4. Возвращение на Домашний Сервер
+После Tokyo вы возвращаетесь на домашний сервер.
+
+Этот этап может длиться больше или меньше времени.
+Игра, кажется, ждет, пока пул серверов не будет достаточно заполнен, прежде чем запустить следующую часть.
+По вашим данным, это ожидание может длиться:
+- иногда 1 неделю
+- иногда до 5 или 6 недель
+
+В этот период игра в основном чередуется между:
+- City Supremacy
+- Top CEO
+
+Точное количество необходимых серверов пока не до конца ясно, но вы оцениваете примерно в 40-50 серверов.
+
+#### 5. Основной Цикл Игры
+Когда собирается достаточно серверов, игра входит в более стабильный цикл.
+
+Этот цикл следует этой модели:
+- Bali Warmup
+- Bali
+- City Supremacy или Top CEO
+- Roma Warmup
+- Roma
+- Top CEO или City Supremacy
+
+Затем цикл начинается заново:
+- Tokyo Warmup
+- Tokyo
+- City Supremacy или Top CEO
+- Bali Warmup
+- Bali
+- Top CEO или City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO или City Supremacy
+- Затем снова Tokyo Warmup.
+
+#### 6. Понятие "Abroad"
+Вы можете использовать Abroad как общий термин для обозначения:
+- Tokyo
+- Bali
+- Roma
+
+Эти три основные фазы следуют тому же принципу:
+1. Одна неделя Warmup
+2. Затем 3 недели основного события
+3. На другой карте
+4. С логикой противостояния между серверами
+
+Когда цикл возвращается, вы можете пронумеровать его:
+- Tokyo 2, Bali 2, Roma 2
+- Затем: Tokyo 3 и т.д.
+
+#### 7. Важные Статы
+Top Girl также основывается на 3 основных статах:
+- Sing = Пение
+- Defense = связано с Танцем
+- Economy = связано с Менеджментом
+`,
+    tips: `
+- Comprendre le cycle global du jeu aide à mieux planifier tes ressources
+- Le jeu est fortement centré sur le groupe. Jouer seul limite beaucoup la progression
+- Le serveur d'origine reste la base de ton compte pendant longtemps
+- Les phases Abroad comme Tokyo, Bali et Roma ne remplacent pas ton serveur d'origine. Elles s'ajoutent à lui
+- Garde des ressources pour les périodes de Warmup, car elles servent souvent à préparer l'événement principal
+- Il faut apprendre à distinguer les périodes de : progression locale, affrontement entre serveurs, préparation des futurs cycles
+- Ne pense pas seulement au présent. Il faut aussi préparer le prochain Abroad, le prochain City Supremacy, ou le prochain Top CEO
+    `,
+    tips_en: `
+- Understanding the global game cycle helps you better plan your resources
+- The game is heavily group-focused. Playing alone greatly limits progression
+- The home server remains the base of your account for a long time
+- Abroad phases like Tokyo, Bali and Roma don't replace your home server. They add to it
+- Save resources for Warmup periods, as they often serve to prepare for the main event
+- Learn to distinguish between periods of: local progression, server vs server confrontation, preparing for future cycles
+- Don't just think about the present. You also need to prepare for the next Abroad, City Supremacy, or Top CEO
+    `,
+    tips_it: `
+- Comprendere il ciclo globale del gioco ti aiuta a pianificare meglio le tue risorse
+- Il gioco è fortemente incentrato sul gruppo. Giocare da soli limita molto la progressione
+- Il server home rimane la base del tuo account per molto tempo
+- Le fasi Abroad come Tokyo, Bali e Roma non sostituiscono il tuo server home. Si aggiungono a lui
+- Risparmia risorse per i periodi di Warmup, poiché spesso servono per preparare l'evento principale
+- Impara a distinguere i periodi di: progressione locale, confronto tra server, preparazione per i cicli futuri
+- Non pensare solo al presente. Devi anche prepararti per il prossimo Abroad, City Supremacy o Top CEO
+    `,
+    tips_es: `
+- Comprender el ciclo global del juego te ayuda a planificar mejor tus recursos
+- El juego está muy centrado en el grupo. Jugar solo limita mucho la progresión
+- El servidor local sigue siendo la base de tu cuenta durante mucho tiempo
+- Las fases Abroad como Tokyo, Bali y Roma no reemplazan tu servidor local. Se añaden a él
+- Ahorra recursos para los períodos de Warmup, ya que a menudo sirven para preparar el evento principal
+- Aprende a distinguir los períodos de: progresión local, confrontación entre servidores, preparación para ciclos futuros
+- No pienses solo en el presente. También necesitas prepararte para el próximo Abroad, City Supremacy o Top CEO
+    `,
+    tips_pt: `
+- Compreender o ciclo global do jogo ajuda você a planejar melhor seus recursos
+- O jogo é fortemente focado em grupo. Jogar sozinho limita muito a progressão
+- O servidor local permanece a base da sua conta por muito tempo
+- As fases Abroad como Tokyo, Bali e Roma não substituem seu servidor local. Elas se somam a ele
+- Economize recursos para períodos de Warmup, pois frequentemente servem para preparar o evento principal
+- Aprenda a distinguir os períodos de: progressão local, confronto entre servidores, preparação para ciclos futuros
+- Não pense apenas no presente. Você também precisa se preparar para o próximo Abroad, City Supremacy ou Top CEO
+    `,
+    tips_pl: `
+- Zrozumienie globalnego cyklu gry pomaga lepiej planować zasoby
+- Gra jest mocno skupiona na grupie. Granie samotnie bardzo ogranicza postęp
+- Serwer domowy pozostaje bazą Twojego konta przez długi czas
+- Fazy Abroad jak Tokyo, Bali i Roma nie zastępują Twojego serwera domowego. Dodają się do niego
+- Oszczędzaj zasoby na okresy Warmup, ponieważ często służą do przygotowania głównego wydarzenia
+- Naucz się rozróżniać okresy: lokalnej progresji, konfrontacji między serwerami, przygotowania do przyszłych cykli
+- Nie myśl tylko o teraźniejszości. Musisz także przygotować się na następny Abroad, City Supremacy lub Top CEO
+    `,
+    tips_id: `
+- Memahami siklus permainan global membantu Anda merencanakan sumber daya dengan lebih baik
+- Permainan sangat fokus pada grup. Bermain sendiri sangat membatasi progresi
+- Server rumah tetap menjadi basis akun Anda dalam waktu lama
+- Fase Abroad seperti Tokyo, Bali dan Roma tidak menggantikan server rumah Anda. Mereka menambahkannya
+- Hemat sumber daya untuk periode Warmup, karena sering berfungsi untuk mempersiapkan acara utama
+- Pelajari untuk membedakan periode: progresi lokal, konfrontasi antar server, persiapan untuk siklus masa depan
+- Jangan hanya memikirkan saat ini. Anda juga perlu mempersiapkan Abroad, City Supremacy, atau Top CEO berikutnya
+    `,
+    tips_ru: `
+- Понимание глобального цикла игры помогает лучше планировать ресурсы
+- Игра сильно ориентирована на группу. Игра в одиночку сильно ограничивает прогресс
+- Домашний сервер остается базой вашего аккаунта надолго
+- Фазы Abroad как Tokyo, Bali и Roma не заменяют ваш домашний сервер. Они добавляются к нему
+- Экономьте ресурсы на периоды Warmup, так как они часто служат для подготовки к главному событию
+- Научитесь различать периоды: локального прогресса, противостояния между серверами, подготовки к будущим циклам
+- Думайте не только о настоящем. Вам также нужно подготовиться к следующему Abroad, City Supremacy или Top CEO
+    `,
+  },
+  {
     id: "equipment",
     title: "Guide Équipement",
+    title_en: "Equipment Guide",
+    title_it: "Guida Equipaggiamento",
+    title_es: "Guía de Equipamiento",
+    title_pt: "Guia de Equipamento",
+    title_pl: "Poradnik Wyposażenia",
+    title_id: "Panduan Peralatan",
+    title_ru: "Гайд по снаряжению",
     description: "Bijoux, Voitures et Propriétés pour optimiser vos statistiques. Comparaison Gold vs Purple et priorités d'achat.",
+    description_en: "Jewelry, Cars and Properties to optimize your stats. Gold vs Purple comparison and purchase priorities.",
+    description_it: "Gioielli, Auto e Proprietà per ottimizzare le tue statistiche. Confronto Gold vs Purple e priorità d'acquisto.",
+    description_es: "Joyas, Coches y Propiedades para optimizar tus estadísticas. Comparación Gold vs Purple y prioridades de compra.",
+    description_pt: "Joias, Carros e Imóveis para otimizar suas estatísticas. Comparação Gold vs Purple e prioridades de compra.",
+    description_pl: "Biżuteria, Samochody i Nieruchomości, aby zoptymalizować statystyki. Porównanie Gold vs Purple i priorytety zakupów.",
+    description_id: "Perhiasan, Mobil, dan Properti untuk mengoptimalkan statistik Anda. Perbandingan Gold vs Purple dan prioritas pembelian.",
+    description_ru: "Украшения, машины и недвижимость для оптимизации ваших статов. Сравнение Gold vs Purple и приоритеты покупки.",
     icon: "💍",
     color: "#fbbf24",
     category: "Débutant",
+    category_en: "Beginner",
+    category_it: "Principiante",
+    category_es: "Principiante",
+    category_pt: "Iniciante",
+    category_pl: "Początkujący",
+    category_id: "Pemula",
+    category_ru: "Начинающий",
     readTime: "10 min",
     content: `
-## Guide Équipement - TopGirl
+## Guide des équipements
 
-### Bijoux (Accessories)
-Les bijoux sont essentiels pour booster vos statistiques principales. Voici les优先级:
+### Explication courte
+Les équipements, aussi appelés Assets, sont une source majeure de puissance dans Top Girl.
+Chaque artiste peut équiper 3 Assets : 1 bijou, 1 voiture et 1 propriété.
+Les Assets donnent beaucoup de stats et augmentent aussi la capacité de fans.
+Si l'artiste correspond à l'Asset, tu gagnes un bonus de stats de 20%. Exemple : une Roma artist avec des Roma assets.
 
-** Collier (Necklace) ** - +Bonus Vocal
-** Bague (Ring) ** - +Bonus Dance  
-** Montre (Watch) ** - +Bonus Charm
+### Explication longue
+Les équipements sont un système central du jeu. Ils servent à renforcer une artiste de manière directe.
+Un bon Asset donne beaucoup de stats. Il peut aussi donner un gros gain de fan capacity.
+Sur une équipe principale, de bons Assets font une très grande différence.
 
-### Voitures (Vehicles)
-Les voitures offrent des bonus massifs mais coûtent cher:
-- Starter Car: 500,000 Gold
-- Sports Car: 2,000,000 Gold
-- Luxury Car: 10,000,000 Gold
+Chaque artiste a 3 slots :
+- 1 bijou
+- 1 voiture
+- 1 propriété
 
-### Propriétés (Properties)
-Les propriétés génèrent des revenus passifs:
-- Apartment: 50,000 Gold/jour
-- House: 200,000 Gold/jour
-- Mansion: 1,000,000 Gold/jour
+Le bonus le plus important à connaître est le bonus de correspondance.
+Quand une artiste équipe un Asset qui correspond à son origine ou à sa saison, elle gagne +20% de stats sur cet Asset.
+Exemple : une artiste Roma avec un Roma Asset.
 
-### Comparaison Gold vs Purple
+Cela rend les Assets Abroad encore plus forts sur les artistes qui matchent déjà cette saison.
 
-| Équipement | Gold Stats | Purple Stats |
-|------------|-----------|-------------|
-| Bijoux | +500 | +350 |
-| Voiture | +2,000 | +1,400 |
-| Propriété | +5,000 | +3,500 |
+### Les bijoux
+Les bijoux sont la catégorie la plus simple à obtenir au début.
 
-**Recommandation:** Visez d'abord le Gold pour les statistiques max, puis Purple pour le budget.
-    `,
+**Bijoux classiques :**
+- Assez simples à obtenir
+- Disponibles dans le VIP Shop
+- Disponibles en récompense de Landmark first occupation
+- Disponibles dans le Stock Market Shop
+
+**Bijoux Abroad :**
+- Plus difficiles à obtenir
+- Disponibles en récompense de Landmark first occupation
+- Disponibles dans certains événements de la saison correspondante
+- Concernent surtout Tokyo, Bali et Roma
+
+**Auction House :**
+- Il n'existe pas de bijou Auction House
+
+### Les voitures
+Les voitures sont plus difficiles à obtenir que les bijoux.
+
+**Voitures classiques :**
+- Difficulté modérée
+- Obtenues dans des récompenses d'événement
+- Obtenues dans des event shops
+- Disponibles aussi dans le VIP Shop, mais le coût est élevé
+
+**Voitures Abroad :**
+- Difficiles à obtenir
+- Obtenues dans les récompenses et boutiques d'événement de la saison correspondante
+- Assez difficiles à obtenir en free-to-play
+
+**Voitures Auction House :**
+- Très difficiles à obtenir
+- Une fois par semaine sur le serveur d'origine pour la branche Chant / Sing
+- Une fois par semaine dans l'auction des aventures Abroad pour la branche Danse / Defense
+- Il n'existe pas de voiture Auction House pour Management / Economy
+- Il faut finir premier des enchères
+
+### Les propriétés
+Les propriétés suivent presque la même logique que les voitures.
+
+**Propriétés classiques :**
+- Similaires aux voitures classiques
+- Obtenues via récompenses d'événement et boutiques d'événement
+- Pas disponibles dans le VIP Shop
+
+**Propriétés Abroad :**
+- Similaires aux voitures Abroad
+- En général environ deux fois plus chères
+- Donc plus difficiles à obtenir
+
+**Propriétés Auction House :**
+- Même logique que pour les voitures Auction House
+
+### Valeur des équipements
+En valeur pure, l'ordre général est :
+Classique < Abroad < Auction House
+
+La difficulté d'obtention suit la même logique.
+Les meilleurs Assets sont aussi les plus rares et les plus chers à construire.
+
+Dans la pratique :
+- Les Assets classiques sont la base
+- Les Assets Abroad sont meilleurs
+- Les Assets Auction House sont les plus puissants
+- Un Asset Abroad devient encore plus intéressant sur une artiste qui le match
+`,
+    content_en: `
+## Equipment Guide
+
+### Short Explanation
+Equipment, also called Assets, is a major source of power in Top Girl.
+Each artist can equip 3 Assets: 1 jewelry, 1 car and 1 property.
+Assets give a lot of stats and also increase fan capacity.
+If the artist matches the Asset, you get a +20% stats bonus. Example: a Roma artist with Roma assets.
+
+### Long Explanation
+Equipment is a core system in the game. It serves to reinforce an artist directly.
+A good Asset gives a lot of stats. It can also give a big fan capacity gain.
+On a main team, good Assets make a very big difference.
+
+Each artist has 3 slots:
+- 1 jewelry
+- 1 car
+- 1 property
+
+The most important bonus to know is the matching bonus.
+When an artist equips an Asset that matches their origin or season, they get +20% stats on that Asset.
+Example: a Roma artist with a Roma Asset.
+
+This makes Abroad Assets even stronger on artists who already match that season.
+
+### Jewelry
+Jewelry is the easiest category to get at the start.
+
+**Classic Jewelry:**
+- Fairly simple to obtain
+- Available in the VIP Shop
+- Available as Landmark first occupation rewards
+- Available in the Stock Market Shop
+
+**Abroad Jewelry:**
+- Harder to obtain
+- Available as Landmark first occupation rewards
+- Available in certain events of the corresponding season
+- Mainly concerns Tokyo, Bali and Roma
+
+**Auction House:**
+- No jewelry Auction House exists
+
+### Cars
+Cars are harder to obtain than jewelry.
+
+**Classic Cars:**
+- Moderate difficulty
+- Obtained from event rewards
+- Obtained from event shops
+- Also available in VIP Shop, but cost is high
+
+**Abroad Cars:**
+- Hard to obtain
+- Obtained from event rewards and shops of the corresponding season
+- Quite hard to obtain for free-to-play
+
+**Auction House Cars:**
+- Very hard to obtain
+- Once per week on home server for Sing/ Chant branch
+- Once per week in Abroad adventures auction for Dance/ Defense branch
+- No Auction House car exists for Management/ Economy
+- Must finish first in auction
+
+### Properties
+Properties follow almost the same logic as cars.
+
+**Classic Properties:**
+- Similar to classic cars
+- Obtained via event rewards and event shops
+- Not available in VIP Shop
+
+**Abroad Properties:**
+- Similar to Abroad cars
+- Generally about twice as expensive
+- Therefore harder to obtain
+
+**Auction House Properties:**
+- Same logic as Auction House cars
+
+### Equipment Value
+In pure value, the general order is:
+Classic < Abroad < Auction House
+
+Difficulty of obtaining follows the same logic.
+The best Assets are also the rarest and most expensive to build.
+
+In practice:
+- Classic Assets are the base
+- Abroad Assets are better
+- Auction House Assets are the most powerful
+- An Abroad Asset becomes even more interesting on an artist who matches it
+`,
+    content_it: `
+## Guida agli Equipaggiamenti
+
+### Breve Spiegazione
+L'equipaggiamento, chiamato anche Assets, è una fonte maggiore di potenza in Top Girl.
+Ogni artista può equipaggiare 3 Assets: 1 gioiello, 1 auto e 1 proprietà.
+Gli Assets danno molte statistiche e aumentano anche la capacità di fan.
+Se l'artista corrisponde all'Asset, ottieni un bonus di statistiche del 20%. Esempio: un artista Roma con assets Roma.
+
+### Spiegazione Dettagliata
+L'equipaggiamento è un sistema centrale nel gioco. Serve a rafforzare un'artista in modo diretto.
+Un buon Asset dà molte statistiche. Può anche dare un grande guadagno di capacità fan.
+Su una squadra principale, buoni Assets fanno una grande differenza.
+
+Ogni artista ha 3 slot:
+- 1 gioiello
+- 1 auto
+- 1 proprietà
+
+Il bonus più importante da conoscere è il bonus di corrispondenza.
+Quando un'artista equipaggia un Asset che corrisponde alla sua origine o stagione, ottiene +20% di statistiche su quell'Asset.
+Esempio: un'artista Roma con un Asset Roma.
+
+Questo rende gli Assets Abroad ancora più forti sugli artisti che corrispondono già a quella stagione.
+
+### Gioielli
+I gioielli sono la categoria più semplice da ottenere all'inizio.
+
+**Gioielli Classici:**
+- Abbastanza semplici da ottenere
+- Disponibili nel VIP Shop
+- Disponibili come ricompensa per la prima occupazione di Landmark
+- Disponibili nel Stock Market Shop
+
+**Gioielli Abroad:**
+- Più difficili da ottenere
+- Disponibili come ricompensa per la prima occupazione di Landmark
+- Disponibili in alcuni eventi della stagione corrispondente
+- Riguardano principalmente Tokyo, Bali e Roma
+
+**Auction House:**
+- Non esistono gioielli Auction House
+
+### Auto
+Le auto sono più difficili da ottenere rispetto ai gioielli.
+
+**Auto Classiche:**
+- Difficoltà moderata
+- Ottenute da ricompense di eventi
+- Ottenute da event shop
+- Disponibili anche nel VIP Shop, ma il costo è elevato
+
+**Auto Abroad:**
+- Difficili da ottenere
+- Ottenute dalle ricompense e boutique di eventi della stagione corrispondente
+- Abbastanza difficili da ottenere free-to-play
+
+**Auto Auction House:**
+- Molto difficili da ottenere
+- Una volta a settimana sul server home per il ramo Canto
+- Una volta a settimana nell'asta delle avventure Abroad per il ramo Danza
+- Non esiste auto Auction House per Management
+- Bisogna finire primi all'asta
+
+### Proprietà
+Le proprietà seguono quasi la stessa logica delle auto.
+
+**Proprietà Classiche:**
+- Simili alle auto classiche
+- Ottenute tramite ricompense di eventi e boutique di eventi
+- Non disponibili nel VIP Shop
+
+**Proprietà Abroad:**
+- Simili alle auto Abroad
+- In generale circa due volte più costose
+- Quindi più difficili da ottenere
+
+**Proprietà Auction House:**
+- Stessa logica delle auto Auction House
+`,
+    content_es: `
+## Guía de Equipamiento
+
+### Explicación Corta
+El equipamiento, también llamado Assets, es una fuente importante de poder en Top Girl.
+Cada artista puede equipar 3 Assets: 1 joya, 1 coche y 1 propiedad.
+Los Assets dan muchas stats y también aumentan la capacidad de fans.
+Si el artista coincide con el Asset, ganas un bono de stats del 20%. Ejemplo: un artista Roma con assets Roma.
+
+### Explicación Larga
+El equipamiento es un sistema central del juego. Sirve para reforzar a un artista de manera directa.
+Un buen Asset da muchas stats. También puede dar una gran ganancia de capacidad de fans.
+En un equipo principal, buenos Assets hacen una gran diferencia.
+
+Cada artista tiene 3 ranuras:
+- 1 joya
+- 1 coche
+- 1 propiedad
+
+El bono más importante conocer es el bono de coincidencia.
+Cuando un artista equipa un Asset que corresponde a su origen o temporada, obtiene +20% de stats en ese Asset.
+Ejemplo: un artista Roma con un Asset Roma.
+
+Esto hace que los Assets Abroad sean aún más fuertes en artistas que ya coinciden con esa temporada.
+
+### Joyas
+Las joyas son la categoría más fácil de obtener al principio.
+
+**Joyas Clásicas:**
+- Bastante simples de obtener
+- Disponibles en la VIP Shop
+- Disponibles como recompensa por primera ocupación de Landmark
+- Disponibles en la Stock Market Shop
+
+**Joyas Abroad:**
+- Más difíciles de obtener
+- Disponibles como recompensa por primera ocupación de Landmark
+- Disponibles en ciertos eventos de la temporada correspondiente
+- Principalmente relacionadas con Tokyo, Bali y Roma
+
+**Auction House:**
+- No existen joyas de Auction House
+
+### Coches
+Los coches son más difíciles de obtener que las joyas.
+
+**Coches Clásicos:**
+- Dificultad moderada
+- Obtenidos de recompensas de eventos
+- Obtenidos de tiendas de eventos
+- Disponibles también en la VIP Shop, pero el costo es alto
+
+**Coches Abroad:**
+- Difíciles de obtener
+- Obtenidos de recompensas y tiendas de eventos de la temporada correspondiente
+- Bastante difíciles de obtener free-to-play
+
+**Coches Auction House:**
+- Muy difíciles de obtener
+- Una vez por semana en el servidor local para la rama Canto
+- Una vez por semana en la subasta de aventuras Abroad para la rama Danza
+- No existe coche de Auction House para Gestión
+- Hay que terminar primero en la subasta
+
+### Propiedades
+Las propiedades siguen casi la misma lógica que los coches.
+
+**Propiedades Clásicas:**
+- Similares a los coches clásicos
+- Obtenidas a través de recompensas de eventos y tiendas de eventos
+- No disponibles en la VIP Shop
+
+**Propiedades Abroad:**
+- Similares a los coches Abroad
+- Generalmente alrededor de dos veces más caras
+- Por lo tanto más difíciles de obtener
+
+**Propiedades Auction House:**
+- Misma lógica que los coches Auction House
+`,
+    content_pt: `
+## Guia de Equipamento
+
+### Explicação Curta
+O equipamento, também chamado de Assets, é uma fonte importante de poder no Top Girl.
+Cada artista pode equipar 3 Assets: 1 joia, 1 carro e 1 propriedade.
+Os Assets dão muitas stats e também aumentam a capacidade de fãs.
+Se o artista corresponde ao Asset, você ganha um bônus de stats de 20%. Exemplo: um artista Roma com assets Roma.
+
+### Explicação Longa
+O equipamento é um sistema central no jogo. Serve para reforçar um artista de forma direta.
+Um bom Asset dá muitas stats. Também pode dar uma grande ganho de capacidade de fãs.
+Em uma equipe principal, bons Assets fazem uma grande diferença.
+
+Cada artista tem 3 slots:
+- 1 joia
+- 1 carro
+- 1 propriedade
+
+O bônus mais importante conhecer é o bônus de correspondência.
+Quando um artista equipa um Asset que corresponde à sua origem ou temporada, ele ganha +20% de stats nesse Asset.
+Exemplo: um artista Roma com um Asset Roma.
+
+Isso torna os Assets Abroad ainda mais fortes em artistas que já correspondem a essa estação.
+
+### Joias
+As joias são a categoria mais fácil de obter no início.
+
+**Joias Clássicas:**
+- Bastante simples de obter
+- Disponíveis na VIP Shop
+- Disponíveis como recompensa de primeira ocupação de Landmark
+- Disponíveis na Stock Market Shop
+
+**Joias Abroad:**
+- Mais difíceis de obter
+- Disponíveis como recompensa de primeira ocupação de событий correspondentes
+- Relacionadas principalmente com Tokyo, Bali e Roma
+
+**Auction House:**
+- Não existem joias de Auction House
+
+### Carros
+Carros são mais difíceis de obter do que joias.
+
+**Carros Clássicos:**
+- Dificuldade moderada
+- Obtidos de recompensas de eventos
+- Obtidos de lojas de eventos
+- Também disponíveis na VIP Shop, mas o custo é alto
+
+**Carros Abroad:**
+- Difíceis de obter
+- Obtidos de recompensas e lojas de eventos da temporada correspondente
+- Bastante difíceis de obter para free-to-play
+
+**Carros Auction House:**
+- Muito difíceis de obter
+- Uma vez por semana no servidor local para o ramo Canto
+- Uma vez por semana no leilão de aventuras Abroad para o ramo Dança
+- Não existe carro de Auction House para Gestão
+- É preciso terminar em primeiro no leilão
+
+### Propriedades
+Propriedades seguem quase a mesma lógica que os carros.
+
+**Propriedades Clássicas:**
+- Similares aos carros clássicos
+- Obtidas via recompensas de eventos e lojas de eventos
+- Não disponíveis na VIP Shop
+
+**Propriedades Abroad:**
+- Similares aos carros Abroad
+- Geralmente cerca de duas vezes mais caras
+- Portanto mais difíceis de obter
+
+**Propriedades Auction House:**
+- Mesma lógica que os carros Auction House
+`,
+    content_pl: `
+## Poradnik Wyposażenia
+
+### Krótkie Wyjaśnienie
+Wyposażenie, zwane również Assets, jest głównym źródłem mocy w Top Girl.
+Każdy artysta może wyposażyć 3 Assets: 1 biżuterię, 1 samochód i 1 nieruchomość.
+Assets dają dużo statystyk i również zwiększają pojemność fanów.
+Jeśli artysta odpowiada Assetowi, otrzymujesz bonus statystyk 20%. Przykład: artysta Roma z assets Roma.
+
+### Długie Wyjaśnienie
+Wyposażenie jest centralnym systemem w grze. Służy do bezpośredniego wzmacniania artysty.
+Dobry Asset daje dużo statystyk. Może też dać duży zysk pojemności fanów.
+Na głównym zespole dobre Assets robią bardzo dużą różnicę.
+
+Każdy artysta ma 3 sloty:
+- 1 biżuteria
+- 1 samochód
+- 1 nieruchomość
+
+Najważniejszy bonus do poznania to bonus dopasowania.
+Gdy artysta wyposaża Asset odpowiadający jego pochodzeniu lub sezonowi, otrzymuje +20% statystyk na tym Assetcie.
+Przykład: artysta Roma z Assetem Roma.
+
+To sprawia, że Assets Abroad są jeszcze silniejsze na artystach, którzy już pasują do tego sezonu.
+
+### Biżuteria
+Biżuteria jest najłatwiejszą kategorią do zdobycia na początku.
+
+**Klasyczna Biżuteria:**
+- Dość łatwa do zdobycia
+- Dostępna w VIP Shop
+- Dostępna jako nagroda za pierwsze zajęcie Landmark
+- Dostępna w Stock Market Shop
+
+**Biżuteria Abroad:**
+- Trudniejsza do zdobycia
+- Dostępna jako nagroda za pierwsze zajęcie Landmark
+- Dostępna w niektórych wydarzeniach odpowiedniego sezonu
+- Głównie dotyczy Tokyo, Bali i Roma
+
+**Auction House:**
+- Nie istnieje biżuteria Auction House
+
+### Samochody
+Samochody są trudniejsze do zdobycia niż biżuteria.
+
+**Klasyczne Samochody:**
+- Umiarkowana trudność
+- Zdobywane z nagród wydarzeń
+- Zdobywane ze sklepów wydarzeń
+- Dostępne również w VIP Shop, ale koszt jest wysoki
+
+**Samochody Abroad:**
+- Trudne do zdobycia
+- Zdobywane z nagród i sklepów wydarzeń odpowiedniego sezonu
+- Dość trudne do zdobycia dla free-to-play
+
+**Samochody Auction House:**
+- Bardzo trudne do zdobycia
+- Raz w tygodniu na serwerze głównym dla gałęzi Śpiew
+- Raz w tygodniu w aukcji przygód Abroad dla gałęzi Taniec
+- Nie istnieje samochód Auction House dla Zarządzania
+- Trzeba wygrać aukcję
+
+### Nieruchomości
+Nieruchomości podążają prawie za tą samą logiką co samochody.
+
+**Klasyczne Nieruchomości:**
+- Podobne do klasycznych samochodów
+- Zdobywane poprzez nagrody wydarzeń i sklepy wydarzeń
+- Niedostępne w VIP Shop
+
+**Nieruchomości Abroad:**
+- Podobne do samochodów Abroad
+- Generalnie około dwa razy droższe
+- Dlatego trudniejsze do zdobycia
+
+**Nieruchomości Auction House:**
+- Ta sama logika co samochody Auction House
+`,
+    content_id: `
+## Panduan Peralatan
+
+### Penjelasan Singkat
+Peralatan, juga disebut Assets, adalah sumber kekuatan utama di Top Girl.
+Setiap seniman dapat melengkapi 3 Assets: 1 perhiasan, 1 mobil dan 1 properti.
+Assets memberikan banyak statistik dan juga meningkatkan kapasitas penggemar.
+Jika seniman sesuai dengan Asset, Anda mendapatkan bonus statistik 20%. Contoh: seniman Roma dengan assets Roma.
+
+### Penjelasan Panjang
+Peralatan adalah sistem inti dalam permainan. Berfungsi untuk memperkuat seniman secara langsung.
+Asset yang bagus memberikan banyak statistik. Dapat juga memberikan peningkatan kapasitas penggemar yang besar.
+Di tim utama, Assets yang bagus membuat perbedaan yang sangat besar.
+
+Setiap seniman memiliki 3 slot:
+- 1 perhiasan
+- 1 mobil
+- 1 properti
+
+Bonus paling penting untuk diketahui adalah bonus kecocokan.
+Ketika seniman melengkapi Asset yang sesuai dengan asal atau musimnya, ia mendapatkan +20% statistik pada Asset tersebut.
+Contoh: seniman Roma dengan Asset Roma.
+
+Ini membuat Assets Abroad menjadi lebih kuat pada seniman yang sudah cocok dengan musim tersebut.
+
+### Perhiasan
+Perhiasan adalah kategori termudah untuk diperoleh di awal.
+
+**Perhiasan Klasik:**
+- Cukup mudah diperoleh
+- Tersedia di VIP Shop
+- Tersedia sebagai hadiah untuk pendudukan Landmark pertama
+- Tersedia di Stock Market Shop
+
+**Perhiasan Abroad:**
+- Lebih sulit diperoleh
+- Tersedia sebagai hadiah untuk pendudukan Landmark pertama
+- Tersedia di beberapa peristiwa musim yang sesuai
+- Mainly menyangkut Tokyo, Bali dan Roma
+
+**Auction House:**
+- Tidak ada perhiasan Auction House
+
+### Mobil
+Mobil lebih sulit diperoleh daripada perhiasan.
+
+**Mobil Klasik:**
+- Kesulitan sedang
+- Diperoleh dari hadiah peristiwa
+- Diperoleh dari toko peristiwa
+- Tersedia juga di VIP Shop, tapi biayanya tinggi
+
+**Mobil Abroad:**
+- Sulit diperoleh
+- Diperoleh dari hadiah dan toko peristiwa musim yang sesuai
+- Cukup sulit diperoleh untuk free-to-play
+
+**Mobil Auction House:**
+- Sangat sulit diperoleh
+- Sekali seminggu di server rumah untuk cabang Nyanyian
+- Sekali seminggu di lelang petualangan Abroad untuk cabang Tari
+- Tidak ada mobil Auction House untuk Manajemen
+- Harus finis pertama di lelang
+
+### Properti
+Properti mengikuti hampir logika yang sama dengan mobil.
+
+**Properti Klasik:**
+- Mirip dengan mobil klasik
+- Diperoleh melalui hadiah peristiwa dan toko peristiwa
+- Tidak tersedia di VIP Shop
+
+**Properti Abroad:**
+- Mirip dengan mobil Abroad
+- Umumnya sekitar dua kali lebih mahal
+- Oleh karena itu lebih sulit diperoleh
+
+**Properti Auction House:**
+- Logika yang sama dengan mobil Auction House
+`,
+    content_ru: `
+## Гайд по Снаряжению
+
+### Краткое объяснение
+Снаряжение, также называемое Assets, является основным источником силы в Top Girl.
+Каждый артист может экипировать 3 Assets: 1 украшение, 1 машину и 1 недвижимость.
+Assets дают много статов и также увеличивают вместимость фанатов.
+Если артист соответствует Assetу, вы получаете бонус статов 20%. Пример: артист Roma с assets Roma.
+
+### Подробное объяснение
+Снаряжение - это центральная система в игре. Служит для прямого усиления артиста.
+Хороший Asset дает много статов. Также может дать большой прирост вместимости фанатов.
+На основной команде хорошие Assets имеют очень большое значение.
+
+У каждого артиста 3 слота:
+- 1 украшение
+- 1 машина
+- 1 недвижимость
+
+Важнейший бонус для знания - это бонус соответствия.
+Когда артист экипирует Asset, соответствующий его происхождению или сезону, он получает +20% статов на этот Asset.
+Пример: артист Roma с Assetом Roma.
+
+Это делает Assets Abroad еще более сильными на артистах, которые уже соответствуют этому сезону.
+
+### Украшения
+Украшения - самая простая категория для получения в начале.
+
+**Классические украшения:**
+- Довольно простые в получении
+- Доступны в VIP Shop
+- Доступны как награда за первое занятие Landmark
+- Доступны в Stock Market Shop
+
+**Украшения Abroad:**
+- Сложнее получить
+- Доступны как награда за первое занятие Landmark
+- Доступны в определенных событиях соответствующего сезона
+- В основном касаются Tokyo, Bali и Roma
+
+**Auction House:**
+- Не существует украшений Auction House
+
+### Машины
+Машины сложнее получить, чем украшения.
+
+**Классические машины:**
+- Умеренная сложность
+- Получаются из наград событий
+- Получаются из магазинов событий
+- Также доступны в VIP Shop, но стоимость высока
+
+**Машины Abroad:**
+- Сложно получить
+- Получаются из наград и магазинов событий соответствующего сезона
+- Достаточно сложно получить для free-to-play
+
+**Машины Auction House:**
+- Очень сложно получить
+- Раз в неделю на домашнем сервере для ветки Пения
+- Раз в неделю в аукционе приключений Abroad для ветки Танца
+- Не существует машины Auction House для Менеджмента
+- Нужно выиграть аукцион
+
+### Недвижимость
+Недвижимость следует почти той же логике, что и машины.
+
+**Классическая Недвижимость:**
+- Подобна классическим машинам
+- Получается через награды событий и магазины событий
+- Не доступна в VIP Shop
+
+**Недвижимость Abroad:**
+- Подобна машинам Abroad
+- Обычно примерно в два раза дороже
+- Поэтому сложнее получить
+
+**Недвижимость Auction House:**
+- Та же логика, что и у машин Auction House
+`,
     tips: `
-- Achetez d'abord les bijoux pour un boost immédiat des stats
-- Concentrez-vous sur une stat principale avant de diversifier
-- Les propriétés sont meilleures pour le revenus passif à long terme
-- Équipements Gold vs Purple: Gold offre +30% de stats en plus
-- Priorisez les voitures pour le bonus de vitesse de conduite
-- during events x2, maximize vos achats d'équipements
-    `
+- Concentre tes meilleurs Assets sur ton équipe principale
+- Dans la plupart des cas, il vaut mieux construire les 5 bijoux, 5 voitures et 5 propriétés de ton core team avant d'investir ailleurs
+- L'exception, c'est si tu es une baleine et que tu peux élargir plus vite
+- Choisis bien les Assets que tu veux promote
+- Il faut penser à tes besoins réels et à tes futures promotions
+- Essaie de maximiser un équipement un par un
+- Le but est d'atteindre le niveau maximum pour pouvoir le promote
+- La promotion donne un gros boost de stats
+- Ne promote jamais un équipement si tu n'es pas sûr
+- La promotion est non réversible
+- Un équipement promu ne peut plus servir comme matériel de promotion pour un autre
+- Évite de dépenser des Asset Coins sur les équipements violets
+- Ce n'est presque jamais un bon investissement à long terme
+- Le principal intérêt des équipements violets est de les échanger pendant l'événement Tipsy Date
+    `,
+    tips_en: `
+- Concentrate your best Assets on your main team
+- In most cases, it's better to build the 5 jewelry, 5 cars and 5 properties of your core team before investing elsewhere
+- The exception is if you're a whale and can expand faster
+- Choose the Assets you want to promote wisely
+- Think about your real needs and future promotions
+- Try to maximize one equipment at a time
+- The goal is to reach the maximum level to be able to promote it
+- Promotion gives a big stats boost
+- Never promote an equipment if you're not sure
+- Promotion is irreversible
+- A promoted equipment can no longer serve as promotion material for another
+- Avoid spending Asset Coins on purple equipment
+- It's almost never a good long-term investment
+- The main interest of purple equipment is to exchange them during the Tipsy Date event
+    `,
+    tips_it: `
+- Concentra i tuoi migliori Assets sulla tua squadra principale
+- Nella maggior parte dei casi, è meglio costruire i 5 gioielli, 5 auto e 5 proprietà del tuo team principale prima di investire altrove
+- L'eccezione sei tu che puoi espanderti più velocemente
+- Scegli bene gli Asset che vuoi promuovere
+- Devi pensare alle tue esigenze reali e alle tue promozioni future
+- Prova a massimizzare un equipaggiamento alla volta
+- L'obiettivo è raggiungere il livello massimo per poterlo promuovere
+- La promozione dà un grande boost di statistiche
+- Non promuovere mai un equipaggiamento se non sei sicuro
+- La promozione è irreversibile
+- Un equipaggiamento promosso non può più servire come materiale di promozione per un altro
+- Evita di spendere Asset Coins su equipaggiamento viola
+- Non è quasi mai un buon investimento a lungo termine
+- L'interesse principale dell'equipaggiamento viola è scambiarlo durante l'evento Tipsy Date
+    `,
+    tips_es: `
+- Concentra tus mejores Assets en tu equipo principal
+- En la mayoría de los casos, es mejor construir las 5 joyas, 5 coches y 5 propiedades de tu equipo base antes de invertir en otro lugar
+- La excepción es si eres una ballena y puedes expandirte más rápido
+- Elige bien los Assets que quieres promover
+- Piensa en tus necesidades reales y promociones futuras
+- Intenta maximizar un equipo a la vez
+- El objetivo es alcanzar el nivel máximo para poder promoverlo
+- La promoción da un gran impulso de stats
+- Nunca promuevas un equipo si no estás seguro
+- La promoción es irreversible
+- Un equipo promovido ya no puede servir como material de promoción para otro
+- Evita gastar Asset Coins en equipo violeta
+- Casi nunca es una buena inversión a largo plazo
+- El interés principal del equipo violeta es intercambiarlos durante el evento Tipsy Date
+    `,
+    tips_pt: `
+- Concentre seus melhores Assets em sua equipe principal
+- Na maioria dos casos, é melhor construir as 5 joias, 5 carros e 5 propriedades de sua equipe principal antes de investir em outro lugar
+- A exceção é se você for uma baleia e puder expandir mais rápido
+- Escolha bem os Assets que deseja promover
+- Pense em suas necessidades reais e promoções futuras
+- Tente maximizar um equipamento de cada vez
+- O objetivo é atingir o nível máximo para poder promovê-lo
+- Promoção dá um grande impulso de stats
+- Nunca promova um equipamento se não tiver certeza
+- A promoção é irreversível
+- Um equipamento promovido não pode mais servir como material de promoção para outro
+- Evite gastar Asset Coins em equipamento roxo
+- Quase nunca é um bom investimento de longo prazo
+- O principal interesse do equipamento roxo é trocá-los durante o evento Tipsy Date
+    `,
+    tips_pl: `
+- Skoncentruj swoje najlepsze Assets na głównej drużynie
+- W większości przypadków lepiej jest zbudować 5 biżuterii, 5 samochodów i 5 nieruchomości swojej głównej drużyny przed inwestowaniem gdzie indziej
+- Wyjątkiem jest, jeśli jesteś wielorybem i możesz się szybciej rozszerzać
+- Wybierz mądrze Assets, które chcesz promować
+- Musisz myśleć o swoich rzeczywistych potrzebach i przyszłych promocjach
+- Staraj się maksymalizować jeden sprzęt na raz
+- Celem jest osiągnięcie maksymalnego poziomu, aby móc go promować
+- Promocja daje duży wzrost statystyk
+- Nigdy nie promuj sprzętu, jeśli nie jesteś pewien
+- Promocja jest nieodwracalność
+- Promowany sprzęt nie może już służyć jako materiał promocyjny dla innego
+- Unikaj wydawania Asset Coins na fioletowy sprzęt
+- To prawie nigdy nie jest dobra inwestycja długoterminowa
+- Głównym zainteresowaniem fioletowego sprzętu jest wymiana ich podczas wydarzenia Tipsy Date
+    `,
+    tips_id: `
+- Fokuskan Assets terbaik Anda di tim utama
+- Di sebagian besar kasus, lebih baik membangun 5 perhiasan, 5 mobil, dan 5 properti tim inti Anda sebelum berinvestasi di tempat lain
+- Pengecualiannya adalah jika Anda adalah paus dan dapat memperluas lebih cepat
+- Pilih Assets yang ingin Anda promosikan dengan bijak
+- Pikirkan kebutuhan nyata dan promosi masa depan Anda
+- Coba maksimalkan satu peralatan pada satu waktu
+- Tujuannya adalah mencapai level maksimum untuk dapat mempromikannya
+- Promosi memberikan dorongan stats besar
+- Jangan pernah promosikan peralatan jika Anda tidak yakin
+- Promosi tidak dapat dibatalkan
+- Peralatan yang dipromosikan tidak lagi dapat digunakan sebagai bahan promosi untuk yang lain
+- Hindari menghabiskan Asset Coins untuk peralatan ungu
+- Ini hampir nunca merupakan investasi jangka panjang yang baik
+- Minat utama peralatan ungu adalah menukarnya selama acara Tipsy Date
+    `,
+    tips_ru: `
+- Сосредоточьте свои лучшие Assets на основной команде
+- В большинстве случаев лучше сначала построить 5 украшений, 5 машин и 5 недвижимостей вашей основной команды
+- Исключение - если вы киты и можете расширяться быстрее
+- Мудро выбирайте Assets, которые хотите продвигать
+- Думайте о своих реальных потребностях и будущих продвижениях
+- Старайтесь максимизировать одно снаряжение за раз
+- Цель - достичь максимального уровня, чтобы иметь возможность продвигать его
+- Продвижение дает большой прирост статов
+- Никогда не продвигайте снаряжение, если не уверены
+- Продвижение необратимо
+- Продвинутое снаряжение больше не может служить материалом для продвижения другого
+- Избегайте траты Asset Coins на фиолетовое снаряжение
+- Это почти никогда не бывает хорошим долгосрочным вложением
+- Основной интерес фиолетового снаряжения - обменять их во время события Tipsy Date
+    `,
   },
   {
     id: "team-builder",
@@ -988,71 +2688,1358 @@ Le **Metro & Subway** est un événement où vous prenez le métro pour collecte
   {
     id: "event-vs-group",
     title: "Guide VS Group Event",
-    description: "Guide du VS Group Event",
+    title_en: "Group Battle Guide",
+    title_it: "Guida Group Battle",
+    title_es: "Guía Group Battle",
+    title_pt: "Guia Group Battle",
+    title_pl: "Przewodnik Group Battle",
+    title_id: "Panduan Group Battle",
+    title_ru: "Гайд Group Battle",
+    description: "Group Battle est un événement de groupe qui dure 6 jours. Bataille entre groupes avec 5 jours de préparation et 1 jour de combat final.",
+    description_en: "Group Battle is a 6-day group event. Battle between groups with 5 days preparation and 1 day final combat.",
+    description_it: "Group Battle è un evento di gruppo della durata di 6 giorni. Battaglia tra gruppi con 5 giorni di preparazione e 1 giorno di combattimento finale.",
+    description_es: "Group Battle es un evento de grupo que dura 6 días. Batalla entre grupos con 5 días de preparación y 1 día de combate final.",
+    description_pt: "Group Battle é um evento de grupo que dura 6 dias. Batalha entre grupos com 5 dias de preparação e 1 dia de combate final.",
+    description_pl: "Group Battle to wydarzenie grupowe trwające 6 dni. Bitwa między grupami z 5 dniami przygotowań i 1 dniem walki.",
+    description_id: "Group Battle adalah acara grup yang berlangsung 6 hari. Pertarungan antar grup dengan 5 hari persiapan dan 1 hari pertarungan final.",
+    description_ru: "Group Battle - это групповое событие длительностью 6 дней. Битва между группами с 5 днями подготовки и 1 днём финальной битвы.",
     icon: "⚔️",
     color: "#ef4444",
     category: "Événements",
+    category_en: "Events",
+    category_it: "Eventi",
+    category_es: "Eventos",
+    category_pt: "Eventos",
+    category_pl: "Wydarzenia",
+    category_id: "Acara",
+    category_ru: "События",
     readTime: "8 min",
     content: `
-## VS Group Event Guide - TopGirl
+## Guide Group Battle
 
-### Timeline
-- **5 DAYS OF PREPARATION** (Daily Themes) followed by the **DAY 6 FINAL BATTLE**
-- **DAILY DUEL**: Earn points via specific tasks
-- **VICTORY**: The group with the highest accumulated score after 6 days claims ULTIMATE VICTORY
+### Explication courte
+Group Battle est un événement de groupe qui dure 6 jours.
+Pendant les 5 premiers jours, les groupes gagnent des points en réalisant des actions quotidiennes.
+Le jour 6, une phase finale appelée Rush Attack permet d'attaquer des zones ennemies pour gagner encore plus de points.
+Le groupe avec le meilleur score total à la fin remporte la Ultimate Victory.
 
-### Participation Requirements
-- **LEVEL REQUIREMENT**: CEO LEVEL MUST AT LEAST REACH LEVEL 20
-- **GROUP QUALIFICATION**: Only groups with HIGH FINANCIAL POWER RANKINGS are ELIGIBLE FOR MATCHING
-- **CHANGING GROUPS DURING THE EVENT**: Prevents contributing group points for 1 day, but personal points remain UNAFFECTED
+### Explication longue
+#### Fonctionnement général
+Group Battle est un événement centré sur la coopération de groupe.
+Chaque membre doit participer pour faire monter le score global.
 
-### Rewards & Blueprints
-- **Unlock 9 tiers of rewards**
-- Top players and victorious groups receive GRAND REWARDS via mail
-- **TIERS 4-9 REQUIRE MASTER BLUEPRINTS**
-- Use Master Blueprints to boost point efficiency and unlock permanent stat bonuses
+L'événement dure 6 jours :
+- Jours 1 à 5 : Preparation Phase
+- Jour 6 : Final Battle Phase
 
-### Rush Attack (Day 6)
-- **INVASION**: On the 6th day, free teleportation to LANDMARKS (2, 3, 4) is enabled
-- **ELIMINATION**: Defeat rival members in their territory to harvest MASSIVE BONUS POINTS
-    `
+Le but est simple : ton groupe doit accumuler plus de points que le groupe adverse.
+
+#### Jours 1 à 5 : Preparation Phase
+Pendant les 5 premiers jours, les joueuses réalisent des actions quotidiennes pour gagner des Battle Points.
+
+Chaque jour, il y a un résultat journalier entre les groupes opposés.
+Le groupe qui a le plus de points gagne le score du jour.
+
+Si deux groupes atteignent exactement le même score, le groupe qui a atteint ce score en premier gagne.
+Cette règle rend la vitesse importante, pas seulement le total.
+
+#### Jour 6 : Final Battle Phase
+Le jour 6 est la phase décisive.
+C'est à ce moment que se joue la Ultimate Victory.
+
+Pendant cette journée, les joueuses peuvent participer à la phase Rush Attack pour gagner des points supplémentaires.
+À la fin des 6 jours, le groupe avec le meilleur score cumulé remporté l'événement.
+
+#### Rush Attack
+Pendant Rush Attack, les joueuses peuvent se téléporter vers les zones du groupe adverse.
+
+Zones disponibles :
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+Dans ces zones, il est possible de gagner des points supplémentaires en battant des membres du groupe rival.
+
+Le bouton Back permet de retourner sur son propre territoire.
+Mais utiliser Back lance un cooldown avant le prochain téléport gratuit.
+
+Cela veut dire qu'il faut bien choisir ses déplacements pendant la phase finale.
+
+#### Blueprints
+Pendant Group Battle, il est possible d'améliorer les Battle Blueprints.
+
+Les améliorations permettent de :
+- débloquer des paliers de récompenses plus élevés
+- augmenter les points gagnés
+- débloquer des bonus de stats permanents
+
+Il existe aussi des Master Blueprints, qui servent eux aussi à améliorer la performance pendant l'événement.
+
+Les Blueprints sont donc très importants si tu veux progresser sur le long terme dans Group Battle.
+
+#### Conditions de participation
+Pour participer, il faut :
+- être CEO Level 20 ou plus
+- être membre d'un groupe avec une Financial Power suffisante
+
+Changer de groupe pendant l'événement a une conséquence importante :
+- la contribution en Group Points est bloquée pendant 1 jour
+- les Personal Points ne sont pas affectés
+
+Cela rend les changements de groupe risqués pendant l'événement.
+`,
+    content_en: `
+## Group Battle Guide
+
+### Short Explanation
+Group Battle is a 6-day group event.
+During the first 5 days, groups earn points by completing daily actions.
+On day 6, a final phase called Rush Attack allows attacking enemy zones to earn even more points.
+The group with the best total score at the end wins the Ultimate Victory.
+
+### Long Explanation
+#### General Operation
+Group Battle is an event focused on group cooperation.
+Every member must participate to increase the overall score.
+
+The event lasts 6 days:
+- Days 1-5: Preparation Phase
+- Day 6: Final Battle Phase
+
+The goal is simple: your group must accumulate more points than the opposing group.
+
+#### Days 1-5: Preparation Phase
+During the first 5 days, players complete daily actions to earn Battle Points.
+
+Each day, there's a daily result between opposing groups.
+The group with the most points wins the day's score.
+
+If two groups reach exactly the same score, the group that reached that score first wins.
+This rule makes speed important, not just the total.
+
+#### Day 6: Final Battle Phase
+Day 6 is the decisive phase.
+This is when the Ultimate Victory is decided.
+
+During this day, players can participate in the Rush Attack phase to earn additional points.
+At the end of 6 days, the group with the best cumulative score wins the event.
+
+#### Rush Attack
+During Rush Attack, players can teleport to enemy group zones.
+
+Available zones:
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+In these zones, it's possible to earn additional points by defeating members of the rival group.
+
+The Back button allows returning to your own territory.
+But using Back launches a cooldown before the next free teleport.
+
+This means you need to choose your movements carefully during the final phase.
+
+#### Blueprints
+During Group Battle, it's possible to upgrade Battle Blueprints.
+
+Upgrades allow:
+- unlocking higher reward tiers
+- increasing points earned
+- unlocking permanent stat bonuses
+
+There are also Master Blueprints, which also help improve performance during the event.
+
+Blueprints are therefore very important if you want to progress long-term in Group Battle.
+
+#### Participation Requirements
+To participate, you need:
+- Be CEO Level 20 or higher
+- Be a member of a group with sufficient Financial Power
+
+Changing groups during the event has an important consequence:
+- Group Points contribution is blocked for 1 day
+- Personal Points are not affected
+
+This makes group changes risky during the event.
+`,
+    content_it: `
+## Guida Group Battle
+
+### Breve Spiegazione
+Group Battle è un evento di gruppo della durata di 6 giorni.
+Durante i primi 5 giorni, i gruppi guadagnano punti completando azioni quotidiane.
+Il giorno 6, una fase finale chiamata Rush Attack permette di attaccare zone nemiche per guadagnare ancora più punti.
+Il gruppo con il miglior punteggio totale alla fine vince la Ultimate Victory.
+
+### Spiegazione Dettagliata
+#### Funzionamento Generale
+Group Battle è un evento incentrato sulla cooperazione di gruppo.
+Ogni membro deve partecipare per aumentare il punteggio complessivo.
+
+L'evento dura 6 giorni:
+- Giorni 1-5: Preparation Phase
+- Giorno 6: Final Battle Phase
+
+L'obiettivo è semplice: il tuo gruppo deve accumulare più punti del gruppo avversario.
+
+#### Giorni 1-5: Preparation Phase
+Durante i primi 5 giorni, i giocatori completano azioni quotidiane per guadagnare Battle Points.
+
+Ogni giorno, c'è un risultato giornaliero tra i gruppi opposti.
+Il gruppo con più punti vince il punteggio del giorno.
+
+Se due gruppi raggiungono esattamente lo stesso punteggio, il gruppo che ha raggiunto quel punteggio per primo vince.
+Questa regola rende la velocità importante, non solo il totale.
+
+#### Giorno 6: Final Battle Phase
+Il giorno 6 è la fase decisiva.
+È in questo momento che si decide la Ultimate Victory.
+
+Durante questo giorno, i giocatori possono partecipare alla fase Rush Attack per guadagnare punti aggiuntivi.
+Alla fine dei 6 giorni, il gruppo con il miglior punteggio cumulato vince l'evento.
+
+#### Rush Attack
+Durante Rush Attack, i giocatori possono teletrasportarsi nelle zone del gruppo nemico.
+
+Zone disponibili:
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+In queste zone, è possibile guadagnare punti aggiuntivi sconfiggendo membri del gruppo rivale.
+
+Il pulsante Back permette di tornare al proprio territorio.
+Ma usare Back avvia un cooldown prima del prossimo teletrasporto gratuito.
+
+Questo significa che devi scegliere attentamente i tuoi spostamenti durante la fase finale.
+
+#### Blueprints
+Durante Group Battle, è possibile migliorare i Battle Blueprints.
+
+I miglioramenti permettono di:
+- sbloccare tier di ricompense più alti
+- aumentare i punti guadagnati
+- sbloccare bonus di statistiche permanenti
+
+Esistono anche Master Blueprints, che aiutano anche a migliorare le prestazioni durante l'evento.
+
+I Blueprints sono quindi molto importanti se vuoi progredire a lungo termine in Group Battle.
+
+#### Requisiti di Partecipazione
+Per partecipare, devi:
+- Essere CEO Level 20 o superiore
+- Essere membro di un gruppo con Financial Power sufficiente
+
+Cambiare gruppo durante l'evento ha una conseguenza importante:
+- Il contributo in Group Points viene bloccato per 1 giorno
+- I Personal Points non sono influenzati
+
+Questo rende i cambiamenti di gruppo rischiosi durante l'evento.
+`,
+    content_es: `
+## Guía Group Battle
+
+### Explicación Corta
+Group Battle es un evento de grupo que dura 6 días.
+Durante los primeros 5 días, los grupos ganan puntos completando acciones diarias.
+El día 6, una fase final llamada Rush Attack permite atacar zonas enemigas para ganar aún más puntos.
+El grupo con la mejor puntuación total al final gana la Ultimate Victory.
+
+### Explicación Larga
+#### Funcionamiento General
+Group Battle es un evento centrado en la cooperación de grupo.
+Cada miembro debe participar para aumentar la puntuación global.
+
+El evento dura 6 días:
+- Días 1-5: Preparation Phase
+- Día 6: Final Battle Phase
+
+El objetivo es simple: tu grupo debe acumular más puntos que el grupo oponente.
+
+#### Días 1-5: Preparation Phase
+Durante los primeros 5 días, los jugadores completan acciones diarias para ganar Battle Points.
+
+Cada día, hay un resultado diario entre los grupos opuestos.
+El grupo con más puntos gana la puntuación del día.
+
+Si dos grupos alcanzan exactamente la misma puntuación, el grupo que alcanzó esa puntuación primero gana.
+Esta regla hace que la velocidad sea importante, no solo el total.
+
+#### Día 6: Final Battle Phase
+El día 6 es la fase decisiva.
+Es en este momento cuando se decide la Ultimate Victory.
+
+Durante este día, los jugadores pueden participar en la fase Rush Attack para ganar puntos adicionales.
+Al final de los 6 días, el grupo con la mejor puntuación acumulada gana el evento.
+
+#### Rush Attack
+Durante Rush Attack, los jugadores pueden teletransportarse a las zonas del grupo enemigo.
+
+Zonas disponibles:
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+En estas zonas, es posible ganar puntos adicionales derrotando miembros del grupo rival.
+
+El botón Back permite volver a tu propio territorio.
+Pero usar Back inicia un cooldown antes del próximo teletransporte gratuito.
+
+Esto significa que debes elegir bien tus movimientos durante la fase final.
+
+#### Blueprints
+Durante Group Battle, es posible mejorar los Battle Blueprints.
+
+Las mejoras permiten:
+- desbloquear niveles de recompensas más altos
+- aumentar los puntos ganados
+- desbloquear bonos de estadísticas permanentes
+
+También existen Master Blueprints, que también ayudan a mejorar el rendimiento durante el evento.
+
+Los Blueprints son muy importantes si quieres progresar a largo plazo en Group Battle.
+
+#### Requisitos de Participación
+Para participar, necesitas:
+- Ser CEO Level 20 o superior
+- Ser miembro de un grupo con Financial Power suficiente
+
+Cambiar de grupo durante el evento tiene una consecuencia importante:
+- La contribución en Group Points se bloquea por 1 día
+- Los Personal Points no se ven afectados
+
+Esto hace que los cambios de grupo sean arriesgados durante el evento.
+`,
+    content_pt: `
+## Guia Group Battle
+
+### Explicação Curta
+Group Battle é um evento de grupo que dura 6 dias.
+Durante os primeiros 5 dias, os grupos ganham pontos completando ações diárias.
+No dia 6, uma fase final chamada Rush Attack permite atacar zonas inimigas para ganhar ainda mais pontos.
+O grupo com a melhor pontuação total no final vence a Ultimate Victory.
+
+### Explicação Longa
+#### Funcionamento Geral
+Group Battle é um evento focado na cooperação de grupo.
+Cada membro deve participar para aumentar a pontuação geral.
+
+O evento dura 6 dias:
+- Dias 1-5: Preparation Phase
+- Dia 6: Final Battle Phase
+
+O objetivo é simples: seu grupo deve acumular mais pontos que o grupo oponente.
+
+#### Dias 1-5: Preparation Phase
+Durante os primeiros 5 dias, os jogadores completam ações diárias para ganhar Battle Points.
+
+Cada dia, há um resultado diário entre os grupos opostos.
+O grupo com mais pontos ganha a pontuação do dia.
+
+Se dois grupos atingirem exatamente a mesma pontuação, o grupo que atingiu essa pontuação primeiro ganha.
+Esta regra torna a velocidade importante, não apenas o total.
+
+#### Dia 6: Final Battle Phase
+O dia 6 é a fase decisiva.
+É neste momento que a Ultimate Victory é決定.
+
+Durante este dia, os jogadores podem participar da fase Rush Attack para ganhar pontos adicionais.
+No final dos 6 dias, o grupo com a melhor pontuação acumulada vence o evento.
+
+#### Rush Attack
+Durante Rush Attack, os jogadores podem se teletransportar para as zonas do grupo inimigo.
+
+Zonas disponíveis:
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+ nessas zonas, é possível ganhar pontos adicionais derrotando membros do grupo rival.
+
+O botão Back permite retornar ao seu próprio território.
+Mas usar o Back inicia um cooldown antes do próximo teletransporte gratuito.
+
+Isso significa que você precisa escolher seus movimentos cuidadosamente durante a fase final.
+
+#### Blueprints
+Durante Group Battle, é possível melhorar os Battle Blueprints.
+
+As melhorias permitem:
+- desbloquear camadas de recompensas mais altas
+- aumentar os pontos ganhos
+- desbloquear bônus de estatísticas permanentes
+
+Também existem Master Blueprints, que também ajudam a melhorar o desempenho durante o evento.
+
+Os Blueprints são muito importantes se você quiser progredir a longo prazo em Group Battle.
+
+#### Requisitos de Participação
+Para participar, você precisa:
+- Ser CEO Level 20 ou superior
+- Ser membro de um grupo com Financial Power suficiente
+
+Mudar de grupo durante o evento tem uma consequência importante:
+- A contribuição em Group Points é bloqueada por 1 dia
+- Os Personal Points não são afetados
+
+Isso torna as mudanças de grupo arriscadas durante o evento.
+`,
+    content_pl: `
+## Przewodnik Group Battle
+
+### Krótka Wyjaśnienie
+Group Battle to wydarzenie grupowe trwające 6 dni.
+Pierwsze 5 dni grupy zdobywają punkty wykonując codzienne działania.
+Dzień 6, faza zwana Rush Attack pozwala atakować strefy wroga, aby zdobyć jeszcze więcej punktów.
+Grupa z najlepszą łączną punktacją na końcu wygrywa Ultimate Victory.
+
+### Długie Wyjaśnienie
+#### Ogólne Działanie
+Group Battle to wydarzenie skoncentrowane na współpracy grupy.
+Każdy członek musi uczestniczyć, aby zwiększyć ogólny wynik.
+
+Wydarzenie trwa 6 dni:
+- Dni 1-5: Preparation Phase
+- Dzień 6: Final Battle Phase
+
+Cel jest prosty: Twoja grupa musi zgromadzić więcej punktów niż grupa przeciwna.
+
+#### Dni 1-5: Preparation Phase
+Przez pierwsze 5 dni gracze wykonują codzienne działania, aby zdobyć Battle Points.
+
+Każdego dnia jest wynik dzienny między przeciwnymi grupami.
+Grupa z większą liczbą punktów wygrywa wynik dnia.
+
+Jeśli dwie grupy osiągną dokładnie taką samą punktację, grupa, która osiągnęła tę punktację pierwsza, wygrywa.
+Ta sprawia, że prędkość jest ważna, nie tylko suma.
+
+#### Dzień 6: Final Battle Phase
+Dzień 6 jest decydującą fazą.
+To wtedy rozstrzyga się Ultimate Victory.
+
+W tym dniu gracze mogą uczestniczyć w fazie Rush Attack, aby zdobyć dodatkowe punkty.
+Pod koniec 6 dni grupa z najlepszą łączną punktacją wygrywa wydarzenie.
+
+#### Rush Attack
+Podczas Rush Attack gracze mogą teleportować się do stref wrogiej grupy.
+
+Dostępne strefy:
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+W tych strefach można zdobywać dodatkowe punkty pokonując członków grupy rywalnej.
+
+Przycisk Back pozwala wrócić na własne terytorium.
+Ale użycie Back uruchamia cooldown przed kolejną darmową teleportacją.
+
+Oznacza to, że musisz ostrożnie wybierać swoje ruchy podczas fazy końcowej.
+
+#### Blueprints
+Podczas Group Battle można ulepszać Battle Blueprints.
+
+Ulepszenia pozwalają na:
+- odblokowanie wyższych poziomów nagród
+- zwiększenie zdobywanych punktów
+- odblokowanie stałych bonusów statystyk
+
+Istnieją również Master Blueprints, które również pomagają poprawić wydajność podczas wydarzenia.
+
+Blueprints są bardzo ważne, jeśli chcesz rozwijać się długoterminowo w Group Battle.
+
+#### Wymagania Uczestnictwa
+Aby uczestniczyć, musisz:
+- Mieć CEO Level 20 lub wyższy
+- Być członkiem grupy z wystarczającą Financial Power
+
+Zmiana grupy podczas wydarzenia ma ważną konsekwencję:
+- Kontrybucja w Group Points jest blokowana na 1 dzień
+- Personal Points nie są dotknięte
+
+To sprawia, że zmiany grup są ryzykowne podczas wydarzenia.
+`,
+    content_id: `
+## Panduan Group Battle
+
+### Penjelasan Singkat
+Group Battle adalah acara grup yang berlangsung 6 hari.
+Selama 5 hari pertama, grup mendapatkan poin dengan menyelesaikan tindakan harian.
+Pada hari 6, fase final disebut Rush Attack memungkinkan menyerang zona musuh untuk mendapatkan lebih banyak poin.
+Grup dengan skor total terbaik di akhir memenangkan Ultimate Victory.
+
+### Penjelasan Panjang
+#### Operasi Umum
+Group Battle adalah acara yang fokus pada kerja sama grup.
+Setiap anggota harus berpartisipasi untuk meningkatkan skor keseluruhan.
+
+Acara berlangsung 6 hari:
+- Hari 1-5: Preparation Phase
+- Hari 6: Final Battle Phase
+
+Tujuannya sederhana: grup Anda harus mengakumulasi lebih banyak poin daripada grup lawan.
+
+#### Hari 1-5: Preparation Phase
+Selama 5 hari pertama, pemain menyelesaikan tindakan harian untuk mendapatkan Battle Points.
+
+Setiap hari, ada hasil harian antara grup yang berlawanan.
+Grup dengan poin paling banyak memenangkan skor hari.
+
+Jika dua grup mencapai skor yang sama persis, grup yang mencapai skor itu lebih dulu menang.
+Aturan ini membuat kecepatan penting, bukan hanya total.
+
+#### Hari 6: Final Battle Phase
+Hari 6 adalah fase yang menentukan.
+Inilah saat Ultimate Victory diputuskan.
+
+Selama hari ini, pemain dapat berpartisipasi dalam fase Rush Attack untuk mendapatkan poin tambahan.
+Di akhir 6 hari, grup dengan skor kumulatif terbaik memenangkan acara.
+
+#### Rush Attack
+Selama Rush Attack, pemain dapat teleportasi ke zona grup musuh.
+
+Zona yang tersedia:
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+Di zona-zona ini, mungkin untuk mendapatkan poin tambahan dengan mengalahkan anggota grup lawan.
+
+Tombol Back memungkinkan kembali ke wilayah Anda sendiri.
+Tetapi menggunakan Back memulai cooldown sebelum teleport gratis berikutnya.
+
+Ini berarti Anda harus memilih gerakan dengan hati-hati selama fase final.
+
+#### Blueprints
+Selama Group Battle, mungkin untuk meningkatkan Battle Blueprints.
+
+Peningkatan memungkinkan:
+- membuka tier hadiah yang lebih tinggi
+- meningkatkan poin yang diperoleh
+- membuka bonus statistik permanen
+
+Ada juga Master Blueprints, yang juga membantu meningkatkan kinerja selama acara.
+
+Blueprints sangat penting jika Anda ingin berkembang dalam jangka panjang di Group Battle.
+
+#### Persyaratan Partisipasi
+Untuk berpartisipasi, Anda perlu:
+- Menjadi CEO Level 20 atau lebih tinggi
+- Menjadi anggota grup dengan Financial Power yang cukup
+
+Mengubah grup selama acara memiliki konsekuensi penting:
+- Kontribusi Group Points diblokir selama 1 hari
+- Personal Points tidak terpengaruh
+
+Ini membuat perubahan grup berisiko selama acara.
+`,
+    content_ru: `
+## Гайд Group Battle
+
+### Краткое объяснение
+Group Battle - это групповое событие длительностью 6 дней.
+В первые 5 дней группы зарабатывают очки, выполняя ежедневные действия.
+На 6 день финальная фаза под названием Rush Attack позволяет атаковать вражеские зоны для получения еще большего количества очков.
+Группа с лучшим общим счетом в конце побеждает в Ultimate Victory.
+
+### Подробное объяснение
+#### Общее функционирование
+Group Battle - это событие, ориентированное на групповое сотрудничество.
+Каждый участник должен участвовать для увеличения общего счета.
+
+Событие длится 6 дней:
+- Дни 1-5: Preparation Phase
+- День 6: Final Battle Phase
+
+Цель проста: ваша группа должна накопить больше очков, чем противоборствующая группа.
+
+#### Дни 1-5: Preparation Phase
+В первые 5 дней игроки выполняют ежедневные действия для получения Battle Points.
+
+Каждый день есть ежедневный результат между противоборствующими группами.
+Группа с наибольшим количеством очков выигрывает дневной счет.
+
+Если две группы набирают абсолютно одинаковый счет, группа, которая первой достигла этого счета, выигрывает.
+Это правило делает скорость важной, не только общее количество.
+
+#### День 6: Final Battle Phase
+День 6 - решающая фаза.
+Именно в это время решается Ultimate Victory.
+
+В этот день игроки могут участвовать в фазе Rush Attack для получения дополнительных очков.
+В конце 6 дней группа с лучшим совокупным счетом побеждает в событии.
+
+#### Rush Attack
+Во время Rush Attack игроки могут телепортироваться в зоны вражеской группы.
+
+Доступные зоны:
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+В этих зонах можно заработать дополнительные очки, побеждая членов вражеской группы.
+
+Кнопка Back позволяет вернуться на свою территорию.
+Но использование Back запускает кулдаун перед следующей бесплатной телепортацией.
+
+Это означает, что вам нужно тщательно выбирать свои перемещения во время финальной фазы.
+
+#### Blueprints
+Во время Group Battle можно улучшать Battle Blueprints.
+
+Улучшения позволяют:
+- открывать более высокие уровни наград
+- увеличивать зарабатываемые очки
+- открывать постоянные бонусы к статистикам
+
+Существуют также Master Blueprints, которые также помогают улучшить производительность во время события.
+
+Blueprints очень важны, если вы хотите прогрессировать долгосрочно в Group Battle.
+
+#### Условия участия
+Для участия вам нужно:
+- Иметь CEO Level 20 или выше
+- Быть членом группы с достаточной Financial Power
+
+Смена группы во время события имеет важное последствие:
+- Вклад в Group Points заблокирован на 1 день
+- Personal Points не затрагиваются
+
+Это делает смену группы рискованной во время события.
+`,
+    tips: `
+- Participe tous les jours pendant les Days 1-5
+- Essaie d'atteindre au moins 12 millions de points personnels par jour
+- Améliore tes Battle Blueprints dès que possible
+- Prépare-toi pour Rush Attack avant le Day 6
+- Coordonne-toi avec ton groupe
+- Évite de changer de groupe pendant l'événement
+    `,
+    tips_en: `
+- Participate every day during Days 1-5
+- Try to reach at least 12 million personal points per day
+- Upgrade your Battle Blueprints as soon as possible
+- Prepare for Rush Attack before Day 6
+- Coordinate with your group
+- Avoid changing groups during the event
+    `,
+    tips_it: `
+- Partecipa ogni giorno durante i Days 1-5
+- Prova a raggiungere almeno 12 milioni di punti personali al giorno
+- Aggiorna i tuoi Battle Blueprints il prima possibile
+- Preparati per Rush Attack prima del Day 6
+- Coordina con il tuo gruppo
+- Evita di cambiare gruppo durante l'evento
+    `,
+    tips_es: `
+- Participa todos los días durante los Days 1-5
+- Intenta alcanzar al menos 12 millones de puntos personales por día
+- Mejora tus Battle Blueprints lo antes posible
+- Prepárate para Rush Attack antes del Day 6
+- Coordina con tu grupo
+- Evita cambiar de grupo durante el evento
+    `,
+    tips_pt: `
+- Participe todos os dias durante os Days 1-5
+- Tente alcançar pelo menos 12 milhões de pontos pessoais por dia
+- Atualize seus Battle Blueprints o mais rápido possível
+- Prepare-se para Rush Attack antes do Day 6
+- Coordene-se com seu grupo
+- Evite mudar de grupo durante o evento
+    `,
+    tips_pl: `
+- Uczestnicz każdego dnia podczas Days 1-5
+- Staraj się osiągnąć co najmniej 12 milionów punktów osobistych dziennie
+- Ulepszaj swoje Battle Blueprints jak najszybciej
+- Przygotuj się do Rush Attack przed Day 6
+- Koordynuj ze swoją grupą
+- Unikaj zmiany grupy podczas wydarzenia
+    `,
+    tips_id: `
+- Berpartisipasi setiap hari selama Days 1-5
+- Cobalah mencapai setidaknya 12 juta poin pribadi per hari
+- Tingkatkan Battle Blueprints Anda segera
+- Bersiaplah untuk Rush Attack sebelum Day 6
+- Koordinasikan dengan grup Anda
+- Hindari mengubah grup selama acara
+    `,
+    tips_ru: `
+- Участвуйте каждый день в Days 1-5
+- Постарайтесь достичь как минимум 12 миллионов личных очков в день
+- Улучшайте свои Battle Blueprints как можно скорее
+- Готовьтесь к Rush Attack до Day 6
+- Координируйте со своей группой
+- Избегайте смены группы во время события
+    `,
   },
   {
     id: "event-fishing",
     title: "Guide Fishing Event",
-    description: "Guide du Fishing Event",
+    title_en: "Fishing Event Guide",
+    title_it: "Guida Fishing Event",
+    title_es: "Guía Fishing Event",
+    title_pt: "Guia Fishing Event",
+    title_pl: "Przewodnik Fishing Event",
+    title_id: "Panduan Fishing Event",
+    title_ru: "Гайд Fishing Event",
+    description: "Fishing Event dure 7 jours. Attrapez des poissons, gérez votre Aquarium et échangez des Vouchers contre des récompenses.",
+    description_en: "Fishing Event lasts 7 days. Catch fish, manage your Aquarium and exchange Vouchers for rewards.",
+    description_it: "Fishing Event dura 7 giorni. Cattura pesci, gestisci il tuo Aquarium e scambia Vouchers per ricompense.",
+    description_es: "Fishing Event dura 7 días. Atrapa peces, administra tu Aquarium e intercambia Vouchers por recompensas.",
+    description_pt: "Fishing Event dura 7 dias. Pegue peixes, gerencie seu Aquarium e troque Vouchers por recompensas.",
+    description_pl: "Fishing Event trwa 7 dni. Łów ryby, zarządzaj swoim Aquarium i wymieniaj Vouchery na nagrody.",
+    description_id: "Fishing Event berlangsung 7 hari. Tangkap ikan, kelola Aquarium Anda dan tukarkan Vouchers untuk hadiah.",
+    description_ru: "Fishing Event длится 7 дней. Ловите рыб, управляйте своим Aquarium и обменивайте Vouchers на награды.",
     icon: "🎣",
     color: "#06b6d4",
     category: "Événements",
+    category_en: "Events",
+    category_it: "Eventi",
+    category_es: "Eventos",
+    category_pt: "Eventos",
+    category_pl: "Wydarzenia",
+    category_id: "Acara",
+    category_ru: "События",
     readTime: "6 min",
     content: `
-## Fishing Event Guide - TopGirl
+## Guide Fishing Event
 
-### Tips
+### Explication courte
+Fishing Event dure 7 jours.
+Pendant cet événement, les joueuses attrapent des poissons avec du Free Bait ou du Paid Bait.
+Les poissons produisent des Vouchers, qui sont la monnaie de l'événement.
+Plus le poisson est rare, plus il produit de Vouchers.
+Il est aussi possible d'agrandir l'Aquarium pour garder plus de poissons et augmenter les gains.
 
-**1. Feed your fish regularly**
-- Keep voucher generation at full speed
-- Avoid slowdown
+### Explication longue
+#### Fonctionnement général
+Pendant Fishing Event, tu attrapes des poissons pour générer des Vouchers.
+Les Vouchers servent ensuite à acheter des récompenses dans la boutique de l'événement.
 
-**2. Focus on catching higher-star fish**
-- They earn MORE vouchers
-- Replace weaker ones automatically
+Chaque capture coûte 5 bait.
+Il existe 2 types de bait :
+- Free Bait
+- Paid Bait
 
-**3. Visit other players' aquariums**
-- You get 5 visits per day
-- If someone likes your aquarium, you'll receive shells
+Le Free Bait se régénère avec le temps.
+Le Paid Bait doit être obtenu via la boutique ou via certaines récompenses d'événement.
 
-**4. The more fish you have, the higher your income**
-- Keep expanding your aquarium
+#### Rareté des poissons
+Les poissons ont 4 niveaux de rareté :
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
 
-**5. Fish with a crown**
-- Give the highest CRS and voucher income
-- Keep them in your aquarium as long as possible
+Plus un poisson a d'étoiles, plus il génère de Vouchers par minute.
+Les 4★ Fish sont beaucoup plus fréquents avec le Paid Bait.
 
-**6. Don't waste your bait**
-- Time your clicks carefully
-- The fish will eat it automatically
-    `
+Quand tu obtiens un poisson plus fort, un poisson faible peut être remplacé automatiquement.
+Cela permet d'améliorer progressivement ton Aquarium.
+
+#### Pity system
+L'événement a un pity system.
+Toutes les 50 captures, tu es garantie d'obtenir au moins un 3★ Fish ou un 4★ Fish.
+Ce système aide à éviter les longues séries de mauvais résultats.
+
+#### Fish refresh system
+Les poissons apparaissent dans 2 pools :
+- Free Pool
+- Paid Pool
+
+Chaque fois qu'un poisson est attrapé, le timer de refresh repart à zéro.
+Si aucun poisson n'apparaît pendant 30 minutes, le pool se refresh automatiquement.
+Il est aussi possible de reset ce timer en attrapant un poisson.
+
+Ce point est important, car il faut surveiller les pools régulièrement pour ne pas gaspiller le bait.
+
+#### Aquarium et slots
+Les poissons sont gardés dans l'Aquarium.
+Il faut débloquer des tank slots pour pouvoir conserver plus de poissons.
+
+Plus tu gardes de poissons, plus tu gagnes de Vouchers.
+Les poissons en trop peuvent être convertis en Blue Shells.
+Les Blue Shells servent à débloquer des slots supplémentaires.
+
+L'Aquarium est donc une partie centrale de l'événement.
+Un plus grand Aquarium donne une meilleure génération de Vouchers sur toute la durée du Fishing Event.
+
+#### Fin de l'événement
+Quand l'événement se termine :
+- tout le Free Bait inutilisé est converti en Diamonds
+- tout le Paid Bait inutilisé est converti en Diamonds
+- la progression ne continue pas sur le prochain Fishing Event
+
+Cela veut dire qu'il faut optimiser ses ressources pendant les 7 jours, car rien n'est conservé pour la prochaine édition.
+`,
+    content_en: `
+## Fishing Event Guide
+
+### Short Explanation
+Fishing Event lasts 7 days.
+During this event, players catch fish with Free Bait or Paid Bait.
+Fish produce Vouchers, which are the event currency.
+The rarer the fish, the more Vouchers it produces.
+It's also possible to expand the Aquarium to keep more fish and increase earnings.
+
+### Long Explanation
+#### General Operation
+During Fishing Event, you catch fish to generate Vouchers.
+Vouchers are then used to buy rewards in the event shop.
+
+Each catch costs 5 bait.
+There are 2 types of bait:
+- Free Bait
+- Paid Bait
+
+Free Bait regenerates over time.
+Paid Bait must be obtained through the shop or through certain event rewards.
+
+#### Fish Rarity
+Fish have 4 rarity levels:
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
+
+The more stars a fish has, the more Vouchers it generates per minute.
+4★ Fish are much more common with Paid Bait.
+
+When you get a stronger fish, a weak fish can be replaced automatically.
+This allows you to gradually improve your Aquarium.
+
+#### Pity System
+The event has a pity system.
+Every 50 catches, you're guaranteed to get at least a 3★ Fish or 4★ Fish.
+This system helps avoid long streaks of bad results.
+
+#### Fish Refresh System
+Fish appear in 2 pools:
+- Free Pool
+- Paid Pool
+
+Each time a fish is caught, the refresh timer resets.
+If no fish appears for 30 minutes, the pool automatically refreshes.
+It's also possible to reset this timer by catching a fish.
+
+This point is important because you need to monitor pools regularly to avoid wasting bait.
+
+#### Aquarium and Slots
+Fish are kept in the Aquarium.
+You need to unlock tank slots to keep more fish.
+
+The more fish you keep, the more Vouchers you earn.
+Excess fish can be converted into Blue Shells.
+Blue Shells are used to unlock additional slots.
+
+The Aquarium is therefore a central part of the event.
+A larger Aquarium gives better Voucher generation throughout the Fishing Event.
+
+#### End of Event
+When the event ends:
+- All unused Free Bait is converted to Diamonds
+- All unused Paid Bait is converted to Diamonds
+- Progress does not continue to the next Fishing Event
+
+This means you need to optimize your resources during the 7 days, as nothing is saved for the next edition.
+`,
+    content_it: `
+## Guida Fishing Event
+
+### Breve Spiegazione
+Fishing Event dura 7 giorni.
+Durante questo evento, i giocatori catturano pesci con Free Bait o Paid Bait.
+I pesci producono Voucher, che sono la valuta dell'evento.
+Più il pesce è raro, più produce Voucher.
+È anche possibile espandere l'Aquarium per tenere più pesci e aumentare i guadagni.
+
+### Spiegazione Dettagliata
+#### Funzionamento Generale
+Durante Fishing Event, catturi pesci per generare Voucher.
+I Voucher vengono poi utilizzati per acquistare ricompense nel negozio dell'evento.
+
+Ogni cattura costa 5 bait.
+Esistono 2 tipi di bait:
+- Free Bait
+- Paid Bait
+
+Il Free Bait si rigenera nel tempo.
+Il Paid Bait deve essere ottenuto tramite il negozio o tramite alcune ricompense dell'evento.
+
+#### Rarità dei Pesci
+I pesci hanno 4 livelli di rarità:
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
+
+Più stelle ha un pesce, più Voucher genera al minuto.
+I 4★ Fish sono molto più frequenti con il Paid Bait.
+
+Quando ottieni un pesce più forte, un pesce debole può essere sostituito automaticamente.
+Questo ti permette di migliorare gradualmente il tuo Aquarium.
+
+#### Pity System
+L'evento ha un pity system.
+Ogni 50 catture, sei garantito di ottenere almeno un 3★ Fish o un 4★ Fish.
+Questo sistema aiuta a evitare lunghe serie di risultati negativi.
+
+#### Sistema Refresh dei Pesci
+I pesci appaiono in 2 pool:
+- Free Pool
+- Paid Pool
+
+Ogni volta che un pesce viene catturato, il timer di refresh si riazzera.
+Se nessun pesce appare per 30 minuti, il pool si refresha automaticamente.
+È anche possibile resettare questo timer catturando un pesce.
+
+Questo punto è importante, perché devi monitorare i pool regolarmente per non sprecare il bait.
+
+#### Aquarium e Slot
+I pesci sono tenuti nell'Aquarium.
+Devi sbloccare tank slot per conservare più pesci.
+
+Più pesci tieni, più Voucher guadagni.
+I pesci in più possono essere convertiti in Blue Shells.
+I Blue Shells servono per sbloccare slot aggiuntivi.
+
+L'Aquarium è quindi una parte centrale dell'evento.
+Un Aquarium più grande dà una migliore generazione di Voucher per tutta la durata del Fishing Event.
+
+#### Fine dell'Evento
+Quando l'evento termina:
+- Tutto il Free Bait inutilizzato viene convertito in Diamonds
+- Tutto il Paid Bait inutilizzato viene convertito in Diamonds
+- La progressione non continua sul prossimo Fishing Event
+
+Questo significa che devi ottimizzare le tue risorse durante i 7 giorni, poiché nulla viene salvato per la prossima edizione.
+`,
+    content_es: `
+## Guía Fishing Event
+
+### Explicación Corta
+Fishing Event dura 7 días.
+Durante este evento, las jugadoras atrapan peces con Free Bait o Paid Bait.
+Los peces producen Vouchers, que son la moneda del evento.
+Cuanto más raro es el pez, más Vouchers produce.
+También es posible agrandar el Aquarium para mantener más peces y aumentar las ganancias.
+
+### Explicación Larga
+#### Funcionamiento General
+Durante Fishing Event, attrapas peces para generar Vouchers.
+Los Vouchers sirven luego para comprar recompensas en la tienda del evento.
+
+Cada captura cuesta 5 bait.
+Existen 2 tipos de bait:
+- Free Bait
+- Paid Bait
+
+El Free Bait se regenera con el tiempo.
+El Paid Bait debe obtenerse a través de la tienda o a través de ciertas recompensas del evento.
+
+#### Rareza de los Peces
+Los peces tienen 4 niveles de rareza:
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
+
+Cuantas más estrellas tenga un pez, más Vouchers genera por minuto.
+Los 4★ Fish son mucho más frecuentes con el Paid Bait.
+
+Cuando obtienes un pez más fuerte, un pez débil puede ser reemplazado automáticamente.
+Esto permite mejorar progresivamente tu Aquarium.
+
+#### Sistema Pity
+El evento tiene un sistema pity.
+Cada 50 capturas, estás garantizado de obtener al menos un 3★ Fish o un 4★ Fish.
+Este sistema ayuda a evitar largas rachas de malos resultados.
+
+#### Sistema de Actualización de Peces
+Los peces aparecen en 2 pools:
+- Free Pool
+- Paid Pool
+
+Cada vez que se atrapa un pez, el temporizador de actualización se reinicia.
+Si no aparece ningún pez durante 30 minutos, el pool se actualiza automáticamente.
+También es posible restablecer este temporizador atrapando un pez.
+
+Este punto es importante, ya que debes monitorear los pools regularmente para no desperdiciar el bait.
+
+#### Aquarium y Slots
+Los peces se guardan en el Aquarium.
+Necesitas desbloquear tank slots para conservar más peces.
+
+Cuantos más peces guards, más Vouchers ganas.
+Los peces sobrantes pueden convertirse en Blue Shells.
+Los Blue Shells sirven para desbloquear slots adicionales.
+
+Por lo tanto, el Aquarium es una parte central del evento.
+Un Aquarium más grande da una mejor generación de Vouchers durante todo el Fishing Event.
+
+#### Fin del Evento
+Cuando el evento termina:
+- Todo el Free Bait no utilizado se convierte en Diamonds
+- Todo el Paid Bait no utilizado se convierte en Diamonds
+- La progresión no continúa en el próximo Fishing Event
+
+Esto significa que debes optimizar tus recursos durante los 7 días, ya que nada se guarda para la próxima edición.
+`,
+    content_pt: `
+## Guia Fishing Event
+
+### Explicação Curta
+Fishing Event dura 7 dias.
+Durante este evento, as jogadoras pegam peixes com Free Bait ou Paid Bait.
+Os peixes produzem Vouchers, que são a moeda do evento.
+Quanto mais raro o peixe, mais Vouchers ele produz.
+Também é possível expandir o Aquarium para manter mais peixes e aumentar os ganhos.
+
+### Explicação Longa
+#### Funcionamento Geral
+Durante Fishing Event, você pega peixes para gerar Vouchers.
+Os Vouchers são usados para comprar recompensas na loja do evento.
+
+Cada captura custa 5 bait.
+Existem 2 tipos de bait:
+- Free Bait
+- Paid Bait
+
+O Free Bait se regenera com o tempo.
+O Paid Bait deve ser obtido através da loja ou através de certas recompensas do evento.
+
+#### Raridade dos Peixes
+Os peixes têm 4 níveis de raridade:
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
+
+Quanto mais estrelas um peixe tem, mais Vouchers ele gera por minuto.
+Os 4★ Fish são muito mais frequentes com o Paid Bait.
+
+Quando você obtém um peixe mais forte, um peixe fraco pode ser substituído automaticamente.
+Isso permite melhorar progressivamente seu Aquarium.
+
+#### Sistema Pity
+O evento tem um sistema pity.
+A cada 50 capturas, você tem garantia de obter pelo menos um 3★ Fish ou um 4★ Fish.
+Este sistema ajuda a evitar longas sequências de maus resultados.
+
+#### Sistema de Atualização de Peixes
+Os peixes aparecem em 2 pools:
+- Free Pool
+- Paid Pool
+
+Cada vez que um peixe é pego, o temporizador de atualização reinicia.
+Se nenhum peixe aparecer por 30 minutos, o pool atualiza automaticamente.
+Também é possível redefinir este temporizador pegando um peixe.
+
+Este ponto é importante, pois você precisa monitorar os pools regularmente para não desperdiçar o bait.
+
+#### Aquarium e Slots
+Os peixes são mantidos no Aquarium.
+Você precisa desbloquear tank slots para manter mais peixes.
+
+Quanto mais peixes você mantém, mais Vouchers você ganha.
+Peixes extras podem ser convertidos em Blue Shells.
+Os Blue Shells são usados para desbloquear slots adicionais.
+
+Portanto, o Aquarium é uma parte central do evento.
+Um Aquarium maior dá melhor geração de Vouchers durante todo o Fishing Event.
+
+#### Fim do Evento
+Quando o evento termina:
+- Todo o Free Bait não utilizado é convertido em Diamonds
+- Todo o Paid Bait não utilizado é convertido em Diamonds
+- A progressão não continua no próximo Fishing Event
+
+Isso significa que você precisa otimizar seus recursos durante os 7 dias, pois nada é salvo para a próxima edição.
+`,
+    content_pl: `
+## Przewodnik Fishing Event
+
+### Krótka Wyjaśnienie
+Fishing Event trwa 7 dni.
+Podczas tego wydarzenia gracze łowią ryby za pomocą Free Bait lub Paid Bait.
+Ryby produkują Vouchery, które są walutą wydarzenia.
+Im rzadsza ryba, tym więcej Voucherów produkuje.
+Możliwe jest również powiększenie Aquarium, aby pomieścić więcej ryb i zwiększyć zarobki.
+
+### Długie Wyjaśnienie
+#### Ogólne Działanie
+Podczas Fishing Event łowisz ryby, aby generować Vouchery.
+Vouchery są następnie wykorzystywane do kupowania nagród w sklepie wydarzenia.
+
+Każde połów kosztuje 5 bait.
+Istnieją 2 rodzaje bait:
+- Free Bait
+- Paid Bait
+
+Free Bait regeneruje się z czasem.
+Paid Bait musi być uzyskany poprzez sklep lub poprzez określone nagrody wydarzenia.
+
+#### Rzadkość Ryb
+Ryby mają 4 poziomy rzadkości:
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
+
+Im więcej gwiazdek ma ryba, tym więcej Voucherów generuje na minutę.
+4★ Fish są znacznie częstsze przy Paid Bait.
+
+Gdy otrzymujesz silniejszą rybę, słaba ryba może zostać automatycznie zastąpiona.
+To pozwala stopniowo ulepszać swój Aquarium.
+
+#### System Pity
+Wydarzenie ma system pity.
+Każdych 50 połowów masz gwarancję uzyskania co najmniej 3★ Fish lub 4★ Fish.
+Ten system pomaga uniknąć długich serii złych wyników.
+
+#### System Odświeżania Ryb
+Ryby pojawiają się w 2 pulach:
+- Free Pool
+- Paid Pool
+
+Za każdym razem, gdy ryba jest złowiona, timer odświeżania resetuje się.
+Jeśli żadna ryba nie pojawi się przez 30 minut, pula automatycznie się odświeża.
+Możliwe jest również zresetowanie tego timera łowiąc rybę.
+
+Ten punkt jest ważny, ponieważ musisz regularnie monitorować pule, aby nie marnować bait.
+
+#### Aquarium i Sloty
+Ryby są trzymane w Aquarium.
+Musisz odblokować tank slots, aby pomieścić więcej ryb.
+
+Im więcej ryb trzymasz, tym więcej Voucherów zarabiasz.
+Nadwyżkę ryb można zamienić w Blue Shells.
+Blue Shells służy do odblokowywania dodatkowych slotów.
+
+Aquarium jest więc centralną częścią wydarzenia.
+Większy Aquarium daje lepszą generację Voucherów przez cały Fishing Event.
+
+#### Koniec Wydarzenia
+Gdy wydarzenie się kończy:
+- Wszystkie niewykorzystane Free Bait jest zamieniane na Diamonds
+- Wszystkie niewykorzystane Paid Bait jest zamieniane na Diamonds
+- Postęp nie jest kontynuowany w następnym Fishing Event
+
+Oznacza to, że musisz zoptymalizować swoje zasoby przez 7 dni, ponieważ nic nie jest zapisywane na następną edycję.
+`,
+    content_id: `
+## Panduan Fishing Event
+
+### Penjelasan Singkat
+Fishing Event berlangsung 7 hari.
+Selama acara ini, pemain menangkap ikan dengan Free Bait atau Paid Bait.
+Ikan menghasilkan Voucher, yang merupakan mata uang acara.
+Semakin langka ikan, semakin banyak Voucher yang dihasilkannya.
+Mungkin juga untuk memperbesar Aquarium untuk menyimpan lebih banyak ikan dan meningkatkan pendapatan.
+
+### Penjelasan Panjang
+#### Operasi Umum
+Selama Fishing Event, Anda menangkap ikan untuk menghasilkan Voucher.
+Voucher kemudian digunakan untuk membeli hadiah di toko acara.
+
+Setiap penangkapan biaya 5 bait.
+Ada 2 jenis bait:
+- Free Bait
+- Paid Bait
+
+Free Bait regenerasi seiring waktu.
+Paid Bait harus diperoleh melalui toko atau melalui hadiah acara tertentu.
+
+#### Kelangkaan Ikan
+Ikan memiliki 4 tingkat kelangkaan:
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
+
+Semakin banyak bintang pada ikan, semakin banyak Voucher yang dihasilkannya per menit.
+4★ Fish jauh lebih umum dengan Paid Bait.
+
+Ketika Anda mendapatkan ikan yang lebih kuat, ikan yang lemah dapat diganti secara otomatis.
+Ini memungkinkan Anda untuk secara bertahap meningkatkan Aquarium.
+
+#### Sistem Pity
+Acara ini memiliki sistem pity.
+Setiap 50 penangkapan, Anda dijamin mendapatkan setidaknya 3★ Fish atau 4★ Fish.
+Sistem ini membantu menghindari rentetan hasil buruk yang panjang.
+
+#### Sistem Segarkan Ikan
+Ikan muncul di 2 kolam:
+- Free Pool
+- Paid Pool
+
+Setiap kali seekor ikan tertangkap, timer segarkan akan diatur ulang.
+Jika tidak ada ikan yang muncul selama 30 menit, kolam akan segarkan secara otomatis.
+Mungkin juga untuk mengatur ulang timer ini dengan menangkap ikan.
+
+Poin ini penting, karena Anda perlu memantau kolam secara teratur untuk tidak membuang-buang bait.
+
+#### Aquarium dan Slot
+Ikan disimpan di Aquarium.
+Anda perlu membuka tank slot untuk menyimpan lebih banyak ikan.
+
+Semakin banyak ikan yang Anda simpan, semakin banyak Voucher yang Anda hasilkan.
+Ikan berlebih dapat dikonversi menjadi Blue Shells.
+Blue Shells digunakan untuk membuka slot tambahan.
+
+Aquarium therefore merupakan bagian sentral dari acara.
+Aquarium yang lebih besar memberikan generasi Voucher yang lebih baik sepanjang Fishing Event.
+
+#### Akhir Acara
+Ketika acara berakhir:
+- Semua Free Bait yang tidak terpakai dikonversi ke Diamonds
+- Semua Paid Bait yang tidak terpakai dikonversi ke Diamonds
+- Progresi tidak berlanjut ke Fishing Event berikutnya
+
+Ini berarti Anda perlu mengoptimalkan sumber daya Anda selama 7 hari, karena tidak ada yang disimpan untuk edisi berikutnya.
+`,
+    content_ru: `
+## Гайд Fishing Event
+
+### Краткое объяснение
+Fishing Event длится 7 дней.
+Во время этого события игроки ловят рыбу с помощью Free Bait или Paid Bait.
+Рыбы производят Vouchers, которые являются валютой события.
+Чем реже рыба, тем больше Vouchers она производит.
+Также можно расширить Aquarium, чтобы держать больше рыбы и увеличить доход.
+
+### Подробное объяснение
+#### Общее функционирование
+Во время Fishing Event вы ловите рыбу для генерации Vouchers.
+Vouchers затем используются для покупки наград в магазине события.
+
+Каждый улов стоит 5 bait.
+Существует 2 типа bait:
+- Free Bait
+- Paid Bait
+
+Free Bait регенерирует со временем.
+Paid Bait должен быть получен через магазин или через определённые награды события.
+
+#### Редкость рыбы
+Рыбы имеют 4 уровня редкости:
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
+
+Чем больше звёзд у рыбы, тем больше Vouchers она производит в минуту.
+4★ Fish гораздо чаще встречаются с Paid Bait.
+
+Когда вы получаете более сильную рыбу, слабая рыба может быть автоматически заменена.
+Это позволяет постепенно улучшать ваш Aquarium.
+
+#### Pity System
+Событие имеет pity system.
+Каждые 50 уловов вам гарантированно выпадает как минимум 3★ Fish или 4★ Fish.
+Эта система помогает избежать длинных серий плохих результатов.
+
+#### Система обновления рыбы
+Рыбы появляются в 2 пулах:
+- Free Pool
+- Paid Pool
+
+Каждый раз, когда рыба поймана, таймер обновления сбрасывается.
+Если рыба не появляется в течение 30 минут, пул автоматически обновляется.
+Также можно сбросить этот таймер, поймав рыбу.
+
+Это важный момент, поскольку вам нужно регулярно следить за пулами, чтобы не тратить впустую bait.
+
+#### Aquarium и слоты
+Рыбы хранятся в Aquarium.
+Вам нужно разблокировать tank slots, чтобы хранить больше рыбы.
+
+Чем больше рыбы вы держите, тем больше Vouchers зарабатываете.
+Лишнюю рыбу можно конвертировать в Blue Shells.
+Blue Shells используются для разблокировки дополнительных слотов.
+
+Поэтому Aquarium является центральной частью события.
+Больший Aquarium даёт лучшую генерацию Vouchers на протяжении всего Fishing Event.
+
+#### Конец события
+Когда событие заканчивается:
+- Все неиспользованные Free Bait конвертируются в Diamonds
+- Все неиспользованные Paid Bait конвертируются в Diamonds
+- Прогресс не продолжается на следующий Fishing Event
+
+Это означает, что вам нужно оптимизировать свои ресурсы в течение 7 дней, поскольку ничего не сохраняется для следующего издания.
+`,
+    tips: `
+- Au début de l'événement, utilise activement ton Free Bait
+- Transforme les poissons inutiles en Blue Shells pour ouvrir des slots plus vite
+- L'objectif du début est de monter rapidement à 10 aquarium slots minimum
+- Essaie d'atteindre 20 tank slots le plus tôt possible
+- Pense à vérifier les pools toutes les 30 minutes
+- N'utilise pas le Free Bait sur des 1★ Fish
+- N'utilise le Paid Bait que quand un 4★ Fish est visible dans le Paid Pool
+    `,
+    tips_en: `
+- At the beginning of the event, actively use your Free Bait
+- Transform useless fish into Blue Shells to open slots faster
+- The goal at the start is to quickly reach at least 10 aquarium slots
+- Try to reach 20 tank slots as soon as possible
+- Remember to check the pools every 30 minutes
+- Don't use Free Bait on 1★ Fish
+- Only use Paid Bait when a 4★ Fish is visible in the Paid Pool
+    `,
+    tips_it: `
+- All'inizio dell'evento, usa attivamente il tuo Free Bait
+- Trasforma i pesci inutili in Blue Shells per aprire slot più velocemente
+- L'obiettivo all'inizio è raggiungere rapidamente almeno 10 aquarium slot
+- Prova a raggiungere 20 tank slot il prima possibile
+- Ricorda di controllare i pool ogni 30 minuti
+- Non usare Free Bait su pesci 1★
+- Usa il Paid Bait solo quando un 4★ Fish è visibile nel Paid Pool
+    `,
+    tips_es: `
+- Al principio del evento, usa activamente tu Free Bait
+- Transforma los peces inútiles en Blue Shells para abrir slots más rápido
+- El objetivo al principio es llegar rápidamente a al menos 10 aquarium slots
+- Intenta alcanzar 20 tank slots lo antes posible
+- Recuerda revisar los pools cada 30 minutos
+- No uses Free Bait en peces 1★
+- Usa Paid Bait solo cuando un 4★ Fish sea visible en el Paid Pool
+    `,
+    tips_pt: `
+- No início do evento, use ativamente seu Free Bait
+- Transforme peixes inúteis em Blue Shells para abrir slots mais rapidamente
+- O objetivo no início é alcançar rapidamente pelo menos 10 aquarium slots
+- Tente atingir 20 tank slots o mais rápido possível
+- Lembre-se de verificar os pools a cada 30 minutos
+- Não use Free Bait em peixes 1★
+- Use Paid Bait apenas quando um 4★ Fish estiver visível no Paid Pool
+    `,
+    tips_pl: `
+- Na początku wydarzenia aktywnie używaj swojego Free Bait
+- Zmieniaj niepotrzebne ryby w Blue Shells, aby szybciej otwierać sloty
+- Celem na początku jest szybkie osiągnięcie co najmniej 10 aquarium slots
+- Staraj się osiągnąć 20 tank slots jak najszybciej
+- Pamiętaj o sprawdzaniu pul co 30 minut
+- Nie używaj Free Bait na rybach 1★
+- Używaj Paid Bait tylko gdy 4★ Fish jest widoczny w Paid Pool
+    `,
+    tips_id: `
+- Di awal acara, gunakan Free Bait Anda secara aktif
+- Ubah ikan yang tidak berguna menjadi Blue Shells untuk membuka slot lebih cepat
+- Tujuan di awal adalah dengan cepat mencapai setidaknya 10 aquarium slots
+- Coba capai 20 tank slots segera
+- Ingatlah untuk memeriksa kolam setiap 30 menit
+- Jangan gunakan Free Bait pada ikan 1★
+- Gunakan Paid Bait hanya ketika 4★ Fish terlihat di Paid Pool
+    `,
+    tips_ru: `
+- В начале события активно используйте свой Free Bait
+- Превращайте бесполезную рыбу в Blue Shells, чтобы быстрее открывать слоты
+- Цель в начале - быстро достичь как минимум 10 aquarium slots
+- Постарайтесь достичь 20 tank slots как можно скорее
+- Не забывайте проверять пулы каждые 30 минут
+- Не используйте Free Bait на рыбе 1★
+- Используйте Paid Bait только когда 4★ Fish виден в Paid Pool
+    `,
   },
   {
     id: "world-building",

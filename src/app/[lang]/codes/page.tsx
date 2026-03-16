@@ -40,6 +40,7 @@ const translations: Record<string, any> = {
     howToUse: 'Comment utiliser les codes',
     howToUseDesc: 'Allez dans le jeu, appuyez sur votre profil > Settings > Gift Code et entrez le code.',
     new: 'Nouveau',
+    expired: 'Expiré',
   },
   en: {
     title: 'Promo Codes',
@@ -55,6 +56,7 @@ const translations: Record<string, any> = {
     howToUse: 'How to use codes',
     howToUseDesc: 'Go to the game, tap your profile icon > Settings > Gift Code and enter the code.',
     new: 'New',
+    expired: 'Expired',
   },
   it: {
     title: 'Codici Promo',
@@ -70,6 +72,7 @@ const translations: Record<string, any> = {
     howToUse: 'Come usare i codici',
     howToUseDesc: 'Vai nel gioco, tocca la tua icona profilo > Impostazioni > Codice Regalo e inserisci il codice.',
     new: 'Nuovo',
+    expired: 'Scaduto',
   },
   es: {
     title: 'Códigos Promo',
@@ -82,9 +85,10 @@ const translations: Record<string, any> = {
     copy: 'Copiar',
     copied: '¡Copiado!',
     noActive: 'No hay códigos activos actualmente',
-    howToUse: 'Cómo usar los códigos',
+    howToUse: 'Cómo usar códigos',
     howToUseDesc: 'Ve al juego, toca tu icono de perfil > Ajustes > Código de regalo e ingresa el código.',
     new: 'Nuevo',
+    expired: 'Expirado',
   },
   pt: {
     title: 'Códigos Promo',
@@ -100,6 +104,7 @@ const translations: Record<string, any> = {
     howToUse: 'Como usar os códigos',
     howToUseDesc: 'Vá para o jogo, toque no ícone do seu perfil > Configurações > Código de presente e insira o código.',
     new: 'Novo',
+    expired: 'Expirado',
   },
   pl: {
     title: 'Kody Promo',
@@ -115,6 +120,7 @@ const translations: Record<string, any> = {
     howToUse: 'Jak używać kodów',
     howToUseDesc: 'Wejdź do gry, dotknij swojej ikony profilu > Ustawienia > Kod prezentowy i wpisz kod.',
     new: 'Nowy',
+    expired: 'Wygasły',
   },
   id: {
     title: 'Kode Promo',
@@ -130,6 +136,7 @@ const translations: Record<string, any> = {
     howToUse: 'Cara menggunakan kode',
     howToUseDesc: 'Buka game, ketuk ikon profil Anda > Pengaturan > Kode hadiah dan masukkan kode.',
     new: 'Baru',
+    expired: 'Kedaluwarsa',
   },
   ru: {
     title: 'Промокоды',
@@ -145,6 +152,7 @@ const translations: Record<string, any> = {
     howToUse: 'Как использовать коды',
     howToUseDesc: 'Зайдите в игру, нажмите на свой профиль > Настройки > Подарочный код и введите код.',
     new: 'Новый',
+    expired: 'Истёк',
   }
 };
 
@@ -201,7 +209,7 @@ export default function CodesPage() {
       <section style={{ marginBottom: '48px', maxWidth: '800px', margin: '0 auto' }}>
         <h2 style={{ fontSize: '1.5rem', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <span>✅</span> {t.latestCodes}
-          <span style={{ fontSize: '0.875rem', color: 'var(--accent-green)', fontWeight: 600 }}>({codesData.active.length + codesData.expired.length})</span>
+          <span style={{ fontSize: '0.875rem', color: 'var(--accent-green)', fontWeight: 600 }}>({codesData.active.length})</span>
         </h2>
 
         {codesData.active.length + codesData.expired.length === 0 ? (
@@ -269,7 +277,13 @@ export default function CodesPage() {
             ))}
 
             {/* Expired codes */}
-            {codesData.expired.map((item, index) => (
+            {codesData.expired.length > 0 && (
+              <>
+                <h2 style={{ fontSize: '1.25rem', marginTop: '32px', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px', opacity: 0.7 }}>
+                  <span>❌</span> {t.expiredCodes}
+                  <span style={{ fontSize: '0.875rem', color: 'var(--error)', fontWeight: 600 }}>({codesData.expired.length})</span>
+                </h2>
+                {codesData.expired.map((item, index) => (
               <div
                 key={item.code}
                 style={{
@@ -295,18 +309,13 @@ export default function CodesPage() {
                     }}>
                       {item.code}
                     </span>
-                    {item.rarity && (
-                      <span style={{ 
-                        fontSize: '0.7rem', 
-                        padding: '2px 8px',
-                        background: 'rgba(251, 191, 36, 0.2)',
-                        color: 'var(--accent-yellow)',
-                        borderRadius: '4px',
-                        fontWeight: 600
-                      }}>
-                        {item.rarity.toUpperCase()}
-                      </span>
-                    )}
+                    <span className="badge" style={{ 
+                      background: 'rgba(239, 68, 68, 0.2)', 
+                      color: 'var(--error)',
+                      border: '1px solid rgba(239, 68, 68, 0.3)'
+                    }}>
+                      {t.expired}
+                    </span>
                   </div>
                   <span className="text-muted" style={{ fontSize: '0.875rem' }}>
                     {item.rewards}
@@ -321,6 +330,8 @@ export default function CodesPage() {
                 </span>
               </div>
             ))}
+              </>
+            )}
           </div>
         )}
       </section>

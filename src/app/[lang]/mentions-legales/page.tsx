@@ -15,8 +15,9 @@ export default function MentionsLegales() {
       intro: 'Le site apexgirlguide.com est un fansite non officiel dédié au jeu TopGirl/ApexGirl. Les informations fournies sur ce site sont données à titre indicatif et ne constituent en aucun cas une offre de services.',
       editor: {
         title: '1. Éditeur du site',
-        name: 'Nom / Pseudo :',
-        value: 'A3Games',
+        name: 'Type :',
+        value: 'Fansite non officiel',
+        desc: 'Ce site est un fansite géré de manière indépendante et n\'est pas affilié à A3Games, SuperPrism ou tout autre éditeur du jeu TopGirl/ApexGirl.',
         email: 'Email :',
         emailValue: 'contact@apexgirlguide.com',
       },
@@ -72,8 +73,9 @@ export default function MentionsLegales() {
       intro: 'The website apexgirlguide.com is an unofficial fansite dedicated to the game TopGirl/ApexGirl. The information provided on this site is for informational purposes only and does not constitute an offer of services.',
       editor: {
         title: '1. Website Editor',
-        name: 'Name / Pseudo:',
-        value: 'A3Games',
+        name: 'Type:',
+        value: 'Unofficial Fansite',
+        desc: 'This site is an independently operated fansite and is not affiliated with A3Games, SuperPrism or any other publisher of the game TopGirl/ApexGirl.',
         email: 'Email:',
         emailValue: 'contact@apexgirlguide.com',
       },
@@ -166,6 +168,7 @@ export default function MentionsLegales() {
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.7)' }}>
               {content.editor.name} {content.editor.value}<br />
+              <span style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.6)' }}>{content.editor.desc}</span><br />
               {content.editor.email} <a href="mailto:contact@apexgirlguide.com" style={{ color: '#8b5cf6' }}>{content.editor.emailValue}</a>
             </p>
           </section>

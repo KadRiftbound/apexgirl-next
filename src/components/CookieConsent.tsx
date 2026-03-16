@@ -13,7 +13,7 @@ const translations: Record<string, any> = {
     savePreferences: "Enregistrer mes préférences",
     necessary: {
       title: "Cookies nécessaires",
-      description: "Essentiels au fonctionnement du site (panier, connexion, sécurité). Ces cookies ne peuvent pas être désactivés.",
+      description: "Essentiels au fonctionnement du site (préférences de langue, sécurité). Ces cookies ne peuvent pas être désactivés.",
       required: true
     },
     analytics: {
@@ -43,7 +43,7 @@ const translations: Record<string, any> = {
     savePreferences: "Save Preferences",
     necessary: {
       title: "Necessary Cookies",
-      description: "Essential for the website to function (basket, login, security). These cookies cannot be disabled.",
+      description: "Essential for the website to function (language preferences, security). These cookies cannot be disabled.",
       required: true
     },
     analytics: {
@@ -73,7 +73,7 @@ const translations: Record<string, any> = {
     savePreferences: "Salva preferenze",
     necessary: {
       title: "Cookie necessari",
-      description: "Essenziali per il funzionamento del sito (carrello, login, sicurezza). Questi cookie non possono essere disabilitati.",
+      description: "Essenziali per il funzionamento del sito (preferenze di lingua, sicurezza). Questi cookie non possono essere disabilitati.",
       required: true
     },
     analytics: {
@@ -103,7 +103,7 @@ const translations: Record<string, any> = {
     savePreferences: "Guardar preferencias",
     necessary: {
       title: "Cookies necesarias",
-      description: "Esenciales para el funcionamiento del sitio (carrito, inicio de sesión, seguridad). Estas cookies no se pueden desactivar.",
+      description: "Esenciales para el funcionamiento del sitio (preferencias de idioma, seguridad). Estas cookies no se pueden desactivar.",
       required: true
     },
     analytics: {
@@ -133,7 +133,7 @@ const translations: Record<string, any> = {
     savePreferences: "Salvar preferências",
     necessary: {
       title: "Cookies necessários",
-      description: "Essenciais para o funcionamento do site (carrinho, login, segurança). Estes cookies não podem ser desativados.",
+      description: "Essenciais para o funcionamento do site (preferências de idioma, segurança). Estes cookies não podem ser desativados.",
       required: true
     },
     analytics: {
@@ -163,7 +163,7 @@ const translations: Record<string, any> = {
     savePreferences: "Zapisz preferencje",
     necessary: {
       title: "Niezbędne pliki cookies",
-      description: "Niezbędne do działania strony (koszyk, logowanie, bezpieczeństwo). Tych plików cookies nie można wyłączyć.",
+      description: "Niezbędne do działania strony (preferencje językowe, bezpieczeństwo). Tych plików cookies nie można wyłączyć.",
       required: true
     },
     analytics: {
@@ -193,7 +193,7 @@ const translations: Record<string, any> = {
     savePreferences: "Simpan preferensi",
     necessary: {
       title: "Cookie yang diperlukan",
-      description: "Penting untuk fungsi situs (keranjang, masuk, keamanan). Cookie ini tidak dapat dinonaktifkan.",
+      description: "Penting untuk fungsi situs (preferensi bahasa, keamanan). Cookie ini tidak dapat dinonaktifkan.",
       required: true
     },
     analytics: {
@@ -223,7 +223,7 @@ const translations: Record<string, any> = {
     savePreferences: "Сохранить настройки",
     necessary: {
       title: "Необходимые файлы cookie",
-      description: "Необходимы для работы сайта (корзина, вход в систему, безопасность). Эти файлы cookie нельзя отключить.",
+      description: "Необходимы для работы сайта (языковые предпочтения, безопасность). Эти файлы cookie нельзя отключить.",
       required: true
     },
     analytics: {
@@ -362,22 +362,22 @@ export default function CookieConsent() {
           <p style={{ margin: 0, color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>{t.banner.text}</p>
         </div>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <button
-            onClick={declineAll}
-            style={{
-              padding: '12px 20px',
-              borderRadius: '8px',
-              border: '1px solid rgba(255,255,255,0.2)',
-              background: 'transparent',
-              color: 'rgba(255,255,255,0.7)',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-              transition: 'all 0.2s'
-            }}
-          >
-            {t.banner.decline}
-          </button>
+           <button
+             onClick={declineAll}
+             style={{
+               padding: '12px 20px',
+               borderRadius: '8px',
+               border: '1px solid rgba(255,255,255,0.2)',
+               background: 'rgba(0, 0, 0, 0.3)',
+               color: 'rgba(255,255,255,0.7)',
+               cursor: 'pointer',
+               fontSize: '0.875rem',
+               fontWeight: 500,
+               transition: 'all 0.2s'
+             }}
+           >
+             {t.banner.decline}
+           </button>
           <button
             onClick={() => setShowSettings(true)}
             style={{

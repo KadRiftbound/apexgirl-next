@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
@@ -9,59 +9,102 @@ const guideListTranslations: Record<string, any> = {
   fr: { 
     title: "Guides & Stratégies", 
     subtitle: "Tutoriels et stratégies pour maîtriser le jeu",
-    categories: ["Tous", "Débutant", "Intermédiaire", "Avancé", "Événements"]
+    categories: ["Tous", "Guide classique", "Guide événement"],
+    categoryClassic: "Guide classique",
+    categoryEvent: "Guide événement",
+    inProgress: "En cours",
+    new: "Nouveau",
+    searchPlaceholder: "Rechercher un guide..."
   },
   en: { 
     title: "Guides & Strategies", 
     subtitle: "Tutorials and strategies to master the game",
-    categories: ["All", "Beginner", "Intermediate", "Advanced", "Events"]
+    categories: ["All", "Classic Guide", "Event Guide"],
+    categoryClassic: "Classic Guide",
+    categoryEvent: "Event Guide",
+    inProgress: "In Progress",
+    new: "New",
+    searchPlaceholder: "Search a guide..."
   },
   it: { 
     title: "Guide e Strategie", 
     subtitle: "Tutoriali e strategie per padroneggiare il gioco",
-    categories: ["Tutti", "Principiante", "Intermedio", "Avanzato", "Eventi"]
+    categories: ["Tutti", "Guida classica", "Guida evento"],
+    categoryClassic: "Guida classica",
+    categoryEvent: "Guida evento",
+    inProgress: "In corso",
+    new: "Nuovo",
+    searchPlaceholder: "Cerca una guida..."
   },
   es: { 
     title: "Guías y Estrategias", 
     subtitle: "Tutoriales y estrategias para dominar el juego",
-    categories: ["Todos", "Principiante", "Intermedio", "Avanzado", "Eventos"]
+    categories: ["Todos", "Guía clásica", "Guía evento"],
+    categoryClassic: "Guía clásica",
+    categoryEvent: "Guía evento",
+    inProgress: "En progreso",
+    new: "Nuevo",
+    searchPlaceholder: "Buscar una guía..."
   },
   pt: { 
     title: "Guias e Estratégias", 
     subtitle: "Tutoriais e estratégias para dominar o jogo",
-    categories: ["Todos", "Iniciante", "Intermediário", "Avançado", "Eventos"]
+    categories: ["Todos", "Guia clássico", "Guia evento"],
+    categoryClassic: "Guia clássico",
+    categoryEvent: "Guia evento",
+    inProgress: "Em progresso",
+    new: "Novo",
+    searchPlaceholder: "Pesquisar um guia..."
   },
   pl: { 
     title: "Poradniki i Strategie", 
     subtitle: "Samouczki i strategie, aby opanować grę",
-    categories: ["Wszystkie", "Początkujący", "Średniozaawansowany", "Zaawansowany", "Wydarzenia"]
+    categories: ["Wszystkie", "Poradnik klasyczny", "Poradnik wydarzenia"],
+    categoryClassic: "Poradnik klasyczny",
+    categoryEvent: "Poradnik wydarzenia",
+    inProgress: "W toku",
+    new: "Nowy",
+    searchPlaceholder: "Szukaj poradnika..."
   },
   id: { 
     title: "Panduan dan Strategi", 
     subtitle: "Tutorial dan strategi untuk menguasai permainan",
-    categories: ["Semua", "Pemula", "Menengah", "Lanjutan", "Acara"]
+    categories: ["Semua", "Panduan klasik", "Panduan acara"],
+    categoryClassic: "Panduan klasik",
+    categoryEvent: "Panduan acara",
+    inProgress: "Sedang berlangsung",
+    new: "Baru",
+    searchPlaceholder: "Cari panduan..."
   },
   ru: { 
     title: "Гайды и Стратегии", 
     subtitle: "Учебники и стратегии для освоения игры",
-    categories: ["Все", "Начинающий", "Средний", "Продвинутый", "События"]
+    categories: ["Все", "Классический гайд", "Гайд события"],
+    categoryClassic: "Классический гайд",
+    categoryEvent: "Гайд события",
+    inProgress: "В процессе",
+    new: "Новый",
+    searchPlaceholder: "Поиск гайда..."
   },
 };
 
 const categoryMap: Record<string, Record<string, string>> = {
-  fr: { "Tous": "Tous", "Débutant": "Débutant", "Intermédiaire": "Intermédiaire", "Avancé": "Avancé", "Événements": "Événements" },
-  en: { "Tous": "All", "Débutant": "Beginner", "Intermédiaire": "Intermediate", "Avancé": "Advanced", "Événements": "Events" },
-  it: { "Tous": "Tutti", "Débutant": "Principiante", "Intermédiaire": "Intermedio", "Avancé": "Avanzato", "Événements": "Eventi" },
-  es: { "Tous": "Todos", "Débutant": "Principiante", "Intermédiaire": "Intermedio", "Avancé": "Avanzado", "Événements": "Eventos" },
-  pt: { "Tous": "Todos", "Débutant": "Iniciante", "Intermédiaire": "Intermediário", "Avancé": "Avançado", "Événements": "Eventos" },
-  pl: { "Tous": "Wszystkie", "Débutant": "Początkujący", "Intermédiaire": "Średniozaawansowany", "Avancé": "Zaawansowany", "Événements": "Wydarzenia" },
-  id: { "Tous": "Semua", "Débutant": "Pemula", "Intermédiaire": "Menengah", "Avancé": "Lanjutan", "Événements": "Acara" },
-  ru: { "Tous": "Все", "Débutant": "Начинающий", "Intermédiaire": "Средний", "Avancé": "Продвинутый", "Événements": "События" },
+  fr: { "Tous": "Tous", "Guide classique": "Guide classique", "Guide événement": "Guide événement" },
+  en: { "Tous": "All", "Guide classique": "Classic Guide", "Guide événement": "Event Guide" },
+  it: { "Tous": "Tutti", "Guide classique": "Guida classica", "Guide événement": "Guida evento" },
+  es: { "Tous": "Todos", "Guide classique": "Guía clásica", "Guide événement": "Guía evento" },
+  pt: { "Tous": "Todos", "Guide classique": "Guia clássico", "Guide événement": "Guia evento" },
+  pl: { "Tous": "Wszystkie", "Guide classique": "Poradnik klasyczny", "Guide événement": "Poradnik wydarzenia" },
+  id: { "Tous": "Semua", "Guide classique": "Panduan klasik", "Guide événement": "Panduan acara" },
+  ru: { "Tous": "Все", "Guide classique": "Классический гайд", "Guide événements": "Гайд события" },
 };
 
 const guideTranslations: Record<string, Record<string, { title: string; description: string }>> = {
-  fr: {},
+  fr: {
+    "structure-du-jeu": { title: "Structure du jeu", description: "Comprendre la structure du jeu Top Girl. Serveur d'origine, cycles Abroad, City Supremacy et boucle principale." },
+  },
   en: {
+    "structure-du-jeu": { title: "Game Structure", description: "Understand the structure of Top Girl game. Home server, Abroad cycles, City Supremacy and main loop." },
     "equipment": { title: "Equipment Guide", description: "Jewelry, Cars and Properties to optimize your stats. Gold vs Purple comparison and purchase priorities." },
     "team-builder": { title: "Team Builder", description: "How to build the perfect team. Genre synergy calculation and equipment bonuses." },
     "recommended-teams": { title: "Recommended Teams", description: "Best UR and SSR team compositions. Offensive, balanced and defensive strategies." },
@@ -89,6 +132,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "group-shop": { title: "Group Shop Guide", description: "Group Shop Guide. What to buy in the guild shop to optimize your progress." },
   },
   it: {
+    "structure-du-jeu": { title: "Struttura del gioco", description: "Comprendi la struttura del gioco Top Girl. Server home, cicli Abroad, City Supremacy e ciclo principale." },
     "equipment": { title: "Guida Equipaggiamento", description: "Gioielli, Auto e Proprietà per ottimizzare le tue statistiche. Confronto Gold vs Purple e priorità d'acquisto." },
     "team-builder": { title: "Costruttore di Team", description: "Come costruire la squadra perfetta. Calcolo delle sinergie di genere e bonus equipaggiamento." },
     "recommended-teams": { title: "Team Consigliati", description: "Migliori composizioni di team UR e SSR. Strategie offensive, equilibrate e difensive." },
@@ -116,6 +160,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "group-shop": { title: "Guida Group Shop", description: "Guida Group Shop. Cosa acquistare nel negozio gilda per ottimizzare i tuoi progressi." },
   },
   es: {
+    "structure-du-jeu": { title: "Estructura del juego", description: "Comprende la estructura del juego Top Girl. Servidor local, ciclos Abroad, City Supremacy y ciclo principal." },
     "equipment": { title: "Guía de Equipamiento", description: "Joyas, Coches y Propiedades para optimizar tus estadísticas. Comparación Gold vs Purple y prioridades de compra." },
     "team-builder": { title: "Constructor de Equipos", description: "Cómo construir el equipo perfecto. Cálculo de sinergias de género y bonos de equipo." },
     "recommended-teams": { title: "Equipos Recomendados", description: "Mejores composiciones de equipos UR y SSR. Estrategias ofensivas, equilibradas y defensivas." },
@@ -143,6 +188,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "group-shop": { title: "Guía de Group Shop", description: "Guía de Group Shop. Qué comprar en la tienda del gremio para optimizar tu progreso." },
   },
   pt: {
+    "structure-du-jeu": { title: "Estrutura do jogo", description: "Compreenda a estrutura do jogo Top Girl. Servidor principal, ciclos Abroad, City Supremacy e ciclo principal." },
     "equipment": { title: "Guia de Equipamento", description: "Joias, Carros e Imóveis para otimizar suas estatísticas. Comparação Gold vs Purple e prioridades de compra." },
     "team-builder": { title: "Construtor de Times", description: "Como construir o time perfeito. Cálculo de sinergias de gênero e bônus de equipamento." },
     "recommended-teams": { title: "Times Recomendados", description: "Melhores composições de times UR e SSR. Estratégias ofensivas, equilibradas e defensivas." },
@@ -170,6 +216,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "group-shop": { title: "Guia do Group Shop", description: "Guia do Group Shop. O que comprar na loja da guilda para otimizar seu progresso." },
   },
   pl: {
+    "structure-du-jeu": { title: "Struktura gry", description: "Zrozum strukturę gry Top Girl. Serwer główny, cykle Abroad, City Supremacy i główna pętla." },
     "equipment": { title: "Poradnik Wyposażenia", description: "Biżuteria, Samochody i Nieruchomości, aby zoptymalizować statystyki. Porównanie Gold vs Purple i priorytety zakupów." },
     "team-builder": { title: "Konstruktor Drużyny", description: "Jak zbudować idealną drużynę. Obliczanie synergii gatunku i bonusów wyposażenia." },
     "recommended-teams": { title: "Zalecane Drużyny", description: "Najlepsze składy drużyn UR i SSR. Strategie ofensywne, zrównoważone i defensywne." },
@@ -197,6 +244,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "group-shop": { title: "Poradnik Group Shop", description: "Poradnik Group Shop. Co kupować w sklepie gildii, aby zoptymalizować postęp." },
   },
   id: {
+    "structure-du-jeu": { title: "Struktur permainan", description: "Pahami struktur permainan Top Girl. Server utama, siklus Abroad, City Supremacy dan loop utama." },
     "equipment": { title: "Panduan Peralatan", description: "Perhiasan, Mobil, dan Properti untuk mengoptimalkan statistik Anda. Perbandingan Gold vs Purple dan prioritas pembelian." },
     "team-builder": { title: "Pembuat Tim", description: "Cara membangun tim yang sempurna. Perhitungan sinergi genre dan bonus peralatan." },
     "recommended-teams": { title: "Tim yang Direkomendasikan", description: "Komposisi tim UR dan SSR terbaik. Strategi ofensif, seimbang, dan defensif." },
@@ -224,6 +272,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "group-shop": { title: "Panduan Group Shop", description: "Panduan Group Shop. Apa yang harus dibeli di toko guild untuk mengoptimalkan kemajuan Anda." },
   },
   ru: {
+    "structure-du-jeu": { title: "Структура игры", description: "Понять структуру игры Top Girl. Родной сервер, циклы Abroad, City Supremacy и основной цикл." },
     "equipment": { title: "Гайд по снаряжению", description: "Украшения, машины и недвижимость для оптимизации ваших статов. Сравнение Gold vs Purple и приоритеты покупки." },
     "team-builder": { title: "Конструктор команд", description: "Как собрать идеальную команду. Расчёт синергии жанра и бонусов снаряжения." },
     "recommended-teams": { title: "Рекомендуемые команды", description: "Лучшие составы команд UR и SSR. Наступательные, сбалансированные и оборонительные стратегии." },
@@ -259,18 +308,34 @@ type Guide = {
   icon: string;
   color: string;
   category: string;
+  guideType: "classic" | "event";
   readTime: string;
+  isNew?: boolean;
+  inProgress?: boolean;
 };
 
 const guides: Guide[] = [
+  {
+    id: "structure-du-jeu",
+    title: "Structure du jeu",
+    description: "Comprendre la structure du jeu Top Girl. Serveur d'origine, cycles Abroad, City Supremacy et boucle principale.",
+    icon: "📊",
+    color: "#8b5cf6",
+    category: "Guide classique",
+    guideType: "classic",
+    readTime: "10 min",
+    isNew: true,
+  },
   {
     id: "equipment",
     title: "Guide Équipement",
     description: "Bijoux, Voitures et Propriétés pour optimiser vos statistiques. Comparaison Gold vs Purple et priorités d'achat.",
     icon: "💍",
     color: "#fbbf24",
-    category: "Débutant",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "10 min",
+    isNew: true,
   },
   {
     id: "team-builder",
@@ -278,7 +343,8 @@ const guides: Guide[] = [
     description: "Comment construire l'équipe parfaite. Calcul des synergies de genre et bonus d'équipement.",
     icon: "👥",
     color: "#22d3ee",
-    category: "Intermédiaire",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "15 min",
   },
   {
@@ -287,7 +353,8 @@ const guides: Guide[] = [
     description: "Les meilleures compositions d'équipes UR et SSR. Stratégies offensives, équilibrées et défensives.",
     icon: "🏆",
     color: "#f472b6",
-    category: "Avancé",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "12 min",
   },
   {
@@ -296,7 +363,8 @@ const guides: Guide[] = [
     description: "Nombre de cartes nécessaires pour level up vos personnages SSR jusqu'au niveau 115.",
     icon: "📈",
     color: "#34d399",
-    category: "Débutant",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "8 min",
   },
   {
@@ -305,7 +373,8 @@ const guides: Guide[] = [
     description: "Requirements en blueprints par tier (1-21) pour améliorer vos installations. Tier 7-12 Gold.",
     icon: "🛠️",
     color: "#818cf8",
-    category: "Intermédiaire",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "10 min",
   },
   {
@@ -314,16 +383,18 @@ const guides: Guide[] = [
     description: "Cartes de bâtiment nécessaires pour chaque niveau du HQ. Requirement total: 29,922 cartes.",
     icon: "🏢",
     color: "#a855f7",
-    category: "Débutant",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "5 min",
   },
   {
     id: "vehicle-system",
     title: "Système de Véhicules",
-    description: "Système complet: Avancement, Pièces (Moteur, Châssis, Suspension, Jantes), Skins débloqués.",
+    description: "Système complet: Avancement, Pièces (Moteur, Châsis, Suspension, Jantes), Skins débloqués.",
     icon: "🚗",
     color: "#f87171",
-    category: "Avancé",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "15 min",
   },
   {
@@ -332,7 +403,8 @@ const guides: Guide[] = [
     description: "Setup complet Gold pour Vocalist, Dancer et Center. +19,730 stats et 86,000 fans par personnage.",
     icon: "✨",
     color: "#fbbf24",
-    category: "Avancé",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "10 min",
   },
   {
@@ -341,7 +413,8 @@ const guides: Guide[] = [
     description: "Guide complet de l'événement Adventure Abroad Rome. Phases, stratégies et rewards.",
     icon: "🏛️",
     color: "#f97316",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "10 min",
   },
   {
@@ -350,7 +423,8 @@ const guides: Guide[] = [
     description: "Guide complet du Radio Battle. 5 phases, stratégies pour maximiser vos Radio Coins.",
     icon: "📻",
     color: "#06b6d4",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "8 min",
   },
   {
@@ -359,7 +433,8 @@ const guides: Guide[] = [
     description: "Guide des 8 catégories Grammy. Meilleures équipes et stratégies pour gagner des medals.",
     icon: "🏆",
     color: "#fbbf24",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "10 min",
   },
   {
@@ -368,7 +443,8 @@ const guides: Guide[] = [
     description: "Guide complet de l'Ultimate CEO. Comment vaincre le CEO et获取 les meilleures rewards.",
     icon: "💼",
     color: "#ef4444",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "8 min",
   },
   {
@@ -377,7 +453,8 @@ const guides: Guide[] = [
     description: "Guide du Echo Death Match. Accumulez des Echo Stones et échangez pour des rewards SSR+.",
     icon: "👻",
     color: "#8b5cf6",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "8 min",
   },
   {
@@ -386,7 +463,8 @@ const guides: Guide[] = [
     description: "Guide du Chamber Territory. Capturez et défendez des territoires pour des rewards.",
     icon: "🏰",
     color: "#14b8a6",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "8 min",
   },
   {
@@ -395,7 +473,8 @@ const guides: Guide[] = [
     description: "Guide du Cleanup Party. Collectez des poubelles et échangez pour des rewards.",
     icon: "🧹",
     color: "#22c55e",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "5 min",
   },
   {
@@ -404,18 +483,20 @@ const guides: Guide[] = [
     description: "Guide du Metro & Subway. Collectez des tickets et montez dans le métro pour des rewards.",
     icon: "🚇",
     color: "#3b82f6",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "5 min",
   },
-  // New guides from images
   {
     id: "event-vs-group",
     title: "Guide VS Group Event",
     description: "Guide du VS Group Event. Bataille entre groupes avec 5 jours de préparation et 1 jour de combat final.",
     icon: "⚔️",
     color: "#ef4444",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "8 min",
+    isNew: true,
   },
   {
     id: "event-fishing",
@@ -423,8 +504,10 @@ const guides: Guide[] = [
     description: "Guide du Fishing Event. Configurez votre aquarium, attrapez des poissons et gagnez des récompenses.",
     icon: "🎣",
     color: "#06b6d4",
-    category: "Événements",
+    category: "Guide événement",
+    guideType: "event",
     readTime: "6 min",
+    isNew: true,
   },
   {
     id: "world-building",
@@ -432,7 +515,8 @@ const guides: Guide[] = [
     description: "Guide World Building. Construisez et développez votre monde dans le jeu.",
     icon: "🌍",
     color: "#10b981",
-    category: "Intermédiaire",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "10 min",
   },
   {
@@ -441,7 +525,8 @@ const guides: Guide[] = [
     description: "Guide VIP Level. Détails des points requis pour chaque niveau VIP.",
     icon: "⭐",
     color: "#f59e0b",
-    category: "Avancé",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "15 min",
   },
   {
@@ -450,7 +535,8 @@ const guides: Guide[] = [
     description: "Guide d'achat de CEO Coins via le site de paiement officiel.",
     icon: "💰",
     color: "#84cc16",
-    category: "Avancé",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "5 min",
   },
   {
@@ -459,7 +545,8 @@ const guides: Guide[] = [
     description: "Guide de gestion d'alliance. Rôles, responsabilités et stratégies pour gérer votre guilde.",
     icon: "🏰",
     color: "#8b5cf6",
-    category: "Avancé",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "12 min",
   },
   {
@@ -468,7 +555,8 @@ const guides: Guide[] = [
     description: "Guide Peak Level. Système de progression late-game pour SSR girls avec 5 étoiles.",
     icon: "📊",
     color: "#ec4899",
-    category: "Avancé",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "15 min",
   },
   {
@@ -477,12 +565,13 @@ const guides: Guide[] = [
     description: "Guide Group Shop. Чтоacheter dans la boutique de guilde pour optimiser vos progrès.",
     icon: "🛒",
     color: "#f97316",
-    category: "Débutant",
+    category: "Guide classique",
+    guideType: "classic",
     readTime: "5 min",
   },
 ];
 
-const categories = ["Tous", "Débutant", "Intermédiaire", "Avancé", "Événements"];
+const categories = ["Tous", "Guide classique", "Guide événement"];
 
 function getGuideTitle(id: string, lang: string, fallback: string): string {
   return guideTranslations[lang]?.[id]?.title || fallback;
@@ -498,11 +587,29 @@ export default function GuidesPage() {
   const t = guideListTranslations[lang] || guideListTranslations.en;
   const activeCategory = t.categories[0];
   const [activeCategoryState, setActiveCategoryState] = useState(t.categories[0]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredGuides =
-    activeCategoryState === t.categories[0]
-      ? guides
-      : guides.filter((g) => g.category === categoryMap[lang]?.[activeCategoryState] || g.category === activeCategoryState);
+  const filteredGuides = useMemo(() => {
+    let filtered = guides;
+    
+    if (activeCategoryState !== t.categories[0]) {
+      const targetType = activeCategoryState === t.categoryClassic || activeCategoryState === "Guide classique" ? "classic" : "event";
+      filtered = filtered.filter((g) => g.guideType === targetType);
+    }
+    
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter((g) => {
+        const title = getGuideTitle(g.id, lang, g.title).toLowerCase();
+        const description = getGuideDescription(g.id, lang, g.description).toLowerCase();
+        return title.includes(query) || description.includes(query);
+      });
+    }
+    
+    const newGuides = filtered.filter((g) => g.isNew);
+    const otherGuides = filtered.filter((g) => !g.isNew);
+    return [...newGuides, ...otherGuides];
+  }, [activeCategoryState, searchQuery, lang, t]);
 
   return (
     <div style={{ 
@@ -536,19 +643,18 @@ export default function GuidesPage() {
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px 16px" }}>
         <AdBanner />
 
-        <div style={{ display: "flex", gap: "8px", marginBottom: "24px", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "8px", marginBottom: "24px", flexWrap: "wrap", alignItems: "center" }}>
           {t.categories.map((cat: string) => {
-            const originalCat = ["Tous", "Débutant", "Intermédiaire", "Avancé", "Événements"][t.categories.indexOf(cat)];
             return (
             <button
               key={cat}
-              onClick={() => setActiveCategoryState(originalCat || cat)}
+              onClick={() => setActiveCategoryState(cat)}
               style={{
                 padding: "10px 18px",
                 borderRadius: "10px",
-                border: activeCategoryState === (originalCat || cat) ? "1px solid rgba(236, 72, 153, 0.6)" : "1px solid rgba(255,255,255,0.1)",
-                background: activeCategoryState === (originalCat || cat) ? "linear-gradient(135deg, #ec4899, #a855f7)" : "rgba(30, 30, 50, 0.8)",
-                color: activeCategoryState === (originalCat || cat) ? "#fff" : "rgba(255,255,255,0.6)",
+                border: activeCategoryState === cat ? "1px solid rgba(236, 72, 153, 0.6)" : "1px solid rgba(255,255,255,0.1)",
+                background: activeCategoryState === cat ? "linear-gradient(135deg, #ec4899, #a855f7)" : "rgba(30, 30, 50, 0.8)",
+                color: activeCategoryState === cat ? "#fff" : "rgba(255,255,255,0.6)",
                 cursor: "pointer",
                 fontSize: "0.85rem",
                 fontWeight: 500,
@@ -558,6 +664,25 @@ export default function GuidesPage() {
               {cat}
             </button>
           )})}
+        </div>
+
+        <div style={{ marginBottom: "24px" }}>
+          <input
+            type="text"
+            placeholder={t.searchPlaceholder}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "14px 20px",
+              borderRadius: "12px",
+              border: "1px solid rgba(139, 92, 246, 0.3)",
+              background: "rgba(30, 30, 50, 0.8)",
+              color: "#fff",
+              fontSize: "1rem",
+              outline: "none",
+            }}
+          />
         </div>
 
         <div style={{
@@ -623,7 +748,35 @@ export default function GuidesPage() {
                 {getGuideDescription(guide.id, lang, guide.description)}
               </p>
 
-              <div style={{ display: "flex", gap: "8px" }}>
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                {guide.isNew && (
+                  <span style={{
+                    padding: "4px 10px",
+                    borderRadius: "8px",
+                    fontSize: "0.7rem",
+                    fontWeight: 600,
+                    background: "linear-gradient(135deg, #ef4444, #f97316)",
+                    color: "#fff",
+                  }}>
+                    {t.new || "Nouveau"}
+                  </span>
+                )}
+                {guide.inProgress && (
+                  <span style={{
+                    padding: "4px 10px",
+                    borderRadius: "8px",
+                    fontSize: "0.7rem",
+                    fontWeight: 600,
+                    background: "rgba(251, 191, 36, 0.2)",
+                    color: "#fbbf24",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "4px",
+                  }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#fbbf24", animation: "pulse 1.5s infinite" }} />
+                    {t.inProgress || "En cours"}
+                  </span>
+                )}
                 <span style={{
                   padding: "4px 10px",
                   borderRadius: "8px",

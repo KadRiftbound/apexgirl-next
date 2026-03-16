@@ -12,7 +12,8 @@ export default function Contact() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    gdpr: false
   });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -50,6 +51,8 @@ export default function Contact() {
         note: 'Nous faisons de notre mieux pour répondre à tous les messages.',
       },
       required: 'Veuillez remplir tous les champs obligatoires.',
+      gdpr: 'J\'accepte que mes données soient utilisées pour répondre à ma demande. Vos données seront supprimées après traitement.',
+      gdprError: 'Vous devez accepter la politique de confidentialité.',
     },
     en: {
       title: 'Contact',
@@ -83,6 +86,8 @@ export default function Contact() {
         note: 'We do our best to respond to all messages.',
       },
       required: 'Please fill in all required fields.',
+      gdpr: 'I agree that my data will be used to respond to my request. Your data will be deleted after processing.',
+      gdprError: 'You must accept the privacy policy.',
     },
     it: {
       title: 'Contatto',
@@ -116,6 +121,8 @@ export default function Contact() {
         note: 'Facciamo del nostro meglio per rispondere a tutti i messaggi.',
       },
       required: 'Per favore compila tutti i campi richiesti.',
+      gdpr: 'Accetto che i miei dati vengano utilizzati per rispondere alla mia richiesta. I tuoi dati saranno cancellati dopo l\'elaborazione.',
+      gdprError: 'Devi accettare la privacy policy.',
     },
     es: {
       title: 'Contacto',
@@ -149,6 +156,8 @@ export default function Contact() {
         note: 'Hacemos nuestro mejor esfuerzo para responder a todos los mensajes.',
       },
       required: 'Por favor completa todos los campos requeridos.',
+      gdpr: 'Acepto que mis datos sean utilizados para responder a mi solicitud. Tus datos serán eliminados después del procesamiento.',
+      gdprError: 'Debes aceptar la política de privacidad.',
     },
     pt: {
       title: 'Contato',
@@ -182,6 +191,8 @@ export default function Contact() {
         note: 'Fazemos o nosso melhor para responder a todas as mensagens.',
       },
       required: 'Por favor preencha todos os campos obrigatórios.',
+      gdpr: 'Eu concordo que meus dados sejam usados para responder à minha solicitação. Seus dados serão excluídos após o processamento.',
+      gdprError: 'Você deve aceitar a política de privacidade.',
     },
     pl: {
       title: 'Kontakt',
@@ -215,6 +226,8 @@ export default function Contact() {
         note: 'Robimy wszystko, co w naszej mocy, aby odpowiedzieć na wszystkie wiadomości.',
       },
       required: 'Proszę wypełnić wszystkie wymagane pola.',
+      gdpr: 'Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na moją prośbę. Twoje dane zostaną usunięte po przetworzeniu.',
+      gdprError: 'Musisz zaakceptować politykę prywatności.',
     },
     id: {
       title: 'Kontak',
@@ -248,6 +261,8 @@ export default function Contact() {
         note: 'Kami melakukan yang terbaik untuk merespons semua pesan.',
       },
       required: 'Silakan isi semua kolom yang wajib diisi.',
+      gdpr: 'Saya setuju bahwa data saya digunakan untuk merespons permintaan saya. Data Anda akan dihapus setelah обработки.',
+      gdprError: 'Anda harus menerima kebijakan privasi.',
     },
     ru: {
       title: 'Контакт',
@@ -281,6 +296,8 @@ export default function Contact() {
         note: 'Мы делаем всё возможное, чтобы ответить на все сообщения.',
       },
       required: 'Пожалуйста, заполните все обязательные поля.',
+      gdpr: 'Я согласен на обработку моих данных для ответа на мой запрос. Ваши данные будут удалены после обработки.',
+      gdprError: 'Вы должны принять политику конфиденциальности.',
     },
   };
 
@@ -292,6 +309,11 @@ export default function Contact() {
     
     if (!formData.name || !formData.email || !formData.message) {
       setError(content.required);
+      return;
+    }
+
+    if (!formData.gdpr) {
+      setError(content.gdprError);
       return;
     }
 
@@ -310,7 +332,7 @@ export default function Contact() {
 
       if (response.ok) {
         setSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '', gdpr: false });
       } else {
         setError(content.error);
       }
@@ -475,6 +497,19 @@ export default function Contact() {
                       minHeight: '120px',
                     }}
                   />
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <input
+                    type="checkbox"
+                    id="gdpr"
+                    checked={formData.gdpr}
+                    onChange={(e) => setFormData({ ...formData, gdpr: e.target.checked })}
+                    style={{ marginTop: '4px', width: '18px', height: '18px', accentColor: '#8b5cf6' }}
+                  />
+                  <label htmlFor="gdpr" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', lineHeight: 1.5 }}>
+                    {content.gdpr}
+                  </label>
                 </div>
 
                 <button
