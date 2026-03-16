@@ -121,7 +121,7 @@ export function MobileNav() {
           right: '0',
           bottom: '0',
           background: 'rgba(10, 10, 20, 0.98)',
-          zIndex: 9998,
+          zIndex: 10000,
           padding: '20px',
           overflowY: 'auto'
         }}>
