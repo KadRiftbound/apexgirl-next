@@ -389,7 +389,12 @@ export default function MobileArtistsPage() {
                 {Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
                   <span key={genre} className="mobile-genre-badge">{genre} {count}</span>
                 ))}
-                {Object.entries(team1Stats.genreCounts).length < 2 && <span className="mobile-genre-badge" style={{visibility:'hidden'}}>X</span>}
+                {Object.entries(team1Stats.genreCounts).length < 2 && (
+                  <>
+                    <span className="mobile-genre-badge" style={{visibility:'hidden'}}>X</span>
+                    <span className="mobile-genre-badge" style={{visibility:'hidden'}}>X</span>
+                  </>
+                )}
               </div>
               {/* FULL stats - each on single line */}
               <div className="mobile-team-stats">
@@ -471,7 +476,12 @@ export default function MobileArtistsPage() {
                 {Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
                   <span key={genre} className="mobile-genre-badge">{genre} {count}</span>
                 ))}
-                {Object.entries(team2Stats.genreCounts).length < 2 && <span className="mobile-genre-badge" style={{visibility:'hidden'}}>X</span>}
+                {Object.entries(team2Stats.genreCounts).length < 2 && (
+                  <>
+                    <span className="mobile-genre-badge" style={{visibility:'hidden'}}>X</span>
+                    <span className="mobile-genre-badge" style={{visibility:'hidden'}}>X</span>
+                  </>
+                )}
               </div>
               {/* FULL stats - each on single line */}
               <div className="mobile-team-stats">
