@@ -69,7 +69,8 @@ export function MobileNav() {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 99999,
+        zIndex: 9999999,
+        isolation: 'isolate',
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.3s ease',
       }}
@@ -85,7 +86,6 @@ export function MobileNav() {
         padding: '0 16px',
         borderBottom: '1px solid rgba(255,255,255,0.1)'
       }}>
-        {/* Logo */}
         <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
           <img 
             src="/assets/images/logo.png" 
@@ -94,7 +94,6 @@ export function MobileNav() {
           />
         </Link>
         
-        {/* Menu Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
           style={{
@@ -106,7 +105,9 @@ export function MobileNav() {
             fontSize: '14px',
             cursor: 'pointer',
             fontWeight: 600,
-            boxShadow: '0 2px 10px rgba(255, 77, 141, 0.3)'
+            boxShadow: '0 2px 10px rgba(255, 77, 141, 0.3)',
+            zIndex: 9999999,
+            position: 'relative'
           }}
         >
           {isOpen ? '✕' : '☰ MENU'}
@@ -121,7 +122,7 @@ export function MobileNav() {
           right: '0',
           bottom: '0',
           background: 'rgba(10, 10, 20, 0.98)',
-          zIndex: 999999,
+          zIndex: 9999999,
           padding: '20px',
           overflowY: 'auto'
         }}>
