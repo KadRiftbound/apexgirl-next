@@ -61,17 +61,10 @@ const tierColors: Record<string, { bg: string; border: string; text: string }> =
   D: { bg: "rgba(148, 163, 184, 0.15)", border: "#94a3b8", text: "#94a3b8" },
 };
 
-const tierOrder: Record<string, number> = {
-  "S+": 0,
-  S: 1,
-  A: 2,
-  B: 3,
-  C: 4,
-  D: 5,
-};
+const tierOrder: string[] = ["S+", "S", "A", "B", "C", "D"];
 
 const getTierOrder = (tier: string): number => {
-  return tierOrder[tier] ?? 3;
+  return tierOrder.indexOf(tier);
 };
 
 const getEffectiveTier = (artist: any): string => {
