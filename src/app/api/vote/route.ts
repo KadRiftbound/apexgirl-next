@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
+import artistsData from "@/lib/data/artists.json";
 
 let redis: Redis | null = null;
 
@@ -183,11 +184,32 @@ export async function POST(request: NextRequest) {
     
     console.log('Artist index:', artistIndex);
     
+    // If artist not found in votes, add them
     if (artistIndex === -1) {
-      return NextResponse.json({
-        success: false,
-        message: "Artiste non trouvé",
-      }, { status: 404 });
+      // Find artist in artistsData to get rank and id
+      const artistInfo = artistsData.find((a: any) => 
+        a.name === artist_name || 
+        (artist_id && a.id === artist_id)
+      );
+      
+      if (!artistInfo) {
+        return NextResponse.json({
+          success: false,
+          message: "Artiste non trouvé dans la base de données",
+        }, { status: 404 });
+      }
+      
+      // Add new artist to votes
+      const newEntry: VoteEntry = {
+        artist_id: artistInfo.id,
+        artist_name: artistInfo.name,
+        rank: artistInfo.rank,
+        count: 1,
+        week_count: 1,
+      };
+      data.votes.push(newEntry);
+      artistIndex = data.votes.length - 1;
+      console.log('Added new artist to votes:', artistInfo.name);
     }
     
     data.votes[artistIndex].count += 1;
