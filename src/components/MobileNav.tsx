@@ -69,7 +69,7 @@ export function MobileNav() {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 9999,
+        zIndex: 99999,
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.3s ease',
       }}
@@ -121,7 +121,7 @@ export function MobileNav() {
           right: '0',
           bottom: '0',
           background: 'rgba(10, 10, 20, 0.98)',
-          zIndex: 10000,
+          zIndex: 999999,
           padding: '20px',
           overflowY: 'auto'
         }}>

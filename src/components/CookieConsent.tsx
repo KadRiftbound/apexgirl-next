@@ -347,7 +347,7 @@ export default function CookieConsent() {
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: '20px',
-        zIndex: 9999,
+        zIndex: 99999,
         flexWrap: 'wrap',
         animation: 'slideUp 0.3s ease-out'
       }}>
@@ -429,7 +429,7 @@ export default function CookieConsent() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 10000,
+      zIndex: 999999,
       padding: '20px',
       animation: 'fadeIn 0.2s ease-out'
     }}>
