@@ -778,18 +778,26 @@ export default function MobileArtistsPage() {
           justify-content: center;
         }
         .mobile-genre-badge {
-          padding: 2px 5px;
+          padding: 2px 4px;
           background: rgba(139,92,246,0.3);
           border-radius: 8px;
           font-size: 0.5rem;
           color: #fff;
+          white-space: nowrap;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .mobile-specialty-badge {
-          padding: 2px 5px;
+          padding: 2px 4px;
           background: rgba(6,182,212,0.3);
           border-radius: 8px;
           font-size: 0.5rem;
           color: #fff;
+          white-space: nowrap;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .mobile-team-specialties {
           display: flex;
