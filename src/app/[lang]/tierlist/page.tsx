@@ -151,7 +151,7 @@ export default function TierListPage() {
   const [loading, setLoading] = useState(true);
   const [votedToday, setVotedToday] = useState(false);
   const [voteMessage, setVoteMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-  const [votingArtist, setVotingArtist] = useState<number | null>(null);
+  const [votingArtist, setVotingArtist] = useState<string | null>(null);
   const [filterGenre, setFilterGenre] = useState<string>("");
   const [filterSpecialty, setFilterSpecialty] = useState<string>("");
 
@@ -171,13 +171,13 @@ export default function TierListPage() {
     }
   };
 
-  const handleVote = async (artistId: number) => {
-    setVotingArtist(artistId);
+  const handleVote = async (artistName: string) => {
+    setVotingArtist(artistName);
     try {
       const res = await fetch("/api/vote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ artist_id: artistId }),
+        body: JSON.stringify({ artist_name: artistName }),
       });
       const data = await res.json();
       
@@ -872,8 +872,8 @@ export default function TierListPage() {
                     return (rankOrder[a.rank] || 99) - (rankOrder[b.rank] || 99);
                   })
                   .map(artist => {
-                    const artistVotes = voteData?.rankings?.all_time?.find((v: any) => v.artist_id === artist.id);
-                    const isVoting = votingArtist === artist.id;
+                    const artistVotes = voteData?.rankings?.all_time?.find((v: any) => v.artist_name === artist.name);
+                    const isVoting = votingArtist === artist.name;
                     const isDisabled = votedToday || isVoting;
                     
                     return (
@@ -929,9 +929,9 @@ export default function TierListPage() {
                              }}>
                                {artist.name}
                              </div>
-                              <button
-                                onClick={(e) => { e.preventDefault(); e.stopPropagation(); !isDisabled && handleVote(artist.id); }}
-                                disabled={isDisabled}
+                           <button
+                                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); !isDisabled && handleVote(artist.name); }}
+                                 disabled={isDisabled}
                                style={{
                                  width: "100%",
                                  padding: "6px 10px",

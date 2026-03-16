@@ -142,9 +142,9 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { artist_id } = body;
+    const { artist_id, artist_name } = body;
     
-    console.log('Vote request for artist_id:', artist_id);
+    console.log('Vote request for artist:', artist_name || artist_id);
     
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() 
       || request.headers.get("x-real-ip") 
@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
     
     const today = getToday();
     const weekStart = getWeekStart();
-    
+
     const ipVoteData = await getIPVotes(ip);
     
     if (ipVoteData && ipVoteData.last_vote === today && ipVoteData.votes_today >= 1) {
@@ -172,7 +172,15 @@ export async function POST(request: NextRequest) {
       }, { status: 429 });
     }
     
-    const artistIndex = data.votes.findIndex(v => v.artist_id === artist_id);
+    // Find artist by name or id
+    let artistIndex = -1;
+    if (artist_name) {
+      artistIndex = data.votes.findIndex(v => v.artist_name === artist_name);
+    } else if (artist_id) {
+      // Fallback to id lookup (legacy support)
+      artistIndex = data.votes.findIndex(v => v.artist_id === artist_id);
+    }
+    
     console.log('Artist index:', artistIndex);
     
     if (artistIndex === -1) {
