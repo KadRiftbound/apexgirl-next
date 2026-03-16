@@ -779,40 +779,36 @@ export default function MobileArtistsPage() {
         
         .mobile-team-genres {
           display: flex;
-          flex-wrap: wrap;
-          gap: 3px;
-          margin-bottom: 20px;
-          min-height: 28px;
+          flex-wrap: nowrap;
+          gap: 2px;
+          margin-bottom: 6px;
+          overflow-x: auto;
           justify-content: center;
         }
         .mobile-genre-badge {
-          padding: 2px 4px;
+          padding: 1px 4px;
           background: rgba(139,92,246,0.3);
-          border-radius: 8px;
-          font-size: 0.5rem;
+          border-radius: 6px;
+          font-size: 0.45rem;
           color: #fff;
           white-space: nowrap;
-          max-width: 100%;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          flex-shrink: 0;
         }
         .mobile-specialty-badge {
-          padding: 2px 4px;
+          padding: 1px 4px;
           background: rgba(6,182,212,0.3);
-          border-radius: 8px;
-          font-size: 0.5rem;
+          border-radius: 6px;
+          font-size: 0.45rem;
           color: #fff;
           white-space: nowrap;
-          max-width: 100%;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          flex-shrink: 0;
         }
         .mobile-team-specialties {
           display: flex;
-          flex-wrap: wrap;
-          gap: 3px;
-          margin-top: 4px;
-          min-height: 28px;
+          flex-wrap: nowrap;
+          gap: 2px;
+          margin-top: 2px;
+          overflow-x: auto;
           justify-content: center;
         }
         
