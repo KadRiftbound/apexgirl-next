@@ -581,6 +581,7 @@ export default function MobileArtistsPage() {
           position: fixed;
           left: 0;
           right: 0;
+          transition: top 0.2s ease;
         }
         
         .mobile-panel-col {
@@ -864,6 +865,7 @@ export default function MobileArtistsPage() {
           left: 0;
           right: 0;
           align-items: center;
+          transition: top 0.2s ease;
         }
         .mobile-search-bar.hidden {
           transform: translateY(-100%);
@@ -893,6 +895,7 @@ export default function MobileArtistsPage() {
         .mobile-artists-bottom {
           padding: 8px 6px 100px 6px;
           min-height: 100vh;
+          transition: padding-top 0.2s ease;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
