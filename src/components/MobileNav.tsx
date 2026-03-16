@@ -22,8 +22,8 @@ export function MobileNav() {
       const currentScrollY = window.scrollY;
       
       // Only on mobile
-      if (window.innerWidth <= 900) {
-        if (currentScrollY > 50) {
+        if (window.innerWidth <= 900) {
+          if (currentScrollY > 120) {
           // Hide nav when scrolled down
           setIsVisible(false);
         } else {
@@ -70,7 +70,6 @@ export function MobileNav() {
         left: 0,
         right: 0,
         zIndex: 9999999,
-        isolation: 'isolate',
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.3s ease',
       }}
