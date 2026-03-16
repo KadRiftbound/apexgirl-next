@@ -6,6 +6,15 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
+const tierColors: Record<string, string> = {
+  "S+": "#ffd700",
+  S: "#ffd700",
+  A: "#22c55e",
+  B: "#3b82f6",
+  C: "#f59e0b",
+  F: "#94a3b8",
+};
+
 const artistTranslations: Record<string, any> = {
   fr: { loading: "Chargement de l'artiste...", notFound: "Artiste non trouvé", notFoundDesc: "L'artiste avec l'ID", notFoundId: "n'existe pas.", backToList: "Retour à la liste des artistes", position: "Position", group: "Groupe", genre: "Genre", specialty: "Spécialité", build: "Build recommandé", rating: "Rating", skills: "Compétences", noSkills: "Aucune compétence listée.", skillCategories: "Catégories de compétences", dps: "DPS", offensive: "Offensive", hp: "HP", defense: "Défense", speed: "Vitesse", none: "Aucune", singStat: "Stat de chant", danceStat: "Stat de danse", photos: "Photos", combinedStats: "Stats combinés", total: "Total", rank: "Rang", tier: "Tier", stats: "Statistiques", backToArtists: "← Retour aux artistes", infoTab: "Informations", skillsTab: "Compétences", statsTab: "Stats", generalInfo: "Informations générales", viewTierList: "Voir la Tier List" },
   en: { loading: "Loading artist...", notFound: "Artist not found", notFoundDesc: "The artist with ID", notFoundId: "does not exist.", backToList: "Back to artist list", position: "Position", group: "Group", genre: "Genre", specialty: "Specialty", build: "Recommended Build", rating: "Rating", skills: "Skills", noSkills: "No skills listed.", skillCategories: "Skill Categories", dps: "DPS", offensive: "Offensive", hp: "HP", defense: "Defense", speed: "Speed", none: "None", singStat: "Sing Stat", danceStat: "Dance Stat", photos: "Photos", combinedStats: "Combined Stats", total: "Total", rank: "Rank", tier: "Tier", stats: "Statistics", backToArtists: "← Back to artists", infoTab: "Information", skillsTab: "Skills", statsTab: "Stats", generalInfo: "General Information", viewTierList: "View Tier List" },
@@ -26,7 +35,6 @@ type Artist = {
   genre: string;
   skills?: string[];
   description?: string;
-  rating?: string;
   thoughts?: string;
   build?: string;
   photos?: string;
@@ -230,20 +238,20 @@ export default function ArtistDetailPage() {
             </h1>
             <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
               <span style={{ 
-                background: rankColors[artist.rank] || '#6b7280', 
+                background: tierColors[artist.calculatedTier || ''] || '#94a3b8', 
                 color: '#fff', 
                 padding: '4px 12px', 
                 borderRadius: 'var(--radius-full)', 
                 fontWeight: 600,
                 fontSize: '0.9rem'
               }}>
-                {artist.rank}
+                {artist.calculatedTier || 'N/A'}
               </span>
               <span style={{ 
                 color: 'var(--text-muted)', 
                 fontSize: '0.9rem'
               }}>
-                • {artist.group}
+                • {artist.rank} • {artist.group}
               </span>
               <span style={{ 
                 color: 'var(--text-muted)', 
@@ -357,10 +365,6 @@ export default function ArtistDetailPage() {
                 <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '8px' }}>{t.build}</h3>
                 <p style={{ color: 'var(--text-secondary)' }}>{artist.build}</p>
               </div>
-            <div>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '8px' }}>{t.rating}</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>{artist.rating}</p>
-            </div>
           </div>
         </section>
 

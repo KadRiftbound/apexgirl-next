@@ -31,7 +31,6 @@ type Artist = {
   image?: string;
   calculatedTier: string;
   build: string;
-  rating: string;
   specialty?: string;
 };
 
@@ -76,8 +75,13 @@ const getTierOrder = (tier: string): number => {
 };
 
 const getEffectiveTier = (artist: any): string => {
+  // Use manual tier if available
+  if (artist.calculatedTier && artist.calculatedTier !== '') {
+    return artist.calculatedTier.toUpperCase();
+  }
+  
+  // Fallback: calculate tier from skills
   const skills = artist.skills || [];
-  const currentTier = (artist.rating || 'F').toUpperCase();
   
   // Parse skills for damage types
   const hasPlayerDamage = skills.some((s: string) => 
@@ -111,23 +115,22 @@ const getEffectiveTier = (artist: any): string => {
   );
   const hasAnyResistance = hasSkillResistance || hasBasicResistance;
   
-  // Rule 1: NOT S+ AND (player damage) AND (attack OR skill OR resistance)
-  // If artist has player damage AND (attack damage > 0 OR skill damage > 0 OR resistance)
-  if (currentTier !== 'S+' && hasPlayerDamage && (basicAttackPercent > 0 || skillDamagePercent > 0 || hasResistanceSkill)) {
+  // Rule 1: player damage AND (attack OR skill OR resistance) → S
+  if (hasPlayerDamage && (basicAttackPercent > 0 || skillDamagePercent > 0 || hasResistanceSkill)) {
     return 'S';
   }
   
-  // Rule 2: attack >= 60% AND (skill resistance OR basic resistance)
+  // Rule 2: attack >= 60% AND resistance → A
   if (basicAttackPercent >= 60 && hasAnyResistance) {
     return 'A';
   }
   
-  // Rule 3: attack = 50% AND (skill resistance OR basic resistance)
+  // Rule 3: attack = 50% AND resistance → B
   if (basicAttackPercent === 50 && hasAnyResistance) {
     return 'B';
   }
   
-  return currentTier;
+  return 'F';
 };
 
 export default function TierListPage() {
@@ -419,7 +422,7 @@ export default function TierListPage() {
                     padding: "16px"
                   }}>
                       {tierArtists
-                        .sort((a, b) => getTierOrder(a.rating) - getTierOrder(b.rating))
+                        .sort((a, b) => getTierOrder(getEffectiveTier(a)) - getTierOrder(getEffectiveTier(b)))
                         .map(artist => (
                           <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}`} style={{
                             textDecoration: 'none',
