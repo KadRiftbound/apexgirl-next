@@ -70,6 +70,7 @@ export function MobileNav() {
         left: 0,
         right: 0,
         zIndex: 9999999,
+        minHeight: '100vh',
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.3s ease',
       }}
