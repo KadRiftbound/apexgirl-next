@@ -95,11 +95,13 @@ export default function HomePage() {
       .then(data => {
         if (data.weekly_top) {
           setWeeklyTop(data.weekly_top);
-          if (data.weekly_top.artist_id) {
-            const artist = artistsData.find((a: any) => a.id === data.weekly_top.artist_id);
+          if (data.weekly_top.artist_name) {
+            const artist = artistsData.find((a: any) => a.name === data.weekly_top.artist_name);
             if (artist) {
               setArtistImage(artist.image || "");
               setArtistName(artist.name);
+            } else {
+              setArtistName(data.weekly_top.artist_name);
             }
           }
         }
