@@ -34,6 +34,12 @@ const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
 const RANKS = ['UR', 'UR Roma', 'UR Bali', 'SSR', 'SR', 'R'];
 const SPECIALTIES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de conduite', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'];
 
+const getSpecialtyLabel = (spec: string) => {
+  if (spec === 'Augmentation dommage') return 'Offensive';
+  if (spec === 'Dommage réduction') return 'Defensive';
+  return spec.slice(0, 8);
+};
+
 export default function MobileArtistsPage() {
   const params = useParams();
   const router = useRouter();
@@ -383,6 +389,7 @@ export default function MobileArtistsPage() {
                 {Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
                   <span key={genre} className="mobile-genre-badge">{genre} {count}</span>
                 ))}
+                {Object.entries(team1Stats.genreCounts).length < 2 && <span className="mobile-genre-badge" style={{visibility:'hidden'}}>X</span>}
               </div>
               {/* FULL stats - each on single line */}
               <div className="mobile-team-stats">
@@ -437,7 +444,7 @@ export default function MobileArtistsPage() {
                 </div>
                 <div className="mobile-team-specialties">
                   {Object.entries(team1Stats.specialtyCounts || {}).map(([spec, count]) => (
-                    <span key={spec} className="mobile-specialty-badge">{spec.slice(0,8)} {count}</span>
+                    <span key={spec} className="mobile-specialty-badge">{getSpecialtyLabel(spec)} {count}</span>
                   ))}
                 </div>
                 <button onClick={() => setTeam1([])} className="mobile-clear-btn">🗑️ Effacer</button>
@@ -464,6 +471,7 @@ export default function MobileArtistsPage() {
                 {Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
                   <span key={genre} className="mobile-genre-badge">{genre} {count}</span>
                 ))}
+                {Object.entries(team2Stats.genreCounts).length < 2 && <span className="mobile-genre-badge" style={{visibility:'hidden'}}>X</span>}
               </div>
               {/* FULL stats - each on single line */}
               <div className="mobile-team-stats">
@@ -518,7 +526,7 @@ export default function MobileArtistsPage() {
                 </div>
                 <div className="mobile-team-specialties">
                   {Object.entries(team2Stats.specialtyCounts || {}).map(([spec, count]) => (
-                    <span key={spec} className="mobile-specialty-badge">{spec.slice(0,8)} {count}</span>
+                    <span key={spec} className="mobile-specialty-badge">{getSpecialtyLabel(spec)} {count}</span>
                   ))}
                 </div>
                 <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️ Effacer</button>
