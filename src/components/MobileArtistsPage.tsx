@@ -52,23 +52,12 @@ export default function MobileArtistsPage() {
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [searchBarVisible, setSearchBarVisible] = useState(true);
-  const [panelFixed, setPanelFixed] = useState(false);
-  const [headerHeight, setHeaderHeight] = useState(0);
   const headerSectionRef = useRef<HTMLDivElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
-      // Get actual header section height after render
-      setTimeout(() => {
-        if (headerSectionRef.current) {
-          setHeaderHeight(headerSectionRef.current.offsetHeight);
-        }
-      }, 100);
-      
       try {
         const saved1 = localStorage.getItem('team1');
         const saved2 = localStorage.getItem('team2');
@@ -96,9 +85,8 @@ export default function MobileArtistsPage() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          const threshold = headerHeight > 0 ? headerHeight : 120;
+          const threshold = 80;
           
-          // Handle header section visibility (the scrollable section with title)
           const headerSection = document.querySelector('.mobile-header-section') as HTMLElement;
           if (headerSection) {
             if (currentScrollY > lastScrollY && currentScrollY > threshold) {
@@ -112,31 +100,6 @@ export default function MobileArtistsPage() {
             }
           }
           
-          // Panel becomes fixed after scrolling past header
-          const isPanelFixed = currentScrollY > threshold;
-          setPanelFixed(isPanelFixed);
-          
-          if (panelRef.current) {
-            if (isPanelFixed) {
-              panelRef.current.style.position = 'fixed';
-              panelRef.current.style.top = '0';
-              panelRef.current.style.left = '0';
-              panelRef.current.style.right = '0';
-              panelRef.current.style.zIndex = '100';
-            } else {
-              panelRef.current.style.position = 'relative';
-              panelRef.current.style.top = '0';
-              panelRef.current.style.zIndex = '100';
-            }
-          }
-          
-          // Search bar visibility
-          if (currentScrollY > lastScrollY && currentScrollY > threshold) {
-            setSearchBarVisible(false);
-          } else {
-            setSearchBarVisible(true);
-          }
-          
           lastScrollY = currentScrollY;
           ticking = false;
         });
@@ -146,7 +109,7 @@ export default function MobileArtistsPage() {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [headerHeight]);
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -294,7 +257,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 2: Fixed 3-column Panel */}
-        <div className={`mobile-top-panel ${panelFixed ? 'fixed' : ''}`} ref={panelRef}>
+        <div className="mobile-top-panel">
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
@@ -373,9 +336,6 @@ export default function MobileArtistsPage() {
           {/* Column 2: Team 1 - FULL stats with comparison */}
           <div className="mobile-panel-col mobile-panel-2">
             <div className="mobile-team-card mobile-team-1">
-              <div className="mobile-team-header">
-                <span>Équipe 1</span>
-              </div>
               <div className="mobile-team-slots">
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team1[i] && setTeam1(team1.filter(a => a.id !== team1[i].id))} className="mobile-team-slot" title="Cliquer pour retirer">
@@ -454,9 +414,6 @@ export default function MobileArtistsPage() {
           {/* Column 3: Team 2 - FULL stats with comparison */}
           <div className="mobile-panel-col mobile-panel-3">
             <div className="mobile-team-card mobile-team-2">
-              <div className="mobile-team-header">
-                <span>Équipe 2</span>
-              </div>
               <div className="mobile-team-slots">
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team2[i] && setTeam2(team2.filter(a => a.id !== team2[i].id))} className="mobile-team-slot" title="Cliquer pour retirer">
@@ -533,8 +490,8 @@ export default function MobileArtistsPage() {
           </div>
         </div>
 
-        {/* Layer 3: Search Bar - Fixed below panel */}
-        <div className="mobile-search-bar" style={panelFixed ? { position: 'fixed', top: '48vh', left: 0, right: 0, zIndex: 99 } : {}}>
+        {/* Layer 3: Search Bar - Always visible below panel */}
+        <div className="mobile-search-bar">
           <input
             type="text"
             placeholder={t.search}
@@ -555,8 +512,8 @@ export default function MobileArtistsPage() {
           </select>
         </div>
 
-        {/* Layer 4: Artists Grid - Scrollable */}
-        <div className="mobile-artists-bottom" style={panelFixed ? { paddingTop: '56vh' } : {}}>
+        /* Layer 4: Artists Grid - Scrollable */
+        <div className="mobile-artists-bottom" style={{ paddingTop: '52vh' }}>
           <div className="mobile-artists-count">{filteredArtists.length} artistes trouvés</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist) => (
@@ -602,7 +559,7 @@ export default function MobileArtistsPage() {
           font-size: 0.85rem;
         }
         
-        /* Layer 2: Top Panel */
+        /* Layer 2: Top Panel - Always fixed on mobile */
         .mobile-top-panel {
           display: flex;
           flex-direction: row;
@@ -610,20 +567,13 @@ export default function MobileArtistsPage() {
           padding: 4px;
           background: #0f0f1a;
           z-index: 100;
-          height: 48vh;
-          min-height: 350px;
+          height: 46vh;
+          min-height: 340px;
           opacity: 1;
-        }
-        .mobile-top-panel.fixed {
           position: fixed;
-          top: 0;
+          top: 50px;
           left: 0;
-          height: 48vh;
-          min-height: 350px;
-        }
           right: 0;
-          height: 40vh;
-          min-height: 300px;
         }
         
         .mobile-panel-col {
@@ -847,6 +797,7 @@ export default function MobileArtistsPage() {
           flex-wrap: wrap;
           gap: 3px;
           margin-top: 4px;
+          min-height: 28px;
           justify-content: center;
         }
         
@@ -891,47 +842,47 @@ export default function MobileArtistsPage() {
           cursor: pointer;
         }
         
-        /* Search Bar */
+        /* Search Bar - Always visible below fixed panel */
         .mobile-search-bar {
           display: flex;
-          gap: 3px;
-          padding: 6px;
+          gap: 4px;
+          padding: 6px 6px 4px 6px;
           background: #0f0f1a;
           z-index: 99;
-          transition: transform 0.3s ease;
-          flex-wrap: wrap;
+          position: fixed;
+          top: calc(50px + 46vh);
+          left: 0;
+          right: 0;
+          align-items: center;
         }
         .mobile-search-bar.hidden {
           transform: translateY(-100%);
         }
         .mobile-search-bar input {
           flex: 1;
-          min-width: 100px;
-          padding: 8px;
-          background: #1a1a2e;
-          border: 1px solid #333;
-          border-radius: 4px;
-          color: #fff;
-          font-size: 0.8rem;
-        }
-        .mobile-search-bar select {
-          padding: 8px 4px;
+          min-width: 80px;
+          padding: 6px 8px;
           background: #1a1a2e;
           border: 1px solid #333;
           border-radius: 4px;
           color: #fff;
           font-size: 0.7rem;
+        }
+        .mobile-search-bar select {
+          padding: 6px 2px;
+          background: #1a1a2e;
+          border: 1px solid #333;
+          border-radius: 4px;
+          color: #fff;
+          font-size: 0.65rem;
           cursor: pointer;
-          min-width: 55px;
+          min-width: 45px;
         }
         
         /* Artists Bottom */
         .mobile-artists-bottom {
           padding: 8px 6px 100px 6px;
           min-height: 100vh;
-        }
-        .mobile-top-panel.fixed + .mobile-search-bar {
-          top: 48vh;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
