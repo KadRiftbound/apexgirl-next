@@ -727,3 +727,8 @@ img {
     width: 100%;
   }
 }
+
+/* Tier tooltip */
+div[style*="position: relative"]:hover .tier-tooltip {
+  display: block !important;
+}

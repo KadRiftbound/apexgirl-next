@@ -9,6 +9,73 @@ import { AdBanner } from "@/components/AdSense";
 
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
+const tierDescriptions: Record<string, Record<string, string>> = {
+  fr: {
+    "S+": "Overpowered : Les artistes les plus forts avec des dégâts et capacités exceptionnelles.",
+    "S": "Très fort : Forts dégâts joueur combinés à un puissant second skill utile dans de nombreuses situations.",
+    "A": "Fort : Artistes fiables avec deux skills puissants qui performent bien dans la plupart des compositions.",
+    "B": "Situationnel : Principalement utile pour sa capacité de fans ou cas spécifiques dans certaines stratégies.",
+    "C": "Faible : Artistes avec des combinaisons de skills inhabituelles ou inefficaces qui limitent leur utilité.",
+    "D": "WTF ? : Artistes avec des skills incompréhensibles ou complètement inutiles."
+  },
+  en: {
+    "S+": "Overpowered: The strongest artists with exceptional damage and abilities that outperform most others.",
+    "S": "Very Strong: High player damage combined with a powerful secondary skill useful in many situations.",
+    "A": "Strong: Reliable artists with two powerful skills that perform well in most team compositions.",
+    "B": "Situational: Mainly valuable for their fan capacity or niche use cases in specific strategies.",
+    "C": "Weak: Artists with unusual or ineffective skill combinations that limit their overall usefulness.",
+    "D": "WTF?: Artists with incomprehensible or completely useless skills."
+  },
+  it: {
+    "S+": "Overpowered: Gli artisti più forti con danni e abilità eccezionali.",
+    "S": "Molto Forte: Alto danno al giocatore combinato con una potente abilità secondaria.",
+    "A": "Forte: Artisti affidabili con due abilità potenti.",
+    "B": "Sitazionale: Utile principalmente per la capacità di fan.",
+    "C": "Debole: Artisti con combinazioni di abilità insolite o inefficaci.",
+    "D": "WTF?: Artisti con abilità incomprensibili."
+  },
+  es: {
+    "S+": "Overpowered: Los artistas más fuertes con daño y habilidades excepcionales.",
+    "S": "Muy Fuerte: Alto daño al jugador combinado con una poderosa habilidad secundaria.",
+    "A": "Fuerte: Artistas confiables con dos habilidades poderosas.",
+    "B": "Situacional: Principalmente útil por su capacidad de fans.",
+    "C": "Débil: Artistas con combinaciones de habilidades inusuales o ineficaces.",
+    "D": "WTF?: Artistas con habilidades incomprensibles."
+  },
+  pt: {
+    "S+": "Overpowered: Os artistas mais fortes com dano e habilidades excepcionais.",
+    "S": "Muito Forte: Alto dano ao jogador combinado com uma poderosa habilidade secundária.",
+    "A": "Forte: Artistas confiáveis com duas habilidades poderosas.",
+    "B": "Situacional: Principalmente útil por sua capacidade de fãs.",
+    "C": "Fraco: Artistas com combinações de habilidades incomuns ou ineficazes.",
+    "D": "WTF?: Artistas com habilidades incompreensíveis."
+  },
+  pl: {
+    "S+": "Overpowered: Najsilniejsi artyści z wyjątkowymi obrażeniami i umiejętnościami.",
+    "S": "Bardzo Silny: Wysokie obrażenia gracza w połączeniu z potężną wtórną umiejętnością.",
+    "A": "Silny: Niezawodni artyści z dwoma potężnymi umiejętnościami.",
+    "B": "Sytuacyjny: Głównie przydatny ze względu na pojemność fanów.",
+    "C": "Słaby: Artyści z niezwykłymi lub nieefektywnymi kombinacjami umiejętności.",
+    "D": "WTF?: Artyści z niezrozumiałymi umiejętnościami."
+  },
+  id: {
+    "S+": "Overpowered: Artis terkuat dengan kerusakan dan kemampuan luar biasa.",
+    "S": "Sangat Kuat: Kerusakan pemain tinggi dikombinasikan dengan skill sekunder yang kuat.",
+    "A": "Kuat: Artis andal dengan dua skill kuat.",
+    "B": "Situasional: Mainly berguna untuk kapasitas penggemar.",
+    "C": "Lemah: Artis dengan kombinasi skill yang tidak biasa atau tidak efektif.",
+    "D": "WTF?: Artis dengan skill yang tidak dapat dipahami."
+  },
+  ru: {
+    "S+": "Overpowered: Самые сильные артисты с исключительным уроном и способностями.",
+    "S": "Очень Сильный: Высокий урон игрока в сочетании с мощной вторичной способностью.",
+    "A": "Сильный: Надёжные артисты с двумя мощными способностями.",
+    "B": "Ситуационный: Полезен в основном своей вместимостью фанатов.",
+    "C": "Слабый: Артисты с необычными или неэффективными комбинациями навыков.",
+    "D": "WTF?: Артисты с непонятными навыками."
+  }
+};
+
 const tierlistTranslations: Record<string, any> = {
   fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un vote par jour par IP.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voted aujourd'hui !" },
   en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day per IP.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today!" },
@@ -67,13 +134,8 @@ const getTierOrder = (tier: string): number => {
   return tierOrder.indexOf(tier);
 };
 
-const tierDescriptions: Record<string, string> = {
-  "S+": "Overpowered",
-  "S": "Very strong, Player damage + second strong skill for various situation",
-  "A": "Strong artist, 2 powerful skills",
-  "B": "Fan capacity, can situationally be good",
-  "C": "Strange skills combo, weak",
-  "D": "WTF?"
+const getTierDescription = (tier: string, lang: string): string => {
+  return tierDescriptions[lang]?.[tier] || tierDescriptions.en[tier] || "";
 };
 
 const getEffectiveTier = (artist: any): string => {
@@ -298,6 +360,7 @@ export default function TierListPage() {
                 <option value="Mixte">Mixte</option>
                 <option value="Rassemblement">Rassemblement</option>
                 <option value="Économie">Économie</option>
+                <option value="HQ Defense">HQ Defense</option>
               </select>
             </div>
 
@@ -346,7 +409,7 @@ export default function TierListPage() {
                      alignItems: "center",
                      gap: "12px"
                    }}>
-                     <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                        <span style={{
                          fontSize: "1.25rem",
                          fontWeight: 800,
@@ -355,16 +418,58 @@ export default function TierListPage() {
                        }}>
                          {tier}
                        </span>
-                       <span 
-                         style={{ 
-                           fontSize: "0.75rem", 
-                           color: "var(--text-muted)", 
-                           cursor: "help"
-                         }}
-                         title={tierDescriptions[tier]}
-                       >
-                         ?
-                       </span>
+                       <div style={{ position: "relative" }}>
+                         <span 
+                           style={{ 
+                             fontSize: "0.85rem", 
+                             fontWeight: 600,
+                             color: tierColors[tier]?.text,
+                             background: tierColors[tier]?.bg,
+                             border: `1px solid ${tierColors[tier]?.border}`,
+                             borderRadius: "50%",
+                             width: "20px",
+                             height: "20px",
+                             display: "flex",
+                             alignItems: "center",
+                             justifyContent: "center",
+                             cursor: "help"
+                           }}
+                         >
+                           ?
+                         </span>
+                         <div style={{
+                           position: "absolute",
+                           top: "100%",
+                           left: "50%",
+                           transform: "translateX(-50%)",
+                           marginTop: "8px",
+                           padding: "12px 16px",
+                           background: "var(--bg-card)",
+                           border: `1px solid ${tierColors[tier]?.border}`,
+                           borderRadius: "var(--radius-md)",
+                           boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                           zIndex: 100,
+                           minWidth: "250px",
+                           maxWidth: "300px",
+                           display: "none"
+                         }} className="tier-tooltip">
+                           <div style={{ 
+                             fontSize: "0.8rem", 
+                             color: tierColors[tier]?.text,
+                             fontWeight: 600,
+                             marginBottom: "4px"
+                           }}>
+                             Tier {tier}
+                           </div>
+                           <div style={{ 
+                             fontSize: "0.75rem", 
+                             color: "var(--text-secondary)",
+                             lineHeight: 1.4
+                           }}>
+                             {getTierDescription(tier, lang)}
+                           </div>
+                         </div>
+                       </div>
                      </div>
                      <span style={{ 
                        color: "var(--text-muted)", 
