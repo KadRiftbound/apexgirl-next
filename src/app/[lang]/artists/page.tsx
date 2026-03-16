@@ -123,89 +123,32 @@ export default function ArtistsPage() {
   }, []);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
     let ticking = false;
-    
-       const handleScroll = () => {
-         if (!ticking) {
-           window.requestAnimationFrame(() => {
-             const currentScrollY = window.scrollY;
-             // Try multiple selectors to find the header
-             const header = document.querySelector('.header') as HTMLElement ||
-                           document.querySelector('header[role="banner"]') as HTMLElement ||
-                           document.querySelector('header') as HTMLElement;
-             
-             // Toggle header hidden class - ONLY on desktop (mobile handled by CSS display)
-             if (header && window.innerWidth > 900) {
-               // Hide header when scrolling down past 100px, show only when at top
-               if (currentScrollY > 100) {
-                 header.classList.add('header-hidden');
-               } else {
-                 header.classList.remove('header-hidden');
-               }
-             }
-           
-           // Panel fixed behavior - for both mobile and desktop
-           setPanelFixed(currentScrollY > 50);
-           
-           if (panelRef.current) {
-             // On desktop: panel becomes fixed after scrolling past initial position
-             // On mobile: panel is always fixed at top: 0
-             if (window.innerWidth > 900) {
-               const headerHeight = currentScrollY > 100 ? 0 : 70;
-               if (currentScrollY > 110) {
-                 panelRef.current.style.position = 'fixed';
-                 panelRef.current.style.top = `${headerHeight}px`;
-               } else {
-                 panelRef.current.style.position = 'absolute';
-                 panelRef.current.style.top = '110px';
-               }
-             } else {
-               // Mobile: always fixed at top
-               panelRef.current.style.position = 'fixed';
-               panelRef.current.style.top = '0';
-             }
-            }
-          
-          // Panel fixed behavior - for both mobile and desktop
-          const isPanelFixed = currentScrollY > 50;
-          setPanelFixed(isPanelFixed);
-          
-          if (panelRef.current) {
-            // On desktop: panel becomes fixed after scrolling past initial position
-            // On mobile: panel is always fixed at top: 0
-            if (window.innerWidth > 900) {
-              const headerHeight = currentScrollY > 100 ? 0 : 70;
-              if (currentScrollY > 110) {
-                panelRef.current.style.position = 'fixed';
-                panelRef.current.style.top = headerHeight + 'px';
-              } else {
-                panelRef.current.style.position = 'absolute';
-                panelRef.current.style.top = '110px';
-              }
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const header = document.querySelector('.header') as HTMLElement ||
+                        document.querySelector('header[role="banner"]') as HTMLElement ||
+                        document.querySelector('header') as HTMLElement;
+
+          // Hide header when the panel is about to reach it
+          if (header && panelRef.current && window.innerWidth > 900) {
+            const panelTop = panelRef.current.getBoundingClientRect().top;
+            const headerHeight = header.offsetHeight;
+            if (panelTop <= headerHeight) {
+              header.classList.add('header-hidden');
             } else {
-              // Mobile: always fixed at top
-              panelRef.current.style.position = 'fixed';
-              panelRef.current.style.top = '0';
+              header.classList.remove('header-hidden');
             }
           }
-          
-          // Mobile search bar visibility - only on mobile
-          if (window.innerWidth <= 900) {
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-              setSearchBarVisible(false);
-            } else {
-              setSearchBarVisible(true);
-            }
-          }
-          
-          lastScrollY = currentScrollY;
+
           ticking = false;
         });
         ticking = true;
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -384,8 +327,6 @@ export default function ArtistsPage() {
     });
   }, [searchQuery, filterRank, filterGenre, filterSpecialty]);
 
-  const [searchBarVisible, setSearchBarVisible] = useState(true);
-  const [panelFixed, setPanelFixed] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -425,7 +366,7 @@ export default function ArtistsPage() {
         </div>
 
         {/* TOP PANEL - Fixed 40vh */}
-        <div className={`top-panel ${panelFixed ? 'fixed' : ''}`}>
+        <div ref={panelRef} className="top-panel">
           {/* Column 1: Artist Preview (30%) */}
           <div className="panel-col panel-col-1">
             <div className="artist-preview-card">
@@ -576,7 +517,7 @@ export default function ArtistsPage() {
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid (scrollable) */}
         <div className="artists-bottom">
-          <div className={`search-bar ${!searchBarVisible ? 'hidden' : ''}`}>
+          <div className="search-bar">
             <input
               type="text"
               placeholder={t.search}
@@ -644,14 +585,8 @@ export default function ArtistsPage() {
           background: #0f0f1a;
           position: sticky;
           top: 0;
-          z-index: 100;
-        }
-        .top-panel.fixed {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+          z-index: 1001;
+          transition: box-shadow 0.3s ease;
         }
         .panel-col {
           height: 100%;
@@ -917,12 +852,8 @@ export default function ArtistsPage() {
         
         .artists-bottom {
           padding: 8px;
-          padding-top: 40vh;
           padding-bottom: 100px;
           min-height: 100vh;
-        }
-        .top-panel.fixed + .artists-bottom {
-          padding-top: 0;
         }
         .search-bar {
           display: flex;
@@ -931,12 +862,8 @@ export default function ArtistsPage() {
           padding: 8px;
           background: #0f0f1a;
           z-index: 99;
-        }
-        .top-panel.fixed + .artists-bottom .search-bar {
-          position: fixed;
-          top: 40vh;
-          left: 0;
-          right: 0;
+          position: sticky;
+          top: max(40vh, 300px);
         }
         .search-bar input {
           flex: 1;
@@ -1082,9 +1009,6 @@ export default function ArtistsPage() {
             min-height: 100vh;
             padding-top: 48vh;
           }
-          .top-panel.fixed + .artists-bottom {
-            padding-top: 48vh;
-          }
           .search-bar {
             position: fixed;
             top: 40vh;
@@ -1095,10 +1019,6 @@ export default function ArtistsPage() {
             width: 100vw !important;
             padding: 8px 12px !important;
             box-sizing: border-box !important;
-            transition: transform 0.3s ease;
-          }
-          .search-bar.hidden {
-            transform: translateY(-100%);
           }
           .top-panel {
             z-index: 100;

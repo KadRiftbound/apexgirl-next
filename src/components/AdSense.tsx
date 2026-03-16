@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface AdSenseProps {
   adSlot?: string;
@@ -8,7 +8,11 @@ interface AdSenseProps {
 }
 
 export function AdSense({ adSlot, adFormat = "auto" }: AdSenseProps) {
+  const pushed = useRef(false);
+
   useEffect(() => {
+    if (pushed.current) return;
+    pushed.current = true;
     try {
       (window as any).adsbygoogle = (window as any).adsbygoogle || [];
       (window as any).adsbygoogle.push({});
