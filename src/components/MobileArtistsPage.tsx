@@ -52,7 +52,9 @@ export default function MobileArtistsPage() {
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const headerSectionRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   useEffect(() => {
@@ -86,6 +88,13 @@ export default function MobileArtistsPage() {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
           const threshold = 80;
+          
+          const isScrolled = currentScrollY > threshold;
+          setScrolled(isScrolled);
+          
+          if (panelRef.current) {
+            panelRef.current.style.top = isScrolled ? '0' : '56px';
+          }
           
           const headerSection = document.querySelector('.mobile-header-section') as HTMLElement;
           if (headerSection) {
@@ -257,7 +266,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 2: Fixed 3-column Panel */}
-        <div className="mobile-top-panel">
+        <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : 56 }}>
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
@@ -491,7 +500,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Always visible below panel */}
-        <div className="mobile-search-bar">
+        <div className="mobile-search-bar" style={{ top: scrolled ? 'calc(46vh)' : 'calc(56px + 46vh)' }}>
           <input
             type="text"
             placeholder={t.search}
@@ -513,7 +522,7 @@ export default function MobileArtistsPage() {
         </div>
 
         /* Layer 4: Artists Grid - Scrollable */
-        <div className="mobile-artists-bottom" style={{ paddingTop: 'calc(56px + 46vh + 45px)' }}>
+        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? 'calc(46vh + 45px)' : 'calc(56px + 46vh + 45px)' }}>
           <div className="mobile-artists-count">{filteredArtists.length} artistes trouvés</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist) => (
@@ -570,7 +579,6 @@ export default function MobileArtistsPage() {
           min-height: 340px;
           opacity: 1;
           position: fixed;
-          top: 56px;
           left: 0;
           right: 0;
         }
@@ -857,7 +865,6 @@ export default function MobileArtistsPage() {
           background: #0f0f1a;
           z-index: 99;
           position: fixed;
-          top: calc(56px + 46vh);
           left: 0;
           right: 0;
           align-items: center;
