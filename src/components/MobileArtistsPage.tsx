@@ -860,12 +860,13 @@ export default function MobileArtistsPage() {
           gap: 4px;
           padding: 6px 6px 4px 6px;
           background: #0f0f1a;
-          z-index: 99;
+          z-index: 200;
           position: fixed;
           left: 0;
           right: 0;
           align-items: center;
           transition: top 0.2s ease;
+          pointer-events: auto;
         }
         .mobile-search-bar.hidden {
           transform: translateY(-100%);
@@ -896,16 +897,19 @@ export default function MobileArtistsPage() {
           padding: 8px 6px 100px 6px;
           min-height: 100vh;
           transition: padding-top 0.2s ease;
+          pointer-events: none;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
           color: #888;
           margin-bottom: 6px;
+          pointer-events: auto;
         }
         .mobile-artists-grid {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
           gap: 3px;
+          pointer-events: auto;
         }
         .mobile-artists-grid button {
           aspect-ratio: 3/4;
