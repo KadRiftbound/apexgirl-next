@@ -67,6 +67,15 @@ const getTierOrder = (tier: string): number => {
   return tierOrder.indexOf(tier);
 };
 
+const tierDescriptions: Record<string, string> = {
+  "S+": "Overpowered",
+  "S": "Very strong, Player damage + second strong skill for various situation",
+  "A": "Strong artist, 2 powerful skills",
+  "B": "Fan capacity, can situationally be good",
+  "C": "Strange skills combo, weak",
+  "D": "WTF?"
+};
+
 const getEffectiveTier = (artist: any): string => {
   return (artist.calculatedTier || 'D').toUpperCase();
 };
@@ -309,12 +318,12 @@ export default function TierListPage() {
             </div>
 
             {tierOrder.map(tier => {
-              const tierArtists = artists.filter(a => 
-                getEffectiveTier(a) === tier
-                && (a.rank === "UR" || a.rank === "SSR")
-                && (!filterGenre || a.genre === filterGenre)
-                && (!filterSpecialty || a.specialty === filterSpecialty)
-              );
+               const tierArtists = artists.filter(a => 
+                 getEffectiveTier(a) === tier
+                 && (a.rank === "UR" || a.rank === "SSR")
+                 && (!filterGenre || (a.genre?.trim() || "") === filterGenre.trim())
+                 && (!filterSpecialty || (a.specialty?.trim() || "") === filterSpecialty.trim())
+               );
               
               if (tierArtists.length === 0) return null;
               
@@ -328,30 +337,42 @@ export default function TierListPage() {
                     border: `2px solid ${tierColors[tier]?.border}`,
                     overflow: "hidden"
                   }}
-                >
-                  <div style={{
-                    padding: "12px 20px",
-                    background: `${tierColors[tier]?.border}22`,
-                    borderBottom: `1px solid ${tierColors[tier]?.border}44`,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px"
-                  }}>
-                    <span style={{
-                      fontSize: "1.25rem",
-                      fontWeight: 800,
-                      color: tierColors[tier]?.text,
-                      width: "40px"
-                    }}>
-                      {tier}
-                    </span>
-                    <span style={{ 
-                      color: "var(--text-muted)", 
-                      fontSize: "0.85rem" 
-                    }}>
-                      {tierArtists.length} artiste{tierArtists.length > 1 ? "s" : ""}
-                    </span>
-                  </div>
+                 >
+                   <div style={{
+                     padding: "12px 20px",
+                     background: `${tierColors[tier]?.border}22`,
+                     borderBottom: `1px solid ${tierColors[tier]?.border}44`,
+                     display: "flex",
+                     alignItems: "center",
+                     gap: "12px"
+                   }}>
+                     <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                       <span style={{
+                         fontSize: "1.25rem",
+                         fontWeight: 800,
+                         color: tierColors[tier]?.text,
+                         width: "40px"
+                       }}>
+                         {tier}
+                       </span>
+                       <span 
+                         style={{ 
+                           fontSize: "0.75rem", 
+                           color: "var(--text-muted)", 
+                           cursor: "help"
+                         }}
+                         title={tierDescriptions[tier]}
+                       >
+                         ?
+                       </span>
+                     </div>
+                     <span style={{ 
+                       color: "var(--text-muted)", 
+                       fontSize: "0.85rem" 
+                     }}>
+                       {tierArtists.length} artiste{tierArtists.length > 1 ? "s" : ""}
+                     </span>
+                   </div>
                   
                   <div style={{
                     display: "flex",
