@@ -185,7 +185,11 @@ export default function MobileArtistsPage() {
         const pctMatch = skill.match(/(\d+)%/);
         if (pctMatch) {
           const val = parseInt(pctMatch[1]);
-          if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction')) skillDamage += val;
+          if (skill.toLowerCase().includes('damage to player') || skill.toLowerCase().includes('player damage')) {
+            skillDamage += val;
+            basicAttackPercent += val;
+          }
+          else if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction')) skillDamage += val;
           else if (skill.toLowerCase().includes('basic attack')) basicAttackPercent += val;
         }
       });
@@ -224,7 +228,11 @@ export default function MobileArtistsPage() {
         const pctMatch = skill.match(/(\d+)%/);
         if (pctMatch) {
           const val = parseInt(pctMatch[1]);
-          if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction')) skillDamage += val;
+          if (skill.toLowerCase().includes('damage to player') || skill.toLowerCase().includes('player damage')) {
+            skillDamage += val;
+            basicAttackPercent += val;
+          }
+          else if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction')) skillDamage += val;
           else if (skill.toLowerCase().includes('basic attack')) basicAttackPercent += val;
         }
       });
