@@ -19,15 +19,15 @@ export function MobileNav() {
     lastScrollY.current = 0;
     
     const handleScroll = () => {
+      if (typeof window === 'undefined') return;
+      
       const currentScrollY = window.scrollY;
       
       // Only on mobile
-        if (window.innerWidth <= 900) {
-          if (currentScrollY > 120) {
-          // Hide nav when scrolled down
+      if (window.innerWidth <= 900) {
+        if (currentScrollY > 120) {
           setIsVisible(false);
         } else {
-          // Show nav only at very top
           setIsVisible(true);
         }
       } else {
@@ -94,6 +94,7 @@ export function MobileNav() {
         </Link>
         
         <button 
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
           style={{
             background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
@@ -106,7 +107,8 @@ export function MobileNav() {
             fontWeight: 600,
             boxShadow: '0 2px 10px rgba(255, 77, 141, 0.3)',
             zIndex: 9999999,
-            position: 'relative'
+            position: 'relative',
+            pointerEvents: 'auto'
           }}
         >
           {isOpen ? '✕' : '☰ MENU'}
@@ -121,9 +123,10 @@ export function MobileNav() {
           right: '0',
           bottom: '0',
           background: 'rgba(10, 10, 20, 0.98)',
-          zIndex: 9999999,
+          zIndex: 9999998,
           padding: '20px',
-          overflowY: 'auto'
+          overflowY: 'auto',
+          pointerEvents: 'auto'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {navItems.map((item) => (

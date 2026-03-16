@@ -163,7 +163,7 @@ export default async function LocaleLayout({
           </nav>
         </div>
       </header>
-      <MobileNav />
+      <MobileNav key={pathname} />
       <main id="main-content" className="main-content" role="main" tabIndex={-1}>
         {children}
       </main>
