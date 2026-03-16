@@ -53,7 +53,6 @@ export default function MobileArtistsPage() {
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const headerSectionRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
@@ -94,19 +93,6 @@ export default function MobileArtistsPage() {
           
           if (panelRef.current) {
             panelRef.current.style.top = isScrolled ? '0' : '56px';
-          }
-          
-          const headerSection = document.querySelector('.mobile-header-section') as HTMLElement;
-          if (headerSection) {
-            if (currentScrollY > lastScrollY && currentScrollY > threshold) {
-              headerSection.style.position = 'fixed';
-              headerSection.style.top = `-${threshold}px`;
-              headerSection.style.zIndex = '50';
-            } else {
-              headerSection.style.position = 'relative';
-              headerSection.style.top = '0';
-              headerSection.style.zIndex = '50';
-            }
           }
           
           lastScrollY = currentScrollY;
@@ -237,10 +223,10 @@ export default function MobileArtistsPage() {
   const filteredArtists = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
     return artistsData.filter((artist: Artist) => {
-      const matchesSearch = !q || artist.name.toLowerCase().includes(q);
-      const matchesRank = !filterRank || artist.rank === filterRank;
-      const matchesGenre = !filterGenre || artist.genre === filterGenre;
-      const matchesSpecialty = !filterSpecialty || artist.specialty === filterSpecialty;
+      const matchesSearch = !q || (artist.name && artist.name.toLowerCase().includes(q));
+      const matchesRank = !filterRank || (artist.rank && artist.rank === filterRank);
+      const matchesGenre = !filterGenre || (artist.genre && artist.genre.trim() === filterGenre);
+      const matchesSpecialty = !filterSpecialty || (artist.specialty && artist.specialty.trim() === filterSpecialty);
       return matchesSearch && matchesRank && matchesGenre && matchesSpecialty;
     });
   }, [searchQuery, filterRank, filterGenre, filterSpecialty]);
@@ -259,12 +245,6 @@ export default function MobileArtistsPage() {
       </Head>
 
       <div className="mobile-page-container">
-        {/* Layer 1: Header section with title that scrolls away */}
-        <div className="mobile-header-section" ref={headerSectionRef}>
-          <h1 className="mobile-page-title">🎤 Artistes</h1>
-          <p className="mobile-page-subtitle">Découvrez tous les personnages</p>
-        </div>
-
         {/* Layer 2: Fixed 3-column Panel */}
         <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : 56 }}>
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
@@ -544,27 +524,6 @@ export default function MobileArtistsPage() {
         .mobile-page-container {
           min-height: 100vh;
           background: transparent;
-        }
-        
-        /* Layer 1: Header section that scrolls away */
-        .mobile-header-section {
-          padding: 20px 12px;
-          text-align: center;
-          background: transparent;
-          z-index: 50;
-        }
-        .mobile-page-title {
-          margin-bottom: 10px;
-          background: linear-gradient(135deg, #f472b6, #c084fc, #818cf8);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font-size: 2rem;
-          font-weight: 800;
-        }
-        .mobile-page-subtitle {
-          color: rgba(255,255,255,0.6);
-          margin-bottom: 10px;
-          font-size: 0.85rem;
         }
         
         /* Layer 2: Top Panel - Always fixed on mobile */
