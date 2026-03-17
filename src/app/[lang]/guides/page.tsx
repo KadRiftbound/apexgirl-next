@@ -1,92 +1,140 @@
-"use client";
 
-import { useState, useMemo } from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
+import type { Metadata } from "next";
 
 const guideListTranslations: Record<string, any> = {
-  fr: { 
-    title: "Guides & Stratégies", 
-    subtitle: "Tutoriels et stratégies pour maîtriser le jeu",
-    categories: ["Tous", "Guide classique", "Guide événement"],
-    categoryClassic: "Guide classique",
-    categoryEvent: "Guide événement",
-    inProgress: "En cours",
-    new: "Nouveau",
-    searchPlaceholder: "Rechercher un guide..."
-  },
-  en: { 
-    title: "Guides & Strategies", 
-    subtitle: "Tutorials and strategies to master the game",
-    categories: ["All", "Classic Guide", "Event Guide"],
-    categoryClassic: "Classic Guide",
-    categoryEvent: "Event Guide",
-    inProgress: "In Progress",
-    new: "New",
-    searchPlaceholder: "Search a guide..."
-  },
-  it: { 
-    title: "Guide e Strategie", 
-    subtitle: "Tutoriali e strategie per padroneggiare il gioco",
-    categories: ["Tutti", "Guida classica", "Guida evento"],
-    categoryClassic: "Guida classica",
-    categoryEvent: "Guida evento",
-    inProgress: "In corso",
-    new: "Nuovo",
-    searchPlaceholder: "Cerca una guida..."
-  },
-  es: { 
-    title: "Guías y Estrategias", 
-    subtitle: "Tutoriales y estrategias para dominar el juego",
-    categories: ["Todos", "Guía clásica", "Guía evento"],
-    categoryClassic: "Guía clásica",
-    categoryEvent: "Guía evento",
-    inProgress: "En progreso",
-    new: "Nuevo",
-    searchPlaceholder: "Buscar una guía..."
-  },
-  pt: { 
-    title: "Guias e Estratégias", 
-    subtitle: "Tutoriais e estratégias para dominar o jogo",
-    categories: ["Todos", "Guia clássico", "Guia evento"],
-    categoryClassic: "Guia clássico",
-    categoryEvent: "Guia evento",
-    inProgress: "Em progresso",
-    new: "Novo",
-    searchPlaceholder: "Pesquisar um guia..."
-  },
-  pl: { 
-    title: "Poradniki i Strategie", 
-    subtitle: "Samouczki i strategie, aby opanować grę",
-    categories: ["Wszystkie", "Poradnik klasyczny", "Poradnik wydarzenia"],
-    categoryClassic: "Poradnik klasyczny",
-    categoryEvent: "Poradnik wydarzenia",
-    inProgress: "W toku",
-    new: "Nowy",
-    searchPlaceholder: "Szukaj poradnika..."
-  },
-  id: { 
-    title: "Panduan dan Strategi", 
-    subtitle: "Tutorial dan strategi untuk menguasai permainan",
-    categories: ["Semua", "Panduan klasik", "Panduan acara"],
-    categoryClassic: "Panduan klasik",
-    categoryEvent: "Panduan acara",
-    inProgress: "Sedang berlangsung",
-    new: "Baru",
-    searchPlaceholder: "Cari panduan..."
-  },
-  ru: { 
-    title: "Гайды и Стратегии", 
-    subtitle: "Учебники и стратегии для освоения игры",
-    categories: ["Все", "Классический гайд", "Гайд события"],
-    categoryClassic: "Классический гайд",
-    categoryEvent: "Гайд события",
-    inProgress: "В процессе",
-    new: "Новый",
-    searchPlaceholder: "Поиск гайда..."
-  },
+   fr: { 
+     title: "Guides & Stratégies", 
+     subtitle: "Tutoriels et stratégies pour maîtriser le jeu",
+     categories: ["Tous", "Guide classique", "Guide événement"],
+     categoryClassic: "Guide classique",
+     categoryEvent: "Guide événement",
+     inProgress: "En cours",
+     new: "Nouveau",
+     searchPlaceholder: "Rechercher un guide..."
+   },
+   en: { 
+     title: "Guides & Strategies", 
+     subtitle: "Tutorials and strategies to master the game",
+     categories: ["All", "Classic Guide", "Event Guide"],
+     categoryClassic: "Classic Guide",
+     categoryEvent: "Event Guide",
+     inProgress: "In Progress",
+     new: "New",
+     searchPlaceholder: "Search a guide..."
+   },
+   it: { 
+     title: "Guide e Strategie", 
+     subtitle: "Tutoriali e strategie per padroneggiare il gioco",
+     categories: ["Tutti", "Guida classica", "Guida evento"],
+     categoryClassic: "Guida classica",
+     categoryEvent: "Guida evento",
+     inProgress: "In corso",
+     new: "Nuovo",
+     searchPlaceholder: "Cerca una guida..."
+   },
+   es: { 
+     title: "Guías y Estrategias", 
+     subtitle: "Tutoriales y estrategias para dominar el juego",
+     categories: ["Todos", "Guía clásica", "Guía evento"],
+     categoryClassic: "Guía clásica",
+     categoryEvent: "Guía evento",
+     inProgress: "En progreso",
+     new: "Nuevo",
+     searchPlaceholder: "Buscar una guía..."
+   },
+   pt: { 
+     title: "Guias e Estratégias", 
+     subtitle: "Tutoriais e estratégias para dominar o jogo",
+     categories: ["Todos", "Guia clássico", "Guia evento"],
+     categoryClassic: "Guia clássico",
+     categoryEvent: "Guia evento",
+     inProgress: "Em progresso",
+     new: "Novo",
+     searchPlaceholder: "Pesquisar um guia..."
+   },
+   pl: { 
+     title: "Poradniki i Strategie", 
+     subtitle: "Samouczki i strategie, aby opanować grę",
+     categories: ["Wszystkie", "Poradnik klasyczny", "Poradnik wydarzenia"],
+     categoryClassic: "Poradnik klasyczny",
+     categoryEvent: "Poradnik wydarzenia",
+     inProgress: "W toku",
+     new: "Nowy",
+     searchPlaceholder: "Szukaj poradnika..."
+   },
+   id: { 
+     title: "Panduan dan Strategi", 
+     subtitle: "Tutorial dan strategi untuk menguasai permainan",
+     categories: ["Semua", "Panduan klasik", "Panduan acara"],
+     categoryClassic: "Panduan klasik",
+     categoryEvent: "Panduan acara",
+     inProgress: "Sedang berlangsung",
+     new: "Baru",
+     searchPlaceholder: "Cari panduan..."
+   },
+   ru: { 
+     title: "Гайды и Стратегии", 
+     subtitle: "Учебники и стратегии для освоения игры",
+     categories: ["Все", "Классический гайд", "Гайд события"],
+     categoryClassic: "Классический гайд",
+     categoryEvent: "Гайд события",
+     inProgress: "В процессе",
+     new: "Новый",
+     searchPlaceholder: "Поиск гайда..."
+   },
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const path = `/${lang}/guides`;
+  const meta = pageTitles[lang]?.[path] || defaultMeta[lang] || defaultMeta.fr;
+  
+  const hreflangLangs = ['fr', 'en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
+  const languages: Record<string, string> = {};
+  hreflangLangs.forEach((l) => {
+    languages[l] = `https://www.apexgirlguide.com/${l}${path}`;
+  });
+  languages['x-default'] = `https://www.apexgirlguide.com/fr${path}`;
+  
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords.split(", "),
+    alternates: {
+      languages,
+      canonical: `https://www.apexgirlguide.com${path}`
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://www.apexgirlguide.com${path}`,
+      siteName: "TopGirl",
+      locale: localeNames[lang] || "fr-FR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+    },
+    icons: {
+      icon: [
+        { url: "/assets/favicon.png", sizes: "48x48" },
+        { url: "/assets/favicon.png", sizes: "96x96" },
+        { url: "/assets/favicon.png", sizes: "192x192" },
+        { url: "/assets/favicon.png", sizes: "512x512" },
+      ],
+      apple: { url: "/assets/favicon.png" },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 const categoryMap: Record<string, Record<string, string>> = {
   fr: { "Tous": "Tous", "Guide classique": "Guide classique", "Guide événement": "Guide événement" },
@@ -572,6 +620,55 @@ const guides: Guide[] = [
 ];
 
 const categories = ["Tous", "Guide classique", "Guide événement"];
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const path = `/${lang}/guides`;
+  const meta = pageTitles[lang]?.[path] || defaultMeta[lang] || defaultMeta.fr;
+  
+  const hreflangLangs = ['fr', 'en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
+  const languages: Record<string, string> = {};
+  hreflangLangs.forEach((l) => {
+    languages[l] = `https://www.apexgirlguide.com/${l}${path}`;
+  });
+  languages['x-default'] = `https://www.apexgirlguide.com/fr${path}`;
+  
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords.split(", "),
+    alternates: {
+      languages,
+      canonical: `https://www.apexgirlguide.com${path}`
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://www.apexgirlguide.com${path}`,
+      siteName: "TopGirl",
+      locale: localeNames[lang] || "fr-FR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+    },
+    icons: {
+      icon: [
+        { url: "/assets/favicon.png", sizes: "48x48" },
+        { url: "/assets/favicon.png", sizes: "96x96" },
+        { url: "/assets/favicon.png", sizes: "192x192" },
+        { url: "/assets/favicon.png", sizes: "512x512" },
+      ],
+      apple: { url: "/assets/favicon.png" },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 function getGuideTitle(id: string, lang: string, fallback: string): string {
   return guideTranslations[lang]?.[id]?.title || fallback;

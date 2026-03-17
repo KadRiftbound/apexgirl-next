@@ -3,17 +3,127 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
+import type { Metadata } from "next";
 
 const guideTranslations: Record<string, any> = {
-  fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication" },
-  en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation" },
-  it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione" },
-  es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación" },
-  pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação" },
-  pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie" },
-  id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan" },
-  ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение" },
+   fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication" },
+   en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation" },
+   it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione" },
+   es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación" },
+   pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação" },
+   pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie" },
+   id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan" },
+   ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение" },
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string; slug: string }> }): Promise<Metadata> {
+  const { lang, slug } = await params;
+  
+  // Find the guide in our guides array
+  const guide = guides.find((g: any) => g.id === slug);
+  
+  if (!guide) {
+    // Fallback for not found guides
+    const title = slug === "structure-du-jeu" ? "Structure du jeu - TopGirl" : "Guide non trouvé - TopGirl";
+    const description = slug === "structure-du-jeu" 
+      ? "Comprendre la structure du jeu Top Girl. Serveur d'origine, cycles Abroad, City Supremacy et boucle principale."
+      : "Page de guide non trouvée sur le fansite TopGirl/ApexGirl";
+    
+    const path = `/${lang}/guides/${slug}`;
+    
+    const hreflangLangs = ['fr', 'en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
+    const languages: Record<string, string> = {};
+    hreflangLangs.forEach((l) => {
+      languages[l] = `https://www.apexgirlguide.com/${l}${path}`;
+    });
+    languages['x-default'] = `https://www.apexgirlguide.com/fr${path}`;
+    
+    return {
+      title,
+      description,
+      keywords: [slug, 'guide', 'TopGirl', 'ApexGirl'].filter(Boolean).join(", "),
+      alternates: {
+        languages,
+        canonical: `https://www.apexgirlguide.com${path}`
+      },
+      openGraph: {
+        title,
+        description,
+        url: `https://www.apexgirlguide.com${path}`,
+        siteName: "TopGirl",
+        locale: localeNames[lang] || "fr-FR",
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+      },
+      icons: {
+        icon: [
+          { url: "/assets/favicon.png", sizes: "48x48" },
+          { url: "/assets/favicon.png", sizes: "96x96" },
+          { url: "/assets/favicon.png", sizes: "192x192" },
+          { url: "/assets/favicon.png", sizes: "512x512" },
+        ],
+        apple: { url: "/assets/favicon.png" },
+      },
+      robots: {
+        index: true,
+        follow: true,
+      },
+    };
+  }
+  
+  // Get translations for this guide
+  const guideTitle = guideTranslations[lang]?.[slug]?.title || guide.title || slug;
+  const guideDescription = guideTranslations[lang]?.[slug]?.description || guide.description || "";
+  
+  const path = `/${lang}/guides/${slug}`;
+  
+  const hreflangLangs = ['fr', 'en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
+  const languages: Record<string, string> = {};
+  hreflangLangs.forEach((l) => {
+    languages[l] = `https://www.apexgirlguide.com/${l}${path}`;
+  });
+  languages['x-default'] = `https://www.apexgirlguide.com/fr${path}`;
+  
+  return {
+    title: `${guideTitle} - TopGirl`,
+    description: guideDescription,
+    keywords: [guide.title, guide.description, slug, 'TopGirl', 'ApexGirl'].filter(Boolean).join(", "),
+    alternates: {
+      languages,
+      canonical: `https://www.apexgirlguide.com${path}`
+    },
+    openGraph: {
+      title: `${guideTitle} - TopGirl`,
+      description: guideDescription,
+      url: `https://www.apexgirlguide.com${path}`,
+      siteName: "TopGirl",
+      locale: localeNames[lang] || "fr-FR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${guideTitle} - TopGirl`,
+      description: guideDescription,
+    },
+    icons: {
+      icon: [
+        { url: "/assets/favicon.png", sizes: "48x48" },
+        { url: "/assets/favicon.png", sizes: "96x96" },
+        { url: "/assets/favicon.png", sizes: "192x192" },
+        { url: "/assets/favicon.png", sizes: "512x512" },
+      ],
+      apple: { url: "/assets/favicon.png" },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 type Guide = {
   id: string;

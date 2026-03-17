@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { AdBanner } from '@/components/AdSense';
+import type { Metadata } from 'next';
 
 interface Code {
   code: string;
@@ -25,23 +26,72 @@ const codesData: Record<string, Code[]> = {
   ]
 };
 
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const path = `/${lang}/codes`;
+  const meta = pageTitles[lang]?.[path] || defaultMeta[lang] || defaultMeta.fr;
+  
+  const hreflangLangs = ['fr', 'en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
+  const languages: Record<string, string> = {};
+  hreflangLangs.forEach((l) => {
+    languages[l] = `https://www.apexgirlguide.com/${l}${path}`;
+  });
+  languages['x-default'] = `https://www.apexgirlguide.com/fr${path}`;
+  
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords.split(", "),
+    alternates: {
+      languages,
+      canonical: `https://www.apexgirlguide.com${path}`
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://www.apexgirlguide.com${path}`,
+      siteName: "TopGirl",
+      locale: localeNames[lang] || "fr-FR",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+    },
+    icons: {
+      icon: [
+        { url: "/assets/favicon.png", sizes: "48x48" },
+        { url: "/assets/favicon.png", sizes: "96x96" },
+        { url: "/assets/favicon.png", sizes: "192x192" },
+        { url: "/assets/favicon.png", sizes: "512x512" },
+      ],
+      apple: { url: "/assets/favicon.png" },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 const translations: Record<string, any> = {
-  fr: {
-    title: 'Codes Promo',
-    subtitle: 'Tous les codes disponibles pour TopGirl / ApexGirl',
-    enterGame: 'Entrez les codes dans le jeu: Menu > Réglages > Cadeaux',
-    latestCodes: 'Codes Actifs',
-    expiredCodes: 'Codes Expirés',
-    rewards: 'Récompenses',
-    expires: 'Expire',
-    copy: 'Copier',
-    copied: 'Copié!',
-    noActive: 'Aucun code actif pour le moment',
-    howToUse: 'Comment utiliser les codes',
-    howToUseDesc: 'Allez dans le jeu, appuyez sur votre profil > Settings > Gift Code et entrez le code.',
-    new: 'Nouveau',
-    expired: 'Expiré',
-  },
+   fr: {
+     title: 'Codes Promo',
+     subtitle: 'Tous les codes disponibles pour TopGirl / ApexGirl',
+     enterGame: 'Entrez les codes dans le jeu: Menu > Réglages > Cadeaux',
+     latestCodes: 'Codes Actifs',
+     expiredCodes: 'Codes Expirés',
+     rewards: 'Récompenses',
+     expires: 'Expire',
+     copy: 'Copier',
+     copied: 'Copié!',
+     noActive: 'Aucun code actif pour le moment',
+     howToUse: 'Comment utiliser les codes',
+     howToUseDesc: 'Allez dans le jeu, appuyez sur votre profil > Settings > Gift Code et entrez le code.',
+     new: 'Nouveau',
+     expired: 'Expiré',
+   },
   en: {
     title: 'Promo Codes',
     subtitle: 'All available codes for TopGirl / ApexGirl',
