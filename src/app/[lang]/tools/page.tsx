@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import SVSCalculator from "@/components/tools/SVSCalculator";
 import CEOCalculator from "@/components/tools/CEOCalculator";
 import ApexCalculator from "@/components/tools/ApexCalculator";
+import BurjLottery from "@/components/tools/BurjLottery";
 import { AdBanner } from "@/components/AdSense";
 
 const translations: Record<string, any> = {
@@ -14,9 +15,12 @@ const translations: Record<string, any> = {
     resource: "Ressources",
     svs: "SVS Store",
     ceo: "CEO Event",
+    burj: "Burj Khalifa",
     resourceDesc: "Calcule les ressources nécessaires pour chaque amélioration",
     svsDesc: "Optimise tes achats dans la boutique SVS",
     ceoDesc: "Planifie ton événement CEO et tes récompenses",
+    burjDesc: "Tirage au sort des récompenses du Burj Khalifa",
+    burjTooltip: "Outil de tirage au sort pour distribuer équitablement les 26 récompenses du Burj Khalifa (18 Gifts + 8 Artist Picks) entre les participants de ton alliance.",
     credit: "Données fournies par",
   },
   en: {
@@ -25,9 +29,12 @@ const translations: Record<string, any> = {
     resource: "Resources",
     svs: "SVS Store",
     ceo: "CEO Event",
+    burj: "Burj Khalifa",
     resourceDesc: "Calculate resources needed for each upgrade",
     svsDesc: "Optimize your purchases in the SVS shop",
     ceoDesc: "Plan your CEO event and rewards",
+    burjDesc: "Lottery for Burj Khalifa rewards",
+    burjTooltip: "Lottery tool to fairly distribute the 26 Burj Khalifa rewards (18 Gifts + 8 Artist Picks) among your alliance members.",
     credit: "Data provided by",
   },
   it: {
@@ -36,9 +43,12 @@ const translations: Record<string, any> = {
     resource: "Risorse",
     svs: "SVS Store",
     ceo: "CEO Event",
+    burj: "Burj Khalifa",
     resourceDesc: "Calcola le risorse necessarie per ogni miglioramento",
     svsDesc: "Ottimizza i tuoi acquisti nel negozio SVS",
     ceoDesc: "Pianifica il tuo evento CEO e le ricompense",
+    burjDesc: "Estrazione a sorte premi Burj Khalifa",
+    burjTooltip: "Strumento di estrazione a sorte per distribuire i 26 premi del Burj Khalifa (18 Gift + 8 Artist Pick) tra i membri della tua alleanza.",
     credit: "Dati forniti da",
   },
   es: {
@@ -47,9 +57,12 @@ const translations: Record<string, any> = {
     resource: "Recursos",
     svs: "SVS Store",
     ceo: "CEO Event",
+    burj: "Burj Khalifa",
     resourceDesc: "Calcula los recursos necesarios para cada mejora",
     svsDesc: "Optimiza tus compras en la tienda SVS",
     ceoDesc: "Planifica tu evento CEO y recompensas",
+    burjDesc: "Sorteo de recompensas del Burj Khalifa",
+    burjTooltip: "Herramienta de sorteo para distribuir los 26 premios del Burj Khalifa (18 Gifts + 8 Artist Picks) entre los miembros de tu alianza.",
     credit: "Datos proporcionados por",
   },
   pt: {
@@ -58,9 +71,12 @@ const translations: Record<string, any> = {
     resource: "Recursos",
     svs: "SVS Store",
     ceo: "CEO Event",
+    burj: "Burj Khalifa",
     resourceDesc: "Calcule os recursos necessários para cada melhoria",
     svsDesc: "Otimize suas compras na loja SVS",
     ceoDesc: "Planeje seu evento CEO e recompensas",
+    burjDesc: "Sorteio de recompensas do Burj Khalifa",
+    burjTooltip: "Ferramenta de sorteio para distribuir os 26 prêmios do Burj Khalifa (18 Gifts + 8 Artist Picks) entre os membros da sua aliança.",
     credit: "Dados fornecidos por",
   },
   pl: {
@@ -69,9 +85,12 @@ const translations: Record<string, any> = {
     resource: "Zasoby",
     svs: "SVS Store",
     ceo: "CEO Event",
+    burj: "Burj Khalifa",
     resourceDesc: "Oblicz zasoby potrzebne do każdej rozbudowy",
     svsDesc: "Zoptymalizuj zakupy w sklepie SVS",
     ceoDesc: "Zaplanuj swoje wydarzenie CEO i nagrody",
+    burjDesc: "Losowanie nagród Burj Khalifa",
+    burjTooltip: "Narzędzie do losowania 26 nagród Burj Khalifa (18 Gift + 8 Artist Pick) między członkami sojuszu.",
     credit: "Dane dostarczone przez",
   },
   id: {
@@ -80,9 +99,12 @@ const translations: Record<string, any> = {
     resource: "Sumber Daya",
     svs: "SVS Store",
     ceo: "CEO Event",
+    burj: "Burj Khalifa",
     resourceDesc: "Hitung sumber daya yang dibutuhkan untuk setiap peningkatan",
     svsDesc: "Optimalkan pembelian di toko SVS",
     ceoDesc: "Rencanakan event CEO dan hadiahmu",
+    burjDesc: "Undian hadiah Burj Khalifa",
+    burjTooltip: "Alat undian untuk mendistribusikan 26 hadiah Burj Khalifa (18 Gift + 8 Artist Pick) di antara anggota aliansi.",
     credit: "Data dari",
   },
   ru: {
@@ -91,9 +113,12 @@ const translations: Record<string, any> = {
     resource: "Ресурсы",
     svs: "SVS Магазин",
     ceo: "CEO Событие",
+    burj: "Burj Khalifa",
     resourceDesc: "Рассчитайте ресурсы для каждого улучшения",
     svsDesc: "Оптимизируйте покупки в магазине SVS",
     ceoDesc: "Планируйте событие CEO и награды",
+    burjDesc: "Жеребьёвка наград Burj Khalifa",
+    burjTooltip: "Инструмент жеребьёвки для распределения 26 наград Burj Khalifa (18 Gift + 8 Artist Pick) между членами альянса.",
     credit: "Данные от",
   },
 };
@@ -120,10 +145,18 @@ const toolConfig = [
     gradient: "linear-gradient(135deg, #fbbf24, #f59e0b)",
     glowColor: "rgba(251, 191, 36, 0.4)",
   },
+  {
+    id: "burj",
+    icon: "🏙️",
+    color: "#f97316",
+    gradient: "linear-gradient(135deg, #f97316, #ea580c)",
+    glowColor: "rgba(249, 115, 22, 0.4)",
+  },
 ];
 
 export default function ToolsPage() {
   const [activeTab, setActiveTab] = useState("resource");
+  const [showTooltip, setShowTooltip] = useState(false);
   const params = useParams();
   const lang = (params?.lang as string) || "fr";
   const t = translations[lang] || translations.en;
@@ -287,6 +320,54 @@ export default function ToolsPage() {
             }}>
               {t[activeTab]}
             </span>
+
+            {/* Tooltip pour Burj Khalifa */}
+            {activeTab === "burj" && (
+              <div style={{ marginLeft: "8px", position: "relative", display: "inline-flex" }}>
+                <button
+                  onMouseEnter={() => setShowTooltip(true)}
+                  onMouseLeave={() => setShowTooltip(false)}
+                  onClick={() => setShowTooltip(v => !v)}
+                  style={{
+                    width: "20px", height: "20px", borderRadius: "50%",
+                    border: `1px solid ${activeTool.color}88`,
+                    background: `${activeTool.color}22`,
+                    color: activeTool.color, fontSize: "0.7rem", fontWeight: 700,
+                    cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                    lineHeight: 1, flexShrink: 0,
+                  }}
+                >?</button>
+                {showTooltip && (
+                  <div style={{
+                    position: "absolute", bottom: "calc(100% + 8px)", left: "50%",
+                    transform: "translateX(-50%)",
+                    width: "260px", padding: "10px 14px",
+                    background: "rgba(20, 20, 40, 0.98)",
+                    border: `1px solid ${activeTool.color}55`,
+                    borderRadius: "10px", fontSize: "0.78rem",
+                    color: "rgba(255,255,255,0.85)", lineHeight: 1.5,
+                    boxShadow: `0 8px 24px rgba(0,0,0,0.5)`,
+                    zIndex: 50,
+                    pointerEvents: "none",
+                  }}>
+                    <div style={{ color: activeTool.color, fontWeight: 700, marginBottom: "6px", fontSize: "0.8rem" }}>
+                      🏙️ Burj Khalifa Lottery
+                    </div>
+                    {t.burjTooltip}
+                    {/* Flèche pointant vers le bas */}
+                    <div style={{
+                      position: "absolute", bottom: "-6px", left: "50%",
+                      width: "10px", height: "10px",
+                      background: "rgba(20, 20, 40, 0.98)",
+                      border: `1px solid ${activeTool.color}55`,
+                      borderTop: "none", borderLeft: "none",
+                      transform: "translateX(-50%) rotate(45deg)",
+                    }} />
+                  </div>
+                )}
+              </div>
+            )}
+
             <div style={{
               marginLeft: "auto",
               width: "8px",
@@ -303,6 +384,7 @@ export default function ToolsPage() {
             {activeTab === "resource" && <ApexCalculator />}
             {activeTab === "svs" && <SVSCalculator />}
             {activeTab === "ceo" && <CEOCalculator />}
+            {activeTab === "burj" && <BurjLottery />}
           </div>
         </div>
 
