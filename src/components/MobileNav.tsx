@@ -46,7 +46,6 @@ export function MobileNav() {
     { href: `/${lang}/artists/`, label: lang === "fr" ? "Artistes" : "Artists" },
     { href: `/${lang}/tierlist/`, label: "Tier List" },
     { href: `/${lang}/guides/`, label: "Guides" },
-    { href: `/${lang}/events/`, label: lang === "fr" ? "Événements" : "Events" },
     { href: `/${lang}/tools/`, label: lang === "fr" ? "Outils" : "Tools", cta: true },
   ];
 

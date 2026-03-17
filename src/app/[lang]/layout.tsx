@@ -103,7 +103,6 @@ export default async function LocaleLayout({
     { href: `/${lang}/artists/`, label: lang === "fr" ? "Artistes" : lang === "en" ? "Artists" : getNavLabel(lang, "database") },
     { href: `/${lang}/tierlist/`, label: lang === "fr" ? "Tier List" : "Tier List" },
     { href: `/${lang}/guides/`, label: lang === "fr" ? "Guides" : "Guides" },
-    { href: `/${lang}/events/`, label: lang === "fr" ? "Événements" : lang === "en" ? "Events" : getNavLabel(lang, "events") },
     { href: `/${lang}/tools/`, label: lang === "fr" ? "Outils" : lang === "en" ? "Tools" : getNavLabel(lang, "tools"), cta: true },
   ];
 
@@ -188,7 +187,6 @@ export default async function LocaleLayout({
           </div>
           <div>
             <h4>{lang === "fr" ? "Ressources" : "Resources"}</h4>
-            <Link href={`/${lang}/events/`}>{lang === "fr" ? "Événements" : "Events"}</Link>
             <Link href={`/${lang}/guides/`}>{lang === "fr" ? "Guides" : "Guides"}</Link>
           </div>
           <div>

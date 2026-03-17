@@ -376,17 +376,6 @@ export default function HomePage() {
               <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>{text.guides}</h3>
               <p className="text-sm text-muted">{text.guidesStats}</p>
             </Link>
-
-            <Link href={`/${lang}/events/`} className="glass-card" style={{ 
-              display: "block", 
-              textAlign: "center", 
-              textDecoration: "none",
-              padding: "40px 20px"
-            }}>
-              <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🎉</div>
-              <h3 style={{ fontSize: "1.1rem", marginBottom: "8px", color: "var(--text-primary)" }}>{text.events}</h3>
-              <p className="text-sm text-muted">{text.eventsStats}</p>
-            </Link>
           </div>
         </section>
 

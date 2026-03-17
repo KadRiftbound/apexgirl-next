@@ -4533,21 +4533,6 @@ export default function GuideDetailPage() {
               {lang === "fr" ? "Classement des meilleurs artistes" : "Best artists ranking"}
             </div>
           </Link>
-
-          <Link href={`/${lang}/events/`} style={{
-            padding: "18px", background: "rgba(34,197,94,0.1)",
-            borderRadius: "12px", border: "1px solid rgba(34,197,94,0.25)",
-            textDecoration: "none", display: "block",
-            transition: "all 0.2s",
-          }}>
-            <div style={{ fontSize: "1.4rem", marginBottom: "6px" }}>🎉</div>
-            <div style={{ color: "#4ade80", fontWeight: 600, fontSize: "0.9rem", marginBottom: "3px" }}>
-              {lang === "fr" ? "Événements" : "Events"}
-            </div>
-            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>
-              {lang === "fr" ? "Restez à jour avec les événements" : "Stay updated with events"}
-            </div>
-          </Link>
         </div>
       </div>
 
