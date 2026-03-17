@@ -273,7 +273,7 @@
       "↑50% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -306,7 +306,7 @@
       "↑12% fan cap"
     ],
     "build": "",
-    "photos": "Rome3",
+    "photos": "Rome 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -340,7 +340,7 @@
       "↑10% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Anniversary",
     "skillCategories": {
       "dps": [
         "180/DPS Attacking Group Center, Club, Landmark"
@@ -375,7 +375,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -409,7 +409,7 @@
       "↓12% skill damage taken"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -443,7 +443,7 @@
       "↑12% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Rome2",
+    "photos": "Rome 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -477,7 +477,7 @@
       "↑50% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -510,7 +510,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -544,7 +544,7 @@
       "↑14% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Tokyo4",
+    "photos": "Tokyo 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -578,7 +578,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Universal",
+    "photos": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -612,7 +612,7 @@
       "↑36% damage to world building guard"
     ],
     "build": "HQ Defense",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [
         "200/DPS Defending HQ, GH, Club, LM"
@@ -646,7 +646,7 @@
       "↑10% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -680,7 +680,7 @@
       "↑10% rally fan cap"
     ],
     "build": "Rally",
-    "photos": "Universal",
+    "photos": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -714,7 +714,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "",
-    "photos": "Own Photos",
+    "photos": "SVS",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -748,7 +748,7 @@
       "↑50% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -781,7 +781,7 @@
       "↑24% player damage"
     ],
     "build": "",
-    "photos": "Rome3",
+    "photos": "Rome 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -814,7 +814,7 @@
       "↓12% skill damage taken"
     ],
     "build": "HQ Defense",
-    "photos": "Rome2",
+    "photos": "Rome 2",
     "skillCategories": {
       "dps": [
         "240/DPS Defending HQ, GH, Club, LM"
@@ -849,7 +849,7 @@
       "↑50% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -882,7 +882,7 @@
       "↑60% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Bali 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -915,7 +915,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -949,7 +949,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "",
-    "photos": "Tokyo3",
+    "photos": "Tokyo 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -984,7 +984,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1018,7 +1018,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Single Car",
-    "photos": "Rome3",
+    "photos": "Rome 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1053,7 +1053,7 @@
       "↑12% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Tokyo 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1087,7 +1087,7 @@
       "↑10% rally fan cap"
     ],
     "build": "Rally",
-    "photos": "Universal",
+    "photos": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1121,7 +1121,7 @@
       "↓12% skill damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Tokyo3",
+    "photos": "Tokyo 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1155,7 +1155,7 @@
       "↓12% skill damage taken"
     ],
     "build": "",
-    "photos": "Bali3",
+    "photos": "Bali 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1189,7 +1189,7 @@
       "↑75% drive speed"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1223,7 +1223,7 @@
       "↑60% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Anniversary",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1257,7 +1257,7 @@
       "Rally fans capacity ↑ 10%"
     ],
     "build": "Single Car, Rally",
-    "photos": "Not Released",
+    "photos": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1291,7 +1291,7 @@
       "↑40% gold mining speed"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "SVS",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1325,7 +1325,7 @@
       "↑60% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1358,7 +1358,7 @@
       "↑50% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1391,7 +1391,7 @@
       "↑36% damage to world building guard"
     ],
     "build": "HQ Defense",
-    "photos": "Universal",
+    "photos": "Bali 2",
     "skillCategories": {
       "dps": [
         "240/DPS Defending HQ, GH, Club, LM"
@@ -1425,7 +1425,7 @@
       "↑14% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Bali4",
+    "photos": "Bali 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1459,7 +1459,7 @@
       "↑12% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Bali3",
+    "photos": "Bali 3",
     "skillCategories": {
       "dps": [
         "240/DPS Attacking Group Center, Club, Landmark"
@@ -1494,7 +1494,7 @@
       "↑40% gold mining speed"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1562,7 +1562,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Tokyo4",
+    "photos": "Tokyo 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1596,7 +1596,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Tokyo 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1630,7 +1630,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Universal",
+    "photos": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1664,7 +1664,7 @@
       "↑10% rally fan cap"
     ],
     "build": "Rally",
-    "photos": "Universal",
+    "photos": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1698,7 +1698,7 @@
       "↑12% fan cap"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Bali 2",
     "skillCategories": {
       "dps": [
         "240/DPS Attacking Enemy Company"
@@ -1733,7 +1733,7 @@
       "↑50% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1767,7 +1767,7 @@
       "↑50% basic attack damage dealt"
     ],
     "build": "HQ Defense",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [
         "200/DPS Defending HQ, GH, Club, LM"
@@ -1801,7 +1801,7 @@
       "↑12% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Rome2",
+    "photos": "Rome 2",
     "skillCategories": {
       "dps": [
         "240/DPS Attacking Enemy Company"
@@ -1836,7 +1836,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1870,7 +1870,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1904,7 +1904,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Tokyo 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1938,7 +1938,7 @@
       "↑12% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Tokyo3",
+    "photos": "Tokyo 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1972,7 +1972,7 @@
       "↑10% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Just Rosemary",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2006,7 +2006,7 @@
       "↑50% basic attack damage dealt"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2039,7 +2039,7 @@
       "↑10% rally fan cap"
     ],
     "build": "Rally",
-    "photos": "Universal",
+    "photos": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2073,7 +2073,7 @@
       "↑10% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [
         "180/DPS Attacking Enemy Company"
@@ -2108,7 +2108,7 @@
       "↓12% skill damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Bali4",
+    "photos": "Bali 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2142,7 +2142,7 @@
       "↑30% damage to world building guard"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2175,7 +2175,7 @@
       "↑10% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2209,7 +2209,7 @@
       "↑10% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2243,7 +2243,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Single Car",
-    "photos": "Bali4",
+    "photos": "Bali 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2278,7 +2278,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "HQ Defense",
-    "photos": "Bali3",
+    "photos": "Bali 3",
     "skillCategories": {
       "dps": [
         "240/DPS Defending HQ, GH, Club, LM"
@@ -2313,7 +2313,7 @@
       "↑10% rally fan cap"
     ],
     "build": "Rally",
-    "photos": "Universal",
+    "photos": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2347,7 +2347,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "Damage Reduction",
-    "photos": "Tokyo4",
+    "photos": "Tokyo 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2381,7 +2381,7 @@
       "↓12% basic attack damage taken"
     ],
     "build": "",
-    "photos": "Universal",
+    "photos": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2449,7 +2449,7 @@
       "↑10% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2483,7 +2483,7 @@
       "↑10% fan cap"
     ],
     "build": "Single Car",
-    "photos": "Universal",
+    "photos": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2517,7 +2517,7 @@
       "↑30% player damage"
     ],
     "build": "",
-    "photos": "Own Photos",
+    "photos": "Auction",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2550,7 +2550,7 @@
       "↑30% player damage"
     ],
     "build": "",
-    "photos": "Own Photos",
+    "photos": "Auction",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3687,7 +3687,7 @@
     "description": "A talented Center from Allura.",
     "thoughts": "",
     "build": "Recommended",
-    "photos": "Roma3",
+    "photos": "Rome 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3720,7 +3720,7 @@
     "description": "A talented Vocalist from Allura.",
     "thoughts": "",
     "build": "Recommended",
-    "photos": "Roma3",
+    "photos": "Rome 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3754,7 +3754,7 @@
     "description": "A talented Dancer from Allura.",
     "thoughts": "",
     "build": "Recommended",
-    "photos": "Roma3",
+    "photos": "Rome 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
