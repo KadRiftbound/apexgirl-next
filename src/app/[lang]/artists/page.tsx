@@ -484,28 +484,29 @@ export default function ArtistsPage() {
               </div>
               {/* Stats — fixed height rows, no scroll */}
               <div className="team-stats-grid">
-                {[
-                  { label: "💥 DMG Factor", v1: team1Stats.skillDamageRaw, v2: team2Stats.skillDamageRaw, color: "#ff8c42" },
-                  { label: "⚔️ Skill DMG",  v1: team1Stats.skillDamage,    v2: team2Stats.skillDamage,    color: "#ff6b6b", suffix: "%" },
-                  { label: "👊 Basic ATK",  v1: team1Stats.basicAttackPercent, v2: team2Stats.basicAttackPercent, color: "#4ecdc4", suffix: "%" },
-                  { label: "🛡️ Resistance", v1: team1Stats.attackResist,   v2: team2Stats.attackResist,   color: "#95e1d3", suffix: "%" },
-                  { label: "✨ S.Resist",   v1: team1Stats.skillResist,     v2: team2Stats.skillResist,     color: "#a29bfe", suffix: "%" },
-                  { label: "🎵 Fan Cap",    v1: team1Stats.fanCapacity,     v2: team2Stats.fanCapacity,     color: "#ffd700", suffix: "%" },
-                  { label: "🚀 Rally Cap",  v1: team1Stats.rallyCapacity,   v2: team2Stats.rallyCapacity,   color: "#00ff88", suffix: "%" },
-                ].map(({ label, v1, v2, color, suffix = "" }, i) => {
-                  const diff = v1 - v2;
-                  const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.25)";
-                  const sign = diff > 0 ? "+" : "";
-                  return (
-                    <div key={i} className="stat-row">
-                      <span className="stat-label" style={{ color }}>{label}</span>
-                      <span className="stat-value">
-                        <span style={{ color }}>{v1}{suffix}</span>
-                        <span className="stat-diff" style={{ color: diffColor }}>({sign}{diff})</span>
-                      </span>
-                    </div>
-                  );
-                })}
+                 {[
+                   { label: "💥 DMG Factor", v1: team1Stats.skillDamageRaw, v2: team2Stats.skillDamageRaw, color: "#ff8c42" },
+                   { label: "⚔️ Skill DMG",  v1: team1Stats.skillDamage,    v2: team2Stats.skillDamage,    color: "#ff6b6b", suffix: "%" },
+                   { label: "👊 Basic ATK",  v1: team1Stats.basicAttackPercent, v2: team2Stats.basicAttackPercent, color: "#4ecdc4", suffix: "%" },
+                   { label: "🛡️ Resistance", v1: team1Stats.attackResist,   v2: team2Stats.attackResist,   color: "#95e1d3", suffix: "%" },
+                   { label: "✨ S.Resist",   v1: team1Stats.skillResist,     v2: team2Stats.skillResist,     color: "#a29bfe", suffix: "%" },
+                   { label: "🎵 Fan Cap",    v1: team1Stats.fanCapacity,     v2: team2Stats.fanCapacity,     color: "#ffd700", suffix: "%" },
+                   { label: "🚀 Rally Cap",  v1: team1Stats.rallyCapacity,   v2: team2Stats.rallyCapacity,   color: "#00ff88", suffix: "%" },
+                 ].map(({ label, v1, v2, color, suffix = "" }, i) => {
+                   const diff = v1 - v2;
+                   const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.30)";
+                   const diffIcon = diff > 0 ? "▲" : diff < 0 ? "▼" : "—";
+                   const absDiff = Math.abs(diff);
+                   return (
+                     <div key={i} className="stat-row">
+                       <span className="stat-label" style={{ color }}>{label}</span>
+                       <span className="stat-value">
+                         <span style={{ color, fontWeight: 800 }}>{v1}{suffix}</span>
+                         <span className="stat-diff" style={{ color: diffColor }}>{diffIcon}{absDiff > 0 ? absDiff + suffix : ""}</span>
+                       </span>
+                     </div>
+                   );
+                 })}
               </div>
             </div>
           </div>
@@ -720,7 +721,9 @@ export default function ArtistsPage() {
         }
         .detail-col p {
           margin: 2px 0;
-          color: rgba(255,255,255,0.6);
+          color: rgba(255,255,255,0.82);
+          font-size: 0.72rem;
+          font-weight: 500;
         }
         .artist-preview-nav {
           display: flex;
@@ -755,8 +758,9 @@ export default function ArtistsPage() {
           display: inline-block;
         }
         .artist-preview-info p {
-          color: rgba(255,255,255,0.5);
+          color: rgba(255,255,255,0.8);
           margin: 2px 0;
+          font-size: 0.72rem;
         }
         .artist-preview-skills {
           margin-top: 6px;
@@ -920,6 +924,7 @@ export default function ArtistsPage() {
           flex-direction: column;
           justify-content: space-between;
           overflow: hidden;
+          gap: 1px;
         }
         .stat-row {
           display: flex;
@@ -927,28 +932,37 @@ export default function ArtistsPage() {
           align-items: center;
           flex: 1;
           min-height: 0;
-          padding: 0 2px;
-          border-bottom: 1px solid rgba(255,255,255,0.04);
+          padding: 1px 4px;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+          border-radius: 3px;
         }
         .stat-row:last-child { border-bottom: none; }
+        .stat-row:nth-child(odd) {
+          background: rgba(255,255,255,0.03);
+        }
         .stat-label {
-          font-size: 0.62rem;
+          font-size: 0.68rem;
+          font-weight: 600;
+          color: rgba(255,255,255,0.82);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
           flex: 1;
           min-width: 0;
+          letter-spacing: 0.01em;
         }
         .stat-value {
-          font-size: 0.62rem;
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: #fff;
           display: flex;
           gap: 3px;
           align-items: center;
           flex-shrink: 0;
         }
         .stat-diff {
-          font-size: 0.58rem;
-          font-weight: 600;
+          font-size: 0.62rem;
+          font-weight: 700;
         }
         
         .artists-bottom {
