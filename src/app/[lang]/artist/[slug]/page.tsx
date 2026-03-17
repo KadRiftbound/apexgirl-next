@@ -388,7 +388,7 @@ export default function ArtistDetailPage() {
 
           {/* Stats Panel */}
           <div style={{
-            background: 'rgba(30,30,50,0.8)', borderRadius: '16px',
+            background: 'rgba(15,15,35,0.55)', borderRadius: '16px',
             border: `1px solid ${rankColor}33`, padding: '20px',
             backdropFilter: 'blur(10px)',
           }}>
@@ -434,7 +434,7 @@ export default function ArtistDetailPage() {
 
           {/* Build & Skills Panel */}
           <div style={{
-            background: 'rgba(30,30,50,0.8)', borderRadius: '16px',
+            background: 'rgba(15,15,35,0.55)', borderRadius: '16px',
             border: '1px solid rgba(139,92,246,0.3)', padding: '20px',
             backdropFilter: 'blur(10px)',
           }}>
@@ -528,7 +528,7 @@ export default function ArtistDetailPage() {
 
           {/* Same specialty */}
           {sameSpecialty.length > 0 && (
-            <div style={{ background: 'rgba(30,30,50,0.8)', borderRadius: '16px', border: `1px solid ${rankColor}22`, padding: '18px', backdropFilter: 'blur(10px)' }}>
+            <div style={{ background: 'rgba(15,15,35,0.55)', borderRadius: '16px', border: `1px solid ${rankColor}22`, padding: '18px', backdropFilter: 'blur(10px)' }}>
               <h3 style={{ margin: '0 0 12px', color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                 ⚡ {t.sameSpecialty}
               </h3>
@@ -542,9 +542,9 @@ export default function ArtistDetailPage() {
                       background: 'rgba(255,255,255,0.04)', border: `1px solid ${ac}22`,
                       transition: 'all 0.15s',
                     }}>
-                      <div style={{ width: '32px', height: '32px', borderRadius: '8px', overflow: 'hidden', flexShrink: 0, background: `${ac}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                      <div style={{ width: '44px', height: '54px', borderRadius: '8px', overflow: 'hidden', flexShrink: 0, background: `${ac}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                         {a.image ? (
-                          <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill style={{ objectFit: 'cover' }} />
+                          <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="44px" style={{ objectFit: 'cover' }} />
                         ) : (
                           <span style={{ fontSize: '0.9rem', fontWeight: 700, color: ac }}>{a.name.charAt(0)}</span>
                         )}
@@ -560,7 +560,7 @@ export default function ArtistDetailPage() {
 
           {/* Same genre */}
           {sameGenre.length > 0 && (
-            <div style={{ background: 'rgba(30,30,50,0.8)', borderRadius: '16px', border: `1px solid ${genreColor}22`, padding: '18px', backdropFilter: 'blur(10px)' }}>
+            <div style={{ background: 'rgba(15,15,35,0.55)', borderRadius: '16px', border: `1px solid ${genreColor}22`, padding: '18px', backdropFilter: 'blur(10px)' }}>
               <h3 style={{ margin: '0 0 12px', color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                 🎵 {t.sameGenre} · <span style={{ color: genreColor }}>{artist.genre}</span>
               </h3>
@@ -574,9 +574,9 @@ export default function ArtistDetailPage() {
                       background: 'rgba(255,255,255,0.04)', border: `1px solid ${ac}22`,
                       transition: 'all 0.15s',
                     }}>
-                      <div style={{ width: '32px', height: '32px', borderRadius: '8px', overflow: 'hidden', flexShrink: 0, background: `${ac}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                      <div style={{ width: '44px', height: '54px', borderRadius: '8px', overflow: 'hidden', flexShrink: 0, background: `${ac}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                         {a.image ? (
-                          <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill style={{ objectFit: 'cover' }} />
+                          <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="44px" style={{ objectFit: 'cover' }} />
                         ) : (
                           <span style={{ fontSize: '0.9rem', fontWeight: 700, color: ac }}>{a.name.charAt(0)}</span>
                         )}

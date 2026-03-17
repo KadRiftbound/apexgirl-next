@@ -580,25 +580,31 @@ function TierListPageInner() {
             {/* Vote Status Banner */}
             {votedToday ? (
               <div style={{
-                padding: "20px",
+                padding: "16px 20px",
                 borderRadius: "var(--radius-md)",
-                background: "rgba(139, 92, 246, 0.15)",
-                border: "1px solid rgba(139, 92, 246, 0.3)",
+                background: "rgba(139, 92, 246, 0.18)",
+                border: "1px solid rgba(139, 92, 246, 0.35)",
+                backdropFilter: "blur(10px)",
                 textAlign: "center",
                 marginBottom: "24px",
-                color: "var(--text-muted)"
+                color: "rgba(167,139,250,0.9)",
+                fontWeight: 600,
+                fontSize: "0.95rem",
               }}>
                 ✅ {t.alreadyVoted}
               </div>
             ) : (
               <div style={{
-                padding: "20px",
+                padding: "16px 20px",
                 borderRadius: "var(--radius-md)",
-                background: "linear-gradient(135deg, rgba(255, 77, 141, 0.15), rgba(255, 77, 141, 0.05))",
-                border: "1px solid rgba(255, 77, 141, 0.3)",
+                background: "rgba(255, 77, 141, 0.12)",
+                border: "1px solid rgba(255, 77, 141, 0.30)",
+                backdropFilter: "blur(10px)",
                 textAlign: "center",
                 marginBottom: "24px",
-                color: "var(--text-primary)"
+                color: "rgba(255,255,255,0.9)",
+                fontWeight: 600,
+                fontSize: "0.95rem",
               }}>
                 🎉 {t.voteBanner}
               </div>
@@ -773,8 +779,9 @@ function TierListPageInner() {
                        <div style={{
                          padding: "10px 14px",
                          borderRadius: "12px",
-                         background: index < 3 ? "rgba(255,215,0,0.06)" : "rgba(255,255,255,0.03)",
-                         border: `1px solid ${index < 3 ? "rgba(255,215,0,0.18)" : "rgba(255,255,255,0.08)"}`,
+                         background: index < 3 ? "rgba(255,215,0,0.10)" : "rgba(20,20,38,0.65)",
+                         border: `1px solid ${index < 3 ? "rgba(255,215,0,0.25)" : "rgba(255,255,255,0.10)"}`,
+                         backdropFilter: "blur(8px)",
                          display: "flex",
                          alignItems: "center",
                          gap: "10px",
@@ -849,9 +856,10 @@ function TierListPageInner() {
                                textAlign: "center",
                                padding: "12px 8px",
                                borderRadius: "var(--radius-md)",
-                               background: "var(--bg-card)",
-                               border: "1px solid var(--border)",
-                               transition: "all 0.2s"
+                               background: "rgba(20,20,38,0.72)",
+                               border: "1px solid rgba(255,255,255,0.10)",
+                               backdropFilter: "blur(10px)",
+                               transition: "all 0.2s",
                              }}
                            >
                               <div style={{

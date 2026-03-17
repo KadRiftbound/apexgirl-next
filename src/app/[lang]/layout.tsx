@@ -146,10 +146,13 @@ export default async function LocaleLayout({
       </a>
       <header className="header" role="banner">
         <div className="header-inner">
-          <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
-            <img src="/assets/logo.png" alt="TopGirl" />
-            <span>{ui.header.logoTitle}</span>
-          </Link>
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
+              <img src="/assets/logo.png" alt="TopGirl" />
+              <span>{ui.header.logoTitle}</span>
+            </Link>
+            <NavVoteWidget lang={lang} />
+          </div>
           <nav className="nav" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => (
               <Link 
@@ -160,7 +163,6 @@ export default async function LocaleLayout({
                 {item.label}
               </Link>
             ))}
-            <NavVoteWidget lang={lang} />
             <LanguageSelector currentLang={lang} />
           </nav>
         </div>
