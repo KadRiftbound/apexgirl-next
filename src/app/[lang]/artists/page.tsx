@@ -160,7 +160,13 @@ export default function ArtistsPage() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      const header = document.querySelector('.header') as HTMLElement ||
+                    document.querySelector('header[role="banner"]') as HTMLElement ||
+                    document.querySelector('header') as HTMLElement;
+      if (header) header.classList.remove('header-hidden');
+    };
   }, []);
 
   // Save teams to localStorage when they change
