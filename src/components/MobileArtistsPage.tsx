@@ -292,11 +292,6 @@ export default function MobileArtistsPage() {
                   <div className="mobile-preview-name" style={{ color: rankColors[selectedArtist.rank] }}>
                     {selectedArtist.name}
                   </div>
-                  {selectedArtist.acquisitionTier && acquisitionStyles[selectedArtist.acquisitionTier] && (
-                    <div className="mobile-preview-acq" style={{ color: acquisitionStyles[selectedArtist.acquisitionTier].color }}>
-                      💳 {t.acquisition}: {acquisitionStyles[selectedArtist.acquisitionTier].label}
-                    </div>
-                  )}
                   
                   {/* Genre */}
                   <div className="mobile-preview-genre">
@@ -516,14 +511,6 @@ export default function MobileArtistsPage() {
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
               <button key={`${artist.id}-${index}`} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
-                {artist.acquisitionTier && acquisitionStyles[artist.acquisitionTier] && (
-                  <span
-                    className="mobile-acq-badge"
-                    style={{ background: acquisitionStyles[artist.acquisitionTier].bg, color: acquisitionStyles[artist.acquisitionTier].color, borderColor: acquisitionStyles[artist.acquisitionTier].color + "66" }}
-                  >
-                    {acquisitionStyles[artist.acquisitionTier].label}
-                  </span>
-                )}
                 {artist.image ? (
                   <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} />
                 ) : (
