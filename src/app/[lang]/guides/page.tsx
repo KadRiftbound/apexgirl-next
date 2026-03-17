@@ -1,6 +1,8 @@
+"use client";
 
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
+import { useState, useMemo } from "react";
 import { AdBanner } from "@/components/AdSense";
 import type { Metadata } from "next";
 
@@ -86,55 +88,6 @@ const guideListTranslations: Record<string, any> = {
      searchPlaceholder: "Поиск гайда..."
    },
 };
-
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params;
-  const path = `/${lang}/guides`;
-  const meta = pageTitles[lang]?.[path] || defaultMeta[lang] || defaultMeta.fr;
-  
-  const hreflangLangs = ['fr', 'en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
-  const languages: Record<string, string> = {};
-  hreflangLangs.forEach((l) => {
-    languages[l] = `https://www.apexgirlguide.com/${l}${path}`;
-  });
-  languages['x-default'] = `https://www.apexgirlguide.com/fr${path}`;
-  
-  return {
-    title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords.split(", "),
-    alternates: {
-      languages,
-      canonical: `https://www.apexgirlguide.com${path}`
-    },
-    openGraph: {
-      title: meta.title,
-      description: meta.description,
-      url: `https://www.apexgirlguide.com${path}`,
-      siteName: "TopGirl",
-      locale: localeNames[lang] || "fr-FR",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: meta.title,
-      description: meta.description,
-    },
-    icons: {
-      icon: [
-        { url: "/assets/favicon.png", sizes: "48x48" },
-        { url: "/assets/favicon.png", sizes: "96x96" },
-        { url: "/assets/favicon.png", sizes: "192x192" },
-        { url: "/assets/favicon.png", sizes: "512x512" },
-      ],
-      apple: { url: "/assets/favicon.png" },
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-  };
-}
 
 const categoryMap: Record<string, Record<string, string>> = {
   fr: { "Tous": "Tous", "Guide classique": "Guide classique", "Guide événement": "Guide événement" },
