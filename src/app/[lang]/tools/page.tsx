@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import SVSCalculator from "@/components/tools/SVSCalculator";
 import CEOCalculator from "@/components/tools/CEOCalculator";
 import ApexCalculator from "@/components/tools/ApexCalculator";
-import LevelingGuide from "@/components/tools/LevelingGuide";
 import { AdBanner } from "@/components/AdSense";
 
 const translations: Record<string, any> = {
@@ -13,11 +12,9 @@ const translations: Record<string, any> = {
     title: "Outils",
     subtitle: "Calculateurs et guides pour optimiser votre progression",
     resource: "Ressources",
-    leveling: "Leveling",
     svs: "SVS Store",
     ceo: "CEO Event",
     resourceDesc: "Calcule les ressources nécessaires pour chaque amélioration",
-    levelingDesc: "Guide de montée en niveau pour vos artistes SSR",
     svsDesc: "Optimise tes achats dans la boutique SVS",
     ceoDesc: "Planifie ton événement CEO et tes récompenses",
     credit: "Données fournies par",
@@ -26,11 +23,9 @@ const translations: Record<string, any> = {
     title: "Tools",
     subtitle: "Calculators and guides to optimize your progression",
     resource: "Resources",
-    leveling: "Leveling",
     svs: "SVS Store",
     ceo: "CEO Event",
     resourceDesc: "Calculate resources needed for each upgrade",
-    levelingDesc: "Level-up guide for your SSR artists",
     svsDesc: "Optimize your purchases in the SVS shop",
     ceoDesc: "Plan your CEO event and rewards",
     credit: "Data provided by",
@@ -39,11 +34,9 @@ const translations: Record<string, any> = {
     title: "Strumenti",
     subtitle: "Calcolatori e guide per ottimizzare la progressione",
     resource: "Risorse",
-    leveling: "Leveling",
     svs: "SVS Store",
     ceo: "CEO Event",
     resourceDesc: "Calcola le risorse necessarie per ogni miglioramento",
-    levelingDesc: "Guida al livellamento per le tue artiste SSR",
     svsDesc: "Ottimizza i tuoi acquisti nel negozio SVS",
     ceoDesc: "Pianifica il tuo evento CEO e le ricompense",
     credit: "Dati forniti da",
@@ -52,11 +45,9 @@ const translations: Record<string, any> = {
     title: "Herramientas",
     subtitle: "Calculadoras y guías para optimizar tu progresión",
     resource: "Recursos",
-    leveling: "Leveling",
     svs: "SVS Store",
     ceo: "CEO Event",
     resourceDesc: "Calcula los recursos necesarios para cada mejora",
-    levelingDesc: "Guía de subida de nivel para tus artistas SSR",
     svsDesc: "Optimiza tus compras en la tienda SVS",
     ceoDesc: "Planifica tu evento CEO y recompensas",
     credit: "Datos proporcionados por",
@@ -65,11 +56,9 @@ const translations: Record<string, any> = {
     title: "Ferramentas",
     subtitle: "Calculadoras e guias para otimizar sua progressão",
     resource: "Recursos",
-    leveling: "Leveling",
     svs: "SVS Store",
     ceo: "CEO Event",
     resourceDesc: "Calcule os recursos necessários para cada melhoria",
-    levelingDesc: "Guia de level up para seus artistas SSR",
     svsDesc: "Otimize suas compras na loja SVS",
     ceoDesc: "Planeje seu evento CEO e recompensas",
     credit: "Dados fornecidos por",
@@ -78,11 +67,9 @@ const translations: Record<string, any> = {
     title: "Narzędzia",
     subtitle: "Kalkulatory i poradniki do optymalizacji postępu",
     resource: "Zasoby",
-    leveling: "Leveling",
     svs: "SVS Store",
     ceo: "CEO Event",
     resourceDesc: "Oblicz zasoby potrzebne do każdej rozbudowy",
-    levelingDesc: "Poradnik levelowania dla twoich artystów SSR",
     svsDesc: "Zoptymalizuj zakupy w sklepie SVS",
     ceoDesc: "Zaplanuj swoje wydarzenie CEO i nagrody",
     credit: "Dane dostarczone przez",
@@ -91,11 +78,9 @@ const translations: Record<string, any> = {
     title: "Alat",
     subtitle: "Kalkulator dan panduan untuk mengoptimalkan kemajuan",
     resource: "Sumber Daya",
-    leveling: "Leveling",
     svs: "SVS Store",
     ceo: "CEO Event",
     resourceDesc: "Hitung sumber daya yang dibutuhkan untuk setiap peningkatan",
-    levelingDesc: "Panduan level up untuk artis SSR kamu",
     svsDesc: "Optimalkan pembelian di toko SVS",
     ceoDesc: "Rencanakan event CEO dan hadiahmu",
     credit: "Data dari",
@@ -104,11 +89,9 @@ const translations: Record<string, any> = {
     title: "Инструменты",
     subtitle: "Калькуляторы и гайды для оптимизации прогресса",
     resource: "Ресурсы",
-    leveling: "Левелинг",
     svs: "SVS Магазин",
     ceo: "CEO Событие",
     resourceDesc: "Рассчитайте ресурсы для каждого улучшения",
-    levelingDesc: "Гайд по прокачке SSR артистов",
     svsDesc: "Оптимизируйте покупки в магазине SVS",
     ceoDesc: "Планируйте событие CEO и награды",
     credit: "Данные от",
@@ -122,13 +105,6 @@ const toolConfig = [
     color: "#8b5cf6",
     gradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)",
     glowColor: "rgba(139, 92, 246, 0.4)",
-  },
-  {
-    id: "leveling",
-    icon: "📈",
-    color: "#22d3ee",
-    gradient: "linear-gradient(135deg, #22d3ee, #0891b2)",
-    glowColor: "rgba(34, 211, 238, 0.4)",
   },
   {
     id: "svs",
@@ -325,7 +301,6 @@ export default function ToolsPage() {
           {/* Tool Content */}
           <div style={{ padding: "24px" }}>
             {activeTab === "resource" && <ApexCalculator />}
-            {activeTab === "leveling" && <LevelingGuide />}
             {activeTab === "svs" && <SVSCalculator />}
             {activeTab === "ceo" && <CEOCalculator />}
           </div>
