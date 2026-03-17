@@ -252,10 +252,7 @@ export default function ArtistDetailPage() {
   const hasSkillCats = skillCats && Object.values(skillCats).some(v => v && v.length > 0);
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      paddingBottom: '80px',
-    }}>
+    <>
       {/* JSON-LD SEO */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
@@ -611,6 +608,6 @@ export default function ArtistDetailPage() {
           .artist-related-row { grid-template-columns: 1fr !important; }
         }
       `}</style>
-    </div>
+    </>
   );
 }

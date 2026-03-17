@@ -4584,11 +4584,7 @@ export default function GuideDetailPage() {
   const { short: shortExplanation, rest: mainContent } = extractShortExplanation(rawContent, lang);
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      paddingBottom: "80px",
-    }}>
-
+    <>
       {/* Hero Header */}
       <div style={{
         background: "rgba(15,15,26,0.78)",
@@ -4658,7 +4654,7 @@ export default function GuideDetailPage() {
         >
           {/* Explication rapide */}
           <div style={{
-            background: "rgba(15,15,30,0.55)",
+            background: "rgba(10,10,24,0.78)",
             borderRadius: "16px",
             border: `1px solid ${guide.color}33`,
             padding: "24px",
@@ -4691,7 +4687,7 @@ export default function GuideDetailPage() {
           {/* Tips */}
           {tipsContent ? (
             <div style={{
-              background: "rgba(15,40,50,0.45)",
+              background: "rgba(8,30,42,0.78)",
               borderRadius: "16px",
               border: "1px solid rgba(34,211,238,0.25)",
               padding: "24px",
@@ -4720,7 +4716,7 @@ export default function GuideDetailPage() {
         {/* ROW 2 : Récompenses — pleine largeur */}
         {rewardsContent && (
           <div style={{
-            background: "rgba(34,197,94,0.07)",
+            background: "rgba(8,32,14,0.78)",
             borderRadius: "16px",
             border: "1px solid rgba(34,197,94,0.3)",
             padding: "24px",
@@ -4765,7 +4761,7 @@ export default function GuideDetailPage() {
         {/* ROW 3 : Description complète — pleine largeur */}
         {mainContent && (
           <div style={{
-            background: "rgba(15,15,35,0.55)",
+            background: "rgba(10,10,24,0.78)",
             borderRadius: "16px",
             border: `1px solid ${guide.color}22`,
             overflow: "hidden",
@@ -4807,7 +4803,7 @@ export default function GuideDetailPage() {
                 href={`/${lang}/guides/${g.id}/`}
                 style={{
                   padding: "10px 16px",
-                   background: "rgba(15,15,35,0.55)",
+                   background: "rgba(10,10,24,0.72)",
                    borderRadius: "10px",
                   color: "rgba(255,255,255,0.8)",
                   textDecoration: "none",
@@ -4865,6 +4861,6 @@ export default function GuideDetailPage() {
           }
         }
       `}</style>
-    </div>
+    </>
   );
 }

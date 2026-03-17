@@ -37,6 +37,10 @@ export function MobileNav() {
     setIsOpen(false);
     setIsVisible(true);
     lastScrollY.current = 0;
+    // Force scroll to top on navigation so navbar is always visible on new page
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    }
     
     const handleScroll = () => {
       if (typeof window === 'undefined') return;
