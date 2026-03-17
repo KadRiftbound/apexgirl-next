@@ -575,7 +575,18 @@ export default function ArtistsPage() {
 
           <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
             {sortedArtists.map((artist: Artist) => (
-              <button key={artist.id} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
+              <button
+                key={artist.id}
+                onClick={() => {
+                  if (selectedArtist?.id === artist.id) {
+                    router.push(`/${lang}/artist/${slugify(artist.name)}`);
+                  } else {
+                    setSelectedArtist(artist);
+                  }
+                }}
+                className={selectedArtist?.id === artist.id ? "selected" : ""}
+                title={selectedArtist?.id === artist.id ? "Cliquer pour voir la fiche" : artist.name}
+              >
                 {artist.image ? (
                    <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} width={60} height={60} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                 ) : (
