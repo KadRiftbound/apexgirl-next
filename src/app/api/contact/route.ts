@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Sanitize user input to prevent HTML injection in emails
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -33,26 +43,25 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    // Sanitize all user inputs before injecting into HTML
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject || '');
+    const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
+
     // Email content
     const mailOptions = {
-      from: `"${name}" <${process.env.EMAIL_FROM}>`,
+      from: `"${safeName}" <${process.env.EMAIL_FROM}>`,
       to: process.env.EMAIL_TO,
-      subject: subject || 'New Contact Form Submission',
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Subject: ${subject || '(No subject)'}
-        
-        Message:
-        ${message}
-      `,
+      subject: safeSubject || 'New Contact Form Submission',
+      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject || '(No subject)'}\n\nMessage:\n${message}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject || '(No subject)'}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Subject:</strong> ${safeSubject || '(No subject)'}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${safeMessage}</p>
       `,
     };
 

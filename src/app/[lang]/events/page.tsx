@@ -7,14 +7,14 @@ import eventsDataRaw from "@/lib/data/events.json";
 import { AdBanner } from "@/components/AdSense";
 
 const eventListTranslations: Record<string, any> = {
-  fr: { searchPlaceholder: "🔍 Rechercher un événement...", filterAll: "Tous", filterRecurring: "Récurrents", filterSeasonal: "Saisonniers", filterPermanent: "Permanents", title: "Événements", subtitle: "Calendrier et récompenses des événements" },
-  en: { searchPlaceholder: "🔍 Search for an event...", filterAll: "All", filterRecurring: "Recurring", filterSeasonal: "Seasonal", filterPermanent: "Permanent", title: "Events", subtitle: "Event schedule and rewards" },
-  it: { searchPlaceholder: "🔍 Cerca un evento...", filterAll: "Tutti", filterRecurring: "Ricorrenti", filterSeasonal: "Stagionali", filterPermanent: "Permanenti", title: "Eventi", subtitle: "Calendario e ricompense degli eventi" },
-  es: { searchPlaceholder: "🔍 Buscar un evento...", filterAll: "Todos", filterRecurring: "Recurrentes", filterSeasonal: "Temporales", filterPermanent: "Permanentes", title: "Eventos", subtitle: "Calendario y recompensas de eventos" },
-  pt: { searchPlaceholder: "🔍 Pesquisar um evento...", filterAll: "Todos", filterRecurring: "Recorrentes", filterSeasonal: "Sazonais", filterPermanent: "Permanentes", title: "Eventos", subtitle: "Calendário e recompensas dos eventos" },
-  pl: { searchPlaceholder: "🔍 Szukaj wydarzenia...", filterAll: "Wszystkie", filterRecurring: "Powtarzające się", filterSeasonal: "Sezonowe", filterPermanent: "Stałe", title: "Wydarzenia", subtitle: "Harmonogram i nagrody wydarzeń" },
-  id: { searchPlaceholder: "🔍 Cari acara...", filterAll: "Semua", filterRecurring: "Berulang", filterSeasonal: "Musiman", filterPermanent: "Permanen", title: "Acara", subtitle: "Jadwal dan hadiah acara" },
-  ru: { searchPlaceholder: "🔍 Поиск события...", filterAll: "Все", filterRecurring: "Повторяющиеся", filterSeasonal: "Сезонные", filterPermanent: "Постоянные", title: "События", subtitle: "Расписание и награды событий" },
+  fr: { searchPlaceholder: "🔍 Rechercher un événement...", filterAll: "Tous", filterRecurring: "Récurrents", filterSeasonal: "Saisonniers", filterPermanent: "Permanents", title: "Événements", subtitle: "Calendrier et récompenses des événements", noEvents: "Aucun événement trouvé" },
+  en: { searchPlaceholder: "🔍 Search for an event...", filterAll: "All", filterRecurring: "Recurring", filterSeasonal: "Seasonal", filterPermanent: "Permanent", title: "Events", subtitle: "Event schedule and rewards", noEvents: "No events found" },
+  it: { searchPlaceholder: "🔍 Cerca un evento...", filterAll: "Tutti", filterRecurring: "Ricorrenti", filterSeasonal: "Stagionali", filterPermanent: "Permanenti", title: "Eventi", subtitle: "Calendario e ricompense degli eventi", noEvents: "Nessun evento trovato" },
+  es: { searchPlaceholder: "🔍 Buscar un evento...", filterAll: "Todos", filterRecurring: "Recurrentes", filterSeasonal: "Temporales", filterPermanent: "Permanentes", title: "Eventos", subtitle: "Calendario y recompensas de eventos", noEvents: "No se encontraron eventos" },
+  pt: { searchPlaceholder: "🔍 Pesquisar um evento...", filterAll: "Todos", filterRecurring: "Recorrentes", filterSeasonal: "Sazonais", filterPermanent: "Permanentes", title: "Eventos", subtitle: "Calendário e recompensas dos eventos", noEvents: "Nenhum evento encontrado" },
+  pl: { searchPlaceholder: "🔍 Szukaj wydarzenia...", filterAll: "Wszystkie", filterRecurring: "Powtarzające się", filterSeasonal: "Sezonowe", filterPermanent: "Stałe", title: "Wydarzenia", subtitle: "Harmonogram i nagrody wydarzeń", noEvents: "Nie znaleziono wydarzeń" },
+  id: { searchPlaceholder: "🔍 Cari acara...", filterAll: "Semua", filterRecurring: "Berulang", filterSeasonal: "Musiman", filterPermanent: "Permanen", title: "Acara", subtitle: "Jadwal dan hadiah acara", noEvents: "Tidak ada acara ditemukan" },
+  ru: { searchPlaceholder: "🔍 Поиск события...", filterAll: "Все", filterRecurring: "Повторяющиеся", filterSeasonal: "Сезонные", filterPermanent: "Постоянные", title: "События", subtitle: "Расписание и награды событий", noEvents: "События не найдены" },
 };
 
 type Event = {
@@ -275,7 +275,7 @@ export default function EventsPage() {
         {filtered.length === 0 && (
           <div style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.5)" }}>
             <div style={{ fontSize: "3rem", marginBottom: "12px" }}>🔍</div>
-            <p>Aucun événement trouvé</p>
+            <p>{t.noEvents}</p>
           </div>
         )}
       </div>

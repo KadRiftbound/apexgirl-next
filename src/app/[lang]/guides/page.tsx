@@ -562,7 +562,7 @@ const guides: Guide[] = [
   {
     id: "group-shop",
     title: "Group Shop Guide",
-    description: "Guide Group Shop. Чтоacheter dans la boutique de guilde pour optimiser vos progrès.",
+    description: "Guide Group Shop. Quoi acheter dans la boutique de guilde pour optimiser vos progrès.",
     icon: "🛒",
     color: "#f97316",
     category: "Guide classique",

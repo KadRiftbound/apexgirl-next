@@ -7,14 +7,14 @@ import eventsDataRaw from "@/lib/data/events.json";
 import { AdBanner } from "@/components/AdSense";
 
 const eventTranslations: Record<string, any> = {
-  fr: { notFound: "Événement non trouvé", backToEvents: "← Retour aux événements", loading: "Chargement...", otherEvents: "Autres événements", viewGuide: "Voir le guide complet", rewards: "Récompenses", tips: "Conseils", bestArtists: "Meilleurs Artistes", active: "Actif", duration: "Durée", frequency: "Fréquence" },
-  en: { notFound: "Event not found", backToEvents: "← Back to Events", loading: "Loading...", otherEvents: "Other Events", viewGuide: "View full guide", rewards: "Rewards", tips: "Tips", bestArtists: "Best Artists", active: "Active", duration: "Duration", frequency: "Frequency" },
-  it: { notFound: "Evento non trovato", backToEvents: "← Torna agli eventi", loading: "Caricamento...", otherEvents: "Altri eventi", viewGuide: "Vedi guida completa", rewards: "Ricompense", tips: "Consigli", bestArtists: "Migliori Artisti", active: "Attivo", duration: "Durata", frequency: "Frequenza" },
-  es: { notFound: "Evento no encontrado", backToEvents: "← Volver a los eventos", loading: "Cargando...", otherEvents: "Otros eventos", viewGuide: "Ver guía completa", rewards: "Recompensas", tips: "Consejos", bestArtists: "Mejores Artistas", active: "Activo", duration: "Duración", frequency: "Frecuencia" },
-  pt: { notFound: "Evento não encontrado", backToEvents: "← Voltar aos eventos", loading: "Carregando...", otherEvents: "Outros eventos", viewGuide: "Ver guia completo", rewards: "Recompensas", tips: "Dicas", bestArtists: "Melhores Artistas", active: "Ativo", duration: "Duração", frequency: "Frequência" },
-  pl: { notFound: "Wydarzenie nie znalezione", backToEvents: "← Wróć do wydarzeń", loading: "Ładowanie...", otherEvents: "Inne wydarzenia", viewGuide: "Zobacz pełny poradnik", rewards: "Nagrody", tips: "Porady", bestArtists: "Najlepsi Artyści", active: "Aktywny", duration: "Czas trwania", frequency: "Częstotliwość" },
-  id: { notFound: "Acara tidak ditemukan", backToEvents: "← Kembali ke acara", loading: "Memuat...", otherEvents: "Acara lain", viewGuide: "Lihat panduan lengkap", rewards: "Hadiah", tips: "Tips", bestArtists: "Artis Terbaik", active: "Aktif", duration: "Durasi", frequency: "Frekuensi" },
-  ru: { notFound: "Событие не найдено", backToEvents: "← Вернуться к событиям", loading: "Загрузка...", otherEvents: "Другие события", viewGuide: "Посмотреть полный гайд", rewards: "Награды", tips: "Советы", bestArtists: "Лучшие Артисты", active: "Активно", duration: "Продолжительность", frequency: "Частота" },
+  fr: { notFound: "Événement non trouvé", backToEvents: "← Retour aux événements", loading: "Chargement...", otherEvents: "Autres événements", viewGuide: "Voir le guide complet", rewards: "Récompenses", tips: "Conseils", bestArtists: "Meilleurs Artistes", active: "Actif", duration: "Durée", frequency: "Fréquence", badgeNew: "Nouveau", badgeInProgress: "En cours d'élaboration" },
+  en: { notFound: "Event not found", backToEvents: "← Back to Events", loading: "Loading...", otherEvents: "Other Events", viewGuide: "View full guide", rewards: "Rewards", tips: "Tips", bestArtists: "Best Artists", active: "Active", duration: "Duration", frequency: "Frequency", badgeNew: "New", badgeInProgress: "In progress" },
+  it: { notFound: "Evento non trovato", backToEvents: "← Torna agli eventi", loading: "Caricamento...", otherEvents: "Altri eventi", viewGuide: "Vedi guida completa", rewards: "Ricompense", tips: "Consigli", bestArtists: "Migliori Artisti", active: "Attivo", duration: "Durata", frequency: "Frequenza", badgeNew: "Nuovo", badgeInProgress: "In elaborazione" },
+  es: { notFound: "Evento no encontrado", backToEvents: "← Volver a los eventos", loading: "Cargando...", otherEvents: "Otros eventos", viewGuide: "Ver guía completa", rewards: "Recompensas", tips: "Consejos", bestArtists: "Mejores Artistas", active: "Activo", duration: "Duración", frequency: "Frecuencia", badgeNew: "Nuevo", badgeInProgress: "En progreso" },
+  pt: { notFound: "Evento não encontrado", backToEvents: "← Voltar aos eventos", loading: "Carregando...", otherEvents: "Outros eventos", viewGuide: "Ver guia completo", rewards: "Recompensas", tips: "Dicas", bestArtists: "Melhores Artistas", active: "Ativo", duration: "Duração", frequency: "Frequência", badgeNew: "Novo", badgeInProgress: "Em progresso" },
+  pl: { notFound: "Wydarzenie nie znalezione", backToEvents: "← Wróć do wydarzeń", loading: "Ładowanie...", otherEvents: "Inne wydarzenia", viewGuide: "Zobacz pełny poradnik", rewards: "Nagrody", tips: "Porady", bestArtists: "Najlepsi Artyści", active: "Aktywny", duration: "Czas trwania", frequency: "Częstotliwość", badgeNew: "Nowy", badgeInProgress: "W trakcie" },
+  id: { notFound: "Acara tidak ditemukan", backToEvents: "← Kembali ke acara", loading: "Memuat...", otherEvents: "Acara lain", viewGuide: "Lihat panduan lengkap", rewards: "Hadiah", tips: "Tips", bestArtists: "Artis Terbaik", active: "Aktif", duration: "Durasi", frequency: "Frekuensi", badgeNew: "Baru", badgeInProgress: "Sedang dibuat" },
+  ru: { notFound: "Событие не найдено", backToEvents: "← Вернуться к событиям", loading: "Загрузка...", otherEvents: "Другие события", viewGuide: "Посмотреть полный гайд", rewards: "Награды", tips: "Советы", bestArtists: "Лучшие Артисты", active: "Активно", duration: "Продолжительность", frequency: "Частота", badgeNew: "Новый", badgeInProgress: "В разработке" },
 };
 
 type Event = {
@@ -120,7 +120,7 @@ export default function EventDetailPage() {
               display: "inline-block",
               marginBottom: "12px"
             }}>
-              Nouveau
+              {t.badgeNew}
             </span>
           ) : (
             <span style={{ 
@@ -133,7 +133,7 @@ export default function EventDetailPage() {
               display: "inline-block",
               marginBottom: "12px"
             }}>
-              En cours d'élaboration
+              {t.badgeInProgress}
             </span>
           )}
         </div>

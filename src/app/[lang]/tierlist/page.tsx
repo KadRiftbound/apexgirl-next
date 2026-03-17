@@ -77,14 +77,14 @@ const tierDescriptions: Record<string, Record<string, string>> = {
 };
 
 const tierlistTranslations: Record<string, any> = {
-  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un vote par jour par IP.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voted aujourd'hui !" },
-  en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day per IP.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today!" },
-  it: { title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo", tierListClassic: "Tier List Classico", voteForFavorite: "Vota il tuo preferito", voteBanner: "Vota il tuo artista preferito! Un voto al giorno per IP.", voteForArtist: "Vota per un artista", alreadyVoted: "Hai già votato oggi!" },
-  es: { title: "Tier List", subtitle: "Clasificaciones de artistas y votos comunitarios", classic: "Clásico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clásico", voteForFavorite: "Vota por tu favorito", voteBanner: "¡Vota por tu artista favorito! Un voto por día por IP.", voteForArtist: "Vota por un artista", alreadyVoted: "¡Ya has votado hoy!" },
-  pt: { title: "Tier List", subtitle: "Ranking de artistas e votos da comunidade", classic: "Clássico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clássico", voteForFavorite: "Vote no seu favorito", voteBanner: "Vote no seu artista favorito! Um voto por dia por IP.", voteForArtist: "Vote em um artista", alreadyVoted: "Você já votou hoje!" },
-  pl: { title: "Tier List", subtitle: "Rankingi artystów i głosy społeczności", classic: "Klasyczny", vote: "Głosuj", viewProfile: "Zobacz profil", tierListClassic: "Tier List Klasyczna", voteForFavorite: "Głosuj na swojego faworyta", voteBanner: "Głosuj na swojego ulubionego artystę! Jeden głos dziennie na IP.", voteForArtist: "Głosuj na artystę", alreadyVoted: "Oddałeś już głos!" },
-  id: { title: "Tier List", subtitle: "Peringkat artis dan suara komunitas", classic: "Klasik", vote: "Vote", viewProfile: "Lihat profil", tierListClassic: "Tier List Klasik", voteForFavorite: "Pilih favoritmu", voteBanner: "Pilih artis favoritmu! Satu suara per hari per IP.", voteForArtist: "Pilih seorang artis", alreadyVoted: "Anda sudah memilih hari ini!" },
-  ru: { title: "Tier List", subtitle: "Рейтинги артистов и голоса сообщества", classic: "Классика", vote: "Голосовать", viewProfile: "Посмотреть профиль", tierListClassic: "Tier List Классика", voteForFavorite: "Голосуйте за фаворита", voteBanner: "Голосуйте за любимого артиста! Один голос в день с IP.", voteForArtist: "Голосовать за артиста", alreadyVoted: "Вы уже голосовали сегодня!" },
+  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un vote par jour par IP.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voté aujourd'hui !", podium: "🏅 Podium - Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Erreur lors du vote" },
+  en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day per IP.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today!", podium: "🏅 Podium - This week", fullRanking: "📊 Full ranking", artistCount: (n: number) => `${n} artist${n > 1 ? "s" : ""}`, voteError: "Vote error" },
+  it: { title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo", tierListClassic: "Tier List Classico", voteForFavorite: "Vota il tuo preferito", voteBanner: "Vota il tuo artista preferito! Un voto al giorno per IP.", voteForArtist: "Vota per un artista", alreadyVoted: "Hai già votato oggi!", podium: "🏅 Podio - Questa settimana", fullRanking: "📊 Classifica completa", artistCount: (n: number) => `${n} artista/i`, voteError: "Errore di voto" },
+  es: { title: "Tier List", subtitle: "Clasificaciones de artistas y votos comunitarios", classic: "Clásico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clásico", voteForFavorite: "Vota por tu favorito", voteBanner: "¡Vota por tu artista favorito! Un voto por día por IP.", voteForArtist: "Vota por un artista", alreadyVoted: "¡Ya has votado hoy!", podium: "🏅 Podio - Esta semana", fullRanking: "📊 Clasificación completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Error al votar" },
+  pt: { title: "Tier List", subtitle: "Ranking de artistas e votos da comunidade", classic: "Clássico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clássico", voteForFavorite: "Vote no seu favorito", voteBanner: "Vote no seu artista favorito! Um voto por dia por IP.", voteForArtist: "Vote em um artista", alreadyVoted: "Você já votou hoje!", podium: "🏅 Pódio - Esta semana", fullRanking: "📊 Classificação completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Erro ao votar" },
+  pl: { title: "Tier List", subtitle: "Rankingi artystów i głosy społeczności", classic: "Klasyczny", vote: "Głosuj", viewProfile: "Zobacz profil", tierListClassic: "Tier List Klasyczna", voteForFavorite: "Głosuj na swojego faworyta", voteBanner: "Głosuj na swojego ulubionego artystę! Jeden głos dziennie na IP.", voteForArtist: "Głosuj na artystę", alreadyVoted: "Oddałeś już głos!", podium: "🏅 Podium - Ten tydzień", fullRanking: "📊 Pełny ranking", artistCount: (n: number) => `${n} artysta/ów`, voteError: "Błąd głosowania" },
+  id: { title: "Tier List", subtitle: "Peringkat artis dan suara komunitas", classic: "Klasik", vote: "Vote", viewProfile: "Lihat profil", tierListClassic: "Tier List Klasik", voteForFavorite: "Pilih favoritmu", voteBanner: "Pilih artis favoritmu! Satu suara per hari per IP.", voteForArtist: "Pilih seorang artis", alreadyVoted: "Anda sudah memilih hari ini!", podium: "🏅 Podium - Minggu ini", fullRanking: "📊 Peringkat lengkap", artistCount: (n: number) => `${n} artis`, voteError: "Kesalahan saat memilih" },
+  ru: { title: "Tier List", subtitle: "Рейтинги артистов и голоса сообщества", classic: "Классика", vote: "Голосовать", viewProfile: "Посмотреть профиль", tierListClassic: "Tier List Классика", voteForFavorite: "Голосуйте за фаворита", voteBanner: "Голосуйте за любимого артиста! Один голос в день с IP.", voteForArtist: "Голосовать за артиста", alreadyVoted: "Вы уже голосовали сегодня!", podium: "🏅 Подиум - Эта неделя", fullRanking: "📊 Полный рейтинг", artistCount: (n: number) => `${n} артист(ов)`, voteError: "Ошибка голосования" },
 };
 
 type Artist = {
@@ -194,7 +194,7 @@ export default function TierListPage() {
       
       setTimeout(() => setVoteMessage(null), 3000);
     } catch (e) {
-      setVoteMessage({ type: "error", text: "Erreur lors du vote" });
+      setVoteMessage({ type: "error", text: t.voteError });
     } finally {
       setVotingArtist(null);
     }
@@ -418,7 +418,7 @@ export default function TierListPage() {
                          color: "var(--text-muted)", 
                          fontSize: "0.85rem" 
                        }}>
-                         {tierArtists.length} artiste{tierArtists.length > 1 ? "s" : ""}
+                         {t.artistCount(tierArtists.length)}
                        </span>
                      </div>
                      <div style={{ position: "relative" }} className="tier-tooltip-container">
@@ -592,7 +592,7 @@ export default function TierListPage() {
                 alignItems: "center",
                 gap: "8px"
               }}>
-                🏅 Podium - Cette semaine
+                {t.podium}
               </h3>
               
               {/* Top 3 with Images */}
@@ -777,7 +777,7 @@ export default function TierListPage() {
                 marginBottom: "16px",
                 color: "var(--text-primary)"
               }}>
-                📊 Classement complet
+                {t.fullRanking}
               </h4>
               <div style={{ 
                 display: "grid", 

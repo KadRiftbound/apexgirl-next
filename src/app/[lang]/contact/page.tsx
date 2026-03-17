@@ -260,7 +260,7 @@ export default function Contact() {
         note: 'Kami melakukan yang terbaik untuk merespons semua pesan.',
       },
       required: 'Silakan isi semua kolom yang wajib diisi.',
-      gdpr: 'Saya setuju bahwa data saya digunakan untuk merespons permintaan saya. Data Anda akan dihapus setelah обработки.',
+      gdpr: 'Saya setuju bahwa data saya digunakan untuk merespons permintaan saya. Data Anda akan dihapus setelah diproses.',
       gdprError: 'Anda harus menerima kebijakan privasi.',
     },
     ru: {
@@ -286,7 +286,7 @@ export default function Contact() {
         other: 'Другое',
       },
       success: 'Сообщение успешно отправлено! Мы ответим как можно скорее.',
-      error: 'Произошла ошибка. Попробуйте again или свяжитесь с нами напрямую по электронной почте.',
+      error: 'Произошла ошибка. Попробуйте ещё раз или свяжитесь с нами напрямую по электронной почте.',
       info: {
         title: 'Контактная информация',
         email: 'Эл. почта',
