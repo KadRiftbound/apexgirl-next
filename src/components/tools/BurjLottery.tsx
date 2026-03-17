@@ -20,6 +20,8 @@ type Winner = {
   reward: Reward;
 };
 
+const MAX_PLAYERS = 150;
+
 // ─── Récompenses fixes ────────────────────────────────────
 const REWARDS: Reward[] = [
   // 1 Luxury
@@ -75,8 +77,7 @@ const T: Record<string, any> = {
     giftsLeft: 'Gifts',
     picksLeft: 'Artist Picks',
     duplicate: 'Ce participant existe déjà',
-    maxPlayers: 'Maximum 26 participants',
-    notEnough: 'Pas assez de récompenses pour tous les participants',
+    maxPlayers: 'Maximum 150 participants',
   },
   en: {
     addPlayer: 'Add participant',
@@ -96,8 +97,7 @@ const T: Record<string, any> = {
     giftsLeft: 'Gifts',
     picksLeft: 'Artist Picks',
     duplicate: 'This participant already exists',
-    maxPlayers: 'Maximum 26 participants',
-    notEnough: 'Not enough rewards for all participants',
+    maxPlayers: 'Maximum 150 participants',
   },
 };
 
@@ -135,7 +135,7 @@ export default function BurjLottery() {
     const name = input.trim();
     if (!name) return;
     if (players.includes(name)) { setInputError(t.duplicate); return; }
-    if (players.length >= 26) { setInputError(t.maxPlayers); return; }
+    if (players.length >= MAX_PLAYERS) { setInputError(t.maxPlayers); return; }
     setPlayers([...players, name]);
     setInput('');
     setInputError('');
@@ -186,13 +186,10 @@ export default function BurjLottery() {
 
       setWinners(result);
     } else {
-      // Mode un seul type : chaque joueur reçoit exactement 1 récompense parmi les 26
-      if (players.length > REWARDS.length) {
-        setDrawError(t.notEnough);
-        return;
-      }
+      // Mode un seul type : on attribue au hasard 26 récompenses parmi les participants
       const bag = shuffle([...REWARDS]);
-      const result: Winner[] = shuffledPlayers.map((player, i) => ({
+      const winnersSlice = shuffledPlayers.slice(0, bag.length);
+      const result: Winner[] = winnersSlice.map((player, i) => ({
         name: player,
         reward: bag[i],
       }));
@@ -287,7 +284,7 @@ export default function BurjLottery() {
       {/* ── Ajouter participants ── */}
       <div style={{ marginBottom: '14px' }}>
         <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.45)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-          {t.players} ({players.length}/26)
+          {t.players} ({players.length}/{MAX_PLAYERS})
         </div>
         <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
           <input

@@ -164,15 +164,15 @@ export default function ToolsPage() {
   const activeTool = toolConfig.find((t) => t.id === activeTab)!;
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
-      paddingBottom: "80px",
-    }}>
+      <div style={{
+        minHeight: "100vh",
+        background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
+        paddingBottom: "80px",
+      }}>
 
       {/* Hero Header */}
       <div style={{
-        background: "rgba(15, 15, 26, 0.95)",
+        background: "rgba(15, 15, 26, 0.72)",
         backdropFilter: "blur(20px)",
         borderBottom: "1px solid rgba(139, 92, 246, 0.3)",
         padding: "40px 0 30px",
@@ -236,7 +236,7 @@ export default function ToolsPage() {
                     : "2px solid rgba(255,255,255,0.06)",
                   background: isActive
                     ? `${tool.gradient}`
-                    : "rgba(30, 30, 50, 0.6)",
+                    : "rgba(30, 30, 50, 0.35)",
                   color: "#fff",
                   cursor: "pointer",
                   transition: "all 0.25s ease",
@@ -283,11 +283,11 @@ export default function ToolsPage() {
 
         {/* Active Tool Panel */}
         <div style={{
-          background: "rgba(20, 20, 40, 0.8)",
+          background: "rgba(20, 20, 40, 0.55)",
           borderRadius: "20px",
           border: `1px solid ${activeTool.color}44`,
           backdropFilter: "blur(20px)",
-          overflow: "hidden",
+          overflow: "visible",
           boxShadow: `0 0 60px ${activeTool.glowColor}22`,
         }}>
           {/* Panel Header */}
@@ -323,10 +323,12 @@ export default function ToolsPage() {
 
             {/* Tooltip pour Burj Khalifa */}
             {activeTab === "burj" && (
-              <div style={{ marginLeft: "8px", position: "relative", display: "inline-flex" }}>
+              <div
+                style={{ marginLeft: "8px", position: "relative", display: "inline-flex" }}
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+              >
                 <button
-                  onMouseEnter={() => setShowTooltip(true)}
-                  onMouseLeave={() => setShowTooltip(false)}
                   onClick={() => setShowTooltip(v => !v)}
                   style={{
                     width: "20px", height: "20px", borderRadius: "50%",
@@ -348,7 +350,7 @@ export default function ToolsPage() {
                     color: "rgba(255,255,255,0.85)", lineHeight: 1.5,
                     boxShadow: `0 8px 24px rgba(0,0,0,0.5)`,
                     zIndex: 50,
-                    pointerEvents: "none",
+                    pointerEvents: "auto",
                   }}>
                     <div style={{ color: activeTool.color, fontWeight: 700, marginBottom: "6px", fontSize: "0.8rem" }}>
                       🏙️ Burj Khalifa Lottery
