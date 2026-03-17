@@ -60,7 +60,19 @@ export default function MobileArtistsPage() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+  const searchBarRef = useRef<HTMLDivElement>(null);
+  const [searchBarHeight, setSearchBarHeight] = useState(40);
   const t = filterTranslations[lang] || filterTranslations.fr;
+
+  useEffect(() => {
+    if (searchBarRef.current) {
+      const ro = new ResizeObserver(([entry]) => {
+        setSearchBarHeight(entry.contentRect.height + 10);
+      });
+      ro.observe(searchBarRef.current);
+      return () => ro.disconnect();
+    }
+  }, [mounted]);
 
   useEffect(() => {
     setMounted(true);
@@ -463,7 +475,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Always visible below panel */}
-        <div className="mobile-search-bar" style={{ top: scrolled ? 'calc(40vh)' : 'calc(56px + 40vh)' }}>
+        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: scrolled ? 'calc(40vh)' : 'calc(56px + 40vh)' }}>
           <input
             type="text"
             placeholder={t.search}
@@ -485,7 +497,7 @@ export default function MobileArtistsPage() {
         </div>
 
         /* Layer 4: Artists Grid - Scrollable */
-        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? 'calc(40vh + 45px)' : 'calc(56px + 40vh + 45px)' }}>
+        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(56px + 40vh + ${searchBarHeight}px)` }}>
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
@@ -518,7 +530,6 @@ export default function MobileArtistsPage() {
           background: #0f0f1a;
           z-index: 100;
           height: 40vh;
-          min-height: 300px;
           opacity: 1;
           position: fixed;
           left: 0;
@@ -836,10 +847,13 @@ export default function MobileArtistsPage() {
         
         /* Artists Bottom */
         .mobile-artists-bottom {
-          padding: 8px 6px 100px 6px;
+          padding-right: 6px;
+          padding-bottom: 100px;
+          padding-left: 6px;
           min-height: 100vh;
           transition: padding-top 0.2s ease;
           pointer-events: none;
+          background: #0f0f1a;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
