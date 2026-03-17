@@ -23,10 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [];
 
   for (const lang of LANGUAGES) {
-    const langPrefix = lang === 'fr' ? '' : `/${lang}`;
-    
     for (const page of PAGES) {
-      const path = page === '' ? `${langPrefix}/` : `${langPrefix}/${page}/`;
+      const path = page === '' ? `/${lang}/` : `/${lang}/${page}/`;
       const isHome = page === '';
       
       urls.push({

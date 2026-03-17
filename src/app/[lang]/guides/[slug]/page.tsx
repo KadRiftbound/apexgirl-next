@@ -3,7 +3,6 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
-import type { Metadata } from "next";
 
 const guideTranslations: Record<string, any> = {
    fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication" },

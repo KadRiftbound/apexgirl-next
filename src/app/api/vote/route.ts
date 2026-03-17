@@ -10,15 +10,11 @@ function getRedis(): Redis | null {
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;
   
-  console.log('getRedis called, url:', url ? 'exists' : 'missing', 'token:', token ? 'exists' : 'missing');
-  
   if (url && token && url.startsWith('http')) {
     redis = new Redis({ url, token });
-    console.log('Redis client created');
     return redis;
   }
   
-  console.log('Redis not configured, returning null');
   return null;
 }
 
@@ -53,15 +49,12 @@ function getWeekStart(): string {
 
 async function readVotes(): Promise<VoteData> {
   const r = getRedis();
-  console.log('readVotes: r is null?', !r);
   
   if (!r) {
-    console.error("Redis not configured");
     return { votes: [], weekly_top: null };
   }
   try {
     const votesData = await r.get("votes:all");
-    console.log('votesData:', votesData ? 'exists' : 'null', 'type:', typeof votesData);
     const votes: VoteEntry[] = votesData ? votesData as VoteEntry[] : [];
     
     const weekly_top = await r.get("weekly_top");
@@ -70,25 +63,21 @@ async function readVotes(): Promise<VoteData> {
       votes, 
       weekly_top: weekly_top ? weekly_top as WeeklyTop : null 
     };
-  } catch (error) {
-    console.error("Error reading votes:", error);
+  } catch {
     return { votes: [], weekly_top: null };
   }
 }
 
 async function writeVotes(data: VoteData): Promise<void> {
   const r = getRedis();
-  if (!r) {
-    console.error("Redis not configured - votes will not be saved");
-    return;
-  }
+  if (!r) return;
   try {
     await r.set("votes:all", JSON.stringify(data.votes));
     if (data.weekly_top) {
       await r.set("weekly_top", JSON.stringify(data.weekly_top));
     }
-  } catch (error) {
-    console.error("Error writing votes:", error);
+  } catch {
+    // Silent fail - votes not critical
   }
 }
 
@@ -134,8 +123,7 @@ export async function GET() {
       },
       weekly_top: data.weekly_top || null,
     });
-  } catch (error) {
-    console.error("GET vote error:", error);
+  } catch {
     return NextResponse.json({ error: "Failed to load votes" }, { status: 500 });
   }
 }
@@ -145,16 +133,11 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { artist_id, artist_name } = body;
     
-    console.log('Vote request for artist:', artist_name || artist_id);
-    
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() 
       || request.headers.get("x-real-ip") 
       || "unknown";
     
-    console.log('Client IP:', ip);
-    
     const data = await readVotes();
-    console.log('Votes loaded:', data.votes.length);
     
     const today = getToday();
     const weekStart = getWeekStart();
@@ -182,8 +165,6 @@ export async function POST(request: NextRequest) {
       artistIndex = data.votes.findIndex(v => v.artist_id === artist_id);
     }
     
-    console.log('Artist index:', artistIndex);
-    
     // If artist not found in votes, add them
     if (artistIndex === -1) {
       // Find artist in artistsData to get rank and id
@@ -209,7 +190,6 @@ export async function POST(request: NextRequest) {
       };
       data.votes.push(newEntry);
       artistIndex = data.votes.length - 1;
-      console.log('Added new artist to votes:', artistInfo.name);
     }
     
     data.votes[artistIndex].count += 1;
@@ -244,8 +224,7 @@ export async function POST(request: NextRequest) {
       remaining_votes: 1 - (ipVoteData?.last_vote === today ? ipVoteData.votes_today : 0),
     });
     
-  } catch (error) {
-    console.error("Vote error:", error);
+  } catch {
     return NextResponse.json({
       success: false,
       message: "Erreur lors du vote",

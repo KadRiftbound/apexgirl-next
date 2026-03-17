@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { AdBanner } from '@/components/AdSense';
-import type { Metadata } from 'next';
 
 interface Code {
   code: string;

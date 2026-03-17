@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { useState, useMemo } from "react";
 import { AdBanner } from "@/components/AdSense";
-import type { Metadata } from "next";
 
 const guideListTranslations: Record<string, any> = {
    fr: { 

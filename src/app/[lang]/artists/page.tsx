@@ -7,7 +7,6 @@ import Link from "next/link";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 import MobileArtistsPage from "@/components/MobileArtistsPage";
-import type { Metadata } from "next";
 
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
