@@ -2334,31 +2334,145 @@ L'**Ultimate CEO** est un événement hebdomadaire de 5 jours où vous affrontez
     category: "Événements",
     readTime: "8 min",
     content: `
-## Guide Echo Death Match - TopGirl
+## Guide Echo Death Match
 
-### Présentation
-Le **Echo Death Match** est un événement où vous affrontez des échos. Accumulez des Echo Stones à travers des battles solo et team.
+### Type
+Guide événement
 
-### Phases
+### Explication courte
+Echo Death Match est un événement hebdomadaire de 3 jours. Il se déroule chaque vendredi, samedi et dimanche.
+Avant le début, tu choisis une difficulté. Ce choix est fixe pendant l’événement.
+Le but est de battre des stages et de récupérer des récompenses.
 
-**Phase 1 (Jour 1-2)**
-- Solo battles
-- Objectif: Accumuler Echo Stones
-- Reward: Echo Stones x500
+### Explication longue
+Fonctionnement général
+Avant l’événement, tu dois sélectionner une difficulté. Tu ne peux jouer qu’une difficulté par édition.
+L’événement contient 15 stages. Chaque stage reste disponible 1 heure.
+Si un stage disparaît, tu peux le faire réapparaître.
+Tu dois invoquer un stage et lancer un challenge. Si tu gagnes, tu accèdes au stage suivant.
+Chaque stage donne des récompenses de base. Elles sont proches des rewards de Concert Performance.
+Des récompenses bonus sont données aux stages 3, 6, 9, 12 et 15.
+Si tu termines tous les stages à ta difficulté, tu débloques la difficulté suivante pour la prochaine édition.
+Les difficultés plus élevées donnent de meilleures récompenses.
 
-**Phase 2 (Jour 3-5)**
-- Team battles
-- Objectif: Bonus Echo Stones
-- Reward: Echo Stones x1000, SSR Shards
+### Conseils
+- Choisis une difficulté que tu peux terminer entièrement.
+- Joue régulièrement. Chaque stage ne reste disponible qu’une heure.
+- Termine rapidement un stage pour ne pas rater le suivant.
+- Garde en tête les stages 3, 6, 9, 12 et 15 pour les récompenses bonus.
 
-**Phase 3 (Jour 6-7)**
-- Échange des rewards
-- Rewards: UR Token, SSR+ Cards
+### Récompenses
+Récompenses de base
+Rewards proches de Concert Performance.
 
-### Stratégie
-1. **Phase 1:** Focus sur solo battles pour stocker
-2. **Phase 2:** Team battles pour bonus
-3. **Gardez des Echo Stones** pour les meilleurs échanges
+Récompenses de paliers
+- SR Private Photos
+- SSR Private Photos
+- SSR Cards
+- EXP Cards
+
+Les quantités dépendent de la difficulté et de la progression.
+
+### Guides liés
+- Guide de la structure du jeu
+- Guide des stats : Chant, Danse et Management
+- Guide des équipements
+- Guide Top CEO
+
+### Glossaire ajouté
+- Concert Performance : mode de référence pour les rewards de base.
+- Stage : niveau à terminer pendant l’événement.
+- SR Private Photos
+- SSR Private Photos
+- SSR Cards
+- EXP Cards
+    `
+  },
+  {
+    id: "event-muse",
+    title: "Guide Muse Event",
+    description: "Guide du Muse Event",
+    icon: "🎵",
+    color: "#a855f7",
+    category: "Événements",
+    readTime: "8 min",
+    content: `
+## Guide Muse Event
+
+### Type
+Guide événement
+
+### Explication courte
+Muse Event est un mini-jeu musical. Tu utilises des Entry Tickets pour jouer une piste.
+Tu dois toucher les tiles au bon moment pour faire un Perfect et marquer des points.
+Les Crystals servent à acheter des upgrades qui améliorent tes scores et tes rewards.
+
+### Explication longue
+Gameplay et contrôles
+Pour jouer, tu consommes des Entry Tickets depuis le Battle Pass.
+Tu peux miser 1x, 10x ou 100x tickets pour multiplier les rewards d’une run.
+Le but est de toucher les tiles quand elles atteignent la ligne du bas.
+Un timing parfait donne un Perfect et maximise le score.
+Si tu tapes trop tôt ou trop tard, ton score baisse.
+Sur les lignes longues, tu maintiens le doigt. Pour les carrés, tu tapes. Tu peux glisser entre des lignes longues adjacentes.
+Astuce : tiens ton appareil à deux mains et joue avec les pouces pour plus de stabilité.
+
+Progression et musiques
+Tu peux choisir une piste avec Select Music ou lancer une piste au hasard avec Quick Start.
+En jouant régulièrement, tu débloques de nouvelles tracks.
+Les Tasks donnent des Crystals, la monnaie des upgrades.
+
+Battle Pass et Tickets
+Les Tasks et le Battle Pass sont les principales sources de Crystals et d’Entry Tickets.
+Le Paid Pass donne une progression plus rapide et des rewards supplémentaires.
+Le Premium Pass donne des tickets et des rewards exclusifs.
+La section Gift permet d’acheter des tickets et des Crystals.
+
+Upgrades et stratégie
+Les upgrades améliorent tes stats : Base Score, Combo Score, Bonus Chance, Bonus Multiplier et Shield.
+Plus tes stats sont élevées, meilleures sont les rewards par track.
+Les Crystals sont limités. Ne les dépense pas au hasard.
+Choisis tes upgrades selon ton style de jeu :
+- Joueur régulier : Base Score puis Combo Score.
+- Joueur très précis : Combo Score puis Bonus Multiplier.
+- Joueur burst : Bonus Chance puis Bonus Multiplier.
+- Joueur difficulté : Base Score puis Shield.
+
+### Conseils
+- Utilise 1x tickets quand tu testes une track. Passe en 10x ou 100x quand tu maîtrises.
+- Concentre tes Crystals sur 2 stats clés au lieu de tout monter.
+- Vise un timing propre. Les Perfects font la différence.
+- Complète les Tasks chaque jour pour sécuriser les Crystals.
+
+### Récompenses
+- Crystals
+- Entry Tickets
+- Rewards du Battle Pass
+- Rewards par track
+
+Le montant dépend de tes stats et de ta progression.
+
+### Guides liés
+- Guide de la structure du jeu
+- Guide des stats : Chant, Danse et Management
+- Guide des équipements
+
+### Glossaire ajouté
+- Entry Tickets
+- Battle Pass
+- Paid Pass
+- Premium Pass
+- Tasks
+- Crystals
+- Base Score
+- Combo Score
+- Bonus Chance
+- Bonus Multiplier
+- Shield
+- Perfect
+- Quick Start
+- Select Music
+- Track
     `
   },
   {
@@ -4180,6 +4294,163 @@ Peak Level is a long-term global power system, perfect for whales.
     `
   },
   {
+    id: "construction-equipe-debut",
+    title: "Construction d'équipe début de jeu",
+    description: "Choisir ses artistes au début et éviter de gaspiller des ressources.",
+    icon: "🎯",
+    color: "#f97316",
+    category: "Avancé - Début de jeu",
+    readTime: "12 min",
+    content: `
+## Guide Construction d'équipe début de jeu
+
+### Type
+Guide classique
+
+### Explication courte
+Le choix des artistes est la décision la plus importante du jeu.
+Les artistes se débloquent par étapes. Une équipe forte au début peut devenir moyenne plus tard.
+Tu dois décider tôt pour éviter de gaspiller des ressources.
+
+### Explication longue
+Progression des artistes
+Les artistes se débloquent par saisons. Tu peux voir la saison sur la fiche artiste.
+Plus tu avances, plus les artistes ont des compétences puissantes. La tierlist aide à situer leur valeur.
+Le choix est plus complexe que la plupart des joueurs le pensent.
+
+Bonus de genre
+Jouer plusieurs artistes du même genre donne un bonus global de stats.
+Les paliers sont 3/5, 4/5 et 5/5.
+Plus tu avances, plus ces bonus deviennent importants.
+
+Artistes recommandées au début
+Claire : très forte et facile à monter grâce à ses photos.
+Alice : double dommage et EDM, un genre dominant au début.
+Aurora : double dommage.
+Everly : EDM, deux bons skills.
+Zendayah : moins forte, mais stable pour F2P et petits achats sur une longue période.
+Paisley : via Monthly Card, excellente pour monter une équipe Rock.
+Longkui : via Auction House, très forte sur toute la durée du jeu et en EDM.
+
+Déblocages clés autour de Tokyo
+Chizuru : première artiste avec Rally Capacity, très utile à Tokyo.
+Kokoro : disponible très tôt, EDM avec les mêmes compétences qu'Alice.
+Yuuko : utile pour les joueurs Rock.
+
+Exemples d'équipes au début d'Abroad
+Équipe baleine : Everly, Longkui, Alice, Kokoro, Chizuru.
+Équipe middle : Claire, Yuuko, Paisley, Zendayah, une 5e artiste au choix.
+La 5e peut être Alice, Aurora, Kokoro ou Skylar pour renforcer le genre Rock et préparer Peak.
+
+Équipe F2P : Zendayah, Claire, Nova, Julia, et 1 autre artiste selon tes interviews.
+Julia n'est pas 100% F2P. Elle demande un petit achat pendant l'événement Midnight Race.
+Le but est de limiter les investissements sur des artistes que tu ne monteras pas.
+
+Suite de la progression
+Pendant Bali Warmup et Roma Warmup, tu débloques des artistes EDM avec Rally Capacity et damage to player.
+Elles sont très fortes pour les leaders de groupe.
+Sari arrive à Bali. Xenia arrive à Roma.
+
+### Conseils
+- Décide tôt de ton genre principal pour profiter des bonus 3/5, 4/5, 5/5.
+- Ne gaspille pas tes ressources sur des artistes que tu n'utiliseras pas à long terme.
+- Pense toujours au serveur et au groupe. La progression dépend du collectif.
+
+### Guides liés
+- Team Builder
+- Guide Peak Level
+- Guide des équipements
+- Guide de la structure du jeu
+- Guide des stats : Chant, Danse et Management
+- Guide Fishing Event
+- Guide VS Group Event
+
+### Glossaire ajouté
+- Bonus de genre
+- 3/5, 4/5, 5/5
+- Rally Capacity
+- Damage to player
+- Monthly Card
+- Interviews
+- Baleine
+- F2P
+- Petit achat
+    `
+  },
+  {
+    id: "construction-equipe-fin",
+    title: "Construction d'équipe fin de jeu",
+    description: "Construire une équipe optimisée en fin de jeu selon l'adversaire.",
+    icon: "🧠",
+    color: "#f59e0b",
+    category: "Avancé - Fin de jeu",
+    readTime: "12 min",
+    content: `
+## Guide Construction d'équipe fin de jeu
+
+### Type
+Guide classique
+
+### Explication courte
+En fin de jeu, une bonne équipe se construit selon le contexte.
+Il faut tenir compte des bonus de genre et du type d'équipe adverse.
+Une équipe optimisée change selon le serveur et les événements.
+
+### Explication longue
+Bonus de genre
+Jouer plusieurs artistes du même genre donne un bonus global de stats.
+Les paliers sont 3/5, 4/5 et 5/5.
+Ces bonus sont un pilier de la construction d'équipe en fin de jeu.
+
+Adapter l'équipe à l'adversaire
+Une composition optimale dépend de l'équipe adverse.
+Contre une équipe orientée Basic Attack, il faut plus de résistance Basic Attack.
+Contre une équipe orientée Skill Damage, il faut plus de résistance Skill Damage.
+Sans cette adaptation, tu perds en efficacité même avec de bons artistes.
+
+Rally Capacity et pertes de fans
+Les grandes équipes utilisent beaucoup de Rally Capacity pour gagner les combats.
+Le point faible est la faible résistance.
+Tu gagnes, mais tu perds plus de fans sur le long terme.
+
+Notes sur les artistes Auction House
+Longkui et Monica sont obtenues via Auction House.
+Ce sont deux des artistes les plus puissantes du jeu.
+Elles restent excellentes à long terme.
+
+Notes par genre
+EDM est dominant sur toute la durée du jeu.
+Le combo Rally Capacity + damage to player est très fort.
+
+Rock est le meilleur rapport qualité/prix.
+Le combo résistance + damage to player est très stable.
+Ce n'est pas toujours le plus efficace pour la baleine du serveur, mais c'est la meilleure équipe pour le ratio éliminations / pertes de fans.
+
+Pop revient très fort en fin de jeu.
+La combinaison Monica + les derniers artistes sortis rend le genre très compétitif.
+
+### Conseils
+- Analyse toujours l'équipe adverse avant de choisir ta composition.
+- Pense à l'objectif : victoire rapide, pertes faibles, ou classement d'événement.
+- Utilise le Team Builder pour comparer tes options.
+
+### Guides liés
+- Team Builder
+- Guide Peak Level
+- Guide des équipements
+- Guide de la structure du jeu
+- Guide des stats : Chant, Danse et Management
+
+### Glossaire ajouté
+- Basic Attack
+- Skill Damage
+- Rally Capacity
+- Auction House
+- Damage to player
+- Éliminations / pertes de fans
+    `
+  },
+  {
     id: "group-shop",
     title: "Group Shop Guide",
     description: "Guide Group Shop",
@@ -4262,9 +4533,55 @@ export default function GuideDetailPage() {
         : <div key={i} style={{ height: "10px" }} />;
     });
 
+  const sectionHeadings = {
+    fr: { short: ["Explication courte"], long: ["Explication longue"] },
+    en: { short: ["Short Explanation"], long: ["Long Explanation"] },
+    it: { short: ["Spiegazione Breve"], long: ["Spiegazione Dettagliata"] },
+    es: { short: ["Explicación Corta"], long: ["Explicación Larga"] },
+    pt: { short: ["Explicação Curta"], long: ["Explicação Longa"] },
+    pl: { short: ["Krótkie Wyjaśnienie", "Krótka Wyjaśnienie"], long: ["Długie Wyjaśnienie"] },
+    id: { short: ["Penjelasan Singkat"], long: ["Penjelasan Panjang"] },
+    ru: { short: ["Краткое объяснение"], long: ["Подробное Объяснение"] },
+  } as const;
+
+  const extractShortExplanation = (content: string | undefined, currentLang: string) => {
+    if (!content) return { short: "", rest: content || "" };
+    const headings = sectionHeadings[currentLang as keyof typeof sectionHeadings] || sectionHeadings.en;
+    const lines = content.split('\n');
+    const isHeading = (line: string, list: readonly string[]) =>
+      line.startsWith('### ') && list.includes(line.replace('### ', '').trim());
+
+    const startIndex = lines.findIndex(line => isHeading(line, headings.short));
+    if (startIndex === -1) return { short: "", rest: content };
+
+    let endIndex = -1;
+    for (let i = startIndex + 1; i < lines.length; i += 1) {
+      if (lines[i].startsWith('### ')) {
+        const heading = lines[i].replace('### ', '').trim();
+        if ((headings.long as readonly string[]).includes(heading)) {
+          endIndex = i;
+          break;
+        }
+        endIndex = i;
+        break;
+      }
+    }
+
+    if (endIndex === -1) endIndex = lines.length;
+
+    const shortLines = lines.slice(startIndex + 1, endIndex);
+    const restLines = [...lines.slice(0, startIndex), ...lines.slice(endIndex)];
+
+    return {
+      short: shortLines.join('\n').trim(),
+      rest: restLines.join('\n').trim(),
+    };
+  };
+
   const tipsContent = guide[`tips_${lang}` as keyof typeof guide] as string || guide.tips;
   const rewardsContent = guide[`rewards_${lang}` as keyof typeof guide] as string || guide.rewards;
-  const mainContent = guide[`content_${lang}` as keyof typeof guide] as string || guide.content;
+  const rawContent = guide[`content_${lang}` as keyof typeof guide] as string || guide.content;
+  const { short: shortExplanation, rest: mainContent } = extractShortExplanation(rawContent, lang);
 
   return (
     <div style={{
@@ -4358,12 +4675,18 @@ export default function GuideDetailPage() {
                 {t.explanation || "En résumé"}
               </h2>
             </div>
-            <p style={{
-              color: "rgba(255,255,255,0.75)", fontSize: "0.95rem",
-              lineHeight: 1.7, margin: 0,
-            }}>
-              {guide[`description_${lang}` as keyof typeof guide] as string || guide.description}
-            </p>
+            {shortExplanation ? (
+              <div style={{ fontSize: "0.95rem" }}>
+                {renderContent(shortExplanation, guide.color)}
+              </div>
+            ) : (
+              <p style={{
+                color: "rgba(255,255,255,0.75)", fontSize: "0.95rem",
+                lineHeight: 1.7, margin: 0,
+              }}>
+                {guide[`description_${lang}` as keyof typeof guide] as string || guide.description}
+              </p>
+            )}
           </div>
 
           {/* Tips */}

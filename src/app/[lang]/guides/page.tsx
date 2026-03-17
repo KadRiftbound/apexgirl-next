@@ -9,9 +9,11 @@ const guideListTranslations: Record<string, any> = {
    fr: { 
      title: "Guides & Stratégies", 
      subtitle: "Tutoriels et stratégies pour maîtriser le jeu",
-     categories: ["Tous", "Guide classique", "Guide événement"],
+     categories: ["Tous", "Guide classique", "Guide événement", "Début de jeu", "Fin de jeu"],
      categoryClassic: "Guide classique",
      categoryEvent: "Guide événement",
+     categoryEarly: "Début de jeu",
+     categoryLate: "Fin de jeu",
      inProgress: "En cours",
      new: "Nouveau",
      searchPlaceholder: "Rechercher un guide..."
@@ -19,9 +21,11 @@ const guideListTranslations: Record<string, any> = {
    en: { 
      title: "Guides & Strategies", 
      subtitle: "Tutorials and strategies to master the game",
-     categories: ["All", "Classic Guide", "Event Guide"],
+     categories: ["All", "Classic Guide", "Event Guide", "Early game", "Late game"],
      categoryClassic: "Classic Guide",
      categoryEvent: "Event Guide",
+     categoryEarly: "Early game",
+     categoryLate: "Late game",
      inProgress: "In Progress",
      new: "New",
      searchPlaceholder: "Search a guide..."
@@ -29,9 +33,11 @@ const guideListTranslations: Record<string, any> = {
    it: { 
      title: "Guide e Strategie", 
      subtitle: "Tutoriali e strategie per padroneggiare il gioco",
-     categories: ["Tutti", "Guida classica", "Guida evento"],
+     categories: ["Tutti", "Guida classica", "Guida evento", "Early game", "Late game"],
      categoryClassic: "Guida classica",
      categoryEvent: "Guida evento",
+     categoryEarly: "Early game",
+     categoryLate: "Late game",
      inProgress: "In corso",
      new: "Nuovo",
      searchPlaceholder: "Cerca una guida..."
@@ -39,9 +45,11 @@ const guideListTranslations: Record<string, any> = {
    es: { 
      title: "Guías y Estrategias", 
      subtitle: "Tutoriales y estrategias para dominar el juego",
-     categories: ["Todos", "Guía clásica", "Guía evento"],
+     categories: ["Todos", "Guía clásica", "Guía evento", "Early game", "Late game"],
      categoryClassic: "Guía clásica",
      categoryEvent: "Guía evento",
+     categoryEarly: "Early game",
+     categoryLate: "Late game",
      inProgress: "En progreso",
      new: "Nuevo",
      searchPlaceholder: "Buscar una guía..."
@@ -49,9 +57,11 @@ const guideListTranslations: Record<string, any> = {
    pt: { 
      title: "Guias e Estratégias", 
      subtitle: "Tutoriais e estratégias para dominar o jogo",
-     categories: ["Todos", "Guia clássico", "Guia evento"],
+     categories: ["Todos", "Guia clássico", "Guia evento", "Early game", "Late game"],
      categoryClassic: "Guia clássico",
      categoryEvent: "Guia evento",
+     categoryEarly: "Early game",
+     categoryLate: "Late game",
      inProgress: "Em progresso",
      new: "Novo",
      searchPlaceholder: "Pesquisar um guia..."
@@ -59,9 +69,11 @@ const guideListTranslations: Record<string, any> = {
    pl: { 
      title: "Poradniki i Strategie", 
      subtitle: "Samouczki i strategie, aby opanować grę",
-     categories: ["Wszystkie", "Poradnik klasyczny", "Poradnik wydarzenia"],
+     categories: ["Wszystkie", "Poradnik klasyczny", "Poradnik wydarzenia", "Early game", "Late game"],
      categoryClassic: "Poradnik klasyczny",
      categoryEvent: "Poradnik wydarzenia",
+     categoryEarly: "Early game",
+     categoryLate: "Late game",
      inProgress: "W toku",
      new: "Nowy",
      searchPlaceholder: "Szukaj poradnika..."
@@ -69,9 +81,11 @@ const guideListTranslations: Record<string, any> = {
    id: { 
      title: "Panduan dan Strategi", 
      subtitle: "Tutorial dan strategi untuk menguasai permainan",
-     categories: ["Semua", "Panduan klasik", "Panduan acara"],
+     categories: ["Semua", "Panduan klasik", "Panduan acara", "Early game", "Late game"],
      categoryClassic: "Panduan klasik",
      categoryEvent: "Panduan acara",
+     categoryEarly: "Early game",
+     categoryLate: "Late game",
      inProgress: "Sedang berlangsung",
      new: "Baru",
      searchPlaceholder: "Cari panduan..."
@@ -79,9 +93,11 @@ const guideListTranslations: Record<string, any> = {
    ru: { 
      title: "Гайды и Стратегии", 
      subtitle: "Учебники и стратегии для освоения игры",
-     categories: ["Все", "Классический гайд", "Гайд события"],
+     categories: ["Все", "Классический гайд", "Гайд события", "Early game", "Late game"],
      categoryClassic: "Классический гайд",
      categoryEvent: "Гайд события",
+     categoryEarly: "Early game",
+     categoryLate: "Late game",
      inProgress: "В процессе",
      new: "Новый",
      searchPlaceholder: "Поиск гайда..."
@@ -89,14 +105,14 @@ const guideListTranslations: Record<string, any> = {
 };
 
 const categoryMap: Record<string, Record<string, string>> = {
-  fr: { "Tous": "Tous", "Guide classique": "Guide classique", "Guide événement": "Guide événement" },
-  en: { "Tous": "All", "Guide classique": "Classic Guide", "Guide événement": "Event Guide" },
-  it: { "Tous": "Tutti", "Guide classique": "Guida classica", "Guide événement": "Guida evento" },
-  es: { "Tous": "Todos", "Guide classique": "Guía clásica", "Guide événement": "Guía evento" },
-  pt: { "Tous": "Todos", "Guide classique": "Guia clássico", "Guide événement": "Guia evento" },
-  pl: { "Tous": "Wszystkie", "Guide classique": "Poradnik klasyczny", "Guide événement": "Poradnik wydarzenia" },
-  id: { "Tous": "Semua", "Guide classique": "Panduan klasik", "Guide événement": "Panduan acara" },
-  ru: { "Tous": "Все", "Guide classique": "Классический гайд", "Guide événements": "Гайд события" },
+  fr: { "Tous": "Tous", "Guide classique": "Guide classique", "Guide événement": "Guide événement", "Début de jeu": "Début de jeu", "Fin de jeu": "Fin de jeu" },
+  en: { "Tous": "All", "Guide classique": "Classic Guide", "Guide événement": "Event Guide", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
+  it: { "Tous": "Tutti", "Guide classique": "Guida classica", "Guide événement": "Guida evento", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
+  es: { "Tous": "Todos", "Guide classique": "Guía clásica", "Guide événement": "Guía evento", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
+  pt: { "Tous": "Todos", "Guide classique": "Guia clássico", "Guide événement": "Guia evento", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
+  pl: { "Tous": "Wszystkie", "Guide classique": "Poradnik klasyczny", "Guide événement": "Poradnik wydarzenia", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
+  id: { "Tous": "Semua", "Guide classique": "Panduan klasik", "Guide événement": "Panduan acara", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
+  ru: { "Tous": "Все", "Guide classique": "Классический гайд", "Guide événement": "Гайд события", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
 };
 
 const guideTranslations: Record<string, Record<string, { title: string; description: string }>> = {
@@ -106,6 +122,8 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
   en: {
     "structure-du-jeu": { title: "Game Structure", description: "Understand the structure of Top Girl game. Home server, Abroad cycles, City Supremacy and main loop." },
     "equipment": { title: "Equipment Guide", description: "Jewelry, Cars and Properties to optimize your stats. Gold vs Purple comparison and purchase priorities." },
+    "construction-equipe-debut": { title: "Early Game Team Building", description: "Pick your early roster and avoid wasting resources." },
+    "construction-equipe-fin": { title: "Late Game Team Building", description: "Build an optimized team based on the opponent and context." },
     "team-builder": { title: "Team Builder", description: "How to build the perfect team. Genre synergy calculation and equipment bonuses." },
     "recommended-teams": { title: "Recommended Teams", description: "Best UR and SSR team compositions. Offensive, balanced and defensive strategies." },
     "leveling-ssr": { title: "SSR Leveling Guide", description: "Number of cards needed to level up your SSR characters to level 115." },
@@ -118,7 +136,8 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "event-radio-battle": { title: "Radio Battle Guide", description: "Complete guide to Radio Battle. 5 phases, strategies to maximize your Radio Coins." },
     "event-grammy": { title: "Grammy Awards Guide", description: "Guide to the 8 Grammy categories. Best teams and strategies to win medals." },
     "event-ultimate-ceo": { title: "Ultimate CEO Guide", description: "The Ultimate CEO Complete Guide: How to Defeat the CEO and Get the Best Rewards." },
-    "event-echo-death-match": { title: "Echo Death Match Guide", description: "Echo Death Match Guide. Accumulate Echo Stones and exchange for SSR+ rewards." },
+    "event-echo-death-match": { title: "Echo Death Match Guide", description: "3-day weekly event. Choose a difficulty and clear stages for rewards." },
+    "event-muse": { title: "Muse Event Guide", description: "Rhythm mini-game. Use Entry Tickets, play tracks and upgrade your stats." },
     "event-chamber-territory": { title: "Chamber Territory Guide", description: "Chamber Territory Guide. Capture and defend territories for rewards." },
     "event-cleanup-party": { title: "Cleanup Party Guide", description: "Cleanup Party Guide. Collect trash cans and exchange for rewards." },
     "event-metro-subway": { title: "Metro & Subway Guide", description: "Metro & Subway Guide. Collect tickets and ride the subway for rewards." },
@@ -147,6 +166,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "event-grammy": { title: "Guida Grammy Awards", description: "Guida alle 8 categorie Grammy. Migliori team e strategie per vincere medaglie." },
     "event-ultimate-ceo": { title: "Guida Ultimate CEO", description: "Guida completa Ultimate CEO: Come sconfiggere il CEO e ottenere le migliori ricompense." },
     "event-echo-death-match": { title: "Guida Echo Death Match", description: "Guida Echo Death Match. Accumula Echo Stones e scambia per ricompense SSR+." },
+    "event-muse": { title: "Guida Muse Event", description: "Mini-gioco musicale. Usa Entry Tickets, gioca track e potenzia le stats." },
     "event-chamber-territory": { title: "Guida Chamber Territory", description: "Guida Chamber Territory. Cattura e difendi territori per ricompense." },
     "event-cleanup-party": { title: "Guida Cleanup Party", description: "Guida Cleanup Party. Raccogli i cestini e scambia per ricompense." },
     "event-metro-subway": { title: "Guida Metro & Subway", description: "Guida Metro & Subway. Raccogli i biglietti e monta sulla metro per ricompense." },
@@ -203,6 +223,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "event-grammy": { title: "Guia do Grammy Awards", description: "Guia das 8 categorias Grammy. Melhores times e estratégias para ganhar medalhas." },
     "event-ultimate-ceo": { title: "Guia do Ultimate CEO", description: "Guia completo do Ultimate CEO: Como derrotar o CEO e obter as melhores recompensas." },
     "event-echo-death-match": { title: "Guia do Echo Death Match", description: "Guia do Echo Death Match. Acumule Echo Stones e troque por recompensas SSR+." },
+    "event-muse": { title: "Guia do Muse Event", description: "Mini-jogo musical. Use Entry Tickets, jogue tracks e melhore suas stats." },
     "event-chamber-territory": { title: "Guia do Chamber Territory", description: "Guia do Chamber Territory. Capture e defenda territórios por recompensas." },
     "event-cleanup-party": { title: "Guia do Cleanup Party", description: "Guia do Cleanup Party. Colete os cestos de lixo e troque por recompensas." },
     "event-metro-subway": { title: "Guia do Metro & Subway", description: "Guia do Metro & Subway. Colete tickets e pegue o metrô por recompensas." },
@@ -231,6 +252,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "event-grammy": { title: "Poradnik Grammy Awards", description: "Poradnik 8 kategorii Grammy. Najlepsze drużyny i strategie wygrywania medaliów." },
     "event-ultimate-ceo": { title: "Poradnik Ultimate CEO", description: "Kompletny poradnik Ultimate CEO: Jak pokonać CEO i zdobyć najlepsze nagrody." },
     "event-echo-death-match": { title: "Poradnik Echo Death Match", description: "Poradnik Echo Death Match. Gromadź Echo Stones i wymieniaj na nagrody SSR+." },
+    "event-muse": { title: "Poradnik Muse Event", description: "Muzyczna minigra. Używaj Entry Tickets, graj tracki i ulepszaj staty." },
     "event-chamber-territory": { title: "Poradnik Chamber Territory", description: "Poradnik Chamber Territory. Zdobywaj i defenduj terytoria dla nagród." },
     "event-cleanup-party": { title: "Poradnik Cleanup Party", description: "Poradnik Cleanup Party. Zbieraj śmietniki i wymieniaj na nagrody." },
     "event-metro-subway": { title: "Poradnik Metro & Subway", description: "Poradnik Metro & Subway. Zbieraj bilety i jedź metrem dla nagród." },
@@ -287,6 +309,7 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
     "event-grammy": { title: "Гайд по Grammy Awards", description: "Гайд по 8 категориям Grammy. Лучшие команды и стратегии победы." },
     "event-ultimate-ceo": { title: "Гайд по Ultimate CEO", description: "Полный гайд по Ultimate CEO: Как победить CEO и получить лучшие награды." },
     "event-echo-death-match": { title: "Гайд по Echo Death Match", description: "Гайд по Echo Death Match. Накапливайте Echo Stones и обменивайте на награды SSR+." },
+    "event-muse": { title: "Гайд по Muse Event", description: "Музыкальная мини-игра. Используйте Entry Tickets, играйте треки и улучшайте статы." },
     "event-chamber-territory": { title: "Гайд по Chamber Territory", description: "Гайд по Chamber Territory. Захватывайте и защищайте территории для наград." },
     "event-cleanup-party": { title: "Гайд по Cleanup Party", description: "Гайд по Cleanup Party. Собирайте урны и обменивайте на награды." },
     "event-metro-subway": { title: "Гайд по Metro & Subway", description: "Гайд по Metro & Subway. Собирайте билеты и ездите на метро за наградами." },
@@ -312,6 +335,7 @@ type Guide = {
   readTime: string;
   isNew?: boolean;
   inProgress?: boolean;
+  stage?: "early" | "late";
 };
 
 const guides: Guide[] = [
@@ -336,6 +360,28 @@ const guides: Guide[] = [
     guideType: "classic",
     readTime: "10 min",
     isNew: true,
+  },
+  {
+    id: "construction-equipe-debut",
+    title: "Construction d'équipe début de jeu",
+    description: "Choisir ses artistes au début et éviter de gaspiller des ressources.",
+    icon: "🎯",
+    color: "#f97316",
+    category: "Avancé - Début de jeu",
+    guideType: "classic",
+    readTime: "12 min",
+    stage: "early",
+  },
+  {
+    id: "construction-equipe-fin",
+    title: "Construction d'équipe fin de jeu",
+    description: "Construire une équipe optimisée en fin de jeu selon l'adversaire.",
+    icon: "🧠",
+    color: "#f59e0b",
+    category: "Avancé - Fin de jeu",
+    guideType: "classic",
+    readTime: "12 min",
+    stage: "late",
   },
   {
     id: "team-builder",
@@ -450,12 +496,24 @@ const guides: Guide[] = [
   {
     id: "event-echo-death-match",
     title: "Guide Echo Death Match",
-    description: "Guide du Echo Death Match. Accumulez des Echo Stones et échangez pour des rewards SSR+.",
+    description: "Événement de 3 jours. Choisissez une difficulté et terminez les stages pour des récompenses.",
     icon: "👻",
     color: "#8b5cf6",
     category: "Guide événement",
     guideType: "event",
     readTime: "8 min",
+    isNew: true,
+  },
+  {
+    id: "event-muse",
+    title: "Guide Muse Event",
+    description: "Guide du Muse Event. Mini-jeu musical avec Entry Tickets et upgrades.",
+    icon: "🎵",
+    color: "#a855f7",
+    category: "Guide événement",
+    guideType: "event",
+    readTime: "8 min",
+    isNew: true,
   },
   {
     id: "event-chamber-territory",
@@ -571,7 +629,7 @@ const guides: Guide[] = [
   },
 ];
 
-const categories = ["Tous", "Guide classique", "Guide événement"];
+const categories = ["Tous", "Guide classique", "Guide événement", "Début de jeu", "Fin de jeu"];
 
 function getGuideTitle(id: string, lang: string, fallback: string): string {
   return guideTranslations[lang]?.[id]?.title || fallback;
@@ -592,8 +650,14 @@ export default function GuidesPage() {
     let filtered = guides;
     
     if (activeCategoryState !== t.categories[0]) {
-      const targetType = activeCategoryState === t.categoryClassic || activeCategoryState === "Guide classique" ? "classic" : "event";
-      filtered = filtered.filter((g) => g.guideType === targetType);
+      if (activeCategoryState === t.categoryEarly || activeCategoryState === "Début de jeu") {
+        filtered = filtered.filter((g) => g.stage === "early");
+      } else if (activeCategoryState === t.categoryLate || activeCategoryState === "Fin de jeu") {
+        filtered = filtered.filter((g) => g.stage === "late");
+      } else {
+        const targetType = activeCategoryState === t.categoryClassic || activeCategoryState === "Guide classique" ? "classic" : "event";
+        filtered = filtered.filter((g) => g.guideType === targetType);
+      }
     }
     
     if (searchQuery.trim()) {

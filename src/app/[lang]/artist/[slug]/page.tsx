@@ -21,6 +21,7 @@ const t_map: Record<string, any> = {
     relatedGuides: "Guides recommandés", noSkills: "Aucune compétence",
     thoughts: "Recommandation", statsSection: "Statistiques",
     skillsSection: "Compétences & Build",
+    acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale",
   },
   en: {
     notFound: "Artist not found", backToList: "Back to list",
@@ -36,6 +37,7 @@ const t_map: Record<string, any> = {
     relatedGuides: "Recommended guides", noSkills: "No skills listed",
     thoughts: "Recommendation", statsSection: "Statistics",
     skillsSection: "Skills & Build",
+    acquisition: "Access", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale",
   },
   it: {
     notFound: "Artista non trovato", backToList: "Torna alla lista",
@@ -51,6 +53,7 @@ const t_map: Record<string, any> = {
     relatedGuides: "Guide consigliate", noSkills: "Nessuna abilità",
     thoughts: "Raccomandazione", statsSection: "Statistiche",
     skillsSection: "Abilità & Build",
+    acquisition: "Accesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale",
   },
   es: {
     notFound: "Artista no encontrado", backToList: "Volver a la lista",
@@ -66,6 +69,7 @@ const t_map: Record<string, any> = {
     relatedGuides: "Guías recomendadas", noSkills: "Sin habilidades",
     thoughts: "Recomendación", statsSection: "Estadísticas",
     skillsSection: "Habilidades & Build",
+    acquisition: "Acceso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale",
   },
   pt: {
     notFound: "Artista não encontrado", backToList: "Voltar à lista",
@@ -81,6 +85,7 @@ const t_map: Record<string, any> = {
     relatedGuides: "Guias recomendados", noSkills: "Sem habilidades",
     thoughts: "Recomendação", statsSection: "Estatísticas",
     skillsSection: "Habilidades & Build",
+    acquisition: "Acesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale",
   },
   pl: {
     notFound: "Artysta nie znaleziony", backToList: "Wróć do listy",
@@ -96,6 +101,7 @@ const t_map: Record<string, any> = {
     relatedGuides: "Polecane poradniki", noSkills: "Brak umiejętności",
     thoughts: "Rekomendacja", statsSection: "Statystyki",
     skillsSection: "Umiejętności & Build",
+    acquisition: "Dostęp", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale",
   },
   id: {
     notFound: "Artis tidak ditemukan", backToList: "Kembali ke daftar",
@@ -111,6 +117,7 @@ const t_map: Record<string, any> = {
     relatedGuides: "Panduan yang disarankan", noSkills: "Tidak ada skill",
     thoughts: "Rekomendasi", statsSection: "Statistik",
     skillsSection: "Skill & Build",
+    acquisition: "Akses", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale",
   },
   ru: {
     notFound: "Артист не найден", backToList: "Вернуться к списку",
@@ -126,6 +133,7 @@ const t_map: Record<string, any> = {
     relatedGuides: "Рекомендуемые гайды", noSkills: "Нет навыков",
     thoughts: "Рекомендация", statsSection: "Статистика",
     skillsSection: "Навыки & Билд",
+    acquisition: "Доступ", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale",
   },
 };
 
@@ -136,6 +144,7 @@ type Artist = {
   photos?: string; image?: string;
   skillCategories?: { dps?: string[]; offensive?: string[]; hp?: string[]; defense?: string[]; speed?: string[]; };
   calculatedTier?: string; specialty?: string;
+  acquisitionTier?: string;
   singStat?: number; danceStat?: number;
 };
 
@@ -218,6 +227,12 @@ export default function ArtistDetailPage() {
   const rankColor = rankColors[artist.rank] || '#6b7280';
   const tierData = artist.calculatedTier ? tierColors[artist.calculatedTier] : null;
   const genreColor = genreColors[artist.genre] || '#8b5cf6';
+  const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
+    f2p: { label: t.acqF2p || 'F2P', color: '#22c55e', bg: 'rgba(34,197,94,0.18)' },
+    low: { label: t.acqLow || 'Low spender', color: '#38bdf8', bg: 'rgba(56,189,248,0.18)' },
+    mid: { label: t.acqMid || 'Mid spender', color: '#a855f7', bg: 'rgba(168,85,247,0.18)' },
+    whale: { label: t.acqWhale || 'Whale', color: '#f59e0b', bg: 'rgba(245,158,11,0.18)' },
+  };
   const posIcon = positionIcons[artist.position] || '🎵';
   const totalStats = (artist.singStat || 0) + (artist.danceStat || 0);
 
@@ -326,6 +341,16 @@ export default function ArtistDetailPage() {
                 }}>
                   {posIcon} {artist.position}
                 </span>
+                {artist.acquisitionTier && acquisitionStyles[artist.acquisitionTier] && (
+                  <span style={{
+                    padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700,
+                    background: acquisitionStyles[artist.acquisitionTier].bg,
+                    color: acquisitionStyles[artist.acquisitionTier].color,
+                    border: `1px solid ${acquisitionStyles[artist.acquisitionTier].color}66`,
+                  }}>
+                    💳 {t.acquisition}: {acquisitionStyles[artist.acquisitionTier].label}
+                  </span>
+                )}
               </div>
 
               <h1 style={{

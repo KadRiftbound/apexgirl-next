@@ -8,14 +8,14 @@ import artistsData from "@/lib/data/artists.json";
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 const filterTranslations: Record<string, any> = {
-  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer" },
-  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove" },
-  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità", foundArtists: "artisti trovati", clearTeam: "Cancella", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Scheda", clickToRemove: "Clicca per rimuovere" },
-  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades", foundArtists: "artistas encontrados", clearTeam: "Borrar", addTeam1: "+ Equipo 1", addTeam2: "+ Equipo 2", profile: "Perfil", clickToRemove: "Clic para eliminar" },
-  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades", foundArtists: "artistas encontrados", clearTeam: "Limpar", addTeam1: "+ Time 1", addTeam2: "+ Time 2", profile: "Perfil", clickToRemove: "Clique para remover" },
-  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności", foundArtists: "znalezionych artystów", clearTeam: "Wyczyść", addTeam1: "+ Drużyna 1", addTeam2: "+ Drużyna 2", profile: "Profil", clickToRemove: "Kliknij aby usunąć" },
-  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis", foundArtists: "artis ditemukan", clearTeam: "Hapus", addTeam1: "+ Tim 1", addTeam2: "+ Tim 2", profile: "Profil", clickToRemove: "Klik untuk hapus" },
-  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации", foundArtists: "артистов найдено", clearTeam: "Очистить", addTeam1: "+ Команда 1", addTeam2: "+ Команда 2", profile: "Профиль", clickToRemove: "Нажмите чтобы убрать" },
+  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", earlyRecommended: "Recommandée early" },
+  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove", earlyRecommended: "Early pick" },
+  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità", foundArtists: "artisti trovati", clearTeam: "Cancella", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Scheda", clickToRemove: "Clicca per rimuovere", earlyRecommended: "Consigliata early" },
+  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades", foundArtists: "artistas encontrados", clearTeam: "Borrar", addTeam1: "+ Equipo 1", addTeam2: "+ Equipo 2", profile: "Perfil", clickToRemove: "Clic para eliminar", earlyRecommended: "Recomendada early" },
+  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades", foundArtists: "artistas encontrados", clearTeam: "Limpar", addTeam1: "+ Time 1", addTeam2: "+ Time 2", profile: "Perfil", clickToRemove: "Clique para remover", earlyRecommended: "Recomendada early" },
+  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności", foundArtists: "znalezionych artystów", clearTeam: "Wyczyść", addTeam1: "+ Drużyna 1", addTeam2: "+ Drużyna 2", profile: "Profil", clickToRemove: "Kliknij aby usunąć", earlyRecommended: "Polecana early" },
+  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis", foundArtists: "artis ditemukan", clearTeam: "Hapus", addTeam1: "+ Tim 1", addTeam2: "+ Tim 2", profile: "Profil", clickToRemove: "Klik untuk hapus", earlyRecommended: "Rekomendasi early" },
+  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации", foundArtists: "артистов найдено", clearTeam: "Очистить", addTeam1: "+ Команда 1", addTeam2: "+ Команда 2", profile: "Профиль", clickToRemove: "Нажмите чтобы убрать", earlyRecommended: "Рекоменд. early" },
 };
 
 const rankColors: Record<string, string> = {
@@ -33,6 +33,8 @@ type Artist = {
   skills?: string[];
   image?: string;
   specialty?: string;
+  earlyGameRecommended?: boolean;
+  acquisitionTier?: string;
   skillCategories?: { dps: string[]; offensive: string[]; hp: string[]; defense: string[] };
 };
 
@@ -63,6 +65,13 @@ export default function MobileArtistsPage() {
   const searchBarRef = useRef<HTMLDivElement>(null);
   const [searchBarHeight, setSearchBarHeight] = useState(40);
   const t = filterTranslations[lang] || filterTranslations.fr;
+
+  const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
+    f2p: { label: t.acqF2p || "F2P", color: "#22c55e", bg: "rgba(34,197,94,0.18)" },
+    low: { label: t.acqLow || "Low spender", color: "#38bdf8", bg: "rgba(56,189,248,0.18)" },
+    mid: { label: t.acqMid || "Mid spender", color: "#a855f7", bg: "rgba(168,85,247,0.18)" },
+    whale: { label: t.acqWhale || "Whale", color: "#f59e0b", bg: "rgba(245,158,11,0.18)" },
+  };
 
   useEffect(() => {
     if (searchBarRef.current) {
@@ -283,6 +292,11 @@ export default function MobileArtistsPage() {
                   <div className="mobile-preview-name" style={{ color: rankColors[selectedArtist.rank] }}>
                     {selectedArtist.name}
                   </div>
+                  {selectedArtist.acquisitionTier && acquisitionStyles[selectedArtist.acquisitionTier] && (
+                    <div className="mobile-preview-acq" style={{ color: acquisitionStyles[selectedArtist.acquisitionTier].color }}>
+                      💳 {t.acquisition}: {acquisitionStyles[selectedArtist.acquisitionTier].label}
+                    </div>
+                  )}
                   
                   {/* Genre */}
                   <div className="mobile-preview-genre">
@@ -502,6 +516,14 @@ export default function MobileArtistsPage() {
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
               <button key={`${artist.id}-${index}`} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
+                {artist.acquisitionTier && acquisitionStyles[artist.acquisitionTier] && (
+                  <span
+                    className="mobile-acq-badge"
+                    style={{ background: acquisitionStyles[artist.acquisitionTier].bg, color: acquisitionStyles[artist.acquisitionTier].color, borderColor: acquisitionStyles[artist.acquisitionTier].color + "66" }}
+                  >
+                    {acquisitionStyles[artist.acquisitionTier].label}
+                  </span>
+                )}
                 {artist.image ? (
                   <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} />
                 ) : (
@@ -875,6 +897,7 @@ export default function MobileArtistsPage() {
           padding: 0;
           cursor: pointer;
           overflow: hidden;
+          position: relative;
         }
         .mobile-artists-grid button.selected {
           border-color: #8b5cf6;
@@ -892,6 +915,23 @@ export default function MobileArtistsPage() {
           justify-content: center;
           font-size: 1.2rem;
           font-weight: 800;
+        }
+        .mobile-acq-badge {
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          padding: 2px 5px;
+          border-radius: 6px;
+          font-size: 0.6rem;
+          font-weight: 700;
+          border: 1px solid;
+          z-index: 2;
+          backdrop-filter: blur(6px);
+        }
+        .mobile-preview-acq {
+          margin-top: 2px;
+          font-size: 0.6rem;
+          font-weight: 700;
         }
       `}</style>
     </>

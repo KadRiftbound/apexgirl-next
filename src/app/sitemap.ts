@@ -4,7 +4,7 @@ const BASE_URL = 'https://apexgirlguide.com';
 const LANGUAGES = ['fr', 'en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
 
 const GUIDES = [
-  'equipment', 'team-builder', 'recommended-teams', 'leveling-ssr', 'blueprints',
+  'equipment', 'construction-equipe-debut', 'construction-equipe-fin', 'team-builder', 'recommended-teams', 'leveling-ssr', 'blueprints',
   'hq-upgrade', 'vehicle-system', 'gold-equipment', 'purple-equipment',
   'event-ancient-rome', 'event-radio-battle', 'event-grammy', 'event-ultimate-ceo',
   'event-echo-death-match', 'event-chamber-territory', 'event-cleanup-party',
