@@ -4239,177 +4239,325 @@ export default function GuideDetailPage() {
     );
   }
 
+  // Helper to render markdown-like content
+  const renderContent = (text: string, color: string) =>
+    text.split('\n').map((line, i) => {
+      if (line.startsWith('## '))
+        return <h2 key={i} style={{ color: "#fff", fontSize: "1.3rem", fontWeight: 700, marginTop: "20px", marginBottom: "10px" }}>{line.replace('## ', '')}</h2>;
+      if (line.startsWith('### '))
+        return <h3 key={i} style={{ color, fontSize: "1rem", fontWeight: 600, marginTop: "16px", marginBottom: "6px" }}>{line.replace('### ', '')}</h3>;
+      if (line.startsWith('| '))
+        return <div key={i} style={{ fontFamily: "monospace", fontSize: "0.82rem", margin: "4px 0", color: "rgba(255,255,255,0.75)" }}>{line}</div>;
+      if (line.startsWith('- '))
+        return (
+          <div key={i} style={{ display: "flex", gap: "8px", marginBottom: "6px", alignItems: "flex-start" }}>
+            <span style={{ color, flexShrink: 0, marginTop: "2px" }}>▸</span>
+            <span style={{ color: "rgba(255,255,255,0.85)" }}>{line.replace('- ', '')}</span>
+          </div>
+        );
+      if (line.startsWith('**') && line.endsWith('**'))
+        return <div key={i} style={{ fontWeight: 700, marginTop: "12px", color: "#fff" }}>{line.replace(/\*\*/g, '')}</div>;
+      return line.trim()
+        ? <div key={i} style={{ marginBottom: "6px", color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}>{line}</div>
+        : <div key={i} style={{ height: "10px" }} />;
+    });
+
+  const tipsContent = guide[`tips_${lang}` as keyof typeof guide] as string || guide.tips;
+  const rewardsContent = guide[`rewards_${lang}` as keyof typeof guide] as string || guide.rewards;
+  const mainContent = guide[`content_${lang}` as keyof typeof guide] as string || guide.content;
+
   return (
-    <div className="container" style={{ padding: "40px 20px", maxWidth: "800px", margin: "0 auto" }}>
-      <Link href={`/${lang}/guides/`} style={{ color: "rgba(255,255,255,0.6)", marginBottom: "20px", display: "inline-block" }}>
-        {t.backToGuides}
-      </Link>
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
+      paddingBottom: "80px",
+    }}>
 
-      <div style={{ 
-        background: "rgba(30,30,50,0.9)", 
-        borderRadius: "16px", 
-        padding: "32px", 
-        marginTop: "20px",
-        border: `1px solid ${guide.color}33`
+      {/* Hero Header */}
+      <div style={{
+        background: "rgba(15,15,26,0.97)",
+        backdropFilter: "blur(20px)",
+        borderBottom: `1px solid ${guide.color}44`,
+        padding: "32px 0 24px",
+        position: "sticky",
+        top: 0,
+        zIndex: 10,
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-          <span style={{ fontSize: "2rem" }}>{guide.icon}</span>
-          <span style={{ 
-            padding: "4px 12px", 
-            borderRadius: "20px", 
-            background: `${guide.color}22`, 
-            color: guide.color,
-            fontSize: "0.75rem",
-            fontWeight: 600,
-            textTransform: "uppercase"
+        <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 20px" }}>
+          <Link href={`/${lang}/guides/`} style={{
+            color: "rgba(255,255,255,0.45)",
+            fontSize: "0.85rem",
+            textDecoration: "none",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "6px",
+            marginBottom: "12px",
+            transition: "color 0.2s",
           }}>
-            {guide.category}
-          </span>
-          <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem" }}>
-            ⏱️ {guide.readTime}
-          </span>
+            ← {t.backToGuides}
+          </Link>
+          <div style={{ display: "flex", alignItems: "center", gap: "14px", flexWrap: "wrap" }}>
+            <div style={{
+              width: "52px", height: "52px", borderRadius: "14px", flexShrink: 0,
+              background: `linear-gradient(135deg, ${guide.color}, ${guide.color}88)`,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: "1.6rem",
+              boxShadow: `0 8px 24px ${guide.color}55`,
+            }}>
+              {guide.icon}
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px", flexWrap: "wrap" }}>
+                <span style={{
+                  padding: "3px 10px", borderRadius: "20px",
+                  background: `${guide.color}22`, color: guide.color,
+                  fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em",
+                }}>
+                  {guide.category}
+                </span>
+                <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>⏱️ {guide.readTime}</span>
+              </div>
+              <h1 style={{
+                fontSize: "1.7rem", fontWeight: 800, margin: 0,
+                background: `linear-gradient(135deg, ${guide.color}, #fff)`,
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+              }}>
+                {guide.title}
+              </h1>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <h1 style={{ 
-          fontSize: "2rem", 
-          fontWeight: 800, 
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 20px 0" }}>
+
+        {/* ROW 1 : Explication rapide + Tips côte à côte */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "16px",
           marginBottom: "16px",
-          background: `linear-gradient(135deg, ${guide.color}, #fff)`,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent"
-        }}>
-          {guide.title}
-        </h1>
-
-        <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1.1rem", marginBottom: "24px" }}>
-          {guide.description}
-        </p>
-
-        {guide.content && (
-          <div style={{ 
-            color: "rgba(255,255,255,0.8)", 
-            lineHeight: 1.8,
-            whiteSpace: "pre-line"
+        }}
+          className="guide-top-row"
+        >
+          {/* Explication rapide */}
+          <div style={{
+            background: "rgba(30,30,50,0.8)",
+            borderRadius: "16px",
+            border: `1px solid ${guide.color}33`,
+            padding: "24px",
+            backdropFilter: "blur(10px)",
           }}>
-            {guide.content.split('\n').map((line, i) => {
-              if (line.startsWith('## ')) {
-                return <h2 key={i} style={{ color: "#fff", fontSize: "1.4rem", marginTop: "24px", marginBottom: "12px" }}>{line.replace('## ', '')}</h2>;
-              }
-              if (line.startsWith('### ')) {
-                return <h3 key={i} style={{ color: guide.color, fontSize: "1.1rem", marginTop: "20px", marginBottom: "8px" }}>{line.replace('### ', '')}</h3>;
-              }
-              if (line.startsWith('| ')) {
-                return <div key={i} style={{ fontFamily: "monospace", fontSize: "0.85rem", margin: "8px 0" }}>{line}</div>;
-              }
-              if (line.startsWith('- ')) {
-                return <div key={i} style={{ marginLeft: "16px", marginBottom: "4px" }}>• {line.replace('- ', '')}</div>;
-              }
-              if (line.startsWith('**') && line.endsWith('**')) {
-                return <div key={i} style={{ fontWeight: "bold", marginTop: "12px", color: "#fff" }}>{line.replace(/\*\*/g, '')}</div>;
-              }
-              return line.trim() ? <div key={i} style={{ marginBottom: "8px" }}>{line}</div> : <div key={i} style={{ height: "12px" }} />;
-            })}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
+              <span style={{
+                width: "28px", height: "28px", borderRadius: "8px",
+                background: `${guide.color}22`, display: "flex", alignItems: "center",
+                justifyContent: "center", fontSize: "0.9rem",
+              }}>📋</span>
+              <h2 style={{ margin: 0, color: guide.color, fontSize: "1rem", fontWeight: 700 }}>
+                {t.explanation || "En résumé"}
+              </h2>
+            </div>
+            <p style={{
+              color: "rgba(255,255,255,0.75)", fontSize: "0.95rem",
+              lineHeight: 1.7, margin: 0,
+            }}>
+              {guide[`description_${lang}` as keyof typeof guide] as string || guide.description}
+            </p>
           </div>
-        )}
 
-        {guide.tips && (
-          <div style={{ marginTop: "32px", padding: "24px", background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid #22d3ee33" }}>
-            <h2 style={{ color: "#22d3ee", fontSize: "1.3rem", marginBottom: "16px" }}>💡 {t.tips}</h2>
-            <div style={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.8, whiteSpace: "pre-line" }}>
-              {guide.tips.split('\n').map((line, i) => {
-                if (line.startsWith('- ')) {
-                  return <div key={i} style={{ marginLeft: "16px", marginBottom: "8px" }}>• {line.replace('- ', '')}</div>;
-                }
-                return line.trim() ? <div key={i} style={{ marginBottom: "8px" }}>{line}</div> : <div key={i} style={{ height: "8px" }} />;
+          {/* Tips */}
+          {tipsContent ? (
+            <div style={{
+              background: "rgba(34,211,238,0.06)",
+              borderRadius: "16px",
+              border: "1px solid rgba(34,211,238,0.25)",
+              padding: "24px",
+              backdropFilter: "blur(10px)",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
+                <span style={{
+                  width: "28px", height: "28px", borderRadius: "8px",
+                  background: "rgba(34,211,238,0.15)", display: "flex", alignItems: "center",
+                  justifyContent: "center", fontSize: "0.9rem",
+                }}>💡</span>
+                <h2 style={{ margin: 0, color: "#22d3ee", fontSize: "1rem", fontWeight: 700 }}>
+                  {t.tips}
+                </h2>
+              </div>
+              <div style={{ fontSize: "0.9rem" }}>
+                {renderContent(tipsContent, "#22d3ee")}
+              </div>
+            </div>
+          ) : (
+            /* Si pas de tips, explication prend toute la largeur */
+            <div />
+          )}
+        </div>
+
+        {/* ROW 2 : Récompenses — pleine largeur */}
+        {rewardsContent && (
+          <div style={{
+            background: "rgba(34,197,94,0.07)",
+            borderRadius: "16px",
+            border: "1px solid rgba(34,197,94,0.3)",
+            padding: "24px",
+            marginBottom: "16px",
+            backdropFilter: "blur(10px)",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
+              <span style={{
+                width: "28px", height: "28px", borderRadius: "8px",
+                background: "rgba(34,197,94,0.15)", display: "flex", alignItems: "center",
+                justifyContent: "center", fontSize: "0.9rem",
+              }}>🎁</span>
+              <h2 style={{ margin: 0, color: "#22c55e", fontSize: "1rem", fontWeight: 700 }}>
+                {t.rewards}
+              </h2>
+            </div>
+            {/* Rewards en grille si liste de bullet points */}
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+              gap: "8px",
+            }}>
+              {rewardsContent.split('\n').map((line, i) => {
+                if (!line.trim()) return null;
+                const text = line.startsWith('- ') ? line.replace('- ', '') : line;
+                return (
+                  <div key={i} style={{
+                    display: "flex", gap: "10px", alignItems: "flex-start",
+                    background: "rgba(34,197,94,0.08)",
+                    borderRadius: "10px", padding: "10px 14px",
+                    border: "1px solid rgba(34,197,94,0.15)",
+                  }}>
+                    <span style={{ color: "#22c55e", flexShrink: 0, fontSize: "0.85rem", marginTop: "1px" }}>✦</span>
+                    <span style={{ color: "rgba(255,255,255,0.85)", fontSize: "0.88rem", lineHeight: 1.5 }}>{text}</span>
+                  </div>
+                );
               })}
             </div>
           </div>
         )}
 
-        {guide.rewards && (
-          <div style={{ marginTop: "24px", padding: "24px", background: "rgba(30,30,50,0.9)", borderRadius: "12px", border: "1px solid #22c55e33" }}>
-            <h2 style={{ color: "#22c55e", fontSize: "1.3rem", marginBottom: "16px" }}>🎁 {t.rewards}</h2>
-            <div style={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.8, whiteSpace: "pre-line" }}>
-              {guide.rewards.split('\n').map((line, i) => {
-                if (line.startsWith('- ')) {
-                  return <div key={i} style={{ marginLeft: "16px", marginBottom: "8px" }}>• {line.replace('- ', '')}</div>;
-                }
-                return line.trim() ? <div key={i} style={{ marginBottom: "8px" }}>{line}</div> : <div key={i} style={{ height: "8px" }} />;
-              })}
+        {/* ROW 3 : Description complète — pleine largeur */}
+        {mainContent && (
+          <div style={{
+            background: "rgba(20,20,40,0.8)",
+            borderRadius: "16px",
+            border: `1px solid ${guide.color}22`,
+            overflow: "hidden",
+            marginBottom: "24px",
+            backdropFilter: "blur(10px)",
+          }}>
+            <div style={{
+              padding: "16px 24px",
+              borderBottom: `1px solid ${guide.color}22`,
+              background: `${guide.color}0a`,
+              display: "flex", alignItems: "center", gap: "8px",
+            }}>
+              <span style={{
+                width: "28px", height: "28px", borderRadius: "8px",
+                background: `${guide.color}22`, display: "flex", alignItems: "center",
+                justifyContent: "center", fontSize: "0.9rem",
+              }}>📖</span>
+              <h2 style={{ margin: 0, color: guide.color, fontSize: "1rem", fontWeight: 700 }}>
+                {t.explanation || "Guide complet"}
+              </h2>
+            </div>
+            <div style={{ padding: "24px", fontSize: "0.92rem", lineHeight: 1.8 }}>
+              {renderContent(mainContent, guide.color)}
             </div>
           </div>
         )}
-      </div>
 
-      <AdBanner />
+        <AdBanner />
 
-      <div style={{ marginTop: "32px" }}>
-        <h3 style={{ color: "#fff", marginBottom: "16px" }}>{t.otherGuides}</h3>
-        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-          {guides.filter(g => g.id !== guide.id).slice(0, 4).map(g => (
-            <Link 
-              key={g.id}
-              href={`/${lang}/guides/${g.id}/`}
-              style={{
-                padding: "16px 24px",
-                background: "rgba(30,30,50,0.9)",
-                borderRadius: "12px",
-                color: "#fff",
-                textDecoration: "none",
-                border: `1px solid ${g.color}33`,
-                display: "flex",
-                alignItems: "center",
-                gap: "8px"
-              }}
-            >
-              <span>{g.icon}</span>
-              <span style={{ fontSize: "0.9rem" }}>{g.title}</span>
-            </Link>
-          ))}
+        {/* Autres guides */}
+        <div style={{ marginTop: "32px", marginBottom: "24px" }}>
+          <h3 style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "14px" }}>
+            {t.otherGuides}
+          </h3>
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            {guides.filter(g => g.id !== guide.id).slice(0, 5).map(g => (
+              <Link
+                key={g.id}
+                href={`/${lang}/guides/${g.id}/`}
+                style={{
+                  padding: "10px 16px",
+                  background: "rgba(30,30,50,0.8)",
+                  borderRadius: "10px",
+                  color: "rgba(255,255,255,0.8)",
+                  textDecoration: "none",
+                  border: `1px solid ${g.color}33`,
+                  display: "flex", alignItems: "center", gap: "8px",
+                  fontSize: "0.85rem", fontWeight: 500,
+                  transition: "all 0.2s",
+                }}
+              >
+                <span>{g.icon}</span>
+                <span>{g[`title_${lang}` as keyof typeof g] as string || g.title}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Internal Linking Hubs */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px" }}>
+          <Link href={`/${lang}/artists/`} style={{
+            padding: "18px", background: "rgba(244,114,182,0.1)",
+            borderRadius: "12px", border: "1px solid rgba(244,114,182,0.25)",
+            textDecoration: "none", display: "block",
+            transition: "all 0.2s",
+          }}>
+            <div style={{ fontSize: "1.4rem", marginBottom: "6px" }}>🎤</div>
+            <div style={{ color: "#f472b6", fontWeight: 600, fontSize: "0.9rem", marginBottom: "3px" }}>
+              {lang === "fr" ? "Base de Données Artistes" : "Artist Database"}
+            </div>
+            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>
+              {lang === "fr" ? "Découvrez tous les artistes" : "Discover all artists"}
+            </div>
+          </Link>
+
+          <Link href={`/${lang}/tierlist/`} style={{
+            padding: "18px", background: "rgba(251,191,36,0.1)",
+            borderRadius: "12px", border: "1px solid rgba(251,191,36,0.25)",
+            textDecoration: "none", display: "block",
+            transition: "all 0.2s",
+          }}>
+            <div style={{ fontSize: "1.4rem", marginBottom: "6px" }}>🏆</div>
+            <div style={{ color: "#fbbf24", fontWeight: 600, fontSize: "0.9rem", marginBottom: "3px" }}>
+              {lang === "fr" ? "Tier List" : "Tier List"}
+            </div>
+            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>
+              {lang === "fr" ? "Classement des meilleurs artistes" : "Best artists ranking"}
+            </div>
+          </Link>
+
+          <Link href={`/${lang}/events/`} style={{
+            padding: "18px", background: "rgba(34,197,94,0.1)",
+            borderRadius: "12px", border: "1px solid rgba(34,197,94,0.25)",
+            textDecoration: "none", display: "block",
+            transition: "all 0.2s",
+          }}>
+            <div style={{ fontSize: "1.4rem", marginBottom: "6px" }}>🎉</div>
+            <div style={{ color: "#4ade80", fontWeight: 600, fontSize: "0.9rem", marginBottom: "3px" }}>
+              {lang === "fr" ? "Événements" : "Events"}
+            </div>
+            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>
+              {lang === "fr" ? "Restez à jour avec les événements" : "Stay updated with events"}
+            </div>
+          </Link>
         </div>
       </div>
 
-      {/* Internal Linking Hubs */}
-      <div style={{ marginTop: "32px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
-        <Link href={`/${lang}/artists/`} style={{
-          padding: "20px",
-          background: "rgba(244, 114, 182, 0.15)",
-          borderRadius: "12px",
-          border: "1px solid rgba(244, 114, 182, 0.3)",
-          textDecoration: "none",
-          display: "block"
-        }}>
-          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>🎤</div>
-          <div style={{ color: "#f472b6", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Base de Données Artistes" : "Artist Database"}</div>
-          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Découvrez tous les artistes" : "Discover all artists"}</div>
-        </Link>
-        
-        <Link href={`/${lang}/tierlist/`} style={{
-          padding: "20px",
-          background: "rgba(251, 191, 36, 0.15)",
-          borderRadius: "12px",
-          border: "1px solid rgba(251, 191, 36, 0.3)",
-          textDecoration: "none",
-          display: "block"
-        }}>
-          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>🏆</div>
-          <div style={{ color: "#fbbf24", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Tier List" : "Tier List"}</div>
-          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Classement des meilleurs artistes" : "Best artists ranking"}</div>
-        </Link>
-        
-        <Link href={`/${lang}/events/`} style={{
-          padding: "20px",
-          background: "rgba(34, 197, 94, 0.15)",
-          borderRadius: "12px",
-          border: "1px solid rgba(34, 197, 94, 0.3)",
-          textDecoration: "none",
-          display: "block"
-        }}>
-          <div style={{ fontSize: "1.5rem", marginBottom: "8px" }}>🎉</div>
-          <div style={{ color: "#4ade80", fontWeight: 600, marginBottom: "4px" }}>{lang === "fr" ? "Événements" : "Events"}</div>
-          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem" }}>{lang === "fr" ? "Restez à jour avec les événements" : "Stay updated with events"}</div>
-        </Link>
-      </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .guide-top-row {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
