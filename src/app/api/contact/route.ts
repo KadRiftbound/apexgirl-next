@@ -23,6 +23,15 @@ export async function POST(request: NextRequest) {
     }
 
     // Create Nodemailer transporter
+    console.log('Creating transporter with config:', {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      user: process.env.SMTP_USER ? 'set' : 'NOT SET',
+      passExists: !!process.env.SMTP_PASS,
+      emailFrom: process.env.EMAIL_FROM,
+      emailTo: process.env.EMAIL_TO
+    });
+    
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT || '587'),
