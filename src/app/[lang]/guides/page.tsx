@@ -33,11 +33,11 @@ const guideListTranslations: Record<string, any> = {
    it: { 
      title: "Guide e Strategie", 
      subtitle: "Tutoriali e strategie per padroneggiare il gioco",
-     categories: ["Tutti", "Guida classica", "Guida evento", "Early game", "Late game"],
+     categories: ["Tutti", "Guida classica", "Guida evento", "Inizio gioco", "Fine gioco"],
      categoryClassic: "Guida classica",
      categoryEvent: "Guida evento",
-     categoryEarly: "Early game",
-     categoryLate: "Late game",
+     categoryEarly: "Inizio gioco",
+     categoryLate: "Fine gioco",
      inProgress: "In corso",
      new: "Nuovo",
      searchPlaceholder: "Cerca una guida..."
@@ -45,11 +45,11 @@ const guideListTranslations: Record<string, any> = {
    es: { 
      title: "Guías y Estrategias", 
      subtitle: "Tutoriales y estrategias para dominar el juego",
-     categories: ["Todos", "Guía clásica", "Guía evento", "Early game", "Late game"],
+     categories: ["Todos", "Guía clásica", "Guía evento", "Inicio del juego", "Final del juego"],
      categoryClassic: "Guía clásica",
      categoryEvent: "Guía evento",
-     categoryEarly: "Early game",
-     categoryLate: "Late game",
+     categoryEarly: "Inicio del juego",
+     categoryLate: "Final del juego",
      inProgress: "En progreso",
      new: "Nuevo",
      searchPlaceholder: "Buscar una guía..."
@@ -57,11 +57,11 @@ const guideListTranslations: Record<string, any> = {
    pt: { 
      title: "Guias e Estratégias", 
      subtitle: "Tutoriais e estratégias para dominar o jogo",
-     categories: ["Todos", "Guia clássico", "Guia evento", "Early game", "Late game"],
+     categories: ["Todos", "Guia clássico", "Guia evento", "Início do jogo", "Fim de jogo"],
      categoryClassic: "Guia clássico",
      categoryEvent: "Guia evento",
-     categoryEarly: "Early game",
-     categoryLate: "Late game",
+     categoryEarly: "Início do jogo",
+     categoryLate: "Fim de jogo",
      inProgress: "Em progresso",
      new: "Novo",
      searchPlaceholder: "Pesquisar um guia..."
@@ -69,11 +69,11 @@ const guideListTranslations: Record<string, any> = {
    pl: { 
      title: "Poradniki i Strategie", 
      subtitle: "Samouczki i strategie, aby opanować grę",
-     categories: ["Wszystkie", "Poradnik klasyczny", "Poradnik wydarzenia", "Early game", "Late game"],
+     categories: ["Wszystkie", "Poradnik klasyczny", "Poradnik wydarzenia", "Wczesna gra", "Późna gra"],
      categoryClassic: "Poradnik klasyczny",
      categoryEvent: "Poradnik wydarzenia",
-     categoryEarly: "Early game",
-     categoryLate: "Late game",
+     categoryEarly: "Wczesna gra",
+     categoryLate: "Późna gra",
      inProgress: "W toku",
      new: "Nowy",
      searchPlaceholder: "Szukaj poradnika..."
@@ -81,11 +81,11 @@ const guideListTranslations: Record<string, any> = {
    id: { 
      title: "Panduan dan Strategi", 
      subtitle: "Tutorial dan strategi untuk menguasai permainan",
-     categories: ["Semua", "Panduan klasik", "Panduan acara", "Early game", "Late game"],
+     categories: ["Semua", "Panduan klasik", "Panduan acara", "Awal permainan", "Akhir permainan"],
      categoryClassic: "Panduan klasik",
      categoryEvent: "Panduan acara",
-     categoryEarly: "Early game",
-     categoryLate: "Late game",
+     categoryEarly: "Awal permainan",
+     categoryLate: "Akhir permainan",
      inProgress: "Sedang berlangsung",
      new: "Baru",
      searchPlaceholder: "Cari panduan..."
@@ -93,11 +93,11 @@ const guideListTranslations: Record<string, any> = {
    ru: { 
      title: "Гайды и Стратегии", 
      subtitle: "Учебники и стратегии для освоения игры",
-     categories: ["Все", "Классический гайд", "Гайд события", "Early game", "Late game"],
+     categories: ["Все", "Классический гайд", "Гайд события", "Ранняя игра", "Поздняя игра"],
      categoryClassic: "Классический гайд",
      categoryEvent: "Гайд события",
-     categoryEarly: "Early game",
-     categoryLate: "Late game",
+     categoryEarly: "Ранняя игра",
+     categoryLate: "Поздняя игра",
      inProgress: "В процессе",
      new: "Новый",
      searchPlaceholder: "Поиск гайда..."
@@ -107,12 +107,12 @@ const guideListTranslations: Record<string, any> = {
 const categoryMap: Record<string, Record<string, string>> = {
   fr: { "Tous": "Tous", "Guide classique": "Guide classique", "Guide événement": "Guide événement", "Début de jeu": "Début de jeu", "Fin de jeu": "Fin de jeu" },
   en: { "Tous": "All", "Guide classique": "Classic Guide", "Guide événement": "Event Guide", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
-  it: { "Tous": "Tutti", "Guide classique": "Guida classica", "Guide événement": "Guida evento", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
-  es: { "Tous": "Todos", "Guide classique": "Guía clásica", "Guide événement": "Guía evento", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
-  pt: { "Tous": "Todos", "Guide classique": "Guia clássico", "Guide événement": "Guia evento", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
-  pl: { "Tous": "Wszystkie", "Guide classique": "Poradnik klasyczny", "Guide événement": "Poradnik wydarzenia", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
-  id: { "Tous": "Semua", "Guide classique": "Panduan klasik", "Guide événement": "Panduan acara", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
-  ru: { "Tous": "Все", "Guide classique": "Классический гайд", "Guide événement": "Гайд события", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
+  it: { "Tous": "Tutti", "Guide classique": "Guida classica", "Guide événement": "Guida evento", "Début de jeu": "Inizio gioco", "Fin de jeu": "Fine gioco" },
+  es: { "Tous": "Todos", "Guide classique": "Guía clásica", "Guide événement": "Guía evento", "Début de jeu": "Inicio del juego", "Fin de jeu": "Final del juego" },
+  pt: { "Tous": "Todos", "Guide classique": "Guia clássico", "Guide événement": "Guia evento", "Début de jeu": "Início do jogo", "Fin de jeu": "Fim de jogo" },
+  pl: { "Tous": "Wszystkie", "Guide classique": "Poradnik klasyczny", "Guide événement": "Poradnik wydarzenia", "Début de jeu": "Wczesna gra", "Fin de jeu": "Późna gra" },
+  id: { "Tous": "Semua", "Guide classique": "Panduan klasik", "Guide événement": "Panduan acara", "Début de jeu": "Awal permainan", "Fin de jeu": "Akhir permainan" },
+  ru: { "Tous": "Все", "Guide classique": "Классический гайд", "Guide événement": "Гайд события", "Début de jeu": "Ранняя игра", "Fin de jeu": "Поздняя игра" },
 };
 
 const guideTranslations: Record<string, Record<string, { title: string; description: string }>> = {
@@ -650,13 +650,14 @@ export default function GuidesPage() {
     let filtered = guides;
     
     if (activeCategoryState !== t.categories[0]) {
-      if (activeCategoryState === t.categoryEarly || activeCategoryState === "Début de jeu") {
+      if (activeCategoryState === t.categoryEarly) {
         filtered = filtered.filter((g) => g.stage === "early");
-      } else if (activeCategoryState === t.categoryLate || activeCategoryState === "Fin de jeu") {
+      } else if (activeCategoryState === t.categoryLate) {
         filtered = filtered.filter((g) => g.stage === "late");
-      } else {
-        const targetType = activeCategoryState === t.categoryClassic || activeCategoryState === "Guide classique" ? "classic" : "event";
-        filtered = filtered.filter((g) => g.guideType === targetType);
+      } else if (activeCategoryState === t.categoryClassic) {
+        filtered = filtered.filter((g) => g.guideType === "classic");
+      } else if (activeCategoryState === t.categoryEvent) {
+        filtered = filtered.filter((g) => g.guideType === "event");
       }
     }
     

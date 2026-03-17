@@ -41,7 +41,9 @@ const translations: Record<string, any> = {
      howToUseDesc: 'Allez dans le jeu, appuyez sur votre profil > Settings > Gift Code et entrez le code.',
      new: 'Nouveau',
      expired: 'Expiré',
-   },
+     schemaQuestion: 'Quelle est la récompense du code {code} ? ',
+     schemaAnswer: 'Le code {code} donne : {rewards}.',
+    },
   en: {
     title: 'Promo Codes',
     subtitle: 'All available codes for TopGirl / ApexGirl',
@@ -57,6 +59,8 @@ const translations: Record<string, any> = {
     howToUseDesc: 'Go to the game, tap your profile icon > Settings > Gift Code and enter the code.',
     new: 'New',
     expired: 'Expired',
+    schemaQuestion: 'What is the reward for code {code}?',
+    schemaAnswer: 'The code {code} gives: {rewards}.',
   },
   it: {
     title: 'Codici Promo',
@@ -73,6 +77,8 @@ const translations: Record<string, any> = {
     howToUseDesc: 'Vai nel gioco, tocca la tua icona profilo > Impostazioni > Codice Regalo e inserisci il codice.',
     new: 'Nuovo',
     expired: 'Scaduto',
+    schemaQuestion: 'Qual è la ricompensa del codice {code}?',
+    schemaAnswer: 'Il codice {code} dà: {rewards}.',
   },
   es: {
     title: 'Códigos Promo',
@@ -89,6 +95,8 @@ const translations: Record<string, any> = {
     howToUseDesc: 'Ve al juego, toca tu icono de perfil > Ajustes > Código de regalo e ingresa el código.',
     new: 'Nuevo',
     expired: 'Expirado',
+    schemaQuestion: '¿Cuál es la recompensa del código {code}?',
+    schemaAnswer: 'El código {code} otorga: {rewards}.',
   },
   pt: {
     title: 'Códigos Promo',
@@ -105,6 +113,8 @@ const translations: Record<string, any> = {
     howToUseDesc: 'Vá para o jogo, toque no ícone do seu perfil > Configurações > Código de presente e insira o código.',
     new: 'Novo',
     expired: 'Expirado',
+    schemaQuestion: 'Qual é a recompensa do código {code}?',
+    schemaAnswer: 'O código {code} dá: {rewards}.',
   },
   pl: {
     title: 'Kody Promo',
@@ -121,6 +131,8 @@ const translations: Record<string, any> = {
     howToUseDesc: 'Wejdź do gry, dotknij swojej ikony profilu > Ustawienia > Kod prezentowy i wpisz kod.',
     new: 'Nowy',
     expired: 'Wygasły',
+    schemaQuestion: 'Jaka jest nagroda za kod {code}?',
+    schemaAnswer: 'Kod {code} daje: {rewards}.',
   },
   id: {
     title: 'Kode Promo',
@@ -137,6 +149,8 @@ const translations: Record<string, any> = {
     howToUseDesc: 'Buka game, ketuk ikon profil Anda > Pengaturan > Kode hadiah dan masukkan kode.',
     new: 'Baru',
     expired: 'Kedaluwarsa',
+    schemaQuestion: 'Apa hadiah untuk kode {code}?',
+    schemaAnswer: 'Kode {code} memberikan: {rewards}.',
   },
   ru: {
     title: 'Промокоды',
@@ -153,6 +167,8 @@ const translations: Record<string, any> = {
     howToUseDesc: 'Зайдите в игру, нажмите на свой профиль > Настройки > Подарочный код и введите код.',
     new: 'Новый',
     expired: 'Истёк',
+    schemaQuestion: 'Какая награда за код {code}?',
+    schemaAnswer: 'Код {code} дает: {rewards}.',
   }
 };
 
@@ -347,10 +363,10 @@ export default function CodesPage() {
             "@type": "FAQPage",
             "mainEntity": codesData.active.map(code => ({
               "@type": "Question",
-              "name": `What is the reward for code ${code.code}?`,
+              "name": t.schemaQuestion.replace('{code}', code.code),
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": `The code ${code.code} gives: ${code.rewards}.`
+                "text": t.schemaAnswer.replace('{code}', code.code).replace('{rewards}', code.rewards)
               }
             }))
           })

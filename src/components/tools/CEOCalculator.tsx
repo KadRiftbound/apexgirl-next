@@ -4,14 +4,14 @@ import { useState, useEffect, useMemo } from "react";
 import { useParams } from "next/navigation";
 
 const translations: Record<string, any> = {
-  fr: { task: "Tâche", used: "Utilisé", points: "Points", total: "Total", reset: "Réinitialiser" },
-  en: { task: "Task", used: "Used", points: "Points", total: "Total", reset: "Reset" },
-  it: { task: "Compito", used: "Usato", points: "Punti", total: "Totale", reset: "Reset" },
-  es: { task: "Tarea", used: "Usado", points: "Puntos", total: "Total", reset: "Reiniciar" },
-  pt: { task: "Tarefa", used: "Usado", points: "Pontos", total: "Total", reset: "Resetar" },
-  pl: { task: "Zadanie", used: "Użyte", points: "Punkty", total: "Suma", reset: "Resetuj" },
-  id: { task: "Tugas", used: "Dipakai", points: "Poin", total: "Total", reset: "Reset" },
-  ru: { task: "Задача", used: "Использовано", points: "Очки", total: "Всего", reset: "Сбросить" },
+  fr: { task: "Tâche", used: "Utilisé", points: "Points", total: "Total", reset: "Réinitialiser", loading: "Chargement des données CEO...", error: "Erreur", noEvents: "Aucun événement trouvé" },
+  en: { task: "Task", used: "Used", points: "Points", total: "Total", reset: "Reset", loading: "Loading CEO data...", error: "Error", noEvents: "No events found" },
+  it: { task: "Compito", used: "Usato", points: "Punti", total: "Totale", reset: "Reset", loading: "Caricamento dati CEO...", error: "Errore", noEvents: "Nessun evento trovato" },
+  es: { task: "Tarea", used: "Usado", points: "Puntos", total: "Total", reset: "Reiniciar", loading: "Cargando datos de CEO...", error: "Error", noEvents: "No se encontraron eventos" },
+  pt: { task: "Tarefa", used: "Usado", points: "Pontos", total: "Total", reset: "Resetar", loading: "Carregando dados do CEO...", error: "Erro", noEvents: "Nenhum evento encontrado" },
+  pl: { task: "Zadanie", used: "Użyte", points: "Punkty", total: "Suma", reset: "Resetuj", loading: "Ładowanie danych CEO...", error: "Błąd", noEvents: "Nie znaleziono wydarzeń" },
+  id: { task: "Tugas", used: "Dipakai", points: "Poin", total: "Total", reset: "Reset", loading: "Memuat data CEO...", error: "Kesalahan", noEvents: "Tidak ada event" },
+  ru: { task: "Задача", used: "Использовано", points: "Очки", total: "Всего", reset: "Сбросить", loading: "Загрузка данных CEO...", error: "Ошибка", noEvents: "События не найдены" },
 };
 
 function getT(lang: string) {
@@ -203,7 +203,7 @@ export default function CEOCalculator() {
     return (
       <div style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.6)" }}>
         <div style={{ fontSize: "2rem", marginBottom: "12px" }}>⏳</div>
-        Loading CEO data...
+        {t.loading}
       </div>
     );
   }
@@ -211,7 +211,7 @@ export default function CEOCalculator() {
   if (error) {
     return (
       <div style={{ textAlign: "center", padding: "60px", color: "#f87171" }}>
-        Error: {error}
+        {t.error}: {error}
       </div>
     );
   }
@@ -219,7 +219,7 @@ export default function CEOCalculator() {
   if (!events.length) {
     return (
       <div style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.6)" }}>
-        No events found
+        {t.noEvents}
       </div>
     );
   }

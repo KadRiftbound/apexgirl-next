@@ -5,14 +5,14 @@ import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
 
 const guideTranslations: Record<string, any> = {
-   fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication" },
-   en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation" },
-   it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione" },
-   es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación" },
-   pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação" },
-   pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie" },
-   id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan" },
-   ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение" },
+   fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication", artistDatabaseTitle: "Base de Données Artistes", artistDatabaseDesc: "Découvrez tous les artistes", tierListTitle: "Tier List", tierListDesc: "Classement des meilleurs artistes" },
+   en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation", artistDatabaseTitle: "Artist Database", artistDatabaseDesc: "Discover all artists", tierListTitle: "Tier List", tierListDesc: "Best artists ranking" },
+   it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione", artistDatabaseTitle: "Database Artisti", artistDatabaseDesc: "Scopri tutti gli artisti", tierListTitle: "Tier List", tierListDesc: "Classifica dei migliori artisti" },
+   es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación", artistDatabaseTitle: "Base de Datos de Artistas", artistDatabaseDesc: "Descubre todos los artistas", tierListTitle: "Tier List", tierListDesc: "Ranking de los mejores artistas" },
+   pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação", artistDatabaseTitle: "Base de Artistas", artistDatabaseDesc: "Descubra todas as artistas", tierListTitle: "Tier List", tierListDesc: "Ranking das melhores artistas" },
+   pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie", artistDatabaseTitle: "Baza Artystów", artistDatabaseDesc: "Poznaj wszystkich artystów", tierListTitle: "Tier List", tierListDesc: "Ranking najlepszych artystów" },
+   id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan", artistDatabaseTitle: "Database Artis", artistDatabaseDesc: "Lihat semua artis", tierListTitle: "Tier List", tierListDesc: "Peringkat artis terbaik" },
+   ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение", artistDatabaseTitle: "База артистов", artistDatabaseDesc: "Все артисты", tierListTitle: "Tier List", tierListDesc: "Рейтинг лучших артистов" },
 };
 
 type Guide = {
@@ -4835,10 +4835,10 @@ export default function GuideDetailPage() {
           }}>
             <div style={{ fontSize: "1.4rem", marginBottom: "6px" }}>🎤</div>
             <div style={{ color: "#f472b6", fontWeight: 600, fontSize: "0.9rem", marginBottom: "3px" }}>
-              {lang === "fr" ? "Base de Données Artistes" : "Artist Database"}
+              {t.artistDatabaseTitle}
             </div>
             <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>
-              {lang === "fr" ? "Découvrez tous les artistes" : "Discover all artists"}
+              {t.artistDatabaseDesc}
             </div>
           </Link>
 
@@ -4850,10 +4850,10 @@ export default function GuideDetailPage() {
           }}>
             <div style={{ fontSize: "1.4rem", marginBottom: "6px" }}>🏆</div>
             <div style={{ color: "#fbbf24", fontWeight: 600, fontSize: "0.9rem", marginBottom: "3px" }}>
-              {lang === "fr" ? "Tier List" : "Tier List"}
+              {t.tierListTitle}
             </div>
             <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>
-              {lang === "fr" ? "Classement des meilleurs artistes" : "Best artists ranking"}
+              {t.tierListDesc}
             </div>
           </Link>
         </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import { getUiStrings } from "@/lib/i18n/ui";
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,7 @@ export function MobileNav() {
   const params = useParams();
   const pathname = usePathname();
   const lang = (params?.lang as string) || "fr";
+  const ui = getUiStrings(lang);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -42,11 +44,11 @@ export function MobileNav() {
   }, [pathname]);
 
   const navItems = [
-    { href: `/${lang}/codes/`, label: lang === "fr" ? "Codes" : "Codes" },
-    { href: `/${lang}/artists/`, label: lang === "fr" ? "Artistes" : "Artists" },
-    { href: `/${lang}/tierlist/`, label: "Tier List" },
-    { href: `/${lang}/guides/`, label: "Guides" },
-    { href: `/${lang}/tools/`, label: lang === "fr" ? "Outils" : "Tools", cta: true },
+    { href: `/${lang}/codes/`, label: ui.nav.codes },
+    { href: `/${lang}/artists/`, label: ui.nav.artists },
+    { href: `/${lang}/tierlist/`, label: ui.nav.tierList },
+    { href: `/${lang}/guides/`, label: ui.nav.guides },
+    { href: `/${lang}/tools/`, label: ui.nav.tools, cta: true },
   ];
 
   const languages = [
@@ -113,7 +115,7 @@ export function MobileNav() {
             pointerEvents: 'auto'
           }}
         >
-          {isOpen ? '✕' : '☰ MENU'}
+          {isOpen ? '✕' : `☰ ${ui.mobile.menu}`}
         </button>
       </div>
 
@@ -158,7 +160,7 @@ export function MobileNav() {
               borderRadius: '12px' 
             }}>
               <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '12px', fontSize: '14px' }}>
-                🌐 Language / Langue
+                🌐 {ui.mobile.languageLabel}
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
                 {languages.map((l) => (

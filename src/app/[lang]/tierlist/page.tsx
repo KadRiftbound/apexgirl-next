@@ -11,68 +11,68 @@ const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').
 
 const tierDescriptions: Record<string, Record<string, string>> = {
   fr: {
-    "S+": "Overpowered : Les artistes les plus forts avec des dégâts et capacités exceptionnelles.",
-    "S": "Très fort : Forts dégâts joueur combinés à un puissant second skill utile dans de nombreuses situations.",
-    "A": "Fort : Artistes fiables avec deux skills puissants qui performent bien dans la plupart des compositions.",
-    "B": "Situationnel : Principalement utile pour sa capacité de fans ou cas spécifiques dans certaines stratégies.",
-    "C": "Faible : Artistes avec des combinaisons de skills inhabituelles ou inefficaces qui limitent leur utilité.",
-    "D": "WTF ? : Artistes avec des skills incompréhensibles ou complètement inutiles."
+    "S+": "Surpuissant : Les artistes les plus fortes avec des dégâts et des capacités exceptionnelles.",
+    "S": "Très fort : Gros dégâts joueur combinés à une seconde compétence puissante utile dans de nombreuses situations.",
+    "A": "Fort : Artistes fiables avec deux compétences puissantes qui marchent dans la plupart des compositions.",
+    "B": "Situationnel : Utile surtout pour la capacité de fans ou des cas spécifiques.",
+    "C": "Faible : Combinaisons de compétences inhabituelles ou inefficaces qui limitent leur utilité.",
+    "D": "Très faible : Compétences incompréhensibles ou complètement inutiles."
   },
   en: {
-    "S+": "Overpowered: The strongest artists with exceptional damage and abilities that outperform most others.",
-    "S": "Very Strong: High player damage combined with a powerful secondary skill useful in many situations.",
+    "S+": "Top tier: The strongest artists with exceptional damage and abilities.",
+    "S": "Very strong: High player damage combined with a powerful secondary skill useful in many situations.",
     "A": "Strong: Reliable artists with two powerful skills that perform well in most team compositions.",
-    "B": "Situational: Mainly valuable for their fan capacity or niche use cases in specific strategies.",
-    "C": "Weak: Artists with unusual or ineffective skill combinations that limit their overall usefulness.",
-    "D": "WTF?: Artists with incomprehensible or completely useless skills."
+    "B": "Situational: Mainly valuable for fan capacity or niche strategies.",
+    "C": "Weak: Artists with unusual or ineffective skill combinations that limit their usefulness.",
+    "D": "Very weak: Skills that are unclear or not useful."
   },
   it: {
-    "S+": "Overpowered: Gli artisti più forti con danni e abilità eccezionali.",
-    "S": "Molto Forte: Alto danno al giocatore combinato con una potente abilità secondaria.",
+    "S+": "Sovrapotente: Gli artisti più forti con danni e abilità eccezionali.",
+    "S": "Molto forte: Alto danno al giocatore con una potente abilità secondaria.",
     "A": "Forte: Artisti affidabili con due abilità potenti.",
-    "B": "Sitazionale: Utile principalmente per la capacità di fan.",
+    "B": "Situazionale: Utile soprattutto per la capacità fan o casi specifici.",
     "C": "Debole: Artisti con combinazioni di abilità insolite o inefficaci.",
-    "D": "WTF?: Artisti con abilità incomprensibili."
+    "D": "Molto debole: Abilità poco chiare o inutili."
   },
   es: {
-    "S+": "Overpowered: Los artistas más fuertes con daño y habilidades excepcionales.",
-    "S": "Muy Fuerte: Alto daño al jugador combinado con una poderosa habilidad secundaria.",
+    "S+": "Sobresaliente: Los artistas más fuertes con daño y habilidades excepcionales.",
+    "S": "Muy fuerte: Alto daño al jugador con una poderosa habilidad secundaria.",
     "A": "Fuerte: Artistas confiables con dos habilidades poderosas.",
-    "B": "Situacional: Principalmente útil por su capacidad de fans.",
+    "B": "Situacional: Útil sobre todo por la capacidad de fans o casos específicos.",
     "C": "Débil: Artistas con combinaciones de habilidades inusuales o ineficaces.",
-    "D": "WTF?: Artistas con habilidades incomprensibles."
+    "D": "Muy débil: Habilidades poco claras o inútiles."
   },
   pt: {
-    "S+": "Overpowered: Os artistas mais fortes com dano e habilidades excepcionais.",
-    "S": "Muito Forte: Alto dano ao jogador combinado com uma poderosa habilidade secundária.",
+    "S+": "Muito forte: Os artistas mais fortes com dano e habilidades excepcionais.",
+    "S": "Muito forte: Alto dano ao jogador com uma poderosa habilidade secundária.",
     "A": "Forte: Artistas confiáveis com duas habilidades poderosas.",
-    "B": "Situacional: Principalmente útil por sua capacidade de fãs.",
+    "B": "Situacional: Útil sobretudo pela capacidade de fãs ou casos específicos.",
     "C": "Fraco: Artistas com combinações de habilidades incomuns ou ineficazes.",
-    "D": "WTF?: Artistas com habilidades incompreensíveis."
+    "D": "Muito fraco: Habilidades pouco claras ou inúteis."
   },
   pl: {
-    "S+": "Overpowered: Najsilniejsi artyści z wyjątkowymi obrażeniami i umiejętnościami.",
-    "S": "Bardzo Silny: Wysokie obrażenia gracza w połączeniu z potężną wtórną umiejętnością.",
-    "A": "Silny: Niezawodni artyści z dwoma potężnymi umiejętnościami.",
-    "B": "Sytuacyjny: Głównie przydatny ze względu na pojemność fanów.",
-    "C": "Słaby: Artyści z niezwykłymi lub nieefektywnymi kombinacjami umiejętności.",
-    "D": "WTF?: Artyści z niezrozumiałymi umiejętnościami."
+    "S+": "Najwyższa półka: Najsilniejsi artyści z wyjątkowymi obrażeniami i umiejętnościami.",
+    "S": "Bardzo silny: Wysokie obrażenia gracza i potężna umiejętność dodatkowa.",
+    "A": "Silny: Niezawodni artyści z dwiema potężnymi umiejętnościami.",
+    "B": "Sytuacyjny: Przydatny głównie dzięki pojemności fanów lub w konkretnych sytuacjach.",
+    "C": "Słaby: Artyści z nietypowymi lub nieefektywnymi kombinacjami umiejętności.",
+    "D": "Bardzo słaby: Umiejętności niejasne lub bezużyteczne."
   },
   id: {
-    "S+": "Overpowered: Artis terkuat dengan kerusakan dan kemampuan luar biasa.",
-    "S": "Sangat Kuat: Kerusakan pemain tinggi dikombinasikan dengan skill sekunder yang kuat.",
+    "S+": "Sangat kuat: Artis terkuat dengan kerusakan dan kemampuan luar biasa.",
+    "S": "Sangat kuat: Kerusakan pemain tinggi dengan skill sekunder yang kuat.",
     "A": "Kuat: Artis andal dengan dua skill kuat.",
-    "B": "Situasional: Mainly berguna untuk kapasitas penggemar.",
+    "B": "Situasional: Utama berguna untuk kapasitas penggemar atau situasi tertentu.",
     "C": "Lemah: Artis dengan kombinasi skill yang tidak biasa atau tidak efektif.",
-    "D": "WTF?: Artis dengan skill yang tidak dapat dipahami."
+    "D": "Sangat lemah: Skill tidak jelas atau tidak berguna."
   },
   ru: {
-    "S+": "Overpowered: Самые сильные артисты с исключительным уроном и способностями.",
-    "S": "Очень Сильный: Высокий урон игрока в сочетании с мощной вторичной способностью.",
-    "A": "Сильный: Надёжные артисты с двумя мощными способностями.",
-    "B": "Ситуационный: Полезен в основном своей вместимостью фанатов.",
+    "S+": "Лучший уровень: Самые сильные артисты с исключительным уроном и способностями.",
+    "S": "Очень сильный: Высокий урон игрока и мощный вторичный навык.",
+    "A": "Сильный: Надёжные артисты с двумя мощными навыками.",
+    "B": "Ситуационный: Полезен в основном из-за вместимости фанатов или в отдельных ситуациях.",
     "C": "Слабый: Артисты с необычными или неэффективными комбинациями навыков.",
-    "D": "WTF?: Артисты с непонятными навыками."
+    "D": "Очень слабый: Навыки непонятны или бесполезны."
   }
 };
 

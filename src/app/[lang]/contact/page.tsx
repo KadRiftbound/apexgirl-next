@@ -52,6 +52,8 @@ export default function Contact() {
       required: 'Veuillez remplir tous les champs obligatoires.',
       gdpr: 'J\'accepte que mes données soient utilisées pour répondre à ma demande. Vos données seront supprimées après traitement.',
       gdprError: 'Vous devez accepter la politique de confidentialité.',
+      emailError: 'Veuillez entrer une adresse email valide.',
+      disclaimer: 'Ce site est un fansite non officiel de TopGirl/ApexGirl. Nous ne sommes pas affiliés à A3Games ou SuperPrism.',
     },
     en: {
       title: 'Contact',
@@ -87,6 +89,8 @@ export default function Contact() {
       required: 'Please fill in all required fields.',
       gdpr: 'I agree that my data will be used to respond to my request. Your data will be deleted after processing.',
       gdprError: 'You must accept the privacy policy.',
+      emailError: 'Please enter a valid email address.',
+      disclaimer: 'This site is an unofficial fansite of TopGirl/ApexGirl. We are not affiliated with A3Games or SuperPrism.',
     },
     it: {
       title: 'Contatto',
@@ -122,6 +126,8 @@ export default function Contact() {
       required: 'Per favore compila tutti i campi richiesti.',
       gdpr: 'Accetto che i miei dati vengano utilizzati per rispondere alla mia richiesta. I tuoi dati saranno cancellati dopo l\'elaborazione.',
       gdprError: 'Devi accettare la privacy policy.',
+      emailError: 'Inserisci un indirizzo email valido.',
+      disclaimer: 'Questo sito è un fansite non ufficiale di TopGirl/ApexGirl. Non siamo affiliati ad A3Games o SuperPrism.',
     },
     es: {
       title: 'Contacto',
@@ -157,6 +163,8 @@ export default function Contact() {
       required: 'Por favor completa todos los campos requeridos.',
       gdpr: 'Acepto que mis datos sean utilizados para responder a mi solicitud. Tus datos serán eliminados después del procesamiento.',
       gdprError: 'Debes aceptar la política de privacidad.',
+      emailError: 'Por favor ingresa una dirección de correo válida.',
+      disclaimer: 'Este sitio es un fansite no oficial de TopGirl/ApexGirl. No estamos afiliados a A3Games o SuperPrism.',
     },
     pt: {
       title: 'Contato',
@@ -192,6 +200,8 @@ export default function Contact() {
       required: 'Por favor preencha todos os campos obrigatórios.',
       gdpr: 'Eu concordo que meus dados sejam usados para responder à minha solicitação. Seus dados serão excluídos após o processamento.',
       gdprError: 'Você deve aceitar a política de privacidade.',
+      emailError: 'Por favor insira um endereço de email válido.',
+      disclaimer: 'Este site é um fansite não oficial de TopGirl/ApexGirl. Não somos afiliados à A3Games ou SuperPrism.',
     },
     pl: {
       title: 'Kontakt',
@@ -227,6 +237,8 @@ export default function Contact() {
       required: 'Proszę wypełnić wszystkie wymagane pola.',
       gdpr: 'Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na moją prośbę. Twoje dane zostaną usunięte po przetworzeniu.',
       gdprError: 'Musisz zaakceptować politykę prywatności.',
+      emailError: 'Podaj poprawny adres e-mail.',
+      disclaimer: 'Ta strona jest nieoficjalnym fansite TopGirl/ApexGirl. Nie jesteśmy powiązani z A3Games ani SuperPrism.',
     },
     id: {
       title: 'Kontak',
@@ -262,6 +274,8 @@ export default function Contact() {
       required: 'Silakan isi semua kolom yang wajib diisi.',
       gdpr: 'Saya setuju bahwa data saya digunakan untuk merespons permintaan saya. Data Anda akan dihapus setelah diproses.',
       gdprError: 'Anda harus menerima kebijakan privasi.',
+      emailError: 'Silakan masukkan alamat email yang valid.',
+      disclaimer: 'Situs ini adalah fansite tidak resmi TopGirl/ApexGirl. Kami tidak berafiliasi dengan A3Games atau SuperPrism.',
     },
     ru: {
       title: 'Контакт',
@@ -297,6 +311,8 @@ export default function Contact() {
       required: 'Пожалуйста, заполните все обязательные поля.',
       gdpr: 'Я согласен на обработку моих данных для ответа на мой запрос. Ваши данные будут удалены после обработки.',
       gdprError: 'Вы должны принять политику конфиденциальности.',
+      emailError: 'Пожалуйста, введите корректный адрес электронной почты.',
+      disclaimer: 'Этот сайт является неофициальным фан-сайтом TopGirl/ApexGirl. Мы не связаны с A3Games или SuperPrism.',
     },
   };
 
@@ -318,7 +334,7 @@ export default function Contact() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setError('Veuillez entrer une adresse email valide.');
+      setError(content.emailError);
       return;
     }
 
@@ -573,8 +589,7 @@ export default function Contact() {
 
             <div style={{ marginTop: '24px', paddingTop: '24px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.6 }}>
-                Ce site est un <span style={{ color: '#fbbf24' }}>fansite non officiel</span> de TopGirl/ApexGirl. 
-                Nous ne sommes pas affiliés à A3Games ou SuperPrism.
+                {content.disclaimer}
               </p>
             </div>
           </div>

@@ -4,14 +4,14 @@ import { useState, useEffect, useMemo } from "react";
 import { useParams } from "next/navigation";
 
 const translations: Record<string, any> = {
-  fr: { item: "Article", qty: "Qté", price: "Prix", subtotal: "Total", reset: "Réinitialiser" },
-  en: { item: "Item", qty: "Qty", price: "Price", subtotal: "Subtotal", reset: "Reset" },
-  it: { item: "Articolo", qty: "Qtà", price: "Prezzo", subtotal: "Totale", reset: "Reset" },
-  es: { item: "Artículo", qty: "Cant", price: "Precio", subtotal: "Subtotal", reset: "Reiniciar" },
-  pt: { item: "Item", qty: "Qtd", price: "Preço", subtotal: "Subtotal", reset: "Resetar" },
-  pl: { item: "Przedmiot", qty: "Ilość", price: "Cena", subtotal: "Suma", reset: "Resetuj" },
-  id: { item: "Barang", qty: "Jml", price: "Harga", subtotal: "Subtotal", reset: "Reset" },
-  ru: { item: "Предмет", qty: "Кол-во", price: "Цена", subtotal: "Итого", reset: "Сбросить" },
+  fr: { item: "Article", qty: "Qté", price: "Prix", subtotal: "Total", reset: "Réinitialiser", loading: "Chargement des données SVS...", error: "Erreur" },
+  en: { item: "Item", qty: "Qty", price: "Price", subtotal: "Subtotal", reset: "Reset", loading: "Loading SVS data...", error: "Error" },
+  it: { item: "Articolo", qty: "Qtà", price: "Prezzo", subtotal: "Totale", reset: "Reset", loading: "Caricamento dati SVS...", error: "Errore" },
+  es: { item: "Artículo", qty: "Cant", price: "Precio", subtotal: "Subtotal", reset: "Reiniciar", loading: "Cargando datos de SVS...", error: "Error" },
+  pt: { item: "Item", qty: "Qtd", price: "Preço", subtotal: "Subtotal", reset: "Resetar", loading: "Carregando dados do SVS...", error: "Erro" },
+  pl: { item: "Przedmiot", qty: "Ilość", price: "Cena", subtotal: "Suma", reset: "Resetuj", loading: "Ładowanie danych SVS...", error: "Błąd" },
+  id: { item: "Barang", qty: "Jml", price: "Harga", subtotal: "Subtotal", reset: "Reset", loading: "Memuat data SVS...", error: "Kesalahan" },
+  ru: { item: "Предмет", qty: "Кол-во", price: "Цена", subtotal: "Итого", reset: "Сбросить", loading: "Загрузка данных SVS...", error: "Ошибка" },
 };
 
 function getT(lang: string) {
@@ -201,6 +201,9 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
 }
 
 export default function SVSCalculator() {
+  const params = useParams();
+  const lang = (params?.lang as string) || "fr";
+  const t = getT(lang);
   const [tables, setTables] = useState<TablesData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -220,7 +223,7 @@ export default function SVSCalculator() {
     return (
       <div style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.6)" }}>
         <div style={{ fontSize: "2rem", marginBottom: "12px" }}>⏳</div>
-        Loading SVS data...
+        {t.loading}
       </div>
     );
   }
@@ -228,7 +231,7 @@ export default function SVSCalculator() {
   if (error) {
     return (
       <div style={{ textAlign: "center", padding: "60px", color: "#f87171" }}>
-        Error: {error}
+        {t.error}: {error}
       </div>
     );
   }
