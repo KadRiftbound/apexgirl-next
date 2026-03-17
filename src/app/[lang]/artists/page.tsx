@@ -62,7 +62,7 @@ export default function ArtistsPage() {
           return team;
         }
       } catch (e) {
-        console.warn('Échec du chargement de l\'équipe 1', e);
+        if (process.env.NODE_ENV !== 'production') console.warn('Team 1 load failed', e);
       }
     }
     return [];
@@ -82,7 +82,7 @@ export default function ArtistsPage() {
           return team;
         }
       } catch (e) {
-        console.warn('Échec du chargement de l\'équipe 2', e);
+        if (process.env.NODE_ENV !== 'production') console.warn('Team 2 load failed', e);
       }
     }
     return [];
@@ -160,7 +160,7 @@ export default function ArtistsPage() {
         const ids = team1.map((artist: Artist) => artist.id);
         localStorage.setItem('team1', JSON.stringify(ids));
       } catch (e) {
-        console.warn('Échec de la sauvegarde de l\'équipe 1', e);
+        if (process.env.NODE_ENV !== 'production') console.warn('Team 1 save failed', e);
       }
     }
   }, [team1]);
@@ -171,7 +171,7 @@ export default function ArtistsPage() {
         const ids = team2.map((artist: Artist) => artist.id);
         localStorage.setItem('team2', JSON.stringify(ids));
       } catch (e) {
-        console.warn('Échec de la sauvegarde de l\'équipe 2', e);
+        if (process.env.NODE_ENV !== 'production') console.warn('Team 2 save failed', e);
       }
     }
   }, [team2]);

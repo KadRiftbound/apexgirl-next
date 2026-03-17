@@ -34,16 +34,16 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   
   const alternates: Metadata['alternates'] = {
     languages: {
-      fr: "/fr",
-      en: "/en",
-      it: "/it",
-      es: "/es",
-      pt: "/pt",
-      pl: "/pl",
-      id: "/id",
-      ru: "/ru",
+      fr: "https://apexgirlguide.com/fr",
+      en: "https://apexgirlguide.com/en",
+      it: "https://apexgirlguide.com/it",
+      es: "https://apexgirlguide.com/es",
+      pt: "https://apexgirlguide.com/pt",
+      pl: "https://apexgirlguide.com/pl",
+      id: "https://apexgirlguide.com/id",
+      ru: "https://apexgirlguide.com/ru",
+      "x-default": "https://apexgirlguide.com/fr",
     },
-    canonical: `https://apexgirlguide.com/${lang}`,
   };
 
    return {
@@ -132,9 +132,8 @@ export default async function LocaleLayout({
             "description": metadataByLang[lang]?.description || metadataByLang.fr.description,
             "inLanguage": localeNames[lang] || "fr-FR",
             "potentialAction": {
-              "@type": "SearchAction",
-              "target": `https://apexgirlguide.com/${lang}/search?q={search_term_string}`,
-              "query-input": "required name=search_term_string"
+              "@type": "ReadAction",
+              "target": `https://apexgirlguide.com/${lang}/guides`
             }
           })
         }}
