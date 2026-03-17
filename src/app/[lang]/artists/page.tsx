@@ -372,7 +372,12 @@ export default function ArtistsPage() {
               </div>
               {selectedArtist ? (
                 <div className="artist-preview-content">
-                  <div className="artist-preview-image-large">
+                  <div
+                    className="artist-preview-image-large"
+                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    title="Double-cliquer pour voir la fiche complète"
+                    style={{ cursor: "pointer" }}
+                  >
                     {selectedArtist.image ? (
                       <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={120} height={120} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                     ) : (
@@ -437,45 +442,56 @@ export default function ArtistsPage() {
           {/* Column 2: Team 1 (35%) */}
           <div className="panel-col panel-col-2">
             <div className="team-card team-1">
+              {/* Header with trash icon */}
+              <div className="team-card-header">
+                <span className="team-label team-1-label">⚔️ Équipe 1</span>
+                <button onClick={() => setTeam1([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
+              </div>
+              {/* Slots row */}
               <div className="team-slots">
                 {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team1[i] && removeFromTeam1(team1[i].id)} className="team-slot" title="Cliquer pour retirer">
+                  <div key={i} onClick={() => team1[i] && removeFromTeam1(team1[i].id)} className="team-slot" title={team1[i] ? t.clickToRemove : ""}>
                     {team1[i] ? (
-                      team1[i].image ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} width={40} height={40} style={{ objectFit: "cover", width: "100%", height: "100%" }} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
-                    ) : <span>+</span>}
+                      team1[i].image
+                        ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} width={40} height={40} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                        : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800, fontSize: "0.9rem" }}>{team1[i].name.charAt(0)}</span>
+                    ) : <span className="slot-plus">+</span>}
                   </div>
                 ))}
               </div>
+              {/* Genres row */}
               <div className="team-genres">
-                {Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
-                  <span key={genre} className="genre-badge">{genre} {count}</span>
-                ))}
+                {Object.keys(team1Stats.genreCounts).length > 0
+                  ? Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
+                      <span key={genre} className="genre-badge">{genre} ×{count}</span>
+                    ))
+                  : <span className="genre-badge-empty">—</span>
+                }
               </div>
-              <div className="team-stats">
-                {(() => {
-                  const stats = [
-                    { label: "💥 DMG Factor", v1: team1Stats.skillDamageRaw, v2: team2Stats.skillDamageRaw },
-                    { label: "⚔️ Skill DMG", v1: team1Stats.skillDamage, v2: team2Stats.skillDamage, suffix: "%" },
-                    { label: "👊 Basic ATK", v1: team1Stats.basicAttackPercent, v2: team2Stats.basicAttackPercent, suffix: "%" },
-                    { label: "🛡️ Resistance", v1: team1Stats.attackResist, v2: team2Stats.attackResist, suffix: "%" },
-                    { label: "✨ S.Resist", v1: team1Stats.skillResist, v2: team2Stats.skillResist, suffix: "%" },
-                    { label: "🎵 Fan Cap", v1: team1Stats.fanCapacity, v2: team2Stats.fanCapacity, suffix: "%" },
-                    { label: "🚀 Rally Cap", v1: team1Stats.rallyCapacity, v2: team2Stats.rallyCapacity, suffix: "%" },
-                  ];
-                  const colors = ["#ff8c42", "#ff6b6b", "#4ecdc4", "#95e1d3", "#a29bfe", "#ffd700", "#00ff88"];
-                  return stats.map((stat, i) => {
-                    const diff = stat.v1 - stat.v2;
-                    const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.4)";
-                    const sign = diff > 0 ? "+" : "";
-                    return (
-                      <div key={i} style={{ display: "flex", justifyContent: "space-between", color: colors[i], fontSize: "0.7rem" }}>
-                        <span>{stat.label}</span>
-                        <span>{stat.v1}{stat.suffix || ""} <span style={{ color: diffColor, fontWeight: 600 }}>({sign}{diff})</span></span>
-                      </div>
-                    );
-                  });
-                })()}
-                <button onClick={() => setTeam1([])} className="clear-btn">🗑️ {t.clearTeam}</button>
+              {/* Stats — fixed height rows, no scroll */}
+              <div className="team-stats-grid">
+                {[
+                  { label: "💥 DMG Factor", v1: team1Stats.skillDamageRaw, v2: team2Stats.skillDamageRaw, color: "#ff8c42" },
+                  { label: "⚔️ Skill DMG",  v1: team1Stats.skillDamage,    v2: team2Stats.skillDamage,    color: "#ff6b6b", suffix: "%" },
+                  { label: "👊 Basic ATK",  v1: team1Stats.basicAttackPercent, v2: team2Stats.basicAttackPercent, color: "#4ecdc4", suffix: "%" },
+                  { label: "🛡️ Resistance", v1: team1Stats.attackResist,   v2: team2Stats.attackResist,   color: "#95e1d3", suffix: "%" },
+                  { label: "✨ S.Resist",   v1: team1Stats.skillResist,     v2: team2Stats.skillResist,     color: "#a29bfe", suffix: "%" },
+                  { label: "🎵 Fan Cap",    v1: team1Stats.fanCapacity,     v2: team2Stats.fanCapacity,     color: "#ffd700", suffix: "%" },
+                  { label: "🚀 Rally Cap",  v1: team1Stats.rallyCapacity,   v2: team2Stats.rallyCapacity,   color: "#00ff88", suffix: "%" },
+                ].map(({ label, v1, v2, color, suffix = "" }, i) => {
+                  const diff = v1 - v2;
+                  const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.25)";
+                  const sign = diff > 0 ? "+" : "";
+                  return (
+                    <div key={i} className="stat-row">
+                      <span className="stat-label" style={{ color }}>{label}</span>
+                      <span className="stat-value">
+                        <span style={{ color }}>{v1}{suffix}</span>
+                        <span className="stat-diff" style={{ color: diffColor }}>({sign}{diff})</span>
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -483,29 +499,50 @@ export default function ArtistsPage() {
           {/* Column 3: Team 2 (35%) */}
           <div className="panel-col panel-col-3">
             <div className="team-card team-2">
+              {/* Header with trash icon */}
+              <div className="team-card-header">
+                <span className="team-label team-2-label">🛡️ Équipe 2</span>
+                <button onClick={() => setTeam2([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
+              </div>
+              {/* Slots row */}
               <div className="team-slots">
                 {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team2[i] && removeFromTeam2(team2[i].id)} className="team-slot" title="Cliquer pour retirer">
+                  <div key={i} onClick={() => team2[i] && removeFromTeam2(team2[i].id)} className="team-slot" title={team2[i] ? t.clickToRemove : ""}>
                     {team2[i] ? (
-                      team2[i].image ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} width={40} height={40} style={{ objectFit: "cover", width: "100%", height: "100%" }} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
-                    ) : <span>+</span>}
+                      team2[i].image
+                        ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} width={40} height={40} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                        : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800, fontSize: "0.9rem" }}>{team2[i].name.charAt(0)}</span>
+                    ) : <span className="slot-plus">+</span>}
                   </div>
                 ))}
               </div>
+              {/* Genres row */}
               <div className="team-genres">
-                {Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
-                  <span key={genre} className="genre-badge">{genre} {count}</span>
-                ))}
+                {Object.keys(team2Stats.genreCounts).length > 0
+                  ? Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
+                      <span key={genre} className="genre-badge">{genre} ×{count}</span>
+                    ))
+                  : <span className="genre-badge-empty">—</span>
+                }
               </div>
-              <div className="team-stats">
-                <div style={{ display: "flex", justifyContent: "space-between", color: "#ff8c42", fontSize: "0.7rem" }}><span>💥 DMG Factor</span><span>{team2Stats.skillDamageRaw}</span></div>
-                <div style={{ display: "flex", justifyContent: "space-between", color: "#ff6b6b", fontSize: "0.7rem" }}><span>⚔️ Skill DMG</span><span>{team2Stats.skillDamage}%</span></div>
-                <div style={{ display: "flex", justifyContent: "space-between", color: "#4ecdc4", fontSize: "0.7rem" }}><span>👊 Basic ATK</span><span>{team2Stats.basicAttackPercent}%</span></div>
-                <div style={{ display: "flex", justifyContent: "space-between", color: "#95e1d3", fontSize: "0.7rem" }}><span>🛡️ Resistance</span><span>{team2Stats.attackResist}%</span></div>
-                <div style={{ display: "flex", justifyContent: "space-between", color: "#a29bfe", fontSize: "0.7rem" }}><span>✨ S.Resist</span><span>{team2Stats.skillResist}%</span></div>
-                <div style={{ display: "flex", justifyContent: "space-between", color: "#ffd700", fontSize: "0.7rem" }}><span>🎵 Fan Cap</span><span>{team2Stats.fanCapacity}%</span></div>
-                <div style={{ display: "flex", justifyContent: "space-between", color: "#00ff88", fontSize: "0.7rem" }}><span>🚀 Rally Cap</span><span>{team2Stats.rallyCapacity}%</span></div>
-                <button onClick={() => setTeam2([])} className="clear-btn">🗑️ {t.clearTeam}</button>
+              {/* Stats — fixed rows */}
+              <div className="team-stats-grid">
+                {[
+                  { label: "💥 DMG Factor", v: team2Stats.skillDamageRaw,       color: "#ff8c42" },
+                  { label: "⚔️ Skill DMG",  v: team2Stats.skillDamage,          color: "#ff6b6b", suffix: "%" },
+                  { label: "👊 Basic ATK",  v: team2Stats.basicAttackPercent,    color: "#4ecdc4", suffix: "%" },
+                  { label: "🛡️ Resistance", v: team2Stats.attackResist,          color: "#95e1d3", suffix: "%" },
+                  { label: "✨ S.Resist",   v: team2Stats.skillResist,           color: "#a29bfe", suffix: "%" },
+                  { label: "🎵 Fan Cap",    v: team2Stats.fanCapacity,           color: "#ffd700", suffix: "%" },
+                  { label: "🚀 Rally Cap",  v: team2Stats.rallyCapacity,         color: "#00ff88", suffix: "%" },
+                ].map(({ label, v, color, suffix = "" }, i) => (
+                  <div key={i} className="stat-row">
+                    <span className="stat-label" style={{ color }}>{label}</span>
+                    <span className="stat-value">
+                      <span style={{ color }}>{v}{suffix}</span>
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -747,104 +784,138 @@ export default function ArtistsPage() {
           height: 100%;
           display: flex;
           flex-direction: column;
-          padding: 8px;
+          padding: 6px 8px;
+          box-sizing: border-box;
+          overflow: hidden;
         }
         .team-1 { border-color: rgba(139,92,246,0.5); }
         .team-2 { border-color: rgba(6,182,212,0.5); }
-        
-        .team-header {
+
+        /* Header: label + trash */
+        .team-card-header {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 8px;
-          font-size: 0.8rem;
+          margin-bottom: 5px;
+          flex-shrink: 0;
+        }
+        .team-label {
+          font-size: 0.72rem;
           font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
         }
-        .team-1 .team-header span { color: #8b5cf6; }
-        .team-2 .team-header span { color: #06b6d4; }
-        .team-header button {
-          padding: 2px 8px;
-          font-size: 0.6rem;
-          border-radius: 4px;
-          border: 1px solid;
+        .team-1-label { color: #8b5cf6; }
+        .team-2-label { color: #06b6d4; }
+        .trash-btn {
           background: transparent;
-          color: #fff;
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 5px;
+          padding: 2px 6px;
+          font-size: 0.75rem;
           cursor: pointer;
+          color: rgba(255,255,255,0.5);
+          line-height: 1;
+          transition: all 0.15s;
+          flex-shrink: 0;
         }
-        .team-1 .team-header button { border-color: #8b5cf6; }
-        .team-2 .team-header button { border-color: #06b6d4; }
-        .team-header button.active {
-          background: #8b5cf6;
-          border-color: #8b5cf6;
+        .trash-btn:hover {
+          border-color: #f87171;
+          color: #f87171;
+          background: rgba(248,113,113,0.1);
         }
-        .team-2 .team-header button.active {
-          background: #06b6d4;
-          border-color: #06b6d4;
-        }
-        
+
+        /* Slots */
         .team-slots {
           display: flex;
-          gap: 6px;
-          margin-bottom: 8px;
+          gap: 4px;
+          margin-bottom: 5px;
           justify-content: center;
+          flex-shrink: 0;
         }
         .team-slot {
-          width: 55px;
-          height: 70px;
-          border-radius: 6px;
-          border: 2px solid rgba(255,255,255,0.15);
-          background: rgba(255,255,255,0.05);
+          width: 44px;
+          height: 56px;
+          border-radius: 5px;
+          border: 1px solid rgba(255,255,255,0.15);
+          background: rgba(255,255,255,0.04);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
           overflow: hidden;
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.2);
-          transition: transform 0.2s;
+          position: relative;
+          transition: border-color 0.15s, transform 0.15s;
+          flex-shrink: 0;
         }
         .team-slot:hover {
-          transform: scale(1.05);
-          border-color: rgba(255,255,255,0.3);
+          border-color: rgba(255,80,80,0.6);
+          transform: scale(1.04);
         }
-        .team-slot img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .slot-plus {
+          color: rgba(255,255,255,0.2);
+          font-size: 1rem;
         }
-        
+
+        /* Genres */
         .team-genres {
           display: flex;
           flex-wrap: wrap;
-          gap: 4px;
-          margin-bottom: 8px;
+          gap: 3px;
+          margin-bottom: 5px;
           justify-content: center;
+          flex-shrink: 0;
+          min-height: 16px;
         }
         .genre-badge {
-          padding: 2px 6px;
-          background: rgba(139,92,246,0.3);
-          border-radius: 10px;
+          padding: 1px 6px;
+          background: rgba(139,92,246,0.25);
+          border-radius: 8px;
+          font-size: 0.58rem;
+          color: rgba(255,255,255,0.8);
+          white-space: nowrap;
+        }
+        .genre-badge-empty {
+          color: rgba(255,255,255,0.2);
           font-size: 0.6rem;
-          color: #fff;
         }
-        
-        .team-stats {
+
+        /* Stats grid — fixed rows, NO overflow scroll */
+        .team-stats-grid {
           flex: 1;
-          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          overflow: hidden;
         }
-        .team-stats > div {
-          padding: 2px 0;
+        .stat-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex: 1;
+          min-height: 0;
+          padding: 0 2px;
+          border-bottom: 1px solid rgba(255,255,255,0.04);
         }
-        .clear-btn {
-          width: 100%;
-          margin-top: 8px;
-          padding: 4px;
-          font-size: 0.55rem;
-          border-radius: 4px;
-          border: 1px solid rgba(255,255,255,0.1);
-          background: transparent;
-          color: rgba(255,255,255,0.4);
-          cursor: pointer;
+        .stat-row:last-child { border-bottom: none; }
+        .stat-label {
+          font-size: 0.62rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          flex: 1;
+          min-width: 0;
+        }
+        .stat-value {
+          font-size: 0.62rem;
+          display: flex;
+          gap: 3px;
+          align-items: center;
+          flex-shrink: 0;
+        }
+        .stat-diff {
+          font-size: 0.58rem;
+          font-weight: 600;
         }
         
         .artists-bottom {
@@ -996,9 +1067,10 @@ export default function ArtistsPage() {
             color: white;
           }
           
-          /* Remove select buttons in teams on mobile */
-          .team-header button {
-            display: none;
+          /* Team trash btn smaller on mobile */
+          .trash-btn {
+            padding: 1px 4px;
+            font-size: 0.65rem;
           }
           
           .artists-bottom {
