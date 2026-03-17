@@ -1,6 +1,6 @@
 "use client";
 
-import Head from "next/head";
+import Image from "next/image";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -353,10 +353,7 @@ export default function ArtistsPage() {
 
   return (
     <>
-      <Head>
-        <title>Artistes - TopGirl</title>
-      </Head>
-
+      
       <div className="page-container">
         {/* Header with title and ads */}
         <div className="page-header">
@@ -377,7 +374,7 @@ export default function ArtistsPage() {
                 <div className="artist-preview-content">
                   <div className="artist-preview-image-large">
                     {selectedArtist.image ? (
-                      <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} />
+                      <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={120} height={120} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                     ) : (
                       <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
                     )}
@@ -444,7 +441,7 @@ export default function ArtistsPage() {
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team1[i] && removeFromTeam1(team1[i].id)} className="team-slot" title="Cliquer pour retirer">
                     {team1[i] ? (
-                      team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
+                      team1[i].image ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} width={40} height={40} style={{ objectFit: "cover", width: "100%", height: "100%" }} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
                 ))}
@@ -490,7 +487,7 @@ export default function ArtistsPage() {
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team2[i] && removeFromTeam2(team2[i].id)} className="team-slot" title="Cliquer pour retirer">
                     {team2[i] ? (
-                      team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
+                      team2[i].image ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} width={40} height={40} style={{ objectFit: "cover", width: "100%", height: "100%" }} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
                 ))}
@@ -543,7 +540,7 @@ export default function ArtistsPage() {
             {sortedArtists.map((artist: Artist) => (
               <button key={artist.id} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
                 {artist.image ? (
-                  <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} />
+                   <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} width={60} height={60} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                 ) : (
                   <div className="artist-placeholder">
                     <span style={{ color: rankColors[artist.rank], fontWeight: 800 }}>{artist.name.charAt(0)}</span>

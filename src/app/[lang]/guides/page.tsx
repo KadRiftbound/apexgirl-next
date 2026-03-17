@@ -585,7 +585,6 @@ export default function GuidesPage() {
   const params = useParams();
   const lang = params?.lang as string || "fr";
   const t = guideListTranslations[lang] || guideListTranslations.en;
-  const activeCategory = t.categories[0];
   const [activeCategoryState, setActiveCategoryState] = useState(t.categories[0]);
   const [searchQuery, setSearchQuery] = useState("");
 

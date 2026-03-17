@@ -1,8 +1,9 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState, useEffect } from "react";
+
 import Link from "next/link";
+import eventsDataRaw from "@/lib/data/events.json";
 import { AdBanner } from "@/components/AdSense";
 
 const eventTranslations: Record<string, any> = {
@@ -50,29 +51,10 @@ export default function EventDetailPage() {
   const slug = params?.slug as string;
   const lang = params?.lang as string || "fr";
   const t = eventTranslations[lang] || eventTranslations.en;
-  const [event, setEvent] = useState<Event | null>(null);
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
+  const events: Event[] = eventsDataRaw as Event[];
+  const event: Event | null = events.find((e: Event) => e.name.toLowerCase().replace(/\s+/g, "-") === slug) || null;
 
-  useEffect(() => {
-    fetch("/database/data/events.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setEvents(data);
-        const found = data.find((e: Event) => e.name.toLowerCase().replace(/\s+/g, "-") === slug);
-        setEvent(found || null);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [slug]);
 
-  if (loading) {
-    return (
-      <div className="container" style={{ padding: "40px 20px", textAlign: "center" }}>
-        <div style={{ color: "#fff" }}>{t.loading}</div>
-      </div>
-    );
-  }
 
   if (!event) {
     return (

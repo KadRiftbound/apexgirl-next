@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import eventsDataRaw from "@/lib/data/events.json";
 import { AdBanner } from "@/components/AdSense";
 
 const eventListTranslations: Record<string, any> = {
@@ -58,22 +59,10 @@ export default function EventsPage() {
   const params = useParams();
   const lang = params?.lang as string || "fr";
   const t = eventListTranslations[lang] || eventListTranslations.en;
-  const [events, setEvents] = useState<Event[]>([]);
-  const [filtered, setFiltered] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
+  const events: Event[] = eventsDataRaw as Event[];
+  const [filtered, setFiltered] = useState<Event[]>(eventsDataRaw as Event[]);
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    fetch("/database/data/events.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setEvents(data);
-        setFiltered(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
 
   useEffect(() => {
     let result = events;
@@ -90,21 +79,6 @@ export default function EventsPage() {
     }
     setFiltered(result);
   }, [filter, search, events]);
-
-  if (loading) {
-    return (
-      <div style={{ 
-        minHeight: "100vh", 
-        background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
-        <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "1.2rem" }}>⏳ Chargement...</div>
-      </div>
-    );
-  }
-
   return (
     <div style={{ 
       minHeight: "100vh", 

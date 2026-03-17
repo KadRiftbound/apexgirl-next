@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
@@ -205,10 +205,6 @@ export default function TierListPage() {
 
   return (
     <>
-      <Head>
-        <title>Tier List - TopGirl ApexGirl</title>
-        <meta name="description" content="Découvrez la tier list des meilleurs artistes TopGirl et votez pour votre favori !" />
-      </Head>
 
       <div className="container" style={{ paddingTop: "40px" }}>
         <div className="text-center" style={{ marginBottom: "40px" }}>
@@ -509,11 +505,7 @@ export default function TierListPage() {
                              transition: "transform 0.2s"
                            }}>
                              {artist.image ? (
-                               <img 
-                                 src={`/assets/images/artists/${artist.image}`}
-                                 alt={artist.name}
-                                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                               />
+                               <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill style={{ objectFit: "cover" }} />
                              ) : (
                                <span style={{ 
                                  fontSize: "2rem", 
@@ -637,11 +629,7 @@ export default function TierListPage() {
                          {(() => {
                            const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[1]?.artist_name);
                            return artist?.image ? (
-                             <img 
-                               src={`/assets/images/artists/${artist.image}`}
-                               alt={voteData?.rankings?.this_week?.[1]?.artist_name}
-                               style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                             />
+                             <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[1]?.artist_name} fill style={{ objectFit: "cover" }} />
                            ) : (
                              <span style={{ fontSize: "2rem", color: "#c0c0c0" }}>2</span>
                            );
@@ -696,11 +684,7 @@ export default function TierListPage() {
                        {(() => {
                          const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name);
                          return artist?.image ? (
-                           <img 
-                             src={`/assets/images/artists/${artist.image}`}
-                             alt={voteData?.rankings?.this_week?.[0]?.artist_name}
-                             style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                           />
+                           <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[0]?.artist_name} fill style={{ objectFit: "cover" }} />
                          ) : (
                            <span style={{ fontSize: "2.5rem", color: "#ffd700" }}>1</span>
                          );
@@ -756,11 +740,7 @@ export default function TierListPage() {
                        {(() => {
                          const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name);
                          return artist?.image ? (
-                           <img 
-                             src={`/assets/images/artists/${artist.image}`}
-                             alt={voteData?.rankings?.this_week?.[2]?.artist_name}
-                             style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                           />
+                           <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[2]?.artist_name} fill style={{ objectFit: "cover" }} />
                          ) : (
                            <span style={{ fontSize: "1.75rem", color: "#cd7f32" }}>3</span>
                          );
@@ -903,11 +883,7 @@ export default function TierListPage() {
                                justifyContent: "center"
                              }}>
                              {artist.image ? (
-                               <img 
-                                 src={`/assets/images/artists/${artist.image}`}
-                                 alt={artist.name}
-                                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                               />
+                               <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill style={{ objectFit: "cover" }} />
                              ) : (
                                <span style={{ 
                                  fontSize: "1.75rem", 

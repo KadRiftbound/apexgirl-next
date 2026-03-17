@@ -3,7 +3,6 @@
 import { useParams, useRouter } from 'next/navigation';
 import artistsData from '@/lib/data/artists.json';
 import Link from 'next/link';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 const artistTranslations: Record<string, any> = {
@@ -130,10 +129,6 @@ export default function ArtistDetailPage() {
 
   return (
     <>
-      <Head>
-        <title>{artist.name} - TopGirl</title>
-        <meta name="description" content={`Découvrez tout sur l'artiste ${artist.name} de TopGirl`} />
-      </Head>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

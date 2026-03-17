@@ -1,6 +1,5 @@
 'use client';
 
-import Head from 'next/head';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
@@ -169,10 +168,7 @@ export default function Confidentialite() {
 
   return (
     <>
-      <Head>
-        <title>{content.title} - TopGirl</title>
-      </Head>
-
+      
       <div className="container" style={{ padding: '40px 20px', maxWidth: '800px' }}>
         <h1 style={{
           textAlign: 'center',

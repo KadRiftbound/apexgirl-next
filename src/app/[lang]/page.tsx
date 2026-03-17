@@ -1,7 +1,7 @@
 "use client";
 
-import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { AdBanner } from "@/components/AdSense";
@@ -116,13 +116,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Head>
-        <meta name="robots" content="index, follow" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content={lang === "fr" ? "fr_FR" : "en_US"} />
-        <meta property="og:site_name" content="TopGirl ApexGirl" />
-      </Head>
-      
       <div className="container">
         {/* Hero Section */}
         <section className="hero" style={{ textAlign: "center", padding: "80px 20px" }}>
@@ -199,10 +192,11 @@ export default function HomePage() {
                 justifyContent: "center"
               }}>
                 {artistImage ? (
-                  <img 
+                  <Image 
                     src={`/assets/images/artists/${artistImage}`}
                     alt={weeklyTop.artist_name}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    fill
+                    style={{ objectFit: "cover" }}
                   />
                 ) : (
                   <span style={{ fontSize: "3rem", fontWeight: 800, color: "#ffd700" }}>

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Head from 'next/head';
 
 const translations: Record<string, any> = {
   fr: {
@@ -335,10 +334,7 @@ export default function CookieSettings() {
 
   return (
     <>
-      <Head>
-        <title>{t.title} - TopGirl</title>
-      </Head>
-
+      
       <div className="container" style={{ padding: '40px 20px', maxWidth: '700px' }}>
         <Link href={`/${lang}/`} style={{ 
           display: 'inline-flex', 
