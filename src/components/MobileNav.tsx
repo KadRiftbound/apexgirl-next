@@ -73,6 +73,7 @@ export function MobileNav() {
         minHeight: '100vh',
         transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.3s ease',
+        pointerEvents: 'none' as const,
       }}
     >
       <div style={{
@@ -84,7 +85,8 @@ export function MobileNav() {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 16px',
-        borderBottom: '1px solid rgba(255,255,255,0.1)'
+        borderBottom: '1px solid rgba(255,255,255,0.1)',
+        pointerEvents: 'auto' as const,
       }}>
         <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
           <img 
