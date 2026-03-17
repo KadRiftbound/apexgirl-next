@@ -5,6 +5,7 @@ import { BackgroundManager } from "@/components/BackgroundManager";
 import CookieConsent from "@/components/CookieConsent";
 import { Analytics } from "@vercel/analytics/react";
 import { MobileNav } from "@/components/MobileNav";
+import { NavVoteWidget } from "@/components/NavVoteWidget";
 import { getUiStrings } from "@/lib/i18n/ui";
 
 const localeNames: Record<string, string> = {
@@ -159,6 +160,7 @@ export default async function LocaleLayout({
                 {item.label}
               </Link>
             ))}
+            <NavVoteWidget lang={lang} />
             <LanguageSelector currentLang={lang} />
           </nav>
         </div>

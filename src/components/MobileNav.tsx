@@ -2,16 +2,34 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
 import { getUiStrings } from "@/lib/i18n/ui";
+import artistsData from "@/lib/data/artists.json";
+
+type ArtistBasic = { id: number; name: string; image?: string };
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [topVotedArtist, setTopVotedArtist] = useState<{ name: string; image?: string } | null>(null);
   const params = useParams();
   const pathname = usePathname();
   const lang = (params?.lang as string) || "fr";
   const ui = getUiStrings(lang);
+
+  useEffect(() => {
+    fetch("/api/vote")
+      .then((r) => r.json())
+      .then((data) => {
+        const top = data?.rankings?.this_week?.[0];
+        if (top?.artist_name) {
+          const artist = (artistsData as ArtistBasic[]).find((a) => a.name === top.artist_name);
+          setTopVotedArtist({ name: top.artist_name, image: artist?.image });
+        }
+      })
+      .catch(() => null);
+  }, []);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -89,13 +107,38 @@ export function MobileNav() {
         borderBottom: '1px solid rgba(255,255,255,0.1)',
         pointerEvents: 'auto' as const,
       }}>
-        <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
-          <img 
-            src="/assets/images/logo.png" 
-            alt="TopGirlGuide" 
-            style={{ height: '40px', width: 'auto', maxWidth: '140px', objectFit: 'contain' }}
-          />
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
+            <img 
+              src="/assets/images/logo.png" 
+              alt="TopGirlGuide" 
+              style={{ height: '36px', width: 'auto', maxWidth: '120px', objectFit: 'contain' }}
+            />
+          </Link>
+          {topVotedArtist && (
+            <Link
+              href={`/${lang}/tierlist?tab=vote`}
+              title={topVotedArtist.name}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '4px',
+                textDecoration: 'none', padding: '2px 8px 2px 2px',
+                borderRadius: '20px', border: '1.5px solid rgba(255,215,0,0.5)',
+                background: 'rgba(255,215,0,0.08)',
+              }}
+            >
+              <div style={{ width: '24px', height: '24px', borderRadius: '50%', overflow: 'hidden', position: 'relative', border: '1.5px solid #ffd700', flexShrink: 0 }}>
+                {topVotedArtist.image ? (
+                  <Image src={`/assets/images/artists/${topVotedArtist.image}`} alt={topVotedArtist.name} fill sizes="24px" style={{ objectFit: 'cover' }} />
+                ) : (
+                  <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '0.6rem', color: '#ffd700', fontWeight: 800 }}>{topVotedArtist.name.charAt(0)}</span>
+                )}
+              </div>
+              <span style={{ fontSize: '0.6rem', fontWeight: 700, color: '#ffd700', maxWidth: '55px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                👑
+              </span>
+            </Link>
+          )}
+        </div>
         
         <button 
           type="button"

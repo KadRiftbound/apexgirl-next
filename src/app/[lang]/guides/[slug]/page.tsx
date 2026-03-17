@@ -4586,14 +4586,13 @@ export default function GuideDetailPage() {
   return (
     <div style={{
       minHeight: "100vh",
-      background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
       paddingBottom: "80px",
     }}>
 
       {/* Hero Header */}
       <div style={{
-        background: "rgba(15,15,26,0.97)",
-        backdropFilter: "blur(20px)",
+        background: "rgba(15,15,26,0.78)",
+        backdropFilter: "blur(16px)",
         borderBottom: `1px solid ${guide.color}44`,
         padding: "32px 0 24px",
         position: "sticky",
@@ -4659,7 +4658,7 @@ export default function GuideDetailPage() {
         >
           {/* Explication rapide */}
           <div style={{
-            background: "rgba(30,30,50,0.8)",
+            background: "rgba(15,15,30,0.55)",
             borderRadius: "16px",
             border: `1px solid ${guide.color}33`,
             padding: "24px",
@@ -4692,7 +4691,7 @@ export default function GuideDetailPage() {
           {/* Tips */}
           {tipsContent ? (
             <div style={{
-              background: "rgba(34,211,238,0.06)",
+              background: "rgba(15,40,50,0.45)",
               borderRadius: "16px",
               border: "1px solid rgba(34,211,238,0.25)",
               padding: "24px",
@@ -4766,7 +4765,7 @@ export default function GuideDetailPage() {
         {/* ROW 3 : Description complète — pleine largeur */}
         {mainContent && (
           <div style={{
-            background: "rgba(20,20,40,0.8)",
+            background: "rgba(15,15,35,0.55)",
             borderRadius: "16px",
             border: `1px solid ${guide.color}22`,
             overflow: "hidden",
@@ -4808,8 +4807,8 @@ export default function GuideDetailPage() {
                 href={`/${lang}/guides/${g.id}/`}
                 style={{
                   padding: "10px 16px",
-                  background: "rgba(30,30,50,0.8)",
-                  borderRadius: "10px",
+                   background: "rgba(15,15,35,0.55)",
+                   borderRadius: "10px",
                   color: "rgba(255,255,255,0.8)",
                   textDecoration: "none",
                   border: `1px solid ${g.color}33`,

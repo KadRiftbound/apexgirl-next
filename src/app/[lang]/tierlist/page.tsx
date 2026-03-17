@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 
@@ -77,14 +77,14 @@ const tierDescriptions: Record<string, Record<string, string>> = {
 };
 
 const tierlistTranslations: Record<string, any> = {
-  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un vote par jour par IP.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voté aujourd'hui !", podium: "🏅 Podium - Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Erreur lors du vote" },
-  en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day per IP.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today!", podium: "🏅 Podium - This week", fullRanking: "📊 Full ranking", artistCount: (n: number) => `${n} artist${n > 1 ? "s" : ""}`, voteError: "Vote error" },
-  it: { title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo", tierListClassic: "Tier List Classico", voteForFavorite: "Vota il tuo preferito", voteBanner: "Vota il tuo artista preferito! Un voto al giorno per IP.", voteForArtist: "Vota per un artista", alreadyVoted: "Hai già votato oggi!", podium: "🏅 Podio - Questa settimana", fullRanking: "📊 Classifica completa", artistCount: (n: number) => `${n} artista/i`, voteError: "Errore di voto" },
-  es: { title: "Tier List", subtitle: "Clasificaciones de artistas y votos comunitarios", classic: "Clásico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clásico", voteForFavorite: "Vota por tu favorito", voteBanner: "¡Vota por tu artista favorito! Un voto por día por IP.", voteForArtist: "Vota por un artista", alreadyVoted: "¡Ya has votado hoy!", podium: "🏅 Podio - Esta semana", fullRanking: "📊 Clasificación completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Error al votar" },
-  pt: { title: "Tier List", subtitle: "Ranking de artistas e votos da comunidade", classic: "Clássico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clássico", voteForFavorite: "Vote no seu favorito", voteBanner: "Vote no seu artista favorito! Um voto por dia por IP.", voteForArtist: "Vote em um artista", alreadyVoted: "Você já votou hoje!", podium: "🏅 Pódio - Esta semana", fullRanking: "📊 Classificação completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Erro ao votar" },
-  pl: { title: "Tier List", subtitle: "Rankingi artystów i głosy społeczności", classic: "Klasyczny", vote: "Głosuj", viewProfile: "Zobacz profil", tierListClassic: "Tier List Klasyczna", voteForFavorite: "Głosuj na swojego faworyta", voteBanner: "Głosuj na swojego ulubionego artystę! Jeden głos dziennie na IP.", voteForArtist: "Głosuj na artystę", alreadyVoted: "Oddałeś już głos!", podium: "🏅 Podium - Ten tydzień", fullRanking: "📊 Pełny ranking", artistCount: (n: number) => `${n} artysta/ów`, voteError: "Błąd głosowania" },
-  id: { title: "Tier List", subtitle: "Peringkat artis dan suara komunitas", classic: "Klasik", vote: "Vote", viewProfile: "Lihat profil", tierListClassic: "Tier List Klasik", voteForFavorite: "Pilih favoritmu", voteBanner: "Pilih artis favoritmu! Satu suara per hari per IP.", voteForArtist: "Pilih seorang artis", alreadyVoted: "Anda sudah memilih hari ini!", podium: "🏅 Podium - Minggu ini", fullRanking: "📊 Peringkat lengkap", artistCount: (n: number) => `${n} artis`, voteError: "Kesalahan saat memilih" },
-  ru: { title: "Tier List", subtitle: "Рейтинги артистов и голоса сообщества", classic: "Классика", vote: "Голосовать", viewProfile: "Посмотреть профиль", tierListClassic: "Tier List Классика", voteForFavorite: "Голосуйте за фаворита", voteBanner: "Голосуйте за любимого артиста! Один голос в день с IP.", voteForArtist: "Голосовать за артиста", alreadyVoted: "Вы уже голосовали сегодня!", podium: "🏅 Подиум - Эта неделя", fullRanking: "📊 Полный рейтинг", artistCount: (n: number) => `${n} артист(ов)`, voteError: "Ошибка голосования" },
+  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un seul vote par jour.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voté aujourd'hui.", podium: "🏅 Podium — Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Une erreur est survenue.", voteSuccess: "Votre vote a été comptabilisé !", voteAlreadyVoted: "Vous avez déjà voté aujourd'hui." },
+  en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today.", podium: "🏅 Podium — This week", fullRanking: "📊 Full ranking", artistCount: (n: number) => `${n} artist${n > 1 ? "s" : ""}`, voteError: "An error occurred.", voteSuccess: "Your vote has been counted!", voteAlreadyVoted: "You have already voted today." },
+  it: { title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo", tierListClassic: "Tier List Classico", voteForFavorite: "Vota il tuo preferito", voteBanner: "Vota il tuo artista preferito! Un voto al giorno.", voteForArtist: "Vota per un artista", alreadyVoted: "Hai già votato oggi.", podium: "🏅 Podio — Questa settimana", fullRanking: "📊 Classifica completa", artistCount: (n: number) => `${n} artista/i`, voteError: "Si è verificato un errore.", voteSuccess: "Il tuo voto è stato conteggiato!", voteAlreadyVoted: "Hai già votato oggi." },
+  es: { title: "Tier List", subtitle: "Clasificaciones de artistas y votos comunitarios", classic: "Clásico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clásico", voteForFavorite: "Vota por tu favorito", voteBanner: "¡Vota por tu artista favorito! Un voto por día.", voteForArtist: "Vota por un artista", alreadyVoted: "Ya has votado hoy.", podium: "🏅 Podio — Esta semana", fullRanking: "📊 Clasificación completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Se produjo un error.", voteSuccess: "¡Tu voto ha sido contabilizado!", voteAlreadyVoted: "Ya has votado hoy." },
+  pt: { title: "Tier List", subtitle: "Ranking de artistas e votos da comunidade", classic: "Clássico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clássico", voteForFavorite: "Vote no seu favorito", voteBanner: "Vote na sua artista favorita! Um voto por dia.", voteForArtist: "Vote em um artista", alreadyVoted: "Você já votou hoje.", podium: "🏅 Pódio — Esta semana", fullRanking: "📊 Classificação completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Ocorreu um erro.", voteSuccess: "Seu voto foi contabilizado!", voteAlreadyVoted: "Você já votou hoje." },
+  pl: { title: "Tier List", subtitle: "Rankingi artystów i głosy społeczności", classic: "Klasyczny", vote: "Głosuj", viewProfile: "Zobacz profil", tierListClassic: "Tier List Klasyczna", voteForFavorite: "Głosuj na swojego faworyta", voteBanner: "Głosuj na swojego ulubionego artystę! Jeden głos dziennie.", voteForArtist: "Głosuj na artystę", alreadyVoted: "Oddałeś już głos.", podium: "🏅 Podium — Ten tydzień", fullRanking: "📊 Pełny ranking", artistCount: (n: number) => `${n} artysta/ów`, voteError: "Wystąpił błąd.", voteSuccess: "Twój głos został policzony!", voteAlreadyVoted: "Oddałeś już głos dzisiaj." },
+  id: { title: "Tier List", subtitle: "Peringkat artis dan suara komunitas", classic: "Klasik", vote: "Vote", viewProfile: "Lihat profil", tierListClassic: "Tier List Klasik", voteForFavorite: "Pilih favoritmu", voteBanner: "Pilih artis favoritmu! Satu suara per hari.", voteForArtist: "Pilih seorang artis", alreadyVoted: "Anda sudah memilih hari ini.", podium: "🏅 Podium — Minggu ini", fullRanking: "📊 Peringkat lengkap", artistCount: (n: number) => `${n} artis`, voteError: "Terjadi kesalahan.", voteSuccess: "Suara Anda telah dihitung!", voteAlreadyVoted: "Anda sudah memilih hari ini." },
+  ru: { title: "Tier List", subtitle: "Рейтинги артистов и голоса сообщества", classic: "Классика", vote: "Голосовать", viewProfile: "Посмотреть профиль", tierListClassic: "Tier List Классика", voteForFavorite: "Голосуйте за фаворита", voteBanner: "Голосуйте за любимого артиста! Один голос в день.", voteForArtist: "Голосовать за артиста", alreadyVoted: "Вы уже голосовали сегодня.", podium: "🏅 Подиум — Эта неделя", fullRanking: "📊 Полный рейтинг", artistCount: (n: number) => `${n} артист(ов)`, voteError: "Произошла ошибка.", voteSuccess: "Ваш голос учтён!", voteAlreadyVoted: "Вы уже голосовали сегодня." },
 };
 
 type Artist = {
@@ -142,11 +142,14 @@ const getEffectiveTier = (artist: any): string => {
   return (artist.calculatedTier || 'D').toUpperCase();
 };
 
-export default function TierListPage() {
+function TierListPageInner() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const lang = (params?.lang as string) || "fr";
   const t = tierlistTranslations[lang] || tierlistTranslations.en;
-  const [activeTab, setActiveTab] = useState<"classic" | "vote">("classic");
+  const [activeTab, setActiveTab] = useState<"classic" | "vote">(
+    searchParams?.get("tab") === "vote" ? "vote" : "classic"
+  );
   const [voteData, setVoteData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [votedToday, setVotedToday] = useState(false);
@@ -180,21 +183,29 @@ export default function TierListPage() {
         body: JSON.stringify({ artist_name: artistName }),
       });
       const data = await res.json();
-      
+
       if (data.success) {
-        setVoteMessage({ type: "success", text: data.message });
+        setVoteMessage({ type: "success", text: t.voteSuccess });
         setVotedToday(true);
         fetchVoteData();
       } else {
-        setVoteMessage({ type: "error", text: data.message });
-        if (data.message.includes("déjà")) {
-          setVotedToday(true);
-        }
+        const alreadyVotedMsg =
+          data.message?.toLowerCase().includes("already") ||
+          data.message?.toLowerCase().includes("déjà") ||
+          data.message?.toLowerCase().includes("già") ||
+          data.message?.toLowerCase().includes("ya has") ||
+          data.message?.toLowerCase().includes("já votou") ||
+          data.message?.toLowerCase().includes("oddałeś") ||
+          data.message?.toLowerCase().includes("sudah") ||
+          data.message?.toLowerCase().includes("уже");
+        setVoteMessage({ type: "error", text: alreadyVotedMsg ? t.voteAlreadyVoted : t.voteError });
+        if (alreadyVotedMsg) setVotedToday(true);
       }
-      
-      setTimeout(() => setVoteMessage(null), 3000);
+
+      setTimeout(() => setVoteMessage(null), 3500);
     } catch (e) {
       setVoteMessage({ type: "error", text: t.voteError });
+      setTimeout(() => setVoteMessage(null), 3500);
     } finally {
       setVotingArtist(null);
     }
@@ -270,20 +281,32 @@ export default function TierListPage() {
           </button>
         </div>
 
+        {/* Floating toast */}
         {voteMessage && (
           <div style={{
-            padding: "16px 24px",
-            borderRadius: "var(--radius-md)",
-            background: voteMessage.type === "success" 
-              ? "rgba(34, 197, 94, 0.15)" 
-              : "rgba(239, 68, 68, 0.15)",
-            border: `1px solid ${voteMessage.type === "success" ? "#22c55e" : "#ef4444"}`,
-            color: voteMessage.type === "success" ? "#22c55e" : "#ef4444",
+            position: "fixed",
+            top: "90px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 9999,
+            padding: "14px 28px",
+            borderRadius: "40px",
+            background: voteMessage.type === "success"
+              ? "rgba(22, 163, 74, 0.95)"
+              : "rgba(220, 38, 38, 0.95)",
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: "0.95rem",
             textAlign: "center",
-            marginBottom: "24px",
-            fontWeight: 500
+            boxShadow: voteMessage.type === "success"
+              ? "0 8px 32px rgba(34,197,94,0.4)"
+              : "0 8px 32px rgba(239,68,68,0.4)",
+            backdropFilter: "blur(8px)",
+            border: `1px solid ${voteMessage.type === "success" ? "#22c55e" : "#ef4444"}`,
+            whiteSpace: "nowrap",
+            animation: "toastIn 0.25s ease",
           }}>
-            {voteMessage.text}
+            {voteMessage.type === "success" ? "✅ " : "❌ "}{voteMessage.text}
           </div>
         )}
 
@@ -600,8 +623,9 @@ export default function TierListPage() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "flex-end",
-                gap: "16px",
-                marginBottom: "24px"
+                gap: "12px",
+                marginBottom: "32px",
+                padding: "0 8px",
               }}>
                {/* 2nd Place */}
                   {voteData?.rankings?.this_week?.[1] && (
@@ -609,51 +633,37 @@ export default function TierListPage() {
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
-                     <div style={{
-                       textAlign: "center",
-                       transform: "translateY(20px)"
-                     }}>
+                     <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                       <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🥈</div>
                        <div style={{
-                         width: "90px",
-                         height: "90px",
-                         margin: "0 auto 8px",
+                         width: "84px", height: "84px",
                          borderRadius: "50%",
                          border: "3px solid #c0c0c0",
-                         background: "var(--bg-card)",
+                         background: "rgba(192,192,192,0.1)",
                          overflow: "hidden",
-                         display: "flex",
-                         alignItems: "center",
-                         justifyContent: "center",
-                         boxShadow: "0 0 20px rgba(192,192,192,0.3)"
+                         position: "relative",
+                         boxShadow: "0 0 18px rgba(192,192,192,0.35)",
                        }}>
                          {(() => {
                            const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[1]?.artist_name);
                            return artist?.image ? (
-                             <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[1]?.artist_name} fill style={{ objectFit: "cover" }} />
+                             <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[1]?.artist_name} fill sizes="84px" style={{ objectFit: "cover" }} />
                            ) : (
-                             <span style={{ fontSize: "2rem", color: "#c0c0c0" }}>2</span>
+                             <span style={{ fontSize: "2rem", color: "#c0c0c0", display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>2</span>
                            );
                          })()}
                        </div>
                        <div style={{
-                         width: "40px",
-                         height: "40px",
-                         margin: "0 auto",
-                         borderRadius: "50%",
-                         background: "linear-gradient(135deg, #c0c0c0, #a0a0a0)",
-                         display: "flex",
-                         alignItems: "center",
-                         justifyContent: "center",
-                         fontWeight: 800,
-                         fontSize: "1.25rem",
-                         color: "#000"
-                       }}>2</div>
-                       <div style={{ fontWeight: 700, color: "#fff", marginTop: "8px", fontSize: "0.9rem" }}>
+                         marginTop: "8px", fontWeight: 700, color: "#e0e0e0",
+                         fontSize: "0.82rem", maxWidth: "90px", overflow: "hidden",
+                         textOverflow: "ellipsis", whiteSpace: "nowrap",
+                       }}>
                          {voteData?.rankings?.this_week?.[1]?.artist_name}
                        </div>
-                       <div style={{ fontSize: "0.8rem", color: "#c0c0c0" }}>
+                       <div style={{ fontSize: "0.75rem", color: "#c0c0c0", fontWeight: 600 }}>
                          {voteData?.rankings?.this_week?.[1]?.week_count} ⭐
                        </div>
+                       <div style={{ marginTop: "10px", width: "90px", height: "48px", background: "linear-gradient(180deg,#9ca3af,#6b7280)", borderRadius: "6px 6px 0 0", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1.1rem", color: "#fff" }}>2</div>
                      </div>
                    </Link>
                  )}
@@ -664,54 +674,39 @@ export default function TierListPage() {
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
-                     <div style={{
-                       textAlign: "center",
-                       transform: "scale(1.1)"
-                     }}>
+                     <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                       <div style={{ fontSize: "1.5rem", marginBottom: "4px" }}>👑</div>
                        <div style={{
-                         width: "120px",
-                         height: "120px",
-                       margin: "0 auto 8px",
-                       borderRadius: "50%",
-                       border: "4px solid #ffd700",
-                       background: "var(--bg-card)",
-                       overflow: "hidden",
-                       display: "flex",
-                       alignItems: "center",
-                       justifyContent: "center",
-                       boxShadow: "0 0 30px rgba(255,215,0,0.5)"
-                     }}>
-                       {(() => {
-                         const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name);
-                         return artist?.image ? (
-                           <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[0]?.artist_name} fill style={{ objectFit: "cover" }} />
-                         ) : (
-                           <span style={{ fontSize: "2.5rem", color: "#ffd700" }}>1</span>
-                         );
-                       })()}
+                         width: "112px", height: "112px",
+                         borderRadius: "50%",
+                         border: "4px solid #ffd700",
+                         background: "rgba(255,215,0,0.1)",
+                         overflow: "hidden",
+                         position: "relative",
+                         boxShadow: "0 0 32px rgba(255,215,0,0.55)",
+                       }}>
+                         {(() => {
+                           const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name);
+                           return artist?.image ? (
+                             <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[0]?.artist_name} fill sizes="112px" style={{ objectFit: "cover" }} />
+                           ) : (
+                             <span style={{ fontSize: "2.5rem", color: "#ffd700", display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>1</span>
+                           );
+                         })()}
+                       </div>
+                       <div style={{
+                         marginTop: "8px", fontWeight: 800, color: "#ffd700",
+                         fontSize: "0.9rem", maxWidth: "116px", overflow: "hidden",
+                         textOverflow: "ellipsis", whiteSpace: "nowrap",
+                       }}>
+                         {voteData?.rankings?.this_week?.[0]?.artist_name}
+                       </div>
+                       <div style={{ fontSize: "0.8rem", color: "#ffd700", fontWeight: 700 }}>
+                         {voteData?.rankings?.this_week?.[0]?.week_count} ⭐
+                       </div>
+                       <div style={{ marginTop: "10px", width: "116px", height: "68px", background: "linear-gradient(180deg,#ffd700,#d97706)", borderRadius: "6px 6px 0 0", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: "1.4rem", color: "#000" }}>1</div>
                      </div>
-                     <div style={{
-                       width: "50px",
-                       height: "50px",
-                       margin: "0 auto",
-                       borderRadius: "50%",
-                       background: "linear-gradient(135deg, #ffd700, #ffaa00)",
-                       display: "flex",
-                       alignItems: "center",
-                       justifyContent: "center",
-                       fontWeight: 800,
-                       fontSize: "1.5rem",
-                       color: "#000",
-                       boxShadow: "0 4px 15px rgba(255,215,0,0.5)"
-                     }}>👑</div>
-                     <div style={{ fontWeight: 700, color: "#ffd700", marginTop: "8px", fontSize: "1rem" }}>
-                       {voteData?.rankings?.this_week?.[0]?.artist_name}
-                     </div>
-                     <div style={{ fontSize: "0.85rem", color: "#ffd700" }}>
-                       {voteData?.rankings?.this_week?.[0]?.week_count} ⭐
-                     </div>
-                   </div>
-                 </Link>
+                   </Link>
                  )}
 
                 {/* 3rd Place */}
@@ -720,53 +715,39 @@ export default function TierListPage() {
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
-                     <div style={{
-                       textAlign: "center",
-                       transform: "translateY(40px)"
-                     }}>
+                     <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                       <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🥉</div>
                        <div style={{
-                         width: "112px",
-                         height: "112px",
-                         margin: "0 auto 8px",
-                       borderRadius: "50%",
-                       border: "3px solid #cd7f32",
-                       background: "var(--bg-card)",
-                       overflow: "hidden",
-                       display: "flex",
-                       alignItems: "center",
-                       justifyContent: "center",
-                       boxShadow: "0 0 20px rgba(205,127,50,0.3)"
+                         width: "76px", height: "76px",
+                         borderRadius: "50%",
+                         border: "3px solid #cd7f32",
+                         background: "rgba(205,127,50,0.1)",
+                         overflow: "hidden",
+                         position: "relative",
+                         boxShadow: "0 0 16px rgba(205,127,50,0.3)",
                        }}>
-                       {(() => {
-                         const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name);
-                         return artist?.image ? (
-                           <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[2]?.artist_name} fill style={{ objectFit: "cover" }} />
-                         ) : (
-                           <span style={{ fontSize: "1.75rem", color: "#cd7f32" }}>3</span>
-                         );
-                       })()}
+                         {(() => {
+                           const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name);
+                           return artist?.image ? (
+                             <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[2]?.artist_name} fill sizes="76px" style={{ objectFit: "cover" }} />
+                           ) : (
+                             <span style={{ fontSize: "1.5rem", color: "#cd7f32", display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>3</span>
+                           );
+                         })()}
+                       </div>
+                       <div style={{
+                         marginTop: "8px", fontWeight: 700, color: "#d4a27a",
+                         fontSize: "0.78rem", maxWidth: "82px", overflow: "hidden",
+                         textOverflow: "ellipsis", whiteSpace: "nowrap",
+                       }}>
+                         {voteData?.rankings?.this_week?.[2]?.artist_name}
+                       </div>
+                       <div style={{ fontSize: "0.72rem", color: "#cd7f32", fontWeight: 600 }}>
+                         {voteData?.rankings?.this_week?.[2]?.week_count} ⭐
+                       </div>
+                       <div style={{ marginTop: "10px", width: "82px", height: "32px", background: "linear-gradient(180deg,#cd7f32,#a05a20)", borderRadius: "6px 6px 0 0", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1rem", color: "#fff" }}>3</div>
                      </div>
-                     <div style={{
-                       width: "36px",
-                       height: "36px",
-                       margin: "0 auto",
-                       borderRadius: "50%",
-                       background: "linear-gradient(135deg, #cd7f32, #a05a20)",
-                       display: "flex",
-                       alignItems: "center",
-                       justifyContent: "center",
-                       fontWeight: 800,
-                       fontSize: "1rem",
-                       color: "#fff"
-                     }}>3</div>
-                     <div style={{ fontWeight: 700, color: "#fff", marginTop: "8px", fontSize: "0.85rem" }}>
-                       {voteData?.rankings?.this_week?.[2]?.artist_name}
-                     </div>
-                     <div style={{ fontSize: "0.75rem", color: "#cd7f32" }}>
-                       {voteData?.rankings?.this_week?.[2]?.week_count} ⭐
-                     </div>
-                   </div>
-                 </Link>
+                   </Link>
                  )}
               </div>
 
@@ -784,50 +765,52 @@ export default function TierListPage() {
                 gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
                 gap: "12px"
               }}>
-                {voteData?.rankings?.this_week?.slice(0, 15).map((artist: any, index: number) => (
-                  <div
-                    key={artist.artist_id}
-                    style={{
-                      padding: "14px 16px",
-                      borderRadius: "var(--radius-md)",
-                      background: index < 3 ? "rgba(255, 215, 0, 0.08)" : "var(--bg-card)",
-                      border: index < 3 ? "1px solid rgba(255, 215, 0, 0.2)" : "1px solid var(--border)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "12px"
-                    }}
-                  >
-                    <div style={{
-                      width: "28px",
-                      height: "28px",
-                      borderRadius: "50%",
-                      background: index === 0 ? "#ffd700" : index === 1 ? "#c0c0c0" : index === 2 ? "#cd7f32" : "var(--bg-subtle)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontWeight: 700,
-                      fontSize: index < 3 ? "0.9rem" : "0.75rem",
-                      color: index < 3 ? "#000" : "var(--text-muted)"
-                    }}>
-                      {index + 1}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontWeight: 600, color: "var(--text-primary)", fontSize: "0.9rem" }}>
-                        {artist.artist_name}
-                      </div>
-                      <div style={{ fontSize: "0.7rem", color: rankColors[artist.rank] }}>
-                        {artist.rank}
-                      </div>
-                    </div>
-                    <div style={{ 
-                      fontWeight: 700, 
-                      color: index < 3 ? "#ffd700" : "var(--text-muted)",
-                      fontSize: "1rem"
-                    }}>
-                      {artist.week_count} ⭐
-                    </div>
-                  </div>
-                ))}
+                 {voteData?.rankings?.this_week?.slice(0, 15).map((entry: any, index: number) => {
+                   const artistObj = artists.find(a => a.name === entry.artist_name);
+                   const medalColor = index === 0 ? "#ffd700" : index === 1 ? "#c0c0c0" : index === 2 ? "#cd7f32" : "rgba(255,255,255,0.15)";
+                   return (
+                     <Link key={entry.artist_id} href={`/${lang}/artist/${slugify(entry.artist_name)}`} style={{ textDecoration: "none" }}>
+                       <div style={{
+                         padding: "10px 14px",
+                         borderRadius: "12px",
+                         background: index < 3 ? "rgba(255,215,0,0.06)" : "rgba(255,255,255,0.03)",
+                         border: `1px solid ${index < 3 ? "rgba(255,215,0,0.18)" : "rgba(255,255,255,0.08)"}`,
+                         display: "flex",
+                         alignItems: "center",
+                         gap: "10px",
+                         transition: "background 0.2s",
+                       }}>
+                         <div style={{
+                           width: "26px", height: "26px", borderRadius: "50%", flexShrink: 0,
+                           background: medalColor,
+                           display: "flex", alignItems: "center", justifyContent: "center",
+                           fontWeight: 800, fontSize: "0.78rem",
+                           color: index < 3 ? "#000" : "rgba(255,255,255,0.6)",
+                         }}>
+                           {index + 1}
+                         </div>
+                         {artistObj?.image && (
+                           <div style={{ width: "36px", height: "44px", borderRadius: "6px", overflow: "hidden", flexShrink: 0, position: "relative" }}>
+                             <Image src={`/assets/images/artists/${artistObj.image}`} alt={entry.artist_name} fill sizes="36px" style={{ objectFit: "cover" }} />
+                           </div>
+                         )}
+                         <div style={{ flex: 1, minWidth: 0 }}>
+                           <div style={{ fontWeight: 600, color: "#fff", fontSize: "0.85rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                             {entry.artist_name}
+                           </div>
+                           {entry.rank && (
+                             <div style={{ fontSize: "0.68rem", color: rankColors[entry.rank] || "rgba(255,255,255,0.4)", fontWeight: 600 }}>
+                               {entry.rank}
+                             </div>
+                           )}
+                         </div>
+                         <div style={{ fontWeight: 700, color: index < 3 ? "#ffd700" : "rgba(255,255,255,0.5)", fontSize: "0.9rem", flexShrink: 0 }}>
+                           {entry.week_count} ⭐
+                         </div>
+                       </div>
+                     </Link>
+                   );
+                 })}
               </div>
             </div>
 
@@ -871,20 +854,21 @@ export default function TierListPage() {
                                transition: "all 0.2s"
                              }}
                            >
-                             <div style={{
-                               width: "70px",
-                               height: "85px",
-                               margin: "0 auto 8px",
-                               borderRadius: "var(--radius-sm)",
-                               border: `2px solid ${rankColors[artist.rank]}`,
-                               overflow: "hidden",
-                               display: "flex",
-                               alignItems: "center",
-                               justifyContent: "center"
-                             }}>
-                             {artist.image ? (
-                               <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill style={{ objectFit: "cover" }} />
-                             ) : (
+                              <div style={{
+                                width: "70px",
+                                height: "85px",
+                                margin: "0 auto 8px",
+                                borderRadius: "var(--radius-sm)",
+                                border: `2px solid ${rankColors[artist.rank]}`,
+                                overflow: "hidden",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                position: "relative",
+                              }}>
+                              {artist.image ? (
+                                <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="70px" style={{ objectFit: "cover" }} />
+                              ) : (
                                <span style={{ 
                                  fontSize: "1.75rem", 
                                  fontWeight: 800, 
@@ -941,10 +925,22 @@ export default function TierListPage() {
         @media (max-width: 600px) {
           .container {
             padding-left: 12px !important;
-            paddingRight: 12px !important;
+            padding-right: 12px !important;
           }
+        }
+        @keyframes toastIn {
+          from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+          to   { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
       `}</style>
     </>
+  );
+}
+
+export default function TierListPage() {
+  return (
+    <Suspense fallback={null}>
+      <TierListPageInner />
+    </Suspense>
   );
 }
