@@ -734,8 +734,8 @@ export default function MobileArtistsPage() {
           justify-content: center;
         }
         .mobile-team-slot {
-          width: 32px;
-          height: 40px;
+          width: 38px;
+          height: 48px;
           border-radius: 3px;
           border: 1px solid rgba(255,255,255,0.1);
           background: rgba(255,255,255,0.05);

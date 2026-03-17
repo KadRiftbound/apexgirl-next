@@ -458,7 +458,6 @@ export default function ArtistsPage() {
             <div className="team-card team-1">
               {/* Header with trash icon */}
               <div className="team-card-header">
-                <span className="team-label team-1-label">⚔️ Équipe 1</span>
                 <button onClick={() => setTeam1([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
               </div>
               {/* Slots row */}
@@ -467,8 +466,8 @@ export default function ArtistsPage() {
                   <div key={i} onClick={() => team1[i] && removeFromTeam1(team1[i].id)} className="team-slot" title={team1[i] ? t.clickToRemove : ""}>
                     {team1[i] ? (
                       team1[i].image
-                        ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} width={40} height={40} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-                        : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800, fontSize: "0.9rem" }}>{team1[i].name.charAt(0)}</span>
+                        ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} width={48} height={48} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                        : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800, fontSize: "1rem" }}>{team1[i].name.charAt(0)}</span>
                     ) : <span className="slot-plus">+</span>}
                   </div>
                 ))}
@@ -516,7 +515,6 @@ export default function ArtistsPage() {
             <div className="team-card team-2">
               {/* Header with trash icon */}
               <div className="team-card-header">
-                <span className="team-label team-2-label">🛡️ Équipe 2</span>
                 <button onClick={() => setTeam2([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
               </div>
               {/* Slots row */}
@@ -525,8 +523,8 @@ export default function ArtistsPage() {
                   <div key={i} onClick={() => team2[i] && removeFromTeam2(team2[i].id)} className="team-slot" title={team2[i] ? t.clickToRemove : ""}>
                     {team2[i] ? (
                       team2[i].image
-                        ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} width={40} height={40} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-                        : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800, fontSize: "0.9rem" }}>{team2[i].name.charAt(0)}</span>
+                        ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} width={48} height={48} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                        : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800, fontSize: "1rem" }}>{team2[i].name.charAt(0)}</span>
                     ) : <span className="slot-plus">+</span>}
                   </div>
                 ))}
@@ -828,22 +826,14 @@ export default function ArtistsPage() {
         .team-1 { border-color: rgba(139,92,246,0.5); }
         .team-2 { border-color: rgba(6,182,212,0.5); }
 
-        /* Header: label + trash */
+        /* Header: trash only */
         .team-card-header {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-end;
           align-items: center;
-          margin-bottom: 5px;
+          margin-bottom: 3px;
           flex-shrink: 0;
         }
-        .team-label {
-          font-size: 0.72rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-        .team-1-label { color: #8b5cf6; }
-        .team-2-label { color: #06b6d4; }
         .trash-btn {
           background: transparent;
           border: 1px solid rgba(255,255,255,0.15);
@@ -871,8 +861,8 @@ export default function ArtistsPage() {
           flex-shrink: 0;
         }
         .team-slot {
-          width: 44px;
-          height: 56px;
+          width: 53px;
+          height: 67px;
           border-radius: 5px;
           border: 1px solid rgba(255,255,255,0.15);
           background: rgba(255,255,255,0.04);
