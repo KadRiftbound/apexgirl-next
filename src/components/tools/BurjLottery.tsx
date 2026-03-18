@@ -60,9 +60,9 @@ const REWARDS: Reward[] = [
 // ─── Traductions ──────────────────────────────────────────
 const T: Record<string, any> = {
   fr: {
-    addPlayer: 'Ajouter un participant',
-    playerName: 'Nom du participant',
-    placeholder: 'Ex: Alice',
+    addPlayer: 'Ajouter des participants',
+    playerName: 'Noms des participants',
+    placeholder: 'Ex: Alice, Bob, Charlie',
     players: 'Participants',
     noPlayers: 'Aucun participant ajouté',
     mode: 'Mode de tirage',
@@ -80,9 +80,9 @@ const T: Record<string, any> = {
     maxPlayers: 'Maximum 150 participants',
   },
   en: {
-    addPlayer: 'Add participant',
-    playerName: 'Participant name',
-    placeholder: 'e.g. Alice',
+    addPlayer: 'Add participants',
+    playerName: 'Participant names',
+    placeholder: 'e.g. Alice, Bob, Charlie',
     players: 'Participants',
     noPlayers: 'No participants added',
     mode: 'Draw mode',
@@ -130,13 +130,34 @@ export default function BurjLottery() {
   const giftsPool  = REWARDS.filter(r => r.type === 'gift');
   const artistPool = REWARDS.filter(r => r.type === 'artist');
 
-  // ── Ajouter un participant
+  // ── Ajouter un ou plusieurs participants (séparés par des virgules)
   const addPlayer = () => {
-    const name = input.trim();
-    if (!name) return;
-    if (players.includes(name)) { setInputError(t.duplicate); return; }
-    if (players.length >= MAX_PLAYERS) { setInputError(t.maxPlayers); return; }
-    setPlayers([...players, name]);
+    const rawInput = input.trim();
+    if (!rawInput) return;
+    
+    // Diviser par virgule et nettoyer
+    const names = rawInput.split(',').map(n => n.trim()).filter(n => n.length > 0);
+    
+    const newPlayers = [...players];
+    let errors = [];
+    
+    for (const name of names) {
+      if (newPlayers.includes(name)) {
+        errors.push(`"${name}" ${t.duplicate}`);
+      } else if (newPlayers.length >= MAX_PLAYERS) {
+        errors.push(t.maxPlayers);
+        break;
+      } else {
+        newPlayers.push(name);
+      }
+    }
+    
+    if (errors.length > 0) {
+      setInputError(errors.join(', '));
+      return;
+    }
+    
+    setPlayers(newPlayers);
     setInput('');
     setInputError('');
     setDrawn(false);
@@ -285,6 +306,9 @@ export default function BurjLottery() {
       <div style={{ marginBottom: '14px' }}>
         <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.45)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
           {t.players} ({players.length}/{MAX_PLAYERS})
+        </div>
+        <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', marginBottom: '8px' }}>
+          💡 {t.playerName}: {t.placeholder}
         </div>
         <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
           <input

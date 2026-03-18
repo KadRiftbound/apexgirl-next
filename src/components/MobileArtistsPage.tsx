@@ -280,7 +280,30 @@ export default function MobileArtistsPage() {
               <div className="mobile-preview-title">{t.artistOverview}</div>
               {selectedArtist ? (
                 <div className="mobile-preview-content">
-                  <div className="mobile-preview-image">
+                  <div 
+                    className="mobile-preview-image"
+                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    onDoubleClick={(e) => {
+                      e.preventDefault();
+                      const isInTeam1 = team1.some(a => a.id === selectedArtist.id);
+                      const isInTeam2 = team2.some(a => a.id === selectedArtist.id);
+                      
+                      if (isInTeam1) {
+                        if (!isInTeam2 && team2.length < 5) {
+                          setTeam2([...team2, selectedArtist]);
+                        }
+                      } else if (isInTeam2) {
+                        return;
+                      } else {
+                        if (team1.length < 5) {
+                          setTeam1([...team1, selectedArtist]);
+                        } else if (team2.length < 5) {
+                          setTeam2([...team2, selectedArtist]);
+                        }
+                      }
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
                     {selectedArtist.image ? (
                       <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} />
                     ) : (

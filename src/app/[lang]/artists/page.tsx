@@ -423,8 +423,30 @@ export default function ArtistsPage() {
                 <div className="artist-preview-content">
                   <div
                     className="artist-preview-image-large"
-                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
-                    title="Double-cliquer pour voir la fiche complète"
+                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    onDoubleClick={(e) => {
+                      e.preventDefault();
+                      const isInTeam1 = team1.some(a => a.id === selectedArtist.id);
+                      const isInTeam2 = team2.some(a => a.id === selectedArtist.id);
+                      
+                      if (isInTeam1) {
+                        // Already in Team1, move to Team2 if not there
+                        if (!isInTeam2 && team2.length < 5) {
+                          setTeam2([...team2, selectedArtist]);
+                        }
+                      } else if (isInTeam2) {
+                        // Already in Team2, do nothing
+                        return;
+                      } else {
+                        // Not in any team, add to Team1 if space
+                        if (team1.length < 5) {
+                          setTeam1([...team1, selectedArtist]);
+                        } else if (team2.length < 5) {
+                          setTeam2([...team2, selectedArtist]);
+                        }
+                      }
+                    }}
+                    title="Cliquer pour voir la fiche complète • Double-cliquer pour ajouter à une équipe"
                     style={{ cursor: "pointer" }}
                   >
                     {selectedArtist.image ? (
