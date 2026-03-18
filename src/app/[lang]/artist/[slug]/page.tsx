@@ -268,7 +268,7 @@ export default function ArtistDetailPage() {
         borderBottom: `1px solid ${rankColor}33`,
         padding: '32px 0 0',
       }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '16px 20px', background: 'rgba(30,30,50,0.6)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
           {/* Breadcrumb */}
           <Link href={`/${lang}/artists`} style={{
             color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem',
