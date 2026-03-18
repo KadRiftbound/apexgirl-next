@@ -26,11 +26,11 @@ const rankColors: Record<string, string> = {
 };
 
 const genreColors: Record<string, string> = {
-  "Pop": "rgba(236, 72, 153, 0.25)",
-  "Rock": "rgba(239, 68, 68, 0.25)",
-  "EDM": "rgba(139, 92, 246, 0.25)",
-  "Hip Hop": "rgba(245, 158, 11, 0.25)",
-  "R&B": "rgba(6, 182, 212, 0.25)",
+  "Pop":     "rgba(236, 72, 153, 0.55)",
+  "Rock":    "rgba(239, 68, 68, 0.55)",
+  "EDM":     "rgba(139, 92, 246, 0.55)",
+  "Hip Hop": "rgba(245, 158, 11, 0.55)",
+  "R&B":     "rgba(6, 182, 212, 0.55)",
 };
 
 const seasonLabels: Record<string, string> = {
@@ -249,7 +249,7 @@ export default function ArtistsPage() {
       });
     });
     const genreCounts: Record<string, number> = {};
-    team.forEach(artist => { const g = artist.genre?.toUpperCase() || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
+    team.forEach(artist => { const g = artist.genre || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
     return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
   }, [team]);
 
@@ -289,7 +289,7 @@ export default function ArtistsPage() {
       });
     });
     const genreCounts: Record<string, number> = {};
-    team1.forEach(artist => { const g = artist.genre?.toUpperCase() || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
+    team1.forEach(artist => { const g = artist.genre || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
     return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
   }, [team1]);
 
@@ -329,7 +329,7 @@ export default function ArtistsPage() {
       });
     });
     const genreCounts: Record<string, number> = {};
-    team2.forEach(artist => { const g = artist.genre?.toUpperCase() || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
+    team2.forEach(artist => { const g = artist.genre || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
     return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
   }, [team2]);
 
@@ -488,7 +488,7 @@ export default function ArtistsPage() {
                         <p>🎵 {selectedArtist.genre}</p>
                         <p>📊 {t.rankLabel}: <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.rank}</span></p>
                         {selectedArtist.calculatedTier && <p>⭐ {t.tier || 'Tier'}: {selectedArtist.calculatedTier}</p>}
-                        {(selectedArtist as any).photos && <p>📍 {seasonLabels[lang]}: {(selectedArtist as any).photos}</p>}
+                        {(selectedArtist as any).season && <p>📍 {seasonLabels[lang]}: {(selectedArtist as any).season}</p>}
                       </div>
                     </div>
                     <div className="artist-preview-skills">
@@ -561,13 +561,13 @@ export default function ArtistsPage() {
                    const diffIcon = diff > 0 ? "▲" : diff < 0 ? "▼" : "—";
                    const absDiff = Math.abs(diff);
                    return (
-                     <div key={i} className="stat-row">
-                       <span className="stat-label" style={{ color }}>{label}</span>
-                       <span className="stat-value">
-                         <span style={{ color, fontWeight: 800 }}>{v1}{suffix}</span>
-                         <span className="stat-diff" style={{ color: diffColor }}>{diffIcon}{absDiff > 0 ? absDiff + suffix : ""}</span>
-                       </span>
-                     </div>
+                      <div key={i} className="stat-row">
+                        <span className="stat-label" style={{ color }}>{label}</span>
+                        <span className="stat-value">
+                          <span className="stat-number">{v1}{suffix}</span>
+                          <span className="stat-diff" style={{ color: diffColor }}>{diffIcon}{absDiff > 0 ? absDiff + suffix : ""}</span>
+                        </span>
+                      </div>
                    );
                  })}
               </div>
@@ -616,7 +616,7 @@ export default function ArtistsPage() {
                   <div key={i} className="stat-row">
                     <span className="stat-label" style={{ color }}>{label}</span>
                     <span className="stat-value">
-                      <span style={{ color }}>{v}{suffix}</span>
+                      <span className="stat-number">{v}{suffix}</span>
                     </span>
                   </div>
                 ))}
@@ -690,14 +690,6 @@ export default function ArtistsPage() {
                   title={selectedArtist?.id === artist.id ? t.viewProfileTitle : artist.name}
                   style={{ cursor: "pointer" }}
                 >
-                  {artist.acquisitionTier && acquisitionStyles[artist.acquisitionTier] && (
-                    <span
-                      className="acq-badge"
-                      style={{ background: acquisitionStyles[artist.acquisitionTier].bg, color: acquisitionStyles[artist.acquisitionTier].color, borderColor: acquisitionStyles[artist.acquisitionTier].color + "66" }}
-                    >
-                      {acquisitionStyles[artist.acquisitionTier].label}
-                    </span>
-                  )}
                   {artist.image ? (
                      <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} width={60} height={60} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                   ) : (
@@ -1038,13 +1030,27 @@ export default function ArtistsPage() {
           font-weight: 700;
           color: #fff;
           display: flex;
-          gap: 3px;
           align-items: center;
           flex-shrink: 0;
+          gap: 0;
+        }
+        .stat-number {
+          display: inline-block;
+          width: 52px;
+          text-align: right;
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: rgba(255,255,255,0.88);
+          font-variant-numeric: tabular-nums;
         }
         .stat-diff {
+          display: inline-block;
+          width: 52px;
+          text-align: left;
+          padding-left: 4px;
           font-size: 0.62rem;
           font-weight: 700;
+          font-variant-numeric: tabular-nums;
         }
         
         .artists-bottom {
@@ -1118,18 +1124,7 @@ export default function ArtistsPage() {
           font-size: 1.5rem;
           font-weight: 800;
         }
-        .acq-badge {
-          position: absolute;
-          top: 4px;
-          left: 4px;
-          padding: 2px 6px;
-          border-radius: 6px;
-          font-size: 0.6rem;
-          font-weight: 700;
-          border: 1px solid;
-          z-index: 2;
-          backdrop-filter: blur(6px);
-        }
+
         
         /* Mobile - 20/40/40 columns */
         @media (max-width: 900px) {

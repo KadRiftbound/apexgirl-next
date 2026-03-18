@@ -97,7 +97,6 @@ type Artist = {
   skills: string[];
   image?: string;
   calculatedTier: string;
-  build: string;
   specialty?: string;
 };
 
