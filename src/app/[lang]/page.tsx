@@ -887,11 +887,10 @@ export default function HomePage() {
             background: transparent;
           }
           .hero-mosaic {
-            position: relative;
-            height: 90px;
+            position: static;
             width: 100vw;
-            left: calc(-50vw + 50%);
-            margin-left: 0;
+            left: 0;
+            height: 60px;
             display: block;
             overflow: visible;
           }
