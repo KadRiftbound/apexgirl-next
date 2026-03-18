@@ -214,7 +214,7 @@ export default function CodesPage() {
           <span style={{ fontSize: '0.875rem', color: 'var(--accent-green)', fontWeight: 600 }}>({codesData.active.length})</span>
         </h2>
 
-        {codesData.active.length + codesData.expired.length === 0 ? (
+        {codesData.active.length === 0 ? (
           <p className="text-muted text-center" style={{ padding: '40px' }}>
             {t.noActive}
           </p>

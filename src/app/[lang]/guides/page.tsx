@@ -105,16 +105,6 @@ const guideListTranslations: Record<string, any> = {
    },
 };
 
-const categoryMap: Record<string, Record<string, string>> = {
-  fr: { "Tous": "Tous", "Guide classique": "Guide classique", "Guide événement": "Guide événement", "Début de jeu": "Début de jeu", "Fin de jeu": "Fin de jeu" },
-  en: { "Tous": "All", "Guide classique": "Classic Guide", "Guide événement": "Event Guide", "Début de jeu": "Early game", "Fin de jeu": "Late game" },
-  it: { "Tous": "Tutti", "Guide classique": "Guida classica", "Guide événement": "Guida evento", "Début de jeu": "Inizio gioco", "Fin de jeu": "Fine gioco" },
-  es: { "Tous": "Todos", "Guide classique": "Guía clásica", "Guide événement": "Guía evento", "Début de jeu": "Inicio del juego", "Fin de jeu": "Final del juego" },
-  pt: { "Tous": "Todos", "Guide classique": "Guia clássico", "Guide événement": "Guia evento", "Début de jeu": "Início do jogo", "Fin de jeu": "Fim de jogo" },
-  pl: { "Tous": "Wszystkie", "Guide classique": "Poradnik klasyczny", "Guide événement": "Poradnik wydarzenia", "Début de jeu": "Wczesna gra", "Fin de jeu": "Późna gra" },
-  id: { "Tous": "Semua", "Guide classique": "Panduan klasik", "Guide événement": "Panduan acara", "Début de jeu": "Awal permainan", "Fin de jeu": "Akhir permainan" },
-  ru: { "Tous": "Все", "Guide classique": "Классический гайд", "Guide événement": "Гайд события", "Début de jeu": "Ранняя игра", "Fin de jeu": "Поздняя игра" },
-};
 
 const guideTranslations: Record<string, Record<string, { title: string; description: string }>> = {
   fr: {
@@ -668,8 +658,6 @@ const guides: Guide[] = [
     inProgress: true,
   },
 ];
-
-const categories = ["Tous", "Guide classique", "Guide événement", "Début de jeu", "Fin de jeu"];
 
 function getGuideTitle(id: string, lang: string, fallback: string): string {
   return guideTranslations[lang]?.[id]?.title || fallback;
