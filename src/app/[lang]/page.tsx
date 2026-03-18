@@ -474,7 +474,7 @@ export default function HomePage() {
           position: relative;
           min-height: 60vh;
           display: flex;
-          align-items: center;
+          align-items: flex-end;
           justify-content: center;
           overflow: hidden;
         }
@@ -497,12 +497,12 @@ export default function HomePage() {
           z-index: 1;
           background:
             linear-gradient(180deg,
-              rgba(10,10,18,0.65) 0%,
-              rgba(10,10,18,0.35) 35%,
-              rgba(10,10,18,0.35) 65%,
-              rgba(10,10,18,0.95) 100%
+              rgba(10,10,18,0.30) 0%,
+              rgba(10,10,18,0.10) 30%,
+              rgba(10,10,18,0.55) 60%,
+              rgba(10,10,18,0.97) 100%
             ),
-            radial-gradient(ellipse at 50% 40%, rgba(255,77,141,0.08) 0%, transparent 65%);
+            radial-gradient(ellipse at 50% 60%, rgba(255,77,141,0.10) 0%, transparent 65%);
         }
         .hero-content {
           position: relative;
@@ -511,21 +511,22 @@ export default function HomePage() {
           flex-direction: column;
           align-items: center;
           text-align: center;
-          padding: 56px 24px 44px;
+          padding: 24px 24px 48px;
           max-width: 720px;
           margin: 0 auto;
+          width: 100%;
         }
         .hero-badge {
           display: inline-block;
-          padding: 5px 16px;
-          background: rgba(255,77,141,0.18);
-          border: 1px solid rgba(255,77,141,0.4);
+          padding: 6px 18px;
+          background: rgba(255,77,141,0.40);
+          border: 1px solid rgba(255,77,141,0.75);
           border-radius: 999px;
-          font-size: 0.75rem;
+          font-size: 0.78rem;
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: #ff80ab;
+          color: #fff;
           margin-bottom: 18px;
         }
         .hero-title {
