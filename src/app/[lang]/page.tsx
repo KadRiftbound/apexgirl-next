@@ -878,70 +878,96 @@ export default function HomePage() {
 
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
-          /* Sur mobile : éventail en bande horizontale plein width, titre en dessous */
+          /* Hero section: mosaic en éventail au-dessus du titre */
           .hero-section {
+            position: relative;
             height: auto;
             min-height: 0;
             overflow: visible;
+            background: transparent;
           }
           .hero-mosaic {
             position: relative;
-            height: 120px;
-            display: flex;
-            overflow-x: auto;
-            gap: 8px;
-            padding: 0 16px;
-            align-items: center;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            height: 90px;
+            width: 100%;
+            display: block;
+            overflow: visible;
+            padding: 0;
           }
           .hero-mosaic::-webkit-scrollbar { display: none; }
           .mosaic-card {
-            position: relative !important;
+            position: absolute !important;
             top: auto !important;
             left: auto !important;
-            width: 72px !important;
-            height: 96px;
+            width: 28px !important;
+            height: 36px;
             flex-shrink: 0;
             transform: none !important;
-            border-radius: 10px;
+            border-radius: 4px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.25);
-            opacity: 0.94 !important;
+            opacity: 0.95 !important;
           }
+          .hero-mosaic::-webkit-scrollbar { display: none; }
           .hero-overlay { display: none; }
+          /* Fan arc positions: centered at 50%-195px, parabolic vertical arc */
+          .hero-mosaic .mosaic-card:nth-child(1)  { left: calc(50% - 195px) !important; top: 40px !important; transform: rotate(-21deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(2)  { left: calc(50% - 192px) !important; top: 35px !important; transform: rotate(-18deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(3)  { left: calc(50% - 189px) !important; top: 29px !important; transform: rotate(-14deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(4)  { left: calc(50% - 186px) !important; top: 23px !important; transform: rotate(-10deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(5)  { left: calc(50% - 183px) !important; top: 17px !important; transform: rotate(-7deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(6)  { left: calc(50% - 180px) !important; top: 13px !important; transform: rotate(-3.5deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(7)  { left: calc(50% - 177px) !important; top: 10px !important; transform: none !important; }
+          .hero-mosaic .mosaic-card:nth-child(8)  { left: calc(50% - 174px) !important; top: 13px !important; transform: rotate(3.5deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(9)  { left: calc(50% - 171px) !important; top: 17px !important; transform: rotate(7deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(10) { left: calc(50% - 168px) !important; top: 23px !important; transform: rotate(10deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(11) { left: calc(50% - 165px) !important; top: 29px !important; transform: rotate(14deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(12) { left: calc(50% - 162px) !important; top: 35px !important; transform: rotate(18deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(13) { left: calc(50% - 159px) !important; top: 40px !important; transform: rotate(21deg) !important; }
 
+          /* Contenu hero mobile: compact */
           .hero-content-mobile {
             display: flex;
-            padding: 20px 16px 8px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 12px 16px 4px;
+          }
+          .hero-badge { font-size: 0.65rem; padding: 4px 12px; margin-bottom: 8px; }
+          .hero-title { font-size: 1.8rem; letter-spacing: -1px; margin-bottom: 6px; }
+          .hero-subtitle { display: none; }
+          .hero-subtitle :global(strong) { color: #ff80ab; }
+          .hero-stats { display: none; }
+          .hero-ctas a,
+          .hero-ctas {
+            flex-direction: row;
+            gap: 6px;
+            justify-content: center;
+            width: 100%;
+            flex-wrap: nowrap;
+          }
+          .hero-ctas a {
+            padding: 8px 12px !important;
+            font-size: 0.75rem !important;
+            border-radius: 10px !important;
+            box-shadow: none !important;
+            white-space: nowrap;
           }
 
-          /* Couleur du sous-titre sur mobile */
-          .hero-subtitle {
-            color: #e8ccff;
-            font-size: 1rem;
-          }
-          .hero-subtitle :global(strong) {
-            color: #ff80ab;
-          }
-          .hero-stats {
-            color: rgba(255,255,255,0.75);
-          }
+          .hero-content-desktop { display: none !important; }
+          .artist-strip-section { display: none; }
 
-          .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; gap: 10px; }
-
-          /* Sections : 2 par ligne sur mobile */
-          .offer-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-          .offer-card { flex-direction: column; align-items: flex-start; padding: 16px 14px; gap: 10px; }
-          .offer-card-icon { width: 44px; height: 44px; font-size: 1.6rem; }
-          .offer-card-title { font-size: 0.95rem; }
-          .offer-card-desc { font-size: 0.72rem; margin-bottom: 0; }
+          /* Offer section: visible directement après le hero */
+          .offer-section { padding: 24px 12px; }
+          .offer-inner { padding: 0; }
+          .offer-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+          .offer-card { flex-direction: column; align-items: flex-start; padding: 14px 12px; gap: 8px; }
+          .offer-card-icon { width: 40px; height: 40px; font-size: 1.4rem; }
+          .offer-card-title { font-size: 0.88rem; }
+          .offer-card-desc { font-size: 0.68rem; margin-bottom: 0; }
           .offer-card-detail { display: none; }
           .offer-card-arrow { display: none; }
-          .offer-section { padding: 32px 16px; }
-          .offer-inner { padding: 0; }
 
-          .artist-strip-inner { padding: 0 16px; }
           .codes-header { flex-direction: column; }
         }
       `}</style>
