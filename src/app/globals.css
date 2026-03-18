@@ -744,4 +744,4 @@ img {
 .tier-tooltip-container:hover .tier-tooltip {
   display: block !important;
 }
-.acq-badge { display: none !important; }
+/* .acq-badge display restored — was incorrectly hidden */

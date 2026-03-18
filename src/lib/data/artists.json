@@ -11,9 +11,7 @@
       "↑50% basic attack damage dealt"
     ],
     "description": "A talented Center from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -44,9 +42,7 @@
       "↓12% basic attack damage taken"
     ],
     "description": "A talented Dancer from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "image": "Genevieve.jpg",
     "skillCategories": {
       "dps": [
@@ -77,9 +73,7 @@
       "↓12% basic attack damage taken"
     ],
     "description": "A talented Center from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -110,9 +104,7 @@
       "↑50% basic attack damage dealt"
     ],
     "description": "A talented Vocalist from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -143,9 +135,7 @@
       "↑50% basic attack damage dealt"
     ],
     "description": "A talented Vocalist from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -177,9 +167,7 @@
       "10% Fan Capacity"
     ],
     "description": "A talented Vocalist from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -209,9 +197,7 @@
       "10% Fan Capacity"
     ],
     "description": "A talented Center from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -242,9 +228,7 @@
       "10% Fan Capacity"
     ],
     "description": "A talented Dancer from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -272,8 +256,7 @@
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -287,7 +270,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Fantasy Vibes.",
-    "thoughts": "",
     "earlyGameRecommended": true,
     "acquisitionTier": "mid",
     "image": "Alice.jpg",
@@ -307,8 +289,7 @@
       "↑24% skill damage",
       "↑12% fan cap"
     ],
-    "build": "",
-    "photos": "Rome 3",
+    "season": "Rome 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -323,7 +304,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Dancer from None.",
-    "thoughts": "",
     "image": "Antonia.jpg",
     "specialty": "Solo car",
     "event": "Rome 3",
@@ -341,8 +321,7 @@
       "↑200 dps when attacking gc/club/lm",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Anniversary",
+    "season": "Anniversary",
     "skillCategories": {
       "dps": [
         "180/DPS Attacking Group Center, Club, Landmark"
@@ -358,7 +337,6 @@
     },
     "calculatedTier": "C",
     "description": "A talented Center from DreamCatcher.",
-    "thoughts": "Single Car",
     "image": "Anya.jpg",
     "specialty": "Solo car",
     "event": "Anniversary",
@@ -376,8 +354,7 @@
       "↑50% basic attack damage dealt",
       "↓12% basic attack damage taken"
     ],
-    "build": "",
-    "photos": "Rome 1",
+    "season": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -392,7 +369,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from VenuLux.",
-    "thoughts": "",
     "image": "Ariadne.jpg",
     "specialty": "Mixte",
     "event": "Rome 1",
@@ -410,8 +386,7 @@
       "↑30% damage to world building guard",
       "↓12% skill damage taken"
     ],
-    "build": "",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -426,7 +401,6 @@
     },
     "calculatedTier": "C",
     "description": "A talented Center from WildFlower.",
-    "thoughts": "",
     "image": "Audrey.jpg",
     "specialty": "Mixte",
     "event": "Original",
@@ -444,8 +418,7 @@
       "↑24% player damage",
       "↑12% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Rome 2",
+    "season": "Rome 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -460,7 +433,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from None.",
-    "thoughts": "Single Car",
     "image": "Aurelia.jpg",
     "specialty": "Solo car",
     "event": "Rome 2",
@@ -478,8 +450,7 @@
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -493,7 +464,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Sparkle Artists.",
-    "thoughts": "",
     "earlyGameRecommended": true,
     "acquisitionTier": "mid",
     "image": "Aurora.jpg",
@@ -513,8 +483,7 @@
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -529,7 +498,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Luna.",
-    "thoughts": "Damage Reduction",
     "image": "Avery.jpg",
     "specialty": "Dommage réduction",
     "event": "Original",
@@ -547,8 +515,7 @@
       "↑70% basic attack damage dealt",
       "↑14% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Tokyo 4",
+    "season": "Tokyo 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -563,7 +530,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from None.",
-    "thoughts": "Single Car",
     "image": "Aya.jpg",
     "specialty": "Solo car",
     "event": "Tokyo 4",
@@ -581,8 +547,7 @@
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Tokyo 1",
+    "season": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -597,7 +562,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
-    "thoughts": "Damage Reduction",
     "image": "Ayaka.jpg",
     "specialty": "Dommage réduction",
     "event": "Tokyo 1",
@@ -615,8 +579,7 @@
       "↑200 dps when defending",
       "↑36% damage to world building guard"
     ],
-    "build": "HQ Defense",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [
         "200/DPS Defending HQ, GH, Club, LM"
@@ -631,7 +594,6 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from Echo.",
-    "thoughts": "HQ Defense",
     "image": "Brooklyn.jpg",
     "specialty": "HQ Defense",
     "event": "Original",
@@ -649,8 +611,7 @@
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Rome 1",
+    "season": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -665,7 +626,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from VenuLux.",
-    "thoughts": "Single Car",
     "image": "Calliope.jpg",
     "specialty": "Solo car",
     "event": "Rome 1",
@@ -683,8 +643,7 @@
       "↑20% player damage",
       "↑10% rally fan cap"
     ],
-    "build": "Rally",
-    "photos": "Tokyo 1",
+    "season": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -699,7 +658,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from Tokyo48.",
-    "thoughts": "Rally",
     "acquisitionTier": "whale",
     "image": "Chizuru.jpg",
     "specialty": "Rassemblement",
@@ -718,8 +676,7 @@
       "↑20% skill damage",
       "↓12% basic attack damage taken"
     ],
-    "build": "",
-    "photos": "SVS",
+    "season": "SVS",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -734,7 +691,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Luna.",
-    "thoughts": "",
     "image": "Cindy.jpg",
     "specialty": "Mixte",
     "event": "SvS Event",
@@ -752,8 +708,7 @@
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -767,7 +722,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Sparkle Artists.",
-    "thoughts": "",
     "earlyGameRecommended": true,
     "acquisitionTier": "f2p",
     "image": "Claire.jpg",
@@ -787,8 +741,7 @@
       "↑24% player damage",
       "↑24% player damage"
     ],
-    "build": "",
-    "photos": "Rome 3",
+    "season": "Rome 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -802,7 +755,6 @@
     },
     "calculatedTier": "S+",
     "description": "A talented Vocalist from None.",
-    "thoughts": "S+",
     "image": "Claudius.jpg",
     "specialty": "Augmentation dommage",
     "event": "Rome 3",
@@ -820,8 +772,7 @@
       "↑240 dps when defending",
       "↓12% skill damage taken"
     ],
-    "build": "HQ Defense",
-    "photos": "Rome 2",
+    "season": "Rome 2",
     "skillCategories": {
       "dps": [
         "240/DPS Defending HQ, GH, Club, LM"
@@ -837,7 +788,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
-    "thoughts": "HQ Defense",
     "image": "Cornelia.jpg",
     "specialty": "Mixte",
     "event": "Rome 2",
@@ -855,8 +805,7 @@
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Rome 1",
+    "season": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -870,7 +819,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from VenuLux.",
-    "thoughts": "",
     "image": "Daphne.jpg",
     "specialty": "Augmentation dommage",
     "event": "Rome 1",
@@ -888,8 +836,7 @@
       "↑24% skill damage",
       "↑60% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Bali 2",
+    "season": "Bali 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -903,7 +850,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from Breezara.",
-    "thoughts": "",
     "specialty": "Augmentation dommage",
     "event": "Bali 2",
     "image": "Dewi.jpg",
@@ -921,8 +867,7 @@
       "↑50% basic attack damage dealt",
       "↓12% basic attack damage taken"
     ],
-    "build": "",
-    "photos": "Rome 1",
+    "season": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -937,7 +882,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from VenuLux.",
-    "thoughts": "",
     "image": "Eirene.jpg",
     "specialty": "Mixte",
     "event": "Rome 1",
@@ -955,8 +899,7 @@
       "↑12% fan cap",
       "↓12% basic attack damage taken"
     ],
-    "build": "",
-    "photos": "Tokyo 3",
+    "season": "Tokyo 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -972,7 +915,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Dancer from None.",
-    "thoughts": "",
     "specialty": "Solo car",
     "event": "Tokyo 3",
     "image": "Eri.jpg",
@@ -990,8 +932,7 @@
       "↑20% skill damage",
       "↓12% basic attack damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1006,7 +947,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from DreamCatcher.",
-    "thoughts": "Damage Reduction",
     "earlyGameRecommended": true,
     "acquisitionTier": "mid",
     "image": "Everly.jpg",
@@ -1026,8 +966,7 @@
       "↑12% fan cap",
       "↓12% basic attack damage taken"
     ],
-    "build": "Single Car",
-    "photos": "Rome 3",
+    "season": "Rome 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1043,7 +982,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Center from None.",
-    "thoughts": "Single Car",
     "image": "Flora.jpg",
     "specialty": "Solo car",
     "event": "Rome 3",
@@ -1061,8 +999,7 @@
       "↑60% basic attack damage dealt",
       "↑12% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Tokyo 2",
+    "season": "Tokyo 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1077,7 +1014,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from Rina.",
-    "thoughts": "Single Car",
     "specialty": "Solo car",
     "event": "Tokyo 2",
     "image": "Haruki.jpg",
@@ -1095,8 +1031,7 @@
       "↑20% player damage",
       "↑10% rally fan cap"
     ],
-    "build": "Rally",
-    "photos": "Community Event",
+    "season": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1111,7 +1046,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from WildFlower.",
-    "thoughts": "Rally",
     "image": "Hestia.jpg",
     "specialty": "Rassemblement",
     "event": "Special",
@@ -1129,8 +1063,7 @@
       "↑24% player damage",
       "↓12% skill damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Tokyo 3",
+    "season": "Tokyo 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1145,7 +1078,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from None.",
-    "thoughts": "Damage Reduction",
     "image": "Hikari.jpg",
     "specialty": "Mixte",
     "event": "Tokyo 3",
@@ -1163,8 +1095,7 @@
       "↑24% player damage",
       "↓12% skill damage taken"
     ],
-    "build": "",
-    "photos": "Bali 3",
+    "season": "Bali 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1179,7 +1110,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from None.",
-    "thoughts": "",
     "image": "Isla.jpg",
     "specialty": "Mixte",
     "event": "Bali 3",
@@ -1197,8 +1127,7 @@
       "↑20% skill damage",
       "↑75% drive speed"
     ],
-    "build": "",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1213,7 +1142,6 @@
     },
     "calculatedTier": "C",
     "description": "A talented Vocalist from Radiance.",
-    "thoughts": "",
     "earlyGameRecommended": true,
     "image": "Julia.jpg",
     "specialty": "Vitesse de conduite",
@@ -1232,8 +1160,7 @@
       "↑24% player damage",
       "↑60% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Anniversary",
+    "season": "Anniversary",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1247,7 +1174,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from Tokyo48.",
-    "thoughts": "S+",
     "image": "Kasha.jpg",
     "specialty": "Augmentation dommage",
     "event": "Anniversary",
@@ -1266,8 +1192,7 @@
       "Fans capacity ↑ 10%",
       "Rally fans capacity ↑ 10%"
     ],
-    "build": "Single Car, Rally",
-    "photos": "Community Event",
+    "season": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1282,7 +1207,6 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from WildFlower.",
-    "thoughts": "Single Car, Rally",
     "image": "Kelly.jpg",
     "specialty": "Rassemblement",
     "event": "Special",
@@ -1300,8 +1224,7 @@
       "↑40% gold mining speed",
       "↑40% gold mining speed"
     ],
-    "build": "",
-    "photos": "SVS",
+    "season": "SVS",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1316,7 +1239,6 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from Radiance.",
-    "thoughts": "",
     "image": "Kesnia.jpg",
     "specialty": "Économie",
     "event": "Anniversary",
@@ -1334,8 +1256,7 @@
       "↑20% skill damage",
       "↑60% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Tokyo 1",
+    "season": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1349,7 +1270,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
-    "thoughts": "",
     "acquisitionTier": "mid",
     "image": "Kokoro.jpg",
     "specialty": "Augmentation dommage",
@@ -1368,8 +1288,7 @@
       "↑20% skill damage",
       "↑50% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Bali 1",
+    "season": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1383,7 +1302,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Coral.",
-    "thoughts": "",
     "image": "Leilani.jpg",
     "specialty": "Augmentation dommage",
     "event": "Bali 1",
@@ -1401,8 +1319,7 @@
       "↑240 dps when defending",
       "↑36% damage to world building guard"
     ],
-    "build": "HQ Defense",
-    "photos": "Bali 2",
+    "season": "Bali 2",
     "skillCategories": {
       "dps": [
         "240/DPS Defending HQ, GH, Club, LM"
@@ -1417,7 +1334,6 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from Breezara.",
-    "thoughts": "HQ Defense",
     "image": "Lestari.jpg",
     "specialty": "HQ Defense",
     "event": "Bali 2",
@@ -1435,8 +1351,7 @@
       "↑28% skill damage",
       "↑14% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Bali 4",
+    "season": "Bali 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1451,7 +1366,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from None.",
-    "thoughts": "Single Car",
     "specialty": "Solo car",
     "event": "Bali 4",
     "image": "Margot.jpg",
@@ -1469,8 +1383,7 @@
       "↑240 dps when attacking gc/club/lm",
       "↑12% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Bali 3",
+    "season": "Bali 3",
     "skillCategories": {
       "dps": [
         "240/DPS Attacking Group Center, Club, Landmark"
@@ -1486,7 +1399,6 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from None.",
-    "thoughts": "Single Car",
     "specialty": "Solo car",
     "event": "Bali 3",
     "singStat": 34827,
@@ -1504,8 +1416,7 @@
       "↑20% player damage",
       "↑40% gold mining speed"
     ],
-    "build": "",
-    "photos": "Community Event",
+    "season": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1520,7 +1431,6 @@
     },
     "calculatedTier": "C",
     "description": "A talented Dancer from WildFlower.",
-    "thoughts": "",
     "image": "Megan.jpg",
     "specialty": "Augmentation dommage",
     "event": "Special",
@@ -1538,8 +1448,7 @@
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Community Event",
+    "season": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1554,7 +1463,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Center from Neon.",
-    "thoughts": "Single Car",
     "image": "Mellissa.jpg",
     "specialty": "Solo car",
     "event": "Special",
@@ -1572,8 +1480,7 @@
       "↑70% basic attack damage dealt",
       "↓12% basic attack damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Tokyo 4",
+    "season": "Tokyo 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1588,7 +1495,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
-    "thoughts": "Damage Reduction",
     "specialty": "Mixte",
     "event": "Tokyo 4",
     "image": "Mio.jpg",
@@ -1606,8 +1512,7 @@
       "↑60% basic attack damage dealt",
       "↓12% basic attack damage taken"
     ],
-    "build": "",
-    "photos": "Tokyo 2",
+    "season": "Tokyo 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1622,7 +1527,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Rina.",
-    "thoughts": "",
     "specialty": "Mixte",
     "event": "Tokyo 2",
     "image": "Miyuki.jpg",
@@ -1640,8 +1544,7 @@
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Bali 1",
+    "season": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1656,7 +1559,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Coral.",
-    "thoughts": "Damage Reduction",
     "specialty": "Dommage réduction",
     "event": "Bali 1",
     "singStat": 29023,
@@ -1674,8 +1576,7 @@
       "↑20% player damage",
       "↑10% rally fan cap"
     ],
-    "build": "Rally",
-    "photos": "Community Event",
+    "season": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1690,7 +1591,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Tokyo48.",
-    "thoughts": "Rally",
     "image": "Nastassja.jpg",
     "specialty": "Rassemblement",
     "event": "Special",
@@ -1708,8 +1608,7 @@
       "↑240 dps when attacking company",
       "↑12% fan cap"
     ],
-    "build": "",
-    "photos": "Bali 2",
+    "season": "Bali 2",
     "skillCategories": {
       "dps": [
         "240/DPS Attacking Enemy Company"
@@ -1725,7 +1624,6 @@
     },
     "calculatedTier": "D",
     "description": "A talented Dancer from Breezara.",
-    "thoughts": "",
     "image": "Ningsih.jpg",
     "specialty": "Solo car",
     "event": "Bali 2",
@@ -1743,8 +1641,7 @@
       "↑40% gold mining speed",
       "↑50% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Community Event",
+    "season": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1759,7 +1656,6 @@
     },
     "calculatedTier": "C",
     "description": "A talented Center from WildFlower.",
-    "thoughts": "",
     "image": "Noora.jpg",
     "specialty": "Augmentation dommage",
     "event": "Special",
@@ -1777,8 +1673,7 @@
       "↑200 dps when defending",
       "↑50% basic attack damage dealt"
     ],
-    "build": "HQ Defense",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [
         "200/DPS Defending HQ, GH, Club, LM"
@@ -1793,7 +1688,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from DreamCatcher.",
-    "thoughts": "HQ Defense",
     "acquisitionTier": "f2p",
     "image": "Nova.jpg",
     "specialty": "Augmentation dommage",
@@ -1812,8 +1706,7 @@
       "↑240 dps when attacking company",
       "↑12% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Rome 2",
+    "season": "Rome 2",
     "skillCategories": {
       "dps": [
         "240/DPS Attacking Enemy Company"
@@ -1829,7 +1722,6 @@
     },
     "calculatedTier": "D",
     "description": "A talented Center from None.",
-    "thoughts": "Single Car",
     "image": "Octavia.jpg",
     "specialty": "Solo car",
     "event": "Rome 2",
@@ -1847,8 +1739,7 @@
       "↓12% skill damage taken",
       "↓12% basic attack damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1863,7 +1754,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Neon.",
-    "thoughts": "Damage Reduction",
     "earlyGameRecommended": true,
     "acquisitionTier": "low",
     "image": "Paisley.jpg",
@@ -1883,8 +1773,7 @@
       "↑50% basic attack damage dealt",
       "↓12% basic attack damage taken"
     ],
-    "build": "",
-    "photos": "Bali 1",
+    "season": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1899,7 +1788,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Coral.",
-    "thoughts": "",
     "image": "Ratih.jpg",
     "specialty": "Mixte",
     "event": "Bali 1",
@@ -1917,8 +1805,7 @@
       "↑24% player damage",
       "↓12% basic attack damage taken"
     ],
-    "build": "",
-    "photos": "Tokyo 2",
+    "season": "Tokyo 2",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1933,7 +1820,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Rina.",
-    "thoughts": "",
     "image": "Riku.jpg",
     "specialty": "Mixte",
     "event": "Tokyo 2",
@@ -1951,8 +1837,7 @@
       "↑24% skill damage",
       "↑12% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Tokyo 3",
+    "season": "Tokyo 3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -1967,7 +1852,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from None.",
-    "thoughts": "Single Car",
     "image": "Rin.jpg",
     "specialty": "Solo car",
     "event": "Tokyo 3",
@@ -1985,8 +1869,7 @@
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Just Rosemary",
+    "season": "Just Rosemary",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2001,7 +1884,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Vocalist from Tokyo48.",
-    "thoughts": "Single Car",
     "image": "Rosemary.jpg",
     "specialty": "Solo car",
     "event": "Special",
@@ -2019,8 +1901,7 @@
       "↑20% player damage",
       "↑50% basic attack damage dealt"
     ],
-    "build": "",
-    "photos": "Community Event",
+    "season": "Community Event",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2034,7 +1915,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Echo.",
-    "thoughts": "",
     "image": "Ruby.jpg",
     "specialty": "Augmentation dommage",
     "event": "Discord Event",
@@ -2052,8 +1932,7 @@
       "↑20% player damage",
       "↑10% rally fan cap"
     ],
-    "build": "Rally",
-    "photos": "Bali 1",
+    "season": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2068,7 +1947,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Coral.",
-    "thoughts": "Rally",
     "image": "Sari.jpg",
     "specialty": "Rassemblement",
     "event": "Bali 1",
@@ -2086,8 +1964,7 @@
       "↑200 dps when attacking company",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [
         "180/DPS Attacking Enemy Company"
@@ -2103,7 +1980,6 @@
     },
     "calculatedTier": "D",
     "description": "A talented Dancer from Echo.",
-    "thoughts": "Single Car",
     "image": "Savannah.jpg",
     "specialty": "Solo car",
     "event": "Original",
@@ -2121,8 +1997,7 @@
       "↑28% player damage",
       "↓12% skill damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Bali 4",
+    "season": "Bali 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2137,7 +2012,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from None.",
-    "thoughts": "Damage Reduction",
     "specialty": "Mixte",
     "event": "Bali 4",
     "image": "Sienna.jpg",
@@ -2155,8 +2029,7 @@
       "↑20% skill damage",
       "↑30% damage to world building guard"
     ],
-    "build": "",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2170,7 +2043,6 @@
     },
     "calculatedTier": "C",
     "description": "A talented Vocalist from Neon.",
-    "thoughts": "",
     "image": "Skylar.jpg",
     "specialty": "Augmentation dommage",
     "event": "Original",
@@ -2188,8 +2060,7 @@
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Tokyo 1",
+    "season": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2204,7 +2075,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Vocalist from Tokyo48.",
-    "thoughts": "Single Car",
     "image": "Sora.jpg",
     "specialty": "Solo car",
     "event": "Tokyo 1",
@@ -2222,8 +2092,7 @@
       "↑50% basic attack damage dealt",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Bali 1",
+    "season": "Bali 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2238,7 +2107,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Center from Coral.",
-    "thoughts": "Single Car",
     "image": "Talia.jpg",
     "specialty": "Solo car",
     "event": "Bali 1",
@@ -2256,8 +2124,7 @@
       "↑14% fan cap",
       "↓12% basic attack damage taken"
     ],
-    "build": "Single Car",
-    "photos": "Bali 4",
+    "season": "Bali 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2273,7 +2140,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Dancer from None.",
-    "thoughts": "Single Car",
     "specialty": "Solo car",
     "event": "Bali 4",
     "image": "Valentina.jpg",
@@ -2291,8 +2157,7 @@
       "↑240 dps when defending",
       "↓12% basic attack damage taken"
     ],
-    "build": "HQ Defense",
-    "photos": "Bali 3",
+    "season": "Bali 3",
     "skillCategories": {
       "dps": [
         "240/DPS Defending HQ, GH, Club, LM"
@@ -2308,7 +2173,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
-    "thoughts": "HQ Defense",
     "image": "Vivienne.jpg",
     "specialty": "Mixte",
     "event": "Bali 3",
@@ -2326,8 +2190,7 @@
       "↑20% player damage",
       "↑10% rally fan cap"
     ],
-    "build": "Rally",
-    "photos": "Rome 1",
+    "season": "Rome 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2342,7 +2205,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from VenuLux.",
-    "thoughts": "Rally",
     "image": "Xenia.jpg",
     "specialty": "Rassemblement",
     "event": "Rome 1",
@@ -2360,8 +2222,7 @@
       "↑28% player damage",
       "↓12% basic attack damage taken"
     ],
-    "build": "Damage Reduction",
-    "photos": "Tokyo 4",
+    "season": "Tokyo 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2376,7 +2237,6 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from None.",
-    "thoughts": "Damage Reduction",
     "specialty": "Mixte",
     "event": "Tokyo 4",
     "image": "Yumeno.jpg",
@@ -2394,8 +2254,7 @@
       "↑50% basic attack damage dealt",
       "↓12% basic attack damage taken"
     ],
-    "build": "",
-    "photos": "Tokyo 1",
+    "season": "Tokyo 1",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2410,7 +2269,6 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Tokyo48.",
-    "thoughts": "",
     "acquisitionTier": "mid",
     "image": "Yuuko.jpg",
     "specialty": "Mixte",
@@ -2429,8 +2287,7 @@
       "\"↑50% drive speed",
       " ↑20% WBG damage\""
     ],
-    "build": "",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2445,7 +2302,6 @@
     },
     "calculatedTier": "C",
     "description": "A talented Center from Radiance.",
-    "thoughts": "",
     "earlyGameRecommended": true,
     "acquisitionTier": "f2p",
     "image": "Zendayah.jpg",
@@ -2465,8 +2321,7 @@
       "↑20% skill damage",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2481,7 +2336,6 @@
     },
     "calculatedTier": "B",
     "description": "A talented Vocalist from Luna.",
-    "thoughts": "Single Car",
     "image": "Bella.jpg",
     "specialty": "Solo car",
     "event": "Original",
@@ -2499,8 +2353,7 @@
       "↑200 dps when attacking gc/club/lm",
       "↑10% fan cap"
     ],
-    "build": "Single Car",
-    "photos": "Original",
+    "season": "Original",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2515,7 +2368,6 @@
     },
     "calculatedTier": "C",
     "description": "A talented Dancer from Fantasy Vibes.",
-    "thoughts": "Single Car",
     "specialty": "Solo car",
     "event": "VIP 10",
     "singStat": 19076,
@@ -2533,8 +2385,7 @@
       "↑30% skill damage",
       "↑30% player damage"
     ],
-    "build": "",
-    "photos": "Auction",
+    "season": "Auction",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2548,7 +2399,6 @@
     },
     "calculatedTier": "S+",
     "description": "A talented Center from Fantasy Vibes.",
-    "thoughts": "",
     "earlyGameRecommended": true,
     "acquisitionTier": "whale",
     "image": "Longkui.jpg",
@@ -2568,8 +2418,7 @@
       "↑30% player damage",
       "↑30% player damage"
     ],
-    "build": "",
-    "photos": "Auction",
+    "season": "Auction",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -2583,7 +2432,6 @@
     },
     "calculatedTier": "S+",
     "description": "A talented Center from Tokyo48.",
-    "thoughts": "",
     "image": "Monica.jpg",
     "specialty": "Augmentation dommage",
     "event": "Abroad Auction",
@@ -2603,9 +2451,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Sparkle Artists.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2635,9 +2481,7 @@
       "20% Normal Attack Damage"
     ],
     "description": "A talented Vocalist from Echo.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2668,9 +2512,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Radiance.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2700,9 +2542,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Neon.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2733,9 +2573,7 @@
       "20% Normal Attack Damage"
     ],
     "description": "A talented Center from DreamCatcher.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2766,9 +2604,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from WildFlower.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2799,9 +2635,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Dancer from Echo.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2832,9 +2666,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Echo.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2865,9 +2697,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Sparkle Artists.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2898,9 +2728,7 @@
       "10% Skill Damage"
     ],
     "description": "A talented Dancer from Neon.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2931,9 +2759,7 @@
       "10% Skill Damage"
     ],
     "description": "A talented Vocalist from DreamCatcher.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2964,9 +2790,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Luna.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -2997,9 +2821,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Fantasy Vibes.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3030,9 +2852,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Fantasy Vibes.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3063,9 +2883,7 @@
       "10% Skill Damage"
     ],
     "description": "A talented Center from Sparkle Artists.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3096,9 +2914,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Radiance.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3129,9 +2945,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Radiance.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3162,9 +2976,7 @@
       "40% Drive Speed Increase"
     ],
     "description": "A talented Dancer from Luna.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3194,9 +3006,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Neon.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3227,9 +3037,7 @@
       "20% Normal Attack Damage"
     ],
     "description": "A talented Vocalist from WildFlower.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3260,9 +3068,7 @@
       "2% Fan Capacity"
     ],
     "description": "A talented Center from Fantasy Vibes.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3293,9 +3099,7 @@
       "15% Damage Increase World Building Guard"
     ],
     "description": "A talented Vocalist from Luna.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/800 Damage"
@@ -3325,9 +3129,7 @@
       "None"
     ],
     "description": "A talented Dancer from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3356,9 +3158,7 @@
       "None"
     ],
     "description": "A talented Vocalist from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3387,9 +3187,7 @@
       "None"
     ],
     "description": "A talented Center from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3418,9 +3216,7 @@
       "None"
     ],
     "description": "A talented Center from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3449,9 +3245,7 @@
       "None"
     ],
     "description": "A talented Dancer from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3480,9 +3274,7 @@
       "None"
     ],
     "description": "A talented Dancer from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3511,9 +3303,7 @@
       "None"
     ],
     "description": "A talented Vocalist from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3542,9 +3332,7 @@
       "None"
     ],
     "description": "A talented Vocalist from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3573,9 +3361,7 @@
       "None"
     ],
     "description": "A talented Center from None.",
-    "thoughts": "No",
-    "build": "",
-    "photos": "Universal",
+    "season": "Universal",
     "skillCategories": {
       "dps": [
         "10 sec/300 Damage"
@@ -3603,9 +3389,7 @@
       "↑24% player damage"
     ],
     "description": "A talented Vocalist from None.",
-    "thoughts": "",
-    "build": "Recommended",
-    "photos": "Rome3",
+    "season": "Rome3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3636,9 +3420,7 @@
       "↑12% fan cap"
     ],
     "description": "A talented Dancer from None.",
-    "thoughts": "",
-    "build": "Recommended",
-    "photos": "Rome3",
+    "season": "Rome3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3670,9 +3452,7 @@
       "↑12% fan cap"
     ],
     "description": "A talented Center from None.",
-    "thoughts": "",
-    "build": "Recommended",
-    "photos": "Rome3",
+    "season": "Rome3",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3704,9 +3484,7 @@
       "↑28% damage to player"
     ],
     "description": "A talented Center from Allura.",
-    "thoughts": "",
-    "build": "Recommended",
-    "photos": "Rome 4",
+    "season": "Rome 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3737,9 +3515,7 @@
       "↑28% skill damage"
     ],
     "description": "A talented Vocalist from Allura.",
-    "thoughts": "",
-    "build": "Recommended",
-    "photos": "Rome 4",
+    "season": "Rome 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3771,9 +3547,7 @@
       "↑28% skill damage"
     ],
     "description": "A talented Dancer from Allura.",
-    "thoughts": "",
-    "build": "Recommended",
-    "photos": "Rome 4",
+    "season": "Rome 4",
     "skillCategories": {
       "dps": [],
       "offensive": [
@@ -3805,9 +3579,7 @@
       "↑50% basic attack damage dealt"
     ],
     "description": "A talented Center from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "image": "Anastasia.jpg",
     "skillCategories": {
       "dps": [
@@ -3838,9 +3610,7 @@
       "↑20% damage to player"
     ],
     "description": "A talented Singer from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "image": "Beatrice.jpg",
     "skillCategories": {
       "dps": [
@@ -3872,9 +3642,7 @@
       "↑50% basic attack damage dealt"
     ],
     "description": "A talented Visual from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "image": "Elizabeth.jpg",
     "skillCategories": {
       "dps": [
@@ -3905,9 +3673,7 @@
       "↑50% basic attack damage dealt"
     ],
     "description": "A talented Dancer from No Group.",
-    "thoughts": "Yes",
-    "build": "Recommended",
-    "photos": "Universal",
+    "season": "Universal",
     "image": "Gabriella.jpg",
     "skillCategories": {
       "dps": [

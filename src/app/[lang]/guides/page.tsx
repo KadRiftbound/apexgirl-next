@@ -336,6 +336,9 @@ type Guide = {
   isNew?: boolean;
   inProgress?: boolean;
   stage?: "early" | "late";
+  isDone?: boolean;
+  // thumbnail: chemin image guide OU artiste SSR si pas de logo
+  thumbnail?: string;
 };
 
 const guides: Guide[] = [
@@ -349,6 +352,8 @@ const guides: Guide[] = [
     guideType: "classic",
     readTime: "10 min",
     isNew: true,
+    isDone: true,
+    thumbnail: "/assets/images/artists/Alice.jpg",
   },
   {
     id: "equipment",
@@ -360,6 +365,8 @@ const guides: Guide[] = [
     guideType: "classic",
     readTime: "10 min",
     isNew: true,
+    isDone: true,
+    thumbnail: "/assets/images/artists/Aurora.jpg",
   },
   {
     id: "construction-equipe-debut",
@@ -371,6 +378,8 @@ const guides: Guide[] = [
     guideType: "classic",
     readTime: "12 min",
     stage: "early",
+    isDone: true,
+    thumbnail: "/assets/images/artists/Ayaka.jpg",
   },
   {
     id: "construction-equipe-fin",
@@ -382,6 +391,8 @@ const guides: Guide[] = [
     guideType: "classic",
     readTime: "12 min",
     stage: "late",
+    isDone: true,
+    thumbnail: "/assets/images/artists/Brooklyn.jpg",
   },
   {
     id: "team-builder",
@@ -392,6 +403,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "15 min",
+    inProgress: true,
   },
   {
     id: "recommended-teams",
@@ -402,6 +414,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "12 min",
+    inProgress: true,
   },
   {
     id: "leveling-ssr",
@@ -412,6 +425,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "8 min",
+    inProgress: true,
   },
   {
     id: "blueprints",
@@ -422,6 +436,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "10 min",
+    inProgress: true,
   },
   {
     id: "hq-upgrade",
@@ -432,6 +447,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "5 min",
+    inProgress: true,
   },
   {
     id: "vehicle-system",
@@ -442,6 +458,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "15 min",
+    inProgress: true,
   },
   {
     id: "gold-equipment",
@@ -452,6 +469,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "10 min",
+    inProgress: true,
   },
   {
     id: "event-ancient-rome",
@@ -462,6 +480,7 @@ const guides: Guide[] = [
     category: "Guide événement",
     guideType: "event",
     readTime: "10 min",
+    inProgress: true,
   },
   {
     id: "event-radio-battle",
@@ -472,6 +491,7 @@ const guides: Guide[] = [
     category: "Guide événement",
     guideType: "event",
     readTime: "8 min",
+    inProgress: true,
   },
   {
     id: "event-grammy",
@@ -482,16 +502,18 @@ const guides: Guide[] = [
     category: "Guide événement",
     guideType: "event",
     readTime: "10 min",
+    inProgress: true,
   },
   {
     id: "event-ultimate-ceo",
     title: "Guide Ultimate CEO",
-    description: "Guide complet de l'Ultimate CEO. Comment vaincre le CEO et获取 les meilleures rewards.",
+    description: "Guide complet de l'Ultimate CEO. Comment vaincre le CEO et obtenir les meilleures rewards.",
     icon: "💼",
     color: "#ef4444",
     category: "Guide événement",
     guideType: "event",
     readTime: "8 min",
+    inProgress: true,
   },
   {
     id: "event-echo-death-match",
@@ -503,6 +525,8 @@ const guides: Guide[] = [
     guideType: "event",
     readTime: "8 min",
     isNew: true,
+    isDone: true,
+    thumbnail: "/assets/images/guides/echo-death-match.jpg",
   },
   {
     id: "event-muse",
@@ -514,6 +538,8 @@ const guides: Guide[] = [
     guideType: "event",
     readTime: "8 min",
     isNew: true,
+    isDone: true,
+    thumbnail: "/assets/images/guides/muse-event.jpg",
   },
   {
     id: "event-chamber-territory",
@@ -524,6 +550,7 @@ const guides: Guide[] = [
     category: "Guide événement",
     guideType: "event",
     readTime: "8 min",
+    inProgress: true,
   },
   {
     id: "event-cleanup-party",
@@ -534,6 +561,7 @@ const guides: Guide[] = [
     category: "Guide événement",
     guideType: "event",
     readTime: "5 min",
+    inProgress: true,
   },
   {
     id: "event-metro-subway",
@@ -544,6 +572,7 @@ const guides: Guide[] = [
     category: "Guide événement",
     guideType: "event",
     readTime: "5 min",
+    inProgress: true,
   },
   {
     id: "event-vs-group",
@@ -555,6 +584,8 @@ const guides: Guide[] = [
     guideType: "event",
     readTime: "8 min",
     isNew: true,
+    isDone: true,
+    thumbnail: "/assets/images/guides/vs-group.jpg",
   },
   {
     id: "event-fishing",
@@ -566,6 +597,8 @@ const guides: Guide[] = [
     guideType: "event",
     readTime: "6 min",
     isNew: true,
+    isDone: true,
+    thumbnail: "/assets/images/guides/fishing-event.jpg",
   },
   {
     id: "world-building",
@@ -576,6 +609,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "10 min",
+    inProgress: true,
   },
   {
     id: "vip-level",
@@ -586,6 +620,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "15 min",
+    inProgress: true,
   },
   {
     id: "ceo-coins",
@@ -596,6 +631,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "5 min",
+    inProgress: true,
   },
   {
     id: "alliance-management",
@@ -606,6 +642,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "12 min",
+    inProgress: true,
   },
   {
     id: "peak-level",
@@ -616,6 +653,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "15 min",
+    inProgress: true,
   },
   {
     id: "group-shop",
@@ -626,6 +664,7 @@ const guides: Guide[] = [
     category: "Guide classique",
     guideType: "classic",
     readTime: "5 min",
+    inProgress: true,
   },
 ];
 
@@ -773,16 +812,21 @@ export default function GuidesPage() {
                 textDecoration: "none",
                 display: "block",
                 boxShadow: `0 2px 16px ${guide.color}18`,
+                filter: guide.inProgress ? "grayscale(0.65) opacity(0.55)" : "none",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-8px)";
-                e.currentTarget.style.boxShadow = `0 20px 40px ${guide.color}22`;
-                e.currentTarget.style.borderColor = guide.color + "66";
+                if (!guide.inProgress) {
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow = `0 20px 40px ${guide.color}22`;
+                  e.currentTarget.style.borderColor = guide.color + "66";
+                }
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = `0 2px 16px ${guide.color}18`;
-                e.currentTarget.style.borderColor = `${guide.color}55`;
+                if (!guide.inProgress) {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = `0 2px 16px ${guide.color}18`;
+                  e.currentTarget.style.borderColor = `${guide.color}55`;
+                }
               }}
             >
               <div style={{
@@ -793,6 +837,24 @@ export default function GuidesPage() {
                 height: "4px",
                 background: `linear-gradient(90deg, ${guide.color}, ${guide.color}88)`,
               }} />
+
+              {guide.thumbnail && (
+                <div style={{
+                  height: "120px",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  marginBottom: "16px",
+                  position: "relative",
+                }}>
+                  <Image
+                    src={guide.thumbnail}
+                    alt={guide.title}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+              )}
 
               <div style={{
                 display: "flex",
