@@ -152,51 +152,43 @@ export default function ArtistsPage() {
     };
   }, [mounted]);
 
-  // Intelligent scroll cascade - grid has priority, then page
+  // Scroll cascade: grid takes priority over page scroll
   useEffect(() => {
     const gridElement = gridRef.current;
     const panelElement = panelRef.current;
     if (!gridElement || window.innerWidth <= 900) return;
 
-    const handleAnyScroll = (e: WheelEvent) => {
+    const handleWheel = (e: WheelEvent) => {
       const grid = gridElement;
       const scrollTop = grid.scrollTop;
       const scrollHeight = grid.scrollHeight;
       const clientHeight = grid.clientHeight;
+      
       const isGridAtTop = scrollTop === 0;
       const isGridAtBottom = scrollTop >= scrollHeight - clientHeight - 5;
-
-      // Grid has priority - always try to scroll grid first
       const deltaY = e.deltaY;
+
+      // Grid priority: scroll grid first if it's not at its limits
+      // Only allow page scroll when grid reaches its limits
+      const shouldScrollGrid = (deltaY > 0 && !isGridAtBottom) || (deltaY < 0 && !isGridAtTop);
       
-      // If scrolling down and grid is not at bottom, scroll grid
-      if (deltaY > 0 && !isGridAtBottom) {
+      if (shouldScrollGrid) {
         e.preventDefault();
         grid.scrollTop += deltaY;
-        return;
       }
-      
-      // If scrolling up and grid is not at top, scroll grid
-      if (deltaY < 0 && !isGridAtTop) {
-        e.preventDefault();
-        grid.scrollTop += deltaY;
-        return;
-      }
-      
-      // If grid is at limits, allow page scroll
-      // (don't prevent default, let natural scroll happen)
+      // When grid is at limits, allow natural page scroll (no preventDefault)
     };
 
-    // Apply to grid and panel
-    gridElement.addEventListener('wheel', handleAnyScroll, { passive: false });
+    // Listen on both grid and panel for wheel events
+    gridElement.addEventListener('wheel', handleWheel, { passive: false });
     if (panelElement) {
-      panelElement.addEventListener('wheel', handleAnyScroll, { passive: false });
+      panelElement.addEventListener('wheel', handleWheel, { passive: false });
     }
-    
+
     return () => {
-      gridElement.removeEventListener('wheel', handleAnyScroll);
+      gridElement.removeEventListener('wheel', handleWheel);
       if (panelElement) {
-        panelElement.removeEventListener('wheel', handleAnyScroll);
+        panelElement.removeEventListener('wheel', handleWheel);
       }
     };
   }, []);

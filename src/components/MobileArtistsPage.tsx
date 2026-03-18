@@ -119,51 +119,43 @@ export default function MobileArtistsPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Intelligent scroll cascade - grid has priority, then page
+  // Scroll cascade: grid takes priority over page scroll
   useEffect(() => {
     const gridElement = gridContainerRef.current;
     const panelElement = panelRef.current;
     if (!gridElement) return;
 
-    const handleAnyScroll = (e: WheelEvent) => {
+    const handleWheel = (e: WheelEvent) => {
       const grid = gridElement;
       const scrollTop = grid.scrollTop;
       const scrollHeight = grid.scrollHeight;
       const clientHeight = grid.clientHeight;
+      
       const isGridAtTop = scrollTop === 0;
       const isGridAtBottom = scrollTop >= scrollHeight - clientHeight - 5;
-
-      // Grid has priority - always try to scroll grid first
       const deltaY = e.deltaY;
+
+      // Grid priority: scroll grid first if it's not at its limits
+      // Only allow page scroll when grid reaches its limits
+      const shouldScrollGrid = (deltaY > 0 && !isGridAtBottom) || (deltaY < 0 && !isGridAtTop);
       
-      // If scrolling down and grid is not at bottom, scroll grid
-      if (deltaY > 0 && !isGridAtBottom) {
+      if (shouldScrollGrid) {
         e.preventDefault();
         grid.scrollTop += deltaY;
-        return;
       }
-      
-      // If scrolling up and grid is not at top, scroll grid
-      if (deltaY < 0 && !isGridAtTop) {
-        e.preventDefault();
-        grid.scrollTop += deltaY;
-        return;
-      }
-      
-      // If grid is at limits, allow page scroll
-      // (don't prevent default, let natural scroll happen)
+      // When grid is at limits, allow natural page scroll (no preventDefault)
     };
 
-    // Apply to grid and panel
-    gridElement.addEventListener('wheel', handleAnyScroll, { passive: false });
+    // Listen on both grid and panel for wheel events
+    gridElement.addEventListener('wheel', handleWheel, { passive: false });
     if (panelElement) {
-      panelElement.addEventListener('wheel', handleAnyScroll, { passive: false });
+      panelElement.addEventListener('wheel', handleWheel, { passive: false });
     }
-    
+
     return () => {
-      gridElement.removeEventListener('wheel', handleAnyScroll);
+      gridElement.removeEventListener('wheel', handleWheel);
       if (panelElement) {
-        panelElement.removeEventListener('wheel', handleAnyScroll);
+        panelElement.removeEventListener('wheel', handleWheel);
       }
     };
   }, []);
@@ -315,7 +307,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 2: Fixed 3-column Panel */}
-        <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : 56 }}>
+        <div className="mobile-top-panel" ref={panelRef} style={{ position: scrolled ? 'fixed' : 'relative', top: scrolled ? 0 : 'auto', zIndex: scrolled ? 100 : 1 }}>
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
@@ -556,13 +548,7 @@ export default function MobileArtistsPage() {
         <div 
           className="mobile-artists-bottom" 
           ref={gridContainerRef}
-          style={{ 
-            marginTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(56px + 40vh + ${searchBarHeight}px)`,
-            minHeight: `calc(100vh - (40vh + ${searchBarHeight}px))`,
-            maxHeight: `calc(100vh - (40vh + ${searchBarHeight}px))`,
-            overflowY: 'auto',
-            overflowX: 'hidden'
-          }}
+          style={{ paddingTop: `calc(40vh + ${searchBarHeight}px)` }}
         >
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
@@ -607,6 +593,8 @@ export default function MobileArtistsPage() {
         .mobile-page-container {
           min-height: 100vh;
           background: transparent;
+          display: flex;
+          flex-direction: column;
         }
         
         /* Mobile Page Header - Scrollable */
@@ -974,9 +962,12 @@ export default function MobileArtistsPage() {
           padding-left: 6px;
           padding-bottom: 20px;
           padding-top: 6px;
-          transition: margin-top 0.2s ease, max-height 0.2s ease;
           pointer-events: auto;
           background: #0f0f1a;
+          /* Make grid fill remaining space and be scrollable */
+          flex: 1;
+          overflow-y: auto;
+          overflow-x: hidden;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
