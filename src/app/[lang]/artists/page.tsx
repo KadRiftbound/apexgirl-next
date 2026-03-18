@@ -514,13 +514,13 @@ export default function ArtistsPage() {
                       </div>
                     </div>
                   </>
-                  ) : (
-                <div className="artist-preview-empty">
-                  <p>{t.selectArtist}</p>
-                </div>
-              )}
+                ) : (
+                  <div className="artist-preview-empty">
+                    <p>{t.selectArtist}</p>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
 
           {/* Column 2: Team 1 (35%) */}
           <div className="panel-col panel-col-2">
