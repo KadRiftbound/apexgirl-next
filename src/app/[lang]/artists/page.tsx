@@ -440,10 +440,10 @@ export default function ArtistsPage() {
               <div className="artist-preview-title" style={{ display: 'none' }}>
                 <span>{t.artistOverview}</span>
               </div>
-               {selectedArtist ? (
-                 <>
-                   {/* Name at top with nav */}
-                   <div className="artist-preview-nav" style={{ marginBottom: '8px', justifyContent: 'space-between', padding: '0 8px' }}>
+              {selectedArtist ? (
+                <>
+                  {/* Name at top with nav */}
+                  <div className="artist-preview-nav" style={{ marginBottom: '8px', justifyContent: 'space-between', padding: '0 8px' }}>
                      <button 
                        onClick={() => {
                          const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
