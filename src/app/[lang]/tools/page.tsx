@@ -281,7 +281,7 @@ export default function ToolsPage() {
 
         {/* Active Tool Panel */}
         <div style={{
-          background: `${activeTool.color}0d`,
+          background: `${activeTool.color}cc`,
           borderRadius: "20px",
           border: `1.5px solid ${activeTool.color}80`,
           backdropFilter: "blur(20px)",
@@ -292,7 +292,7 @@ export default function ToolsPage() {
           <div style={{
             padding: "16px 24px",
             borderBottom: `1px solid ${activeTool.color}55`,
-            background: `${activeTool.color}18`,
+            background: `${activeTool.color}28`,
             display: "flex",
             alignItems: "center",
             gap: "12px",

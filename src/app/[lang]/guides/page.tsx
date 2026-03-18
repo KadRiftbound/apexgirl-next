@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useState, useMemo } from "react";
 import { AdBanner } from "@/components/AdSense";
@@ -801,9 +802,9 @@ export default function GuidesPage() {
               key={guide.id}
               href={`/${lang}/guides/${guide.id}`}
               style={{
-                background: `${guide.color}0e`,
+                background: `${guide.color}e0`,
                 borderRadius: "20px",
-                border: `1.5px solid ${guide.color}55`,
+                border: `1.5px solid ${guide.color}88`,
                 padding: "24px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
@@ -812,7 +813,7 @@ export default function GuidesPage() {
                 textDecoration: "none",
                 display: "block",
                 boxShadow: `0 2px 16px ${guide.color}18`,
-                filter: guide.inProgress ? "grayscale(0.65) opacity(0.55)" : "none",
+                filter: guide.inProgress ? "grayscale(0.45)" : "none",
               }}
               onMouseEnter={(e) => {
                 if (!guide.inProgress) {

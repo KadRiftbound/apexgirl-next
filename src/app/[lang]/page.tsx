@@ -384,24 +384,6 @@ export default function HomePage() {
           })}
         </div>
         <div className="hero-overlay" />
-        {/* Sur mobile le contenu reste dans le hero */}
-        <div className="hero-content hero-content-mobile">
-          <div className="hero-badge">TopGirl / ApexGirl</div>
-          <h1 className="hero-title">{t.homeTitle}</h1>
-          <p className="hero-subtitle" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
-          <div className="hero-stats">
-            <span><strong>112+</strong> {t.statArtists}</span>
-            <span className="stat-dot">·</span>
-            <span><strong>50+</strong> {t.statGuides}</span>
-            <span className="stat-dot">·</span>
-            <span><strong>5+</strong> {t.statTools}</span>
-          </div>
-          <div className="hero-ctas">
-            <Link href={`/${lang}/artists/`} style={btnArtists}  >🎤 {t.discoverArtists}</Link>
-            <Link href={`/${lang}/tierlist/`} style={btnTier}    >🏆 {t.tierListVotes}</Link>
-            <Link href={`/${lang}/tools/`}   style={btnTools}    >🛠️ {t.seeTools}</Link>
-          </div>
-        </div>
       </section>
 
       {/* Sur desktop le contenu s'affiche sous l'éventail */}
@@ -420,6 +402,25 @@ export default function HomePage() {
           <Link href={`/${lang}/artists/`} style={btnArtistsDesktop}>🎤 {t.discoverArtists}</Link>
           <Link href={`/${lang}/tierlist/`} style={btnTierDesktop}   >🏆 {t.tierListVotes}</Link>
           <Link href={`/${lang}/tools/`}   style={btnToolsDesktop}   >🛠️ {t.seeTools}</Link>
+        </div>
+      </div>
+
+      {/* Mobile hero content — stacked below the mosaic */}
+      <div className="hero-content-mobile">
+        <div className="hero-badge">TopGirl / ApexGirl</div>
+        <h1 className="hero-title">{t.homeTitle}</h1>
+        <p className="hero-subtitle" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
+        <div className="hero-stats">
+          <span><strong>112+</strong> {t.statArtists}</span>
+          <span className="stat-dot">·</span>
+          <span><strong>50+</strong> {t.statGuides}</span>
+          <span className="stat-dot">·</span>
+          <span><strong>5+</strong> {t.statTools}</span>
+        </div>
+        <div className="hero-ctas">
+          <Link href={`/${lang}/artists/`} style={btnArtists}  >🎤 {t.discoverArtists}</Link>
+          <Link href={`/${lang}/tierlist/`} style={btnTier}    >🏆 {t.tierListVotes}</Link>
+          <Link href={`/${lang}/tools/`}   style={btnTools}    >🛠️ {t.seeTools}</Link>
         </div>
       </div>
 
@@ -877,23 +878,42 @@ export default function HomePage() {
 
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
-          /* Sur mobile : éventail seul dans le hero, contenu en dessous */
+          /* Sur mobile : éventail en bande horizontale plein width, titre en dessous */
           .hero-section {
-            height: 56vw;
+            height: auto;
             min-height: 0;
-            display: block;
+            overflow: visible;
           }
+          .hero-mosaic {
+            position: relative;
+            height: 120px;
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            padding: 0 16px;
+            align-items: center;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          .hero-mosaic::-webkit-scrollbar { display: none; }
+          .mosaic-card {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            width: 72px !important;
+            height: 96px;
+            flex-shrink: 0;
+            transform: none !important;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.25);
+            opacity: 0.94 !important;
+          }
+          .hero-overlay { display: none; }
+
           .hero-content-mobile {
             display: flex;
-            padding: 16px 20px 36px;
-            margin-top: 0;
-          }
-          .hero-content-desktop { display: none; }
-
-          /* Images hero mobile */
-          .mosaic-card {
-            opacity: 0.94 !important;
-            width: 16% !important;
+            padding: 20px 16px 8px;
           }
 
           /* Couleur du sous-titre sur mobile */
@@ -919,6 +939,7 @@ export default function HomePage() {
           .offer-card-detail { display: none; }
           .offer-card-arrow { display: none; }
           .offer-section { padding: 32px 16px; }
+          .offer-inner { padding: 0; }
 
           .artist-strip-inner { padding: 0 16px; }
           .codes-header { flex-direction: column; }
