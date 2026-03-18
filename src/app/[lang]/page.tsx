@@ -878,58 +878,46 @@ export default function HomePage() {
 
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
-          /* Hero section: full-width, provides height for layout */
+          /* Hero section: enough height for the fan + title below */
           .hero-section {
-            position: relative;
-            width: 100%;
-            height: 60px;
-            overflow: visible;
-            background: transparent;
+            height: 35vw;
+            min-height: 0;
+            overflow: hidden;
           }
-          /* Mosaic: full viewport width, centered, flex layout for cards */
+          /* Mosaic: fills hero width, absolute so it's at the top */
           .hero-mosaic {
             position: absolute;
-            top: 0;
-            left: calc(-50vw + 50%);
-            width: 100vw;
-            height: 60px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
+            inset: 0;
+            z-index: 0;
           }
-          .hero-mosaic::-webkit-scrollbar { display: none; }
+          /* Cards: 8vw wide, positioned across the hero width */
           .mosaic-card {
-            position: relative !important;
-            width: 28px !important;
-            height: 36px;
-            flex-shrink: 0;
-            border-radius: 4px;
+            position: absolute;
+            width: 8vw;
+            aspect-ratio: 4/5;
+            border-radius: 6px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.25);
-            opacity: 0.95 !important;
-            /* Fan arc: top offset creates parabolic curve */
+            opacity: 0.97;
           }
-          .hero-mosaic .mosaic-card:nth-child(1)  { margin-left: 0;  margin-bottom: 36px; transform: rotate(-21deg); }
-          .hero-mosaic .mosaic-card:nth-child(2)  { margin-left: 0;  margin-bottom: 30px; transform: rotate(-18deg); }
-          .hero-mosaic .mosaic-card:nth-child(3)  { margin-left: 0;  margin-bottom: 22px; transform: rotate(-14deg); }
-          .hero-mosaic .mosaic-card:nth-child(4)  { margin-left: 0;  margin-bottom: 14px; transform: rotate(-10deg); }
-          .hero-mosaic .mosaic-card:nth-child(5)  { margin-left: 0;  margin-bottom: 8px;  transform: rotate(-7deg); }
-          .hero-mosaic .mosaic-card:nth-child(6)  { margin-left: 0;  margin-bottom: 3px;  transform: rotate(-3.5deg); }
-          .hero-mosaic .mosaic-card:nth-child(7)  { margin-left: 0;  margin-bottom: 0;   transform: none; }
-          .hero-mosaic .mosaic-card:nth-child(8)  { margin-left: 0;  margin-bottom: 3px;  transform: rotate(3.5deg); }
-          .hero-mosaic .mosaic-card:nth-child(9)  { margin-left: 0;  margin-bottom: 8px;  transform: rotate(7deg); }
-          .hero-mosaic .mosaic-card:nth-child(10) { margin-left: 0;  margin-bottom: 14px; transform: rotate(10deg); }
-          .hero-mosaic .mosaic-card:nth-child(11) { margin-left: 0;  margin-bottom: 22px; transform: rotate(14deg); }
-          .hero-mosaic .mosaic-card:nth-child(12) { margin-left: 0;  margin-bottom: 30px; transform: rotate(18deg); }
-          .hero-mosaic .mosaic-card:nth-child(13) { margin-left: 0;  margin-bottom: 36px; transform: rotate(21deg); }
+          .hero-mosaic .mosaic-card:nth-child(1)  { left: 0%;   top: calc(3% + 27% * 1);   transform: rotate(-21deg); }
+          .hero-mosaic .mosaic-card:nth-child(2)  { left: 7%;   top: calc(3% + 27% * 0.77); transform: rotate(-18deg); }
+          .hero-mosaic .mosaic-card:nth-child(3)  { left: 14%;  top: calc(3% + 27% * 0.56); transform: rotate(-14deg); }
+          .hero-mosaic .mosaic-card:nth-child(4)  { left: 21%;  top: calc(3% + 27% * 0.38); transform: rotate(-10deg); }
+          .hero-mosaic .mosaic-card:nth-child(5)  { left: 28%;  top: calc(3% + 27% * 0.23); transform: rotate(-7deg); }
+          .hero-mosaic .mosaic-card:nth-child(6)  { left: 35%;  top: calc(3% + 27% * 0.10); transform: rotate(-3.5deg); }
+          .hero-mosaic .mosaic-card:nth-child(7)  { left: 42%;  top: 3%;   transform: none; }
+          .hero-mosaic .mosaic-card:nth-child(8)  { left: 49%;  top: calc(3% + 27% * 0.10); transform: rotate(3.5deg); }
+          .hero-mosaic .mosaic-card:nth-child(9)  { left: 56%;  top: calc(3% + 27% * 0.23); transform: rotate(7deg); }
+          .hero-mosaic .mosaic-card:nth-child(10) { left: 63%;  top: calc(3% + 27% * 0.38); transform: rotate(10deg); }
+          .hero-mosaic .mosaic-card:nth-child(11) { left: 70%;  top: calc(3% + 27% * 0.56); transform: rotate(14deg); }
+          .hero-mosaic .mosaic-card:nth-child(12) { left: 77%;  top: calc(3% + 27% * 0.77); transform: rotate(18deg); }
+          .hero-mosaic .mosaic-card:nth-child(13) { left: 84%;  top: calc(3% + 27% * 1);   transform: rotate(21deg); }
           .hero-overlay { display: none; }
 
-          /* Contenu hero mobile: compact */
+          /* Hero content: compact below the fan */
           .hero-content-mobile {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
             padding: 12px 16px 4px;
           }
           .hero-badge { font-size: 0.65rem; padding: 4px 12px; margin-bottom: 8px; }
@@ -952,11 +940,8 @@ export default function HomePage() {
             box-shadow: none !important;
             white-space: nowrap;
           }
-
           .hero-content-desktop { display: none !important; }
           .artist-strip-section { display: none; }
-
-          /* Offer section: visible directement après le hero */
           .offer-section { padding: 24px 12px; }
           .offer-inner { padding: 0; }
           .offer-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
@@ -966,7 +951,6 @@ export default function HomePage() {
           .offer-card-desc { font-size: 0.68rem; margin-bottom: 0; }
           .offer-card-detail { display: none; }
           .offer-card-arrow { display: none; }
-
           .codes-header { flex-direction: column; }
         }
       `}</style>
