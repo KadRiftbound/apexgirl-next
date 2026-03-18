@@ -146,16 +146,16 @@ export default function MobileArtistsPage() {
       // When grid is at limits, allow natural page scroll (no preventDefault)
     };
 
-    // Listen on both grid and panel for wheel events
+    // Listen on both grid and panel for wheel events (use capture to intercept before bubbling)
     gridElement.addEventListener('wheel', handleWheel, { passive: false });
     if (panelElement) {
-      panelElement.addEventListener('wheel', handleWheel, { passive: false });
+      panelElement.addEventListener('wheel', handleWheel, { passive: false, capture: true });
     }
 
     return () => {
       gridElement.removeEventListener('wheel', handleWheel);
       if (panelElement) {
-        panelElement.removeEventListener('wheel', handleWheel);
+        panelElement.removeEventListener('wheel', handleWheel, true);
       }
     };
   }, []);
@@ -522,8 +522,8 @@ export default function MobileArtistsPage() {
           </div>
         </div>
 
-        {/* Layer 3: Search Bar - Always visible below panel */}
-        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: scrolled ? 'calc(40vh)' : 'calc(56px + 40vh)' }}>
+        {/* Layer 3: Search Bar - Fixed below panel */}
+        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: '40vh' }}>
           <input
             type="text"
             placeholder={t.search}
@@ -548,7 +548,7 @@ export default function MobileArtistsPage() {
         <div 
           className="mobile-artists-bottom" 
           ref={gridContainerRef}
-          style={{ paddingTop: `calc(40vh + ${searchBarHeight}px)` }}
+          style={{ marginTop: `calc(40vh + ${searchBarHeight}px)` }}
         >
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
@@ -599,36 +599,39 @@ export default function MobileArtistsPage() {
         
         /* Mobile Page Header - Scrollable */
         .mobile-page-header {
-          padding: 16px 12px;
+          padding: 20px 12px;
           background: #0f0f1a;
           border-bottom: 1px solid rgba(139,92,246,0.2);
           margin-bottom: 4px;
         }
         
         .mobile-page-title {
-          font-size: 1.5rem;
+          font-size: 1.8rem;
           font-weight: 800;
-          color: #fff;
+          background: linear-gradient(135deg, #f472b6, #c084fc, #818cf8);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin: 0 0 8px 0;
           text-align: center;
         }
         
         .mobile-page-subtitle {
-          font-size: 0.85rem;
+          font-size: 0.9rem;
           color: rgba(255,255,255,0.6);
           text-align: center;
           margin: 0 0 12px 0;
         }
         
         .mobile-ad-slot {
-          min-height: 50px;
-          background: rgba(30,30,50,0.6);
-          border: 1px dashed rgba(139,92,246,0.3);
-          border-radius: 4px;
+          min-height: 60px;
+          background: rgba(30,30,50,0.8);
+          border: 1px solid rgba(139,92,246,0.2);
+          border-radius: 6px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: rgba(255,255,255,0.3);
+          color: rgba(255,255,255,0.2);
           font-size: 0.7rem;
         }
         
@@ -961,7 +964,7 @@ export default function MobileArtistsPage() {
           padding-right: 6px;
           padding-left: 6px;
           padding-bottom: 20px;
-          padding-top: 6px;
+          padding-top: 12px;
           pointer-events: auto;
           background: #0f0f1a;
           /* Make grid fill remaining space and be scrollable */

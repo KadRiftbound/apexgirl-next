@@ -179,16 +179,16 @@ export default function ArtistsPage() {
       // When grid is at limits, allow natural page scroll (no preventDefault)
     };
 
-    // Listen on both grid and panel for wheel events
+    // Listen on both grid and panel for wheel events (use capture to intercept before bubbling)
     gridElement.addEventListener('wheel', handleWheel, { passive: false });
     if (panelElement) {
-      panelElement.addEventListener('wheel', handleWheel, { passive: false });
+      panelElement.addEventListener('wheel', handleWheel, { passive: false, capture: true });
     }
 
     return () => {
       gridElement.removeEventListener('wheel', handleWheel);
       if (panelElement) {
-        panelElement.removeEventListener('wheel', handleWheel);
+        panelElement.removeEventListener('wheel', handleWheel, true);
       }
     };
   }, []);
