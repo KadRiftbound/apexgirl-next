@@ -878,7 +878,7 @@ export default function HomePage() {
 
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
-          /* Hero section: full-width, establishes positioning context */
+          /* Hero section: full-width, provides height for layout */
           .hero-section {
             position: relative;
             width: 100%;
@@ -886,13 +886,15 @@ export default function HomePage() {
             overflow: hidden;
             background: transparent;
           }
+          /* Mosaic: fixed so left/right always reference viewport, not container */
           .hero-mosaic {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 70px;
             display: block;
+            z-index: 1000;
           }
           .hero-mosaic::-webkit-scrollbar { display: none; }
           .mosaic-card {
@@ -905,20 +907,20 @@ export default function HomePage() {
             opacity: 0.95 !important;
           }
           .hero-overlay { display: none; }
-          /* Fan arc: centered with left calc relative to hero-section (full-width) */
-          .hero-mosaic .mosaic-card:nth-child(1)  { left: calc(50% - 180px) !important; top: 44px !important; transform: rotate(-21deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(2)  { left: calc(50% - 177px) !important; top: 38px !important; transform: rotate(-18deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(3)  { left: calc(50% - 174px) !important; top: 30px !important; transform: rotate(-14deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(4)  { left: calc(50% - 171px) !important; top: 23px !important; transform: rotate(-10deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(5)  { left: calc(50% - 168px) !important; top: 17px !important; transform: rotate(-7deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(6)  { left: calc(50% - 165px) !important; top: 12px !important; transform: rotate(-3.5deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(7)  { left: calc(50% - 162px) !important; top: 8px !important; transform: none !important; }
-          .hero-mosaic .mosaic-card:nth-child(8)  { left: calc(50% - 159px) !important; top: 12px !important; transform: rotate(3.5deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(9)  { left: calc(50% - 156px) !important; top: 17px !important; transform: rotate(7deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(10) { left: calc(50% - 153px) !important; top: 23px !important; transform: rotate(10deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(11) { left: calc(50% - 150px) !important; top: 30px !important; transform: rotate(14deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(12) { left: calc(50% - 147px) !important; top: 38px !important; transform: rotate(18deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(13) { left: calc(50% - 144px) !important; top: 44px !important; transform: rotate(21deg) !important; }
+          /* Fan arc: centered on VIEWPORT using 50vw, not 50% of container */
+          .hero-mosaic .mosaic-card:nth-child(1)  { left: calc(50vw - 180px) !important; top: 44px !important; transform: rotate(-21deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(2)  { left: calc(50vw - 177px) !important; top: 38px !important; transform: rotate(-18deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(3)  { left: calc(50vw - 174px) !important; top: 30px !important; transform: rotate(-14deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(4)  { left: calc(50vw - 171px) !important; top: 23px !important; transform: rotate(-10deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(5)  { left: calc(50vw - 168px) !important; top: 17px !important; transform: rotate(-7deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(6)  { left: calc(50vw - 165px) !important; top: 12px !important; transform: rotate(-3.5deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(7)  { left: calc(50vw - 162px) !important; top: 8px !important; transform: none !important; }
+          .hero-mosaic .mosaic-card:nth-child(8)  { left: calc(50vw - 159px) !important; top: 12px !important; transform: rotate(3.5deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(9)  { left: calc(50vw - 156px) !important; top: 17px !important; transform: rotate(7deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(10) { left: calc(50vw - 153px) !important; top: 23px !important; transform: rotate(10deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(11) { left: calc(50vw - 150px) !important; top: 30px !important; transform: rotate(14deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(12) { left: calc(50vw - 147px) !important; top: 38px !important; transform: rotate(18deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(13) { left: calc(50vw - 144px) !important; top: 44px !important; transform: rotate(21deg) !important; }
 
           /* Contenu hero mobile: compact */
           .hero-content-mobile {
