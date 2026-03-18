@@ -329,6 +329,32 @@ export default function HomePage() {
     setTimeout(() => setCopiedCode(""), 2000);
   };
 
+  // Styles inline boutons — immune aux overrides Tailwind/globals
+  const btnBase: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    fontWeight: 800,
+    borderRadius: "14px",
+    textDecoration: "none",
+    color: "#fff",
+    transition: "transform 0.2s, box-shadow 0.2s",
+    padding: "13px 22px",
+    fontSize: "1.05rem",
+  };
+  const btnBaseDesktop: React.CSSProperties = {
+    ...btnBase,
+    padding: "20px 44px",
+    fontSize: "2rem",
+    borderRadius: "16px",
+  };
+  const btnArtists:        React.CSSProperties = { ...btnBase,        background: "linear-gradient(135deg,#ff2d78,#ff80ab)", boxShadow: "0 4px 20px rgba(255,45,120,0.45)" };
+  const btnTier:           React.CSSProperties = { ...btnBase,        background: "linear-gradient(135deg,#f59e0b,#ffd700)", boxShadow: "0 4px 20px rgba(245,158,11,0.45)" };
+  const btnTools:          React.CSSProperties = { ...btnBase,        background: "linear-gradient(135deg,#3b82f6,#06b6d4)", boxShadow: "0 4px 20px rgba(59,130,246,0.45)"  };
+  const btnArtistsDesktop: React.CSSProperties = { ...btnBaseDesktop, background: "linear-gradient(135deg,#ff2d78,#ff80ab)", boxShadow: "0 6px 32px rgba(255,45,120,0.50)" };
+  const btnTierDesktop:    React.CSSProperties = { ...btnBaseDesktop, background: "linear-gradient(135deg,#f59e0b,#ffd700)", boxShadow: "0 6px 32px rgba(245,158,11,0.45)" };
+  const btnToolsDesktop:   React.CSSProperties = { ...btnBaseDesktop, background: "linear-gradient(135deg,#3b82f6,#06b6d4)", boxShadow: "0 6px 32px rgba(59,130,246,0.45)"  };
+
   return (
     <>
       {/* ═══════════════════════════════════════════
@@ -371,9 +397,9 @@ export default function HomePage() {
             <span><strong>5+</strong> {t.statTools}</span>
           </div>
           <div className="hero-ctas">
-            <Link href={`/${lang}/artists/`} className="hero-btn hero-btn-artists">🎤 {t.discoverArtists}</Link>
-            <Link href={`/${lang}/tierlist/`} className="hero-btn hero-btn-tier">🏆 {t.tierListVotes}</Link>
-            <Link href={`/${lang}/tools/`} className="hero-btn hero-btn-tools">🛠️ {t.seeTools}</Link>
+            <Link href={`/${lang}/artists/`} style={btnArtists}  >🎤 {t.discoverArtists}</Link>
+            <Link href={`/${lang}/tierlist/`} style={btnTier}    >🏆 {t.tierListVotes}</Link>
+            <Link href={`/${lang}/tools/`}   style={btnTools}    >🛠️ {t.seeTools}</Link>
           </div>
         </div>
       </section>
@@ -391,9 +417,9 @@ export default function HomePage() {
           <span><strong>5+</strong> {t.statTools}</span>
         </div>
         <div className="hero-ctas">
-          <Link href={`/${lang}/artists/`} className="hero-btn hero-btn-artists">🎤 {t.discoverArtists}</Link>
-          <Link href={`/${lang}/tierlist/`} className="hero-btn hero-btn-tier">🏆 {t.tierListVotes}</Link>
-          <Link href={`/${lang}/tools/`} className="hero-btn hero-btn-tools">🛠️ {t.seeTools}</Link>
+          <Link href={`/${lang}/artists/`} style={btnArtistsDesktop}>🎤 {t.discoverArtists}</Link>
+          <Link href={`/${lang}/tierlist/`} style={btnTierDesktop}   >🏆 {t.tierListVotes}</Link>
+          <Link href={`/${lang}/tools/`}   style={btnToolsDesktop}   >🛠️ {t.seeTools}</Link>
         </div>
       </div>
 
@@ -587,52 +613,6 @@ export default function HomePage() {
         .hero-stats strong { color: rgba(255,255,255,0.95); }
         .stat-dot { opacity: 0.35; }
         .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-
-        /* Base commune à tous les boutons */
-        .hero-btn {
-          padding: 22px 52px;
-          font-weight: 800;
-          font-size: 2rem;
-          border-radius: 16px;
-          text-decoration: none;
-          color: #fff;
-          transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .hero-btn:hover {
-          transform: translateY(-3px);
-          filter: brightness(1.12);
-          color: #fff;
-        }
-
-        /* 🎤 Artistes — rose/fuchsia */
-        .hero-btn-artists {
-          background: linear-gradient(135deg, #ff2d78, #ff80ab);
-          box-shadow: 0 6px 32px rgba(255,45,120,0.50);
-        }
-        .hero-btn-artists:hover {
-          box-shadow: 0 8px 40px rgba(255,45,120,0.65);
-        }
-
-        /* 🏆 Tier List — or/ambre */
-        .hero-btn-tier {
-          background: linear-gradient(135deg, #f59e0b, #ffd700);
-          box-shadow: 0 6px 32px rgba(245,158,11,0.45);
-        }
-        .hero-btn-tier:hover {
-          box-shadow: 0 8px 40px rgba(245,158,11,0.60);
-        }
-
-        /* 🛠️ Outils — bleu/cyan */
-        .hero-btn-tools {
-          background: linear-gradient(135deg, #3b82f6, #06b6d4);
-          box-shadow: 0 6px 32px rgba(59,130,246,0.45);
-        }
-        .hero-btn-tools:hover {
-          box-shadow: 0 8px 40px rgba(59,130,246,0.60);
-        }
 
         /* ── OFFER SECTION ────────────────────────── */
         .offer-section {
@@ -929,14 +909,6 @@ export default function HomePage() {
           }
 
           .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; gap: 10px; }
-          .hero-btn {
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-            font-size: 1.05rem;
-            padding: 14px 24px;
-            border-radius: 12px;
-          }
 
           /* Sections : 2 par ligne sur mobile */
           .offer-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
