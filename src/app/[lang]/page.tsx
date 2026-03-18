@@ -371,9 +371,9 @@ export default function HomePage() {
             <span><strong>5+</strong> {t.statTools}</span>
           </div>
           <div className="hero-ctas">
-            <Link href={`/${lang}/artists/`} className="hero-btn-primary">🎤 {t.discoverArtists}</Link>
-            <Link href={`/${lang}/tierlist/`} className="hero-btn-secondary">🏆 {t.tierListVotes}</Link>
-            <Link href={`/${lang}/tools/`} className="hero-btn-secondary">🛠️ {t.seeTools}</Link>
+            <Link href={`/${lang}/artists/`} className="hero-btn hero-btn-artists">🎤 {t.discoverArtists}</Link>
+            <Link href={`/${lang}/tierlist/`} className="hero-btn hero-btn-tier">🏆 {t.tierListVotes}</Link>
+            <Link href={`/${lang}/tools/`} className="hero-btn hero-btn-tools">🛠️ {t.seeTools}</Link>
           </div>
         </div>
       </section>
@@ -391,9 +391,9 @@ export default function HomePage() {
           <span><strong>5+</strong> {t.statTools}</span>
         </div>
         <div className="hero-ctas">
-          <Link href={`/${lang}/artists/`} className="hero-btn-primary">🎤 {t.discoverArtists}</Link>
-          <Link href={`/${lang}/tierlist/`} className="hero-btn-secondary">🏆 {t.tierListVotes}</Link>
-          <Link href={`/${lang}/tools/`} className="hero-btn-secondary">🛠️ {t.seeTools}</Link>
+          <Link href={`/${lang}/artists/`} className="hero-btn hero-btn-artists">🎤 {t.discoverArtists}</Link>
+          <Link href={`/${lang}/tierlist/`} className="hero-btn hero-btn-tier">🏆 {t.tierListVotes}</Link>
+          <Link href={`/${lang}/tools/`} className="hero-btn hero-btn-tools">🛠️ {t.seeTools}</Link>
         </div>
       </div>
 
@@ -513,13 +513,10 @@ export default function HomePage() {
           position: absolute;
           inset: 0;
           z-index: 1;
-          background:
-            linear-gradient(180deg,
-              rgba(10,10,18,0.10) 0%,
-              rgba(10,10,18,0.05) 40%,
-              rgba(10,10,18,0.60) 85%,
-              rgba(10,10,18,0.98) 100%
-            );
+          background: linear-gradient(180deg,
+            rgba(10,10,18,0.08) 0%,
+            rgba(10,10,18,0.00) 100%
+          );
         }
 
         /* Contenu partagé badge/titre/sous-titre/stats/boutons */
@@ -533,10 +530,10 @@ export default function HomePage() {
           width: 100%;
         }
 
-        /* Desktop : contenu sous l'éventail, flux normal */
+        /* Desktop : contenu sous l'éventail, collé */
         .hero-content-desktop {
           display: flex;
-          padding: 36px 24px 52px;
+          padding: 10px 24px 52px;
         }
         .hero-content-mobile {
           display: none;
@@ -589,40 +586,52 @@ export default function HomePage() {
         }
         .hero-stats strong { color: rgba(255,255,255,0.95); }
         .stat-dot { opacity: 0.35; }
-        .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-        .hero-btn-primary {
-          padding: 18px 42px;
-          background: linear-gradient(135deg, #ff4d8d, #ff80ab);
-          color: #fff;
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+        /* Base commune à tous les boutons */
+        .hero-btn {
+          padding: 22px 52px;
           font-weight: 800;
-          font-size: 1.2rem;
-          border-radius: 14px;
+          font-size: 2rem;
+          border-radius: 16px;
           text-decoration: none;
-          box-shadow: 0 4px 28px rgba(255,77,141,0.45);
-          transition: transform 0.2s, box-shadow 0.2s;
+          color: #fff;
+          transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
         }
-        .hero-btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 36px rgba(255,77,141,0.60);
+        .hero-btn:hover {
+          transform: translateY(-3px);
+          filter: brightness(1.12);
           color: #fff;
         }
-        .hero-btn-secondary {
-          padding: 17px 32px;
-          background: rgba(255,255,255,0.10);
-          border: 1px solid rgba(255,255,255,0.28);
-          color: #fff;
-          font-weight: 700;
-          font-size: 1.15rem;
-          border-radius: 14px;
-          text-decoration: none;
-          backdrop-filter: blur(8px);
-          transition: background 0.2s, transform 0.2s, border-color 0.2s;
+
+        /* 🎤 Artistes — rose/fuchsia */
+        .hero-btn-artists {
+          background: linear-gradient(135deg, #ff2d78, #ff80ab);
+          box-shadow: 0 6px 32px rgba(255,45,120,0.50);
         }
-        .hero-btn-secondary:hover {
-          background: rgba(255,255,255,0.17);
-          border-color: rgba(255,255,255,0.45);
-          transform: translateY(-2px);
-          color: #fff;
+        .hero-btn-artists:hover {
+          box-shadow: 0 8px 40px rgba(255,45,120,0.65);
+        }
+
+        /* 🏆 Tier List — or/ambre */
+        .hero-btn-tier {
+          background: linear-gradient(135deg, #f59e0b, #ffd700);
+          box-shadow: 0 6px 32px rgba(245,158,11,0.45);
+        }
+        .hero-btn-tier:hover {
+          box-shadow: 0 8px 40px rgba(245,158,11,0.60);
+        }
+
+        /* 🛠️ Outils — bleu/cyan */
+        .hero-btn-tools {
+          background: linear-gradient(135deg, #3b82f6, #06b6d4);
+          box-shadow: 0 6px 32px rgba(59,130,246,0.45);
+        }
+        .hero-btn-tools:hover {
+          box-shadow: 0 8px 40px rgba(59,130,246,0.60);
         }
 
         /* ── OFFER SECTION ────────────────────────── */
@@ -919,8 +928,15 @@ export default function HomePage() {
             color: rgba(255,255,255,0.75);
           }
 
-          .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
-          .hero-btn-primary, .hero-btn-secondary { width: 100%; text-align: center; }
+          .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; gap: 10px; }
+          .hero-btn {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            padding: 14px 24px;
+            border-radius: 12px;
+          }
 
           /* Sections : 2 par ligne sur mobile */
           .offer-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
