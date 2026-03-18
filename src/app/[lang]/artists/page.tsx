@@ -128,12 +128,11 @@ export default function ArtistsPage() {
                         document.querySelector('header[role="banner"]') as HTMLElement ||
                         document.querySelector('header') as HTMLElement;
 
-          // Hide header when the panel reaches the header bottom edge
+          // Hide header when the panel is about to reach it
           if (header && panelRef.current && window.innerWidth > 900) {
             const panelTop = panelRef.current.getBoundingClientRect().top;
             const headerHeight = header.offsetHeight;
-            // Trigger slightly before the panel reaches the header (5px buffer)
-            if (panelTop <= headerHeight + 5) {
+            if (panelTop <= headerHeight) {
               header.classList.add('header-hidden');
             } else {
               header.classList.remove('header-hidden');
@@ -619,7 +618,7 @@ export default function ArtistsPage() {
           padding: 8px;
           background: #0f0f1a;
           position: sticky;
-          top: var(--header-height, 70px);
+          top: 0;
           z-index: 1001;
           transition: box-shadow 0.3s ease;
         }
