@@ -599,7 +599,7 @@ const guides: Guide[] = [
     readTime: "6 min",
     isNew: true,
     isDone: true,
-    thumbnail: "/assets/images/artists/Minji.jpg",
+    thumbnail: "/assets/images/artists/Lily.jpg",
   },
   {
     id: "world-building",
@@ -802,7 +802,7 @@ export default function GuidesPage() {
               key={guide.id}
               href={`/${lang}/guides/${guide.id}`}
               style={{
-                background: "rgba(20,20,40,0.70)",
+                background: "rgba(20,20,40,0.80)",
                 borderRadius: "20px",
                 border: `1.5px solid ${guide.color}66`,
                 padding: "18px",
