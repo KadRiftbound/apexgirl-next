@@ -705,7 +705,6 @@ export default function ArtistsPage() {
                     }
                   }}
                   className={selectedArtist?.id === artist.id ? "selected" : ""}
-                  title={selectedArtist?.id === artist.id ? t.viewProfileTitle : artist.name}
                   style={{ cursor: "pointer" }}
                 >
                   {artist.image ? (
