@@ -488,8 +488,8 @@ export default function HomePage() {
           aspect-ratio: 4/5;
           border-radius: 10px;
           overflow: hidden;
-          opacity: 0.88;
-          border: 1px solid rgba(255,255,255,0.22);
+          opacity: 0.97;
+          border: 1px solid rgba(255,255,255,0.25);
         }
         .hero-overlay {
           position: absolute;
@@ -561,35 +561,36 @@ export default function HomePage() {
         .stat-dot { opacity: 0.35; }
         .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
         .hero-btn-primary {
-          padding: 16px 36px;
+          padding: 18px 42px;
           background: linear-gradient(135deg, #ff4d8d, #ff80ab);
           color: #fff;
-          font-weight: 700;
-          font-size: 1.08rem;
-          border-radius: 12px;
+          font-weight: 800;
+          font-size: 1.2rem;
+          border-radius: 14px;
           text-decoration: none;
-          box-shadow: 0 4px 24px rgba(255,77,141,0.4);
+          box-shadow: 0 4px 28px rgba(255,77,141,0.45);
           transition: transform 0.2s, box-shadow 0.2s;
         }
         .hero-btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 32px rgba(255,77,141,0.55);
+          box-shadow: 0 6px 36px rgba(255,77,141,0.60);
           color: #fff;
         }
         .hero-btn-secondary {
-          padding: 15px 28px;
-          background: rgba(255,255,255,0.09);
-          border: 1px solid rgba(255,255,255,0.22);
-          color: rgba(255,255,255,0.92);
-          font-weight: 600;
-          font-size: 1.05rem;
-          border-radius: 12px;
+          padding: 17px 32px;
+          background: rgba(255,255,255,0.10);
+          border: 1px solid rgba(255,255,255,0.28);
+          color: #fff;
+          font-weight: 700;
+          font-size: 1.15rem;
+          border-radius: 14px;
           text-decoration: none;
           backdrop-filter: blur(8px);
-          transition: background 0.2s, transform 0.2s;
+          transition: background 0.2s, transform 0.2s, border-color 0.2s;
         }
         .hero-btn-secondary:hover {
-          background: rgba(255,255,255,0.13);
+          background: rgba(255,255,255,0.17);
+          border-color: rgba(255,255,255,0.45);
           transform: translateY(-2px);
           color: #fff;
         }
@@ -857,10 +858,10 @@ export default function HomePage() {
         @media (max-width: 600px) {
           .hero-section { min-height: 70vh; }
 
-          /* Images hero mobile : beaucoup plus grandes et opaques */
+          /* Images hero mobile : taille réduite, opacité très haute */
           .mosaic-card {
-            opacity: 0.92 !important;
-            width: 22% !important;
+            opacity: 0.94 !important;
+            width: 16% !important;
           }
 
           .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
