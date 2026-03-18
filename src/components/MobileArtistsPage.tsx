@@ -282,7 +282,6 @@ export default function MobileArtistsPage() {
                 <div className="mobile-preview-content">
                   <div 
                     className="mobile-preview-image"
-                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
                     onDoubleClick={(e) => {
                       e.preventDefault();
                       const isInTeam1 = team1.some(a => a.id === selectedArtist.id);
@@ -302,7 +301,8 @@ export default function MobileArtistsPage() {
                         }
                       }
                     }}
-                    style={{ cursor: "pointer" }}
+                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    style={{ cursor: "pointer", userSelect: "none" }}
                   >
                     {selectedArtist.image ? (
                       <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} />

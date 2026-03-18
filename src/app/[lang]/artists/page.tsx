@@ -423,7 +423,6 @@ export default function ArtistsPage() {
                 <div className="artist-preview-content">
                   <div
                     className="artist-preview-image-large"
-                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
                     onDoubleClick={(e) => {
                       e.preventDefault();
                       const isInTeam1 = team1.some(a => a.id === selectedArtist.id);
@@ -446,8 +445,9 @@ export default function ArtistsPage() {
                         }
                       }
                     }}
-                    title="Cliquer pour voir la fiche complète • Double-cliquer pour ajouter à une équipe"
-                    style={{ cursor: "pointer" }}
+                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    title="Double-cliquer pour ajouter à une équipe • Cliquer pour voir la fiche complète"
+                    style={{ cursor: "pointer", userSelect: "none" }}
                   >
                     {selectedArtist.image ? (
                       <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={160} height={200} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
