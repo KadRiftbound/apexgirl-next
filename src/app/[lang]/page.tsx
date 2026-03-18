@@ -889,41 +889,37 @@ export default function HomePage() {
           .hero-mosaic {
             position: relative;
             height: 90px;
-            width: 100%;
+            width: 100vw;
+            left: calc(-50vw + 50%);
+            margin-left: 0;
             display: block;
             overflow: visible;
-            padding: 0;
           }
           .hero-mosaic::-webkit-scrollbar { display: none; }
           .mosaic-card {
             position: absolute !important;
-            top: auto !important;
-            left: auto !important;
             width: 28px !important;
             height: 36px;
-            flex-shrink: 0;
-            transform: none !important;
             border-radius: 4px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.25);
             opacity: 0.95 !important;
           }
-          .hero-mosaic::-webkit-scrollbar { display: none; }
           .hero-overlay { display: none; }
-          /* Fan arc positions: centered at 50%-195px, parabolic vertical arc */
-          .hero-mosaic .mosaic-card:nth-child(1)  { left: calc(50% - 195px) !important; top: 40px !important; transform: rotate(-21deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(2)  { left: calc(50% - 192px) !important; top: 35px !important; transform: rotate(-18deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(3)  { left: calc(50% - 189px) !important; top: 29px !important; transform: rotate(-14deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(4)  { left: calc(50% - 186px) !important; top: 23px !important; transform: rotate(-10deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(5)  { left: calc(50% - 183px) !important; top: 17px !important; transform: rotate(-7deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(6)  { left: calc(50% - 180px) !important; top: 13px !important; transform: rotate(-3.5deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(7)  { left: calc(50% - 177px) !important; top: 10px !important; transform: none !important; }
-          .hero-mosaic .mosaic-card:nth-child(8)  { left: calc(50% - 174px) !important; top: 13px !important; transform: rotate(3.5deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(9)  { left: calc(50% - 171px) !important; top: 17px !important; transform: rotate(7deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(10) { left: calc(50% - 168px) !important; top: 23px !important; transform: rotate(10deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(11) { left: calc(50% - 165px) !important; top: 29px !important; transform: rotate(14deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(12) { left: calc(50% - 162px) !important; top: 35px !important; transform: rotate(18deg) !important; }
-          .hero-mosaic .mosaic-card:nth-child(13) { left: calc(50% - 159px) !important; top: 40px !important; transform: rotate(21deg) !important; }
+          /* Fan arc positions: centered on viewport, parabolic vertical arc */
+          .hero-mosaic .mosaic-card:nth-child(1)  { left: calc(50vw - 180px) !important; top: 44px !important; transform: rotate(-21deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(2)  { left: calc(50vw - 177px) !important; top: 38px !important; transform: rotate(-18deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(3)  { left: calc(50vw - 174px) !important; top: 30px !important; transform: rotate(-14deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(4)  { left: calc(50vw - 171px) !important; top: 23px !important; transform: rotate(-10deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(5)  { left: calc(50vw - 168px) !important; top: 17px !important; transform: rotate(-7deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(6)  { left: calc(50vw - 165px) !important; top: 12px !important; transform: rotate(-3.5deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(7)  { left: calc(50vw - 162px) !important; top: 8px !important; transform: none !important; }
+          .hero-mosaic .mosaic-card:nth-child(8)  { left: calc(50vw - 159px) !important; top: 12px !important; transform: rotate(3.5deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(9)  { left: calc(50vw - 156px) !important; top: 17px !important; transform: rotate(7deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(10) { left: calc(50vw - 153px) !important; top: 23px !important; transform: rotate(10deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(11) { left: calc(50vw - 150px) !important; top: 30px !important; transform: rotate(14deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(12) { left: calc(50vw - 147px) !important; top: 38px !important; transform: rotate(18deg) !important; }
+          .hero-mosaic .mosaic-card:nth-child(13) { left: calc(50vw - 144px) !important; top: 44px !important; transform: rotate(21deg) !important; }
 
           /* Contenu hero mobile: compact */
           .hero-content-mobile {
