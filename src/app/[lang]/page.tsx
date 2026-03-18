@@ -519,7 +519,8 @@ export default function HomePage() {
         /* ── HERO ─────────────────────────────────── */
         .hero-section {
           position: relative;
-          min-height: 44vh;
+          min-height: 0;
+          height: 30vw;
           overflow: hidden;
         }
         .hero-mosaic {
@@ -559,7 +560,8 @@ export default function HomePage() {
         /* Desktop : contenu sous l'éventail, collé */
         .hero-content-desktop {
           display: flex;
-          padding: 10px 24px 52px;
+          padding: 0px 24px 52px;
+          margin-top: -8px;
         }
         .hero-content-mobile {
           display: none;
