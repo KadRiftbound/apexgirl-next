@@ -25,6 +25,14 @@ const rankColors: Record<string, string> = {
   UR: "#ff6b6b", "UR Roma": "#ef4444", "UR Bali": "#ef4444", SSR: "#fbbf24", SR: "#8b5cf6", R: "#3b82f6",
 };
 
+const genreColors: Record<string, string> = {
+  "Pop": "#ec4899",
+  "Rock": "#ef4444",
+  "EDM": "#8b5cf6",
+  "Hip Hop": "#f59e0b",
+  "R&B": "#06b6d4",
+};
+
 type Artist = {
   id: number;
   name: string;
@@ -417,7 +425,7 @@ export default function ArtistsPage() {
           <div className="panel-col panel-col-1">
             <div className="artist-preview-card">
               <div className="artist-preview-title">
-                <span>{t.artistOverview}</span>
+                <span style={{ display: 'none' }}>{t.artistOverview}</span>
               </div>
               {selectedArtist ? (
                 <div className="artist-preview-content">
@@ -466,6 +474,8 @@ export default function ArtistsPage() {
                       <div className="detail-col">
                         <p>🎵 {selectedArtist.genre}</p>
                         <p>📊 {t.rankLabel}: <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.rank}</span></p>
+                        {selectedArtist.season && <p>📅 {t.season || 'Season'}: {selectedArtist.season}</p>}
+                        {selectedArtist.calculatedTier && <p>⭐ {t.tier || 'Tier'}: {selectedArtist.calculatedTier}</p>}
                       </div>
                     </div>
                     <div className="artist-preview-skills">
@@ -514,14 +524,14 @@ export default function ArtistsPage() {
                 ))}
               </div>
               {/* Genres row */}
-              <div className="team-genres">
-                {Object.keys(team1Stats.genreCounts).length > 0
-                  ? Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
-                      <span key={genre} className="genre-badge">{genre} ×{count}</span>
-                    ))
-                  : <span className="genre-badge-empty">—</span>
-                }
-              </div>
+               <div className="team-genres">
+                 {Object.keys(team1Stats.genreCounts).length > 0
+                   ? Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
+                       <span key={genre} className="genre-badge" style={{ background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
+                     ))
+                   : <span className="genre-badge-empty">—</span>
+                 }
+               </div>
               {/* Stats — fixed height rows, no scroll */}
               <div className="team-stats-grid">
                  {[
@@ -571,14 +581,14 @@ export default function ArtistsPage() {
                 ))}
               </div>
               {/* Genres row */}
-              <div className="team-genres">
-                {Object.keys(team2Stats.genreCounts).length > 0
-                  ? Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
-                      <span key={genre} className="genre-badge">{genre} ×{count}</span>
-                    ))
-                  : <span className="genre-badge-empty">—</span>
-                }
-              </div>
+               <div className="team-genres">
+                 {Object.keys(team2Stats.genreCounts).length > 0
+                   ? Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
+                       <span key={genre} className="genre-badge" style={{ background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
+                     ))
+                   : <span className="genre-badge-empty">—</span>
+                 }
+               </div>
               {/* Stats — fixed rows */}
               <div className="team-stats-grid">
                 {[
@@ -647,12 +657,17 @@ export default function ArtistsPage() {
                     const isInTeam2 = team2.some(a => a.id === artist.id);
                     
                     if (isInTeam1) {
+                      // In Team1 only: move to Team2
                       if (!isInTeam2 && team2.length < 5) {
                         setTeam2([...team2, artist]);
                       }
                     } else if (isInTeam2) {
-                      return;
+                      // In Team2 only: move to Team1
+                      if (team1.length < 5) {
+                        setTeam1([...team1, artist]);
+                      }
                     } else {
+                      // Not in any team: add to Team1 if space, else Team2
                       if (team1.length < 5) {
                         setTeam1([...team1, artist]);
                       } else if (team2.length < 5) {
@@ -923,6 +938,7 @@ export default function ArtistsPage() {
           margin-bottom: 5px;
           justify-content: center;
           flex-shrink: 0;
+          margin-top: -12px;
         }
         .team-slot {
           width: 69px;
@@ -959,10 +975,10 @@ export default function ArtistsPage() {
           min-height: 16px;
         }
         .genre-badge {
-          padding: 1px 6px;
+          padding: 3px 8px;
           background: rgba(139,92,246,0.25);
           border-radius: 8px;
-          font-size: 0.58rem;
+          font-size: 0.8rem;
           color: rgba(255,255,255,0.8);
           white-space: nowrap;
         }
