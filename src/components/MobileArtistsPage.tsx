@@ -257,6 +257,14 @@ export default function MobileArtistsPage() {
       </Head>
 
       <div className="mobile-page-container">
+        {/* Page header — scrollable, visible before scroll */}
+        <div className="mobile-page-header">
+          <h1 className="mobile-page-title">{t.pageTitle || "🎤 Artists"}</h1>
+          <p className="mobile-page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
+          {/* Ad slot — space reserved for future ads */}
+          <div className="mobile-ad-slot" />
+        </div>
+
         {/* Layer 2: Fixed 3-column Panel */}
         <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : 56 }}>
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
@@ -495,7 +503,7 @@ export default function MobileArtistsPage() {
           </select>
         </div>
 
-        /* Layer 4: Artists Grid - Scrollable */
+        {/* Layer 4: Artists Grid - Scrollable */}
         <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(56px + 40vh + ${searchBarHeight}px)` }}>
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
@@ -540,6 +548,37 @@ export default function MobileArtistsPage() {
         .mobile-page-container {
           min-height: 100vh;
           background: transparent;
+        }
+
+        /* Page header — scrollable, above the fixed panel */
+        .mobile-page-header {
+          padding: 56px 12px 12px; /* 56px = MobileNav height */
+          text-align: center;
+          background: transparent;
+        }
+        .mobile-page-title {
+          font-size: 1.6rem;
+          font-weight: 800;
+          background: linear-gradient(135deg, #f472b6, #c084fc, #818cf8);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 4px;
+        }
+        .mobile-page-subtitle {
+          font-size: 0.75rem;
+          color: rgba(255,255,255,0.5);
+          margin-bottom: 10px;
+        }
+        /* Reserved ad slot — 90px tall banner placeholder */
+        .mobile-ad-slot {
+          width: 100%;
+          min-height: 60px;
+          background: rgba(255,255,255,0.03);
+          border: 1px dashed rgba(255,255,255,0.08);
+          border-radius: 8px;
+          margin: 0 auto;
+          max-width: 360px;
         }
         
         /* Layer 2: Top Panel - Always fixed on mobile */
