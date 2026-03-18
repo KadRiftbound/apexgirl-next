@@ -166,15 +166,13 @@ export default function ToolsPage() {
   return (
       <div style={{
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
         paddingBottom: "80px",
       }}>
 
       {/* Hero Header */}
       <div style={{
-        background: "rgba(15, 15, 26, 0.72)",
         backdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(139, 92, 246, 0.3)",
+        borderBottom: "1px solid rgba(139, 92, 246, 0.25)",
         padding: "40px 0 30px",
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 20px" }}>
@@ -233,10 +231,10 @@ export default function ToolsPage() {
                   borderRadius: "16px",
                   border: isActive
                     ? `2px solid ${tool.color}`
-                    : "2px solid rgba(255,255,255,0.06)",
+                    : `2px solid ${tool.color}40`,
                   background: isActive
                     ? `${tool.gradient}`
-                    : "rgba(30, 30, 50, 0.35)",
+                    : `${tool.color}12`,
                   color: "#fff",
                   cursor: "pointer",
                   transition: "all 0.25s ease",
@@ -283,21 +281,22 @@ export default function ToolsPage() {
 
         {/* Active Tool Panel */}
         <div style={{
-          background: "rgba(20, 20, 40, 0.55)",
+          background: `${activeTool.color}0d`,
           borderRadius: "20px",
-          border: `1px solid ${activeTool.color}44`,
+          border: `1.5px solid ${activeTool.color}80`,
           backdropFilter: "blur(20px)",
           overflow: "visible",
-          boxShadow: `0 0 60px ${activeTool.glowColor}22`,
+          boxShadow: `0 0 48px ${activeTool.glowColor}33, inset 0 1px 0 ${activeTool.color}30`,
         }}>
           {/* Panel Header */}
           <div style={{
             padding: "16px 24px",
-            borderBottom: `1px solid ${activeTool.color}33`,
-            background: `${activeTool.color}11`,
+            borderBottom: `1px solid ${activeTool.color}55`,
+            background: `${activeTool.color}18`,
             display: "flex",
             alignItems: "center",
             gap: "12px",
+            borderRadius: "20px 20px 0 0",
           }}>
             <div style={{
               width: "36px",

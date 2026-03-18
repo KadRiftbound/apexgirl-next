@@ -677,14 +677,12 @@ export default function GuidesPage() {
 
   return (
     <div style={{ 
-      minHeight: "100vh", 
-      background: "linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)",
+      minHeight: "100vh",
       paddingBottom: "60px"
     }}>
       <div style={{
-        background: "rgba(15, 15, 26, 0.95)",
         backdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(139, 92, 246, 0.3)",
+        borderBottom: "1px solid rgba(139, 92, 246, 0.25)",
         padding: "40px 0 30px"
       }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
@@ -716,13 +714,18 @@ export default function GuidesPage() {
               style={{
                 padding: "10px 18px",
                 borderRadius: "10px",
-                border: activeCategoryState === cat ? "1px solid rgba(236, 72, 153, 0.6)" : "1px solid rgba(255,255,255,0.1)",
-                background: activeCategoryState === cat ? "linear-gradient(135deg, #ec4899, #a855f7)" : "rgba(30, 30, 50, 0.8)",
-                color: activeCategoryState === cat ? "#fff" : "rgba(255,255,255,0.6)",
+                border: activeCategoryState === cat
+                  ? "1px solid rgba(236, 72, 153, 0.7)"
+                  : "1px solid rgba(139, 92, 246, 0.30)",
+                background: activeCategoryState === cat
+                  ? "linear-gradient(135deg, #ec4899, #a855f7)"
+                  : "rgba(139, 92, 246, 0.10)",
+                color: activeCategoryState === cat ? "#fff" : "rgba(255,255,255,0.75)",
                 cursor: "pointer",
                 fontSize: "0.85rem",
-                fontWeight: 500,
+                fontWeight: 600,
                 transition: "all 0.2s",
+                boxShadow: activeCategoryState === cat ? "0 4px 16px rgba(236,72,153,0.35)" : "none",
               }}
             >
               {cat}
@@ -740,8 +743,8 @@ export default function GuidesPage() {
               width: "100%",
               padding: "14px 20px",
               borderRadius: "12px",
-              border: "1px solid rgba(139, 92, 246, 0.3)",
-              background: "rgba(30, 30, 50, 0.8)",
+              border: "1.5px solid rgba(139, 92, 246, 0.45)",
+              background: "rgba(139, 92, 246, 0.08)",
               color: "#fff",
               fontSize: "1rem",
               outline: "none",
@@ -759,9 +762,9 @@ export default function GuidesPage() {
               key={guide.id}
               href={`/${lang}/guides/${guide.id}`}
               style={{
-                background: "rgba(30, 30, 50, 0.8)",
+                background: `${guide.color}0e`,
                 borderRadius: "20px",
-                border: "1px solid rgba(139, 92, 246, 0.3)",
+                border: `1.5px solid ${guide.color}55`,
                 padding: "24px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
@@ -769,6 +772,7 @@ export default function GuidesPage() {
                 overflow: "hidden",
                 textDecoration: "none",
                 display: "block",
+                boxShadow: `0 2px 16px ${guide.color}18`,
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-8px)";
@@ -777,8 +781,8 @@ export default function GuidesPage() {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
-                e.currentTarget.style.borderColor = "rgba(139, 92, 246, 0.3)";
+                e.currentTarget.style.boxShadow = `0 2px 16px ${guide.color}18`;
+                e.currentTarget.style.borderColor = `${guide.color}55`;
               }}
             >
               <div style={{

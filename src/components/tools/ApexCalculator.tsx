@@ -397,17 +397,17 @@ type CategoryConfig = {
   id: string;
   label: string;
   maxLevel?: number;
-  tiers?: string[];
-  assetTypes?: string[];
+  tiers?: { label: string; value: string }[];
+  assetTypes?: { label: string; value: string }[];
   mode?: "levels" | "blueprints" | "carparts" | "villa";
 };
 
-const buildSeries = (label: string, count: number) =>
-  Array.from({ length: count }, (_, i) => `${label} ${i + 1}`);
+const buildSeries = (label: string, englishBase: string, count: number) =>
+  Array.from({ length: count }, (_, i) => ({ label: `${label} ${i + 1}`, value: `${englishBase} ${i + 1}` }));
 
 const btnBase: React.CSSProperties = {
   padding: "8px 14px",
-  borderRadius: "6px",
+  borderRadius: "8px",
   color: "#fff",
   cursor: "pointer",
   fontSize: "0.8rem",
@@ -416,9 +416,9 @@ const btnBase: React.CSSProperties = {
 
 const inputStyle: React.CSSProperties = {
   padding: "8px 12px",
-  borderRadius: "6px",
-  border: "1px solid #374151",
-  background: "#1f2937",
+  borderRadius: "8px",
+  border: "1.5px solid rgba(139,92,246,0.45)",
+  background: "rgba(139,92,246,0.10)",
   color: "#fff",
   width: "70px",
   fontSize: "0.9rem",
@@ -426,13 +426,29 @@ const inputStyle: React.CSSProperties = {
 
 const selectStyle: React.CSSProperties = {
   padding: "8px 12px",
-  borderRadius: "6px",
-  border: "1px solid #374151",
-  background: "#1f2937",
+  borderRadius: "8px",
+  border: "1.5px solid rgba(139,92,246,0.45)",
+  background: "rgba(139,92,246,0.10)",
   color: "#fff",
   fontSize: "0.85rem",
   cursor: "pointer",
 };
+
+// Couleur par type de ressource pour les cards résultat
+const RESOURCE_COLORS: Record<string, { color: string; bg: string }> = {
+  "EXP":              { color: "#4ade80", bg: "rgba(74,222,128,0.12)"  },
+  "Gold":             { color: "#fbbf24", bg: "rgba(251,191,36,0.12)"  },
+  "Gems":             { color: "#c084fc", bg: "rgba(192,132,252,0.12)" },
+  "Tickets":          { color: "#60a5fa", bg: "rgba(96,165,250,0.12)"  },
+  "Promotion Cards":  { color: "#f472b6", bg: "rgba(244,114,182,0.12)" },
+  "Extra Assets":     { color: "#fb923c", bg: "rgba(251,146,60,0.12)"  },
+  "Blueprints":       { color: "#38bdf8", bg: "rgba(56,189,248,0.12)"  },
+  "Car Parts":        { color: "#a78bfa", bg: "rgba(167,139,250,0.12)" },
+  "Advance Drawings": { color: "#34d399", bg: "rgba(52,211,153,0.12)"  },
+  "Drones":           { color: "#f97316", bg: "rgba(249,115,22,0.12)"  },
+  "Design Drafts":    { color: "#e879f9", bg: "rgba(232,121,249,0.12)" },
+};
+const DEFAULT_RESOURCE_COLOR = { color: "#f472b6", bg: "rgba(244,114,182,0.12)" };
 
 function formatRankStars(rank: string, stars: string): string {
   const s = stars === "0" ? "" : stars;
@@ -445,26 +461,47 @@ export default function ApexCalculator() {
   const t = translations[lang] || translations.en;
 
   const categoryConfig = useMemo<CategoryConfig[]>(() => [
-    { id: "HQ Floors", label: t.catHqFloors, maxLevel: 60, tiers: buildSeries(t.floor, 5) },
-    { id: "Museum", label: t.catMuseum, maxLevel: 60, tiers: buildSeries(t.room, 5) },
-    { id: "Homemaking", label: t.catHomemaking, maxLevel: 60, tiers: buildSeries(t.tier, 5) },
-    { id: "Car Core", label: t.catCarCore, maxLevel: 60, tiers: [t.gradeD, "C", "B", "A", "A+", "S"] },
+    { id: "HQ Floors", label: t.catHqFloors, maxLevel: 60, tiers: buildSeries(t.floor, "Floor", 5) },
+    { id: "Museum", label: t.catMuseum, maxLevel: 60, tiers: buildSeries(t.room, "Room", 5) },
+    { id: "Homemaking", label: t.catHomemaking, maxLevel: 60, tiers: buildSeries(t.tier, "Tier", 5) },
+    { id: "Car Core", label: t.catCarCore, maxLevel: 60, tiers: [
+      { label: t.gradeD, value: "D Grade" },
+      { label: "C", value: "C" },
+      { label: "B", value: "B" },
+      { label: "A", value: "A" },
+      { label: "A+", value: "A+" },
+      { label: "S", value: "S" },
+    ]},
     { id: "Artists", label: t.catArtists, maxLevel: 160 },
     { id: "HQ Glass", label: t.catHqGlass, maxLevel: 499 },
     { id: "Collection Gems", label: t.catCollectionGems, maxLevel: 49 },
-    { id: "Assets", label: t.catAssets, maxLevel: 75, tiers: [t.assetJewelry, t.assetCar, t.assetProperty], assetTypes: [t.assetBasicGold, t.assetAbroad, t.assetAuction] },
+    { id: "Assets", label: t.catAssets, maxLevel: 75,
+      tiers: [
+        { label: t.assetJewelry, value: "Jewelry" },
+        { label: t.assetCar, value: "Car" },
+        { label: t.assetProperty, value: "Property" },
+      ],
+      assetTypes: [
+        { label: t.assetBasicGold, value: "Basic Gold" },
+        { label: t.assetAbroad, value: "Abroad Adventures" },
+        { label: t.assetAuction, value: "Auction" },
+      ]
+    },
     { id: "Blueprints", label: t.catBlueprints, mode: "blueprints" },
     { id: "Car Parts", label: t.catCarParts, mode: "carparts" },
     { id: "Villa Suite", label: t.catVilla, mode: "villa" },
-    { id: "Others", label: t.catOthers, maxLevel: 15, tiers: [t.otherHqCards, t.otherBusinessGold] },
+    { id: "Others", label: t.catOthers, maxLevel: 15, tiers: [
+      { label: t.otherHqCards, value: "HQ Building Cards" },
+      { label: t.otherBusinessGold, value: "Business Building Gold" },
+    ]},
   ], [t]);
 
   const [data, setData] = useState<ApiData>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("HQ Floors");
-  const [selectedTier, setSelectedTier] = useState(() => `${t.floor} 1`);
-  const [selectedAssetType, setSelectedAssetType] = useState(() => t.assetBasicGold);
+  const [selectedTier, setSelectedTier] = useState("Floor 1");
+  const [selectedAssetType, setSelectedAssetType] = useState("Basic Gold");
   const [fromLevel, setFromLevel] = useState(1);
   const [toLevel, setToLevel] = useState(60);
   const [selectedGirl, setSelectedGirl] = useState("");
@@ -692,8 +729,8 @@ export default function ApexCalculator() {
   const handleCategoryChange = (catId: string) => {
     setActiveCategory(catId);
     const config = categoryConfig.find(c => c.id === catId);
-    if (config?.tiers) setSelectedTier(config.tiers[0]);
-    if (config?.assetTypes) setSelectedAssetType(config.assetTypes[0]);
+    if (config?.tiers) setSelectedTier(config.tiers[0].value);
+    if (config?.assetTypes) setSelectedAssetType(config.assetTypes[0].value);
     setFromLevel(1);
     setToLevel(config?.maxLevel || 60);
     if (catId === "Artists" && girlMultipliers.length > 0 && !selectedGirl) {
@@ -711,8 +748,13 @@ export default function ApexCalculator() {
             onClick={() => handleCategoryChange(cat.id)}
             style={{
               ...btnBase,
-              border: activeCategory === cat.id ? "1px solid #f472b6" : "1px solid #374151",
-              background: activeCategory === cat.id ? "linear-gradient(135deg, #ec4899, #a855f7)" : "#1f2937",
+              border: activeCategory === cat.id
+                ? "1.5px solid #f472b6"
+                : "1.5px solid rgba(139,92,246,0.35)",
+              background: activeCategory === cat.id
+                ? "linear-gradient(135deg, #ec4899, #a855f7)"
+                : "rgba(139,92,246,0.10)",
+              boxShadow: activeCategory === cat.id ? "0 4px 14px rgba(236,72,153,0.35)" : "none",
             }}
           >
             {cat.label}
@@ -724,18 +766,22 @@ export default function ApexCalculator() {
       {hasTiers && currentConfig && (
         <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <span style={{ color: "#9ca3af", fontSize: "0.9rem" }}>{t.selectTier}:</span>
-          {(currentConfig.tiers || []).map((tier: string) => (
+          {(currentConfig.tiers || []).map((tier) => (
             <button
-              key={tier}
-              onClick={() => setSelectedTier(tier)}
+              key={tier.value}
+              onClick={() => setSelectedTier(tier.value)}
               style={{
                 ...btnBase,
                 padding: "6px 12px",
-                border: selectedTier === tier ? "1px solid #f472b6" : "1px solid #374151",
-                background: selectedTier === tier ? "rgba(244, 114, 182, 0.2)" : "#1f2937",
+                border: selectedTier === tier.value
+                  ? "1.5px solid #f472b6"
+                  : "1.5px solid rgba(139,92,246,0.30)",
+                background: selectedTier === tier.value
+                  ? "rgba(236,72,153,0.25)"
+                  : "rgba(139,92,246,0.08)",
               }}
             >
-              {tier}
+              {tier.label}
             </button>
           ))}
         </div>
@@ -745,18 +791,22 @@ export default function ApexCalculator() {
       {hasAssetTypes && currentConfig && (
         <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <span style={{ color: "#9ca3af", fontSize: "0.9rem" }}>Type:</span>
-          {(currentConfig.assetTypes || []).map((type: string) => (
+          {(currentConfig.assetTypes || []).map((type) => (
             <button
-              key={type}
-              onClick={() => setSelectedAssetType(type)}
+              key={type.value}
+              onClick={() => setSelectedAssetType(type.value)}
               style={{
                 ...btnBase,
                 padding: "6px 12px",
-                border: selectedAssetType === type ? "1px solid #8b5cf6" : "1px solid #374151",
-                background: selectedAssetType === type ? "rgba(139, 92, 246, 0.2)" : "#1f2937",
+                border: selectedAssetType === type.value
+                  ? "1.5px solid #8b5cf6"
+                  : "1.5px solid rgba(139,92,246,0.30)",
+                background: selectedAssetType === type.value
+                  ? "rgba(139,92,246,0.25)"
+                  : "rgba(139,92,246,0.08)",
               }}
             >
-              {type}
+              {type.label}
             </button>
           ))}
         </div>
@@ -925,12 +975,23 @@ export default function ApexCalculator() {
       <div style={{ marginBottom: "20px" }}>
         <div style={{ fontSize: "0.8rem", color: "#9ca3af", marginBottom: "8px", textTransform: "uppercase" }}>{t.totalCost}</div>
         <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-          {Object.entries(totals).map(([resource, total]) => (
-            <div key={resource} style={{ textAlign: "center", padding: "12px 20px", background: "#374151", borderRadius: "8px", minWidth: "100px" }}>
-              <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>{resource}</div>
-              <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#f472b6", fontFamily: "monospace" }}>{total.toLocaleString()}</div>
+          {Object.entries(totals).map(([resource, total]) => {
+            const rc = RESOURCE_COLORS[resource] || DEFAULT_RESOURCE_COLOR;
+            return (
+            <div key={resource} style={{
+              textAlign: "center",
+              padding: "14px 22px",
+              background: rc.bg,
+              borderRadius: "12px",
+              minWidth: "110px",
+              border: `1.5px solid ${rc.color}55`,
+              boxShadow: `0 2px 12px ${rc.color}20`,
+            }}>
+              <div style={{ fontSize: "0.72rem", color: rc.color, marginBottom: "6px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{resource}</div>
+              <div style={{ fontSize: "1.4rem", fontWeight: 800, color: rc.color, fontFamily: "monospace" }}>{total.toLocaleString()}</div>
             </div>
-          ))}
+            );
+          })}
           {Object.keys(totals).length === 0 && (
             <div style={{ color: "#6b7280", fontSize: "0.9rem" }}>No data for this selection</div>
           )}
