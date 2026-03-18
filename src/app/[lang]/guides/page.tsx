@@ -540,7 +540,7 @@ const guides: Guide[] = [
     readTime: "8 min",
     isNew: true,
     isDone: true,
-    thumbnail: "/assets/images/guides/muse-event.jpg",
+    thumbnail: "/assets/images/artists/Ayaka.jpg",
   },
   {
     id: "event-chamber-territory",
@@ -586,7 +586,7 @@ const guides: Guide[] = [
     readTime: "8 min",
     isNew: true,
     isDone: true,
-    thumbnail: "/assets/images/guides/vs-group.jpg",
+    thumbnail: "/assets/images/artists/Brooklyn.jpg",
   },
   {
     id: "event-fishing",
@@ -805,7 +805,7 @@ export default function GuidesPage() {
                 background: "rgba(20,20,40,0.70)",
                 borderRadius: "20px",
                 border: `1.5px solid ${guide.color}66`,
-                padding: "24px",
+                padding: "18px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
                 position: "relative",
@@ -839,43 +839,50 @@ export default function GuidesPage() {
                 background: `linear-gradient(90deg, ${guide.color}, ${guide.color}88)`,
               }} />
 
-              {guide.thumbnail && (
-                <div style={{
-                  height: "120px",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  marginBottom: "16px",
-                  position: "relative",
-                }}>
-                  <Image
-                    src={guide.thumbnail}
-                    alt={guide.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-              )}
-
               <div style={{
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "56px",
-                height: "56px",
-                borderRadius: "16px",
-                background: `${guide.color}22`,
-                fontSize: "1.75rem",
-                marginBottom: "16px",
+                alignItems: "flex-start",
+                gap: "12px",
+                marginBottom: "12px",
               }}>
-                {guide.icon}
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "52px",
+                  height: "52px",
+                  borderRadius: "14px",
+                  background: `${guide.color}22`,
+                  fontSize: "1.5rem",
+                  flexShrink: 0,
+                }}>
+                  {guide.icon}
+                </div>
+                {guide.thumbnail && (
+                  <div style={{
+                    height: "52px",
+                    width: "52px",
+                    borderRadius: "10px",
+                    overflow: "hidden",
+                    position: "relative",
+                    flexShrink: 0,
+                  }}>
+                    <Image
+                      src={guide.thumbnail}
+                      alt={guide.title}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="52px"
+                    />
+                  </div>
+                )}
               </div>
 
               <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, marginBottom: "8px" }}>
                 {getGuideTitle(guide.id, lang, guide.title)}
               </h3>
 
-              <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", lineHeight: 1.6, marginBottom: "16px" }}>
+              <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", lineHeight: 1.6, marginBottom: "12px" }}>
                 {getGuideDescription(guide.id, lang, guide.description)}
               </p>
 
