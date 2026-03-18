@@ -915,9 +915,12 @@ export default function HomePage() {
           .hero-mosaic .mosaic-card:nth-child(13) { left: 84%;  top: calc(3% + 27% * 1);   transform: rotate(21deg); }
           .hero-overlay { display: none; }
 
-          /* Hero content: compact below the fan */
+          /* Hero content: compact below the fan, stacked vertically */
           .hero-content-mobile {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             padding: 12px 16px 4px;
           }
           .hero-badge { font-size: 0.65rem; padding: 4px 12px; margin-bottom: 8px; }
@@ -925,21 +928,8 @@ export default function HomePage() {
           .hero-subtitle { display: none; }
           .hero-subtitle :global(strong) { color: #ff80ab; }
           .hero-stats { display: none; }
-          .hero-ctas a,
-          .hero-ctas {
-            flex-direction: row;
-            gap: 6px;
-            justify-content: center;
-            width: 100%;
-            flex-wrap: nowrap;
-          }
-          .hero-ctas a {
-            padding: 8px 12px !important;
-            font-size: 0.75rem !important;
-            border-radius: 10px !important;
-            box-shadow: none !important;
-            white-space: nowrap;
-          }
+          .hero-ctas { flex-direction: row; gap: 6px; justify-content: center; width: 100%; flex-wrap: nowrap; }
+          .hero-ctas a { padding: 8px 12px; font-size: 0.75rem; border-radius: 10px; box-shadow: none; white-space: nowrap; }
           .hero-content-desktop { display: none !important; }
           .artist-strip-section { display: none; }
           .offer-section { padding: 24px 12px; }
