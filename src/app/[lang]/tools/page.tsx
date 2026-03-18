@@ -314,7 +314,7 @@ export default function ToolsPage() {
             <span style={{
               fontWeight: 700,
               fontSize: "1.05rem",
-              color: activeTool.color,
+              color: "#fff",
               letterSpacing: "0.02em",
             }}>
               {t[activeTab]}
@@ -333,7 +333,7 @@ export default function ToolsPage() {
                     width: "20px", height: "20px", borderRadius: "50%",
                     border: `1px solid ${activeTool.color}88`,
                     background: `${activeTool.color}22`,
-                    color: activeTool.color, fontSize: "0.7rem", fontWeight: 700,
+                    color: "#fff", fontSize: "0.7rem", fontWeight: 700,
                     cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
                     lineHeight: 1, flexShrink: 0,
                   }}
@@ -374,7 +374,7 @@ export default function ToolsPage() {
               width: "8px",
               height: "8px",
               borderRadius: "50%",
-              background: activeTool.color,
+              background: "#fff",
               boxShadow: `0 0 8px ${activeTool.color}`,
               animation: "pulse 2s infinite",
             }} />
