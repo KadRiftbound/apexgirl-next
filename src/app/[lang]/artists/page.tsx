@@ -11,8 +11,8 @@ import MobileArtistsPage from "@/components/MobileArtistsPage";
 const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 const filterTranslations: Record<string, any> = {
-  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", team1Stats: "Stats Équipe 1", team2Stats: "Stats Équipe 2", vs: "VS", total: "Total", acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Chargement...", viewProfileTitle: "Cliquer pour voir la fiche", rankLabel: "Rang", allSeasons: "Toutes saisons", maxSeason: "Max saison" },
-  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove", team1Stats: "Team 1 Stats", team2Stats: "Team 2 Stats", vs: "VS", total: "Total", acquisition: "Access", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Loading...", viewProfileTitle: "Click to view profile", rankLabel: "Rank", allSeasons: "All seasons", maxSeason: "Max season" },
+  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", team1Stats: "Stats Équipe 1", team2Stats: "Stats Équipe 2", vs: "VS", total: "Total", acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Chargement...", viewProfileTitle: "Cliquer pour voir la fiche", rankLabel: "Rang", allSeasons: "Toutes saisons", maxSeason: "Max saison", season: "Saison" },
+  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove", team1Stats: "Team 1 Stats", team2Stats: "Team 2 Stats", vs: "VS", total: "Total", acquisition: "Access", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Loading...", viewProfileTitle: "Click to view profile", rankLabel: "Rank", allSeasons: "All seasons", maxSeason: "Max season", season: "Season" },
   it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità", foundArtists: "artisti trovati", clearTeam: "Cancella", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Scheda", clickToRemove: "Clicca per rimuovere", team1Stats: "Stats Team 1", team2Stats: "Stats Team 2", vs: "VS", total: "Totale", acquisition: "Accesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Caricamento...", viewProfileTitle: "Clicca per vedere la scheda", rankLabel: "Rango", allSeasons: "Tutte le stagioni", maxSeason: "Stagione max" },
   es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades", foundArtists: "artistas encontrados", clearTeam: "Borrar", addTeam1: "+ Equipo 1", addTeam2: "+ Equipo 2", profile: "Perfil", clickToRemove: "Clic para eliminar", team1Stats: "Stats Equipo 1", team2Stats: "Stats Equipo 2", vs: "VS", total: "Total", acquisition: "Acceso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Cargando...", viewProfileTitle: "Clic para ver el perfil", rankLabel: "Rango", allSeasons: "Todas las temporadas", maxSeason: "Temporada máx" },
   pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades", foundArtists: "artistas encontrados", clearTeam: "Limpar", addTeam1: "+ Time 1", addTeam2: "+ Time 2", profile: "Perfil", clickToRemove: "Clique para remover", team1Stats: "Stats Time 1", team2Stats: "Stats Time 2", vs: "VS", total: "Total", acquisition: "Acesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Carregando...", viewProfileTitle: "Clique para ver o perfil", rankLabel: "Rank", allSeasons: "Todas as temporadas", maxSeason: "Temporada máx" },
@@ -33,6 +33,17 @@ const genreColors: Record<string, string> = {
   "R&B": "#06b6d4",
 };
 
+const seasonLabels: Record<string, string> = {
+  fr: "Saison",
+  en: "Season",
+  it: "Stagione",
+  es: "Temporada",
+  pt: "Temporada",
+  pl: "Sezon",
+  id: "Musim",
+  ru: "Сезон",
+};
+
 type Artist = {
   id: number;
   name: string;
@@ -47,6 +58,7 @@ type Artist = {
   earlyGameRecommended?: boolean;
   acquisitionTier?: string;
   calculatedTier?: string;
+  photos?: string;
   skillCategories?: { dps: string[]; offensive: string[]; hp: string[]; defense: string[] };
 };
 
@@ -476,6 +488,7 @@ export default function ArtistsPage() {
                         <p>🎵 {selectedArtist.genre}</p>
                         <p>📊 {t.rankLabel}: <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.rank}</span></p>
                         {selectedArtist.calculatedTier && <p>⭐ {t.tier || 'Tier'}: {selectedArtist.calculatedTier}</p>}
+                        {(selectedArtist as any).photos && <p>📍 {seasonLabels[lang]}: {(selectedArtist as any).photos}</p>}
                       </div>
                     </div>
                     <div className="artist-preview-skills">
@@ -646,11 +659,7 @@ export default function ArtistsPage() {
                 <button
                   key={artist.id}
                   onClick={() => {
-                    if (selectedArtist?.id === artist.id) {
-                      router.push(`/${lang}/artist/${slugify(artist.name)}`);
-                    } else {
-                      setSelectedArtist(artist);
-                    }
+                    setSelectedArtist(artist);
                   }}
                   onDoubleClick={(e) => {
                     e.preventDefault();
@@ -981,8 +990,9 @@ export default function ArtistsPage() {
           background: rgba(139,92,246,0.25);
           border-radius: 8px;
           font-size: 0.8rem;
-          color: rgba(255,255,255,0.8);
+          color: #fff;
           white-space: nowrap;
+          font-weight: 600;
         }
         .genre-badge-empty {
           color: rgba(255,255,255,0.2);
