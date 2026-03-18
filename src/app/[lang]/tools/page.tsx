@@ -281,18 +281,18 @@ export default function ToolsPage() {
 
         {/* Active Tool Panel */}
         <div style={{
-          background: `${activeTool.color}cc`,
+          background: `${activeTool.color}40`,
           borderRadius: "20px",
-          border: `1.5px solid ${activeTool.color}80`,
+          border: `1.5px solid ${activeTool.color}44`,
           backdropFilter: "blur(20px)",
           overflow: "visible",
-          boxShadow: `0 0 48px ${activeTool.glowColor}33, inset 0 1px 0 ${activeTool.color}30`,
+          boxShadow: `0 0 24px ${activeTool.glowColor}18, inset 0 1px 0 ${activeTool.color}20`,
         }}>
           {/* Panel Header */}
           <div style={{
             padding: "16px 24px",
             borderBottom: `1px solid ${activeTool.color}55`,
-            background: `${activeTool.color}28`,
+            background: `${activeTool.color}20`,
             display: "flex",
             alignItems: "center",
             gap: "12px",
@@ -382,10 +382,17 @@ export default function ToolsPage() {
 
           {/* Tool Content */}
           <div style={{ padding: "24px" }}>
-            {activeTab === "resource" && <ApexCalculator />}
-            {activeTab === "svs" && <SVSCalculator />}
-            {activeTab === "ceo" && <CEOCalculator />}
-            {activeTab === "burj" && <BurjLottery />}
+            <div style={{
+              background: "rgba(15,15,32,0.85)",
+              borderRadius: "14px",
+              padding: "20px",
+              margin: "0 4px 4px",
+            }}>
+              {activeTab === "resource" && <ApexCalculator />}
+              {activeTab === "svs" && <SVSCalculator />}
+              {activeTab === "ceo" && <CEOCalculator />}
+              {activeTab === "burj" && <BurjLottery />}
+            </div>
           </div>
         </div>
 

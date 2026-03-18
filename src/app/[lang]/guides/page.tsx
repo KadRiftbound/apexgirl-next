@@ -802,9 +802,9 @@ export default function GuidesPage() {
               key={guide.id}
               href={`/${lang}/guides/${guide.id}`}
               style={{
-                background: `${guide.color}e0`,
+                background: "rgba(20,20,40,0.70)",
                 borderRadius: "20px",
-                border: `1.5px solid ${guide.color}88`,
+                border: `1.5px solid ${guide.color}66`,
                 padding: "24px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
@@ -898,7 +898,7 @@ export default function GuidesPage() {
                     borderRadius: "8px",
                     fontSize: "0.7rem",
                     fontWeight: 600,
-                    background: "rgba(251, 191, 36, 0.2)",
+                    background: "rgba(251, 191, 36, 0.35)",
                     color: "#fbbf24",
                     display: "flex",
                     alignItems: "center",
@@ -913,8 +913,9 @@ export default function GuidesPage() {
                   borderRadius: "8px",
                   fontSize: "0.7rem",
                   fontWeight: 600,
-                  background: `${guide.color}22`,
-                  color: guide.color,
+                  background: `${guide.color}40`,
+                  color: "#fff",
+                  border: `1px solid ${guide.color}66`,
                 }}>
                   {guide.category}
                 </span>
@@ -922,8 +923,9 @@ export default function GuidesPage() {
                   padding: "4px 10px",
                   borderRadius: "8px",
                   fontSize: "0.7rem",
-                  background: "rgba(255,255,255,0.08)",
-                  color: "rgba(255,255,255,0.5)",
+                  background: "rgba(255,255,255,0.12)",
+                  color: "rgba(255,255,255,0.65)",
+                  border: "1px solid rgba(255,255,255,0.12)",
                 }}>
                   {guide.readTime}
                 </span>
