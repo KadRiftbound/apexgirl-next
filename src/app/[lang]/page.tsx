@@ -292,21 +292,23 @@ const translations: Record<string, any> = {
 };
 
 // Mosaic positions: [top%, left%, width%, rotation]
-const MOSAIC_POSITIONS = [
-  [2,  1,  16,  -4],
-  [1,  18, 14,   2],
-  [3,  33, 17,  -2],
-  [1,  51, 15,   3],
-  [2,  67, 14,  -3],
-  [1,  82, 17,   2],
-  [38,  3, 13,   3],
-  [36, 17, 16,  -2],
-  [40, 34, 14,   4],
-  [37, 50, 16,  -3],
-  [39, 67, 13,   2],
-  [37, 81, 16,  -4],
-  [68,  8, 15,   2],
-];
+// Fan layout — 13 cards in a horizontal arc, smaller and evenly spaced
+// [top%, left%, width%, rotation]  — parabolic vertical arc, rotation -30→+30
+const MOSAIC_POSITIONS = ((): number[][] => {
+  const n = 13;
+  const cardW = 9;      // % width — smaller cards, less overlap
+  const step  = 7;      // % horizontal step (slight overlap)
+  const startLeft = 1;
+  const arcTop  = 4;    // topmost point (center card)
+  const arcDrop = 28;   // how much the edge cards drop (%)
+  return Array.from({ length: n }, (_, i) => {
+    const t = (i - (n - 1) / 2) / ((n - 1) / 2); // -1 to +1
+    const top  = arcTop + arcDrop * t * t;          // parabolic
+    const left = startLeft + i * step;
+    const rot  = t * 28;                            // -28° to +28°
+    return [Math.round(top), Math.round(left), cardW, Math.round(rot)];
+  });
+})();
 
 export default function HomePage() {
   const params = useParams();
@@ -486,8 +488,8 @@ export default function HomePage() {
           aspect-ratio: 4/5;
           border-radius: 10px;
           overflow: hidden;
-          opacity: 0.55;
-          border: 1px solid rgba(255,255,255,0.15);
+          opacity: 0.75;
+          border: 1px solid rgba(255,255,255,0.18);
         }
         .hero-overlay {
           position: absolute;
@@ -855,7 +857,7 @@ export default function HomePage() {
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
           .hero-section { min-height: 70vh; }
-          .mosaic-card { opacity: 0.38; }
+          .mosaic-card { opacity: 0.50; }
           .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
           .hero-btn-primary, .hero-btn-secondary { width: 100%; text-align: center; }
           .offer-grid { grid-template-columns: 1fr; }
