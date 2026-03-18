@@ -877,18 +877,16 @@ export default function HomePage() {
 
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
-          /* Sur mobile : éventail + contenu dans le hero */
+          /* Sur mobile : éventail seul dans le hero, contenu en dessous */
           .hero-section {
-            min-height: 70vh;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
+            height: 56vw;
+            min-height: 0;
+            display: block;
           }
           .hero-content-mobile {
             display: flex;
-            position: relative;
-            z-index: 2;
-            padding: 20px 20px 40px;
+            padding: 16px 20px 36px;
+            margin-top: 0;
           }
           .hero-content-desktop { display: none; }
 
