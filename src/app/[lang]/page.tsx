@@ -882,8 +882,7 @@ export default function HomePage() {
           .hero-section {
             position: relative;
             width: 100%;
-            height: auto;
-            min-height: 0;
+            height: 70px;
             overflow: hidden;
             background: transparent;
           }
