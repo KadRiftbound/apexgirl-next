@@ -296,16 +296,16 @@ const translations: Record<string, any> = {
 // [top%, left%, width%, rotation]  — parabolic vertical arc, rotation -30→+30
 const MOSAIC_POSITIONS = ((): number[][] => {
   const n = 13;
-  const cardW = 9;      // % width — smaller cards, less overlap
-  const step  = 7;      // % horizontal step (slight overlap)
-  const startLeft = 1;
-  const arcTop  = 4;    // topmost point (center card)
-  const arcDrop = 28;   // how much the edge cards drop (%)
+  const cardW = 11;     // % width — légèrement plus grand
+  const step  = 7;      // % horizontal step (chevauchement minimal)
+  const startLeft = 0;
+  const arcTop  = 3;    // point le plus haut (carte centrale)
+  const arcDrop = 30;   // descente des cartes en bord (%)
   return Array.from({ length: n }, (_, i) => {
-    const t = (i - (n - 1) / 2) / ((n - 1) / 2); // -1 to +1
-    const top  = arcTop + arcDrop * t * t;          // parabolic
+    const t = (i - (n - 1) / 2) / ((n - 1) / 2); // -1 à +1
+    const top  = arcTop + arcDrop * t * t;
     const left = startLeft + i * step;
-    const rot  = t * 28;                            // -28° to +28°
+    const rot  = t * 28;
     return [Math.round(top), Math.round(left), cardW, Math.round(rot)];
   });
 })();
@@ -488,8 +488,8 @@ export default function HomePage() {
           aspect-ratio: 4/5;
           border-radius: 10px;
           overflow: hidden;
-          opacity: 0.75;
-          border: 1px solid rgba(255,255,255,0.18);
+          opacity: 0.88;
+          border: 1px solid rgba(255,255,255,0.22);
         }
         .hero-overlay {
           position: absolute;
@@ -561,11 +561,11 @@ export default function HomePage() {
         .stat-dot { opacity: 0.35; }
         .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
         .hero-btn-primary {
-          padding: 14px 32px;
+          padding: 16px 36px;
           background: linear-gradient(135deg, #ff4d8d, #ff80ab);
           color: #fff;
           font-weight: 700;
-          font-size: 1rem;
+          font-size: 1.08rem;
           border-radius: 12px;
           text-decoration: none;
           box-shadow: 0 4px 24px rgba(255,77,141,0.4);
@@ -577,12 +577,12 @@ export default function HomePage() {
           color: #fff;
         }
         .hero-btn-secondary {
-          padding: 13px 24px;
-          background: rgba(255,255,255,0.07);
-          border: 1px solid rgba(255,255,255,0.18);
-          color: rgba(255,255,255,0.88);
+          padding: 15px 28px;
+          background: rgba(255,255,255,0.09);
+          border: 1px solid rgba(255,255,255,0.22);
+          color: rgba(255,255,255,0.92);
           font-weight: 600;
-          font-size: 0.95rem;
+          font-size: 1.05rem;
           border-radius: 12px;
           text-decoration: none;
           backdrop-filter: blur(8px);
@@ -596,49 +596,49 @@ export default function HomePage() {
 
         /* ── OFFER SECTION ────────────────────────── */
         .offer-section {
-          background: rgba(12,12,22,0.98);
-          border-top: 1px solid rgba(255,255,255,0.07);
-          border-bottom: 1px solid rgba(255,255,255,0.07);
-          padding: 48px 20px;
+          background: rgba(20,20,36,0.96);
+          border-top: 1px solid rgba(255,255,255,0.09);
+          border-bottom: 1px solid rgba(255,255,255,0.09);
+          padding: 52px 20px;
         }
         .offer-inner {
           max-width: 900px;
           margin: 0 auto;
         }
         .offer-title {
-          font-size: 1rem;
+          font-size: 0.78rem;
           font-weight: 700;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.35);
+          color: rgba(255,255,255,0.3);
           text-align: center;
-          margin-bottom: 28px;
+          margin-bottom: 32px;
         }
         .offer-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 14px;
+          gap: 16px;
         }
         .offer-card {
           display: flex;
-          align-items: flex-start;
-          gap: 16px;
-          padding: 22px 20px;
-          background: rgba(22,22,34,0.9);
-          border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 16px;
+          align-items: center;
+          gap: 18px;
+          padding: 26px 22px;
+          background: rgba(30,30,48,0.85);
+          border: 1px solid rgba(255,255,255,0.10);
+          border-radius: 18px;
           text-decoration: none;
           transition: border-color 0.2s, transform 0.2s, background 0.2s;
         }
         .offer-card:hover {
-          background: rgba(28,28,44,0.98);
-          transform: translateY(-2px);
+          background: rgba(38,38,60,0.98);
+          transform: translateY(-3px);
         }
         .offer-card-icon {
-          font-size: 1.8rem;
-          width: 52px;
-          height: 52px;
-          border-radius: 12px;
+          font-size: 2.2rem;
+          width: 58px;
+          height: 58px;
+          border-radius: 14px;
           border: 1px solid;
           display: flex;
           align-items: center;
@@ -647,32 +647,32 @@ export default function HomePage() {
         }
         .offer-card-body { flex: 1; min-width: 0; }
         .offer-card-title {
-          font-size: 1rem;
+          font-size: 1.15rem;
           font-weight: 800;
           color: #fff;
-          margin-bottom: 2px;
+          margin-bottom: 4px;
         }
         .offer-card-desc {
-          font-size: 0.78rem;
+          font-size: 0.85rem;
           font-weight: 600;
-          color: rgba(255,255,255,0.5);
+          color: rgba(255,255,255,0.55);
           margin-bottom: 6px;
         }
         .offer-card-detail {
-          font-size: 0.75rem;
+          font-size: 0.78rem;
           color: rgba(255,255,255,0.38);
           line-height: 1.45;
         }
         .offer-card-arrow {
-          font-size: 1.1rem;
+          font-size: 1.3rem;
           font-weight: 700;
           flex-shrink: 0;
           align-self: center;
-          opacity: 0.6;
+          opacity: 0.5;
           transition: transform 0.2s, opacity 0.2s;
         }
         .offer-card:hover .offer-card-arrow {
-          transform: translateX(3px);
+          transform: translateX(4px);
           opacity: 1;
         }
         .offer-card:hover .offer-card-icon {
@@ -682,7 +682,6 @@ export default function HomePage() {
         /* ── ARTIST STRIP ─────────────────────────── */
         .artist-strip-section {
           padding: 40px 0 36px;
-          background: rgba(16,16,28,0.6);
           border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         .artist-strip-inner {
@@ -732,8 +731,8 @@ export default function HomePage() {
         }
         .artist-card:hover { transform: translateY(-4px); }
         .artist-card-img {
-          width: 90px;
-          height: 115px;
+          width: 100px;
+          height: 128px;
           border-radius: 12px;
           overflow: hidden;
           border: 2px solid rgba(192,132,252,0.25);
@@ -744,11 +743,11 @@ export default function HomePage() {
           border-color: rgba(192,132,252,0.6);
         }
         .artist-card-name {
-          font-size: 0.72rem;
+          font-size: 0.74rem;
           font-weight: 600;
-          color: rgba(255,255,255,0.7);
+          color: rgba(255,255,255,0.75);
           text-align: center;
-          max-width: 90px;
+          max-width: 100px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -857,7 +856,7 @@ export default function HomePage() {
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
           .hero-section { min-height: 70vh; }
-          .mosaic-card { opacity: 0.50; }
+          .mosaic-card { opacity: 0.65; }
           .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
           .hero-btn-primary, .hero-btn-secondary { width: 100%; text-align: center; }
           .offer-grid { grid-template-columns: 1fr; }
