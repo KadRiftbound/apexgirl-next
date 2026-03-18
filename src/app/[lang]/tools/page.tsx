@@ -231,10 +231,10 @@ export default function ToolsPage() {
                   borderRadius: "16px",
                   border: isActive
                     ? `2px solid ${tool.color}`
-                    : `2px solid ${tool.color}40`,
+                    : `1.5px solid rgba(255,255,255,0.12)`,
                   background: isActive
                     ? `${tool.gradient}`
-                    : `${tool.color}12`,
+                    : "rgba(255,255,255,0.06)",
                   color: "#fff",
                   cursor: "pointer",
                   transition: "all 0.25s ease",
@@ -268,7 +268,7 @@ export default function ToolsPage() {
                   </div>
                   <div style={{
                     fontSize: "0.75rem",
-                    color: isActive ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.4)",
+                    color: isActive ? "#fff" : `${tool.color}`,
                     lineHeight: 1.3,
                   }}>
                     {t[`${tool.id}Desc`]}

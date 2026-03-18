@@ -114,10 +114,10 @@ function EventSection({
         <table style={{ width: "100%", fontSize: "0.85rem", borderCollapse: "collapse" }}>
           <thead>
             <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>{t.task}</th>
-              <th style={{ padding: "8px", textAlign: "center", color: "rgba(255,255,255,0.5)", fontWeight: 500, width: "80px" }}>{t.used}</th>
-              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>{t.points}</th>
-              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>{t.total}</th>
+              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>{t.task}</th>
+              <th style={{ padding: "8px", textAlign: "center", color: "rgba(255,255,255,0.65)", fontWeight: 500, width: "80px" }}>{t.used}</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>{t.points}</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>{t.total}</th>
             </tr>
           </thead>
           <tbody>
@@ -149,7 +149,7 @@ function EventSection({
                   <td style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.6)", fontFamily: "monospace" }}>
                     {item.points.toLocaleString()}
                   </td>
-                  <td style={{ padding: "8px", textAlign: "right", fontWeight: 600, color: counts[i] > 0 ? color.title : "rgba(255,255,255,0.3)", fontFamily: "monospace" }}>
+                  <td style={{ padding: "8px", textAlign: "right", fontWeight: 600,                     color: counts[i] > 0 ? color.title : "rgba(255,255,255,0.5)", fontFamily: "monospace" }}>
                     {subtotal.toLocaleString()}
                   </td>
                 </tr>

@@ -111,7 +111,7 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
           style={{
             background: "transparent",
             border: "1px solid rgba(255,255,255,0.2)",
-            color: "rgba(255,255,255,0.6)",
+            color: "rgba(255,255,255,0.7)",
             fontSize: "0.75rem",
             padding: "6px 12px",
             borderRadius: "8px",
@@ -126,11 +126,11 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
         <table style={{ width: "100%", fontSize: "0.85rem", borderCollapse: "collapse" }}>
           <thead>
             <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-              <th style={{ padding: "8px", textAlign: "left", width: "30px", color: "rgba(255,255,255,0.5)" }}></th>
-              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.5)" }}>{t.item}</th>
-              <th style={{ padding: "8px", textAlign: "center", width: "80px", color: "rgba(255,255,255,0.5)" }}>{t.qty}</th>
-              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)" }}>{t.price}</th>
-              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.5)" }}>{t.subtotal}</th>
+              <th style={{ padding: "8px", textAlign: "left", width: "30px", color: "rgba(255,255,255,0.65)" }}></th>
+              <th style={{ padding: "8px", textAlign: "left", color: "rgba(255,255,255,0.65)" }}>{t.item}</th>
+              <th style={{ padding: "8px", textAlign: "center", width: "80px", color: "rgba(255,255,255,0.65)" }}>{t.qty}</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.65)" }}>{t.price}</th>
+              <th style={{ padding: "8px", textAlign: "right", color: "rgba(255,255,255,0.65)" }}>{t.subtotal}</th>
             </tr>
           </thead>
           <tbody>
@@ -176,7 +176,7 @@ function ShopSection({ shop, color }: { shop: ShopData; color: string }) {
                       textAlign: "right",
                       fontWeight: 600,
                       fontFamily: "monospace",
-                      color: state.inCart ? scheme.total : "rgba(255,255,255,0.3)",
+                      color: state.inCart ? scheme.total : "rgba(255,255,255,0.5)",
                     }}
                   >
                     {state.inCart ? fmt(subtotal) : "—"}
