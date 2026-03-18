@@ -59,15 +59,13 @@ export default function MobileArtistsPage() {
   };
 
   useEffect(() => {
-    if (!searchBarRef.current) return;
-    // Measure immediately after mount
-    setSearchBarHeight(searchBarRef.current.getBoundingClientRect().height + 4);
-    // Keep updating if it resizes
-    const ro = new ResizeObserver(([entry]) => {
-      setSearchBarHeight(entry.contentRect.height + 4);
-    });
-    ro.observe(searchBarRef.current);
-    return () => ro.disconnect();
+    if (searchBarRef.current) {
+      const ro = new ResizeObserver(([entry]) => {
+        setSearchBarHeight(entry.contentRect.height + 10);
+      });
+      ro.observe(searchBarRef.current);
+      return () => ro.disconnect();
+    }
   }, [mounted]);
 
   useEffect(() => {

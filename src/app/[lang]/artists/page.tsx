@@ -285,6 +285,9 @@ export default function ArtistsPage() {
           {/* Column 1: Artist Preview (30%) */}
           <div className="panel-col panel-col-1">
             <div className="artist-preview-card">
+              <div className="artist-preview-title">
+                <span style={{ display: 'none' }}>{t.artistOverview}</span>
+              </div>
               {selectedArtist ? (
                 <div className="artist-preview-content">
                   <div
