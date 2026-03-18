@@ -437,47 +437,42 @@ export default function ArtistsPage() {
           {/* Column 1: Artist Preview (30%) */}
           <div className="panel-col panel-col-1">
             <div className="artist-preview-card">
-              <div className="artist-preview-title" style={{ display: 'none' }}>
-                <span>{t.artistOverview}</span>
+              <div className="artist-preview-title">
+                <span style={{ display: 'none' }}>{t.artistOverview}</span>
               </div>
               {selectedArtist ? (
-                <>
-                  {/* Name at top with nav */}
-                  <div className="artist-preview-nav" style={{ marginBottom: '8px', justifyContent: 'space-between', padding: '0 8px' }}>
-                     <button 
-                       onClick={() => {
-                         const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
-                         if (idx > 0) setSelectedArtist(sortedArtists[idx - 1]);
-                       }}
-                       disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) === 0}
-                       style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', fontSize: '1.2rem' }}
-                     >◀</button>
-                     <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700, fontSize: '1rem' }}>{selectedArtist.name}</span>
-                     <button 
-                       onClick={() => {
-                         const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
-                         if (idx >= 0 && idx < sortedArtists.length - 1) setSelectedArtist(sortedArtists[idx + 1]);
-                       }}
-                       disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) >= sortedArtists.length - 1}
-                       style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', fontSize: '1.2rem' }}
-                     >▶</button>
-                   </div>
-                   
-                   <div className="artist-preview-content">
-                     <div
-                       className="artist-preview-image-large"
-                       onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
-                       onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
-                       title="Cliquer pour voir la fiche complète"
-                       style={{ cursor: "pointer" }}
-                     >
-                       {selectedArtist.image ? (
-                         <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={160} height={200} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-                       ) : (
-                         <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
-                       )}
-                     </div>
-                     <div className="artist-preview-info">
+                <div className="artist-preview-content">
+                  <div
+                    className="artist-preview-image-large"
+                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    title="Cliquer pour voir la fiche complète"
+                    style={{ cursor: "pointer" }}
+                  >
+                    {selectedArtist.image ? (
+                      <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={160} height={200} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                    ) : (
+                      <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
+                    )}
+                  </div>
+                  <div className="artist-preview-info">
+                    <div className="artist-preview-nav">
+                      <button 
+                        onClick={() => {
+                          const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
+                          if (idx > 0) setSelectedArtist(sortedArtists[idx - 1]);
+                        }}
+                        disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) === 0}
+                      >◀</button>
+                      <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.name}</span>
+                      <button 
+                        onClick={() => {
+                          const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
+                          if (idx >= 0 && idx < sortedArtists.length - 1) setSelectedArtist(sortedArtists[idx + 1]);
+                        }}
+                        disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) >= sortedArtists.length - 1}
+                      >▶</button>
+                    </div>
                     <div className="artist-preview-details">
                       <div className="detail-col">
                         <p>🏠 {selectedArtist.group}</p>
@@ -511,16 +506,16 @@ export default function ArtistsPage() {
                       {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && (
                         <button onClick={() => addToTeam2(selectedArtist)} className="add-team-btn team2">{t.addTeam2}</button>
                       )}
-                      </div>
                     </div>
-                  </>
-                ) : (
-                  <div className="artist-preview-empty">
-                    <p>{t.selectArtist}</p>
                   </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <div className="artist-preview-empty">
+                  <p>{t.selectArtist}</p>
+                </div>
+              )}
             </div>
+          </div>
 
           {/* Column 2: Team 1 (35%) */}
           <div className="panel-col panel-col-2">
@@ -598,15 +593,15 @@ export default function ArtistsPage() {
                   </div>
                 ))}
               </div>
-              {/* Genres row */}
-               <div className="team-genres">
-                 {Object.keys(team2Stats.genreCounts).length > 0
-                   ? Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
-                       <span key={genre} className="genre-badge" style={{ background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
-                     ))
-                   : <span className="genre-badge-empty">—</span>
-                 }
-               </div>
+               {/* Genres row */}
+                <div className="team-genres">
+                  {Object.keys(team2Stats.genreCounts).length > 0
+                    ? Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
+                        <span key={genre} className="genre-badge" style={{ background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
+                      ))
+                    : <span className="genre-badge-empty">—</span>
+                  }
+                </div>
               {/* Stats — fixed rows */}
               <div className="team-stats-grid">
                 {[
