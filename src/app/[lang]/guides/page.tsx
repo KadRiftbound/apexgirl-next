@@ -599,7 +599,7 @@ const guides: Guide[] = [
     readTime: "6 min",
     isNew: true,
     isDone: true,
-    thumbnail: "/assets/images/guides/fishing-event.jpg",
+    thumbnail: "/assets/images/artists/Minji.jpg",
   },
   {
     id: "world-building",
