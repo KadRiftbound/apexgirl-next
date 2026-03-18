@@ -334,6 +334,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           HERO
       ═══════════════════════════════════════════ */}
+      {/* Éventail d'artistes — desktop: section séparée / mobile: avec contenu dedans */}
       <section className="hero-section">
         <div className="hero-mosaic" aria-hidden="true">
           {HERO_ARTISTS.map((img, i) => {
@@ -357,7 +358,8 @@ export default function HomePage() {
           })}
         </div>
         <div className="hero-overlay" />
-        <div className="hero-content">
+        {/* Sur mobile le contenu reste dans le hero */}
+        <div className="hero-content hero-content-mobile">
           <div className="hero-badge">TopGirl / ApexGirl</div>
           <h1 className="hero-title">{t.homeTitle}</h1>
           <p className="hero-subtitle" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
@@ -375,6 +377,25 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Sur desktop le contenu s'affiche sous l'éventail */}
+      <div className="hero-content hero-content-desktop">
+        <div className="hero-badge">TopGirl / ApexGirl</div>
+        <h1 className="hero-title">{t.homeTitle}</h1>
+        <p className="hero-subtitle" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
+        <div className="hero-stats">
+          <span><strong>112+</strong> {t.statArtists}</span>
+          <span className="stat-dot">·</span>
+          <span><strong>50+</strong> {t.statGuides}</span>
+          <span className="stat-dot">·</span>
+          <span><strong>5+</strong> {t.statTools}</span>
+        </div>
+        <div className="hero-ctas">
+          <Link href={`/${lang}/artists/`} className="hero-btn-primary">🎤 {t.discoverArtists}</Link>
+          <Link href={`/${lang}/tierlist/`} className="hero-btn-secondary">🏆 {t.tierListVotes}</Link>
+          <Link href={`/${lang}/tools/`} className="hero-btn-secondary">🛠️ {t.seeTools}</Link>
+        </div>
+      </div>
 
       {/* ═══════════════════════════════════════════
           SECTIONS — ce qu'on propose (premier contenu vu)
@@ -472,10 +493,7 @@ export default function HomePage() {
         /* ── HERO ─────────────────────────────────── */
         .hero-section {
           position: relative;
-          min-height: 60vh;
-          display: flex;
-          align-items: flex-end;
-          justify-content: center;
+          min-height: 44vh;
           overflow: hidden;
         }
         .hero-mosaic {
@@ -497,25 +515,33 @@ export default function HomePage() {
           z-index: 1;
           background:
             linear-gradient(180deg,
-              rgba(10,10,18,0.30) 0%,
-              rgba(10,10,18,0.10) 30%,
-              rgba(10,10,18,0.55) 60%,
-              rgba(10,10,18,0.97) 100%
-            ),
-            radial-gradient(ellipse at 50% 60%, rgba(255,77,141,0.10) 0%, transparent 65%);
+              rgba(10,10,18,0.10) 0%,
+              rgba(10,10,18,0.05) 40%,
+              rgba(10,10,18,0.60) 85%,
+              rgba(10,10,18,0.98) 100%
+            );
         }
+
+        /* Contenu partagé badge/titre/sous-titre/stats/boutons */
         .hero-content {
-          position: relative;
-          z-index: 2;
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
-          padding: 24px 24px 48px;
           max-width: 720px;
           margin: 0 auto;
           width: 100%;
         }
+
+        /* Desktop : contenu sous l'éventail, flux normal */
+        .hero-content-desktop {
+          display: flex;
+          padding: 36px 24px 52px;
+        }
+        .hero-content-mobile {
+          display: none;
+        }
+
         .hero-badge {
           display: inline-block;
           padding: 6px 18px;
@@ -541,24 +567,27 @@ export default function HomePage() {
           background-clip: text;
         }
         .hero-subtitle {
-          font-size: clamp(0.95rem, 2vw, 1.15rem);
-          color: rgba(255,255,255,0.72);
-          margin-bottom: 20px;
-          line-height: 1.6;
-          max-width: 560px;
+          font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+          color: rgba(255,255,255,0.90);
+          margin-bottom: 22px;
+          line-height: 1.65;
+          max-width: 580px;
         }
-        .hero-subtitle :global(strong) { color: #fff; font-weight: 700; }
+        .hero-subtitle :global(strong) {
+          color: #ff80ab;
+          font-weight: 700;
+        }
         .hero-stats {
           display: flex;
           align-items: center;
           gap: 10px;
-          font-size: 0.85rem;
-          color: rgba(255,255,255,0.5);
+          font-size: 0.92rem;
+          color: rgba(255,255,255,0.65);
           margin-bottom: 32px;
           flex-wrap: wrap;
           justify-content: center;
         }
-        .hero-stats strong { color: rgba(255,255,255,0.88); }
+        .hero-stats strong { color: rgba(255,255,255,0.95); }
         .stat-dot { opacity: 0.35; }
         .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
         .hero-btn-primary {
@@ -857,12 +886,37 @@ export default function HomePage() {
 
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
-          .hero-section { min-height: 70vh; }
+          /* Sur mobile : éventail + contenu dans le hero */
+          .hero-section {
+            min-height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+          }
+          .hero-content-mobile {
+            display: flex;
+            position: relative;
+            z-index: 2;
+            padding: 20px 20px 40px;
+          }
+          .hero-content-desktop { display: none; }
 
-          /* Images hero mobile : taille réduite, opacité très haute */
+          /* Images hero mobile */
           .mosaic-card {
             opacity: 0.94 !important;
             width: 16% !important;
+          }
+
+          /* Couleur du sous-titre sur mobile */
+          .hero-subtitle {
+            color: #e8ccff;
+            font-size: 1rem;
+          }
+          .hero-subtitle :global(strong) {
+            color: #ff80ab;
+          }
+          .hero-stats {
+            color: rgba(255,255,255,0.75);
           }
 
           .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
