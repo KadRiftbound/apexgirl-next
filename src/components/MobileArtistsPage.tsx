@@ -48,6 +48,7 @@ export default function MobileArtistsPage() {
   const [scrolled, setScrolled] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const searchBarRef = useRef<HTMLDivElement>(null);
+  const gridContainerRef = useRef<HTMLDivElement>(null);
   const [searchBarHeight, setSearchBarHeight] = useState(50);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
@@ -116,6 +117,33 @@ export default function MobileArtistsPage() {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Intelligent scroll cascade for grid
+  useEffect(() => {
+    const gridElement = gridContainerRef.current;
+    if (!gridElement) return;
+
+    const handleGridScroll = (e: WheelEvent) => {
+      const grid = gridElement;
+      const scrollTop = grid.scrollTop;
+      const scrollHeight = grid.scrollHeight;
+      const clientHeight = grid.clientHeight;
+      const isAtTop = scrollTop === 0;
+      const isAtBottom = scrollTop >= scrollHeight - clientHeight - 5;
+
+      // If scroll is trying to go up at top or down at bottom, allow page scroll
+      if ((e.deltaY < 0 && isAtTop) || (e.deltaY > 0 && isAtBottom)) {
+        // Allow default scroll behavior (page scroll)
+        return;
+      }
+
+      // Otherwise, prevent page scroll and let grid scroll
+      e.preventDefault();
+    };
+
+    gridElement.addEventListener('wheel', handleGridScroll, { passive: false });
+    return () => gridElement.removeEventListener('wheel', handleGridScroll);
   }, []);
 
   useEffect(() => {
@@ -257,6 +285,13 @@ export default function MobileArtistsPage() {
       </Head>
 
       <div className="mobile-page-container">
+        {/* Page Header - Scrollable */}
+        <div className="mobile-page-header">
+          <h1 className="mobile-page-title">{t.pageTitle || "🎤 Artists"}</h1>
+          <p className="mobile-page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
+          <div className="mobile-ad-slot" />
+        </div>
+
         {/* Layer 2: Fixed 3-column Panel */}
         <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : 56 }}>
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
@@ -496,7 +531,17 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 4: Artists Grid - Scrollable */}
-        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(56px + 40vh + ${searchBarHeight}px)` }}>
+        <div 
+          className="mobile-artists-bottom" 
+          ref={gridContainerRef}
+          style={{ 
+            marginTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(56px + 40vh + ${searchBarHeight}px)`,
+            minHeight: `calc(100vh - (40vh + ${searchBarHeight}px))`,
+            maxHeight: `calc(100vh - (40vh + ${searchBarHeight}px))`,
+            overflowY: 'auto',
+            overflowX: 'hidden'
+          }}
+        >
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
@@ -540,6 +585,41 @@ export default function MobileArtistsPage() {
         .mobile-page-container {
           min-height: 100vh;
           background: transparent;
+        }
+        
+        /* Mobile Page Header - Scrollable */
+        .mobile-page-header {
+          padding: 16px 12px;
+          background: #0f0f1a;
+          border-bottom: 1px solid rgba(139,92,246,0.2);
+          margin-bottom: 4px;
+        }
+        
+        .mobile-page-title {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #fff;
+          margin: 0 0 8px 0;
+          text-align: center;
+        }
+        
+        .mobile-page-subtitle {
+          font-size: 0.85rem;
+          color: rgba(255,255,255,0.6);
+          text-align: center;
+          margin: 0 0 12px 0;
+        }
+        
+        .mobile-ad-slot {
+          min-height: 50px;
+          background: rgba(30,30,50,0.6);
+          border: 1px dashed rgba(139,92,246,0.3);
+          border-radius: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgba(255,255,255,0.3);
+          font-size: 0.7rem;
         }
         
         /* Layer 2: Top Panel - Always fixed on mobile */
@@ -869,18 +949,19 @@ export default function MobileArtistsPage() {
         /* Artists Bottom */
         .mobile-artists-bottom {
           padding-right: 6px;
-          padding-bottom: 100px;
           padding-left: 6px;
-          min-height: 100vh;
-          transition: padding-top 0.2s ease;
-          pointer-events: none;
+          padding-bottom: 20px;
+          padding-top: 6px;
+          transition: margin-top 0.2s ease, max-height 0.2s ease;
+          pointer-events: auto;
           background: #0f0f1a;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
           color: #888;
           margin-bottom: 6px;
-          pointer-events: auto;
+          padding: 0 6px;
+          pointer-events: none;
         }
         .mobile-artists-grid {
           display: grid;

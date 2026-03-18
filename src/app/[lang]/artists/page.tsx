@@ -107,6 +107,7 @@ export default function ArtistsPage() {
   const [panelFixed, setPanelFixed] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const panelSentinelRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -150,6 +151,33 @@ export default function ArtistsPage() {
       if (header) header.classList.remove('header-hidden');
     };
   }, [mounted]);
+
+  // Intelligent scroll cascade for grid on desktop
+  useEffect(() => {
+    const gridElement = gridRef.current;
+    if (!gridElement || window.innerWidth <= 900) return;
+
+    const handleGridScroll = (e: WheelEvent) => {
+      const grid = gridElement;
+      const scrollTop = grid.scrollTop;
+      const scrollHeight = grid.scrollHeight;
+      const clientHeight = grid.clientHeight;
+      const isAtTop = scrollTop === 0;
+      const isAtBottom = scrollTop >= scrollHeight - clientHeight - 5;
+
+      // If scroll is trying to go up at top or down at bottom, allow page scroll
+      if ((e.deltaY < 0 && isAtTop) || (e.deltaY > 0 && isAtBottom)) {
+        // Allow default scroll behavior (page scroll)
+        return;
+      }
+
+      // Otherwise, prevent page scroll and let grid scroll
+      e.preventDefault();
+    };
+
+    gridElement.addEventListener('wheel', handleGridScroll, { passive: false });
+    return () => gridElement.removeEventListener('wheel', handleGridScroll);
+  }, []);
 
   // Save teams to localStorage when they change
   useEffect(() => {
@@ -513,7 +541,12 @@ export default function ArtistsPage() {
           </div>
           <div className="artists-count">{filteredArtists.length} {t.foundArtists}</div>
 
-          <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
+          <div 
+            ref={gridRef}
+            className="artists-grid-container"
+            style={panelFixed ? { maxHeight: 'calc(100vh - 40vh - 16px)' } : undefined}
+          >
+            <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
             {sortedArtists.map((artist: Artist) => (
                 <button
                   key={artist.id}
@@ -597,6 +630,7 @@ export default function ArtistsPage() {
                 <div>👆 {t.tooltipDouble || "Double clic : sélectionner équipe"}</div>
               </div>
             )}
+            </div>
           </div>
         </div>
       </div>
@@ -989,10 +1023,16 @@ export default function ArtistsPage() {
           margin-bottom: 8px;
         }
         
+        .artists-grid-container {
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+        
         .artists-grid {
           display: grid;
           grid-template-columns: repeat(9, 1fr);
           gap: 4px;
+          padding: 0 4px;
         }
         .artists-grid button {
           aspect-ratio: 3/4;
