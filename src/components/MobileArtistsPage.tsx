@@ -4,8 +4,8 @@ import Head from "next/head";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
-import { slugify } from "@/lib/utils/slugify";
-import type { Artist } from "@/lib/types/artist";
+
+const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 const filterTranslations: Record<string, any> = {
   fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", earlyRecommended: "Recommandée early", acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Chargement...", specialtyOffensive: "Offensif", specialtyDefensive: "Défensif" },
@@ -22,6 +22,21 @@ const rankColors: Record<string, string> = {
   UR: "#ff6b6b", "UR Roma": "#ef4444", "UR Bali": "#ef4444", SSR: "#fbbf24", SR: "#8b5cf6", R: "#3b82f6",
 };
 
+type Artist = {
+  id: number;
+  name: string;
+  group: string;
+  rank: string;
+  genre: string;
+  position: string;
+  build?: string;
+  skills?: string[];
+  image?: string;
+  specialty?: string;
+  earlyGameRecommended?: boolean;
+  acquisitionTier?: string;
+  skillCategories?: { dps: string[]; offensive: string[]; hp: string[]; defense: string[] };
+};
 
 const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
 const RANKS = ['UR', 'UR Roma', 'UR Bali', 'SSR', 'SR', 'R'];
@@ -48,7 +63,7 @@ export default function MobileArtistsPage() {
   const [scrolled, setScrolled] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const searchBarRef = useRef<HTMLDivElement>(null);
-  const [searchBarHeight, setSearchBarHeight] = useState(50);
+  const [searchBarHeight, setSearchBarHeight] = useState(40);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -495,7 +510,7 @@ export default function MobileArtistsPage() {
           </select>
         </div>
 
-        {/* Layer 4: Artists Grid - Scrollable */}
+        /* Layer 4: Artists Grid - Scrollable */
         <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(56px + 40vh + ${searchBarHeight}px)` }}>
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">

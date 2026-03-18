@@ -7,19 +7,18 @@ import Link from "next/link";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 import MobileArtistsPage from "@/components/MobileArtistsPage";
-import { slugify } from "@/lib/utils/slugify";
-import { calculateTeamStats } from "@/lib/utils/calculateTeamStats";
-import type { Artist } from "@/lib/types/artist";
+
+const slugify = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 const filterTranslations: Record<string, any> = {
-  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", team1Stats: "Stats Équipe 1", team2Stats: "Stats Équipe 2", vs: "VS", total: "Total", acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Chargement...", viewProfileTitle: "Cliquer pour voir la fiche", rankLabel: "Rang", allSeasons: "Toutes saisons", maxSeason: "Max saison", season: "Saison", tooltipSingle: "Clic simple : voir la fiche", tooltipDouble: "Double clic : sélectionner équipe", pageTitle: "🎤 Artistes", pageSubtitle: "Découvrez tous les personnages" },
-  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove", team1Stats: "Team 1 Stats", team2Stats: "Team 2 Stats", vs: "VS", total: "Total", acquisition: "Access", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Loading...", viewProfileTitle: "Click to view profile", rankLabel: "Rank", allSeasons: "All seasons", maxSeason: "Max season", season: "Season", tooltipSingle: "Single click: view profile", tooltipDouble: "Double click: select team", pageTitle: "🎤 Artists", pageSubtitle: "Discover all characters" },
-  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità", foundArtists: "artisti trovati", clearTeam: "Cancella", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Scheda", clickToRemove: "Clicca per rimuovere", team1Stats: "Stats Team 1", team2Stats: "Stats Team 2", vs: "VS", total: "Totale", acquisition: "Accesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Caricamento...", viewProfileTitle: "Clicca per vedere la scheda", rankLabel: "Rango", allSeasons: "Tutte le stagioni", maxSeason: "Stagione max", tooltipSingle: "Clic singolo: vedi scheda", tooltipDouble: "Doppio clic: seleziona team", pageTitle: "🎤 Artisti", pageSubtitle: "Scopri tutti i personaggi" },
-  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades", foundArtists: "artistas encontrados", clearTeam: "Borrar", addTeam1: "+ Equipo 1", addTeam2: "+ Equipo 2", profile: "Perfil", clickToRemove: "Clic para eliminar", team1Stats: "Stats Equipo 1", team2Stats: "Stats Equipo 2", vs: "VS", total: "Total", acquisition: "Acceso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Cargando...", viewProfileTitle: "Clic para ver el perfil", rankLabel: "Rango", allSeasons: "Todas las temporadas", maxSeason: "Temporada máx", tooltipSingle: "Clic simple: ver perfil", tooltipDouble: "Doble clic: seleccionar equipo", pageTitle: "🎤 Artistas", pageSubtitle: "Descubre todos los personajes" },
-  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades", foundArtists: "artistas encontrados", clearTeam: "Limpar", addTeam1: "+ Time 1", addTeam2: "+ Time 2", profile: "Perfil", clickToRemove: "Clique para remover", team1Stats: "Stats Time 1", team2Stats: "Stats Time 2", vs: "VS", total: "Total", acquisition: "Acesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Carregando...", viewProfileTitle: "Clique para ver o perfil", rankLabel: "Rank", allSeasons: "Todas as temporadas", maxSeason: "Temporada máx", tooltipSingle: "Clique simples: ver perfil", tooltipDouble: "Clique duplo: selecionar time", pageTitle: "🎤 Artistas", pageSubtitle: "Descubra todos os personagens" },
-  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności", foundArtists: "znalezionych artystów", clearTeam: "Wyczyść", addTeam1: "+ Drużyna 1", addTeam2: "+ Drużyna 2", profile: "Profil", clickToRemove: "Kliknij aby usunąć", team1Stats: "Stats Drużyna 1", team2Stats: "Stats Drużyna 2", vs: "VS", total: "Suma", acquisition: "Dostęp", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Ładowanie...", viewProfileTitle: "Kliknij aby zobaczyć profil", rankLabel: "Ranga", allSeasons: "Wszystkie sezony", maxSeason: "Maks sezon", tooltipSingle: "Pojedynczy klik: zobacz profil", tooltipDouble: "Podwójny klik: wybierz drużynę", pageTitle: "🎤 Artyści", pageSubtitle: "Odkryj wszystkich postaci" },
-  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis", foundArtists: "artis ditemukan", clearTeam: "Hapus", addTeam1: "+ Tim 1", addTeam2: "+ Tim 2", profile: "Profil", clickToRemove: "Klik untuk hapus", team1Stats: "Stats Tim 1", team2Stats: "Stats Tim 2", vs: "VS", total: "Total", acquisition: "Akses", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Memuat...", viewProfileTitle: "Klik untuk melihat profil", rankLabel: "Rank", allSeasons: "Semua musim", maxSeason: "Musim maks", tooltipSingle: "Klik tunggal: lihat profil", tooltipDouble: "Klik ganda: pilih tim", pageTitle: "🎤 Artis", pageSubtitle: "Temukan semua karakter" },
-  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации", foundArtists: "артистов найдено", clearTeam: "Очистить", addTeam1: "+ Команда 1", addTeam2: "+ Команда 2", profile: "Профиль", clickToRemove: "Нажмите чтобы убрать", team1Stats: "Stats Команда 1", team2Stats: "Stats Команда 2", vs: "VS", total: "Всего", acquisition: "Доступ", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Загрузка...", viewProfileTitle: "Нажмите чтобы открыть профиль", rankLabel: "Ранг", allSeasons: "Все сезоны", maxSeason: "Макс сезон", tooltipSingle: "Одиночный клик: открыть профиль", tooltipDouble: "Двойной клик: выбрать в команду", pageTitle: "🎤 Артисты", pageSubtitle: "Откройте всех персонажей" },
+  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", team1Stats: "Stats Équipe 1", team2Stats: "Stats Équipe 2", vs: "VS", total: "Total", acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Chargement...", viewProfileTitle: "Cliquer pour voir la fiche", rankLabel: "Rang", allSeasons: "Toutes saisons", maxSeason: "Max saison", season: "Saison", tooltipSingle: "Clic simple : voir la fiche", tooltipDouble: "Double clic : sélectionner équipe" },
+  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove", team1Stats: "Team 1 Stats", team2Stats: "Team 2 Stats", vs: "VS", total: "Total", acquisition: "Access", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Loading...", viewProfileTitle: "Click to view profile", rankLabel: "Rank", allSeasons: "All seasons", maxSeason: "Max season", season: "Season", tooltipSingle: "Single click: view profile", tooltipDouble: "Double click: select team" },
+  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità", foundArtists: "artisti trovati", clearTeam: "Cancella", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Scheda", clickToRemove: "Clicca per rimuovere", team1Stats: "Stats Team 1", team2Stats: "Stats Team 2", vs: "VS", total: "Totale", acquisition: "Accesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Caricamento...", viewProfileTitle: "Clicca per vedere la scheda", rankLabel: "Rango", allSeasons: "Tutte le stagioni", maxSeason: "Stagione max", tooltipSingle: "Clic singolo: vedi scheda", tooltipDouble: "Doppio clic: seleziona team" },
+  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades", foundArtists: "artistas encontrados", clearTeam: "Borrar", addTeam1: "+ Equipo 1", addTeam2: "+ Equipo 2", profile: "Perfil", clickToRemove: "Clic para eliminar", team1Stats: "Stats Equipo 1", team2Stats: "Stats Equipo 2", vs: "VS", total: "Total", acquisition: "Acceso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Cargando...", viewProfileTitle: "Clic para ver el perfil", rankLabel: "Rango", allSeasons: "Todas las temporadas", maxSeason: "Temporada máx", tooltipSingle: "Clic simple: ver perfil", tooltipDouble: "Doble clic: seleccionar equipo" },
+  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades", foundArtists: "artistas encontrados", clearTeam: "Limpar", addTeam1: "+ Time 1", addTeam2: "+ Time 2", profile: "Perfil", clickToRemove: "Clique para remover", team1Stats: "Stats Time 1", team2Stats: "Stats Time 2", vs: "VS", total: "Total", acquisition: "Acesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Carregando...", viewProfileTitle: "Clique para ver o perfil", rankLabel: "Rank", allSeasons: "Todas as temporadas", maxSeason: "Temporada máx", tooltipSingle: "Clique simples: ver perfil", tooltipDouble: "Clique duplo: selecionar time" },
+  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności", foundArtists: "znalezionych artystów", clearTeam: "Wyczyść", addTeam1: "+ Drużyna 1", addTeam2: "+ Drużyna 2", profile: "Profil", clickToRemove: "Kliknij aby usunąć", team1Stats: "Stats Drużyna 1", team2Stats: "Stats Drużyna 2", vs: "VS", total: "Suma", acquisition: "Dostęp", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Ładowanie...", viewProfileTitle: "Kliknij aby zobaczyć profil", rankLabel: "Ranga", allSeasons: "Wszystkie sezony", maxSeason: "Maks sezon", tooltipSingle: "Pojedynczy klik: zobacz profil", tooltipDouble: "Podwójny klik: wybierz drużynę" },
+  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis", foundArtists: "artis ditemukan", clearTeam: "Hapus", addTeam1: "+ Tim 1", addTeam2: "+ Tim 2", profile: "Profil", clickToRemove: "Klik untuk hapus", team1Stats: "Stats Tim 1", team2Stats: "Stats Tim 2", vs: "VS", total: "Total", acquisition: "Akses", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Memuat...", viewProfileTitle: "Klik untuk melihat profil", rankLabel: "Rank", allSeasons: "Semua musim", maxSeason: "Musim maks", tooltipSingle: "Klik tunggal: lihat profil", tooltipDouble: "Klik ganda: pilih tim" },
+  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации", foundArtists: "артистов найдено", clearTeam: "Очистить", addTeam1: "+ Команда 1", addTeam2: "+ Команда 2", profile: "Профиль", clickToRemove: "Нажмите чтобы убрать", team1Stats: "Stats Команда 1", team2Stats: "Stats Команда 2", vs: "VS", total: "Всего", acquisition: "Доступ", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Загрузка...", viewProfileTitle: "Нажмите чтобы открыть профиль", rankLabel: "Ранг", allSeasons: "Все сезоны", maxSeason: "Макс сезон", tooltipSingle: "Одиночный клик: открыть профиль", tooltipDouble: "Двойной клик: выбрать в команду" },
 };
 
 const rankColors: Record<string, string> = {
@@ -45,6 +44,23 @@ const seasonLabels: Record<string, string> = {
   ru: "Сезон",
 };
 
+type Artist = {
+  id: number;
+  name: string;
+  group: string;
+  rank: string;
+  genre: string;
+  position: string;
+  build?: string;
+  skills?: string[];
+  image?: string;
+  specialty?: string;
+  earlyGameRecommended?: boolean;
+  acquisitionTier?: string;
+  calculatedTier?: string;
+  photos?: string;
+  skillCategories?: { dps: string[]; offensive: string[]; hp: string[]; defense: string[] };
+};
 
 const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
 const RANKS = ['UR', 'UR Roma', 'UR Bali', 'SSR', 'SR', 'R'];
@@ -97,16 +113,14 @@ export default function ArtistsPage() {
     }
     return [];
   });
-
+  const [activeTeam, setActiveTeam] = useState<1 | 2>(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [filterMaxSeason, setFilterMaxSeason] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [panelFixed, setPanelFixed] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  const panelSentinelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -116,40 +130,68 @@ export default function ArtistsPage() {
     whale: { label: t.acqWhale || "Whale", color: "#f59e0b", bg: "rgba(245,158,11,0.18)" },
   };
 
+  const team = activeTeam === 1 ? team1 : team2;
+
+  const addToTeam = (artist: Artist) => {
+    if (activeTeam === 1) {
+      if (team1.length < 5 && !team1.find(a => a.id === artist.id)) {
+        setTeam1([...team1, artist]);
+      }
+    } else {
+      if (team2.length < 5 && !team2.find(a => a.id === artist.id)) {
+        setTeam2([...team2, artist]);
+      }
+    }
+  };
+
+  const removeFromTeam = (id: number) => {
+    if (activeTeam === 1) {
+      setTeam1(team1.filter(a => a.id !== id));
+    } else {
+      setTeam2(team2.filter(a => a.id !== id));
+    }
+  };
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (window.innerWidth <= 900) return;
+    let ticking = false;
 
-    const sentinel = panelSentinelRef.current;
-    if (!sentinel) return;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const header = document.querySelector('.header') as HTMLElement ||
+                        document.querySelector('header[role="banner"]') as HTMLElement ||
+                        document.querySelector('header') as HTMLElement;
 
-    const header = document.querySelector('.header') as HTMLElement;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const shouldFix = !entry.isIntersecting;
-        setPanelFixed(shouldFix);
-        if (header) {
-          if (shouldFix) {
-            header.classList.add('header-hidden');
-          } else {
-            header.classList.remove('header-hidden');
+          // Hide header when the panel is about to reach it
+          if (header && panelRef.current && window.innerWidth > 900) {
+            const panelTop = panelRef.current.getBoundingClientRect().top;
+            const headerHeight = header.offsetHeight;
+            if (panelTop <= headerHeight) {
+              header.classList.add('header-hidden');
+            } else {
+              header.classList.remove('header-hidden');
+            }
           }
-        }
-      },
-      { threshold: 0, rootMargin: '0px' }
-    );
 
-    observer.observe(sentinel);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+      const header = document.querySelector('.header') as HTMLElement ||
+                    document.querySelector('header[role="banner"]') as HTMLElement ||
+                    document.querySelector('header') as HTMLElement;
       if (header) header.classList.remove('header-hidden');
     };
-  }, [mounted]);
+  }, []);
 
   // Save teams to localStorage when they change
   useEffect(() => {
@@ -174,8 +216,125 @@ export default function ArtistsPage() {
     }
   }, [team2]);
 
-  const team1Stats = useMemo(() => calculateTeamStats(team1), [team1]);
-  const team2Stats = useMemo(() => calculateTeamStats(team2), [team2]);
+  const teamStats = useMemo(() => {
+    let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, passive = 0, fanCapacity = 0, rallyCapacity = 0;
+    team.forEach(artist => {
+      passive += 200;
+      [...(artist.skillCategories?.dps || []), ...(artist.skillCategories?.offensive || [])].forEach(skill => {
+        const match = skill.match(/(\d+)\s*Damage/);
+        if (match && !skill.toLowerCase().includes('%')) skillDamageRaw += parseInt(match[1]);
+        const pctMatch = skill.match(/(\d+)%/);
+        if (pctMatch) {
+          const val = parseInt(pctMatch[1]);
+          if (skill.toLowerCase().includes('damage to player') || skill.toLowerCase().includes('player damage')) {
+            skillDamage += val;
+            basicAttackPercent += val;
+          }
+          else if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction') && !skill.toLowerCase().includes('taken')) skillDamage += val;
+          else if (skill.toLowerCase().includes('basic attack') && !skill.toLowerCase().includes('taken')) basicAttackPercent += val;
+        }
+      });
+      [...(artist.skillCategories?.defense || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('skill damage reduction')) skillResist += val;
+          else if (skill.toLowerCase().includes('damage reduction')) attackResist += val;
+        }
+      });
+      [...(artist.skillCategories?.hp || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('fan capacity') && skill.toLowerCase().includes('rally')) rallyCapacity += val;
+          else if (skill.toLowerCase().includes('fan capacity')) fanCapacity += val;
+        }
+      });
+    });
+    const genreCounts: Record<string, number> = {};
+    team.forEach(artist => { const g = artist.genre || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
+    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
+  }, [team]);
+
+  const team1Stats = useMemo(() => {
+    let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, passive = 0, fanCapacity = 0, rallyCapacity = 0;
+    team1.forEach(artist => {
+      passive += 200;
+      [...(artist.skillCategories?.dps || []), ...(artist.skillCategories?.offensive || [])].forEach(skill => {
+        const match = skill.match(/(\d+)\s*Damage/);
+        if (match && !skill.toLowerCase().includes('%')) skillDamageRaw += parseInt(match[1]);
+        const pctMatch = skill.match(/(\d+)%/);
+        if (pctMatch) {
+          const val = parseInt(pctMatch[1]);
+          if (skill.toLowerCase().includes('damage to player') || skill.toLowerCase().includes('player damage')) {
+            skillDamage += val;
+            basicAttackPercent += val;
+          }
+          else if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction') && !skill.toLowerCase().includes('taken')) skillDamage += val;
+          else if (skill.toLowerCase().includes('basic attack') && !skill.toLowerCase().includes('taken')) basicAttackPercent += val;
+        }
+      });
+      [...(artist.skillCategories?.defense || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('skill damage reduction')) skillResist += val;
+          else if (skill.toLowerCase().includes('damage reduction')) attackResist += val;
+        }
+      });
+      [...(artist.skillCategories?.hp || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('fan capacity') && skill.toLowerCase().includes('rally')) rallyCapacity += val;
+          else if (skill.toLowerCase().includes('fan capacity')) fanCapacity += val;
+        }
+      });
+    });
+    const genreCounts: Record<string, number> = {};
+    team1.forEach(artist => { const g = artist.genre || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
+    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
+  }, [team1]);
+
+  const team2Stats = useMemo(() => {
+    let skillDamage = 0, skillDamageRaw = 0, basicAttackPercent = 0, attackResist = 0, skillResist = 0, passive = 0, fanCapacity = 0, rallyCapacity = 0;
+    team2.forEach(artist => {
+      passive += 200;
+      [...(artist.skillCategories?.dps || []), ...(artist.skillCategories?.offensive || [])].forEach(skill => {
+        const match = skill.match(/(\d+)\s*Damage/);
+        if (match && !skill.toLowerCase().includes('%')) skillDamageRaw += parseInt(match[1]);
+        const pctMatch = skill.match(/(\d+)%/);
+        if (pctMatch) {
+          const val = parseInt(pctMatch[1]);
+          if (skill.toLowerCase().includes('damage to player') || skill.toLowerCase().includes('player damage')) {
+            skillDamage += val;
+            basicAttackPercent += val;
+          }
+          else if (skill.toLowerCase().includes('skill damage') && !skill.toLowerCase().includes('reduction') && !skill.toLowerCase().includes('taken')) skillDamage += val;
+          else if (skill.toLowerCase().includes('basic attack') && !skill.toLowerCase().includes('taken')) basicAttackPercent += val;
+        }
+      });
+      [...(artist.skillCategories?.defense || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('skill damage reduction')) skillResist += val;
+          else if (skill.toLowerCase().includes('damage reduction')) attackResist += val;
+        }
+      });
+      [...(artist.skillCategories?.hp || [])].forEach(skill => {
+        const match = skill.match(/(\d+)%/);
+        if (match) {
+          const val = parseInt(match[1]);
+          if (skill.toLowerCase().includes('fan capacity') && skill.toLowerCase().includes('rally')) rallyCapacity += val;
+          else if (skill.toLowerCase().includes('fan capacity')) fanCapacity += val;
+        }
+      });
+    });
+    const genreCounts: Record<string, number> = {};
+    team2.forEach(artist => { const g = artist.genre || 'Unknown'; genreCounts[g] = (genreCounts[g] || 0) + 1; });
+    return { skillDamage, skillDamageRaw, basicAttackPercent, attackResist, skillResist, passive, fanCapacity, rallyCapacity, genreCounts };
+  }, [team2]);
 
   const addToTeam1 = (artist: Artist) => {
     if (team1.length < 5 && !team1.find(a => a.id === artist.id)) {
@@ -271,26 +430,13 @@ export default function ArtistsPage() {
       <div className="page-container">
         {/* Header with title and ads */}
         <div className="page-header">
-          <h1 className="page-title">{t.pageTitle || "🎤 Artists"}</h1>
-          <p className="page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
+          <h1 className="page-title">🎤 Artistes</h1>
+          <p className="page-subtitle">Découvrez tous les personnages</p>
           <AdBanner />
         </div>
 
-        {/* Sentinel: when this scrolls out of view, panel becomes fixed */}
-        <div ref={panelSentinelRef} style={{ height: 0, pointerEvents: 'none' }} />
-
-        {/* TOP PANEL */}
-        <div
-          ref={panelRef}
-          className="top-panel"
-          style={panelFixed ? {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            zIndex: 1001,
-          } : undefined}
-        >
+        {/* TOP PANEL - Fixed 40vh */}
+        <div ref={panelRef} className="top-panel">
           {/* Column 1: Artist Preview (30%) */}
           <div className="panel-col panel-col-1">
             <div className="artist-preview-card">
@@ -303,7 +449,7 @@ export default function ArtistsPage() {
                     className="artist-preview-image-large"
                     onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
                     onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
-                    title={t.viewProfileTitle}
+                    title="Cliquer pour voir la fiche complète"
                     style={{ cursor: "pointer" }}
                   >
                     {selectedArtist.image ? (
@@ -315,7 +461,6 @@ export default function ArtistsPage() {
                   <div className="artist-preview-info">
                     <div className="artist-preview-nav">
                       <button 
-                        aria-label="Previous artist"
                         onClick={() => {
                           const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
                           if (idx > 0) setSelectedArtist(sortedArtists[idx - 1]);
@@ -324,7 +469,6 @@ export default function ArtistsPage() {
                       >◀</button>
                       <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.name}</span>
                       <button 
-                        aria-label="Next artist"
                         onClick={() => {
                           const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
                           if (idx >= 0 && idx < sortedArtists.length - 1) setSelectedArtist(sortedArtists[idx + 1]);
@@ -356,7 +500,7 @@ export default function ArtistsPage() {
                       ))}
                     </div>
                     <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)} className="view-profile-btn">
-                      {t.profile}
+                      Fiche
                     </button>
                     <div className="add-buttons">
                       {selectedArtist && !team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && (
@@ -486,7 +630,7 @@ export default function ArtistsPage() {
 
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid (scrollable) */}
-        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 16px)' } : undefined}>
+        <div className="artists-bottom">
           <div className="search-bar">
             <input
               type="text"
@@ -522,9 +666,7 @@ export default function ArtistsPage() {
                     setHoveredArtistId(null);
                     if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
                   }}
-                  onMouseEnter={(e) => {
-                    // Store initial position so tooltip has coords when timer fires
-                    setTooltipPos({ x: e.clientX, y: e.clientY });
+                  onMouseEnter={() => {
                     hoverTimerRef.current = setTimeout(() => setHoveredArtistId(artist.id), 2000);
                   }}
                   onMouseLeave={() => {
@@ -533,8 +675,9 @@ export default function ArtistsPage() {
                     setTooltipPos(null);
                   }}
                   onMouseMove={(e) => {
-                    // Always update position while hovering
-                    setTooltipPos({ x: e.clientX, y: e.clientY });
+                    if (hoveredArtistId === artist.id) {
+                      setTooltipPos({ x: e.clientX, y: e.clientY });
+                    }
                   }}
                   onDoubleClick={(e) => {
                     e.preventDefault();
@@ -543,15 +686,13 @@ export default function ArtistsPage() {
                     const isInTeam2 = team2.some(a => a.id === artist.id);
                     
                     if (isInTeam1) {
-                      // In Team1 only: move to Team2 (remove from Team1, add to Team2)
+                      // In Team1 only: move to Team2
                       if (!isInTeam2 && team2.length < 5) {
-                        setTeam1(team1.filter(a => a.id !== artist.id));
                         setTeam2([...team2, artist]);
                       }
                     } else if (isInTeam2) {
-                      // In Team2 only: move to Team1 (remove from Team2, add to Team1)
+                      // In Team2 only: move to Team1
                       if (team1.length < 5) {
-                        setTeam2(team2.filter(a => a.id !== artist.id));
                         setTeam1([...team1, artist]);
                       }
                     } else {
@@ -629,7 +770,8 @@ export default function ArtistsPage() {
           gap: 8px;
           padding: 8px;
           background: #0f0f1a;
-          position: relative;
+          position: sticky;
+          top: 0;
           z-index: 1001;
           transition: box-shadow 0.3s ease;
         }
