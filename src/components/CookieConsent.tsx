@@ -27,6 +27,7 @@ const translations: Record<string, any> = {
       required: false
     },
     manage: "Gérer mes cookies",
+    alwaysActive: "✓ Toujours actif",
     banner: {
       title: "🍪 Nous utilisons des cookies",
       text: "Ce site utilise des cookies pour améliorer votre expérience. Vous pouvez accepter tous les cookies ou personnaliser vos préférences.",
@@ -57,6 +58,7 @@ const translations: Record<string, any> = {
       required: false
     },
     manage: "Manage my cookies",
+    alwaysActive: "✓ Always active",
     banner: {
       title: "🍪 We use cookies",
       text: "This site uses cookies to improve your experience. You can accept all cookies or customize your preferences.",
@@ -87,6 +89,7 @@ const translations: Record<string, any> = {
       required: false
     },
     manage: "Gestisci i miei cookie",
+    alwaysActive: "✓ Sempre attivo",
     banner: {
       title: "🍪 Utilizziamo i cookie",
       text: "Questo sito utilizza i cookie per migliorare la tua esperienza. Puoi accettare tutti i cookie o personalizzare le tue preferenze.",
@@ -117,6 +120,7 @@ const translations: Record<string, any> = {
       required: false
     },
     manage: "Gestionar mis cookies",
+    alwaysActive: "✓ Siempre activo",
     banner: {
       title: "🍪 Usamos cookies",
       text: "Este sitio usa cookies para mejorar tu experiencia. Puedes aceptar todas las cookies o personalizar tus preferencias.",
@@ -147,6 +151,7 @@ const translations: Record<string, any> = {
       required: false
     },
     manage: "Gerenciar meus cookies",
+    alwaysActive: "✓ Sempre ativo",
     banner: {
       title: "🍪 Usamos cookies",
       text: "Este site usa cookies para melhorar sua experiência. Você pode aceitar todos os cookies ou personalizar suas preferências.",
@@ -177,6 +182,7 @@ const translations: Record<string, any> = {
       required: false
     },
     manage: "Zarządzaj moimi plikami cookies",
+    alwaysActive: "✓ Zawsze aktywne",
     banner: {
       title: "🍪 Używamy plików cookies",
       text: "Ta strona używa plików cookies, aby poprawić Twoje doświadczenie. Możesz zaakceptować wszystkie pliki cookies lub dostosować preferencje.",
@@ -207,6 +213,7 @@ const translations: Record<string, any> = {
       required: false
     },
     manage: "Kelola cookie saya",
+    alwaysActive: "✓ Selalu aktif",
     banner: {
       title: "🍪 Kami menggunakan cookie",
       text: "Situs ini menggunakan cookie untuk meningkatkan pengalaman Anda. Anda dapat menerima semua cookie atau menyesuaikan preferensi.",
@@ -237,6 +244,7 @@ const translations: Record<string, any> = {
       required: false
     },
     manage: "Управление файлами cookie",
+    alwaysActive: "✓ Всегда активно",
     banner: {
       title: "🍪 Мы используем файлы cookie",
       text: "Этот сайт использует файлы cookie для улучшения вашего опыта. Вы можете принять все файлы cookie или настроить предпочтения.",
@@ -451,6 +459,7 @@ export default function CookieConsent() {
         position: 'relative'
       }}>
         <button
+          aria-label="Close cookie settings"
           onClick={() => setShowSettings(false)}
           style={{
             position: 'absolute',
@@ -487,7 +496,7 @@ export default function CookieConsent() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
               <div>
                 <span style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem' }}>{t.necessary.title}</span>
-                <span style={{ marginLeft: '8px', color: '#22c55e', fontSize: '0.75rem', fontWeight: 500 }}>✓ Toujours actif</span>
+                <span style={{ marginLeft: '8px', color: '#22c55e', fontSize: '0.75rem', fontWeight: 500 }}>{t.alwaysActive}</span>
               </div>
               <div style={{
                 width: '48px',

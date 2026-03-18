@@ -328,6 +328,8 @@ export default function ToolsPage() {
                 onMouseLeave={() => setShowTooltip(false)}
               >
                 <button
+                  aria-label="How to use this tool"
+                  aria-expanded={showTooltip}
                   onClick={() => setShowTooltip(v => !v)}
                   style={{
                     width: "20px", height: "20px", borderRadius: "50%",

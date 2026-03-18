@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  turbopack: { },
   images: {
     // Serve original files without server-side optimization to avoid stale CDN cache
     unoptimized: true,

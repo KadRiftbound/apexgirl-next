@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
 import { getUiStrings } from "@/lib/i18n/ui";
 import artistsData from "@/lib/data/artists.json";
+import { fetchVoteData } from "@/lib/voteCache";
 
 type ArtistBasic = { id: number; name: string; image?: string };
 
@@ -19,16 +20,14 @@ export function MobileNav() {
   const ui = getUiStrings(lang);
 
   useEffect(() => {
-    fetch("/api/vote")
-      .then((r) => r.json())
+    fetchVoteData()
       .then((data) => {
         const top = data?.rankings?.this_week?.[0];
         if (top?.artist_name) {
           const artist = (artistsData as ArtistBasic[]).find((a) => a.name === top.artist_name);
           setTopVotedArtist({ name: top.artist_name, image: artist?.image });
         }
-      })
-      .catch(() => null);
+      });
   }, []);
   const lastScrollY = useRef(0);
 
@@ -146,6 +145,9 @@ export function MobileNav() {
         
         <button 
           type="button"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav-menu"
           onClick={() => setIsOpen(!isOpen)}
           style={{
             background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
@@ -167,18 +169,23 @@ export function MobileNav() {
       </div>
 
       {isOpen && (
-        <div style={{
-          position: 'fixed',
-          top: '56px',
-          left: '0',
-          right: '0',
-          bottom: '0',
-          background: 'rgba(10, 10, 20, 0.98)',
-          zIndex: 9999998,
-          padding: '20px',
-          overflowY: 'auto',
-          pointerEvents: 'auto'
-        }}>
+        <div
+          id="mobile-nav-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+          style={{
+            position: 'fixed',
+            top: '56px',
+            left: '0',
+            right: '0',
+            bottom: '0',
+            background: 'rgba(10, 10, 20, 0.98)',
+            zIndex: 9999998,
+            padding: '20px',
+            overflowY: 'auto',
+            pointerEvents: 'auto'
+          }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {navItems.map((item) => (
               <Link 
