@@ -511,10 +511,10 @@ export default function ArtistsPage() {
                       {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && (
                         <button onClick={() => addToTeam2(selectedArtist)} className="add-team-btn team2">{t.addTeam2}</button>
                       )}
-                     </div>
-                   </div>
-                 </>
-               ) : (
+                      </div>
+                    </div>
+                  </>
+                  ) : (
                 <div className="artist-preview-empty">
                   <p>{t.selectArtist}</p>
                 </div>
