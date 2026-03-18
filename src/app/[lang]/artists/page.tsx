@@ -527,7 +527,7 @@ export default function ArtistsPage() {
                <div className="team-genres">
                  {Object.keys(team1Stats.genreCounts).length > 0
                    ? Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
-                       <span key={genre} className="genre-badge" style={{ background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
+                       <span key={genre} className="genre-badge" style={{ background: genreColors[genre] ? genreColors[genre] + '40' : 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
                      ))
                    : <span className="genre-badge-empty">—</span>
                  }
@@ -584,7 +584,7 @@ export default function ArtistsPage() {
                <div className="team-genres">
                  {Object.keys(team2Stats.genreCounts).length > 0
                    ? Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
-                       <span key={genre} className="genre-badge" style={{ background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
+                       <span key={genre} className="genre-badge" style={{ background: genreColors[genre] ? genreColors[genre] + '40' : 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
                      ))
                    : <span className="genre-badge-empty">—</span>
                  }
@@ -652,7 +652,9 @@ export default function ArtistsPage() {
                       setSelectedArtist(artist);
                     }
                   }}
-                  onDoubleClick={() => {
+                  onDoubleClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const isInTeam1 = team1.some(a => a.id === artist.id);
                     const isInTeam2 = team2.some(a => a.id === artist.id);
                     
