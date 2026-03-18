@@ -856,12 +856,26 @@ export default function HomePage() {
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
           .hero-section { min-height: 70vh; }
-          .mosaic-card { opacity: 0.65; }
+
+          /* Images hero mobile : beaucoup plus grandes et opaques */
+          .mosaic-card {
+            opacity: 0.92 !important;
+            width: 22% !important;
+          }
+
           .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
           .hero-btn-primary, .hero-btn-secondary { width: 100%; text-align: center; }
-          .offer-grid { grid-template-columns: 1fr; }
+
+          /* Sections : 2 par ligne sur mobile */
+          .offer-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+          .offer-card { flex-direction: column; align-items: flex-start; padding: 16px 14px; gap: 10px; }
+          .offer-card-icon { width: 44px; height: 44px; font-size: 1.6rem; }
+          .offer-card-title { font-size: 0.95rem; }
+          .offer-card-desc { font-size: 0.72rem; margin-bottom: 0; }
           .offer-card-detail { display: none; }
-          .offer-section { padding: 36px 16px; }
+          .offer-card-arrow { display: none; }
+          .offer-section { padding: 32px 16px; }
+
           .artist-strip-inner { padding: 0 16px; }
           .codes-header { flex-direction: column; }
         }
