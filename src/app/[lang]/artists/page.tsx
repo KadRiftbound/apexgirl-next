@@ -474,7 +474,6 @@ export default function ArtistsPage() {
                       <div className="detail-col">
                         <p>🎵 {selectedArtist.genre}</p>
                         <p>📊 {t.rankLabel}: <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.rank}</span></p>
-                        {selectedArtist.season && <p>📅 {t.season || 'Season'}: {selectedArtist.season}</p>}
                         {selectedArtist.calculatedTier && <p>⭐ {t.tier || 'Tier'}: {selectedArtist.calculatedTier}</p>}
                       </div>
                     </div>
