@@ -119,31 +119,53 @@ export default function MobileArtistsPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Intelligent scroll cascade for grid
+  // Intelligent scroll cascade - grid has priority, then page
   useEffect(() => {
     const gridElement = gridContainerRef.current;
+    const panelElement = panelRef.current;
     if (!gridElement) return;
 
-    const handleGridScroll = (e: WheelEvent) => {
+    const handleAnyScroll = (e: WheelEvent) => {
       const grid = gridElement;
       const scrollTop = grid.scrollTop;
       const scrollHeight = grid.scrollHeight;
       const clientHeight = grid.clientHeight;
-      const isAtTop = scrollTop === 0;
-      const isAtBottom = scrollTop >= scrollHeight - clientHeight - 5;
+      const isGridAtTop = scrollTop === 0;
+      const isGridAtBottom = scrollTop >= scrollHeight - clientHeight - 5;
 
-      // If scroll is trying to go up at top or down at bottom, allow page scroll
-      if ((e.deltaY < 0 && isAtTop) || (e.deltaY > 0 && isAtBottom)) {
-        // Allow default scroll behavior (page scroll)
+      // Grid has priority - always try to scroll grid first
+      const deltaY = e.deltaY;
+      
+      // If scrolling down and grid is not at bottom, scroll grid
+      if (deltaY > 0 && !isGridAtBottom) {
+        e.preventDefault();
+        grid.scrollTop += deltaY;
         return;
       }
-
-      // Otherwise, prevent page scroll and let grid scroll
-      e.preventDefault();
+      
+      // If scrolling up and grid is not at top, scroll grid
+      if (deltaY < 0 && !isGridAtTop) {
+        e.preventDefault();
+        grid.scrollTop += deltaY;
+        return;
+      }
+      
+      // If grid is at limits, allow page scroll
+      // (don't prevent default, let natural scroll happen)
     };
 
-    gridElement.addEventListener('wheel', handleGridScroll, { passive: false });
-    return () => gridElement.removeEventListener('wheel', handleGridScroll);
+    // Apply to grid and panel
+    gridElement.addEventListener('wheel', handleAnyScroll, { passive: false });
+    if (panelElement) {
+      panelElement.addEventListener('wheel', handleAnyScroll, { passive: false });
+    }
+    
+    return () => {
+      gridElement.removeEventListener('wheel', handleAnyScroll);
+      if (panelElement) {
+        panelElement.removeEventListener('wheel', handleAnyScroll);
+      }
+    };
   }, []);
 
   useEffect(() => {
