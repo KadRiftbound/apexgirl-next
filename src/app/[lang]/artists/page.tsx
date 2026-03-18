@@ -104,7 +104,9 @@ export default function ArtistsPage() {
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [filterMaxSeason, setFilterMaxSeason] = useState("");
   const [mounted, setMounted] = useState(false);
+  const [panelFixed, setPanelFixed] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+  const panelSentinelRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -119,41 +121,35 @@ export default function ArtistsPage() {
   }, []);
 
   useEffect(() => {
-    let ticking = false;
+    if (window.innerWidth <= 900) return;
 
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const header = document.querySelector('.header') as HTMLElement ||
-                        document.querySelector('header[role="banner"]') as HTMLElement ||
-                        document.querySelector('header') as HTMLElement;
+    const sentinel = panelSentinelRef.current;
+    if (!sentinel) return;
 
-          // Hide header when the panel is about to reach it
-          if (header && panelRef.current && window.innerWidth > 900) {
-            const panelTop = panelRef.current.getBoundingClientRect().top;
-            const headerHeight = header.offsetHeight;
-            if (panelTop <= headerHeight) {
-              header.classList.add('header-hidden');
-            } else {
-              header.classList.remove('header-hidden');
-            }
+    const header = document.querySelector('.header') as HTMLElement;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const shouldFix = !entry.isIntersecting;
+        setPanelFixed(shouldFix);
+        if (header) {
+          if (shouldFix) {
+            header.classList.add('header-hidden');
+          } else {
+            header.classList.remove('header-hidden');
           }
+        }
+      },
+      { threshold: 0, rootMargin: '0px' }
+    );
 
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+    observer.observe(sentinel);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      const header = document.querySelector('.header') as HTMLElement ||
-                    document.querySelector('header[role="banner"]') as HTMLElement ||
-                    document.querySelector('header') as HTMLElement;
+      observer.disconnect();
       if (header) header.classList.remove('header-hidden');
     };
-  }, []);
+  }, [mounted]);
 
   // Save teams to localStorage when they change
   useEffect(() => {
@@ -280,8 +276,21 @@ export default function ArtistsPage() {
           <AdBanner />
         </div>
 
-        {/* TOP PANEL - Fixed 40vh */}
-        <div ref={panelRef} className="top-panel">
+        {/* Sentinel: when this scrolls out of view, panel becomes fixed */}
+        <div ref={panelSentinelRef} style={{ height: 0, pointerEvents: 'none' }} />
+
+        {/* TOP PANEL */}
+        <div
+          ref={panelRef}
+          className="top-panel"
+          style={panelFixed ? {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            zIndex: 1001,
+          } : undefined}
+        >
           {/* Column 1: Artist Preview (30%) */}
           <div className="panel-col panel-col-1">
             <div className="artist-preview-card">
@@ -477,7 +486,7 @@ export default function ArtistsPage() {
 
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid (scrollable) */}
-        <div className="artists-bottom">
+        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 16px)' } : undefined}>
           <div className="search-bar">
             <input
               type="text"
@@ -620,8 +629,7 @@ export default function ArtistsPage() {
           gap: 8px;
           padding: 8px;
           background: #0f0f1a;
-          position: sticky;
-          top: 0;
+          position: relative;
           z-index: 1001;
           transition: box-shadow 0.3s ease;
         }
