@@ -560,8 +560,8 @@ export default function HomePage() {
         /* Desktop : contenu sous l'éventail, collé */
         .hero-content-desktop {
           display: flex;
-          padding: 0px 24px 52px;
-          margin-top: -8px;
+          padding: 0 24px 52px;
+          margin-top: -3.5vw;
         }
         .hero-content-mobile {
           display: none;
