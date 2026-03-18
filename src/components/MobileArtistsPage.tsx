@@ -523,7 +523,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Fixed below panel */}
-        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: '40vh' }}>
+        <div className="mobile-search-bar" ref={searchBarRef}>
           <input
             type="text"
             placeholder={t.search}
@@ -544,12 +544,12 @@ export default function MobileArtistsPage() {
           </select>
         </div>
 
-        {/* Layer 4: Artists Grid - Scrollable */}
+        {/* Layer 4: Grid Wrapper - Scrollable container filling remaining space */}
         <div 
-          className="mobile-artists-bottom" 
+          className="mobile-grid-wrapper" 
           ref={gridContainerRef}
-          style={{ marginTop: `calc(40vh + ${searchBarHeight}px)` }}
         >
+          <div className="mobile-artists-bottom">
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
@@ -585,6 +585,7 @@ export default function MobileArtistsPage() {
                 )}
               </button>
             ))}
+          </div>
           </div>
         </div>
       </div>
@@ -921,6 +922,15 @@ export default function MobileArtistsPage() {
           cursor: pointer;
         }
         
+        /* Grid Wrapper - Scrollable container filling remaining viewport space */
+        .mobile-grid-wrapper {
+          flex: 1;
+          overflow-y: auto;
+          overflow-x: hidden;
+          padding-top: calc(40vh + 56px);
+          position: relative;
+        }
+        
         /* Search Bar - Always visible below fixed panel */
         .mobile-search-bar {
           display: flex;
@@ -931,8 +941,8 @@ export default function MobileArtistsPage() {
           position: fixed;
           left: 0;
           right: 0;
+          top: 40vh;
           align-items: center;
-          transition: top 0.2s ease;
           pointer-events: auto;
         }
         .mobile-search-bar.hidden {
@@ -967,10 +977,6 @@ export default function MobileArtistsPage() {
           padding-top: 12px;
           pointer-events: auto;
           background: #0f0f1a;
-          /* Make grid fill remaining space and be scrollable */
-          flex: 1;
-          overflow-y: auto;
-          overflow-x: hidden;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
