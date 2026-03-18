@@ -8,13 +8,21 @@ import { AdBanner } from "@/components/AdSense";
 import artistsData from "@/lib/data/artists.json";
 import { activeCodes } from "@/lib/data/codes";
 
-// UR artists for hero mosaic background
-const HERO_ARTISTS = [
-  "Alexandra.jpg","Genevieve.jpg","Isadora.jpg","Josephine.jpg",
-  "Marguerite.jpg","Bunga.jpg","Nike.jpg","Lysistrata.jpg",
-  "Selene.jpg","Anastasia.jpg","Beatrice.jpg","Elizabeth.jpg",
-  "Gabriella.jpg",
-];
+// SSR artists for hero mosaic — 13 picked randomly at module load
+const ALL_SSR_IMAGES = (artistsData as any[])
+  .filter((a) => a.rank === "SSR" && a.image)
+  .map((a) => a.image as string);
+
+function pickRandom<T>(arr: T[], n: number): T[] {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, n);
+}
+
+const HERO_ARTISTS = pickRandom(ALL_SSR_IMAGES, 13);
 
 function shuffleArray<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -478,8 +486,8 @@ export default function HomePage() {
           aspect-ratio: 4/5;
           border-radius: 10px;
           overflow: hidden;
-          opacity: 0.30;
-          border: 1px solid rgba(255,255,255,0.10);
+          opacity: 0.55;
+          border: 1px solid rgba(255,255,255,0.15);
         }
         .hero-overlay {
           position: absolute;
@@ -847,7 +855,7 @@ export default function HomePage() {
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
           .hero-section { min-height: 70vh; }
-          .mosaic-card { opacity: 0.20; }
+          .mosaic-card { opacity: 0.38; }
           .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; }
           .hero-btn-primary, .hero-btn-secondary { width: 100%; text-align: center; }
           .offer-grid { grid-template-columns: 1fr; }
