@@ -423,31 +423,10 @@ export default function ArtistsPage() {
                 <div className="artist-preview-content">
                   <div
                     className="artist-preview-image-large"
-                    onDoubleClick={(e) => {
-                      e.preventDefault();
-                      const isInTeam1 = team1.some(a => a.id === selectedArtist.id);
-                      const isInTeam2 = team2.some(a => a.id === selectedArtist.id);
-                      
-                      if (isInTeam1) {
-                        // Already in Team1, move to Team2 if not there
-                        if (!isInTeam2 && team2.length < 5) {
-                          setTeam2([...team2, selectedArtist]);
-                        }
-                      } else if (isInTeam2) {
-                        // Already in Team2, do nothing
-                        return;
-                      } else {
-                        // Not in any team, add to Team1 if space
-                        if (team1.length < 5) {
-                          setTeam1([...team1, selectedArtist]);
-                        } else if (team2.length < 5) {
-                          setTeam2([...team2, selectedArtist]);
-                        }
-                      }
-                    }}
                     onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
-                    title="Double-cliquer pour ajouter à une équipe • Cliquer pour voir la fiche complète"
-                    style={{ cursor: "pointer", userSelect: "none" }}
+                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    title="Cliquer pour voir la fiche complète"
+                    style={{ cursor: "pointer" }}
                   >
                     {selectedArtist.image ? (
                       <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={160} height={200} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
@@ -663,8 +642,27 @@ export default function ArtistsPage() {
                       setSelectedArtist(artist);
                     }
                   }}
+                  onDoubleClick={() => {
+                    const isInTeam1 = team1.some(a => a.id === artist.id);
+                    const isInTeam2 = team2.some(a => a.id === artist.id);
+                    
+                    if (isInTeam1) {
+                      if (!isInTeam2 && team2.length < 5) {
+                        setTeam2([...team2, artist]);
+                      }
+                    } else if (isInTeam2) {
+                      return;
+                    } else {
+                      if (team1.length < 5) {
+                        setTeam1([...team1, artist]);
+                      } else if (team2.length < 5) {
+                        setTeam2([...team2, artist]);
+                      }
+                    }
+                  }}
                   className={selectedArtist?.id === artist.id ? "selected" : ""}
                   title={selectedArtist?.id === artist.id ? t.viewProfileTitle : artist.name}
+                  style={{ cursor: "pointer" }}
                 >
                   {artist.acquisitionTier && acquisitionStyles[artist.acquisitionTier] && (
                     <span

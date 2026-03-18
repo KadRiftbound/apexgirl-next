@@ -282,27 +282,9 @@ export default function MobileArtistsPage() {
                 <div className="mobile-preview-content">
                   <div 
                     className="mobile-preview-image"
-                    onDoubleClick={(e) => {
-                      e.preventDefault();
-                      const isInTeam1 = team1.some(a => a.id === selectedArtist.id);
-                      const isInTeam2 = team2.some(a => a.id === selectedArtist.id);
-                      
-                      if (isInTeam1) {
-                        if (!isInTeam2 && team2.length < 5) {
-                          setTeam2([...team2, selectedArtist]);
-                        }
-                      } else if (isInTeam2) {
-                        return;
-                      } else {
-                        if (team1.length < 5) {
-                          setTeam1([...team1, selectedArtist]);
-                        } else if (team2.length < 5) {
-                          setTeam2([...team2, selectedArtist]);
-                        }
-                      }
-                    }}
                     onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
-                    style={{ cursor: "pointer", userSelect: "none" }}
+                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    style={{ cursor: "pointer" }}
                   >
                     {selectedArtist.image ? (
                       <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} />
@@ -533,7 +515,29 @@ export default function MobileArtistsPage() {
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
-              <button key={`${artist.id}-${index}`} onClick={() => setSelectedArtist(artist)} className={selectedArtist?.id === artist.id ? "selected" : ""}>
+              <button 
+                key={`${artist.id}-${index}`} 
+                onClick={() => setSelectedArtist(artist)} 
+                onDoubleClick={() => {
+                  const isInTeam1 = team1.some(a => a.id === artist.id);
+                  const isInTeam2 = team2.some(a => a.id === artist.id);
+                  
+                  if (isInTeam1) {
+                    if (!isInTeam2 && team2.length < 5) {
+                      setTeam2([...team2, artist]);
+                    }
+                  } else if (isInTeam2) {
+                    return;
+                  } else {
+                    if (team1.length < 5) {
+                      setTeam1([...team1, artist]);
+                    } else if (team2.length < 5) {
+                      setTeam2([...team2, artist]);
+                    }
+                  }
+                }}
+                className={selectedArtist?.id === artist.id ? "selected" : ""}
+              >
                 {artist.image ? (
                   <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} />
                 ) : (
