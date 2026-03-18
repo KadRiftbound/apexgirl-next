@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "database": "Base de Données",
+    "events": "Événements",
+    "guides": "Guides",
+    "tools": "Outils"
+  },
+  "home": {
+    "title": "TOPGIRL",
+    "subtitle": "Maîtrise le jeu avec <strong>112+ artistes</strong>, des guides experts et des outils exclusifs",
+    "cta": "Découvrir les Artistes",
+    "stats": {
+      "artists": "Artistes",
+      "guides": "Guides",
+      "events": "Événements",
+      "tools": "Outils"
+    },
+    "redeemCodes": {
+      "title": "Codes Promo & Redeem Codes",
+      "subtitle": "Tous les codes disponibles pour TopGirl / ApexGirl",
+      "enterInGame": "Les codes sont à entrer dans le jeu",
+      "seeGuide": "Voir le guide"
+    },
+    "sections": {
+      "database": {
+        "title": "Base de Données",
+        "description": "112+ artistes avec toutes leurs statistiques"
+      },
+      "tools": {
+        "title": "Outils",
+        "description": "Calculateurs et optimiseurs"
+      },
+      "guides": {
+        "title": "Guides",
+        "description": "Tutoriels et stratégies"
+      },
+      "events": {
+        "title": "Événements",
+        "description": "Calendrier et récompenses"
+      }
+    }
+  },
+  "tools": {
+    "title": "Outils",
+    "subtitle": "Optimisez votre gameplay avec nos outils",
+    "tabs": {
+      "calculator": "Calculateur",
+      "team": "Équipe",
+      "database": "Artistes",
+      "ceo": "CEO",
+      "svs": "SVS"
+    },
+    "svs": {
+      "title": "Calculateur SVS",
+      "subtitle": "Planifiez vos dépenses de pièces",
+      "items": {
+        "urSelector": "UR Artist Selector",
+        "ssrSelector": "SSR Artist Selector",
+        "srSelector": "SR Artist Selector",
+        "rSelector": "R Artist Selector",
+        "tenPull": "10x Pull (SSR+)",
+        "memoryBoost": "Memory Boost",
+        "evolution": "Evolution Material",
+        "goldPack": "Gold Pack"
+      },
+      "total": "Total"
+    },
+    "team": {
+      "title": "Optimiseur d'Équipe",
+      "subtitle": "Sélectionnez vos artistes pour voir les synergies",
+      "search": "Rechercher",
+      "stats": {
+        "artists": "Artistes",
+        "damage": "Damage",
+        "fanCap": "Fan Cap",
+        "defense": "Defense"
+      }
+    },
+    "database": {
+      "title": "Artistes",
+      "subtitle": "Filtrez et parcourez tous les artistes",
+      "search": "Rechercher...",
+      "filters": {
+        "rank": "Tous les rangs",
+        "role": "Tous les rôles"
+      },
+      "roles": {
+        "center": "Center",
+        "dancer": "Dancer",
+        "singer": "Singer",
+        "visual": "Visual"
+      },
+      "noResults": "Aucun artiste trouvé"
+    }
+  },
+  "footer": {
+    "copyright": "Tous droits réservés.",
+    "disclaimer": "Ce site est un fansite non officiel."
+  },
+  "common": {
+    "active": "Actif",
+    "copy": "Copier",
+    "loading": "Chargement...",
+    "error": "Erreur"
+  }
+}

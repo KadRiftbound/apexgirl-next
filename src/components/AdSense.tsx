@@ -35,7 +35,7 @@ export function AdSense({ adSlot, adFormat = "auto" }: AdSenseProps) {
 
 export function AdBanner() {
   return (
-    <div className="ad-banner" style={{ margin: "16px 0", minHeight: "90px" }}>
+    <div className="ad-banner" style={{ margin: "var(--space-4) 0", minHeight: "90px" }}>
       <AdSense adSlot="1234567890" />
     </div>
   );

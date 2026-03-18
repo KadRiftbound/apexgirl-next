@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import artistsData from "@/lib/data/artists.json";
-import { fetchVoteData } from "@/lib/voteCache";
 
 type Artist = { id: number; name: string; image?: string };
 
@@ -12,14 +11,16 @@ export function NavVoteWidget({ lang }: { lang: string }) {
   const [topArtist, setTopArtist] = useState<{ name: string; image?: string } | null>(null);
 
   useEffect(() => {
-    fetchVoteData()
+    fetch("/api/vote")
+      .then((r) => r.json())
       .then((data) => {
         const top = data?.rankings?.this_week?.[0];
         if (top?.artist_name) {
           const artist = (artistsData as Artist[]).find((a) => a.name === top.artist_name);
           setTopArtist({ name: top.artist_name, image: artist?.image });
         }
-      });
+      })
+      .catch(() => null);
   }, []);
 
   if (!topArtist) return null;

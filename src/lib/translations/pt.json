@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Início",
+    "database": "Base de Dados",
+    "events": "Eventos",
+    "guides": "Guias",
+    "tools": "Ferramentas"
+  },
+  "home": {
+    "title": "TOPGIRL",
+    "subtitle": "Domine o jogo com <strong>112+ artistas</strong>, guias especializados e ferramentas exclusivas",
+    "cta": "Descobrir Artistas",
+    "stats": {
+      "artists": "Artistas",
+      "guides": "Guias",
+      "events": "Eventos",
+      "tools": "Ferramentas"
+    },
+    "redeemCodes": {
+      "title": "Códigos Promocionais",
+      "subtitle": "Todos os códigos disponíveis para TopGirl / ApexGirl",
+      "enterInGame": "Insira os códigos no jogo",
+      "seeGuide": "Ver guia"
+    },
+    "sections": {
+      "database": {
+        "title": "Base de Dados",
+        "description": "112+ artistas com todas as suas estatísticas"
+      },
+      "tools": {
+        "title": "Ferramentas",
+        "description": "Calculadoras e otimizadores"
+      },
+      "guides": {
+        "title": "Guias",
+        "description": "Tutoriais e estratégias"
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "Calendário e recompensas"
+      }
+    }
+  },
+  "tools": {
+    "title": "Ferramentas",
+    "subtitle": "Otimize seu jogo com nossas ferramentas",
+    "tabs": {
+      "calculator": "Calculadora",
+      "team": "Equipe",
+      "database": "Artistas",
+      "ceo": "CEO",
+      "svs": "SVS"
+    },
+    "svs": {
+      "title": "Calculadora SVS",
+      "subtitle": "Planeje seus gastos de moedas",
+      "items": {
+        "urSelector": "Seletor de Artista UR",
+        "ssrSelector": "Seletor de Artista SSR",
+        "srSelector": "Seletor de Artista SR",
+        "rSelector": "Seletor de Artista R",
+        "tenPull": "10x Pull (SSR+)",
+        "memoryBoost": "Memory Boost",
+        "evolution": "Material de Evolução",
+        "goldPack": "Pacote de Ouro"
+      },
+      "total": "Total"
+    },
+    "team": {
+      "title": "Otimizador de Equipe",
+      "subtitle": "Selecione seus artistas para ver sinergias",
+      "search": "Pesquisar",
+      "stats": {
+        "artists": "Artistas",
+        "damage": "Dano",
+        "fanCap": "Capacidade de Fãs",
+        "defense": "Defesa"
+      }
+    },
+    "database": {
+      "title": "Artistas",
+      "subtitle": "Filtre e navegue por todos os artistas",
+      "search": "Pesquisar...",
+      "filters": {
+        "rank": "Todas as patentes",
+        "role": "Todas as funções"
+      },
+      "roles": {
+        "center": "Center",
+        "dancer": "Dançarino",
+        "singer": "Cantor",
+        "visual": "Visual"
+      },
+      "noResults": "Nenhum artista encontrado"
+    }
+  },
+  "footer": {
+    "copyright": "Todos os direitos reservados.",
+    "disclaimer": "Este é um fansite não oficial."
+  },
+  "common": {
+    "active": "Ativo",
+    "copy": "Copiar",
+    "loading": "Carregando...",
+    "error": "Erro"
+  },
+  "tierlist": {
+    "title": "Tier List",
+    "classic": "Tier List Clássica",
+    "vote": "Vote no seu favorito",
+    "artistOfWeek": "Artista da Semana",
+    "votes": "votos",
+    "voteForArtist": "Vote em um artista",
+    "alreadyVoted": "Você já votou hoje! Volte amanhã.",
+    "voteSuccess": "Voto registrado! Obrigado por votar."
+  },
+  "database": {
+    "title": "Base de Dados de Artistas",
+    "search": "Pesquisar artistas...",
+    "filters": {
+      "rank": "Todas as patentes",
+      "genre": "Todos os gêneros"
+    },
+    "noResults": "Nenhum artista encontrado"
+  },
+  "events": {
+    "title": "Eventos",
+    "all": "Todos",
+    "recurring": "Recorrentes",
+    "seasonal": "Sazonais",
+    "permanent": "Permanentes",
+    "duration": "Duração",
+    "frequency": "Frequência",
+    "rewards": "Recompensas",
+    "tips": "Dicas",
+    "bestArtists": "Melhores Artistas"
+  },
+  "guides": {
+    "title": "Guias",
+    "subtitle": "Aprenda a dominar o jogo"
+  }
+}

@@ -8,8 +8,8 @@ import { AdBanner } from "@/components/AdSense";
 import artistsData from "@/lib/data/artists.json";
 import { activeCodes } from "@/lib/data/codes";
 
-// SSR artists for hero mosaic — list built at module load (stable), pick happens client-side
-const ALL_SSR_IMAGES: string[] = (artistsData as Array<{ rank: string; image?: string }>)
+// SSR artists for hero mosaic — 13 picked randomly at module load
+const ALL_SSR_IMAGES = (artistsData as any[])
   .filter((a) => a.rank === "SSR" && a.image)
   .map((a) => a.image as string);
 
@@ -21,6 +21,8 @@ function pickRandom<T>(arr: T[], n: number): T[] {
   }
   return copy.slice(0, n);
 }
+
+const HERO_ARTISTS = pickRandom(ALL_SSR_IMAGES, 13);
 
 function shuffleArray<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -291,8 +293,8 @@ const translations: Record<string, any> = {
 
 // Mosaic positions: [top%, left%, width%, rotation]
 // Fan layout — 13 cards in a horizontal arc, smaller and evenly spaced
-// Computed once (no randomness) — safe for SSR/hydration
-const MOSAIC_POSITIONS: number[][] = (() => {
+// [top%, left%, width%, rotation]  — parabolic vertical arc, rotation -30→+30
+const MOSAIC_POSITIONS = ((): number[][] => {
   const n = 13;
   const cardW = 11;     // % width — légèrement plus grand
   const step  = 7;      // % horizontal step (chevauchement minimal)
@@ -300,10 +302,10 @@ const MOSAIC_POSITIONS: number[][] = (() => {
   const arcTop  = 3;    // point le plus haut (carte centrale)
   const arcDrop = 30;   // descente des cartes en bord (%)
   return Array.from({ length: n }, (_, i) => {
-    const tVal = (i - (n - 1) / 2) / ((n - 1) / 2); // -1 à +1
-    const top  = arcTop + arcDrop * tVal * tVal;
+    const t = (i - (n - 1) / 2) / ((n - 1) / 2); // -1 à +1
+    const top  = arcTop + arcDrop * t * t;
     const left = startLeft + i * step;
-    const rot  = tVal * 28;
+    const rot  = t * 28;
     return [Math.round(top), Math.round(left), cardW, Math.round(rot)];
   });
 })();
@@ -313,15 +315,11 @@ export default function HomePage() {
   const lang = (params?.lang as string) || "en";
   const t = translations[lang] || translations.en;
 
-  // Hero artists: picked client-side only to avoid SSR/hydration mismatch
-  const [heroArtists] = useState<string[]>(() => pickRandom(ALL_SSR_IMAGES, 13));
-
   const [copiedCode, setCopiedCode] = useState("");
 
   // SSR artists only — shuffled on mount, 12 shown
   const featuredArtists = useMemo(() => {
-    const ssrOnly = (artistsData as Array<{ id: number; name: string; image?: string; rank: string }>)
-      .filter((a) => a.image && a.rank === "SSR");
+    const ssrOnly = (artistsData as any[]).filter((a) => a.image && a.rank === "SSR");
     return shuffleArray(ssrOnly).slice(0, 12);
   }, []);
 
@@ -365,7 +363,7 @@ export default function HomePage() {
       {/* Éventail d'artistes — desktop: section séparée / mobile: avec contenu dedans */}
       <section className="hero-section">
         <div className="hero-mosaic" aria-hidden="true">
-          {heroArtists.map((img, i) => {
+          {HERO_ARTISTS.map((img, i) => {
             const [top, left, w, rot] = MOSAIC_POSITIONS[i] || [50, 50, 14, 0];
             return (
               <div
