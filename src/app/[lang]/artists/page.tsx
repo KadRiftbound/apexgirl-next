@@ -46,6 +46,7 @@ type Artist = {
   specialty?: string;
   earlyGameRecommended?: boolean;
   acquisitionTier?: string;
+  calculatedTier?: string;
   skillCategories?: { dps: string[]; offensive: string[]; hp: string[]; defense: string[] };
 };
 
