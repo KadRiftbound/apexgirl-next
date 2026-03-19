@@ -522,7 +522,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 4: Artists Grid - Scrollable */}
-        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(${headerHeight}px + 40vh + ${searchBarHeight}px + 10px)`, opacity: 0 }}>
+        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(${headerHeight}px + 40vh + ${searchBarHeight}px + 10px)` }}>
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
@@ -931,7 +931,8 @@ export default function MobileArtistsPage() {
           min-height: 100vh;
           transition: padding-top 0.2s ease;
           pointer-events: none;
-          background: #0f0f1a;
+          background: transparent;
+          opacity: 0;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
@@ -954,6 +955,7 @@ export default function MobileArtistsPage() {
           cursor: pointer;
           overflow: hidden;
           position: relative;
+          opacity: 1;
         }
         .mobile-artists-grid button.selected {
           border-color: #8b5cf6;
@@ -962,6 +964,7 @@ export default function MobileArtistsPage() {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          opacity: 1;
         }
         .mobile-artist-placeholder {
           width: 100%;
