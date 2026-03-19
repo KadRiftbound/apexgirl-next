@@ -140,14 +140,10 @@ export default async function LocaleLayout({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "TopGirl",
-            "url": `https://apexgirlguide.com/${lang}/`,
-            "description": metadataByLang[lang]?.description || metadataByLang.fr.description,
-            "inLanguage": localeNames[lang] || "fr-FR",
-            "potentialAction": {
-              "@type": "ReadAction",
-              "target": `https://apexgirlguide.com/${lang}/guides/`
-            }
+            "name": "TopGirl Guide",
+            "url": "https://apexgirlguide.com/",
+            "description": metadataByLang[lang]?.description || metadataByLang.en.description,
+            "inLanguage": localeNames[lang] || "en-US",
           })
         }}
       />

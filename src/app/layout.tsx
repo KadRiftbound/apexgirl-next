@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { headers } from "next/headers";
+import Script from "next/script";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -27,15 +28,18 @@ export default async function RootLayout({
   return (
     <html lang={lang} suppressHydrationWarning className={poppins.variable}>
       <head>
-        <link rel="icon" href="/assets/favicon.png" sizes="any" />
-        <link rel="apple-touch-icon" href="/assets/favicon.png" />
         <meta name="google-adsense-account" content="ca-pub-5737915177617454" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5737915177617454&consent_ad_storage=denied" />
-        <script
-          async
+      </head>
+      <body>
+        {children}
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-Y082CPMLKJ"
         />
-        <script
+        <Script
+          id="gtag-config"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -51,9 +55,12 @@ export default async function RootLayout({
             `,
           }}
         />
-      </head>
-      <body>
-        {children}
+        <Script
+          id="adsense"
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5737915177617454"
+          crossOrigin="anonymous"
+        />
       </body>
     </html>
   );

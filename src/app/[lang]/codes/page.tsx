@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { activeCodes } from "@/lib/data/codes";
 import CodesClient from "./CodesClient";
 
 const BASE_URL = "https://apexgirlguide.com";
@@ -12,6 +13,17 @@ const meta: Record<string, { title: string; description: string; keywords: strin
   pl: { title: "Kody Promo TopGirl 2026 — Aktywne Darmowe Kody", description: "Wszystkie aktywne kody promo TopGirl/ApexGirl w 2026. Codzienne aktualizacje. Zdobądź darmowe nagrody.", keywords: "kody promo TopGirl, kody TopGirl 2026, ApexGirl darmowe kody" },
   id: { title: "Kode Promo TopGirl 2026 — Kode Aktif Gratis", description: "Semua kode promo TopGirl/ApexGirl yang aktif di 2026. Pembaruan harian. Dapatkan reward gratis.", keywords: "kode promo TopGirl, kode TopGirl 2026, ApexGirl kode gratis" },
   ru: { title: "Промокоды TopGirl 2026 — Актуальные Бесплатные Коды", description: "Все актуальные промокоды TopGirl/ApexGirl в 2026. Ежедневные обновления. Получите бесплатные награды.", keywords: "промокоды TopGirl, коды TopGirl 2026, ApexGirl бесплатные коды" },
+};
+
+const faqTemplates: Record<string, { q: string; a: string }> = {
+  fr: { q: "Quelle est la récompense du code {code} ?", a: "Le code {code} donne : {rewards}." },
+  en: { q: "What is the reward for code {code}?", a: "The code {code} gives: {rewards}." },
+  it: { q: "Qual è la ricompensa del codice {code}?", a: "Il codice {code} dà: {rewards}." },
+  es: { q: "¿Cuál es la recompensa del código {code}?", a: "El código {code} otorga: {rewards}." },
+  pt: { q: "Qual é a recompensa do código {code}?", a: "O código {code} dá: {rewards}." },
+  pl: { q: "Jaka jest nagroda za kod {code}?", a: "Kod {code} daje: {rewards}." },
+  id: { q: "Apa hadiah untuk kode {code}?", a: "Kode {code} memberikan: {rewards}." },
+  ru: { q: "Какова награда за код {code}?", a: "Код {code} даёт: {rewards}." },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -33,5 +45,28 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export default async function CodesPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  return <CodesClient lang={lang} />;
+  const tmpl = faqTemplates[lang] || faqTemplates.en;
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": activeCodes.map((code: { code: string; rewards: string }) => ({
+      "@type": "Question",
+      "name": tmpl.q.replace("{code}", code.code),
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": tmpl.a.replace("{code}", code.code).replace("{rewards}", code.rewards),
+      },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <CodesClient lang={lang} />
+    </>
+  );
 }

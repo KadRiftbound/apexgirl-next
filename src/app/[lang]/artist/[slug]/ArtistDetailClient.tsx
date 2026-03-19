@@ -326,6 +326,28 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
 
       {/* ─── MAIN CONTENT ─── */}
       <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '28px 20px 0' }}>
+
+        {/* Description & Recommendation */}
+        {(artist.description || artist.thoughts) && (
+          <div style={{ background: 'rgba(15,15,35,0.55)', borderRadius: '16px', border: `1px solid ${rankColor}22`, padding: '20px', marginBottom: '14px', backdropFilter: 'blur(10px)' }}>
+            {artist.description && (
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.92rem', lineHeight: 1.7, margin: '0 0 12px' }}>
+                {artist.description}
+              </p>
+            )}
+            {artist.thoughts && (
+              <div style={{ borderTop: artist.description ? `1px solid ${rankColor}22` : 'none', paddingTop: artist.description ? '12px' : 0 }}>
+                <div style={{ color: rankColor, fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>
+                  💡 {t.thoughts}
+                </div>
+                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.88rem', lineHeight: 1.6, margin: 0 }}>
+                  {artist.thoughts}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '14px' }} className="artist-top-row">
 
           {/* Stats Panel */}

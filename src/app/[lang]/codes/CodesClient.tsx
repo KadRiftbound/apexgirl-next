@@ -338,24 +338,7 @@ export default function CodesClient({ lang }: { lang: string }) {
 
       <AdBanner />
 
-      {/* SEO Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": codesData.active.map(code => ({
-              "@type": "Question",
-              "name": t.schemaQuestion.replace('{code}', code.code),
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": t.schemaAnswer.replace('{code}', code.code).replace('{rewards}', code.rewards)
-              }
-            }))
-          })
-        }}
-      />
+
     </div>
   );
 }
