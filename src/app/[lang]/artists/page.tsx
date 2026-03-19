@@ -542,24 +542,23 @@ export default function ArtistsPage() {
                     const isInTeam1 = team1.some(a => a.id === artist.id);
                     const isInTeam2 = team2.some(a => a.id === artist.id);
                     
-                    if (isInTeam1) {
-                      // In Team1 only: move to Team2 (remove from Team1, add to Team2)
-                      if (!isInTeam2 && team2.length < 5) {
-                        setTeam1(team1.filter(a => a.id !== artist.id));
+                    if (isInTeam1 && isInTeam2) {
+                      // In both teams: do nothing
+                      return;
+                    } else if (isInTeam1) {
+                      // In Team1 only: add to Team2 (keep in Team1)
+                      if (team2.length < 5) {
                         setTeam2([...team2, artist]);
                       }
                     } else if (isInTeam2) {
-                      // In Team2 only: move to Team1 (remove from Team2, add to Team1)
+                      // In Team2 only: add to Team1
                       if (team1.length < 5) {
-                        setTeam2(team2.filter(a => a.id !== artist.id));
                         setTeam1([...team1, artist]);
                       }
                     } else {
-                      // Not in any team: add to Team1 if space, else Team2
+                      // Not in any team: add to Team1
                       if (team1.length < 5) {
                         setTeam1([...team1, artist]);
-                      } else if (team2.length < 5) {
-                        setTeam2([...team2, artist]);
                       }
                     }
                   }}

@@ -533,17 +533,23 @@ export default function MobileArtistsPage() {
                   const isInTeam1 = team1.some(a => a.id === artist.id);
                   const isInTeam2 = team2.some(a => a.id === artist.id);
                   
-                  if (isInTeam1) {
-                    if (!isInTeam2 && team2.length < 5) {
+                  if (isInTeam1 && isInTeam2) {
+                    // In both teams: do nothing
+                    return;
+                  } else if (isInTeam1) {
+                    // In Team1 only: add to Team2
+                    if (team2.length < 5) {
                       setTeam2([...team2, artist]);
                     }
                   } else if (isInTeam2) {
-                    return;
-                  } else {
+                    // In Team2 only: add to Team1
                     if (team1.length < 5) {
                       setTeam1([...team1, artist]);
-                    } else if (team2.length < 5) {
-                      setTeam2([...team2, artist]);
+                    }
+                  } else {
+                    // Not in any team: add to Team1
+                    if (team1.length < 5) {
+                      setTeam1([...team1, artist]);
                     }
                   }
                 }}
