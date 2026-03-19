@@ -741,6 +741,7 @@ export default function GuidesListClient({ lang }: { lang: string }) {
             <button
               key={cat}
               onClick={() => setActiveCategoryState(cat)}
+              aria-pressed={activeCategoryState === cat}
               style={{
                 padding: "10px 18px",
                 borderRadius: "10px",
@@ -764,7 +765,9 @@ export default function GuidesListClient({ lang }: { lang: string }) {
         </div>
 
         <div style={{ marginBottom: "24px" }}>
+          <label htmlFor="guides-search" className="sr-only">{t.searchPlaceholder}</label>
           <input
+            id="guides-search"
             type="text"
             placeholder={t.searchPlaceholder}
             value={searchQuery}

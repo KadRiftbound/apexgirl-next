@@ -392,7 +392,7 @@ export default function HomeClient({ lang }: { lang: string }) {
       {/* Sur desktop le contenu s'affiche sous l'éventail */}
       <div className="hero-content hero-content-desktop">
         <div className="hero-badge">TopGirl / ApexGirl</div>
-        <p className="hero-title">{t.homeTitle}</p>
+        <h1 className="hero-title">{t.homeTitle}</h1>
         <p className="hero-subtitle" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
         <div className="hero-stats">
           <span><strong>112+</strong> {t.statArtists}</span>
@@ -507,6 +507,7 @@ export default function HomeClient({ lang }: { lang: string }) {
                 <button
                   className={`code-copy-btn ${copiedCode === c.code ? "copied" : ""}`}
                   onClick={() => copyCode(c.code)}
+                  aria-label={`${copiedCode === c.code ? t.copied : t.copy} ${c.code}`}
                 >
                   {copiedCode === c.code ? t.copied : t.copy}
                 </button>

@@ -37,7 +37,7 @@ export default function NotFound() {
               fontWeight: 700,
               fontSize: "0.95rem",
             }}>
-              🏠 Home
+              <span aria-hidden="true">🏠</span> Home
             </Link>
             <Link href="/en/artists/" style={{
               padding: "12px 28px",
@@ -49,7 +49,7 @@ export default function NotFound() {
               fontSize: "0.95rem",
               border: "1px solid rgba(255,255,255,0.12)",
             }}>
-              🎤 Artists
+              <span aria-hidden="true">🎤</span> Artists
             </Link>
             <Link href="/en/guides/" style={{
               padding: "12px 28px",
@@ -61,7 +61,7 @@ export default function NotFound() {
               fontSize: "0.95rem",
               border: "1px solid rgba(255,255,255,0.12)",
             }}>
-              📖 Guides
+              <span aria-hidden="true">📖</span> Guides
             </Link>
           </div>
 

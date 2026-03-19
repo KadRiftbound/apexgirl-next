@@ -197,9 +197,9 @@ export default function CodesClient({ lang }: { lang: string }) {
 
       {/* How to use */}
       <section className="glass-card" style={{ padding: '24px', marginBottom: '40px', maxWidth: '700px', margin: '0 auto 40px' }}>
-        <h3 style={{ fontSize: '1.1rem', marginBottom: '12px', color: 'var(--primary)' }}>
+        <h2 style={{ fontSize: '1.1rem', marginBottom: '12px', color: 'var(--primary)' }}>
           💡 {t.howToUse}
-        </h3>
+        </h2>
         <p className="text-muted" style={{ fontSize: '0.95rem' }}>
           {t.howToUseDesc}
         </p>
@@ -264,6 +264,7 @@ export default function CodesClient({ lang }: { lang: string }) {
                 <button
                   onClick={() => copyCode(item.code)}
                   className="btn"
+                  aria-label={`${copied === item.code ? t.copied : t.copy} ${item.code}`}
                   style={{ 
                     padding: '12px 24px',
                     background: copied === item.code 

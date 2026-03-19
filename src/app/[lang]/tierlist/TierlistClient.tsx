@@ -211,7 +211,7 @@ function TierListPageInner({ lang }: { lang: string }) {
         <AdBanner />
 
         {/* Tabs */}
-        <div style={{ 
+        <div role="tablist" style={{ 
           display: "flex", 
           gap: "8px", 
           justifyContent: "center", 
@@ -219,6 +219,8 @@ function TierListPageInner({ lang }: { lang: string }) {
           marginBottom: "32px"
         }}>
           <button
+            role="tab"
+            aria-selected={activeTab === "classic"}
             onClick={() => setActiveTab("classic")}
             style={{
               padding: "14px 32px",
@@ -242,6 +244,8 @@ function TierListPageInner({ lang }: { lang: string }) {
             📊 {t.tierListClassic}
           </button>
           <button
+            role="tab"
+            aria-selected={activeTab === "vote"}
             onClick={() => setActiveTab("vote")}
             style={{
               padding: "14px 32px",
@@ -268,7 +272,7 @@ function TierListPageInner({ lang }: { lang: string }) {
 
         {/* Floating toast */}
         {voteMessage && (
-          <div style={{
+          <div role="alert" style={{
             position: "fixed",
             top: "90px",
             left: "50%",
@@ -597,7 +601,7 @@ function TierListPageInner({ lang }: { lang: string }) {
 
             {/* Top 3 Leaderboard */}
             <div style={{ marginBottom: "40px" }}>
-              <h3 style={{ 
+              <h2 style={{ 
                 fontSize: "1.25rem", 
                 fontWeight: 700, 
                 marginBottom: "20px",
@@ -607,7 +611,7 @@ function TierListPageInner({ lang }: { lang: string }) {
                 gap: "8px"
               }}>
                 {t.podium}
-              </h3>
+              </h2>
               
               {/* Top 3 with Images */}
               <div style={{

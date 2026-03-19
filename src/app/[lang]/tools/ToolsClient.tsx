@@ -224,6 +224,7 @@ export default function ToolsClient({ lang }: { lang: string }) {
               <button
                 key={tool.id}
                 onClick={() => setActiveTab(tool.id)}
+                aria-pressed={isActive}
                 style={{
                   padding: "16px",
                   borderRadius: "16px",
@@ -413,6 +414,7 @@ export default function ToolsClient({ lang }: { lang: string }) {
             href="https://github.com/IamClumsy"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="@IamClumsy (opens in new tab)"
             style={{
               color: "#a855f7",
               textDecoration: "none",

@@ -486,25 +486,31 @@ export default function ArtistsClient({ lang }: { lang: string }) {
         {/* BOTTOM - Artists Grid */}
         <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px + 240px)' } : undefined}>
           <div className="search-bar" style={panelFixed ? { position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 1002 } : {}}>
+            <label htmlFor="artist-search" className="sr-only">{t.search}</label>
             <input
+              id="artist-search"
               type="text"
               placeholder={t.search}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <select value={filterRank} onChange={(e) => setFilterRank(e.target.value)}>
+            <label htmlFor="filter-rank" className="sr-only">{t.allRanks}</label>
+            <select id="filter-rank" value={filterRank} onChange={(e) => setFilterRank(e.target.value)}>
               <option value="">{t.allRanks}</option>
               {RANKS.map(rank => (<option key={rank} value={rank}>{rank}</option>))}
             </select>
-            <select value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
+            <label htmlFor="filter-genre" className="sr-only">{t.allGenres}</label>
+            <select id="filter-genre" value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
               <option value="">{t.allGenres}</option>
               {GENRES.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
             </select>
-            <select value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
+            <label htmlFor="filter-specialty" className="sr-only">{t.allSpecialties}</label>
+            <select id="filter-specialty" value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
               <option value="">{t.allSpecialties}</option>
               {SPECIALTIES.map(spec => (<option key={spec} value={spec}>{spec}</option>))}
             </select>
-            <select value={filterMaxSeason} onChange={(e) => setFilterMaxSeason(e.target.value)}>
+            <label htmlFor="filter-season" className="sr-only">{t.allSeasons || "Toutes saisons"}</label>
+            <select id="filter-season" value={filterMaxSeason} onChange={(e) => setFilterMaxSeason(e.target.value)}>
               <option value="">{t.allSeasons || "Toutes saisons"}</option>
               {SEASON_LABELS.map(s => (<option key={s} value={s}>{t.maxSeason ? `${t.maxSeason} : ${s}` : `Max : ${s}`}</option>))}
             </select>
