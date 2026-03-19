@@ -401,7 +401,7 @@ export default function ToolsClient({ lang }: { lang: string }) {
         <div style={{
           textAlign: "center",
           padding: "24px 0 0",
-          color: "rgba(255,255,255,0.3)",
+          color: "rgba(255,255,255,0.5)",
           fontSize: "0.8rem",
           display: "flex",
           alignItems: "center",

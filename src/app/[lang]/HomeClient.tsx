@@ -637,7 +637,7 @@ export default function HomeClient({ lang }: { lang: string }) {
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.3);
+          color: rgba(255,255,255,0.55);
           text-align: center;
           margin-bottom: 32px;
         }
@@ -687,7 +687,7 @@ export default function HomeClient({ lang }: { lang: string }) {
         }
         .offer-card-detail {
           font-size: 0.78rem;
-          color: rgba(255,255,255,0.38);
+          color: rgba(255,255,255,0.6);
           line-height: 1.45;
         }
         .offer-card-arrow {
@@ -860,7 +860,7 @@ export default function HomeClient({ lang }: { lang: string }) {
         }
         .code-meta { display: flex; flex-direction: column; gap: 1px; }
         .code-rewards { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
-        .code-expires { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+        .code-expires { font-size: 0.7rem; color: rgba(255,255,255,0.55); }
         .code-copy-btn {
           padding: 7px 16px;
           background: rgba(255,77,141,0.15);
