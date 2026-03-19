@@ -792,7 +792,7 @@ export default function GuidesPage() {
           {filteredGuides.map((guide) => (
             <Link
               key={guide.id}
-              href={`/${lang}/guides/${guide.id}`}
+              href={`/${lang}/guides/${guide.id}/`}
               style={{
                 background: "rgba(20,20,40,0.92)",
                 borderRadius: "20px",

@@ -30,56 +30,67 @@ const metadataByLang: Record<string, { title: string; description: string; keywo
   ru: { title: "TopGirl - Руководства и Инструменты", description: "Неофициальный фан-сайт TopGirl/ApexGirl с руководствами, инструментами и промокодами", keywords: "TopGirl, ApexGirl, руководство, tips, промокоды" },
 };
 
+const BASE_URL = "https://apexgirlguide.com";
+const OG_IMAGE = `${BASE_URL}/assets/og-image.png`;
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const meta = metadataByLang[lang] || metadataByLang.fr;
-  
-  const alternates: Metadata['alternates'] = {
-    languages: {
-      fr: "https://apexgirlguide.com/fr",
-      en: "https://apexgirlguide.com/en",
-      it: "https://apexgirlguide.com/it",
-      es: "https://apexgirlguide.com/es",
-      pt: "https://apexgirlguide.com/pt",
-      pl: "https://apexgirlguide.com/pl",
-      id: "https://apexgirlguide.com/id",
-      ru: "https://apexgirlguide.com/ru",
-      "x-default": "https://apexgirlguide.com/fr",
+  const meta = metadataByLang[lang] || metadataByLang.en;
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords.split(", "),
+    alternates: {
+      canonical: `${BASE_URL}/${lang}/`,
+      languages: {
+        fr: `${BASE_URL}/fr`,
+        en: `${BASE_URL}/en`,
+        it: `${BASE_URL}/it`,
+        es: `${BASE_URL}/es`,
+        pt: `${BASE_URL}/pt`,
+        pl: `${BASE_URL}/pl`,
+        id: `${BASE_URL}/id`,
+        ru: `${BASE_URL}/ru`,
+        "x-default": `${BASE_URL}/en`,
+      },
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `${BASE_URL}/${lang}/`,
+      siteName: "TopGirl Guide",
+      locale: localeNames[lang] || "en-US",
+      type: "website",
+      images: [
+        {
+          url: OG_IMAGE,
+          width: 1200,
+          height: 630,
+          alt: "TopGirl Guide — Fansite guides, tools & tier list",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+      images: [OG_IMAGE],
+    },
+    icons: {
+      icon: [
+        { url: "/assets/favicon.png", sizes: "48x48" },
+        { url: "/assets/favicon.png", sizes: "96x96" },
+        { url: "/assets/favicon.png", sizes: "192x192" },
+        { url: "/assets/favicon.png", sizes: "512x512" },
+      ],
+      apple: { url: "/assets/favicon.png" },
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
-
-   return {
-     title: meta.title,
-     description: meta.description,
-     keywords: meta.keywords.split(", "),
-     alternates,
-     openGraph: {
-       title: meta.title,
-       description: meta.description,
-       url: `https://apexgirlguide.com/${lang}`,
-       siteName: "TopGirl",
-       locale: localeNames[lang] || "fr-FR",
-       type: "website",
-     },
-     twitter: {
-       card: "summary_large_image",
-       title: meta.title,
-       description: meta.description,
-     },
-     icons: {
-       icon: [
-         { url: "/assets/favicon.png", sizes: "48x48" },
-         { url: "/assets/favicon.png", sizes: "96x96" },
-         { url: "/assets/favicon.png", sizes: "192x192" },
-         { url: "/assets/favicon.png", sizes: "512x512" },
-       ],
-       apple: { url: "/assets/favicon.png" },
-     },
-     robots: {
-       index: true,
-       follow: true,
-     },
-   };
 }
 
 export async function generateStaticParams() {

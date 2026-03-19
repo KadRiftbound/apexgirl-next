@@ -8,6 +8,9 @@ import { AdBanner } from "@/components/AdSense";
 import artistsData from "@/lib/data/artists.json";
 import { activeCodes } from "@/lib/data/codes";
 
+const slugify = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
 // SSR artists for hero mosaic — list built at module load (stable), pick happens client-side
 const ALL_SSR_IMAGES: string[] = (artistsData as Array<{ rank: string; image?: string }>)
   .filter((a) => a.rank === "SSR" && a.image)
@@ -410,7 +413,7 @@ export default function HomePage() {
       {/* Mobile hero content — stacked below the mosaic */}
       <div className="hero-content-mobile">
         <div className="hero-badge">TopGirl / ApexGirl</div>
-        <h1 className="hero-title">{t.homeTitle}</h1>
+        <p className="hero-title" aria-hidden="true">{t.homeTitle}</p>
         <p className="hero-subtitle" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
         <div className="hero-stats">
           <span><strong>112+</strong> {t.statArtists}</span>
@@ -461,7 +464,7 @@ export default function HomePage() {
           </div>
           <div className="artist-strip">
             {featuredArtists.map((artist: any) => (
-              <Link key={artist.id} href={`/${lang}/artists/`} className="artist-card">
+              <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}/`} className="artist-card">
                 <div className="artist-card-img">
                   <Image
                     src={`/assets/images/artists/${artist.image}`}

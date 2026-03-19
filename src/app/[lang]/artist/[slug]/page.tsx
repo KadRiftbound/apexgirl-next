@@ -213,7 +213,7 @@ export default function ArtistDetailPage() {
       <div style={{ padding: '60px 20px', textAlign: 'center' }}>
         <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔍</div>
         <h2 style={{ color: '#fff', marginBottom: '12px' }}>{t.notFound}</h2>
-        <Link href={`/${lang}/artists`} style={{
+        <Link href={`/${lang}/artists/`} style={{
           display: 'inline-block', marginTop: '16px', padding: '10px 24px',
           background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
           color: 'white', borderRadius: '10px', textDecoration: 'none', fontWeight: 600,
@@ -270,7 +270,7 @@ export default function ArtistDetailPage() {
       }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '16px 20px', background: 'rgba(30,30,50,0.6)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
           {/* Breadcrumb */}
-          <Link href={`/${lang}/artists`} style={{
+          <Link href={`/${lang}/artists/`} style={{
             color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem',
             textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px',
             marginBottom: '20px',
@@ -593,10 +593,10 @@ export default function ArtistDetailPage() {
 
         {/* ─── Footer nav ─── */}
         <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '8px' }}>
-          <Link href={`/${lang}/artists`} style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>
+          <Link href={`/${lang}/artists/`} style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>
             ← {t.backToArtists}
           </Link>
-          <Link href={`/${lang}/tierlist`} style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>
+          <Link href={`/${lang}/tierlist/`} style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>
             {t.viewTierList}
           </Link>
         </div>
