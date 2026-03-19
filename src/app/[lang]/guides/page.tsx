@@ -557,13 +557,15 @@ const guides: Guide[] = [
   {
     id: "event-metro-subway",
     title: "Guide Metro & Subway",
-    description: "Guide du Metro & Subway. Collectez des tickets et montez dans le métro pour des rewards.",
+    description: "Guide de l'événement Adventure Abroad Metro. Débloquez des stations, gérez vos Fonds d'Investissement et maximisez vos récompenses.",
     icon: "🚇",
     color: "#3b82f6",
     category: "Guide événement",
     guideType: "event",
-    readTime: "5 min",
-    inProgress: true,
+    readTime: "8 min",
+    isNew: true,
+    isDone: true,
+    thumbnail: "/assets/images/guides/metro-subway.jpg",
   },
   {
     id: "event-vs-group",

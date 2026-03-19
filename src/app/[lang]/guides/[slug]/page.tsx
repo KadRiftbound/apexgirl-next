@@ -2767,36 +2767,174 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
   {
     id: "event-metro-subway",
     title: "Guide Metro & Subway",
-    description: "Guide du Metro & Subway",
+    title_en: "Metro & Subway Guide",
+    title_it: "Guida Metro & Subway",
+    title_es: "Guía Metro & Subway",
+    title_pt: "Guia Metro & Subway",
+    title_pl: "Przewodnik Metro & Subway",
+    title_id: "Panduan Metro & Subway",
+    title_ru: "Гайд Metro & Subway",
+    description: "Guide de l'événement Adventure Abroad Metro. Débloquez des stations, gérez vos Fonds d'Investissement et maximisez vos récompenses.",
+    description_en: "Adventure Abroad Metro event guide. Unlock stations, manage your Investment Funds and maximize your rewards.",
+    description_it: "Guida all'evento Metro di Adventure Abroad. Sblocca stazioni, gestisci i tuoi Fondi di Investimento e massimizza le ricompense.",
+    description_es: "Guía del evento Metro de Adventure Abroad. Desbloquea estaciones, gestiona tus Fondos de Inversión y maximiza tus recompensas.",
+    description_pt: "Guia do evento Metro de Adventure Abroad. Desbloqueie estações, gerencie seus Fundos de Investimento e maximize suas recompensas.",
+    description_pl: "Przewodnik po wydarzeniu Metro Adventure Abroad. Odblokuj stacje, zarządzaj Funduszami Inwestycyjnymi i zmaksymalizuj nagrody.",
+    description_id: "Panduan event Metro Adventure Abroad. Buka stasiun, kelola Dana Investasi dan maksimalkan reward.",
+    description_ru: "Гайд по событию Metro в Adventure Abroad. Открывайте станции, управляйте Инвестиционными Фондами и максимизируйте награды.",
     icon: "🚇",
     color: "#3b82f6",
     category: "Événements",
-    readTime: "5 min",
+    category_en: "Events",
+    category_it: "Eventi",
+    category_es: "Eventos",
+    category_pt: "Eventos",
+    category_pl: "Wydarzenia",
+    category_id: "Acara",
+    category_ru: "События",
+    readTime: "8 min",
+    tips: `
+- Concentrez-vous d'abord sur le déblocage de stations. C'est la principale source de progression.
+- Ne dépensez pas les Fonds d'Investissement en investissement supplémentaire tôt. Cela ralentira votre progression.
+- Utilisez les ressources supplémentaires uniquement pendant Ultimate Group, Ultimate CEO ou Group Battle.
+- Planifiez votre consommation d'AP tôt. L'événement nécessite une activité quotidienne élevée (environ 1 700 AP/jour).
+- Soyez prêt à utiliser des Diamonds si vous voulez atteindre une efficacité maximale.
+- Utilisez le SR Photo Exchange quotidiennement pour des Fonds d'Investissement supplémentaires.
+- Gardez vos Commemorative Coins pour les upgrades importants plutôt que de les dépenser immédiatement.
+- Privilégiez les upgrades permanents aux bonus Metro temporaires.
+`,
+    tips_en: `
+- Focus on unlocking stations first. This is the main source of progression.
+- Do not spend Investment Funds on additional investment early. It will slow your progress.
+- Use extra resources only during Ultimate Group, Ultimate CEO, or Group Battle.
+- Plan your AP usage early. The event requires high daily activity (around 1,700 AP per day).
+- Be ready to use Diamonds if you want to reach maximum efficiency.
+- Use SR Photo Exchange daily for extra Investment Funds.
+- Save Commemorative Coins for important upgrades instead of spending them immediately.
+- Prioritize permanent upgrades over temporary Metro boosts.
+`,
+    rewards: `
+- Points de Fréquentation : utilisés pour le classement pendant l'événement Metro.
+- Commemorative Coins : utilisés dans l'Abroad Shop pour obtenir des ressources précieuses.
+
+Priorités dans l'Abroad Shop :
+- SSR Universal Photos — pour améliorer les artistes
+- Featured Artist Photos — pour améliorer des artistes spécifiques
+- Voitures — pour augmenter la puissance globale
+- Propriétés — pour améliorer la croissance à long terme du compte
+`,
+    rewards_en: `
+- Ridership Points: Used for ranking during the Metro event.
+- Commemorative Coins: Used in the Abroad Shop to obtain valuable resources.
+
+Abroad Shop priority items:
+- SSR Universal Photos — used to upgrade artists
+- Featured Artist Photos — improve specific artists
+- Cars — increase overall power
+- Properties — improve long-term account growth
+`,
     content: `
-## Guide Metro & Subway - TopGirl
+## Guide Metro & Subway — Adventure Abroad
 
-### Présentation
-Le **Metro & Subway** est un événement où vous prenez le métro pour collecter des tickets et earn des rewards.
+### Explication courte
+Le système Metro dans Adventure Abroad est un événement limité qui offre des bonus de stats temporaires et des récompenses de progression. Les joueurs utilisent des Fonds d'Investissement pour débloquer des stations et augmenter leurs Points de Fréquentation.
 
-### Phases
+L'objectif principal est de progresser aussi loin que possible en utilisant efficacement ses ressources. Tous les bonus Metro sont réinitialisés à la fin de l'événement.
 
-**Phase 1 (Jour 1-2)**
-- Collectez les tickets
-- Reward: Tickets x150
+### Explication longue
+L'événement Metro dure 3 semaines et offre des bonus de stats significatifs : Chant, Danse, Management, Capacité Fan et Rally Fan Capacity. Ces bonus aident pendant l'événement mais ne persistent pas après.
 
-**Phase 2 (Jour 3-5)**
-- Complétez les lignes
-- Reward: Tickets x300, SSR Shards
+La progression repose sur deux systèmes principaux :
 
-**Phase 3 (Jour 6-7)**
-- Échangez les rewards
-- Rewards: UR Token, SSR+ Cards
+#### 1. Déblocage de stations
+Les joueurs utilisent des Fonds d'Investissement pour débloquer des stations de métro. Chaque station offre des buffs et permet de progresser plus loin sur la carte. Débloquer des stations est le seul moyen d'avancer dans les lignes de métro.
 
-### Stratégie
-1. **Complétez les lignes de métro** pour bonus tickets
-2. **Différentes lignes** ont différentes rewards
-3. **Échangez** vos tickets pour les meilleures rewards
-    `
+#### 2. Investissement supplémentaire
+Les joueurs peuvent dépenser des ressources supplémentaires pour augmenter leurs Points de Fréquentation. Cela améliore le classement mais ne débloque pas de nouvelles stations.
+
+Pour les joueurs F2P, les Fonds d'Investissement peuvent être obtenus via :
+- Calendrier Adventure Abroad
+- Opération Personnelle
+- Journey Adventure Abroad
+- Stadium Rallies (lancement et participation, jusqu'à 20 par jour)
+- Concert Performances
+- Quêtes Journalières
+- Agent Gigs
+
+Avec une participation complète, les joueurs peuvent gagner suffisamment de Fonds d'Investissement pour progresser loin dans le système Metro sans dépenser.
+
+Cependant, utiliser les Fonds d'Investissement de manière incorrecte réduira considérablement la progression. Les dépenser en investissement supplémentaire plutôt qu'en déblocage de stations peut stopper la progression bien plus tôt.
+
+Un autre système clé est l'efficacité des ressources. Plus on investit dans une station, plus le coût augmente tandis que la valeur par ressource diminue. Cela crée des rendements décroissants, rendant l'investissement massif inefficace.
+
+Pour maximiser la valeur, les joueurs doivent synchroniser leur utilisation de ressources avec les grands événements comme :
+- Ultimate Group
+- Ultimate CEO
+- Group Battle
+
+Cela permet de gagner à la fois des Points de Fréquentation et des récompenses d'événement simultanément.
+
+L'événement nécessite également une consommation importante d'AP. Compléter les activités principales (concerts et rallies) nécessite environ 35 000 AP au total, soit environ 1 700 AP par jour. La régénération naturelle d'AP n'est généralement pas suffisante, donc des AP supplémentaires peuvent nécessiter des Diamonds.
+
+Sources supplémentaires de Fonds d'Investissement :
+- SR Photo Exchange (conversion quotidienne)
+- Récompenses Territory (Landmarks et Toll Stations)
+- Stadium Rallies et Concerts de haut niveau
+- Stock Store (achat hebdomadaire avec des Yens)
+
+L'Abroad Shop permet d'échanger des Commemorative Coins contre des objets précieux. Il reste disponible peu de temps après la fin de l'événement.
+`,
+    content_en: `
+## Metro & Subway Guide — Adventure Abroad
+
+### Short Explanation
+The Metro system in Adventure Abroad is a limited-time event that provides temporary stat boosts and progression rewards. Players use Investment Funds to unlock stations and increase Ridership Points.
+
+The main goal is to progress as far as possible while using resources efficiently. All Metro bonuses reset after the event ends.
+
+### Long Explanation
+The Metro event lasts for 3 weeks and offers significant stat boosts such as Sing, Dance, Manage, Fan Capacity, and Rally Fan Capacity. These bonuses help during the event but do not carry over afterward.
+
+Progression is based on two main systems:
+
+#### 1. Unlocking Stations
+Players use Investment Funds to unlock Metro stations. Each station provides buffs and allows further progression on the map. Unlocking stations is the only way to advance deeper into the Metro lines.
+
+#### 2. Additional Investment
+Players can spend extra resources to increase Ridership Points. This improves ranking but does not unlock new stations or extend progression.
+
+For F2P players, Investment Funds can be obtained through:
+- Adventure Abroad Calendar
+- Personal Operation
+- Adventure Abroad Journey
+- Stadium Rallies (launching and joining, up to 20 per day)
+- Concert Performances
+- Daily Quests
+- Agent Gigs
+
+With full participation, players can earn enough Investment Funds to progress far into the Metro system without spending.
+
+However, using Investment Funds incorrectly will significantly reduce progression. Spending them on additional investment instead of unlocking stations can stop progress much earlier.
+
+Another key system is resource efficiency. As more resources are invested into a station, the cost increases while the value per resource decreases. This creates diminishing returns, making heavy investment inefficient.
+
+To maximize value, players should synchronize their resource usage with major events such as:
+- Ultimate Group
+- Ultimate CEO
+- Group Battle
+
+This allows players to gain both Ridership Points and event rewards at the same time.
+
+The event also requires high AP consumption. Completing the main activities (concerts and rallies) requires around 35,000 AP total, or about 1,700 AP per day. Natural AP regeneration is usually not enough, so additional AP may require Diamonds.
+
+Additional sources of Investment Funds include:
+- SR Photo Exchange (daily conversion)
+- Territory rewards (Landmarks and Toll Stations)
+- High-level Stadium Rallies and Concerts
+- Stock Store (weekly purchase using Yen)
+
+The Abroad Shop allows players to exchange Commemorative Coins for valuable items. It remains available for a short time after the event ends.
+`,
   },
   // New guides from images
   {
