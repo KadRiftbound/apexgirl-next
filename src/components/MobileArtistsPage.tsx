@@ -48,7 +48,9 @@ export default function MobileArtistsPage() {
   const [scrolled, setScrolled] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const searchBarRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const [searchBarHeight, setSearchBarHeight] = useState(50);
+  const [headerHeight, setHeaderHeight] = useState(150);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -64,6 +66,16 @@ export default function MobileArtistsPage() {
         setSearchBarHeight(entry.contentRect.height + 10);
       });
       ro.observe(searchBarRef.current);
+      return () => ro.disconnect();
+    }
+  }, [mounted]);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      const ro = new ResizeObserver(([entry]) => {
+        setHeaderHeight(entry.contentRect.height);
+      });
+      ro.observe(headerRef.current);
       return () => ro.disconnect();
     }
   }, [mounted]);
@@ -258,14 +270,14 @@ export default function MobileArtistsPage() {
 
       <div className="mobile-page-container">
         {/* Page header */}
-        <div className="mobile-page-header">
+        <div className="mobile-page-header" ref={headerRef}>
           <h1 className="mobile-page-title">{t.pageTitle || "🎤 Artists"}</h1>
           <p className="mobile-page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
           <div className="mobile-ad-slot" />
         </div>
 
         {/* Layer 2: Fixed 3-column Panel */}
-        <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : 56 }}>
+        <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : headerHeight }}>
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
@@ -481,7 +493,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Always visible below panel */}
-        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: scrolled ? 'calc(40vh)' : 'calc(56px + 40vh)' }}>
+        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: scrolled ? 'calc(40vh)' : `calc(${headerHeight}px + 40vh)` }}>
           <input
             type="text"
             placeholder={t.search}
@@ -503,7 +515,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 4: Artists Grid - Scrollable */}
-        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(56px + 40vh + ${searchBarHeight}px)` }}>
+        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(${headerHeight}px + 40vh + ${searchBarHeight}px)` }}>
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
