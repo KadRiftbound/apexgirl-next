@@ -961,9 +961,11 @@ export default function ArtistsPage() {
           margin-bottom: 0;
           padding: 8px;
           background: #0f0f1a;
-          z-index: 99;
-          position: sticky;
-          top: max(40vh, 300px);
+          z-index: 100;
+          position: fixed;
+          top: 40vh;
+          left: 0;
+          right: 0;
         }
         .search-bar input {
           flex: 1;

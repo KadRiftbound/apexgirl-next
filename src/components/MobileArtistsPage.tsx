@@ -930,9 +930,7 @@ export default function MobileArtistsPage() {
           padding-left: 6px;
           min-height: 100vh;
           transition: padding-top 0.2s ease;
-          pointer-events: none;
-          background: transparent;
-          opacity: 0;
+          background: #0f0f1a;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
