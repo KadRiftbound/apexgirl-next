@@ -162,13 +162,17 @@ export default function ArtistsPage() {
       const scrollTop = grid.scrollTop;
       const scrollHeight = grid.scrollHeight;
       const clientHeight = grid.clientHeight;
-      const isAtTop = scrollTop <= 0;
-      const isAtBottom = scrollTop >= scrollHeight - clientHeight - 10;
+      const topThreshold = 20; // Less sensitive at top
+      const bottomThreshold = 10;
+      const isAtTop = scrollTop <= topThreshold;
+      const isAtBottom = scrollTop >= scrollHeight - clientHeight - bottomThreshold;
       
       // Scroll grid first if not at limits
       if ((e.deltaY > 0 && !isAtBottom) || (e.deltaY < 0 && !isAtTop)) {
         e.preventDefault();
-        grid.scrollTop += e.deltaY;
+        // Less sensitive when scrolling up from near top
+        const scrollAmount = e.deltaY < 0 && scrollTop < 50 ? e.deltaY * 0.5 : e.deltaY;
+        grid.scrollTop += scrollAmount;
       }
     };
 
@@ -511,7 +515,7 @@ export default function ArtistsPage() {
 
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid (scrollable) */}
-        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px)' } : { paddingTop: '10px' }}>
+        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px)', height: 'calc(100vh - 40vh - 50px)', overflow: 'hidden' } : { paddingTop: '10px' }}>
           <div className="search-bar" style={panelFixed ? { position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 1000 } : {}}>
             <input
               type="text"

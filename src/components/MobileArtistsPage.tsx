@@ -105,18 +105,25 @@ export default function MobileArtistsPage() {
   useEffect(() => {
     let lastScrollY = 0;
     let ticking = false;
+    let wasScrolled = false;
     
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          const threshold = 80;
+          const threshold = Math.max(20, headerHeight - 56);
           
           const isScrolled = currentScrollY > threshold;
-          setScrolled(isScrolled);
           
+          // Only change state if crossing the threshold
+          if (isScrolled !== wasScrolled) {
+            wasScrolled = isScrolled;
+            setScrolled(isScrolled);
+          }
+          
+          // Panel: fixed at top when scrolled, otherwise at initial position
           if (panelRef.current) {
-            panelRef.current.style.top = isScrolled ? '0' : '56px';
+            panelRef.current.style.top = isScrolled ? '0' : `${headerHeight}px`;
           }
           
           lastScrollY = currentScrollY;
