@@ -9,9 +9,8 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <html lang="en">
-      <body style={{ margin: 0, background: "#0a0a12", fontFamily: "system-ui, sans-serif", color: "#fff" }}>
-        <div style={{
+    <div style={{ margin: 0, background: "#0a0a12", fontFamily: "system-ui, sans-serif", color: "#fff" }}>
+      <div style={{
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
@@ -70,7 +69,6 @@ export default function NotFound() {
             TopGirl Guide — apexgirlguide.com
           </p>
         </div>
-      </body>
-    </html>
+    </div>
   );
 }

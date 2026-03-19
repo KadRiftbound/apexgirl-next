@@ -307,7 +307,7 @@ export default function ArtistsPage() {
                     style={{ cursor: "pointer" }}
                   >
                     {selectedArtist.image ? (
-                      <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={160} height={200} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                      <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} fill sizes="160px" style={{ objectFit: "cover" }} />
                     ) : (
                       <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
                     )}
@@ -389,7 +389,7 @@ export default function ArtistsPage() {
                   <div key={i} onClick={() => team1[i] && removeFromTeam1(team1[i].id)} className="team-slot" title={team1[i] ? t.clickToRemove : ""}>
                     {team1[i] ? (
                       team1[i].image
-                        ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} width={48} height={48} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                        ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} fill sizes="69px" style={{ objectFit: "cover" }} />
                         : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800, fontSize: "1rem" }}>{team1[i].name.charAt(0)}</span>
                     ) : <span className="slot-plus">+</span>}
                   </div>
@@ -446,7 +446,7 @@ export default function ArtistsPage() {
                   <div key={i} onClick={() => team2[i] && removeFromTeam2(team2[i].id)} className="team-slot" title={team2[i] ? t.clickToRemove : ""}>
                     {team2[i] ? (
                       team2[i].image
-                        ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} width={48} height={48} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
+                        ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} fill sizes="69px" style={{ objectFit: "cover" }} />
                         : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800, fontSize: "1rem" }}>{team2[i].name.charAt(0)}</span>
                     ) : <span className="slot-plus">+</span>}
                   </div>
@@ -566,8 +566,8 @@ export default function ArtistsPage() {
                   style={{ cursor: "pointer" }}
                 >
                   {artist.image ? (
-                     <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} width={60} height={60} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-                  ) : (
+                     <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="(max-width: 900px) calc(100vw / 6), calc(100vw / 9)" style={{ objectFit: "cover" }} />
+                   ) : (
                   <div className="artist-placeholder">
                     <span style={{ color: rankColors[artist.rank], fontWeight: 800 }}>{artist.name.charAt(0)}</span>
                   </div>

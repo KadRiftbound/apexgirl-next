@@ -78,7 +78,7 @@ export async function generateMetadata(
       description,
       url: canonicalUrl,
       siteName: 'TopGirl Guide',
-      images: [{ url: ogImage, width: 400, height: 500, alt: artist.name }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: artist.name }],
     },
     twitter: {
       card: 'summary_large_image',

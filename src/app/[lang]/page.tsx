@@ -466,13 +466,13 @@ export default function HomePage() {
             {featuredArtists.map((artist: any) => (
               <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}/`} className="artist-card">
                 <div className="artist-card-img">
-                  <Image
-                    src={`/assets/images/artists/${artist.image}`}
-                    alt={artist.name}
-                    width={100}
-                    height={125}
-                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
-                  />
+                   <Image
+                     src={`/assets/images/artists/${artist.image}`}
+                     alt={artist.name}
+                     fill
+                     sizes="100px"
+                     style={{ objectFit: "cover" }}
+                   />
                 </div>
                 <span className="artist-card-name">{artist.name}</span>
               </Link>
@@ -763,6 +763,7 @@ export default function HomePage() {
           height: 128px;
           border-radius: 12px;
           overflow: hidden;
+          position: relative;
           border: 2px solid rgba(192,132,252,0.25);
           background: rgba(255,255,255,0.04);
           transition: border-color 0.2s;

@@ -43,15 +43,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     alternates: {
       canonical: `${BASE_URL}/${lang}/`,
       languages: {
-        fr: `${BASE_URL}/fr`,
-        en: `${BASE_URL}/en`,
-        it: `${BASE_URL}/it`,
-        es: `${BASE_URL}/es`,
-        pt: `${BASE_URL}/pt`,
-        pl: `${BASE_URL}/pl`,
-        id: `${BASE_URL}/id`,
-        ru: `${BASE_URL}/ru`,
-        "x-default": `${BASE_URL}/en`,
+        fr: `${BASE_URL}/fr/`,
+        en: `${BASE_URL}/en/`,
+        it: `${BASE_URL}/it/`,
+        es: `${BASE_URL}/es/`,
+        pt: `${BASE_URL}/pt/`,
+        pl: `${BASE_URL}/pl/`,
+        id: `${BASE_URL}/id/`,
+        ru: `${BASE_URL}/ru/`,
+        "x-default": `${BASE_URL}/en/`,
       },
     },
     openGraph: {
@@ -140,12 +140,12 @@ export default async function LocaleLayout({
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "TopGirl",
-            "url": `https://apexgirlguide.com/${lang}`,
+            "url": `https://apexgirlguide.com/${lang}/`,
             "description": metadataByLang[lang]?.description || metadataByLang.fr.description,
             "inLanguage": localeNames[lang] || "fr-FR",
             "potentialAction": {
               "@type": "ReadAction",
-              "target": `https://apexgirlguide.com/${lang}/guides`
+              "target": `https://apexgirlguide.com/${lang}/guides/`
             }
           })
         }}

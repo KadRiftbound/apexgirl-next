@@ -11,9 +11,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  authors: [{ name: "A3Games" }],
-  creator: "A3Games",
-  publisher: "A3Games",
+  authors: [{ name: "TopGirl Guide" }],
+  creator: "TopGirl Guide",
+  publisher: "TopGirl Guide",
 };
 
 export default async function RootLayout({
