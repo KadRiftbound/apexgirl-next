@@ -546,13 +546,15 @@ const guides: Guide[] = [
   {
     id: "event-cleanup-party",
     title: "Guide Cleanup Party",
-    description: "Guide du Cleanup Party. Collectez des poubelles et échangez pour des rewards.",
+    description: "Guide de l'événement Cleanup Party. Associez des tuiles, complétez des stages et récupérez des récompenses.",
     icon: "🧹",
     color: "#22c55e",
     category: "Guide événement",
     guideType: "event",
     readTime: "5 min",
-    inProgress: true,
+    isNew: true,
+    isDone: true,
+    thumbnail: "/assets/images/guides/cleanup-party.jpg",
   },
   {
     id: "event-metro-subway",

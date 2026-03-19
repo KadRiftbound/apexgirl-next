@@ -2531,60 +2531,38 @@ Le **Chamber Territory** est un événement de territoire. Capturez et défendez
     color: "#22c55e",
     category: "Événements",
     category_en: "Events",
+    category_it: "Eventi",
+    category_es: "Eventos",
+    category_pt: "Eventos",
+    category_pl: "Wydarzenia",
+    category_id: "Acara",
+    category_ru: "События",
     readTime: "5 min",
-content: `
-## Cleanup Party Event Guide - TopGirl
+    content: `
+## Guide Cleanup Party — TopGirl
 
-### Overview
-In **Cleanup Party**, the goal is to clear the entire board by matching tiles. Players select tiles from the board and place them into 7 available slots. When three identical tiles are placed, they are automatically cleared, freeing space for new tiles. Be careful not to fill all 7 slots with unmatched tiles, or the attempt will fail.
+### Explication courte
+Dans **Cleanup Party**, l'objectif est de vider entièrement le plateau en associant des tuiles. Les joueurs sélectionnent des tuiles sur le plateau et les placent dans 7 emplacements disponibles. Lorsque trois tuiles identiques sont placées, elles sont automatiquement éliminées, libérant de la place pour de nouvelles tuiles. Attention à ne pas remplir les 7 emplacements avec des tuiles non correspondantes, sinon la tentative échoue.
 
-### How to Play
-- Each stage attempt consumes Stamina
-- Clearing stages increases the Girl's Affection
-- Reaching the maximum affection grants an additional Gift
-- If you need items, you can request help from other players through the City, Group, or Chamber channels
+### Explication longue
+Chaque tentative de stage consomme de la Stamina. Compléter des stages augmente l'Affection de la Girl, et atteindre l'affection maximale rapporte un Gift supplémentaire.
 
-### Quests
-- **Daily Quests**: Complete daily tasks for additional rewards
-- **Target Quests**: Special event objectives with bonus rewards
+Si vous avez besoin d'objets, vous pouvez demander de l'aide à d'autres joueurs via les canaux City, Group ou Chamber.
 
-### Ranking
-- Each cleared stage grants points for the event ranking
-- Higher rankings receive better rewards
-
-### Tips
-1. **Before selecting a tile**, check the board for at least three identical tiles to clear them quickly
-2. **Prioritize tiles** that already have two or more visible matches
-3. **Try to keep 2-3 slots free** whenever possible
-4. **Daily and Target Quests** help you progress faster and earn extra rewards
-5. **Request assistance daily**, even if you don't need it yet, so you can save it for harder levels later
+Compléter les Quêtes Journalières et les Quêtes Objectif rapporte des récompenses supplémentaires. Chaque stage complété octroie également des points pour le classement de l'événement.
 `,
   content_en: `
-## Cleanup Party Event Guide - TopGirl
+## Cleanup Party Event Guide — TopGirl
 
-### Overview
+### Short Explanation
 In **Cleanup Party**, the goal is to clear the entire board by matching tiles. Players select tiles from the board and place them into 7 available slots. When three identical tiles are placed, they are automatically cleared, freeing space for new tiles. Be careful not to fill all 7 slots with unmatched tiles, or the attempt will fail.
 
-### How to Play
-- Each stage attempt consumes Stamina
-- Clearing stages increases the Girl's Affection
-- Reaching the maximum affection grants an additional Gift
-- If you need items, you can request help from other players through the City, Group, or Chamber channels
+### Long Explanation
+Each stage attempt consumes Stamina. Clearing stages increases the Girl's Affection, and reaching the maximum affection grants an additional Gift.
 
-### Quests
-- **Daily Quests**: Complete daily tasks for additional rewards
-- **Target Quests**: Special event objectives with bonus rewards
+If you need items, you can request help from other players through the City, Group, or Chamber channels.
 
-### Ranking
-- Each cleared stage grants points for the event ranking
-- Higher rankings receive better rewards
-
-### Tips
-1. **Before selecting a tile**, check the board for at least three identical tiles to clear them quickly
-2. **Prioritize tiles** that already have two or more visible matches
-3. **Try to keep 2-3 slots free** whenever possible
-4. **Daily and Target Quests** help you progress faster and earn extra rewards
-5. **Request assistance daily**, even if you don't need it yet, so you can save it for harder levels later
+Completing Daily Quests and Target Quests provides additional rewards. Each cleared stage also grants points for the event ranking.
 `,
   content_it: `
 ## Guida all'evento Pulizia della Festa - TopGirl
@@ -2749,20 +2727,31 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
 5. **Запрашивайте помощь ежедневно**, даже если вам она еще не нужна, чтобы вы могли сохранить её для более сложных уровней позже
 `,
     tips: `
-- Always check for 3+ matching tiles before selecting
-- Keep 2-3 slots free for better flexibility
-- Prioritize tiles with visible matches
-- Complete daily quests for bonus rewards
-- Request help early, save for harder levels
-    `,
+- Avant de sélectionner une tuile, vérifiez qu'il existe au moins trois tuiles identiques sur le plateau.
+- Priorisez les tuiles qui ont déjà deux correspondances ou plus visibles.
+- Essayez de garder 2 à 3 emplacements libres autant que possible.
+- Les Quêtes Journalières et Quêtes Objectif permettent de progresser plus vite.
+- Demandez de l'aide quotidiennement pour la conserver pour les niveaux plus difficiles.
+`,
+    tips_en: `
+- Before selecting a tile, check the board for at least three identical tiles to clear them quickly.
+- Prioritize tiles that already have two or more visible matches.
+- Try to keep 2–3 slots free whenever possible.
+- Daily and Target Quests help you progress faster and earn extra rewards.
+- Request assistance daily, even if you don't need it yet, to save it for harder levels later.
+`,
     rewards: `
-- SSR Artist Cards (rare drop)
-- Gold Coins (100,000 - 500,000)
-- Energy Drinks
-- Skill Enhancement Materials
-- Exclusive Event Avatar Frame
-- Top 100: Additional SSR+ selection box
-    `
+- Affection de la Girl : atteindre le maximum débloque un Gift supplémentaire.
+- Points de classement de l'événement.
+- Récompenses des Quêtes Journalières.
+- Récompenses des Quêtes Objectif.
+`,
+    rewards_en: `
+- Girl's Affection: reaching the maximum grants an additional Gift.
+- Event ranking points: each cleared stage contributes.
+- Daily Quest rewards.
+- Target Quest rewards.
+`,
   },
   {
     id: "event-metro-subway",
