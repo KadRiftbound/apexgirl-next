@@ -930,7 +930,11 @@ export default function MobileArtistsPage() {
           padding-left: 6px;
           min-height: 100vh;
           transition: padding-top 0.2s ease;
-          background: #0f0f1a;
+          background: transparent;
+          visibility: hidden;
+        }
+        .mobile-artists-bottom > * {
+          visibility: visible;
         }
         .mobile-artists-count {
           font-size: 0.8rem;
@@ -953,7 +957,7 @@ export default function MobileArtistsPage() {
           cursor: pointer;
           overflow: hidden;
           position: relative;
-          opacity: 1;
+          visibility: visible;
         }
         .mobile-artists-grid button.selected {
           border-color: #8b5cf6;
@@ -962,7 +966,7 @@ export default function MobileArtistsPage() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          opacity: 1;
+          visibility: visible;
         }
         .mobile-artist-placeholder {
           width: 100%;
