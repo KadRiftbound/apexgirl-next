@@ -107,7 +107,6 @@ export default function ArtistsPage() {
   const [panelFixed, setPanelFixed] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const panelSentinelRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -151,34 +150,6 @@ export default function ArtistsPage() {
       if (header) header.classList.remove('header-hidden');
     };
   }, [mounted]);
-
-  // Scroll cascade: panel wheel should scroll grid first
-  useEffect(() => {
-    const grid = gridRef.current;
-    const panel = panelRef.current;
-    if (!grid || !panel) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      const scrollTop = grid.scrollTop;
-      const scrollHeight = grid.scrollHeight;
-      const clientHeight = grid.clientHeight;
-      const topThreshold = 20; // Less sensitive at top
-      const bottomThreshold = 10;
-      const isAtTop = scrollTop <= topThreshold;
-      const isAtBottom = scrollTop >= scrollHeight - clientHeight - bottomThreshold;
-      
-      // Scroll grid first if not at limits
-      if ((e.deltaY > 0 && !isAtBottom) || (e.deltaY < 0 && !isAtTop)) {
-        e.preventDefault();
-        // Less sensitive when scrolling up from near top
-        const scrollAmount = e.deltaY < 0 && scrollTop < 50 ? e.deltaY * 0.5 : e.deltaY;
-        grid.scrollTop += scrollAmount;
-      }
-    };
-
-    panel.addEventListener('wheel', handleWheel, { passive: false });
-    return () => panel.removeEventListener('wheel', handleWheel);
-  }, []);
 
   // Save teams to localStorage when they change
   useEffect(() => {
@@ -514,9 +485,9 @@ export default function ArtistsPage() {
         </div>
 
         {/* Add to Selected Team */}
-        {/* BOTTOM - Artists Grid (scrollable) */}
-        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px)', height: 'calc(100vh - 40vh - 50px)', overflow: 'hidden' } : { paddingTop: '10px' }}>
-          <div className="search-bar" style={panelFixed ? { position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 1000 } : {}}>
+        {/* BOTTOM - Artists Grid */}
+        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 16px)' } : undefined}>
+          <div className="search-bar">
             <input
               type="text"
               placeholder={t.search}
@@ -542,8 +513,7 @@ export default function ArtistsPage() {
           </div>
           <div className="artists-count">{filteredArtists.length} {t.foundArtists}</div>
 
-          <div ref={gridRef} className="artists-grid-container" style={{ maxHeight: 'calc(100vh - 40vh - 60px)', overflowY: 'auto' }}>
-            <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
+          <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
             {sortedArtists.map((artist: Artist) => (
                 <button
                   key={artist.id}
@@ -627,7 +597,6 @@ export default function ArtistsPage() {
                 <div>👆 {t.tooltipDouble || "Double clic : sélectionner équipe"}</div>
               </div>
             )}
-          </div>
           </div>
         </div>
       </div>
