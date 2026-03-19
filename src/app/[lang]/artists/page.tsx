@@ -534,7 +534,7 @@ export default function ArtistsPage() {
 
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid (scrollable) */}
-        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 16px)' } : undefined}>
+        <div className="artists-bottom" style={{ paddingTop: 'calc(40vh + 16px)', height: 'calc(100vh - 40vh - 16px)' }}>
           <div className="search-bar">
             <input
               type="text"
@@ -564,7 +564,7 @@ export default function ArtistsPage() {
           <div 
             ref={gridRef}
             className="artists-grid-container"
-            style={panelFixed ? { maxHeight: 'calc(100vh - 40vh - 16px)' } : undefined}
+            style={{ maxHeight: 'calc(100vh - 40vh - 16px)' }}
           >
             <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
             {sortedArtists.map((artist: Artist) => (
