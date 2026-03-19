@@ -790,7 +790,7 @@ export default function GuidesPage() {
               key={guide.id}
               href={`/${lang}/guides/${guide.id}`}
               style={{
-                background: "rgba(20,20,40,0.80)",
+                background: "rgba(20,20,40,0.92)",
                 borderRadius: "20px",
                 border: `1.5px solid ${guide.color}66`,
                 padding: "18px",
@@ -830,22 +830,13 @@ export default function GuidesPage() {
               <div style={{
                 display: "flex",
                 alignItems: "flex-start",
+                justifyContent: "space-between",
                 gap: "12px",
-                marginBottom: "12px",
+                marginBottom: "10px",
               }}>
-                <div style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "52px",
-                  height: "52px",
-                  borderRadius: "14px",
-                  background: `${guide.color}22`,
-                  fontSize: "1.5rem",
-                  flexShrink: 0,
-                }}>
-                  {guide.icon}
-                </div>
+                <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, margin: 0, flex: 1 }}>
+                  {getGuideTitle(guide.id, lang, guide.title)}
+                </h3>
                 {guide.thumbnail && (
                   <div style={{
                     height: "52px",
@@ -865,10 +856,6 @@ export default function GuidesPage() {
                   </div>
                 )}
               </div>
-
-              <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, marginBottom: "8px" }}>
-                {getGuideTitle(guide.id, lang, guide.title)}
-              </h3>
 
               <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", lineHeight: 1.6, marginBottom: "12px" }}>
                 {getGuideDescription(guide.id, lang, guide.description)}
