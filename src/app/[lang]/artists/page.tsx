@@ -482,8 +482,11 @@ export default function ArtistsPage() {
               </div>
             </div>
           </div>
-          
-          {/* Search Bar - Integrated with panel */}
+        </div>
+
+        {/* Add to Selected Team */}
+        {/* BOTTOM - Artists Grid */}
+        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 16px)' } : undefined}>
           <div className="search-bar">
             <input
               type="text"
@@ -501,17 +504,13 @@ export default function ArtistsPage() {
             </select>
             <select value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
               <option value="">{t.allSpecialties}</option>
-              {SPECIALTIES.map(spec => (<option key={spec} value={spec}>{SPECIALTIES.indexOf(spec)}</option>))}
+              {SPECIALTIES.map(spec => (<option key={spec} value={spec}>{spec}</option>))}
             </select>
             <select value={filterMaxSeason} onChange={(e) => setFilterMaxSeason(e.target.value)}>
               <option value="">{t.allSeasons || "Toutes saisons"}</option>
               {SEASON_LABELS.map(s => (<option key={s} value={s}>{t.maxSeason ? `${t.maxSeason} : ${s}` : `Max : ${s}`}</option>))}
             </select>
           </div>
-        </div>
-
-        {/* Artists Grid */}
-        <div className="artists-bottom">
           <div className="artists-count">{filteredArtists.length} {t.foundArtists}</div>
 
           <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
@@ -624,27 +623,19 @@ export default function ArtistsPage() {
         }
         .top-panel {
           display: flex;
-          flex-direction: column;
           width: 100%;
-          height: auto;
+          height: 40vh;
           min-height: 300px;
+          gap: 8px;
+          padding: 8px;
           background: #0f0f1a;
           position: relative;
           z-index: 1001;
           transition: box-shadow 0.3s ease;
         }
-        .top-panel > .panel-col {
-          height: 35vh;
-          min-height: 250px;
-          flex-shrink: 0;
-        }
         .panel-col {
           height: 100%;
           overflow: hidden;
-          display: flex;
-          flex-direction: row;
-          gap: 8px;
-          padding: 8px;
         }
         .panel-col-1 { width: 30%; }
         .panel-col-2 { width: 35%; }
@@ -967,28 +958,12 @@ export default function ArtistsPage() {
         .search-bar {
           display: flex;
           gap: 8px;
+          margin-bottom: 0;
           padding: 8px;
           background: #0f0f1a;
-          flex-shrink: 0;
-        }
-        .search-bar input {
-          flex: 1;
-          padding: 10px 12px;
-          background: #1a1a2e;
-          border: 1px solid #333;
-          border-radius: 8px;
-          color: #fff;
-          font-size: 0.9rem;
-        }
-        .search-bar select {
-          padding: 10px;
-          background: #1a1a2e;
-          border: 1px solid #333;
-          border-radius: 8px;
-          color: #fff;
-          font-size: 0.8rem;
-          cursor: pointer;
-          flex-shrink: 0;
+          z-index: 99;
+          position: sticky;
+          top: max(40vh, 300px);
         }
         .search-bar input {
           flex: 1;
