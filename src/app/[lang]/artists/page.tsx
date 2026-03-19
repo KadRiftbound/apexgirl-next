@@ -486,7 +486,7 @@ export default function ArtistsPage() {
 
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid */}
-        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px + 400px)' } : undefined}>
+        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px + 240px)' } : undefined}>
           <div className="search-bar" style={panelFixed ? { position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 1002 } : {}}>
             <input
               type="text"
