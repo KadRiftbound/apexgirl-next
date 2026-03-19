@@ -152,51 +152,28 @@ export default function ArtistsPage() {
     };
   }, [mounted]);
 
-  // Scroll cascade: grid takes priority over page scroll
+  // Scroll cascade: panel wheel should scroll grid first
   useEffect(() => {
-    const gridElement = gridRef.current;
-    const panelElement = panelRef.current;
-    if (!gridElement || window.innerWidth <= 900) return;
+    const grid = gridRef.current;
+    const panel = panelRef.current;
+    if (!grid || !panel) return;
 
     const handleWheel = (e: WheelEvent) => {
-      const grid = gridElement;
       const scrollTop = grid.scrollTop;
       const scrollHeight = grid.scrollHeight;
       const clientHeight = grid.clientHeight;
+      const isAtTop = scrollTop <= 0;
+      const isAtBottom = scrollTop >= scrollHeight - clientHeight - 10;
       
-      const isGridAtTop = scrollTop === 0;
-      const isGridAtBottom = scrollTop >= scrollHeight - clientHeight - 5;
-      const deltaY = e.deltaY;
-
-      // Grid priority: scroll grid first if it's not at its limits
-      // Only allow page scroll when grid reaches its limits
-      const shouldScrollGrid = (deltaY > 0 && !isGridAtBottom) || (deltaY < 0 && !isGridAtTop);
-      
-      if (shouldScrollGrid) {
+      // Scroll grid first if not at limits
+      if ((e.deltaY > 0 && !isAtBottom) || (e.deltaY < 0 && !isAtTop)) {
         e.preventDefault();
-        grid.scrollTop += deltaY;
+        grid.scrollTop += e.deltaY;
       }
-      // When grid is at limits, allow natural page scroll (no preventDefault)
     };
 
-    // Listen on grid directly
-    gridElement.addEventListener('wheel', handleWheel, { passive: false });
-    
-    // Listen on panel with capture phase to intercept before bubbling to document
-    if (panelElement) {
-      panelElement.addEventListener('wheel', handleWheel, { passive: false, capture: true });
-    }
-    
-    // Also listen on document to catch events from anywhere in the panel area
-    document.addEventListener('wheel', handleWheel, { passive: false, capture: true });
-
-    return () => {
-      gridElement.removeEventListener('wheel', handleWheel);
-      if (panelElement) {
-        panelElement.removeEventListener('wheel', handleWheel, true);
-      }
-      document.removeEventListener('wheel', handleWheel, true);
-    };
+    panel.addEventListener('wheel', handleWheel, { passive: false });
+    return () => panel.removeEventListener('wheel', handleWheel);
   }, []);
 
   // Save teams to localStorage when they change
@@ -534,7 +511,7 @@ export default function ArtistsPage() {
 
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid (scrollable) */}
-        <div className="artists-bottom" style={{ paddingTop: 'calc(40vh + 16px)', height: 'calc(100vh - 40vh - 16px)' }}>
+        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 16px)' } : undefined}>
           <div className="search-bar">
             <input
               type="text"
@@ -561,11 +538,7 @@ export default function ArtistsPage() {
           </div>
           <div className="artists-count">{filteredArtists.length} {t.foundArtists}</div>
 
-          <div 
-            ref={gridRef}
-            className="artists-grid-container"
-            style={{ maxHeight: 'calc(100vh - 40vh - 16px)' }}
-          >
+          <div ref={gridRef} className="artists-grid-container" style={{ maxHeight: 'calc(100vh - 40vh - 60px)', overflowY: 'auto' }}>
             <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
             {sortedArtists.map((artist: Artist) => (
                 <button
@@ -650,7 +623,7 @@ export default function ArtistsPage() {
                 <div>👆 {t.tooltipDouble || "Double clic : sélectionner équipe"}</div>
               </div>
             )}
-            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -1043,16 +1016,10 @@ export default function ArtistsPage() {
           margin-bottom: 8px;
         }
         
-        .artists-grid-container {
-          overflow-y: auto;
-          overflow-x: hidden;
-        }
-        
         .artists-grid {
           display: grid;
           grid-template-columns: repeat(9, 1fr);
           gap: 4px;
-          padding: 0 4px;
         }
         .artists-grid button {
           aspect-ratio: 3/4;

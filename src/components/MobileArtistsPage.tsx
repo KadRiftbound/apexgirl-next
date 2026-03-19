@@ -48,10 +48,7 @@ export default function MobileArtistsPage() {
   const [scrolled, setScrolled] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const searchBarRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [searchBarHeight, setSearchBarHeight] = useState(40);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const [searchBarHeight, setSearchBarHeight] = useState(50);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -67,16 +64,6 @@ export default function MobileArtistsPage() {
         setSearchBarHeight(entry.contentRect.height + 10);
       });
       ro.observe(searchBarRef.current);
-      return () => ro.disconnect();
-    }
-  }, [mounted]);
-
-  useEffect(() => {
-    if (headerRef.current) {
-      const ro = new ResizeObserver(([entry]) => {
-        setHeaderHeight(entry.contentRect.height);
-      });
-      ro.observe(headerRef.current);
       return () => ro.disconnect();
     }
   }, [mounted]);
@@ -129,37 +116,6 @@ export default function MobileArtistsPage() {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Scroll cascade: panel scroll should prioritize grid scroll
-  useEffect(() => {
-    const panelElement = panelRef.current;
-    const gridElement = gridRef.current;
-    if (!panelElement || !gridElement) return;
-
-    const handlePanelWheel = (e: WheelEvent) => {
-      const grid = gridElement;
-      const scrollTop = grid.scrollTop;
-      const scrollHeight = grid.scrollHeight;
-      const clientHeight = grid.clientHeight;
-      
-      const isGridAtTop = scrollTop === 0;
-      const isGridAtBottom = scrollTop >= scrollHeight - clientHeight - 5;
-      const deltaY = e.deltaY;
-
-      // Grid priority: try to scroll grid first
-      const shouldScrollGrid = (deltaY > 0 && !isGridAtBottom) || (deltaY < 0 && !isGridAtTop);
-      
-      if (shouldScrollGrid) {
-        e.preventDefault();
-        grid.scrollTop += deltaY;
-      }
-    };
-
-    panelElement.addEventListener('wheel', handlePanelWheel, { passive: false, capture: true });
-    return () => {
-      panelElement.removeEventListener('wheel', handlePanelWheel, true);
-    };
   }, []);
 
   useEffect(() => {
@@ -301,16 +257,15 @@ export default function MobileArtistsPage() {
       </Head>
 
       <div className="mobile-page-container">
-        {/* Page header — scrollable, visible before scroll */}
-        <div className="mobile-page-header" ref={headerRef}>
+        {/* Page header */}
+        <div className="mobile-page-header">
           <h1 className="mobile-page-title">{t.pageTitle || "🎤 Artists"}</h1>
           <p className="mobile-page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
-          {/* Ad slot — space reserved for future ads */}
           <div className="mobile-ad-slot" />
         </div>
 
         {/* Layer 2: Fixed 3-column Panel */}
-        <div className="mobile-top-panel" ref={panelRef} style={{ position: scrolled ? 'fixed' : 'absolute', top: scrolled ? 0 : headerHeight }}>
+        <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : 56 }}>
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
@@ -526,7 +481,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Always visible below panel */}
-        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: scrolled ? 'calc(40vh)' : `calc(${headerHeight}px + 40vh)` }}>
+        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: scrolled ? 'calc(40vh)' : 'calc(56px + 40vh)' }}>
           <input
             type="text"
             placeholder={t.search}
@@ -548,7 +503,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 4: Artists Grid - Scrollable */}
-        <div className="mobile-artists-bottom" ref={gridRef} style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(${headerHeight}px + 40vh + ${searchBarHeight}px)`, overflowY: 'auto', maxHeight: 'calc(100vh - 40vh)' }}>
+        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(56px + 40vh + ${searchBarHeight}px)` }}>
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
@@ -593,34 +548,33 @@ export default function MobileArtistsPage() {
           min-height: 100vh;
           background: transparent;
         }
-
-        /* Page header — scrollable, above the fixed panel */
+        
         .mobile-page-header {
-          padding: 20px 12px 12px;
+          padding: 56px 12px 12px;
           text-align: center;
-          background: #0f0f1a;
-          border-bottom: 1px solid rgba(139,92,246,0.2);
         }
+        
         .mobile-page-title {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
           font-weight: 800;
           background: linear-gradient(135deg, #f472b6, #c084fc, #818cf8);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          margin-bottom: 8px;
+          margin-bottom: 4px;
         }
+        
         .mobile-page-subtitle {
-          font-size: 0.85rem;
-          color: rgba(255,255,255,0.6);
-          margin-bottom: 12px;
+          font-size: 0.75rem;
+          color: rgba(255,255,255,0.5);
+          margin-bottom: 10px;
         }
-        /* Reserved ad slot — 90px tall banner placeholder */
+        
         .mobile-ad-slot {
           width: 100%;
           min-height: 60px;
-          background: rgba(30,30,50,0.6);
-          border: 1px solid rgba(139,92,246,0.2);
+          background: rgba(255,255,255,0.03);
+          border: 1px dashed rgba(255,255,255,0.08);
           border-radius: 8px;
           margin: 0 auto;
           max-width: 360px;
