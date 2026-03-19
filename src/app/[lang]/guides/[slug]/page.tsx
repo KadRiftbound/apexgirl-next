@@ -422,7 +422,7 @@ Comprender este ciclo es importante para preparar bien tu grupo y planificar tus
 #### 1. Inicio del Juego: El Servidor Local
 La primera gran fase dura aproximadamente 4 semanas.
 
-Durante las primeras 3 semanas,开始在 una zona exterior. Esta fase sirve casi como tutorial, pero sigue siendo muy importante.
+Durante las primeras 3 semanas, comienzas en un nuevo servidor en la zona exterior. Esta fase sirve casi como tutorial, pero sigue siendo muy importante.
 Tu grupo debe reclutar, progresar y avanzar hacia el centro del mapa para intentar conquistar el Burj Khalifa y obtener el título de Alcalde.
 
 Al final de esta fase, este servidor se convierte en tu servidor local.
@@ -676,7 +676,7 @@ Dokładna liczba potrzebnych serwerów nie jest jeszcze całkiem jasna, ale szac
 #### 5. Główna Pętla Gry
 Gdy zebrze się wystarczająco dużo serwerów, gra wchodzi w bardziej stabilną pętlę.
 
-Ta pętla followuje ten model:
+Ta pętla podąża za tym modelem:
 - Bali Warmup
 - Bali
 - City Supremacy lub Top CEO
@@ -702,7 +702,7 @@ Możesz używać Abroad jako ogólnego terminu do oznaczenia:
 - Bali
 - Roma
 
-Te trzy główne fazy followują ten sam princip:
+Te trzy główne fazy podążają za tym samym zasadą:
 1. Tydzień Warmup
 2. Następnie 3 tygodnie głównego wydarzenia
 3. Na innej mapie
@@ -756,7 +756,7 @@ Di Tokyo, Anda menemukan logika serupa dengan awal permainan:
 - progresi di peta
 - konfrontasi antar server
 - penaklukan zona
-- objetivo akhir di sekitar Tokyo Tower
+- tujuan akhir di sekitar Tokyo Tower
 
 Server dibagi menjadi chambers di setiap sisi peta.
 Tujuannya adalah untuk berkembang dengan grup Anda dalam kerangka Server vs Server.
@@ -1408,7 +1408,7 @@ As joias são a categoria mais fácil de obter no início.
 
 **Joias Abroad:**
 - Mais difíceis de obter
-- Disponíveis como recompensa de primeira ocupação de событий correspondentes
+- Disponíveis como recompensa de primeira ocupação de Landmark correspondentes
 - Relacionadas principalmente com Tokyo, Bali e Roma
 
 **Auction House:**
@@ -1569,7 +1569,7 @@ Perhiasan adalah kategori termudah untuk diperoleh di awal.
 - Lebih sulit diperoleh
 - Tersedia sebagai hadiah untuk pendudukan Landmark pertama
 - Tersedia di beberapa peristiwa musim yang sesuai
-- Mainly menyangkut Tokyo, Bali dan Roma
+- Terutama menyangkut Tokyo, Bali dan Roma
 
 **Auction House:**
 - Tidak ada perhiasan Auction House
@@ -1800,7 +1800,7 @@ Assets дают много статов и также увеличивают в�
 - Promosi tidak dapat dibatalkan
 - Peralatan yang dipromosikan tidak lagi dapat digunakan sebagai bahan promosi untuk yang lain
 - Hindari menghabiskan Asset Coins untuk peralatan ungu
-- Ini hampir nunca merupakan investasi jangka panjang yang baik
+- Ini hampir tidak pernah merupakan investasi jangka panjang yang baik
 - Minat utama peralatan ungu adalah menukarnya selama acara Tipsy Date
     `,
     tips_ru: `
@@ -2740,18 +2740,6 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
 - Daily and Target Quests help you progress faster and earn extra rewards.
 - Request assistance daily, even if you don't need it yet, to save it for harder levels later.
 `,
-    rewards: `
-- Affection de la Girl : atteindre le maximum débloque un Gift supplémentaire.
-- Points de classement de l'événement.
-- Récompenses des Quêtes Journalières.
-- Récompenses des Quêtes Objectif.
-`,
-    rewards_en: `
-- Girl's Affection: reaching the maximum grants an additional Gift.
-- Event ranking points: each cleared stage contributes.
-- Daily Quest rewards.
-- Target Quest rewards.
-`,
   },
   {
     id: "event-metro-subway",
@@ -3282,7 +3270,7 @@ Esta regra torna a velocidade importante, não apenas o total.
 
 #### Dia 6: Final Battle Phase
 O dia 6 é a fase decisiva.
-É neste momento que a Ultimate Victory é決定.
+É neste momento que a Ultimate Victory é decidida.
 
 Durante este dia, os jogadores podem participar da fase Rush Attack para ganhar pontos adicionais.
 No final dos 6 dias, o grupo com a melhor pontuação acumulada vence o evento.
@@ -3866,7 +3854,7 @@ También es posible agrandar el Aquarium para mantener más peces y aumentar las
 
 ### Explicación Larga
 #### Funcionamiento General
-Durante Fishing Event, attrapas peces para generar Vouchers.
+Durante Fishing Event, atrapas peces para generar Vouchers.
 Los Vouchers sirven luego para comprar recompensas en la tienda del evento.
 
 Cada captura cuesta 5 bait.
@@ -3910,7 +3898,7 @@ Este punto es importante, ya que debes monitorear los pools regularmente para no
 Los peces se guardan en el Aquarium.
 Necesitas desbloquear tank slots para conservar más peces.
 
-Cuantos más peces guards, más Vouchers ganas.
+Cuantos más peces guardas, más Vouchers ganas.
 Los peces sobrantes pueden convertirse en Blue Shells.
 Los Blue Shells sirven para desbloquear slots adicionales.
 
@@ -4127,7 +4115,7 @@ Semakin banyak ikan yang Anda simpan, semakin banyak Voucher yang Anda hasilkan.
 Ikan berlebih dapat dikonversi menjadi Blue Shells.
 Blue Shells digunakan untuk membuka slot tambahan.
 
-Aquarium therefore merupakan bagian sentral dari acara.
+Aquarium merupakan bagian sentral dari acara.
 Aquarium yang lebih besar memberikan generasi Voucher yang lebih baik sepanjang Fishing Event.
 
 #### Akhir Acara
@@ -4644,13 +4632,31 @@ export default function GuideDetailPage() {
         return <h2 key={i} style={{ color: "#fff", fontSize: "1.3rem", fontWeight: 700, marginTop: "20px", marginBottom: "10px" }}>{line.replace('## ', '')}</h2>;
       if (line.startsWith('### '))
         return <h3 key={i} style={{ color, fontSize: "1rem", fontWeight: 600, marginTop: "16px", marginBottom: "6px" }}>{line.replace('### ', '')}</h3>;
-      if (line.startsWith('| '))
-        return <div key={i} style={{ fontFamily: "monospace", fontSize: "0.82rem", margin: "4px 0", color: "rgba(255,255,255,0.75)" }}>{line}</div>;
+      if (line.startsWith('#### '))
+        return <div key={i} style={{ color: "#fff", fontSize: "0.95rem", fontWeight: 600, marginTop: "14px", marginBottom: "4px" }}>{line.replace('#### ', '')}</div>;
+      if (line.startsWith('| ')) {
+        const cells = line.split('|').filter(c => c.trim() && !c.match(/^[-\s]+$/));
+        if (cells.length === 0) return null;
+        return (
+          <div key={i} style={{ display: "flex", gap: "8px", margin: "2px 0", fontSize: "0.82rem" }}>
+            {cells.map((cell, j) => (
+              <span key={j} style={{ color: "rgba(255,255,255,0.8)", flex: 1, padding: "2px 4px", background: "rgba(255,255,255,0.05)", borderRadius: "4px" }}>{cell.trim()}</span>
+            ))}
+          </div>
+        );
+      }
       if (line.startsWith('- '))
         return (
           <div key={i} style={{ display: "flex", gap: "8px", marginBottom: "6px", alignItems: "flex-start" }}>
             <span style={{ color, flexShrink: 0, marginTop: "2px" }}>▸</span>
             <span style={{ color: "rgba(255,255,255,0.85)" }}>{line.replace('- ', '')}</span>
+          </div>
+        );
+      if (/^\d+\.\s/.test(line))
+        return (
+          <div key={i} style={{ display: "flex", gap: "8px", marginBottom: "6px", alignItems: "flex-start" }}>
+            <span style={{ color, flexShrink: 0, marginTop: "2px", minWidth: "18px" }}>{line.match(/^\d+/)![0]}.</span>
+            <span style={{ color: "rgba(255,255,255,0.85)" }}>{line.replace(/^\d+\.\s/, '')}</span>
           </div>
         );
       if (line.startsWith('**') && line.endsWith('**'))
