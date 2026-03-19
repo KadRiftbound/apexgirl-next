@@ -1,10 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    // Serve original files without server-side optimization to avoid stale CDN cache
-    unoptimized: true,
-  },
   async headers() {
     return [
       {
@@ -12,7 +8,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://fonts.googleapis.com https://fundingchoicesmessages.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.google-analytics.com https://stats.g.doubleclick.net https://fundingchoicesmessages.google.com; frame-src https://pagead2.googlesyndication.com;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://fundingchoicesmessages.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.google-analytics.com https://stats.g.doubleclick.net https://fundingchoicesmessages.google.com; frame-src https://pagead2.googlesyndication.com;",
           },
           {
             key: "X-Frame-Options",

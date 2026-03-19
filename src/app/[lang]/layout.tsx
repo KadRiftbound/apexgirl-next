@@ -31,7 +31,6 @@ const metadataByLang: Record<string, { title: string; description: string; keywo
 };
 
 const BASE_URL = "https://apexgirlguide.com";
-const OG_IMAGE = `${BASE_URL}/assets/og-image.png`;
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -64,7 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       type: "website",
       images: [
         {
-          url: OG_IMAGE,
+          url: `${BASE_URL}/${lang}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: "TopGirl Guide — Fansite guides, tools & tier list",
@@ -75,7 +74,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: [OG_IMAGE],
+      images: [`${BASE_URL}/${lang}/opengraph-image`],
     },
     icons: {
       icon: [

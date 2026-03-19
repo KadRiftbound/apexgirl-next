@@ -60,7 +60,7 @@
   --background-image: url('/assets/images/bgs/background.png');
   --foreground: #ffffff;
   
-  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @theme inline {
@@ -82,7 +82,7 @@
   
   --color-border: var(--border);
   
-  --font-sans: 'Poppins', system-ui, sans-serif;
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
 }
 
 * {

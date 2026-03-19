@@ -38,15 +38,19 @@ function getLocale(request: NextRequest) {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  const matchedLocale = locales.find(
+    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) return;
+  // Locale already in URL — pass through and set x-lang header for root layout
+  if (matchedLocale) {
+    const response = NextResponse.next();
+    response.headers.set("x-lang", matchedLocale);
+    return response;
+  }
 
-  const locale = getLocale(request);
-  if (!locale) return;
-
+  // Redirect to locale-prefixed URL
+  const locale = getLocale(request) || defaultLocale;
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }
