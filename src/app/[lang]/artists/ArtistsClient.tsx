@@ -305,7 +305,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                     style={{ cursor: "pointer" }}
                   >
                     {selectedArtist.image ? (
-                      <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} fill sizes="160px" style={{ objectFit: "cover" }} />
+                      <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={160} height={200} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
                     ) : (
                       <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
                     )}
@@ -662,6 +662,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
           flex: 1;
         }
         .artist-preview-image-large {
+          position: relative;
           width: 160px;
           height: 200px;
           border-radius: 8px;
