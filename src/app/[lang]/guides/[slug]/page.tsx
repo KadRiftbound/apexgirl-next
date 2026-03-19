@@ -85,16 +85,22 @@ export default async function GuideDetailPage(
     "headline": getGuideTitle(guide, lang),
     "description": getGuideDescription(guide, lang),
     "url": `${BASE_URL}/${lang}/guides/${slug}/`,
-    "dateModified": new Date().toISOString().split('T')[0],
+    "datePublished": "2025-01-01",
+    "dateModified": "2026-03-19",
     "inLanguage": lang,
+    "author": {
+      "@type": "Organization",
+      "name": "TopGirl Guide",
+      "url": BASE_URL,
+    },
     "publisher": {
       "@type": "Organization",
       "name": "TopGirl Guide",
       "url": BASE_URL,
     },
-    ...(guide.thumbnail && {
-      "image": `${BASE_URL}${guide.thumbnail}`,
-    }),
+    "image": guide.thumbnail
+      ? `${BASE_URL}${guide.thumbnail}`
+      : `${BASE_URL}/${lang}/opengraph-image`,
   } : null;
 
   return (

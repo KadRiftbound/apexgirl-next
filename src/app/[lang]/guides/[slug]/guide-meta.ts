@@ -246,7 +246,7 @@ export const guidesMeta: GuideMeta[] = [
     description: "Système de Peak Level pour les artistes SSR. Milestones importants et stratégies F2P.",
     description_en: "Peak Level system for SSR artists. Key milestones and F2P strategies.",
     category: "Avancé", category_en: "Advanced",
-    readTime: "15 min",
+    readTime: "15 min", isDone: true,
   },
   {
     id: "group-shop",
@@ -254,7 +254,7 @@ export const guidesMeta: GuideMeta[] = [
     description: "Que acheter dans le Group Shop ? Ordre de priorité des achats.",
     description_en: "What to buy in the Group Shop? Purchase priority order.",
     category: "Débutant", category_en: "Beginner",
-    readTime: "5 min",
+    readTime: "5 min", isDone: true,
   },
   {
     id: "alliance-management",
@@ -262,7 +262,7 @@ export const guidesMeta: GuideMeta[] = [
     description: "Rôles, responsabilités et stratégies pour gérer une alliance dans TopGirl.",
     description_en: "Roles, responsibilities and strategies for managing an alliance in TopGirl.",
     category: "Avancé", category_en: "Advanced",
-    readTime: "12 min",
+    readTime: "12 min", isDone: true,
   },
   {
     id: "ceo-coins",
@@ -270,7 +270,7 @@ export const guidesMeta: GuideMeta[] = [
     description: "Comment acheter des CEO Coins sur le site de paiement officiel.",
     description_en: "How to purchase CEO Coins on the official payment website.",
     category: "Avancé", category_en: "Advanced",
-    readTime: "5 min",
+    readTime: "5 min", isDone: true,
   },
 ];
 

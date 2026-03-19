@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { BackgroundManager } from "@/components/BackgroundManager";
@@ -158,7 +159,7 @@ export default async function LocaleLayout({
         <div className="header-inner">
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
             <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
-              <img src="/assets/logo.png" alt="TopGirl" />
+              <Image src="/assets/logo.png" alt="TopGirl" width={36} height={36} priority />
               <span>{ui.header.logoTitle}</span>
             </Link>
             <NavVoteWidget lang={lang} />
@@ -207,8 +208,8 @@ export default async function LocaleLayout({
           </div>
           <div>
             <h4>{ui.footer.legal}</h4>
-            <Link href={`/${lang}/mentions-legales`}>{ui.footer.legalNotice}</Link>
-            <Link href={`/${lang}/confidentialite`}>{ui.footer.privacy}</Link>
+            <Link href={lang === 'fr' ? `/${lang}/mentions-legales` : `/${lang}/legal-notice`}>{ui.footer.legalNotice}</Link>
+            <Link href={lang === 'fr' ? `/${lang}/confidentialite` : `/${lang}/privacy-policy`}>{ui.footer.privacy}</Link>
             <Link href={`/${lang}/cookie-settings`}>{ui.footer.cookies}</Link>
             <Link href={`/${lang}/contact`}>{ui.footer.contact}</Link>
           </div>
