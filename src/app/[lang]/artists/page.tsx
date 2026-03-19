@@ -511,8 +511,8 @@ export default function ArtistsPage() {
 
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid (scrollable) */}
-        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px)' } : undefined}>
-          <div className="search-bar" style={{ position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 1000 }}>
+        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px)' } : { paddingTop: '10px' }}>
+          <div className="search-bar" style={panelFixed ? { position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 1000 } : {}}>
             <input
               type="text"
               placeholder={t.search}

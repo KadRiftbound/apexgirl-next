@@ -50,7 +50,7 @@ export default function MobileArtistsPage() {
   const searchBarRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const [searchBarHeight, setSearchBarHeight] = useState(50);
-  const [headerHeight, setHeaderHeight] = useState(150);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -277,7 +277,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 2: Fixed 3-column Panel */}
-        <div className="mobile-top-panel" ref={panelRef} style={{ top: scrolled ? 0 : headerHeight }}>
+        <div className="mobile-top-panel" ref={panelRef} style={{ position: scrolled ? 'fixed' : 'relative', top: scrolled ? 0 : headerHeight, zIndex: scrolled ? 100 : 1 }}>
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
@@ -493,7 +493,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Always visible below panel */}
-        <div className="mobile-search-bar" ref={searchBarRef} style={{ top: scrolled ? 'calc(40vh)' : `calc(${headerHeight}px + 40vh)` }}>
+        <div className="mobile-search-bar" ref={searchBarRef} style={{ position: scrolled ? 'fixed' : 'relative', top: scrolled ? 'calc(40vh)' : `calc(${headerHeight}px + 40vh)`, left: scrolled ? 0 : 'auto', right: scrolled ? 0 : 'auto', zIndex: scrolled ? 100 : 1 }}>
           <input
             type="text"
             placeholder={t.search}
@@ -515,7 +515,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 4: Artists Grid - Scrollable */}
-        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(${headerHeight}px + 40vh + ${searchBarHeight}px)` }}>
+        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(${headerHeight}px + 40vh + ${searchBarHeight}px + 10px)` }}>
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
