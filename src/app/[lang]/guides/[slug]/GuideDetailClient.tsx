@@ -6762,15 +6762,26 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
     );
   }
 
+  // Helper to parse inline bold text **text** into styled spans
+  const parseInlineBold = (text: string, accentColor: string) => {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    return parts.map((part, idx) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={idx} style={{ color: accentColor, fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
+      }
+      return <span key={idx}>{part}</span>;
+    });
+  };
+
   // Helper to render markdown-like content
   const renderContent = (text: string, color: string) =>
     text.split('\n').map((line, i) => {
       if (line.startsWith('## '))
-        return <h2 key={i} style={{ color, fontSize: "1.4rem", fontWeight: 700, marginTop: "24px", marginBottom: "12px", borderBottom: `1px solid ${color}44`, paddingBottom: "8px" }}>{line.replace('## ', '')}</h2>;
+        return <h2 key={i} style={{ color, fontSize: "1.4rem", fontWeight: 700, marginTop: "24px", marginBottom: "12px", borderBottom: `1px solid ${color}44`, paddingBottom: "8px" }}>{parseInlineBold(line.replace('## ', ''), color)}</h2>;
       if (line.startsWith('### '))
-        return <h3 key={i} style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 600, marginTop: "18px", marginBottom: "8px" }}>{line.replace('### ', '')}</h3>;
+        return <h3 key={i} style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 600, marginTop: "18px", marginBottom: "8px" }}>{parseInlineBold(line.replace('### ', ''), color)}</h3>;
       if (line.startsWith('#### '))
-        return <div key={i} style={{ color, fontSize: "0.95rem", fontWeight: 600, marginTop: "14px", marginBottom: "6px" }}>{line.replace('#### ', '')}</div>;
+        return <div key={i} style={{ color, fontSize: "0.95rem", fontWeight: 600, marginTop: "14px", marginBottom: "6px" }}>{parseInlineBold(line.replace('#### ', ''), color)}</div>;
       if (line.startsWith('| ')) {
         const cells = line.split('|').filter(c => c.trim() && !c.match(/^[-\s]+$/));
         if (cells.length === 0) return null;
@@ -6786,20 +6797,20 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
         return (
           <div key={i} style={{ display: "flex", gap: "8px", marginBottom: "6px", alignItems: "flex-start" }}>
             <span style={{ color, flexShrink: 0, marginTop: "2px" }}>▸</span>
-            <span style={{ color: "rgba(255,255,255,0.85)" }}>{line.replace('- ', '')}</span>
+            <span style={{ color: "rgba(255,255,255,0.85)" }}>{parseInlineBold(line.replace('- ', ''), color)}</span>
           </div>
         );
       if (/^\d+\.\s/.test(line))
         return (
           <div key={i} style={{ display: "flex", gap: "8px", marginBottom: "6px", alignItems: "flex-start" }}>
             <span style={{ color, flexShrink: 0, marginTop: "2px", minWidth: "18px" }}>{line.match(/^\d+/)![0]}.</span>
-            <span style={{ color: "rgba(255,255,255,0.85)" }}>{line.replace(/^\d+\.\s/, '')}</span>
+            <span style={{ color: "rgba(255,255,255,0.85)" }}>{parseInlineBold(line.replace(/^\d+\.\s/, ''), color)}</span>
           </div>
         );
       if (line.startsWith('**') && line.endsWith('**'))
-        return <div key={i} style={{ fontWeight: 700, marginTop: "12px", color, fontSize: "0.95rem" }}>{line.replace(/\*\*/g, '')}</div>;
+        return <div key={i} style={{ fontWeight: 700, marginTop: "12px", color, fontSize: "0.95rem" }}>{parseInlineBold(line.replace(/\*\*/g, ''), color)}</div>;
       return line.trim()
-        ? <div key={i} style={{ marginBottom: "6px", color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}>{line}</div>
+        ? <div key={i} style={{ marginBottom: "6px", color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}>{parseInlineBold(line, color)}</div>
         : <div key={i} style={{ height: "10px" }} />;
     });
 
