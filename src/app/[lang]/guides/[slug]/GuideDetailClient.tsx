@@ -13,6 +13,7 @@ const guideTranslations: Record<string, any> = {
    pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie", artistDatabaseTitle: "Baza Artystów", artistDatabaseDesc: "Poznaj wszystkich artystów", tierListTitle: "Tier List", tierListDesc: "Ranking najlepszych artystów" },
    id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan", artistDatabaseTitle: "Database Artis", artistDatabaseDesc: "Lihat semua artis", tierListTitle: "Tier List", tierListDesc: "Peringkat artis terbaik" },
    ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение", artistDatabaseTitle: "База артистов", artistDatabaseDesc: "Все артисты", tierListTitle: "Tier List", tierListDesc: "Рейтинг лучших артистов" },
+   de: { notFound: "Leitfaden nicht gefunden", backToGuides: "← Zurück zu den Leitfäden", otherGuides: "Weitere Leitfäden", tips: "Tipps", rewards: "Belohnungen", explanation: "Erklärung", artistDatabaseTitle: "Künstlerdatenbank", artistDatabaseDesc: "Entdecke alle Künstler", tierListTitle: "Tier Liste", tierListDesc: "Beste Künstler Rangliste" },
 };
 
 type Guide = {
@@ -25,6 +26,7 @@ type Guide = {
   title_pl?: string;
   title_id?: string;
   title_ru?: string;
+  title_de?: string;
   description: string;
   description_en?: string;
   description_it?: string;
@@ -33,6 +35,7 @@ type Guide = {
   description_pl?: string;
   description_id?: string;
   description_ru?: string;
+  description_de?: string;
   icon: string;
   color: string;
   category: string;
@@ -43,6 +46,7 @@ type Guide = {
   category_pl?: string;
   category_id?: string;
   category_ru?: string;
+  category_de?: string;
   readTime: string;
   content?: string;
   content_en?: string;
@@ -52,6 +56,7 @@ type Guide = {
   content_pl?: string;
   content_id?: string;
   content_ru?: string;
+  content_de?: string;
   tips?: string;
   tips_en?: string;
   tips_it?: string;
@@ -60,6 +65,7 @@ type Guide = {
   tips_pl?: string;
   tips_id?: string;
   tips_ru?: string;
+  tips_de?: string;
   rewards?: string;
   rewards_en?: string;
   rewards_it?: string;
@@ -68,6 +74,7 @@ type Guide = {
   rewards_pl?: string;
   rewards_id?: string;
   rewards_ru?: string;
+  rewards_de?: string;
 };
 
 const guides: Guide[] = [
@@ -81,6 +88,7 @@ const guides: Guide[] = [
     title_pl: "Struktura gry",
     title_id: "Struktur permainan",
     title_ru: "Структура игры",
+    title_de: "Spielstruktur",
     description: "Comprendre la structure du jeu Top Girl. Serveur d'origine, cycles Abroad, City Supremacy et boucle principale.",
     description_en: "Understand the structure of Top Girl game. Home server, Abroad cycles, City Supremacy and main loop.",
     description_it: "Comprendi la struttura del gioco Top Girl. Server home, cicli Abroad, City Supremacy e ciclo principale.",
@@ -89,6 +97,7 @@ const guides: Guide[] = [
     description_pl: "Zrozum strukturę gry Top Girl. Serwer główny, cykle Abroad, City Supremacy i główna pętla.",
     description_id: "Pahami struktur permainan Top Girl. Server utama, siklus Abroad, City Supremacy dan loop utama.",
     description_ru: "Понять структуру игры Top Girl. Родной сервер, циклы Abroad, City Supremacy и основной цикл.",
+    description_de: "Verstehe die Struktur des Top Girl Spiels. Heimat-Server, Abroad-Zyklen, City Supremacy und Hauptschleife.",
     icon: "📊",
     color: "#8b5cf6",
     category: "Débutant",
@@ -99,6 +108,7 @@ const guides: Guide[] = [
     category_pl: "Początkujący",
     category_id: "Pemula",
     category_ru: "Начинающий",
+    category_de: "Anfänger",
     readTime: "10 min",
     content: `
 ## Guide : Comprendre la structure du jeu Top Girl
@@ -821,6 +831,109 @@ Top Girl juga bergantung pada 3 statistik utama:
 - Defense = Terkait dengan Tari
 - Economy = Terkait dengan Manajemen
 `,
+    content_de: `
+## Leitfaden: Die Spielstruktur von Top Girl verstehen
+
+### Kurze Erklärung
+Top Girl folgt einer Mehrphasen-Progression.
+Das Spiel beginnt auf einem Heimat-Server, wo deine Gruppe während der ersten Wochen agiert. Dann wechselt das Spiel zwischen Phasen auf dem Heimat-Server, Ereignissen wie City Supremacy und Top CEO, und Abroad-Zyklen wie Tokyo, Bali und Roma.
+Das Verständnis dieses Zyklus ist wichtig, um deine Gruppe richtig vorzubereiten und deine Ressourcen zu planen.
+
+### Lange Erklärung
+
+#### 1. Spielstart: Der Heimat-Server
+Die erste große Phase dauert etwa 4 Wochen.
+
+Während der ersten 3 Wochen startest du auf einem neuen Server im äußeren Bereich. Diese Phase dient fast als Tutorial, bleibt aber sehr wichtig.
+Deine Gruppe muss rekrutieren, Fortschritte machen und sich zur Mitte der Karte bewegen, um zu versuchen, das Burj Khalifa zu erobern und den Titel des Bürgermeisters zu erhalten.
+
+Am Ende dieser Phase wird dieser Server zu deinem Heimat-Server.
+Dies ist der Server, mit dem dein Konto für den Rest des Spiels verbunden bleibt, es sei denn, du migrierst.
+
+#### 2. Übergang nach dem Start
+Am Ende der dritten Woche muss dein Server auf andere Server warten oder sich anderen Servern anschließen, die bereits bereit sind.
+Während dieser Zeit gibt es ein etwa einwöchiges Ereignis namens City Supremacy.
+
+City Supremacy ist eine SvS-Phase zwischen 2 oder 3 Servern.
+
+#### 3. Tokyo Warmup dann Tokyo
+Nach diesem Übergang betritt das Spiel den ersten Abroad-Zyklus.
+
+Dieser Zyklus beginnt mit Tokyo Warmup, einem Vorbereitungsereignis.
+Dann beginnt Tokyo, das etwa 3 Wochen dauert.
+
+Tokyo findet auf einer anderen Karte statt.
+Dein Heimat-Server verschwindet nicht. Du kannst mit Passports zwischen beiden reisen.
+
+Auf Tokyo findest du eine Logik ähnlich zum Spielstart:
+- Fortschritt auf einer Karte
+- Konfrontation zwischen Servern
+- Eroberung von Zonen
+- finales Ziel rund um den Tokyo Tower
+
+Server sind in Kammern auf jeder Seite der Karte aufgeteilt.
+Das Ziel ist es also, mit deiner Gruppe in einem Server-gegen-Server-Rahmen voranzukommen.
+
+#### 4. Rückkehr zum Heimat-Server
+Nach Tokyo kehrst du zum Heimat-Server zurück.
+
+Diese Phase kann mehr oder weniger Zeit dauern.
+Das Spiel scheint zu warten, bis ein Pool von Servern ausreichend gefüllt ist, bevor der nächste Teil gestartet wird.
+Laut deinen Informationen kann dieses Warten dauern:
+- manchmal 1 Woche
+- manchmal bis zu 5 oder 6 Wochen
+
+Während dieser Zeit wechselt das Spiel hauptsächlich zwischen:
+- City Supremacy
+- Top CEO
+
+Die genaue Anzahl der benötigten Server ist noch nicht ganz klar, aber du schätzt etwa 40 bis 50 Server.
+
+#### 5. Die Hauptspielschleife
+Sobald genügend Server zusammengekommen sind, tritt das Spiel in eine stabilere Schleife ein.
+
+Diese Schleife folgt diesem Modell:
+- Bali Warmup
+- Bali
+- City Supremacy oder Top CEO
+- Roma Warmup
+- Roma
+- Top CEO oder City Supremacy
+
+Dann startet die Schleife neu mit:
+- Tokyo Warmup
+- Tokyo
+- City Supremacy oder Top CEO
+- Bali Warmup
+- Bali
+- Top CEO oder City Supremacy
+- Roma Warmup
+- Roma
+- Top CEO oder City Supremacy
+- Dann wieder Tokyo Warmup.
+
+#### 6. Das "Abroad"-Konzept
+Du kannst Abroad als Sammelbegriff verwenden für:
+- Tokyo
+- Bali
+- Roma
+
+Diese drei großen Phasen folgen dem gleichen Prinzip:
+1. Eine Woche Warmup
+2. Dann 3 Wochen des Hauptereignisses
+3. Auf einer anderen Karte
+4. Mit Server-gegen-Server-Konfrontationslogik
+
+Wenn ein Zyklus zurückkommt, kannst du ihn nummerieren:
+- Tokyo 2, Bali 2, Roma 2
+- Dann: Tokyo 3, usw.
+
+#### 7. Wichtige Stats
+Top Girl basiert auch auf 3 Haupt-Stats:
+- Sing = Gesang
+- Defense = verbunden mit Tanz
+- Economy = verbunden mit Management
+`,
     content_ru: `
 ## Гайд: Понимание Структуры Игры Top Girl
 
@@ -996,6 +1109,15 @@ Top Girl также основывается на 3 основных стата�
 - Научитесь различать периоды: локального прогресса, противостояния между серверами, подготовки к будущим циклам
 - Думайте не только о настоящем. Вам также нужно подготовиться к следующему Abroad, City Supremacy или Top CEO
     `,
+    tips_de: `
+- Das Verständnis des globalen Spielyzyklus hilft dir, deine Ressourcen besser zu planen
+- Das Spiel ist stark gruppenorientiert. Alleine spielen begrenzt den Fortschritt stark
+- Der Heimat-Server bleibt die Basis deines Kontos für lange Zeit
+- Abroad-Phasen wie Tokyo, Bali und Roma ersetzen deinen Heimat-Server nicht. Sie ergänzen ihn
+- Spare Ressourcen für Warmup-Phasen, da sie oft dazu dienen, sich auf das Hauptereignis vorzubereiten
+- Lerne zwischen Zeiträumen zu unterscheiden: lokaler Fortschritt, Server-gegen-Server-Konfrontation, Vorbereitung auf zukünftige Zyklen
+- Denke nicht nur an die Gegenwart. Du musst dich auch auf das nächste Abroad, City Supremacy oder Top CEO vorbereiten
+    `,
   },
   {
     id: "equipment",
@@ -1007,6 +1129,7 @@ Top Girl также основывается на 3 основных стата�
     title_pl: "Poradnik Wyposażenia",
     title_id: "Panduan Peralatan",
     title_ru: "Гайд по снаряжению",
+    title_de: "Ausrüstungs-Leitfaden",
     description: "Bijoux, Voitures et Propriétés pour optimiser vos statistiques. Comparaison Gold vs Purple et priorités d'achat.",
     description_en: "Jewelry, Cars and Properties to optimize your stats. Gold vs Purple comparison and purchase priorities.",
     description_it: "Gioielli, Auto e Proprietà per ottimizzare le tue statistiche. Confronto Gold vs Purple e priorità d'acquisto.",
@@ -1015,6 +1138,7 @@ Top Girl также основывается на 3 основных стата�
     description_pl: "Biżuteria, Samochody i Nieruchomości, aby zoptymalizować statystyki. Porównanie Gold vs Purple i priorytety zakupów.",
     description_id: "Perhiasan, Mobil, dan Properti untuk mengoptimalkan statistik Anda. Perbandingan Gold vs Purple dan prioritas pembelian.",
     description_ru: "Украшения, машины и недвижимость для оптимизации ваших статов. Сравнение Gold vs Purple и приоритеты покупки.",
+    description_de: "Schmuck, Autos und Immobilien zur Optimierung deiner Stats. Gold vs Lila Vergleich und Kaufprioritäten.",
     icon: "💍",
     color: "#fbbf24",
     category: "Débutant",
@@ -1025,6 +1149,7 @@ Top Girl также основывается на 3 основных стата�
     category_pl: "Początkujący",
     category_id: "Pemula",
     category_ru: "Начинающий",
+    category_de: "Anfänger",
     readTime: "10 min",
     content: `
 ## Guide des équipements
@@ -1531,6 +1656,86 @@ Nieruchomości podążają prawie za tą samą logiką co samochody.
 **Nieruchomości Auction House:**
 - Ta sama logika co samochody Auction House
 `,
+    content_de: `
+## Ausrüstungs-Leitfaden
+
+### Kurze Erklärung
+Ausrüstung, auch Assets genannt, ist eine wichtige Kraftquelle in Top Girl.
+Jede Künstlerin kann 3 Assets ausrüsten: 1 Schmuck, 1 Auto und 1 Immobilie.
+Assets geben viele Stats und erhöhen auch die Fan-Kapazität.
+Wenn die Künstlerin zum Asset passt, erhältst du einen Stats-Bonus von 20%. Beispiel: Eine Roma-Künstlerin mit Roma-Assets.
+
+### Lange Erklärung
+Ausrüstung ist ein zentrales System im Spiel. Sie dient zur direkten Verstärkung einer Künstlerin.
+Ein gutes Asset gibt viele Stats. Es kann auch einen großen Fan-Kapazitätsgewinn geben.
+Auf einem Hauptteam machen gute Assets einen sehr großen Unterschied.
+
+Jede Künstlerin hat 3 Slots:
+- 1 Schmuck
+- 1 Auto
+- 1 Immobilie
+
+Der wichtigste Bonus zum Kennenlernen ist der Matching-Bonus.
+Wenn eine Künstlerin ein Asset ausrüstet, das zu ihrer Herkunft oder Saison passt, erhält sie +20% Stats auf dieses Asset.
+Beispiel: Eine Roma-Künstlerin mit einem Roma-Asset.
+
+Dies macht Abroad-Assets noch stärker bei Künstlerinnen, die bereits zu dieser Saison passen.
+
+### Schmuck
+Schmuck ist die einfachste Kategorie am Anfang zu erhalten.
+
+**Klassischer Schmuck:**
+- Ziemlich einfach zu erhalten
+- Verfügbar im VIP Shop
+- Verfügbar als Belohnung für erste Landmark-Besetzung
+- Verfügbar im Stock Market Shop
+
+**Abroad Schmuck:**
+- Schwieriger zu erhalten
+- Verfügbar als Belohnung für erste Landmark-Besetzung
+- Verfügbar in bestimmten Events der entsprechenden Saison
+- Betrifft hauptsächlich Tokyo, Bali und Roma
+
+**Auction House:**
+- Es gibt keinen Auction House Schmuck
+
+### Autos
+Autos sind schwieriger zu erhalten als Schmuck.
+
+**Klassische Autos:**
+- Mäßige Schwierigkeit
+- Erhalten aus Event-Belohnungen
+- Erhalten aus Event-Shops
+- Auch im VIP Shop verfügbar, aber die Kosten sind hoch
+
+**Abroad Autos:**
+- Schwer zu erhalten
+- Erhalten aus Belohnungen und Shops des entsprechenden Events
+- Ziemlich schwer für Free-to-Play zu erhalten
+
+**Auction House Autos:**
+- Sehr schwer zu erhalten
+- Einmal pro Woche auf dem Heimat-Server für den Gesang/ Sing-Zweig
+- Einmal pro Woche in der Abroad-Abenteuer-Auktion für den Tanz/ Defense-Zweig
+- Es gibt kein Auction House Auto für Management/ Economy
+- Du musst die Auktion gewinnen
+
+### Immobilien
+Immobilien folgen fast der gleichen Logik wie Autos.
+
+**Klassische Immobilien:**
+- Ähnlich wie klassische Autos
+- Erhalten durch Event-Belohnungen und Event-Shops
+- Nicht im VIP Shop verfügbar
+
+**Abroad Immobilien:**
+- Ähnlich wie Abroad-Autos
+- Generell etwa doppelt so teuer
+- Daher schwieriger zu erhalten
+
+**Auction House Immobilien:**
+- Gleiche Logik wie Auction House Autos
+`,
     content_id: `
 ## Panduan Peralatan
 
@@ -1819,14 +2024,33 @@ Assets дают много статов и также увеличивают в�
 - Это почти никогда не бывает хорошим долгосрочным вложением
 - Основной интерес фиолетового снаряжения - обменять их во время события Tipsy Date
     `,
+    tips_de: `
+- Konzentriere deine besten Assets auf dein Hauptteam
+- In den meisten Fällen ist es besser, die 5 Schmuck, 5 Autos und 5 Immobilien deines Kernteams aufzubauen, bevor du woanders investierst
+- Die Ausnahme ist, wenn du ein Wal bist und schneller expandieren kannst
+- Wähle sorgfältig die Assets aus, die du fördern möchtest
+- Denke an deine realen Bedürfnisse und zukünftige Förderungen
+- Versuche, eine Ausrüstung nach der anderen zu maximieren
+- Das Ziel ist es, das maximale Level zu erreichen, um sie fördern zu können
+- Förderung gibt einen großen Stats-Schub
+- Fördere niemals eine Ausrüstung, wenn du dir nicht sicher bist
+- Förderung ist nicht umkehrbar
+- Eine geförderte Ausrüstung kann nicht mehr als Förderungsmaterial für eine andere verwendet werden
+- Vermeide es, Asset Coins für lila Ausrüstung auszugeben
+- Es ist fast nie eine gute langfristige Investition
+- Das Hauptinteresse an lila Ausrüstung ist, sie während des Tipsy Date-Events einzutauschen
+    `,
   },
   {
     id: "team-builder",
     title: "Team Builder",
+    title_de: "Team-Builder-Leitfaden",
     description: "Comment construire l'équipe parfaite. Calcul des synergies de genre et bonus d'équipement.",
+    description_de: "Wie du das perfekte Team aufbaust. Genresynergie-Berechnung und Ausrüstungsboni.",
     icon: "👥",
     color: "#22d3ee",
     category: "Intermédiaire",
+    category_de: "Fortgeschritten",
     readTime: "15 min",
     content: `
 ## Team Builder - TopGirl
@@ -1857,15 +2081,48 @@ Les équipements synergisent avec les rôles:
 **Offensif:** 3 Offense / 1 Defense / 1 Support
 **Défensif:** 2 Offense / 3 Defense / 0 Support
 **Équilibré:** 2 Offense / 2 Defense / 1 Support
+    `,
+    content_de: `
+## Team-Builder-Leitfaden - TopGirl
+
+### Teamzusammensetzung
+Ein optimales Team enthält 5 Künstlerinnen mit klar definierten Rollen:
+
+1. **Vocalist (Lead)** - Höchste Stats, Genre-Bonus
+2. **Dancer (Support)** - Team-Buffs
+3. **Center** - Balance
+4. **Makestar** - Fan-Generierung
+5. **Support** - Defense/Utility
+
+### Genresynergien
+Der Genre-Bonus gilt, wenn du 2+ Künstlerinnen desselben Genres hast:
+
+- **Pop + Pop**: +15% Vocal
+- **EDM + EDM**: +15% Dance
+- **Hip Hop + Hip Hop**: +15% Charm
+
+### Ausrüstungsboni
+Ausrüstungen synergieren mit den Rollen:
+- Schmuck-Set: +20% Haupt-Stat
+- Fahrzeug-Set: +15% sekundäre Stat
+- Immobilien-Set: +10% alle Stats
+
+### Build-Typen
+**Offensiv:** 3 Offense / 1 Defense / 1 Support
+**Defensiv:** 2 Offense / 3 Defense / 0 Support
+**Ausgewogen:** 2 Offense / 2 Defense / 1 Support
     `
   },
   {
     id: "recommended-teams",
     title: "Équipes Recommandées",
+    title_de: "Empfohlene Teams",
     description: "Les meilleures compositions d'équipes UR et SSR. Stratégies offensives, équilibrées et défensives.",
+    description_de: "Beste UR und SSR Teamzusammensetzungen. Offensive, ausgewogene und defensive Strategien.",
     icon: "🏆",
     color: "#f472b6",
     category: "Avancé",
+    category_de: "Fortgeschritten",
     readTime: "12 min",
     content: `
 ## Équipes Recommandées - TopGirl
@@ -1908,15 +2165,60 @@ Les équipements synergisent avec les rôles:
 **Équilibrée:** Mix des deux
 - Focus: Stats distribution
 - Meta: Elizabeth, Gabriella
+    `,
+    content_de: `
+## Empfohlene Teams - TopGirl
+
+### Top UR Teams
+
+**Team 1 - Hyper Offense:**
+- Kokoro (Vocalist)
+- Aurora (Dancer)
+- Claire (Center)
+- Anastasia (Defense)
+- Beatrice (Support)
+
+**Team 2 - Balance:**
+- Alexandra (Vocalist)
+- Elizabeth (Dancer)
+- Genevieve (Center)
+- Marguerite (Defense)
+- Gabriella (Support)
+
+### Top SSR Teams
+
+**Team 1 - Budget Meta:**
+- Alice (Vocalist)
+- Hestia (Dancer)
+- Hikari (Center)
+- Eri (Defense)
+- Flora (Support)
+
+### Strategien
+
+**Offensiv:** Maximiere die Damage Dealer
+- Fokus: Skill Damage + Basic Attack
+- Meta: Kokoro, Aurora, Claire
+
+**Defensiv:** Fokus auf Überleben
+- Fokus: Damage Reduction + HP
+- Meta: Anastasia, Genevieve, Marguerite
+
+**Ausgewogen:** Mix von beiden
+- Fokus: Stats-Verteilung
+- Meta: Elizabeth, Gabriella
     `
   },
   {
     id: "leveling-ssr",
     title: "Montée en Niveau SSR",
+    title_de: "SSR-Leveling-Leitfaden",
     description: "Nombre de cartes nécessaires pour level up vos personnages SSR jusqu'au niveau 115.",
+    description_de: "Anzahl der Karten, die benötigt werden, um deine SSR-Charaktere auf Level 115 zu bringen.",
     icon: "📈",
     color: "#34d399",
     category: "Débutant",
+    category_de: "Anfänger",
     readTime: "8 min",
     content: `
 ## Montée en Niveau SSR - TopGirl
@@ -1945,15 +2247,46 @@ Le coût en gold augmente avec le niveau:
 - Niv 40-70: ~2,000,000 Gold  
 - Niv 70-100: ~8,000,000 Gold
 - Niv 100-115: ~25,000,000 Gold
+    `,
+    content_de: `
+## SSR-Leveling-Leitfaden - TopGirl
+
+### Benötigte Karten pro Level
+
+| Level | SSR-Karten | Gesamt |
+|-------|-----------|--------|
+| 1-10 | 10 | 10 |
+| 10-20 | 20 | 30 |
+| 20-40 | 40 | 70 |
+| 40-60 | 60 | 130 |
+| 60-80 | 80 | 210 |
+| 80-100 | 100 | 310 |
+| 100-115 | 150 | 460 |
+
+### Level Up Tipps
+- Verwende überschüssige SSR-Karten
+- Fokussiere dich auf deine Hände zuerst
+- Level up während x2 XP-Events
+- Priorisiere Künstlerinnen mit hoher Therapeutisten
+
+### Gold-Kosten
+Die Gold-Kosten steigen mit dem Level:
+- Level 1-40: ~500.000 Gold
+- Level 40-70: ~2.000.000 Gold
+- Level 70-100: ~8.000.000 Gold
+- Level 100-115: ~25.000.000 Gold
     `
   },
   {
     id: "blueprints",
     title: "Guide Blueprints",
+    title_de: "Blueprints-Leitfaden",
     description: "Requirements en blueprints par tier (1-21) pour améliorer vos installations. Tier 7-12 Gold.",
+    description_de: "Blueprint-Anforderungen nach Stufe (1-21) zur Aufrüstung deiner Einrichtungen.",
     icon: "🛠️",
     color: "#818cf8",
     category: "Intermédiaire",
+    category_de: "Fortgeschritten",
     readTime: "10 min",
     content: `
 ## Guide Blueprints - TopGirl
@@ -1980,15 +2313,44 @@ Le coût en gold augmente avec le niveau:
 - Focus tier 7-12 Gold en premier
 - Attend les événements pour les discounts
 - Upgrade uniformément pour éviter le瓶颈
+    `,
+    content_de: `
+## Blueprints-Leitfaden - TopGirl
+
+### Einrichtungs-Stufen
+
+| Stufe | Blueprints | Gold | Effekt |
+|-------|-----------|------|-------|
+| 1-3 | 50-100 | 10K | +5% Stats |
+| 4-6 | 150-300 | 50K | +10% Stats |
+| 7-9 | 500-800 | 200K | +15% Stats |
+| 10-12 | 1000-1500 | 500K | +20% Stats |
+| 13-15 | 2000-3000 | 1M | +25% Stats |
+| 16-18 | 4000-5000 | 3M | +30% Stats |
+| 19-21 | 7000+ | 10M | +35% Stats |
+
+### Prioritäten
+1. **Studio** - Song-Produktion
+2. **Training** - Künstlerinnen leveln
+3. **Fan Hall** - Fan-Generierung
+4. **Marketing** - Passive Einkünfte
+
+### Tipps
+- Fokussiere Stufe 7-12 Gold zuerst
+- Warte auf Events für Rabatte
+- Rüste gleichmäßig auf, um den Flaschenhals zu vermeiden
     `
   },
   {
     id: "hq-upgrade",
     title: "Guide HQ (Quartier Général)",
+    title_de: "HQ-Aufstiegs-Leitfaden",
     description: "Cartes de bâtiment nécessaires pour chaque niveau du HQ. Requirement total: 29,922 cartes.",
+    description_de: "Benötigte Gebäude-Karten für jedes HQ-Level.",
     icon: "🏢",
     color: "#a855f7",
     category: "Débutant",
+    category_de: "Anfänger",
     readTime: "5 min",
     content: `
 ## Guide HQ - TopGirl
@@ -2014,15 +2376,43 @@ Le coût en gold augmente avec le niveau:
 - Level 5: Unlock events supplémentaires
 - Level 7: +10% toutes stats
 - Level 10: Maximum bonus
+    `,
+    content_de: `
+## HQ-Leitfaden - TopGirl
+
+### Karten pro HQ-Level
+
+| Level | Karten | Gold-Kosten |
+|-------|--------|------------|
+| 1 | 50 | 1.000 |
+| 2 | 100 | 2.500 |
+| 3 | 200 | 5.000 |
+| 4 | 400 | 10.000 |
+| 5 | 800 | 25.000 |
+| 6 | 1.500 | 50.000 |
+| 7 | 2.500 | 100.000 |
+| 8 | 4.000 | 200.000 |
+| 9 | 6.000 | 400.000 |
+| 10 | 8.000 | 800.000 |
+
+**Gesamt für HQ Level 10:** ~29.922 Karten / ~1,6M Gold
+
+### HQ-Boni
+- Level 5: Zusätzliche Events freischalten
+- Level 7: +10% alle Stats
+- Level 10: Maximale Boni
     `
   },
   {
     id: "vehicle-system",
     title: "Système de Véhicules",
-    description: "Système complet: Avancement, Pièces (Moteur, Châassis, Suspension, Jantes), Skins débloqués.",
+    title_de: "Fahrzeug-System-Leitfaden",
+    description: "Système complet: Avancement, Pièces (Moteur, Châssis, Suspension, Jantes), Skins débloqués.",
+    description_de: "Vollständiges System: Aufstieg, Teile (Motor, Chassis, Federung, Felgen), freigeschaltete Skins.",
     icon: "🚗",
     color: "#f87171",
     category: "Avancé",
+    category_de: "Fortgeschritten",
     readTime: "15 min",
     content: `
 ## Système de Véhicules - TopGirl
@@ -2060,15 +2450,55 @@ Les skins débloquent à certains niveaux de véhicule:
 - Level 10: Skin Silver
 - Level 20: Skin Gold
 - Level 30: Skin Platinum
+    `,
+    content_de: `
+## Fahrzeug-System-Leitfaden - TopGirl
+
+### Fahrzeugtypen
+
+** Starter (Kostenlos) **
+- Speed: 100
+- Stats-Bonus: +500
+
+** Sports (50.000 Gold) **
+- Speed: 150
+- Stats-Bonus: +1.500
+
+** Luxury (500.000 Gold) **
+- Speed: 200
+- Stats-Bonus: +5.000
+
+** Super (5.000.000 Gold) **
+- Speed: 300
+- Stats-Bonus: +15.000
+
+### Upgrade-Teile
+
+| Teil | Effekt | Max. Stufe |
+|------|-------|-----------|
+| Motor | +Speed | 10 |
+| Chassis | +Handling | 10 |
+| Federung | +Confort | 10 |
+| Felgen | +Style | 10 |
+
+### Skins
+Skins werden bei bestimmten Fahrzeug-Leveln freigeschaltet:
+- Level 5: Bronze Skin
+- Level 10: Silber Skin
+- Level 20: Gold Skin
+- Level 30: Platin Skin
     `
   },
   {
     id: "gold-equipment",
     title: "Équipement Gold Optimal",
+    title_de: "Gold-Ausrüstungs-Leitfaden",
     description: "Setup complet Gold pour Vocalist, Dancer et Center. +19,730 stats et 86,000 fans par personnage.",
+    description_de: "Vollständiges Gold-Setup für Vocalist, Dancer und Center.",
     icon: "✨",
     color: "#fbbf24",
     category: "Avancé",
+    category_de: "Fortgeschritten",
     readTime: "10 min",
     content: `
 ## Équipement Gold Optimal - TopGirl
@@ -2113,15 +2543,62 @@ Les skins débloquent à certains niveaux de véhicule:
 
 ### Coût Total
 ~50,000,000 Gold par personnage full Gold
+    `,
+    content_de: `
+## Optimale Gold-Ausrüstung - TopGirl
+
+### Gold Vocalist Setup
+
+**Schmuck:**
+- Collier: Gold Diamond Necklace (+3.000 Vocal)
+- Ring: Gold Diamond Ring (+2.500 Vocal)
+- Uhr: Gold Chrono (+2.000 Vocal)
+
+**Fahrzeug:**
+- Super Car (+15.000 alle Stats)
+
+**Immobilie:**
+- Luxury Mansion (+5.000 alle Stats)
+
+**Gesamt: +27.500 Vocal / +20.000 andere / 86.000 Fans**
+
+### Gold Dancer Setup
+
+**Schmuck:**
+- Collier: Gold Diamond Necklace (+3.000 Dance)
+- Ring: Gold Diamond Ring (+2.500 Dance)
+- Uhr: Gold Chrono (+2.000 Dance)
+
+**Fahrzeug:** Super Car
+**Immobilie:** Luxury Mansion
+
+**Gesamt: +27.500 Dance**
+
+### Gold Center Setup
+
+**Schmuck:**
+- Collier: Gold Diamond Necklace (+3.000 Vocal)
+- Ring: Gold Diamond Ring (+2.500 Dance)
+- Uhr: Gold Chrono (+2.000 Charm)
+
+**Fahrzeug + Immobilie:** Gleich
+
+**Gesamt: +27.500 gemischte Stats**
+
+### Gesamtkosten
+~50.000.000 Gold pro Charakter volles Gold
     `
   },
   {
     id: "purple-equipment",
     title: "Équipement Purple (Budget)",
+    title_de: "Lila-Ausrüstungs-Leitfaden",
     description: "Setup économique Purple. +13,730 stats mais pas de bonus fans. Stratégie Gold/Purple mixte.",
+    description_de: "Budget Lila-Setup. Gemischte Gold/Lila Strategie.",
     icon: "💜",
     color: "#a855f7",
     category: "Intermédiaire",
+    category_de: "Fortgeschritten",
     readTime: "8 min",
     content: `
 ## Équipement Purple - TopGirl
@@ -2164,15 +2641,60 @@ Similar to Vocalist but:
 - Plus accessible
 - Bon rapport qualité/prix
 - Still competitive en mid-game
+    `,
+    content_de: `
+## Lila-Ausrüstung - TopGirl
+
+### Lila Vocalist Setup
+
+**Schmuck:**
+- Collier: Purple Gem Necklace (+2.000 Vocal)
+- Ring: Purple Gem Ring (+1.500 Vocal)
+- Uhr: Purple Watch (+1.200 Vocal)
+
+**Fahrzeug:** Sports Car (+1.500 alle Stats)
+
+**Immobilie:** House (+3.000 alle Stats)
+
+**Gesamt: +9.700 Vocal / +6.500 andere / 0 Fans**
+
+### Lila Dancer Setup
+
+Ähnlich wie Vocalist, aber:
+- Collier: +2.000 Dance
+- Ring: +1.500 Dance
+- Uhr: +1.200 Dance
+
+**Gesamt: +9.700 Dance**
+
+### Gold/Lila Mix Strategie
+
+**Option 1: Budget Optimal**
+- 2 Gold Schmuck + Lila Auto + Lila Immobilie
+- Kosten: ~15M Gold
+- Stats: ~70% vom vollen Gold
+
+**Option 2: Nur Lila**
+- Alles Lila
+- Kosten: ~5M Gold
+- Stats: ~50% vom vollen Gold
+
+### Lila Vorteile
+- Leichter zugänglich
+- Gutes Preis-Leistungs-Verhältnis
+- Immer noch konkurrenzfähig im Mid-Game
     `
   },
   {
     id: "event-ancient-rome",
     title: "Guide Ancient Rome",
+    title_de: "Altes Rom Leitfaden",
     description: "Guide complet de l'événement Adventure Abroad Rome",
+    description_de: "Vollständiger Leitfaden zum Adventure Abroad Rom-Event.",
     icon: "🏛️",
     color: "#f97316",
     category: "Événements",
+    category_de: "Events",
     readTime: "10 min",
     content: `
 ## Guide Ancient Rome - TopGirl
@@ -2204,15 +2726,49 @@ L'événement **Adventure Abroad: Rome** est un événement saisonnier de 12 jou
 
 ### Meilleures Artists
 - Cornelia, Aurelia, Xenia (bonus Rome)
+    `,
+    content_de: `
+## Altes Rom Leitfaden - TopGirl
+
+### Überblick
+Das **Adventure Abroad: Rome** Event ist ein saisonales 12-Tage-Event, das im antiken Rom stattfindet. Das Ziel ist es, ROMA-Items durch 3 Phasen zu sammeln und sie gegen exklusive Belohnungen einzutauschen.
+
+### Event-Phasen
+
+**Phase 1: Kolosseum (Tag 1-4)**
+- **Ziel:** ROMA-Items sammeln
+- **Belohnungen:** ROMA Items, Diamanten
+- **Tipp:** Fokussiere dich auf schnelle Kämpfe zum schnellen Sammeln
+
+**Phase 2: Forum (Tag 5-8)**
+- **Ziel:** Songs abschließen
+- **Belohnungen:** SSR-Karten, ROMA Items
+- **Tipp:** Verwende deine besten Teams, um die Belohnungen zu maximieren
+
+**Phase 3: Kaiser (Tag 9-12)**
+- **Ziel:** Belohnungen eintauschen
+- **Belohnungen:** UR-Token, SSR+ Karten
+- **Tipp:** Behalte genug ROMA-Items für die besten Tausche
+
+### Strategie
+1. **Tag 1-4:** Sammle ROMA-Items
+2. **Tag 5-8:** Fokussiere dich auf Song-Abschlüsse
+3. **Tag 9-12:** Tausche für die besten Belohnungen
+
+### Beste Künstlerinnen
+- Cornelia, Aurelia, Xenia (Rom-Bonus)
     `
   },
   {
     id: "event-radio-battle",
     title: "Guide Radio Battle",
+    title_de: "Radio Battle Leitfaden",
     description: "Guide complet du Radio Battle",
+    description_de: "Vollständiger Radio Battle Leitfaden.",
     icon: "📻",
     color: "#06b6d4",
     category: "Événements",
+    category_de: "Events",
     readTime: "8 min",
     content: `
 ## Guide Radio Battle - TopGirl
@@ -2249,15 +2805,54 @@ Le **Radio Battle** est un événement récurrent où vous affrontez d'autres jo
 
 ### Meilleures Artists
 - Skylar, Nova, Sora, Evelyn
+    `,
+    content_de: `
+## Radio Battle Leitfaden - TopGirl
+
+### Überblick
+Der **Radio Battle** ist ein wiederkehrendes Event, bei dem du über das Radio gegen andere Spieler antrittst. Je mehr Zuhörer du hast, desto höher ist deine Punktzahl.
+
+### Die 5 Phasen
+
+**Phase 1: Eröffnung (Tag 1)**
+- Bereite deine Radiostation vor
+- Belohnung: Radio Coins x100
+
+**Phase 2: Heat 1 (Tag 1-2)**
+- Sammle Zuhörer
+- Belohnung: Radio Coins x200
+
+**Phase 3: Heat 2 (Tag 2-3)**
+- Fordere andere Stationen heraus
+- Belohnung: Radio Coins x300
+
+**Phase 4: Finale (Tag 3-4)**
+- Finaler Kampf
+- Belohnung: SSR-Karten
+
+**Phase 5: Tausch (Tag 4-5)**
+- Tausche deine Radio Coins
+- Belohnungen: UR-Token, SSR+
+
+### Strategie
+1. **Veröffentliche während der Stoßzeiten** (abends)
+2. **Verwende Künstlerinnen mit Charisma-Fähigkeiten**
+3. **Kombiniere verschiedene Genres**, um mehr Zuhörer anzuziehen
+
+### Beste Künstlerinnen
+- Skylar, Nova, Sora, Evelyn
     `
   },
   {
     id: "event-grammy",
     title: "Guide Grammy Awards",
+    title_de: "Grammy Awards Leitfaden",
     description: "Guide des 8 catégories Grammy",
+    description_de: "Leitfaden zu den 8 Grammy-Kategorien.",
     icon: "🏆",
     color: "#fbbf24",
     category: "Événements",
+    category_de: "Events",
     readTime: "10 min",
     content: `
 ## Guide Grammy Awards - TopGirl
@@ -2286,15 +2881,40 @@ Le **Grammy Contest** est un événement hebdomadaire de competition musicale av
 ### Meilleures Artists
 - Lestari, Brooklyn, Alice, Bella (general)
 - Artists par genre: vérifier les stats
+    `,
+    content_de: `
+## Grammy Awards Leitfaden - TopGirl
+
+### Die 8 Kategorien
+1. **Best New Artist** - Neue Künstlerinnen
+2. **Best Pop Vocal Album** - Pop Vocal Alben
+3. **Best Dance/Electronic Album** - Dance/Electronic Alben
+4. **Best Hip-Hop Album** - Hip-Hop Alben
+5. **Best Female Vocalist** - Beste weibliche Sängerin
+6. **Best Male Vocalist** - Bester männlicher Sänger
+7. **Best Group** - Beste Gruppe
+8. **Album of the Year** - Album des Jahres
+
+### Strategie
+1. **Verwende Künstlerinnen mit hohen Gesangs-Stats**
+2. **Kombiniere Lead-Vocalist + unterstützende Tänzerinnen**
+3. **Pop und EDM haben tendenziell höhere Punktzahlen**
+
+### Beste Künstlerinnen
+- Lestari, Brooklyn, Alice, Bella (allgemein)
+- Künstlerinnen nach Genre: Stats überprüfen
     `
   },
   {
     id: "event-ultimate-ceo",
     title: "Guide Ultimate CEO",
+    title_de: "Ultimate CEO Leitfaden",
     description: "Guide complet de l'Ultimate CEO",
+    description_de: "Vollständiger Ultimate CEO Leitfaden.",
     icon: "💼",
     color: "#ef4444",
     category: "Événements",
+    category_de: "Events",
     readTime: "8 min",
     content: `
 ## Guide Ultimate CEO - TopGirl
@@ -2323,15 +2943,46 @@ L'**Ultimate CEO** est un événement hebdomadaire de 5 jours où vous affrontez
 
 ### Meilleures Artists
 - Kokoro, Aurora, Claire, Alice
+    `,
+    content_de: `
+## Ultimate CEO Leitfaden - TopGirl
+
+### Überblick
+Der **Ultimate CEO** ist ein wöchentliches 5-Tage-Event, bei dem du gegen den CEO antrittst, um exklusive Belohnungen zu erhalten.
+
+### Phasen
+
+**Phase 1 (Tag 1)**
+- Sammle CEO-Punkte
+- Belohnungen: Gewöhnliche Karten
+
+**Phase 2 (Tag 2)**
+- Fordere den CEO heraus
+- Belohnungen: SSR-Karten
+
+**Phase 3 (Tag 3-5)**
+- Tausche deine Belohnungen
+- Belohnungen: UR-Token, CEO-Karten
+
+### Strategie
+1. **Fokussiere dich auf Teams mit hohem DPS**
+2. **Balanciere Angriffs- und Verteidigungskünstlerinnen**
+3. **Verwende Künstlerinnen mit Fan-Kapazitäts-Boni**
+
+### Beste Künstlerinnen
+- Kokoro, Aurora, Claire, Alice
     `
   },
   {
     id: "event-echo-death-match",
     title: "Guide Echo Death Match",
+    title_de: "Echo Death Match Leitfaden",
     description: "Guide du Echo Death Match",
+    description_de: "Echo Death Match Leitfaden: Schwierigkeit, Stufen, Stufen-Belohnungen.",
     icon: "👻",
     color: "#8b5cf6",
     category: "Événements",
+    category_de: "Events",
     readTime: "8 min",
     content: `
 ## Guide Echo Death Match
@@ -2386,15 +3037,60 @@ Les quantités dépendent de la difficulté et de la progression.
 - SSR Private Photos
 - SSR Cards
 - EXP Cards
+    `,
+    content_de: `
+## Echo Death Match Leitfaden
+
+### Typ
+Event-Leitfaden
+
+### Kurze Erklärung
+Echo Death Match ist ein PvP-Event, bei dem du in verschiedenen Schwierigkeitsstufen gegen andere Spieler antrittst.
+
+### Lange Erklärung
+Stufen und Struktur
+Das Event hat mehrere Stufen mit zunehmender Schwierigkeit:
+- Stufe 1-5: Leicht
+- Stufe 6-10: Mittel
+- Stufe 11-15: Schwer
+- Stufe 16+: Extrem
+
+Belohnungen pro Stufe
+- Stufe 1-5: SR-Karten, EXP-Karten
+- Stufe 6-10: SSR-Karten, Asset-Material
+- Stufe 11-15: SSR+-Karten, Asset-Material
+- Stufe 16+: UR-Token, exklusive Belohnungen
+
+Strategie
+1. **Fokussiere dich auf DPS-Künstlerinnen**
+2. **Balanciere Angriff und Verteidigung**
+3. **Sammle Ressourcen zwischen Events**
+
+### Verwandte Leitfäden
+- Spielstruktur-Leitfaden
+- Stats-Leitfaden: Gesang, Tanz und Management
+- Ausrüstungs-Leitfaden
+- Top CEO Leitfaden
+
+### Glossar hinzugefügt
+- Concert Performance: Referenzmodus für Basisbelohnungen
+- Stage: Niveau, das während des Events abgeschlossen werden muss
+- SR Private Fotos
+- SSR Private Fotos
+- SSR-Karten
+- EXP-Karten
     `
   },
   {
     id: "event-muse",
     title: "Guide Muse Event",
+    title_de: "Muse Event Leitfaden",
     description: "Guide du Muse Event",
+    description_de: "Muse Event Leitfaden: Musik-Gameplay, Crystals, Upgrades und Strategien.",
     icon: "🎵",
     color: "#a855f7",
     category: "Événements",
+    category_de: "Events",
     readTime: "8 min",
     content: `
 ## Guide Muse Event
@@ -2478,10 +3174,13 @@ Le montant dépend de tes stats et de ta progression.
   {
     id: "event-chamber-territory",
     title: "Guide Chamber Territory",
+    title_de: "Chamber Territory Leitfaden",
     description: "Guide du Chamber Territory",
+    description_de: "Leitfaden zum Chamber Territory Event.",
     icon: "🏰",
     color: "#14b8a6",
     category: "Événements",
+    category_de: "Events",
     readTime: "8 min",
     content: `
 ## Guide Chamber Territory - TopGirl
@@ -2507,6 +3206,31 @@ Le **Chamber Territory** est un événement de territoire. Capturez et défendez
 1. **Capturez tôt** les territoires à haute valeur
 2. **Défendez vos territoires** pour des bonus
 3. **Coopérez avec d'autres joueurs**
+    `,
+    content_de: `
+## Chamber Territory Leitfaden - TopGirl
+
+### Überblick
+Der **Chamber Territory** ist ein Gebiets-Event. Erobere und verteidige verschiedene Kammern, um Belohnungen zu erhalten.
+
+### Phasen
+
+**Phase 1 (Tag 1-3)**
+- Erobere Gebiete
+- Belohnung: Territory Tokens x300
+
+**Phase 2 (Tag 4-7)**
+- Verteidige und sammle
+- Belohnung: SSR-Karten, Tokens x500
+
+**Phase 3 (Tag 8-10)**
+- Tausche deine Belohnungen
+- Belohnungen: UR-Token, SSR+ Karten
+
+### Strategie
+1. **Erobere früh** hochwertige Gebiete
+2. **Verteidige deine Gebiete** für Boni
+3. **Kooperiere mit anderen Spielern**
     `
   },
   {
@@ -2519,6 +3243,7 @@ Le **Chamber Territory** est un événement de territoire. Capturez et défendez
     title_pl: "Przewodnik po imprezie sprzątającej",
     title_id: "Panduan Pesta Bersih",
     title_ru: "Гид по уборке вечеринки",
+    title_de: "Cleanup Party Leitfaden",
     description: "Guide du Cleanup Party - Comment jouer et optimiser vos rewards",
     description_en: "Cleanup Party Guide - How to play and optimize your rewards",
     description_it: "Guida alla Pulizia della Festa - Come giocare e ottimizzare le ricompense",
@@ -2527,6 +3252,7 @@ Le **Chamber Territory** est un événement de territoire. Capturez et défendez
     description_pl: "Przewodnik po imprezie sprzątającej - Jak grać i optymalizować nagrody",
     description_id: "Panduan Pesta Bersih - Cara bermain dan mengoptimalkan reward",
     description_ru: "Гид по уборке вечеринки - Как играть и оптимизировать награды",
+    description_de: "Cleanup Party Leitfaden. Kombiniere Kacheln, schließe Stufen ab und sammle Belohnungen.",
     icon: "🧹",
     color: "#22c55e",
     category: "Événements",
@@ -2537,6 +3263,7 @@ Le **Chamber Territory** est un événement de territoire. Capturez et défendez
     category_pl: "Wydarzenia",
     category_id: "Acara",
     category_ru: "События",
+    category_de: "Events",
     readTime: "5 min",
     content: `
 ## Guide Cleanup Party — TopGirl
@@ -2725,7 +3452,34 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
 3. **Постарайтесь держать 2-3 слота свободными** whenever possible
 4. **Ежедневные и целевые квесты** помогут вам прогрессировать быстрее и получить дополнительные награды
 5. **Запрашивайте помощь ежедневно**, даже если вам она еще не нужна, чтобы вы могли сохранить её для более сложных уровней позже
-`,
+    `,
+    content_de: `
+## Cleanup Party Event Leitfaden - TopGirl
+
+### Überblick
+Bei **Cleanup Party** ist das Ziel, das gesamte Spielfeld zu räumen, indem du Kacheln kombinierst. Spieler wählen Kacheln vom Spielfeld und platzieren sie in den 7 verfügbaren Slots. Wenn drei identische Kacheln platziert werden, werden sie automatisch entfernt, was Platz für neue Kacheln schafft. Achte darauf, nicht alle 7 Slots mit nicht passenden Kacheln zu füllen, sonst scheitert der Versuch.
+
+### Wie man spielt
+- Jeder Phasenversuch verbraucht Ausdauer
+- Das Räumen von Phasen erhöht die Zuneigung des Mädchens
+- Das Erreichen der maximalen Zuneigung gewährt ein zusätzliches Geschenk
+- Wenn du Gegenstände benötigst, kannst du über die City-, Group- oder Chamber-Kanäle um Hilfe bitten
+
+### Missionen
+- **Tägliche Missionen**: Schließe tägliche Aufgaben ab, um zusätzliche Belohnungen zu erhalten
+- **Ziel-Missionen**: Besondere Event-Ziele mit Bonus-Belohnungen
+
+### Rangliste
+- Jede geräumte Phase gibt Punkte für die Event-Rangliste
+- Höhere Platzierungen erhalten bessere Belohnungen
+
+### Tipps
+1. **Bevor du eine Kachel auswählst**, überprüfe das Spielfeld auf mindestens drei identische Kacheln, um sie schnell zu räumen
+2. **Priorisiere Kacheln**, die bereits zwei oder mehr sichtbare Übereinstimmungen haben
+3. **Versuche 2-3 Slots freizuhalten**, wann immer möglich
+4. **Tägliche und Ziel-Missionen** helfen dir, schneller voranzukommen und Extra-Belohnungen zu erhalten
+5. **Bitte täglich um Hilfe**, selbst wenn du sie noch nicht brauchst, damit du sie für schwierigere Level später aufheben kannst
+    `,
     tips: `
 - Avant de sélectionner une tuile, vérifiez qu'il existe au moins trois tuiles identiques sur le plateau.
 - Priorisez les tuiles qui ont déjà deux correspondances ou plus visibles.
@@ -2739,7 +3493,14 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
 - Try to keep 2–3 slots free whenever possible.
 - Daily and Target Quests help you progress faster and earn extra rewards.
 - Request assistance daily, even if you don't need it yet, to save it for harder levels later.
-`,
+    `,
+    tips_de: `
+- Bevor du eine Kachel auswählst, überprüfe das Spielfeld auf mindestens drei identische Kacheln, um sie schnell zu räumen.
+- Priorisiere Kacheln, die bereits zwei oder mehr sichtbare Übereinstimmungen haben.
+- Versuche 2-3 Slots freizuhalten, wann immer möglich.
+- Tägliche und Ziel-Missionen helfen dir, schneller voranzukommen und Extra-Belohnungen zu erhalten.
+- Bitte täglich um Hilfe, selbst wenn du sie noch nicht brauchst, damit du sie für schwierigere Level später aufheben kannst.
+    `,
   },
   {
     id: "event-metro-subway",
@@ -2751,14 +3512,16 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
     title_pl: "Przewodnik Metro & Subway",
     title_id: "Panduan Metro & Subway",
     title_ru: "Гайд Metro & Subway",
+    title_de: "Metro & Subway Leitfaden",
     description: "Guide de l'événement Adventure Abroad Metro. Débloquez des stations, gérez vos Fonds d'Investissement et maximisez vos récompenses.",
     description_en: "Adventure Abroad Metro event guide. Unlock stations, manage your Investment Funds and maximize your rewards.",
     description_it: "Guida all'evento Metro di Adventure Abroad. Sblocca stazioni, gestisci i tuoi Fondi di Investimento e massimizza le ricompense.",
     description_es: "Guía del evento Metro de Adventure Abroad. Desbloquea estaciones, gestiona tus Fondos de Inversión y maximiza tus recompensas.",
     description_pt: "Guia do evento Metro de Adventure Abroad. Desbloqueie estações, gerencie seus Fundos de Investimento e maximize suas recompensas.",
-    description_pl: "Przewodnik po wydarzeniu Metro Adventure Abroad. Odblokuj stacje, zarządzaj Funduszami Inwestycyjnymi i zmaksymalizuj nagrody.",
+    description_pl: "Przewodnik po metrze Adventure Abroad. Odblokuj stacje, zarządzaj funduszami inwestycyjnymi i zmaksymalizuj nagrody.",
     description_id: "Panduan event Metro Adventure Abroad. Buka stasiun, kelola Dana Investasi dan maksimalkan reward.",
-    description_ru: "Гайд по событию Metro в Adventure Abroad. Открывайте станции, управляйте Инвестиционными Фондами и максимизируйте награды.",
+    description_ru: "Гайд по Adventure Abroad Metro. Разблокируйте станции, управляйте инвестиционными фондами и максимизируйте награды.",
+    description_de: "Vollständiger Leitfaden zum Adventure Abroad Metro-Event. Entsperre Stationen, verwalte deine Investitionsfonds und maximiere Belohnungen.",
     icon: "🚇",
     color: "#3b82f6",
     category: "Événements",
@@ -2769,6 +3532,7 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
     category_pl: "Wydarzenia",
     category_id: "Acara",
     category_ru: "События",
+    category_de: "Events",
     readTime: "8 min",
     tips: `
 - Concentrez-vous d'abord sur le déblocage de stations. C'est la principale source de progression.
@@ -2789,7 +3553,17 @@ Dalam **Cleanup Party**, tujuannya adalah menghapus seluruh papan dengan mencoco
 - Use SR Photo Exchange daily for extra Investment Funds.
 - Save Commemorative Coins for important upgrades instead of spending them immediately.
 - Prioritize permanent upgrades over temporary Metro boosts.
-`,
+    `,
+    tips_de: `
+- Fokussiere dich zuerst auf das Freischalten von Stationen. Das ist die Hauptquelle des Fortschritts.
+- Gib nicht früh Investitionsfonds für zusätzliche Investitionen aus. Das wird deinen Fortschritt verlangsamen.
+- Verwende zusätzliche Ressourcen nur während Ultimate Group, Ultimate CEO oder Group Battle.
+- Plane deine AP-Nutzung früh. Das Event erfordert hohe tägliche Aktivität (ca. 1.700 AP/Tag).
+- Sei bereit, Diamanten zu verwenden, wenn du maximale Effizienz erreichen willst.
+- Verwende täglich den SR-Foto-Tausch für zusätzliche Investitionsfonds.
+- Bewahre Gedenkmünzen für wichtige Upgrades auf, anstatt sie sofort auszugeben.
+- Priorisiere permanente Upgrades vor temporären Metro-Boosts.
+    `,
     rewards: `
 - Points de Fréquentation : utilisés pour le classement pendant l'événement Metro.
 - Commemorative Coins : utilisés dans l'Abroad Shop pour obtenir des ressources précieuses.
@@ -2923,6 +3697,7 @@ The Abroad Shop allows players to exchange Commemorative Coins for valuable item
     title_pl: "Poradnik Adventure Abroad: Tokyo",
     title_id: "Panduan Adventure Abroad: Tokyo",
     title_ru: "Гайд Adventure Abroad: Tokyo",
+    title_de: "Adventure Abroad: Tokyo Leitfaden",
     description: "Guide complet de l'événement Adventure Abroad Tokyo. Warmup, système de conquête, Metro, événements et récompenses.",
     description_en: "Complete guide to the Adventure Abroad Tokyo event. Warmup, conquest system, Metro, events and rewards.",
     description_it: "Guida completa dell'evento Adventure Abroad Tokyo. Warmup, sistema di conquista, Metro, eventi e ricompense.",
@@ -2931,6 +3706,7 @@ The Abroad Shop allows players to exchange Commemorative Coins for valuable item
     description_pl: "Kompletny poradnik wydarzenia Adventure Abroad Tokyo. Warmup, system podboju, Metro, wydarzenia i nagrody.",
     description_id: "Panduan lengkap acara Adventure Abroad Tokyo. Warmup, sistem penaklukan, Metro, acara dan hadiah.",
     description_ru: "Полный гайд по событию Adventure Abroad Tokyo. Warmup, система завоевания, Metro, события и награды.",
+    description_de: "Vollständiger Leitfaden zum Adventure Abroad Tokyo-Event. Warmup, Eroberungssystem, Metro, Ereignisse und Belohnungen.",
     icon: "🗼",
     color: "#ef4444",
     category: "Événements",
@@ -2941,6 +3717,7 @@ The Abroad Shop allows players to exchange Commemorative Coins for valuable item
     category_pl: "Wydarzenia",
     category_id: "Acara",
     category_ru: "События",
+    category_de: "Events",
     readTime: "12 min",
     content: `
 ## Guide Adventure Abroad : Tokyo
@@ -3467,6 +4244,81 @@ Untuk mendapatkan poin dalam acara, Anda terutama perlu:
 
 Tokyo tidak hanya tentang penaklukan peta. Anda juga perlu mendapatkan poin secara teratur di sistem tambahan.
 `,
+    content_de: `
+## Adventure Abroad: Tokyo Leitfaden
+
+### Kurze Erklärung
+Tokyo ist das erste Abroad-Abenteuer in Top Girl. Es ist auch der erste große Schritt im Spiel nach der Anfangsphase auf dem Heimat-Server. Das Event beginnt mit Tokyo Warmup und setzt sich dann 3 Wochen lang auf einer neuen Karte fort. Tokyo folgt der Eroberungslogik des Spielanfangs, mit Landmarks, URs und einem Endziel: dem Tokyo Tower.
+
+### Lange Erklärung
+
+#### Tokyo in der Spielstruktur
+Tokyo ist das erste Abenteuer nach der Startphase auf dem Heimat-Server. Es ist die Basis aller Abroad-Abenteuer. Um Tokyo gut zu verstehen, solltest du auch den [Spielstruktur-Leitfaden](/de/guides/structure-du-jeu/) lesen.
+
+Tokyo kehrt dann in Zyklen zurück: Tokyo, dann Tokyo 2, dann Tokyo 3, usw. Das erste Tokyo ist sehr wichtig, da es die Grundlagen für den Fortschritt im weiteren Spielverlauf legt.
+
+#### Tokyo Warmup
+Bevor du auf die Tokyo-Karte kommst, gibt es eine Vorbereitungswoche: Tokyo Warmup.
+
+Während dieses Warmups:
+- 6 Server werden zusammengefasst
+- beim ersten Tokyo werden Server normalerweise mit Servern ähnlichen Alters zusammengefasst
+- Das Warmup gibt bereits sehr wichtige Belohnungen:
+  - Die Top 25 können **Chizuru** freischalten
+  - **Chizuru** ist die erste Künstlerin mit einer Rally-Capacity-Fähigkeit
+  - Der Server, der den 1. Platz belegt, erhält einen Bonus von **+10% Stats** während des gesamten Tokyo-Abenteuers
+  - Server auf Platz 2 und 3 erhalten einen Bonus von **+5% Stats**
+
+Das Warmup ist also sehr wichtig. Gut abzuschneiden, bevor die Karte überhaupt geöffnet wird, gibt einen echten Vorteil für das gesamte Abenteuer.
+
+#### Allgemeiner Betrieb von Tokyo
+Tokyo dauert **3 Wochen** auf einer neuen, dedizierten Karte.
+
+Das allgemeine System ähnelt der ersten Phase des Spiels:
+- HQ-Platzierung
+- Ressourcen-Farming
+- Fortschritt auf der Karte
+- Landmarks erobern
+- Kampf um URs
+- Finale Kontroll-Ziel
+
+Der große Unterschied ist, dass Tokyo in einer Abroad-Umgebung mit mehreren Servern, mehr Druck und mehr erforderlicher Koordination gespielt wird.
+
+Das Endziel des Abenteuers ist der **Tokyo Tower**, der eine ähnliche Rolle wie das Burj Khalifa auf dem Heimat-Server spielt.
+
+#### Die neuen Systeme von Tokyo
+
+**Die Metro** — Tokyo führt die Metro ein. Dieses System ermöglicht es, Boosts, Belohnungen und zusätzlichen Fortschritt während des Abenteuers zu erhalten. Sieh dir den [Metro & Subway Leitfaden](/de/guides/event-metro-subway/) an.
+
+**Die Tokyo-Gebäude** — Tokyo fügt auch spezifische Gebäude hinzu. Diese Gebäude generieren Erfahrung basierend auf dem Level der Shops und deinem Management-Level. Dies macht die Management/Economy-Stat in diesem Abenteuer noch wichtiger.
+
+#### Die Bedeutung von Gruppen in Tokyo
+Tokyo bestraft schlecht organisierte Server stark. Server mit schlechten Anführern, internen Konflikten, fehlender Koordination oder nicht zusammenarbeitenden Gruppen leiden sehr während Tokyo.
+
+Da Transfers erst viel später kommen, kann ein schlechter Start sehr teuer werden. Tokyo belohnt Server, die vereint, aktiv und gut organisiert sind.
+
+#### Tokyo-Zeitplan
+
+**Ankunft in Tokyo** — Zu Beginn des Abenteuers musst du dein HQ positionieren, schnell mit dem Farming beginnen und wie auf dem Heimat-Server vorankommen. Bei der Ankunft gibt es auch verschiedene Pakete, Auffüllungs-Events und **Kokoro** im Tokyo Shop. Kokoro ist eine wichtige Künstlerin für eine sehr starke EDM-Zusammensetzung zu Beginn des Spiels. Es gibt auch den Start des Events **Who is the richest in Tokyo?**.
+
+**Woche 1** — Woche 1 enthält: Ultimate CEO, Ayaka im Slot Machine, anfängliche Phase in der Chamber, Beginn des Stock Market am Tag 3, Öffnung des ersten Toll am Tag 4, Öffnung der ersten Zone, die mit anderen Servern geteilt wird, und erste umstrittene Landmarks. Die Chamber ist deine sichere Server-Zone zu Beginn von Tokyo.
+
+**Woche 2** — Woche 2 enthält: Kampf um URs, Dice Event mit Sora, Ultimate Group Event und Versus Event. Dies ist die Woche mit stark steigender Spannung. Gruppenkoordination wird wichtiger.
+
+**Woche 3** — Woche 3 enthält: Neues Ultimate CEO, Yuuko im Slot Machine, Öffnung der letzten Zone und finaler Kampf um den Tokyo Tower. Dies ist die entscheidende Phase des Abenteuers.
+
+#### Ranglisten während Tokyo
+Während Tokyo gibt es mehrere Ranglisten: individuell, Gruppe und Chamber.
+
+Um Punkte im Event zu erhalten, musst du hauptsächlich:
+- Gold aus Hotels sammeln
+- Konzerte geben
+- Stadion-Rallys machen
+- Fans töten
+- Geld auf Metro-Linien ausgeben
+
+Tokyo geht nicht nur um Karten-Eroberung. Du musst auch regelmäßig Punkte in den Zusatzsystemen sammeln.
+`,
     content_ru: `
 ## Гайд Adventure Abroad: Tokyo
 
@@ -3613,7 +4465,16 @@ Tokyo — это не только завоевание карты. Вам та�
 - Организуйте свой сервер очень рано. Tokyo сильно наказывает серверы с внутренними конфликтами.
 - Будьте осторожны с UR Tokyo. UR Tokyo может быть привязан только к артистке Tokyo.
 - Внимательно следите за второстепенными событиями Tokyo. Они часто дают эксклюзивные предметы, очень важные для прогрессии.
-`,
+    `,
+    tips_de: `
+- Bereite deine Ankunft vor dem Tokyo-Opening vor. Schau dir die Karte vorher an, wenn möglich.
+- Versuche auch, dich schnell mit benachbarten Servern oder Gruppen in deiner Nähe zu verbinden.
+- Spare AP vor der Ankunft in Tokyo, wenn die Chamber- oder individuelle Rangliste bereits gespielt wurde. Das kann dir etwas mehr Währung geben, was beim Fortschritt im Metro sehr hilft.
+- Unterschätze Tokyo Warmup nicht. Stats-Boni und Chizuru können einen echten Unterschied während des gesamten Abenteuers machen.
+- Organisiere deinen Server früh. Tokyo bestraft Server mit internen Konflikten stark.
+- Sei vorsichtig mit UR Tokyo. UR Tokyo kann nur an Tokyo-Künstlerinnen gebunden werden.
+- Achte auf die sekundären Tokyo-Events. Sie geben oft exklusive Gegenstände, die für den Fortschritt sehr wichtig sind.
+    `,
     rewards: `
 **Récompenses du Warmup :**
 - Chizuru pour les 25 premiers
@@ -3668,6 +4529,7 @@ The Tokyo Stock Auction also gives different rewards, including:
     title_pl: "Przewodnik Group Battle",
     title_id: "Panduan Group Battle",
     title_ru: "Гайд Group Battle",
+    title_de: "VS Group Event Leitfaden",
     description: "Group Battle est un événement de groupe qui dure 6 jours. Bataille entre groupes avec 5 jours de préparation et 1 jour de combat final.",
     description_en: "Group Battle is a 6-day group event. Battle between groups with 5 days preparation and 1 day final combat.",
     description_it: "Group Battle è un evento di gruppo della durata di 6 giorni. Battaglia tra gruppi con 5 giorni di preparazione e 1 giorno di combattimento finale.",
@@ -3676,6 +4538,7 @@ The Tokyo Stock Auction also gives different rewards, including:
     description_pl: "Group Battle to wydarzenie grupowe trwające 6 dni. Bitwa między grupami z 5 dniami przygotowań i 1 dniem walki.",
     description_id: "Group Battle adalah acara grup yang berlangsung 6 hari. Pertarungan antar grup dengan 5 hari persiapan dan 1 hari pertarungan final.",
     description_ru: "Group Battle - это групповое событие длительностью 6 дней. Битва между группами с 5 днями подготовки и 1 днём финальной битвы.",
+    description_de: "VS Group Event ist ein 6-tägiges Gruppen-Event. Rush Attack, Blueprints und Strategien.",
     icon: "⚔️",
     color: "#ef4444",
     category: "Événements",
@@ -3686,6 +4549,7 @@ The Tokyo Stock Auction also gives different rewards, including:
     category_pl: "Wydarzenia",
     category_id: "Acara",
     category_ru: "События",
+    category_de: "Events",
     readTime: "8 min",
     content: `
 ## Guide Group Battle
@@ -4343,6 +5207,85 @@ Blueprints очень важны, если вы хотите прогресси�
 - Координируйте со своей группой
 - Избегайте смены группы во время события
     `,
+    tips_de: `
+- Nimm jeden Tag während Days 1-5 teil
+- Versuche mindestens 12 Millionen persönliche Punkte pro Tag zu erreichen
+- Verbessere deine Battle Blueprints so bald wie möglich
+- Bereite dich auf Rush Attack vor Day 6 vor
+- Koordiniere dich mit deiner Gruppe
+- Vermeide es, die Gruppe während des Events zu wechseln
+    `,
+    content_de: `
+## Group Battle Leitfaden
+
+### Kurze Erklärung
+Group Battle ist ein 6-tägiges Gruppen-Event.
+Während der ersten 5 Tage verdienen Gruppen Punkte, indem sie tägliche Aktionen abschließen.
+Am Tag 6 ermöglicht eine finale Phase namens Rush Attack das Angreifen feindlicher Zonen, um noch mehr Punkte zu verdienen.
+Die Gruppe mit der besten Gesamtpunktzahl am Ende gewinnt den Ultimate Victory.
+
+### Lange Erklärung
+#### Allgemeiner Betrieb
+Group Battle ist ein auf Gruppenzusammenarbeit fokussiertes Event.
+Jedes Mitglied muss teilnehmen, um die Gesamtpunktzahl zu erhöhen.
+
+Das Event dauert 6 Tage:
+- Tage 1-5: Vorbereitungsphase
+- Tag 6: Finale Kampiphase
+
+Das Ziel ist einfach: Deine Gruppe muss mehr Punkte als die gegnerische Gruppe ansammeln.
+
+#### Tage 1-5: Vorbereitungsphase
+Während der ersten 5 Tage schließen Spieler täglich Aktionen ab, um Battle Points zu verdienen.
+
+Jeden Tag gibt es ein tägliches Ergebnis zwischen gegnerischen Gruppen.
+Die Gruppe mit den meisten Punkten gewinnt die Tagespunktzahl.
+
+Wenn zwei Gruppen genau die gleiche Punktzahl erreichen, gewinnt die Gruppe, die diese Punktzahl zuerst erreicht.
+Diese Regel macht Geschwindigkeit wichtig, nicht nur die Gesamtsumme.
+
+#### Tag 6: Finale Kampiphase
+Tag 6 ist die entscheidende Phase.
+Hier wird der Ultimate Victory entschieden.
+
+#### Rush Attack
+Während Rush Attack können sich Spieler in Zonen der feindlichen Gruppe teleportieren.
+
+Verfügbare Zonen:
+- Landmark 2
+- Landmark 3
+- Landmark 4
+
+In diesen Zonen können zusätzliche Punkte verdient werden, indem man Mitglieder der feindlichen Gruppe besiegt.
+
+Der Zurück-Button ermöglicht es, auf eigenes Territorium zurückzukehren.
+Aber die Verwendung von Zurück startet eine Abklingzeit vor dem nächsten kostenlosen Teleport.
+
+Das bedeutet, dass du deine Bewegungen während der finalen Phase sorgfältig wählen musst.
+
+#### Blueprints
+Während Group Battle ist es möglich, Battle Blueprints zu verbessern.
+
+Verbesserungen ermöglichen:
+- Höhere Belohnungsstufen freischalten
+- Verdiente Punkte erhöhen
+- Permanente Stats-Boni freischalten
+
+Es gibt auch Master Blueprints, die ebenfalls helfen, die Leistung während des Events zu verbessern.
+
+Blueprints sind also sehr wichtig, wenn du langfristig in Group Battle vorankommen willst.
+
+#### Teilnahmebedingungen
+Um teilzunehmen, brauchst du:
+- CEO Level 20 oder höher
+- Mitglied einer Gruppe mit ausreichender Financial Power
+
+Gruppenwechsel während des Events hat eine wichtige Konsequenz:
+- Beitrag zu Group Points ist für 1 Tag gesperrt
+- Persönliche Punkte sind nicht betroffen
+
+Das macht Gruppenwechsel während des Events riskant.
+    `,
   },
   {
     id: "event-fishing",
@@ -4354,6 +5297,7 @@ Blueprints очень важны, если вы хотите прогресси�
     title_pl: "Przewodnik Fishing Event",
     title_id: "Panduan Fishing Event",
     title_ru: "Гайд Fishing Event",
+    title_de: "Angel-Event Leitfaden",
     description: "Fishing Event dure 7 jours. Attrapez des poissons, gérez votre Aquarium et échangez des Vouchers contre des récompenses.",
     description_en: "Fishing Event lasts 7 days. Catch fish, manage your Aquarium and exchange Vouchers for rewards.",
     description_it: "Fishing Event dura 7 giorni. Cattura pesci, gestisci il tuo Aquarium e scambia Vouchers per ricompense.",
@@ -4362,6 +5306,7 @@ Blueprints очень важны, если вы хотите прогресси�
     description_pl: "Fishing Event trwa 7 dni. Łów ryby, zarządzaj swoim Aquarium i wymieniaj Vouchery na nagrody.",
     description_id: "Fishing Event berlangsung 7 hari. Tangkap ikan, kelola Aquarium Anda dan tukarkan Vouchers untuk hadiah.",
     description_ru: "Fishing Event длится 7 дней. Ловите рыб, управляйте своим Aquarium и обменивайте Vouchers на награды.",
+    description_de: "Angel-Event dauert 7 Tage. Fange Fische, verwalte dein Aquarium und tausche Gutscheine gegen Belohnungen ein.",
     icon: "🎣",
     color: "#06b6d4",
     category: "Événements",
@@ -4372,7 +5317,8 @@ Blueprints очень важны, если вы хотите прогресси�
     category_pl: "Wydarzenia",
     category_id: "Acara",
     category_ru: "События",
-    readTime: "6 min",
+    category_de: "Events",
+    readTime: "10 min",
     content: `
 ## Guide Fishing Event
 
@@ -5013,14 +5959,97 @@ Blue Shells используются для разблокировки допо�
 - Не используйте Free Bait на рыбе 1★
 - Используйте Paid Bait только когда 4★ Fish виден в Paid Pool
     `,
+    tips_de: `
+- Nutze zu Beginn des Events aktiv dein Free Bait
+- Verwandle unnütze Fische in Blue Shells, um Slots schneller zu öffnen
+- Das Ziel zu Beginn ist, schnell mindestens 10 Aquarium-Slots zu erreichen
+- Versuche so schnell wie möglich 20 Tank-Slots zu erreichen
+- Denke daran, die Pools alle 30 Minuten zu überprüfen
+- Verwende kein Free Bait auf 1★-Fischen
+- Verwende Paid Bait nur, wenn ein 4★-Fisch im Paid Pool sichtbar ist
+    `,
+    content_de: `
+## Angel-Event Leitfaden
+
+### Kurze Erklärung
+Angel-Event dauert 7 Tage.
+Während dieses Events fangen Spieler Fische mit Free Bait oder Paid Bait.
+Fische produzieren Gutscheine, die die Event-Währung sind.
+Je seltener der Fisch, desto mehr Gutscheine produziert er.
+Es ist auch möglich, das Aquarium zu erweitern, um mehr Fische zu halten und die Einnahmen zu erhöhen.
+
+### Lange Erklärung
+#### Allgemeiner Betrieb
+Während des Angel-Events fängst du Fische, um Gutscheine zu generieren.
+Gutscheine werden dann verwendet, um Belohnungen im Event-Shop zu kaufen.
+
+Jeder Fang kostet 5 Köder.
+Es gibt 2 Arten von Ködern:
+- Free Bait
+- Paid Bait
+
+Free Bait regeneriert sich über Zeit.
+Paid Bait muss über den Shop oder durch bestimmte Event-Belohnungen erhalten werden.
+
+#### Fisch-Seltenheit
+Fische haben 4 Seltenheitsstufen:
+- 1★ Fish
+- 2★ Fish
+- 3★ Fish
+- 4★ Fish
+
+Je mehr Sterne ein Fisch hat, desto mehr Gutscheine generiert er pro Minute.
+4★-Fische sind viel häufiger mit Paid Bait.
+
+Wenn du einen stärkeren Fisch bekommst, kann ein schwacher Fisch automatisch ersetzt werden.
+Dies ermöglicht es dir, dein Aquarium schrittweise zu verbessern.
+
+#### Pity-System
+Das Event hat ein Pity-System.
+Alle 50 Fänge bist du garantiert, mindestens einen 3★-Fisch oder 4★-Fisch zu erhalten.
+Dieses System hilft, lange Serien schlechter Ergebnisse zu vermeiden.
+
+#### Fisch-Aktualisierungssystem
+Fische erscheinen in 2 Pools:
+- Free Pool
+- Paid Pool
+
+Jedes Mal, wenn ein Fisch gefangen wird, wird der Aktualisierungs-Timer zurückgesetzt.
+Wenn 30 Minuten lang kein Fisch erscheint, wird der Pool automatisch aktualisiert.
+Es ist auch möglich, diesen Timer zurückzusetzen, indem man einen Fisch fängt.
+
+Dieser Punkt ist wichtig, da du die Pools regelmäßig überwachen musst, um den Köder nicht zu verschwenden.
+
+#### Aquarium und Slots
+Fische werden im Aquarium gehalten.
+Du musst Tank-Slots freischalten, um mehr Fische behalten zu können.
+
+Je mehr Fische du behältst, desto mehr Gutscheine verdienst du.
+Überschüssige Fische können in Blue Shells umgewandelt werden.
+Blue Shells werden verwendet, um zusätzliche Slots freizuschalten.
+
+Das Aquarium ist daher ein zentraler Teil des Events.
+Ein größeres Aquarium gibt eine bessere Gutschein-Generierung während des gesamten Angel-Events.
+
+#### Ende des Events
+Wenn das Event endet:
+- Alle ungenutzten Free Bait werden in Diamanten umgewandelt
+- Alle ungenutzten Paid Bait werden in Diamanten umgewandelt
+- Der Fortschritt wird nicht auf das nächste Angel-Event übertragen
+
+Das bedeutet, dass du deine Ressourcen während der 7 Tage optimieren musst, da nichts für die nächste Ausgabe aufbewahrt wird.
+    `,
   },
   {
     id: "world-building",
     title: "World Building Guide",
+    title_de: "World Building Leitfaden",
     description: "Guide World Building",
+    description_de: "Leitfaden zum Bau und zur Entwicklung der Welt.",
     icon: "🌍",
     color: "#10b981",
     category: "Intermédiaire",
+    category_de: "Fortgeschritten",
     readTime: "10 min",
     content: `
 ## World Building Guide - TopGirl
@@ -5036,10 +6065,13 @@ Build and develop your world in the game. This guide covers the basics of world 
   {
     id: "vip-level",
     title: "VIP Level Guide",
+    title_de: "VIP Level Leitfaden",
     description: "Guide VIP Level",
+    description_de: "Punkte, die für jedes VIP-Level und zugehörige Vorteile erforderlich sind.",
     icon: "⭐",
     color: "#f59e0b",
     category: "Avancé",
+    category_de: "Fortgeschritten",
     readTime: "15 min",
     content: `
 ## VIP Level Guide - TopGirl
@@ -5057,10 +6089,13 @@ Detailed guide on points required for each VIP level.
   {
     id: "ceo-coins",
     title: "CEO Coins Purchase Guide",
+    title_de: "CEO Coins Kaufleitfaden",
     description: "Guide d'achat de CEO Coins",
+    description_de: "Wie man CEO Coins auf der offiziellen Zahlungswebsite kauft.",
     icon: "💰",
     color: "#84cc16",
     category: "Avancé",
+    category_de: "Fortgeschritten",
     readTime: "5 min",
     content: `
 ## CEO Coins Purchase Guide - TopGirl
@@ -5087,10 +6122,13 @@ After completing the purchase of CEO coins, enter the game, select the gift pack
   {
     id: "alliance-management",
     title: "Alliance Management Guide",
+    title_de: "Allianz-Management Leitfaden",
     description: "Guide de gestion d'alliance",
+    description_de: "Rollen, Verantwortlichkeiten und Strategien für die Verwaltung einer Allianz in TopGirl.",
     icon: "🏰",
     color: "#8b5cf6",
     category: "Avancé",
+    category_de: "Fortgeschritten",
     readTime: "12 min",
     content: `
 ## Alliance Management Guide - TopGirl
@@ -5120,10 +6158,13 @@ Develop your alliance through careful planning and coordination with members.
   {
     id: "peak-level",
     title: "Peak Level Guide",
+    title_de: "Peak Level Leitfaden",
     description: "Guide Peak Level",
+    description_de: "Peak Level System für SSR-Künstler. Wichtige Meilensteine und F2P-Strategien.",
     icon: "📊",
     color: "#ec4899",
     category: "Avancé",
+    category_de: "Fortgeschritten",
     readTime: "15 min",
     content: `
 ## Peak Level Guide - TopGirl
@@ -5155,10 +6196,13 @@ Peak Level is a long-term global power system, perfect for whales.
   {
     id: "construction-equipe-debut",
     title: "Construction d'équipe début de jeu",
+    title_de: "Frühspiel-Teamaufbau",
     description: "Choisir ses artistes au début et éviter de gaspiller des ressources.",
+    description_de: "Wähle dein frühes Team und vermeide verschwendete Ressourcen.",
     icon: "🎯",
     color: "#f97316",
     category: "Avancé - Début de jeu",
+    category_de: "Fortgeschritten - Frühspiel",
     readTime: "12 min",
     content: `
 ## Guide Construction d'équipe début de jeu
@@ -5239,10 +6283,13 @@ Sari arrive à Bali. Xenia arrive à Roma.
   {
     id: "construction-equipe-fin",
     title: "Construction d'équipe fin de jeu",
+    title_de: "Spätspiel-Teamaufbau",
     description: "Construire une équipe optimisée en fin de jeu selon l'adversaire.",
+    description_de: "Erstelle ein optimiertes Team basierend auf Gegner und Kontext.",
     icon: "🧠",
     color: "#f59e0b",
     category: "Avancé - Fin de jeu",
+    category_de: "Fortgeschritten - Spätspiel",
     readTime: "12 min",
     content: `
 ## Guide Construction d'équipe fin de jeu
@@ -5312,10 +6359,13 @@ La combinaison Monica + les derniers artistes sortis rend le genre très compét
   {
     id: "group-shop",
     title: "Group Shop Guide",
+    title_de: "Group Shop Leitfaden",
     description: "Guide Group Shop",
+    description_de: "Was du im Group Shop kaufen solltest? Kaufprioritätsreihenfolge.",
     icon: "🛒",
     color: "#f97316",
     category: "Débutant",
+    category_de: "Anfänger",
     readTime: "5 min",
     content: `
 ## Group Shop Guide - TopGirl
@@ -5416,6 +6466,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
     pl: { short: ["Krótkie Wyjaśnienie", "Krótka Wyjaśnienie"], long: ["Długie Wyjaśnienie"] },
     id: { short: ["Penjelasan Singkat"], long: ["Penjelasan Panjang"] },
     ru: { short: ["Краткое объяснение"], long: ["Подробное Объяснение"] },
+    de: { short: ["Kurze Erklärung"], long: ["Lange Erklärung"] },
   } as const;
 
   const extractShortExplanation = (content: string | undefined, currentLang: string) => {

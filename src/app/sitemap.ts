@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 const BASE_URL = 'https://apexgirlguide.com';
-const LANGUAGES = ['fr', 'en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
+const LANGUAGES = ['fr', 'en', 'de', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
 
 // All artist slugs (117 artists)
 const ARTIST_SLUGS = [

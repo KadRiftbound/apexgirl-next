@@ -38,7 +38,7 @@ function formatExpiry(dateStr: string, lang: string): string {
   const date = new Date(dateStr);
   const localeMap: Record<string, string> = {
     fr: "fr-FR", en: "en-GB", it: "it-IT", es: "es-ES",
-    pt: "pt-BR", pl: "pl-PL", id: "id-ID", ru: "ru-RU",
+    pt: "pt-BR", pl: "pl-PL", id: "id-ID", ru: "ru-RU", de: "de-DE",
   };
   return date.toLocaleDateString(localeMap[lang] || "en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
@@ -289,6 +289,29 @@ const translations: Record<string, any> = {
       { emoji: "📖", title: "Гайды", desc: "Стратегии и туториалы", detail: "От новичка до эксперта: всё для прогресса", href: "guides", color: "#4ade80" },
     ],
     statArtists: "артистов", statGuides: "гайдов", statTools: "инструментов", new: "Новый",
+  },
+  de: {
+    homeTitle: "TOPGIRL GUIDE",
+    subtitle: "Der vollständige Leitfaden für <strong>TopGirl / ApexGirl</strong> — Künstlerinnen, Tier-Listen, Werkzeuge und Promo-Codes",
+    discoverArtists: "Künstlerinnen entdecken",
+    seeTools: "Werkzeuge",
+    tierListVotes: "Tier Liste",
+    promoCodes: "Aktive Promo-Codes",
+    promoSubtitle: "Im Spiel eingeben: Profil → Einstellungen → Geschenkcode",
+    copy: "Kopieren",
+    copied: "Kopiert!",
+    seeAllCodes: "Alle Codes anzeigen →",
+    expiresOn: "Läuft ab",
+    whatWeOffer: "Alles was du brauchst",
+    artistsOnGame: "SSR-Künstlerinnen im Spiel",
+    seeAllArtists: "Alle Künstlerinnen anzeigen →",
+    sections: [
+      { emoji: "🎤", title: "Künstlerinnen", desc: "112+ vollständige Profile", detail: "Stats, Fähigkeiten, Tier und Tipps für jede Künstlerin im Spiel", href: "artists", color: "#ff4d8d" },
+      { emoji: "🏆", title: "Tier Liste", desc: "Community-Ranking", detail: "Abstimmen und entdecke die stärksten Künstlerinnen dieser Woche", href: "tierlist", color: "#ffd700" },
+      { emoji: "🛠️", title: "Werkzeuge", desc: "Team-Builder & Rechner", detail: "Baue dein ideales Team und simuliere Zusammenstellungen", href: "tools", color: "#60a5fa" },
+      { emoji: "📖", title: "Leitfäden", desc: "Strategien & Tutorials", detail: "Vom Anfänger zum Experten: alles was du zum Verbessern brauchst", href: "guides", color: "#4ade80" },
+    ],
+    statArtists: "Künstlerinnen", statGuides: "Leitfäden", statTools: "Werkzeuge", new: "Neu",
   },
 };
 
