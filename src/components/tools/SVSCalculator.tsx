@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 const translations: Record<string, any> = {
   fr: { item: "Article", qty: "Qté", price: "Prix", subtotal: "Total", reset: "Réinitialiser", loading: "Chargement des données SVS...", error: "Erreur" },
   en: { item: "Item", qty: "Qty", price: "Price", subtotal: "Subtotal", reset: "Reset", loading: "Loading SVS data...", error: "Error" },
+  de: { item: "Artikel", qty: "Menge", price: "Preis", subtotal: "Zwischensumme", reset: "Zurücksetzen", loading: "SVS-Daten werden geladen...", error: "Fehler" },
   it: { item: "Articolo", qty: "Qtà", price: "Prezzo", subtotal: "Totale", reset: "Reset", loading: "Caricamento dati SVS...", error: "Errore" },
   es: { item: "Artículo", qty: "Cant", price: "Precio", subtotal: "Subtotal", reset: "Reiniciar", loading: "Cargando datos de SVS...", error: "Error" },
   pt: { item: "Item", qty: "Qtd", price: "Preço", subtotal: "Subtotal", reset: "Resetar", loading: "Carregando dados do SVS...", error: "Erro" },

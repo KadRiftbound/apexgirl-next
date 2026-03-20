@@ -162,6 +162,46 @@ const translations: Record<string, Record<string, string>> = {
     assetAuction: "Auction",
     otherHqCards: "HQ Building Cards",
     otherBusinessGold: "Business Building Gold",
+    type: "Type:",
+  },
+  de: {
+    selectCategory: "Kategorie",
+    selectTier: "Tier wählen",
+    fromLevel: "Von Level",
+    toLevel: "Bis Level",
+    totalCost: "Gesamt",
+    level: "Level",
+    resource: "Ressource",
+    selectGirl: "Mädchen",
+    from: "Von",
+    to: "Bis",
+    loading: "Laden...",
+    error: "Fehler",
+    floor: "Etage",
+    room: "Raum",
+    tier: "Tier",
+    gradeD: "D Grad",
+    catHqFloors: "HQ Etagen",
+    catMuseum: "Museum",
+    catHomemaking: "Homemaking",
+    catCarCore: "Car Core",
+    catArtists: "Künstlerin EXP",
+    catHqGlass: "HQ Glass",
+    catCollectionGems: "Collection Gems",
+    catAssets: "Assets",
+    catBlueprints: "Blueprints",
+    catCarParts: "Car Parts",
+    catVilla: "Villa",
+    catOthers: "Andere",
+    assetJewelry: "Schmuck",
+    assetCar: "Auto",
+    assetProperty: "Immobilie",
+    assetBasicGold: "Grundgold",
+    assetAbroad: "Auslandsabenteuer",
+    assetAuction: "Auktion",
+    otherHqCards: "HQ Baukarten",
+    otherBusinessGold: "Geschäftsgebäude Gold",
+    type: "Typ:",
   },
   it: {
     selectCategory: "Categoria",
@@ -790,7 +830,7 @@ export default function ApexCalculator() {
       {/* Asset Type Selector */}
       {hasAssetTypes && currentConfig && (
         <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-          <span style={{ color: "#9ca3af", fontSize: "0.9rem" }}>Type:</span>
+          <span style={{ color: "#9ca3af", fontSize: "0.9rem" }}>{t.type}</span>
           {(currentConfig.assetTypes || []).map((type) => (
             <button
               key={type.value}

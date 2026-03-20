@@ -26,6 +26,14 @@ const tierDescriptions: Record<string, Record<string, string>> = {
     "C": "Weak: Artists with unusual or ineffective skill combinations that limit their usefulness.",
     "D": "Very weak: Skills that are unclear or not useful."
   },
+  de: {
+    "S+": "Überragend: Die stärksten Künstlerinnen mit außergewöhnlichem Schaden und Fähigkeiten.",
+    "S": "Sehr stark: Hoher Spieler-Schaden kombiniert mit einer starken Sekundärfähigkeit.",
+    "A": "Stark: Zuverlässige Künstlerinnen mit zwei starken Fähigkeiten.",
+    "B": "Situativ: Hauptsächlich nützlich für Fan-Kapazität oder Nischenstrategien.",
+    "C": "Schwach: Künstlerinnen mit ungewöhnlichen oder ineffektiven Fähigkeitskombinationen.",
+    "D": "Sehr schwach: Fähigkeiten unklar oder nutzlos."
+  },
   it: {
     "S+": "Sovrapotente: Gli artisti più forti con danni e abilità eccezionali.",
     "S": "Molto forte: Alto danno al giocatore con una potente abilità secondaria.",
@@ -77,8 +85,9 @@ const tierDescriptions: Record<string, Record<string, string>> = {
 };
 
 const tierlistTranslations: Record<string, any> = {
-  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un seul vote par jour.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voté aujourd'hui.", podium: "🏅 Podium — Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Une erreur est survenue.", voteSuccess: "Votre vote a été comptabilisé !", voteAlreadyVoted: "Vous avez déjà voté aujourd'hui.", allGenres: "Tous les genres", allSpecialties: "Toutes spécialités" },
+  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un seul vote par jour.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voted aujourd'hui.", podium: "🏅 Podium — Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Une erreur est survenue.", voteSuccess: "Votre vote a été comptabilisé !", voteAlreadyVoted: "Vous avez déjà voted aujourd'hui.", allGenres: "Tous les genres", allSpecialties: "Toutes spécialités" },
   en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today.", podium: "🏅 Podium — This week", fullRanking: "📊 Full ranking", artistCount: (n: number) => `${n} artist${n > 1 ? "s" : ""}`, voteError: "An error occurred.", voteSuccess: "Your vote has been counted!", voteAlreadyVoted: "You have already voted today.", allGenres: "All genres", allSpecialties: "All specialties" },
+  de: { title: "Tier List", subtitle: "Künstler-Rankings und Community-Stimmen", classic: "Klassisch", vote: "Abstimmen", viewProfile: "Profil ansehen", tierListClassic: "Tier List Klassisch", voteForFavorite: "Stimme für deinen Favoriten", voteBanner: "Stimme für deinen Lieblingskünstler! Eine Stimme pro Tag.", voteForArtist: "Für einen Künstler stimmen", alreadyVoted: "Du hast heute schon abgestimmt.", podium: "🏅 Podium — Diese Woche", fullRanking: "📊 Vollständiges Ranking", artistCount: (n: number) => `${n} Künstler${n > 1 ? "nen" : ""}`, voteError: "Ein Fehler ist aufgetreten.", voteSuccess: "Deine Stimme wurde gezählt!", voteAlreadyVoted: "Du hast heute schon abgestimmt.", allGenres: "Alle Genres", allSpecialties: "Alle Spezialitäten" },
   it: { title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo", tierListClassic: "Tier List Classico", voteForFavorite: "Vota il tuo preferito", voteBanner: "Vota il tuo artista preferito! Un voto al giorno.", voteForArtist: "Vota per un artista", alreadyVoted: "Hai già votato oggi.", podium: "🏅 Podio — Questa settimana", fullRanking: "📊 Classifica completa", artistCount: (n: number) => `${n} artista/i`, voteError: "Si è verificato un errore.", voteSuccess: "Il tuo voto è stato conteggiato!", voteAlreadyVoted: "Hai già votato oggi.", allGenres: "Tutti i generi", allSpecialties: "Tutte le specialità" },
   es: { title: "Tier List", subtitle: "Clasificaciones de artistas y votos comunitarios", classic: "Clásico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clásico", voteForFavorite: "Vota por tu favorito", voteBanner: "¡Vota por tu artista favorito! Un voto por día.", voteForArtist: "Vota por un artista", alreadyVoted: "Ya has votado hoy.", podium: "🏅 Podio — Esta semana", fullRanking: "📊 Clasificación completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Se produjo un error.", voteSuccess: "¡Tu voto ha sido contabilizado!", voteAlreadyVoted: "Ya has votado hoy.", allGenres: "Todos los géneros", allSpecialties: "Todas las especialidades" },
   pt: { title: "Tier List", subtitle: "Ranking de artistas e votos da comunidade", classic: "Clássico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clássico", voteForFavorite: "Vote no seu favorito", voteBanner: "Vote na sua artista favorita! Um voto por dia.", voteForArtist: "Vote em um artista", alreadyVoted: "Você já votou hoje.", podium: "🏅 Pódio — Esta semana", fullRanking: "📊 Classificação completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Ocorreu um erro.", voteSuccess: "Seu voto foi contabilizado!", voteAlreadyVoted: "Você já votou hoje.", allGenres: "Todos os gêneros", allSpecialties: "Todas as especialidades" },
@@ -116,6 +125,17 @@ const tierColors: Record<string, { bg: string; border: string; text: string }> =
 };
 
 const tierOrder: string[] = ["S+", "S", "A", "B", "C", "D"];
+
+const allSpecialties = [
+  "Augmentation dommage",
+  "Dommage réduction",
+  "Vitesse de conduite",
+  "Solo car",
+  "Mixte",
+  "Rassemblement",
+  "Économie",
+  "HQ Defense",
+];
 
 const getTierOrder = (tier: string): number => {
   return tierOrder.indexOf(tier);
@@ -361,14 +381,9 @@ function TierListPageInner({ lang }: { lang: string }) {
                 }}
               >
                 <option value="">{t.allSpecialties || "All specialties"}</option>
-                <option value="Augmentation dommage">Augmentation dommage</option>
-                <option value="Dommage réduction">Dommage réduction</option>
-                <option value="Vitesse de conduite">Vitesse de conduite</option>
-                <option value="Solo car">Solo car</option>
-                <option value="Mixte">Mixte</option>
-                <option value="Rassemblement">Rassemblement</option>
-                <option value="Économie">Économie</option>
-                <option value="HQ Defense">HQ Defense</option>
+                {allSpecialties.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
               </select>
             </div>
 

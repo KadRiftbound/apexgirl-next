@@ -30,6 +30,14 @@ const translations: Record<string, any> = {
     allRanks: "Tous les ranks",
     filterGenre: "Genre",
     filterPosition: "Position",
+    singAttack: "Sing (Attaque)",
+    danceDefense: "Danse (Défense)",
+    singPlus: "Sing +",
+    dancePlus: "Danse +",
+    fansPlus: "Fans +",
+    finalSing: "Sing Final",
+    finalDance: "Danse Finale",
+    totalFansLabel: "Total Fans",
   },
   en: {
     title: "Team Builder & Equipment",
@@ -56,6 +64,14 @@ const translations: Record<string, any> = {
     allRanks: "All ranks",
     filterGenre: "Genre",
     filterPosition: "Position",
+    singAttack: "Sing (Attack)",
+    danceDefense: "Dance (Defense)",
+    singPlus: "Sing +",
+    dancePlus: "Dance +",
+    fansPlus: "Fans +",
+    finalSing: "Final Sing",
+    finalDance: "Final Dance",
+    totalFansLabel: "Total Fans",
   },
   it: {
     title: "Team Builder & Equipaggiamento",
@@ -82,6 +98,14 @@ const translations: Record<string, any> = {
     allRanks: "Tutti i ranghi",
     filterGenre: "Genere",
     filterPosition: "Posizione",
+    singAttack: "Canto (Attacco)",
+    danceDefense: "Danza (Difesa)",
+    singPlus: "Canto +",
+    dancePlus: "Danza +",
+    fansPlus: "Fans +",
+    finalSing: "Canto Finale",
+    finalDance: "Danza Finale",
+    totalFansLabel: "Totale Fans",
   },
   es: {
     title: "Team Builder & Equipamiento",
@@ -108,6 +132,14 @@ const translations: Record<string, any> = {
     allRanks: "Todos los rangos",
     filterGenre: "Género",
     filterPosition: "Posición",
+    singAttack: "Canto (Ataque)",
+    danceDefense: "Baile (Defensa)",
+    singPlus: "Canto +",
+    dancePlus: "Baile +",
+    fansPlus: "Fans +",
+    finalSing: "Canto Final",
+    finalDance: "Baile Final",
+    totalFansLabel: "Total Fans",
   },
   pt: {
     title: "Team Builder & Equipamento",
@@ -134,6 +166,14 @@ const translations: Record<string, any> = {
     allRanks: "Todas as patentes",
     filterGenre: "Gênero",
     filterPosition: "Posição",
+    singAttack: "Canto (Ataque)",
+    danceDefense: "Dança (Defesa)",
+    singPlus: "Canto +",
+    dancePlus: "Dança +",
+    fansPlus: "Fans +",
+    finalSing: "Canto Final",
+    finalDance: "Dança Final",
+    totalFansLabel: "Total de Fans",
   },
   pl: {
     title: "Team Builder & Wyposażenie",
@@ -160,6 +200,14 @@ const translations: Record<string, any> = {
     allRanks: "Wszystkie rangi",
     filterGenre: "Gatunek",
     filterPosition: "Pozycja",
+    singAttack: "Śpiew (Atak)",
+    danceDefense: "Taniec (Obrona)",
+    singPlus: "Śpiew +",
+    dancePlus: "Taniec +",
+    fansPlus: "Fani +",
+    finalSing: "Końcowy Śpiew",
+    finalDance: "Końcowy Taniec",
+    totalFansLabel: "Suma Fanów",
   },
   id: {
     title: "Team Builder & Equipment",
@@ -186,6 +234,14 @@ const translations: Record<string, any> = {
     allRanks: "Semua rank",
     filterGenre: "Genre",
     filterPosition: "Posisi",
+    singAttack: "Nyanyi (Serangan)",
+    danceDefense: "Tari (Pertahanan)",
+    singPlus: "Nyanyi +",
+    dancePlus: "Tari +",
+    fansPlus: "Fans +",
+    finalSing: "Nyanyi Akhir",
+    finalDance: "Tari Akhir",
+    totalFansLabel: "Total Fans",
   },
   ru: {
     title: "Team Builder & Снаряжение",
@@ -212,6 +268,48 @@ const translations: Record<string, any> = {
     allRanks: "Все ранги",
     filterGenre: "Жанр",
     filterPosition: "Позиция",
+    singAttack: "Пение (Атака)",
+    danceDefense: "Танец (Защита)",
+    singPlus: "Пение +",
+    dancePlus: "Танец +",
+    fansPlus: "Фаны +",
+    finalSing: "Итоговое Пение",
+    finalDance: "Итоговый Танец",
+    totalFansLabel: "Всего Фанатов",
+  },
+  de: {
+    title: "Team Builder & Ausrüstung",
+    selectCharacters: "Charaktere auswählen",
+    selectedTeam: "Ausgewähltes Team",
+    noTeam: "Keine Charaktere ausgewählt",
+    addUpTo5: "Bis zu 5 Charaktere hinzufügen",
+    baseStats: "Basis-Stats",
+    equipment: "Ausrüstung",
+    equipmentBonus: "Ausrüstungs-Bonus",
+    totalFans: "Gesamt-Fans",
+    genreSynergy: "Genre-Synergie",
+    none: "Keine",
+    jewelry: "Schmuck",
+    cars: "Autos",
+    properties: "Immobilien",
+    reset: "Zurücksetzen",
+    finalStats: "Endgültige Stats",
+    vocaliste: "Vokalist",
+    dancer: "Tänzer",
+    center: "Center",
+    allGenres: "Alle Genres",
+    allPositions: "Alle Positionen",
+    allRanks: "Alle Ränge",
+    filterGenre: "Genre",
+    filterPosition: "Position",
+    singAttack: "Sing (Angriff)",
+    danceDefense: "Tanz (Verteidigung)",
+    singPlus: "Sing +",
+    dancePlus: "Tanz +",
+    fansPlus: "Fans +",
+    finalSing: "Endgültig Sing",
+    finalDance: "Endgültig Tanz",
+    totalFansLabel: "Gesamt-Fans",
   },
 };
 
@@ -629,11 +727,11 @@ export default function TeamBuilder() {
           <h3 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "16px", color: "#f472b6" }}>{t.baseStats}</h3>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "20px" }}>
             <div style={{ background: "#1f2937", padding: "12px", borderRadius: "8px", textAlign: "center" }}>
-              <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>Sing (Attack)</div>
+              <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>{t.singAttack}</div>
               <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "#f472b6" }}>{baseStats.sing.toLocaleString()}</div>
             </div>
             <div style={{ background: "#1f2937", padding: "12px", borderRadius: "8px", textAlign: "center" }}>
-              <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>Dance (Defense)</div>
+              <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>{t.danceDefense}</div>
               <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "#8b5cf6" }}>{baseStats.dance.toLocaleString()}</div>
             </div>
           </div>
@@ -643,15 +741,15 @@ export default function TeamBuilder() {
               <h3 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "16px", color: "#8b5cf6" }}>{t.equipmentBonus}</h3>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "20px" }}>
                 <div style={{ background: "#1f2937", padding: "12px", borderRadius: "8px", textAlign: "center" }}>
-                  <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>Sing +</div>
+                  <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>{t.singPlus}</div>
                   <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#f472b6" }}>+{(equipment.jewelry?.sing || 0) + (equipment.car?.sing || 0) + (equipment.property?.sing || 0)}</div>
                 </div>
                 <div style={{ background: "#1f2937", padding: "12px", borderRadius: "8px", textAlign: "center" }}>
-                  <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>Dance +</div>
+                  <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>{t.dancePlus}</div>
                   <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#8b5cf6" }}>+{(equipment.jewelry?.dance || 0) + (equipment.car?.dance || 0) + (equipment.property?.dance || 0)}</div>
                 </div>
                 <div style={{ background: "#1f2937", padding: "12px", borderRadius: "8px", textAlign: "center" }}>
-                  <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>Fans +</div>
+                  <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>{t.fansPlus}</div>
                   <div style={{ fontSize: "1.25rem", fontWeight: 700, color: "#fbbf24" }}>+{((equipment.jewelry?.fans || 0) + (equipment.car?.fans || 0) + (equipment.property?.fans || 0)).toLocaleString()}</div>
                 </div>
               </div>
@@ -661,15 +759,15 @@ export default function TeamBuilder() {
           <h3 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "16px", color: "#22c55e" }}>{t.finalStats}</h3>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
             <div style={{ background: "linear-gradient(135deg, #ec4899, #a855f7)", padding: "16px", borderRadius: "8px", textAlign: "center" }}>
-              <div style={{ fontSize: "0.75rem", opacity: 0.8, marginBottom: "4px" }}>Final Sing</div>
+              <div style={{ fontSize: "0.75rem", opacity: 0.8, marginBottom: "4px" }}>{t.finalSing}</div>
               <div style={{ fontSize: "2rem", fontWeight: 800 }}>{teamStats.sing.toLocaleString()}</div>
             </div>
             <div style={{ background: "linear-gradient(135deg, #8b5cf6, #06b6d4)", padding: "16px", borderRadius: "8px", textAlign: "center" }}>
-              <div style={{ fontSize: "0.75rem", opacity: 0.8, marginBottom: "4px" }}>Final Dance</div>
+              <div style={{ fontSize: "0.75rem", opacity: 0.8, marginBottom: "4px" }}>{t.finalDance}</div>
               <div style={{ fontSize: "2rem", fontWeight: 800 }}>{teamStats.dance.toLocaleString()}</div>
             </div>
             <div style={{ background: "#1f2937", padding: "12px", borderRadius: "8px", textAlign: "center", gridColumn: "span 2" }}>
-              <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>Total Fans</div>
+              <div style={{ fontSize: "0.75rem", color: "#9ca3af", marginBottom: "4px" }}>{t.totalFansLabel}</div>
               <div style={{ fontSize: "1.5rem", fontWeight: 700, color: "#fbbf24" }}>{teamStats.fans.toLocaleString()}</div>
             </div>
           </div>

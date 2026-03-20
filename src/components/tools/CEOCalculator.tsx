@@ -6,8 +6,9 @@ import { useParams } from "next/navigation";
 const translations: Record<string, any> = {
   fr: { task: "Tâche", used: "Utilisé", points: "Points", total: "Total", reset: "Réinitialiser", loading: "Chargement des données CEO...", error: "Erreur", noEvents: "Aucun événement trouvé" },
   en: { task: "Task", used: "Used", points: "Points", total: "Total", reset: "Reset", loading: "Loading CEO data...", error: "Error", noEvents: "No events found" },
+  de: { task: "Aufgabe", used: "Verwendet", points: "Punkte", total: "Gesamt", reset: "Zurücksetzen", loading: "CEO-Daten werden geladen...", error: "Fehler", noEvents: "Keine Events gefunden" },
   it: { task: "Compito", used: "Usato", points: "Punti", total: "Totale", reset: "Reset", loading: "Caricamento dati CEO...", error: "Errore", noEvents: "Nessun evento trovato" },
-  es: { task: "Tarea", used: "Usado", points: "Puntos", total: "Total", reset: "Reiniciar", loading: "Cargando datos de CEO...", error: "Error", noEvents: "No se encontraron eventos" },
+  es: { task: "Tarea", used: "Usado", points: "Puntos", total: "Total", reset: "Reiniciar", loading: "Cargando datos del CEO...", error: "Error", noEvents: "No se encontraron eventos" },
   pt: { task: "Tarefa", used: "Usado", points: "Pontos", total: "Total", reset: "Resetar", loading: "Carregando dados do CEO...", error: "Erro", noEvents: "Nenhum evento encontrado" },
   pl: { task: "Zadanie", used: "Użyte", points: "Punkty", total: "Suma", reset: "Resetuj", loading: "Ładowanie danych CEO...", error: "Błąd", noEvents: "Nie znaleziono wydarzeń" },
   id: { task: "Tugas", used: "Dipakai", points: "Poin", total: "Total", reset: "Reset", loading: "Memuat data CEO...", error: "Kesalahan", noEvents: "Tidak ada event" },
