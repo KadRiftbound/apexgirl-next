@@ -931,8 +931,8 @@ Wenn ein Zyklus zurückkommt, kannst du ihn nummerieren:
 #### 7. Wichtige Stats
 Top Girl basiert auch auf 3 Haupt-Stats:
 - Sing = Gesang
-- Defense = verbunden mit Tanz
-- Economy = verbunden mit Management
+- Tanz = Verteidigung
+- Management = Wirtschaft
 `,
     content_ru: `
 ## Гайд: Понимание Структуры Игры Top Girl
@@ -4360,16 +4360,16 @@ Da Transfers erst viel später kommen, kann ein schlechter Start sehr teuer werd
 
 #### Tokyo-Zeitplan
 
-**Ankunft in Tokyo** — Zu Beginn des Abenteuers musst du dein HQ positionieren, schnell mit dem Farming beginnen und wie auf dem Heimat-Server vorankommen. Bei der Ankunft gibt es auch verschiedene Pakete, Auffüllungs-Events und **Kokoro** im Tokyo Shop. Kokoro ist eine wichtige Künstlerin für eine sehr starke EDM-Zusammensetzung zu Beginn des Spiels. Es gibt auch den Start des Events **Who is the richest in Tokyo?**.
+**Ankunft in Tokio** — Zu Beginn des Abenteuers musst du dein HQ positionieren, schnell mit dem Farming beginnen und wie auf dem Heimat-Server vorankommen. Bei der Ankunft gibt es auch verschiedene Pakete, Auffüllungs-Events und **Kokoro** im Tokio-Shop. Kokoro ist eine wichtige Künstlerin für eine sehr starke EDM-Zusammensetzung zu Beginn des Spiels. Es gibt auch den Start des Events **Wer ist der Reichste in Tokio?**.
 
-**Woche 1** — Woche 1 enthält: Ultimate CEO, Ayaka im Slot Machine, anfängliche Phase in der Chamber, Beginn des Stock Market am Tag 3, Öffnung des ersten Toll am Tag 4, Öffnung der ersten Zone, die mit anderen Servern geteilt wird, und erste umstrittene Landmarks. Die Chamber ist deine sichere Server-Zone zu Beginn von Tokyo.
+**Woche 1** — Woche 1 enthält: Ultimate CEO, Ayaka im Slot Machine, anfängliche Phase in der Chamber, Beginn des Stock Market am Tag 3, Öffnung des ersten Zolls am Tag 4, Öffnung der ersten Zone, die mit anderen Servern geteilt wird, und erste umstrittene Landmarks. Die Chamber ist deine sichere Server-Zone zu Beginn von Tokio.
 
 **Woche 2** — Woche 2 enthält: Kampf um URs, Dice Event mit Sora, Ultimate Group Event und Versus Event. Dies ist die Woche mit stark steigender Spannung. Gruppenkoordination wird wichtiger.
 
-**Woche 3** — Woche 3 enthält: Neues Ultimate CEO, Yuuko im Slot Machine, Öffnung der letzten Zone und finaler Kampf um den Tokyo Tower. Dies ist die entscheidende Phase des Abenteuers.
+**Woche 3** — Woche 3 enthält: Neues Ultimate CEO, Yuuko im Slot Machine, Öffnung der letzten Zone und finaler Kampf um den Tokio Tower. Dies ist die entscheidende Phase des Abenteuers.
 
-#### Ranglisten während Tokyo
-Während Tokyo gibt es mehrere Ranglisten: individuell, Gruppe und Chamber.
+#### Ranglisten während Tokio
+Während Tokio gibt es mehrere Ranglisten: individuell, Gruppe und Chamber.
 
 Um Punkte im Event zu erhalten, musst du hauptsächlich:
 - Gold aus Hotels sammeln
