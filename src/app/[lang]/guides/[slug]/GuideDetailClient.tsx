@@ -3583,7 +3583,17 @@ Abroad Shop priority items:
 - Featured Artist Photos — improve specific artists
 - Cars — increase overall power
 - Properties — improve long-term account growth
-`,
+    `,
+    rewards_de: `
+- Ridership Points: Werden für das Ranking während des Metro-Events verwendet.
+- Gedenkmünzen: Werden im Abroad-Laden verwendet, um wertvolle Ressourcen zu erhalten.
+
+Prioritäten im Abroad-Laden:
+- SSR Universal Photos — zur Verbesserung von Künstlerinnen
+- Featured Artist Photos — zur Verbesserung spezifischer Künstlerinnen
+- Autos — zur Steigerung der Gesamtkraft
+- Immobilien — zur Verbesserung des langfristigen Konto-Wachstums
+    `,
     content: `
 ## Guide Metro & Subway — Adventure Abroad
 
@@ -4567,7 +4577,28 @@ Exclusive Tokyo Assets give a bonus on Tokyo artists.
 The Tokyo Stock Auction also gives different rewards, including:
 - One of the best skins in the game
 - The best artist in the game
-`,
+    `,
+    rewards_de: `
+**Warmup-Belohnungen:**
+- Chizuru für die Top 25
+- +10% Stats für das gesamte Abenteuer für den 1. Platz Server
+- +5% Stats für 2. und 3. Platz Server
+
+**Wichtige Belohnungen und Gewinne während Tokio:**
+Tokio und seine verwandten Events können geben:
+- Kokoro im Tokio-Laden
+- Exklusive Gegenstände für ein T4-Auto
+- Exklusive Tokio-Assets
+- Skins
+- Tokio-Künstlerinnen
+- Viele andere nützliche Belohnungen
+
+Exklusive Tokio-Assets geben einen Bonus auf Tokio-Künstlerinnen.
+
+Der Tokio-Börsenauktion gibt auch verschiedene Belohnungen, einschließlich:
+- Eines der besten Skins im Spiel
+- Die beste Künstlerin im Spiel
+    `,
   },
   // New guides from images
   {
