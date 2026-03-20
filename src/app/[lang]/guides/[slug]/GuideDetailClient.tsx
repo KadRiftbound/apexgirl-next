@@ -3685,7 +3685,58 @@ Additional sources of Investment Funds include:
 - Stock Store (weekly purchase using Yen)
 
 The Abroad Shop allows players to exchange Commemorative Coins for valuable items. It remains available for a short time after the event ends.
-`,
+    `,
+    content_de: `
+## Metro & Subway Leitfaden — Adventure Abroad
+
+### Kurze Erklärung
+Das Metro-System in Adventure Abroad ist ein zeitlich begrenztes Event, das temporäre Stats-Boosts und Fortschrittsbelohnungen bietet. Spieler verwenden Investitionsfonds, um Stationen freizuschalten und ihre Fahrgastzahlen zu erhöhen.
+
+Das Hauptziel ist es, so weit wie möglich voranzukommen, während man Ressourcen effizient nutzt. Alle Metro-Boni werden nach Ende des Events zurückgesetzt.
+
+### Lange Erklärung
+Das Metro-Event dauert 3 Wochen und bietet erhebliche Stats-Boosts: Sing, Tanz, Management, Fan-Kapazität und Rally-Fan-Kapazität. Diese Boni helfen während des Events, bleiben aber danach nicht erhalten.
+
+Der Fortschritt basiert auf zwei Hauptsystemen:
+
+#### 1. Freischalten von Stationen
+Spieler verwenden Investitionsfonds, um Metro-Stationen freizuschalten. Jede Station bietet Boosts und ermöglicht weiteren Fortschritt auf der Karte. Das Freischalten von Stationen ist der einzige Weg, um tiefer in die Metro-Linien vorzudringen.
+
+#### 2. Zusätzliche Investition
+Spieler können zusätzliche Ressourcen ausgeben, um ihre Fahrgastzahlen zu erhöhen. Dies verbessert das Ranking, schaltet aber keine neuen Stationen frei.
+
+Für F2P-Spieler können Investitionsfonds erhalten werden durch:
+- Adventure Abroad Kalender
+- Persönliche Operation
+- Adventure Abroad Reise
+- Stadion-Rallys (Starten und Teilnehmen, bis zu 20 pro Tag)
+- Konzert-Auftritte
+- Tägliche Quests
+- Agent Gigs
+
+Mit vollständiger Teilnahme können Spieler genug Investitionsfonds verdienen, um weit im Metro-System voranzukommen, ohne zu investieren.
+
+Jedoch wird die falsche Verwendung von Investitionsfonds den Fortschritt erheblich reduzieren. Sie für zusätzliche Investitionen statt für das Freischalten von Stationen auszugeben, kann den Fortschritt viel früher stoppen.
+
+Ein weiteres wichtiges System ist die Ressourceneffizienz. Je mehr Ressourcen in eine Station investiert werden, desto höher steigen die Kosten, während der Wert pro Ressource sinkt. Dies erzeugt abnehmende Erträge, was massive Investitionen ineffizient macht.
+
+Um den Wert zu maximieren, sollten Spieler ihre Ressourcennutzung mit großen Events synchronisieren wie:
+- Ultimate Group
+- Ultimate CEO
+- Group Battle
+
+Dies ermöglicht es, sowohl Fahrgastzahlen als auch Event-Belohnungen gleichzeitig zu erhalten.
+
+Das Event erfordert auch einen hohen AP-Verbrauch. Das Abschließen der Hauptaktivitäten (Konzerte und Rallys) erfordert insgesamt etwa 35.000 AP, also etwa 1.700 AP pro Tag. Natürliche AP-Regeneration reicht normalerweise nicht aus, daher können zusätzliche AP Diamanten erfordern.
+
+Zusätzliche Quellen für Investitionsfonds:
+- SR-Foto-Tausch (tägliche Konvertierung)
+- Territorium-Belohnungen (Wahrzeichen und Mautstationen)
+- Hochstufige Stadion-Rallys und Konzerte
+- Aktienladen (wöchentlicher Kauf mit Yen)
+
+Der Abroad-Laden ermöglicht es Spielern, Gedenkmünzen gegen wertvolle Items einzutauschen. Er bleibt noch kurze Zeit nach Ende des Events verfügbar.
+    `
   },
   {
     id: "event-adventure-abroad-tokyo",
@@ -6060,6 +6111,16 @@ Das bedeutet, dass du deine Ressourcen während der 7 Tage optimieren musst, da 
 Build and develop your world in the game. This guide covers the basics of world building mechanics.
 
 (Content from WorldBuildingGuide.jpg to be added)
+    `,
+    content_de: `
+## World Building Leitfaden - TopGirl
+
+[Inhalt wird ergänzt]
+
+### Übersicht
+Baue und entwickle deine Welt im Spiel. Dieser Leitfaden behandelt die Grundlagen des World-Building-Systems.
+
+(Inhalt von WorldBuildingGuide.jpg wird ergänzt)
     `
   },
   {
@@ -6084,6 +6145,18 @@ Detailed guide on points required for each VIP level.
 - Higher VIP levels unlock more benefits
 
 (Content from VIPLevelGuide.jpg to be added)
+    `,
+    content_de: `
+## VIP Level Leitfaden - TopGirl
+
+### Übersicht
+Detaillierter Leitfaden zu den für jedes VIP-Level erforderlichen Punkten.
+
+### VIP-Vorteile
+- VIP-Spieler erhalten verschiedene Boni und exklusive Belohnungen
+- Höhere VIP-Stufen schalten mehr Vorteile frei
+
+(Inhalt von VIPLevelGuide.jpg wird ergänzt)
     `
   },
   {
@@ -6117,6 +6190,27 @@ Select the amount of CEO coins you want to purchase and add a bank card to compl
 
 **Step 5: Redeem in Game**
 After completing the purchase of CEO coins, enter the game, select the gift package you need, click the gift package price, and choose to use CEO coins to complete the redemption.
+    `,
+    content_de: `
+## CEO Coins Kaufleitfaden - TopGirl
+
+### Wie man CEO Coins kauft
+
+**Schritt 1: Zahlungswebsite besuchen**
+Besuche mit deinem mobilen Browser: https://pay2.a3games.com/topgirl
+
+**Schritt 2: Region auswählen**
+Wähle in der oberen rechten Ecke der Seite deine Region und stelle die Zahlungswährung auf eine unterstützte Währung ein
+
+**Schritt 3: Kontoinformationen eingeben**
+Gib deine ID und deinen Spitznamen ein
+(Bitte stelle sicher, dass die ID und der Spitzname korrekt sind, da du sonst möglicherweise keine CEO Coins normal erhalten kannst)
+
+**Schritt 4: Betrag auswählen**
+Wähle die Menge an CEO Coins, die du kaufen möchtest, und füge eine Bankkarte hinzu, um die Zahlung abzuschließen
+
+**Schritt 5: Im Spiel einlösen**
+Nach dem Kauf der CEO Coins, betritt das Spiel, wähle das Geschenkpaket, das du brauchst, klicke auf den Geschenkpaketpreis und wähle CEO Coins zur Einlösung.
     `
   },
   {
@@ -6153,6 +6247,30 @@ After completing the purchase of CEO coins, enter the game, select the gift pack
 
 ### Strategy & War
 Develop your alliance through careful planning and coordination with members.
+    `,
+    content_de: `
+## Allianz-Management Leitfaden - TopGirl
+
+### Gruppenverantwortlichkeiten
+
+#### Führung & Strategie
+- **Stratege / Meta-Analyst**: Setzt langfristige Server-Ziele, berät zu Bau- und Expansionsfokus
+- **Bauleiter / Gruppenentwickler**: Überwacht den Klubbau, sammelt Fortschritts-Ressourcen, plant Klub-Wachstumspfade
+- **Rally-Leiter / Kriegsgeneral**: Startet Rallys & Angriffe, wählt Ziele & Timing, koordiniert Kriegsoperationen
+- **Trainer / Mentor**: Unterstützt neue Spieler, leitet Künstlerinentwicklung, hilft bei Truppenzusammenstellung
+
+#### Kommunikation & Diplomatie
+- **Gruppenkommunikator**: Postet Ankündigungen, fasst Updates zusammen, verwaltet Discord & Ingame-Mail
+- **Diplomat / Allianzmanager**: Verwaltet Allianzen & NAPs, handhabt Verhandlungen, koordiniert Zusammenarbeit
+- **Rekrutierer / Personaler**: Rekrutiert neue Mitglieder, prüft Bewerber, nimmt Mitglieder auf
+
+#### Aufklärung & Unterstützung
+- **Aufklärungsoffizier / Spion**: Scannt feindliche Klubs, verfolgt Aktivität & Bewegung, überwacht Einsätze
+- **Veranstaltungsorganisator**: Unterstützt Radio-Schlachten, hilft bei Kriegen & Veranstaltungen
+- **Fanmeeting-Koordinator**: Verwaltet Fan-Interaktionen und Veranstaltungen
+
+### Strategie & Krieg
+Entwickle deine Allianz durch sorgfältige Planung und Koordination mit Mitgliedern.
     `
   },
   {
@@ -6191,6 +6309,32 @@ Best Peak candidates (easy photo access):
 Aim for Peak Lv5-10 on 1-2 girls max. Max your main team before investing more into Peak Levels.
 
 Peak Level is a long-term global power system, perfect for whales.
+    `,
+    content_de: `
+## Peak Level Leitfaden - TopGirl
+
+### Übersicht
+Peak Level ist ein Spätispiel-Fortschrittssystem für SSR-Mädchen. Jedes SSR-Mädchen mit 3 Fähigkeiten und 5x (Goldsterne) wird für Peak Level-Upgrades freigeschaltet.
+
+### Wichtige Punkte
+- **Fokussiere dich auf das Gesamte Peak Level**, nicht nur auf dein Hauptteam
+- Bringe Top-SSR-Mädchen so weit wie möglich (100-400+) für starke Meilenstein-Buffs
+- Wichtige Meilensteine: Lv40 / Lv70 / Lv100 / Lv300 / Lv400
+- Verwende SSR Universal Photos frei - Effizienz > Sparen
+
+### Mindestziel
+Dein Mindestziel ist es, JEDES SSR-Mädchen auf Peak Level 10 zu bringen.
+Jedes SSR auf Peak Lv10 gibt +0,5% Sing & +0,5% Dance (globaler Buff)
+
+### Für F2P-Spieler
+Beste Peak-Kandidaten (einfacher Foto-Zugang):
+- **Zendaya** (Aktienladen)
+- **Skylar** (Gruppenladen)
+- **Claire** (Sammelbelohnungen)
+
+Ziele auf Peak Lv5-10 auf maximal 1-2 Mädchen. Maxe dein Hauptteam, bevor du mehr in Peak Levels investierst.
+
+Peak Level ist ein langfristiges globales Kraftsystem, perfekt für Whales.
     `
   },
   {
@@ -6278,6 +6422,82 @@ Sari arrive à Bali. Xenia arrive à Roma.
 - Baleine
 - F2P
 - Petit achat
+    `,
+    content_de: `
+## Leitfaden: Frühspiel-Teamaufbau
+
+### Typ
+Klassischer Leitfaden
+
+### Kurze Erklärung
+Die Wahl der Künstlerinnen ist die wichtigste Entscheidung im Spiel.
+Künstlerinnen werden nach Jahreszeiten freigeschaltet. Du kannst die Jahreszeit auf der Künstlerinnen-Karte sehen.
+Ein starkes Team am Anfang kann später durchschnittlich werden.
+Du musst frühzeitig entscheiden, um Ressourcen nicht zu verschwenden.
+
+### Lange Erklärung
+Künstlerinnen-Fortschritt
+Künstlerinnen werden nach Jahreszeiten freigeschaltet. Du kannst die Jahreszeit auf der Künstlerinnen-Karte sehen.
+Je weiter du kommst, desto stärkere Fähigkeiten haben die Künstlerinnen. Die Tierliste hilft, ihren Wert einzuschätzen.
+Die Wahl ist komplizierter als die meisten Spieler denken.
+
+Genre-Boni
+Mehrere Künstlerinnen desselben Genres zu spielen gibt einen globalen Stats-Bonus.
+Die Schwellen sind 3/5, 4/5 und 5/5.
+Je weiter du kommst, desto wichtiger werden diese Boni.
+
+Empfohlene Künstlerinnen am Anfang
+Claire: sehr stark und leicht zu leveln dank ihrer Fotos.
+Alice: doppelter Schaden und EDM, ein dominantes Genre am Anfang.
+Aurora: doppelter Schaden.
+Everly: EDM, zwei gute Fähigkeiten.
+Zendayah: weniger stark, aber stabil für F2P und kleine Käufe über einen langen Zeitraum.
+Paisley: über Monthly Card, ausgezeichnet um ein Rock-Team aufzubauen.
+Longkui: über Auction House, sehr stark für die gesamte Spieldauer und in EDM.
+
+Wichtige Freischaltungen um Tokio
+Chizuru: erste Künstlerin mit Rally Capacity, sehr nützlich in Tokio.
+Kokoro: sehr früh verfügbar, EDM mit denselben Fähigkeiten wie Alice.
+Yuuko: nützlich für Rock-Spieler.
+
+Beispiele für Teams am Anfang von Abroad
+Wal-Team: Everly, Longkui, Alice, Kokoro, Chizuru.
+Middle-Team: Claire, Yuuko, Paisley, Zendayah, eine 5. Künstlerin nach Wahl.
+Die 5. kann Alice, Aurora, Kokoro oder Skylar sein, um das Rock-Genre zu verstärken und auf Peak vorzubereiten.
+
+F2P-Team: Zendayah, Claire, Nova, Julia, und eine andere Künstlerin je nach deinen Interviews.
+Julia ist nicht 100% F2P. Sie erfordert einen kleinen Kauf während des Midnight Race-Events.
+Das Ziel ist es, Investitionen in Künstlerinnen zu begrenzen, die du nicht langfristig nutzen wirst.
+
+Fortsetzung des Fortschritts
+Während Bali Warmup und Roma Warmup schaltest du EDM-Künstlerinnen mit Rally Capacity und Damage to Player frei.
+Sie sind sehr stark für Gruppenleiter.
+Sari kommt bei Bali. Xenia kommt bei Roma.
+
+### Tipps
+- Entscheide frühzeitig für dein Hauptgenre, um von den 3/5, 4/5, 5/5-Boni zu profitieren.
+- Verschwende deine Ressourcen nicht für Künstlerinnen, die du langfristig nicht nutzen wirst.
+- Denke immer an den Server und die Gruppe. Der Fortschritt hängt von der Gemeinschaft ab.
+
+### Verwandte Leitfäden
+- Team Builder
+- Peak Level Leitfaden
+- Ausrüstungs-Leitfaden
+- Spielstruktur-Leitfaden
+- Stats-Leitfaden: Sing, Tanz und Management
+- Fishing Event Leitfaden
+- VS Group Event Leitfaden
+
+### Glossar
+- Genre-Bonus
+- 3/5, 4/5, 5/5
+- Rally Capacity
+- Damage to player
+- Monthly Card
+- Interviews
+- Wal
+- F2P
+- Kleiner Kauf
     `
   },
   {
@@ -6354,6 +6574,70 @@ La combinaison Monica + les derniers artistes sortis rend le genre très compét
 - Auction House
 - Damage to player
 - Éliminations / pertes de fans
+    `,
+    content_de: `
+## Leitfaden: Spätspiel-Teamaufbau
+
+### Typ
+Klassischer Leitfaden
+
+### Kurze Erklärung
+Im Spätspiel wird ein gutes Team je nach Kontext aufgebaut.
+Man muss die Genre-Boni und die Art des gegnerischen Teams berücksichtigen.
+Ein optimiertes Team ändert sich je nach Server und Ereignissen.
+
+### Lange Erklärung
+Genre-Boni
+Mehrere Künstlerinnen desselben Genres zu spielen gibt einen globalen Stats-Bonus.
+Die Schwellen sind 3/5, 4/5 und 5/5.
+Diese Boni sind ein Grundpfeiler des Teamaufbaus im Spätspiel.
+
+Das Team an den Gegner anpassen
+Eine optimale Zusammensetzung hängt vom gegnerischen Team ab.
+Gegen ein Team mit Basic Attack-Fokus braucht man mehr Basic Attack-Resistenz.
+Gegen ein Team mit Skill Damage-Fokus braucht man mehr Skill Damage-Resistenz.
+Ohne diese Anpassung verliert man an Effizienz, selbst mit guten Künstlerinnen.
+
+Rally Capacity und Fan-Verluste
+Große Teams nutzen viel Rally Capacity um Kämpfe zu gewinnen.
+Der Schwachpunkt ist die geringe Resistenz.
+Man gewinnt, verliert aber langfristig mehr Fans.
+
+Auktionshaus-Künstlerinnen
+Longkui und Monica sind über das Auktionshaus erhältlich.
+Das sind zwei der stärksten Künstlerinnen im Spiel.
+Sie bleiben langfristig ausgezeichnet.
+
+Hinweise nach Genre
+EDM ist während der gesamten Spieldauer dominant.
+Die Kombination Rally Capacity + Damage to Player ist sehr stark.
+
+Rock hat das beste Preis-Leistungs-Verhältnis.
+Die Kombination Resistenz + Damage to Player ist sehr stabil.
+Es ist nicht immer das effektivste für den Server-Wal, aber es ist das beste Team für das Verhältnis Eliminierungen / Fan-Verluste.
+
+Pop kommt im Spätspiel sehr stark zurück.
+Die Kombination Monica + die neuesten Künstlerinnen macht das Genre sehr kompetitiv.
+
+### Tipps
+- Analysiere immer das gegnerische Team, bevor du deine Zusammensetzung wählst.
+- Denke an das Ziel: schneller Sieg, geringe Verluste, oder Event-Ranking.
+- Nutze den Team Builder um deine Optionen zu vergleichen.
+
+### Verwandte Leitfäden
+- Team Builder
+- Peak Level Leitfaden
+- Ausrüstungs-Leitfaden
+- Spielstruktur-Leitfaden
+- Stats-Leitfaden: Sing, Tanz und Management
+
+### Glossar
+- Basic Attack
+- Skill Damage
+- Rally Capacity
+- Auktionshaus
+- Damage to Player
+- Eliminierungen / Fan-Verluste
     `
   },
   {
@@ -6396,6 +6680,37 @@ La combinaison Monica + les derniers artistes sortis rend le genre très compét
 
 **7. Migration Tickets**
 - Buy them if you want to migrate to another server
+    `,
+    content_de: `
+## Group Shop Leitfaden - TopGirl
+
+### Was man kaufen sollte
+
+**1. Förderhandbücher**
+- Kaufe sie immer zuerst
+- Sehr wenige davon sind verfügbar
+- Häufig erforderlich, wenn du oft kämpfst
+
+**2. SSR Förderkarten**
+- Kaufe sie an zweiter Stelle
+- Werden immer für die Entwicklung von SSR-Künstlerinnen benötigt
+- Neue SSR-Künstlerinnen werden bei jedem Event hinzugefügt
+
+**3. Asset-Münzen**
+- Viele Asset-Münzen werden benötigt, um die geförderten Assets zu maximieren
+
+**4. Fahrzeugteile**
+- Kaufe sie, wenn du dein Auto noch nicht maximiert hast
+
+**5. Skylar-Fotos**
+- Kaufe sie nur, wenn du Skylar maximieren willst
+- Sehr teuer
+
+**6. HQ-Karten**
+- Kaufe sie, wenn dein HQ noch nicht maximiert ist
+
+**7. Migrations-Tickets**
+- Kaufe sie, wenn du zu einem anderen Server migrieren möchtest
     `
   },
 ];
