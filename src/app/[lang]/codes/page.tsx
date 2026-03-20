@@ -7,6 +7,7 @@ const BASE_URL = "https://apexgirlguide.com";
 const meta: Record<string, { title: string; description: string; keywords: string }> = {
   fr: { title: "Codes Promo TopGirl 2026 — Codes actifs gratuits", description: "Tous les codes promo TopGirl/ApexGirl actifs en 2026. Mises à jour quotidiennes. Obtenez des récompenses gratuites avec les derniers codes.", keywords: "codes promo TopGirl, codes TopGirl 2026, ApexGirl codes gratuits, redeem codes" },
   en: { title: "TopGirl Promo Codes 2026 — Active Free Codes", description: "All active TopGirl/ApexGirl promo codes in 2026. Daily updates. Get free rewards with the latest codes.", keywords: "TopGirl promo codes, TopGirl codes 2026, ApexGirl free codes, redeem codes" },
+  de: { title: "TopGirl Promo-Codes 2026 — Aktive Kostenlose Codes", description: "Alle aktiven TopGirl/ApexGirl Promo-Codes in 2026. Tägliche Updates. Erhalte kostenlose Belohnungen mit den neuesten Codes.", keywords: "TopGirl Promo-Codes, TopGirl Codes 2026, ApexGirl kostenlose Codes" },
   it: { title: "Codici Promo TopGirl 2026 — Codici Attivi Gratuiti", description: "Tutti i codici promo TopGirl/ApexGirl attivi nel 2026. Aggiornamenti giornalieri. Ottieni ricompense gratuite.", keywords: "codici promo TopGirl, codici TopGirl 2026, ApexGirl codici gratis" },
   es: { title: "Códigos Promo TopGirl 2026 — Códigos Activos Gratis", description: "Todos los códigos promo TopGirl/ApexGirl activos en 2026. Actualizaciones diarias. Obtén recompensas gratis.", keywords: "códigos promo TopGirl, códigos TopGirl 2026, ApexGirl códigos gratis" },
   pt: { title: "Códigos Promo TopGirl 2026 — Códigos Ativos Grátis", description: "Todos os códigos promo TopGirl/ApexGirl ativos em 2026. Atualizações diárias. Obtenha recompensas grátis.", keywords: "códigos promo TopGirl, códigos TopGirl 2026, ApexGirl códigos grátis" },
@@ -18,6 +19,7 @@ const meta: Record<string, { title: string; description: string; keywords: strin
 const faqTemplates: Record<string, { q: string; a: string }> = {
   fr: { q: "Quelle est la récompense du code {code} ?", a: "Le code {code} donne : {rewards}." },
   en: { q: "What is the reward for code {code}?", a: "The code {code} gives: {rewards}." },
+  de: { q: "Was ist die Belohnung für den Code {code}?", a: "Der Code {code} gibt: {rewards}." },
   it: { q: "Qual è la ricompensa del codice {code}?", a: "Il codice {code} dà: {rewards}." },
   es: { q: "¿Cuál es la recompensa del código {code}?", a: "El código {code} otorga: {rewards}." },
   pt: { q: "Qual é a recompensa do código {code}?", a: "O código {code} dá: {rewards}." },
@@ -36,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     keywords: m.keywords.split(", "),
     alternates: {
       canonical,
-      languages: { fr: `${BASE_URL}/fr/codes/`, en: `${BASE_URL}/en/codes/`, it: `${BASE_URL}/it/codes/`, es: `${BASE_URL}/es/codes/`, pt: `${BASE_URL}/pt/codes/`, pl: `${BASE_URL}/pl/codes/`, id: `${BASE_URL}/id/codes/`, ru: `${BASE_URL}/ru/codes/`, "x-default": `${BASE_URL}/en/codes/` },
+      languages: { fr: `${BASE_URL}/fr/codes/`, en: `${BASE_URL}/en/codes/`, de: `${BASE_URL}/de/codes/`, it: `${BASE_URL}/it/codes/`, es: `${BASE_URL}/es/codes/`, pt: `${BASE_URL}/pt/codes/`, pl: `${BASE_URL}/pl/codes/`, id: `${BASE_URL}/id/codes/`, ru: `${BASE_URL}/ru/codes/`, "x-default": `${BASE_URL}/en/codes/` },
     },
     openGraph: { title: m.title, description: m.description, url: canonical, siteName: "TopGirl Guide", type: "website" },
     twitter: { card: "summary_large_image", title: m.title, description: m.description },

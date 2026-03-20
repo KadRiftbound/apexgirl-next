@@ -8,6 +8,7 @@ const BASE_URL = 'https://apexgirlguide.com';
 const titleTemplates: Record<string, (title: string, cat: string) => string> = {
   fr: (title, cat) => `${title} — TopGirl Guide | ${cat}`,
   en: (title, cat) => `${title} — TopGirl Guide | ${cat}`,
+  de: (title, cat) => `${title} — TopGirl Guide | ${cat}`,
   it: (title, cat) => `${title} — Guida TopGirl | ${cat}`,
   es: (title, cat) => `${title} — Guía TopGirl | ${cat}`,
   pt: (title, cat) => `${title} — Guia TopGirl | ${cat}`,
@@ -42,6 +43,7 @@ export async function generateMetadata(
     'event-adventure-abroad-tokyo': {
       fr: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo', 'Top Girl aventure Tokyo', 'guide Tokyo Top Girl', 'événement Tokyo Top Girl'],
       en: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo', 'Top Girl Tokyo adventure', 'Tokyo event Top Girl', 'Top Girl guide Tokyo'],
+      de: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo', 'Top Girl Tokio Abenteuer', 'Tokio Event Top Girl'],
       it: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
       es: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
       pt: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
@@ -52,6 +54,7 @@ export async function generateMetadata(
     'event-ancient-rome': {
       fr: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma', 'Rome antique Top Girl', 'Top Girl Rome', 'événement Roma Top Girl'],
       en: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma', 'Ancient Rome Top Girl', 'Rome event Top Girl'],
+      de: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma', 'Antikes Rom Top Girl', 'Rom Event Top Girl'],
       it: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
       es: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
       pt: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
@@ -62,6 +65,7 @@ export async function generateMetadata(
     'event-metro-subway': {
       fr: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro', 'Top Girl métro', 'événement Metro Top Girl'],
       en: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro', 'Tokyo Metro Top Girl'],
+      de: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro', 'Tokio Metro Top Girl'],
       it: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
       es: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
       pt: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
@@ -82,6 +86,7 @@ export async function generateMetadata(
       languages: {
         fr: `${BASE_URL}/fr/guides/${slug}/`,
         en: `${BASE_URL}/en/guides/${slug}/`,
+        de: `${BASE_URL}/de/guides/${slug}/`,
         it: `${BASE_URL}/it/guides/${slug}/`,
         es: `${BASE_URL}/es/guides/${slug}/`,
         pt: `${BASE_URL}/pt/guides/${slug}/`,

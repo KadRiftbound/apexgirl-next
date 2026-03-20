@@ -17,6 +17,7 @@ type ArtistData = {
 const titleByLang: Record<string, (a: ArtistData) => string> = {
   fr: a => `${a.name} — Guide TopGirl | ${a.rank} ${a.genre}`,
   en: a => `${a.name} — TopGirl Artist Guide | ${a.rank} ${a.genre}`,
+  de: a => `${a.name} — TopGirl Künstler-Guide | ${a.rank} ${a.genre}`,
   it: a => `${a.name} — Guida TopGirl | ${a.rank} ${a.genre}`,
   es: a => `${a.name} — Guía TopGirl | ${a.rank} ${a.genre}`,
   pt: a => `${a.name} — Guia TopGirl | ${a.rank} ${a.genre}`,
@@ -28,6 +29,7 @@ const titleByLang: Record<string, (a: ArtistData) => string> = {
 const descByLang: Record<string, (a: ArtistData) => string> = {
   fr: a => a.description || `${a.name} est une artiste ${a.rank} ${a.genre} (${a.position}) dans TopGirl/ApexGirl. Spécialité : ${a.specialty || 'N/A'}. Tier : ${a.calculatedTier || 'N/A'}.`,
   en: a => a.description || `${a.name} is a ${a.rank} ${a.genre} ${a.position} in TopGirl/ApexGirl. Specialty: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
+  de: a => a.description || `${a.name} ist eine ${a.rank} ${a.genre} ${a.position} in TopGirl/ApexGirl. Spezialität: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
   it: a => a.description || `${a.name} è una artista ${a.rank} ${a.genre} (${a.position}) in TopGirl/ApexGirl. Specialità: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
   es: a => a.description || `${a.name} es una artista ${a.rank} ${a.genre} (${a.position}) en TopGirl/ApexGirl. Especialidad: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
   pt: a => a.description || `${a.name} é uma artista ${a.rank} ${a.genre} (${a.position}) no TopGirl/ApexGirl. Especialidade: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
@@ -64,6 +66,7 @@ export async function generateMetadata(
       languages: {
         fr: `${BASE_URL}/fr/artist/${slug}/`,
         en: `${BASE_URL}/en/artist/${slug}/`,
+        de: `${BASE_URL}/de/artist/${slug}/`,
         it: `${BASE_URL}/it/artist/${slug}/`,
         es: `${BASE_URL}/es/artist/${slug}/`,
         pt: `${BASE_URL}/pt/artist/${slug}/`,

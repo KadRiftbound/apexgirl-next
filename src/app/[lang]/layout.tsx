@@ -12,6 +12,7 @@ import { getUiStrings } from "@/lib/i18n/ui";
 const localeNames: Record<string, string> = {
   fr: "fr-FR",
   en: "en-US",
+  de: "de-DE",
   it: "it-IT",
   es: "es-ES",
   pt: "pt-BR",
@@ -23,6 +24,7 @@ const localeNames: Record<string, string> = {
 const metadataByLang: Record<string, { title: string; description: string; keywords: string }> = {
   fr: { title: "TopGirl - Guide et Outils", description: "Le fansite officiel de TopGirl/ApexGirl avec guides, outils et codes promo", keywords: "TopGirl, ApexGirl, guide, tips, codes promo" },
   en: { title: "TopGirl - Guides & Tools", description: "The official TopGirl/ApexGirl fansite with guides, tools and promo codes", keywords: "TopGirl, ApexGirl, guide, tips, promo codes" },
+  de: { title: "TopGirl - Guides & Werkzeuge", description: "Die offizielle TopGirl/ApexGirl Fanseite mit Guides, Werkzeugen und Promo-Codes", keywords: "TopGirl, ApexGirl, guide, tips, promo codes" },
   it: { title: "TopGirl - Guide e Strumenti", description: "Il fansite ufficiale di TopGirl/ApexGirl con guide, strumenti e codici promozionali", keywords: "TopGirl, ApexGirl, guida, tips, codici promozionali" },
   es: { title: "TopGirl - Guías y Herramientas", description: "El fansite oficial de TopGirl/ApexGirl con guías, herramientas y códigos promocionales", keywords: "TopGirl, ApexGirl, guía, tips, códigos promocionales" },
   pt: { title: "TopGirl - Guias e Ferramentas", description: "O fansite oficial da TopGirl/ApexGirl com guias, ferramentas e códigos promocionais", keywords: "TopGirl, ApexGirl, guia, tips, códigos promocionais" },
@@ -46,6 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       languages: {
         fr: `${BASE_URL}/fr/`,
         en: `${BASE_URL}/en/`,
+        de: `${BASE_URL}/de/`,
         it: `${BASE_URL}/it/`,
         es: `${BASE_URL}/es/`,
         pt: `${BASE_URL}/pt/`,
@@ -95,7 +98,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export async function generateStaticParams() {
   return [
-    { lang: "fr" }, { lang: "en" },
+    { lang: "fr" }, { lang: "en" }, { lang: "de" },
     { lang: "it" }, { lang: "es" },
     { lang: "pt" }, { lang: "pl" },
     { lang: "id" }, { lang: "ru" }
@@ -123,6 +126,7 @@ export default async function LocaleLayout({
   const languages = [
     { code: "fr", label: "FR" },
     { code: "en", label: "EN" },
+    { code: "de", label: "DE" },
     { code: "it", label: "IT" },
     { code: "es", label: "ES" },
     { code: "pt", label: "PT" },
