@@ -12,9 +12,9 @@ const slugify = (name: string) =>
   name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 // SSR artists for hero mosaic — list built at module load (stable), pick happens client-side
-const ALL_SSR_IMAGES: string[] = (artistsData as Array<{ rank: string; image?: string }>)
+const ALL_SSR_ARTISTS: Array<{ id: number; name: string; image: string }> = (artistsData as Array<{ id: number; name: string; rank: string; image?: string }>)
   .filter((a) => a.rank === "SSR" && a.image)
-  .map((a) => a.image as string);
+  .map((a) => ({ id: a.id, name: a.name, image: a.image as string }));
 
 function pickRandom<T>(arr: T[], n: number): T[] {
   const copy = [...arr];
@@ -315,7 +315,7 @@ export default function HomeClient({ lang }: { lang: string }) {
   const t = translations[lang] || translations.en;
 
   // Hero artists: picked client-side only to avoid SSR/hydration mismatch
-  const [heroArtists] = useState<string[]>(() => pickRandom(ALL_SSR_IMAGES, 13));
+  const [heroArtists] = useState<typeof ALL_SSR_ARTISTS>(() => pickRandom(ALL_SSR_ARTISTS, 13));
 
   const [copiedCode, setCopiedCode] = useState("");
 
@@ -366,23 +366,24 @@ export default function HomeClient({ lang }: { lang: string }) {
       {/* Éventail d'artistes — desktop: section séparée / mobile: avec contenu dedans */}
       <section className="hero-section">
         <div className="hero-mosaic" aria-hidden="true">
-          {heroArtists.map((img, i) => {
+          {heroArtists.map((artist, i) => {
             const [top, left, w, rot] = MOSAIC_POSITIONS[i] || [50, 50, 14, 0];
             return (
-              <div
-                key={img}
+              <Link
+                key={artist.id}
+                href={`/${lang}/artist/${slugify(artist.name)}/`}
                 className="mosaic-card"
                 style={{ top: `${top}%`, left: `${left}%`, width: `${w}%`, transform: `rotate(${rot}deg)` }}
               >
                 <Image
-                  src={`/assets/images/artists/${img}`}
-                  alt=""
+                  src={`/assets/images/artists/${artist.image}`}
+                  alt={artist.name}
                   width={160}
                   height={200}
                   style={{ objectFit: "cover", width: "100%", height: "100%" }}
                   priority={i < 6}
                 />
-              </div>
+              </Link>
             );
           })}
         </div>
