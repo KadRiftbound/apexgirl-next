@@ -2,6 +2,8 @@
 
 import { useRouter, usePathname } from "next/navigation";
 
+const VALID_LOCALES = ["fr", "en", "de", "it", "es", "pt", "pl", "id", "ru"];
+
 const languages = [
   { code: "fr", label: "Français" },
   { code: "en", label: "English" },
@@ -14,6 +16,15 @@ const languages = [
   { code: "ru", label: "Русский" },
 ];
 
+function switchLanguage(pathname: string, newLang: string): string {
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments.length > 0 && VALID_LOCALES.includes(segments[0])) {
+    segments[0] = newLang;
+    return "/" + segments.join("/") + "/";
+  }
+  return `/${newLang}/`;
+}
+
 export function LanguageSelector({ currentLang }: { currentLang: string }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -22,11 +33,8 @@ export function LanguageSelector({ currentLang }: { currentLang: string }) {
     <select
       onChange={(e) => {
         const newLang = e.target.value;
-        // Preserve the current page — replace the locale prefix in the path
-        // e.g. /fr/guides/ → /en/guides/
-        const localePattern = /^\/(fr|en|de|it|es|pt|pl|id|ru)(\/|$)/;
-        const newPath = pathname.replace(localePattern, `/${newLang}$2`);
-        router.push(newPath || `/${newLang}/`);
+        const newPath = switchLanguage(pathname, newLang);
+        router.push(newPath);
       }}
       value={currentLang}
       style={{

@@ -72,6 +72,8 @@ export function MobileNav() {
     { href: `/${lang}/tools/`, label: ui.nav.tools, cta: true },
   ];
 
+    const VALID_LOCALES = ["fr", "en", "de", "it", "es", "pt", "pl", "id", "ru"];
+
   const languages = [
     { code: "fr", label: "FR" },
     { code: "en", label: "EN" },
@@ -83,6 +85,15 @@ export function MobileNav() {
     { code: "id", label: "ID" },
     { code: "ru", label: "RU" },
   ];
+
+  function switchLanguage(pathname: string, newLang: string): string {
+    const segments = pathname.split("/").filter(Boolean);
+    if (segments.length > 0 && VALID_LOCALES.includes(segments[0])) {
+      segments[0] = newLang;
+      return "/" + segments.join("/") + "/";
+    }
+    return `/${newLang}/`;
+  }
 
   return (
     <div 
@@ -221,7 +232,7 @@ export function MobileNav() {
                 {languages.map((l) => (
                   <Link
                     key={l.code}
-                    href={`/${l.code}/`}
+                    href={switchLanguage(pathname, l.code)}
                     onClick={() => setIsOpen(false)}
                     style={{
                       padding: '10px 8px',
