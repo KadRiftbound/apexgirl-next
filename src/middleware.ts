@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const locales = ["fr", "en", "it", "es", "pt", "pl", "id", "ru"];
+const locales = ["fr", "en", "de", "it", "es", "pt", "pl", "id", "ru"];
 const defaultLocale = "en";
 
 function getLocale(request: NextRequest) {
@@ -20,6 +20,7 @@ function getLocale(request: NextRequest) {
   const localeMap: Record<string, string> = {
     "fr": "fr", "fr-fr": "fr", "fr-be": "fr",
     "en": "en", "en-us": "en", "en-gb": "en",
+    "de": "de", "de-de": "de", "de-at": "de", "de-ch": "de",
     "it": "it", "it-it": "it",
     "es": "es", "es-es": "es", "es-mx": "es",
     "pt": "pt", "pt-pt": "pt", "pt-br": "pt",
