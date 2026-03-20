@@ -38,9 +38,45 @@ export async function generateMetadata(
     ? `${BASE_URL}${guide.thumbnail}`
     : `${BASE_URL}/${lang}/opengraph-image`;
 
+  const keywordsBySlug: Record<string, Record<string, string[]>> = {
+    'event-adventure-abroad-tokyo': {
+      fr: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo', 'Top Girl aventure Tokyo', 'guide Tokyo Top Girl', 'événement Tokyo Top Girl'],
+      en: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo', 'Top Girl Tokyo adventure', 'Tokyo event Top Girl', 'Top Girl guide Tokyo'],
+      it: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
+      es: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
+      pt: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
+      pl: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
+      id: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
+      ru: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Adventure Abroad Tokyo'],
+    },
+    'event-ancient-rome': {
+      fr: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma', 'Rome antique Top Girl', 'Top Girl Rome', 'événement Roma Top Girl'],
+      en: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma', 'Ancient Rome Top Girl', 'Rome event Top Girl'],
+      it: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
+      es: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
+      pt: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
+      pl: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
+      id: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
+      ru: ['Top Girl Roma', 'Apex Girl Roma', 'Adventure Abroad Roma'],
+    },
+    'event-metro-subway': {
+      fr: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro', 'Top Girl métro', 'événement Metro Top Girl'],
+      en: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro', 'Tokyo Metro Top Girl'],
+      it: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
+      es: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
+      pt: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
+      pl: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
+      id: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
+      ru: ['Top Girl Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
+    },
+  };
+
+  const keywords = keywordsBySlug[slug]?.[lang] || keywordsBySlug[slug]?.['en'] || [];
+
   return {
     title: pageTitle,
     description,
+    keywords,
     alternates: {
       canonical: canonicalUrl,
       languages: {
