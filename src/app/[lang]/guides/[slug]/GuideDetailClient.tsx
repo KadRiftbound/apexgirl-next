@@ -5370,11 +5370,11 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
   const renderContent = (text: string, color: string) =>
     text.split('\n').map((line, i) => {
       if (line.startsWith('## '))
-        return <h2 key={i} style={{ color: "#fff", fontSize: "1.3rem", fontWeight: 700, marginTop: "20px", marginBottom: "10px" }}>{line.replace('## ', '')}</h2>;
+        return <h2 key={i} style={{ color, fontSize: "1.4rem", fontWeight: 700, marginTop: "24px", marginBottom: "12px", borderBottom: `1px solid ${color}44`, paddingBottom: "8px" }}>{line.replace('## ', '')}</h2>;
       if (line.startsWith('### '))
-        return <h3 key={i} style={{ color, fontSize: "1rem", fontWeight: 600, marginTop: "16px", marginBottom: "6px" }}>{line.replace('### ', '')}</h3>;
+        return <h3 key={i} style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 600, marginTop: "18px", marginBottom: "8px" }}>{line.replace('### ', '')}</h3>;
       if (line.startsWith('#### '))
-        return <div key={i} style={{ color: "#fff", fontSize: "0.95rem", fontWeight: 600, marginTop: "14px", marginBottom: "4px" }}>{line.replace('#### ', '')}</div>;
+        return <div key={i} style={{ color, fontSize: "0.95rem", fontWeight: 600, marginTop: "14px", marginBottom: "6px" }}>{line.replace('#### ', '')}</div>;
       if (line.startsWith('| ')) {
         const cells = line.split('|').filter(c => c.trim() && !c.match(/^[-\s]+$/));
         if (cells.length === 0) return null;
@@ -5401,7 +5401,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
           </div>
         );
       if (line.startsWith('**') && line.endsWith('**'))
-        return <div key={i} style={{ fontWeight: 700, marginTop: "12px", color: "#fff" }}>{line.replace(/\*\*/g, '')}</div>;
+        return <div key={i} style={{ fontWeight: 700, marginTop: "12px", color, fontSize: "0.95rem" }}>{line.replace(/\*\*/g, '')}</div>;
       return line.trim()
         ? <div key={i} style={{ marginBottom: "6px", color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}>{line}</div>
         : <div key={i} style={{ height: "10px" }} />;
