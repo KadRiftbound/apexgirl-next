@@ -28,7 +28,7 @@ const GUIDES = [
   'hq-upgrade', 'vehicle-system', 'gold-equipment', 'purple-equipment',
   'event-ancient-rome', 'event-radio-battle', 'event-grammy', 'event-ultimate-ceo',
   'event-echo-death-match', 'event-chamber-territory', 'event-cleanup-party',
-  'event-metro-subway', 'event-muse', 'event-vs-group', 'event-fishing',
+  'event-metro-subway', 'event-adventure-abroad-tokyo', 'event-muse', 'event-vs-group', 'event-fishing',
   'world-building', 'vip-level', 'ceo-coins', 'alliance-management',
   'peak-level', 'group-shop',
 ];

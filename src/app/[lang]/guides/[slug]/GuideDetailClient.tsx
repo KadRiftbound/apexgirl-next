@@ -2865,12 +2865,12 @@ L'Abroad Shop permet d'échanger des Commemorative Coins contre des objets préc
 ## Metro & Subway Guide — Adventure Abroad
 
 ### Short Explanation
-The Metro system in Adventure Abroad is a limited-time event that provides temporary stat boosts and progression rewards. Players use Investment Funds to unlock stations and increase Ridership Points.
+The Metro system in Adventure Abroad is a limited-time event that provides temporary stat boost and progression rewards. Players use Investment Funds to unlock stations and increase Ridership Points.
 
 The main goal is to progress as far as possible while using resources efficiently. All Metro bonuses reset after the event ends.
 
 ### Long Explanation
-The Metro event lasts for 3 weeks and offers significant stat boosts such as Sing, Dance, Manage, Fan Capacity, and Rally Fan Capacity. These bonuses help during the event but do not carry over afterward.
+The Metro event lasts for 3 weeks and offers significant stat boost such as Sing, Dance, Manage, Fan Capacity, and Rally Fan Capacity. These bonuses help during the event but do not carry over afterward.
 
 Progression is based on two main systems:
 
@@ -2911,6 +2911,750 @@ Additional sources of Investment Funds include:
 - Stock Store (weekly purchase using Yen)
 
 The Abroad Shop allows players to exchange Commemorative Coins for valuable items. It remains available for a short time after the event ends.
+`,
+  },
+  {
+    id: "event-adventure-abroad-tokyo",
+    title: "Guide Adventure Abroad : Tokyo",
+    title_en: "Adventure Abroad: Tokyo Guide",
+    title_it: "Guida Adventure Abroad: Tokyo",
+    title_es: "Guía Adventure Abroad: Tokyo",
+    title_pt: "Guia Adventure Abroad: Tokyo",
+    title_pl: "Poradnik Adventure Abroad: Tokyo",
+    title_id: "Panduan Adventure Abroad: Tokyo",
+    title_ru: "Гайд Adventure Abroad: Tokyo",
+    description: "Guide complet de l'événement Adventure Abroad Tokyo. Warmup, système de conquête, Metro, événements et récompenses.",
+    description_en: "Complete guide to the Adventure Abroad Tokyo event. Warmup, conquest system, Metro, events and rewards.",
+    description_it: "Guida completa dell'evento Adventure Abroad Tokyo. Warmup, sistema di conquista, Metro, eventi e ricompense.",
+    description_es: "Guía completa del evento Adventure Abroad Tokyo. Warmup, sistema de conquista, Metro, eventos y recompensas.",
+    description_pt: "Guia completo do evento Adventure Abroad Tokyo. Warmup, sistema de conquista, Metro, eventos e recompensas.",
+    description_pl: "Kompletny poradnik wydarzenia Adventure Abroad Tokyo. Warmup, system podboju, Metro, wydarzenia i nagrody.",
+    description_id: "Panduan lengkap acara Adventure Abroad Tokyo. Warmup, sistem penaklukan, Metro, acara dan hadiah.",
+    description_ru: "Полный гайд по событию Adventure Abroad Tokyo. Warmup, система завоевания, Metro, события и награды.",
+    icon: "🗼",
+    color: "#ef4444",
+    category: "Événements",
+    category_en: "Events",
+    category_it: "Eventi",
+    category_es: "Eventos",
+    category_pt: "Eventos",
+    category_pl: "Wydarzenia",
+    category_id: "Acara",
+    category_ru: "События",
+    readTime: "12 min",
+    content: `
+## Guide Adventure Abroad : Tokyo
+
+### Explication courte
+Tokyo est la première aventure Abroad de Top Girl. C'est aussi la première grande étape du jeu après la phase initiale sur le serveur d'origine. L'événement commence par Tokyo Warmup, puis continue avec 3 semaines sur une nouvelle map. Tokyo reprend la logique de conquête du début du jeu, avec des Landmarks, des UR, et un objectif final : la Tokyo Tower.
+
+### Explication longue
+
+#### Tokyo dans la structure du jeu
+Tokyo est la première aventure après la phase de départ sur le serveur d'origine. C'est la base de toutes les aventures Abroad. Pour bien comprendre Tokyo, il faut aussi lire le [Guide de la structure du jeu](/fr/guides/structure-du-jeu/).
+
+Tokyo revient ensuite par cycle dans le jeu : Tokyo, puis Tokyo 2, puis Tokyo 3, etc. Le premier Tokyo est très important car il pose les bases de progression pour la suite du jeu.
+
+#### Tokyo Warmup
+Avant d'entrer sur la map de Tokyo, il y a une semaine de préparation : Tokyo Warmup.
+
+Pendant ce Warmup :
+- 6 serveurs sont regroupés
+- lors du premier Tokyo, les serveurs sont en général regroupés avec des serveurs du même âge
+- Le Warmup donne déjà des récompenses très importantes :
+  - Les 25 premiers peuvent débloquer **Chizuru**
+  - **Chizuru** est la première artiste avec un sort de rally capacity
+  - Le serveur qui finit 1er gagne un bonus de **+10% de stats** pendant toute l'aventure Tokyo
+  - Les serveurs 2e et 3e gagnent un bonus de **+5% de stats**
+
+Le Warmup est donc très important. Bien performer avant même l'ouverture de la map donne un vrai avantage pour toute l'aventure.
+
+#### Fonctionnement général de Tokyo
+Tokyo dure **3 semaines** sur une nouvelle map dédiée.
+
+Le système général ressemble à la première phase du jeu :
+- Placement du HQ
+- Farm de ressources
+- Progression sur la map
+- Conquête de Landmarks
+- Bataille pour des UR
+- Objectif final de contrôle
+
+La grande différence est que Tokyo se joue dans un environnement Abroad, avec plusieurs serveurs, plus de pression, et plus de coordination nécessaire.
+
+L'objectif final de l'aventure est la **Tokyo Tower**, qui joue un rôle similaire au Burj Khalifa sur le serveur d'origine.
+
+#### Les nouveaux systèmes de Tokyo
+
+**Le métro** — Tokyo introduit le Metro. Ce système permet d'obtenir des boosts, des récompenses et une progression supplémentaire pendant l'aventure. Voir le [Guide Metro & Subway](/fr/guides/event-metro-subway/).
+
+**Les bâtiments de Tokyo** — Tokyo ajoute aussi des bâtiments spécifiques. Ces bâtiments génèrent de l'expérience selon le niveau des shops et ton niveau de Management. Cela rend la stat Management / Economy encore plus importante dans cette aventure.
+
+#### Importance du groupe à Tokyo
+Tokyo punit beaucoup les serveurs mal organisés. Les serveurs qui ont de mauvais leaders, des conflits internes, un manque de coordination ou des groupes qui ne coopèrent pas souffrent énormément pendant Tokyo.
+
+Comme les transferts arrivent bien plus tard, un mauvais départ peut coûter très cher. Tokyo récompense donc les serveurs unis, actifs et bien organisés.
+
+#### Chronologie de Tokyo
+
+**Arrivée à Tokyo** — Au début de l'aventure, il faut positionner le HQ, commencer à farm rapidement et avancer comme sur le serveur d'origine. À l'arrivée, il y a aussi différents packages, un event de recharge, et **Kokoro** dans le Tokyo Shop. Kokoro est une artiste importante pour la composition EDM très forte au début du jeu. Il y a aussi le début de l'événement **Who is the richest in Tokyo?**.
+
+**Semaine 1** — La première semaine contient : Ultimate CEO, Ayaka dans la Slot Machine, la phase initiale dans la Chamber, début du Stock Market au day 3, ouverture du toll 1 au day 4, ouverture des premières zones partagées avec d'autres serveurs et premiers Landmarks contestés. La Chamber est la zone sûre de ton serveur au début de Tokyo.
+
+**Semaine 2** — La deuxième semaine contient : les batailles pour les UR, le Dice Event avec Sora, Ultimate Group Event et Versus Event. C'est une semaine de forte montée en tension. La coordination de groupe devient encore plus importante.
+
+**Semaine 3** — La troisième semaine contient : un nouvel Ultimate CEO, Yuuko dans la Slot Machine, l'ouverture de la dernière zone et la bataille finale pour la Tokyo Tower. C'est la phase décisive de l'aventure.
+
+#### Classements pendant Tokyo
+Pendant tout Tokyo, il existe plusieurs classements : individuel, group et chamber.
+
+Pour marquer des points dans l'événement, il faut notamment :
+- Collecter de l'or dans les hotels
+- Faire des concerts
+- Faire des stadium
+- Tuer des fans
+- Dépenser de l'argent dans les lignes de métro
+
+Tokyo ne se résume donc pas à la conquête de map. Il faut aussi scorer régulièrement dans les systèmes annexes.
+`,
+    content_en: `
+## Adventure Abroad: Tokyo Guide
+
+### Short Explanation
+Tokyo is the first Abroad adventure in Top Girl. It's also the first major step in the game after the initial phase on the home server. The event starts with Tokyo Warmup, then continues with 3 weeks on a new map. Tokyo follows the conquest logic of the early game, with Landmarks, URs, and a final objective: the Tokyo Tower.
+
+### Long Explanation
+
+#### Tokyo in the Game Structure
+Tokyo is the first adventure after the departure phase on the home server. It's the foundation of all Abroad adventures. To understand Tokyo well, you should also read the [Game Structure Guide](/en/guides/structure-du-jeu/).
+
+Tokyo then returns in cycles: Tokyo, then Tokyo 2, then Tokyo 3, etc. The first Tokyo is very important because it sets the progression foundations for the rest of the game.
+
+#### Tokyo Warmup
+Before entering the Tokyo map, there's a preparation week: Tokyo Warmup.
+
+During this Warmup:
+- 6 servers are grouped together
+- During the first Tokyo, servers are generally matched with servers of similar age
+- The Warmup already gives very important rewards:
+  - The top 25 can unlock **Chizuru**
+  - **Chizuru** is the first artist with a rally capacity skill
+  - The server that finishes 1st gains a **+10% stats bonus** for the entire Tokyo adventure
+  - Servers finishing 2nd and 3rd gain a **+5% stats bonus**
+
+The Warmup is therefore very important. Performing well before the map opens gives a real advantage for the entire adventure.
+
+#### General Tokyo Operation
+Tokyo lasts **3 weeks** on a dedicated new map.
+
+The general system resembles the early game phase:
+- HQ placement
+- Resource farming
+- Map progression
+- Landmarks conquest
+- Battles for URs
+- Final control objective
+
+The big difference is that Tokyo is played in an Abroad environment, with multiple servers, more pressure, and more coordination needed.
+
+The final objective of the adventure is the **Tokyo Tower**, which plays a similar role to the Burj Khalifa on the home server.
+
+#### New Systems in Tokyo
+
+**The Metro** — Tokyo introduces the Metro. This system allows you to get boosts, rewards and additional progression during the adventure. See the [Metro & Subway Guide](/en/guides/event-metro-subway/).
+
+**Tokyo Buildings** — Tokyo also adds specific buildings. These buildings generate experience based on shop levels and your Management level. This makes the Management / Economy stat even more important in this adventure.
+
+#### Group Importance in Tokyo
+Tokyo heavily punishes poorly organized servers. Servers with bad leaders, internal conflicts, lack of coordination, or groups that don't cooperate suffer greatly during Tokyo.
+
+Since transfers come much later, a bad start can be very costly. Tokyo rewards servers that are united, active, and well organized.
+
+#### Tokyo Timeline
+
+**Arrival at Tokyo** — At the start of the adventure, you need to position the HQ, start farming quickly, and progress as on the home server. On arrival, there are also various packages, a recharge event, and **Kokoro** in the Tokyo Shop. Kokoro is an important artist for the very strong early-game EDM composition. There's also the start of the **Who is the richest in Tokyo?** event.
+
+**Week 1** — The first week contains: Ultimate CEO, Ayaka in the Slot Machine, the initial phase in the Chamber, Stock Market start on day 3, toll 1 opening on day 4, opening of the first shared zones with other servers, and first contested Landmarks. The Chamber is your server's safe zone at the start of Tokyo.
+
+**Week 2** — The second week contains: battles for URs, the Dice Event with Sora, Ultimate Group Event, and Versus Event. It's a week of high tension. Group coordination becomes even more important.
+
+**Week 3** — The third week contains: a new Ultimate CEO, Yuuko in the Slot Machine, opening of the last zone, and the final battle for the Tokyo Tower. This is the decisive phase of the adventure.
+
+#### Rankings During Tokyo
+Throughout Tokyo, there are several rankings: individual, group, and chamber.
+
+To score points in the event, you mainly need to:
+- Collect gold from hotels
+- Do concerts
+- Do stadium rallies
+- Kill fans
+- Spend money on metro lines
+
+Tokyo is therefore not just about map conquest. You also need to score regularly in the ancillary systems.
+`,
+    content_it: `
+## Guida Adventure Abroad: Tokyo
+
+### Breve Spiegazione
+Tokyo è la prima avventura Abroad in Top Girl. È anche il primo grande passo nel gioco dopo la fase iniziale sul server home. L'evento inizia con Tokyo Warmup, poi continua con 3 settimane su una nuova mappa. Tokyo segue la logica di conquista dell'inizio del gioco, con Landmarks, UR e un obiettivo finale: la Tokyo Tower.
+
+### Spiegazione Dettagliata
+
+#### Tokyo nella Struttura del Gioco
+Tokyo è la prima avventura dopo la fase iniziale sul server home. È la base di tutte le avventure Abroad. Per capire bene Tokyo, dovresti anche leggere la [Guida Struttura del Gioco](/it/guides/structure-du-jeu/).
+
+Tokyo poi ritorna in cicli: Tokyo, poi Tokyo 2, poi Tokyo 3, ecc. Il primo Tokyo è molto importante perché pone le basi di progressione per il resto del gioco.
+
+#### Tokyo Warmup
+Prima di entrare nella mappa di Tokyo, c'è una settimana di preparazione: Tokyo Warmup.
+
+Durante questo Warmup:
+- 6 server vengono raggruppati
+- durante il primo Tokyo, i server sono generalmente abbinati con server di età simile
+- Il Warmup dà già ricompense molto importanti:
+  - I primi 25 possono sbloccare **Chizuru**
+  - **Chizuru** è la prima artista con una skill di rally capacity
+  - Il server che finisce 1° guadagna un bonus di **+10% di stats** per tutta l'avventura Tokyo
+  - I server che finiscono 2° e 3° guadagnano un bonus di **+5% di stats**
+
+Il Warmup è quindi molto importante. Performare bene prima dell'apertura della mappa dà un vero vantaggio per tutta l'avventura.
+
+#### Funzionamento Generale di Tokyo
+Tokyo dura **3 settimane** su una nuova mappa dedicata.
+
+Il sistema generale assomiglia alla fase iniziale del gioco:
+- Posizionamento del HQ
+- Farming di risorse
+- Progressione sulla mappa
+- Conquista di Landmarks
+- Battaglie per UR
+- Obiettivo finale di controllo
+
+La grande differenza è che Tokyo si gioca in un ambiente Abroad, con più server, più pressione e più coordinazione necessaria.
+
+L'obiettivo finale dell'avventura è la **Tokyo Tower**, che ha un ruolo simile al Burj Khalifa sul server home.
+
+#### Sistemi Nuovi in Tokyo
+
+**Il Metro** — Tokyo introduce il Metro. Questo sistema permette di ottenere boost, ricompense e progressione aggiuntiva durante l'avventura. Vedi la [Guida Metro & Subway](/it/guides/event-metro-subway/).
+
+**Edifici di Tokyo** — Tokyo aggiunge anche edifici specifici. Questi edifici generano esperienza in base al livello degli shop e al tuo livello di Management. Questo rende la stat Management / Economy ancora più importante in questa avventura.
+
+#### Importanza del Gruppo a Tokyo
+Tokyo punisce molto i server mal organizzati. I server con cattivi leader, conflitti interni, mancanza di coordinazione o gruppi che non cooperano soffrono enormemente durante Tokyo.
+
+Poiché i trasferimenti arrivano molto dopo, una cattiva partenza può costare molto caro. Tokyo premia i server uniti, attivi e ben organizzati.
+
+#### Timeline di Tokyo
+
+**Arrivo a Tokyo** — All'inizio dell'avventura, devi posizionare il HQ, iniziare a farmare rapidamente e avanzare come sul server home. All'arrivo, ci sono anche vari pacchetti, un evento di ricarica e **Kokoro** nel Tokyo Shop. Kokoro è un'artista importante per la composizione EDM molto forte all'inizio del gioco. C'è anche l'inizio dell'evento **Who is the richest in Tokyo?**.
+
+**Settimana 1** — La prima settimana contiene: Ultimate CEO, Ayaka nella Slot Machine, la fase iniziale nella Chamber, inizio del Stock Market al giorno 3, apertura del pedaggio 1 al giorno 4, apertura delle prime zone condivise con altri server e primi Landmarks contesi. La Chamber è la zona sicura del tuo server all'inizio di Tokyo.
+
+**Settimana 2** — La seconda settimana contiene: battaglie per UR, il Dice Event con Sora, Ultimate Group Event e Versus Event. È una settimana di forte aumento della tensione. La coordinazione del gruppo diventa ancora più importante.
+
+**Settimana 3** — La terza settimana contiene: un nuovo Ultimate CEO, Yuuko nella Slot Machine, apertura dell'ultima zona e la battaglia finale per la Tokyo Tower. Questa è la fase decisiva dell'avventura.
+
+#### Classifiche Durante Tokyo
+Durante tutto Tokyo, ci sono diverse classifiche: individuale, gruppo e camera.
+
+Per segnare punti nell'evento, devi principalmente:
+- Raccogliere oro dagli hotel
+- Fare concerti
+- Fare stadium rally
+- Uccidere fan
+- Spendere soldi sulle linee metropolitane
+
+Tokyo quindi non si riduce alla conquista della mappa. Devi anche segnare regolarmente nei sistemi annessi.
+`,
+    content_es: `
+## Guía Adventure Abroad: Tokyo
+
+### Explicación Corta
+Tokyo es la primera aventura Abroad en Top Girl. También es el primer paso importante en el juego después de la fase inicial en el servidor local. El evento comienza con Tokyo Warmup, luego continúa con 3 semanas en un nuevo mapa. Tokyo sigue la lógica de conquista del inicio del juego, con Landmarks, UR y un objetivo final: la Tokyo Tower.
+
+### Explicación Larga
+
+#### Tokyo en la Estructura del Juego
+Tokyo es la primera aventura después de la fase inicial en el servidor local. Es la base de todas las aventuras Abroad. Para entender bien Tokyo, también deberías leer la [Guía de Estructura del Juego](/es/guides/structure-du-jeu/).
+
+Tokyo luego regresa en ciclos: Tokyo, luego Tokyo 2, luego Tokyo 3, etc. El primer Tokyo es muy importante porque establece las bases de progresión para el resto del juego.
+
+#### Tokyo Warmup
+Antes de entrar en el mapa de Tokyo, hay una semana de preparación: Tokyo Warmup.
+
+Durante este Warmup:
+- 6 servidores se agrupan
+- durante el primer Tokyo, los servidores generalmente se emparejan con servidores de edad similar
+- El Warmup ya da recompensas muy importantes:
+  - Los primeros 25 pueden desbloquear **Chizuru**
+  - **Chizuru** es la primera artista con una habilidad de rally capacity
+  - El servidor que termina 1° gana un bono de **+10% de stats** durante toda la aventura Tokyo
+  - Los servidores que terminan 2° y 3° ganan un bono de **+5% de stats**
+
+El Warmup es muy importante. Performar bien antes de la apertura del mapa da una ventaja real para toda la aventura.
+
+#### Funcionamiento General de Tokyo
+Tokyo dura **3 semanas** en un nuevo mapa dedicado.
+
+El sistema general se parece a la fase inicial del juego:
+- Colocación del HQ
+- Farming de recursos
+- Progresión en el mapa
+- Conquista de Landmarks
+- Batallas por UR
+- Objetivo final de control
+
+La gran diferencia es que Tokyo se juega en un entorno Abroad, con múltiples servidores, más presión y más coordinación necesaria.
+
+El objetivo final de la aventura es la **Tokyo Tower**, que tiene un papel similar al Burj Khalifa en el servidor local.
+
+#### Sistemas Nuevos en Tokyo
+
+**El Metro** — Tokyo introduce el Metro. Este sistema permite obtener boosts, recompensas y progresión adicional durante la aventura. Ver la [Guía Metro & Subway](/es/guides/event-metro-subway/).
+
+**Edificios de Tokyo** — Tokyo también añade edificios específicos. Estos edificios generan experiencia según el nivel de las tiendas y tu nivel de Management. Esto hace que la stat Management / Economy sea aún más importante en esta aventura.
+
+#### Importancia del Grupo en Tokyo
+Tokyo castiga mucho a los servidores mal organizados. Los servidores con malos líderes, conflictos internos, falta de coordinación o grupos que no cooperan sufren enormemente durante Tokyo.
+
+Como las transferencias llegan mucho después, un mal comienzo puede costar muy caro. Tokyo premia a los servidores unidos, activos y bien organizados.
+
+#### Cronología de Tokyo
+
+**Llegada a Tokyo** — Al principio de la aventura, necesitas posicionar el HQ, empezar a farmear rápidamente y avanzar como en el servidor local. A la llegada, también hay varios paquetes, un evento de recarga y **Kokoro** en la Tokyo Shop. Kokoro es una artista importante para la composición EDM muy fuerte al principio del juego. También está el inicio del evento **Who is the richest in Tokyo?**.
+
+**Semana 1** — La primera semana contiene: Ultimate CEO, Ayaka en la Slot Machine, la fase inicial en la Chamber, inicio del Stock Market en el día 3, apertura del peaje 1 en el día 4, apertura de las primeras zonas compartidas con otros servidores y primeros Landmarks disputados. La Chamber es la zona segura de tu servidor al principio de Tokyo.
+
+**Semana 2** — La segunda semana contiene: batallas por UR, el Dice Event con Sora, Ultimate Group Event y Versus Event. Es una semana de fuerte aumento de tensión. La coordinación del grupo se vuelve aún más importante.
+
+**Semana 3** — La tercera semana contiene: un nuevo Ultimate CEO, Yuuko en la Slot Machine, apertura de la última zona y la batalla final por la Tokyo Tower. Esta es la fase decisiva de la aventura.
+
+#### Clasificaciones Durante Tokyo
+Durante todo Tokyo, hay varias clasificaciones: individual, grupo y cámara.
+
+Para puntuar en el evento, necesitas principalmente:
+- Recolectar oro de los hoteles
+- Hacer conciertos
+- Hacer stadium rallies
+- Matar fans
+- Gastar dinero en las líneas de metro
+
+Tokyo no se reduce a la conquista del mapa. También necesitas puntuar regularmente en los sistemas anexos.
+`,
+    content_pt: `
+## Guia Adventure Abroad: Tokyo
+
+### Explicação Curta
+Tokyo é a primeira aventura Abroad em Top Girl. Também é o primeiro grande passo no jogo após a fase inicial no servidor local. O evento começa com Tokyo Warmup, depois continua com 3 semanas em um novo mapa. Tokyo segue a lógica de conquista do início do jogo, com Landmarks, UR e um objetivo final: a Tokyo Tower.
+
+### Explicação Longa
+
+#### Tokyo na Estrutura do Jogo
+Tokyo é a primeira aventura após a fase inicial no servidor local. É a base de todas as aventuras Abroad. Para entender bem Tokyo, você também deve ler o [Guia de Estrutura do Jogo](/pt/guides/structure-du-jeu/).
+
+Tokyo depois retorna em ciclos: Tokyo, depois Tokyo 2, depois Tokyo 3, etc. O primeiro Tokyo é muito importante porque estabelece as bases de progressão para o resto do jogo.
+
+#### Tokyo Warmup
+Antes de entrar no mapa de Tokyo, há uma semana de preparação: Tokyo Warmup.
+
+Durante este Warmup:
+- 6 servidores são agrupados
+- durante o primeiro Tokyo, os servidores geralmente são pareados com servidores de idade similar
+- O Warmup já dá recompensas muito importantes:
+  - Os primeiros 25 podem desbloquear **Chizuru**
+  - **Chizuru** é a primeira artista com uma habilidade de rally capacity
+  - O servidor que termina em 1° ganha um bônus de **+10% de stats** durante toda a aventura Tokyo
+  - Os servidores que terminam em 2° e 3° ganham um bônus de **+5% de stats**
+
+O Warmup é muito importante. Performar bem antes da abertura do mapa dá uma vantagem real para toda a aventura.
+
+#### Funcionamento Geral de Tokyo
+Tokyo dura **3 semanas** em um novo mapa dedicado.
+
+O sistema geral se parece com a fase inicial do jogo:
+- Posicionamento do HQ
+- Farming de recursos
+- Progressão no mapa
+- Conquista de Landmarks
+- Batalhas por UR
+- Objetivo final de controle
+
+A grande diferença é que Tokyo é jogado em um ambiente Abroad, com múltiplos servidores, mais pressão e mais coordenação necessária.
+
+O objetivo final da aventura é a **Tokyo Tower**, que tem um papel similar ao Burj Khalifa no servidor local.
+
+#### Sistemas Novos em Tokyo
+
+**O Metro** — Tokyo introduz o Metro. Este sistema permite obter boosts, recompensas e progressão adicional durante a aventura. Ver o [Guia Metro & Subway](/pt/guides/event-metro-subway/).
+
+**Edifícios de Tokyo** — Tokyo também adiciona edifícios específicos. Estes edifícios geram experiência de acordo com o nível das lojas e seu nível de Management. Isso torna a stat Management / Economy ainda mais importante nesta aventura.
+
+#### Importância do Grupo em Tokyo
+Tokyo pune muito os servidores mal organizados. Servidores com maus líderes, conflitos internos, falta de coordenação ou grupos que não cooperam sofrem enormemente durante Tokyo.
+
+Como as transferências chegam muito depois, um mau começo pode custar muito caro. Tokyo premia os servidores unidos, ativos e bem organizados.
+
+#### Cronologia de Tokyo
+
+**Chegada a Tokyo** — No início da aventura, você precisa posicionar o HQ, começar a farmear rapidamente e avançar como no servidor local. Na chegada, também há vários pacotes, um evento de recarga e **Kokoro** na Tokyo Shop. Kokoro é uma artista importante para a composição EDM muito forte no início do jogo. Também há o início do evento **Who is the richest in Tokyo?**.
+
+**Semana 1** — A primeira semana contém: Ultimate CEO, Ayaka na Slot Machine, a fase inicial na Chamber, início do Stock Market no dia 3, abertura do pedágio 1 no dia 4, abertura das primeiras zonas compartilhadas com outros servidores e primeiros Landmarks disputados. A Chamber é a zona segura do seu servidor no início de Tokyo.
+
+**Semana 2** — A segunda semana contém: batalhas por UR, o Dice Event com Sora, Ultimate Group Event e Versus Event. É uma semana de forte aumento de tensão. A coordenação do grupo se torna ainda mais importante.
+
+**Semana 3** — A terceira semana contém: um novo Ultimate CEO, Yuuko na Slot Machine, abertura da última zona e a batalha final pela Tokyo Tower. Esta é a fase decisiva da aventura.
+
+#### Classificações Durante Tokyo
+Durante todo Tokyo, há várias classificações: individual, grupo e câmara.
+
+Para pontuar no evento, você precisa principalmente:
+- Coletar ouro dos hotéis
+- Fazer shows
+- Fazer stadium rallies
+- Matar fans
+- Gastar dinheiro nas linhas de metrô
+
+Tokyo não se resume à conquista do mapa. Você também precisa pontuar regularmente nos sistemas anexos.
+`,
+    content_pl: `
+## Poradnik Adventure Abroad: Tokyo
+
+### Krótkie wyjaśnienie
+Tokyo jest pierwszą przygodą Abroad w Top Girl. To również pierwszy duży krok w grze po fazie początkowej na serwerze domowym. Wydarzenie rozpoczyna się od Tokyo Warmup, a następnie trwa 3 tygodnie na nowej mapie. Tokyo podąża za logiką podboju z początku gry, z Landmarks, UR i końcowym celem: Tokyo Tower.
+
+### Długie wyjaśnienie
+
+#### Tokyo w strukturze gry
+Tokyo jest pierwszą przygodą po fazie początkowej na serwerze domowym. To fundament wszystkich przygód Abroad. Aby dobrze zrozumieć Tokyo, powinieneś również przeczytać [Poradnik Struktury Gry](/pl/guides/structure-du-jeu/).
+
+Tokyo następnie powraca w cyklach: Tokyo, potem Tokyo 2, potem Tokyo 3, itp. Pierwsze Tokyo jest bardzo ważne, ponieważ stanowi podstawy progresji na resztę gry.
+
+#### Tokyo Warmup
+Przed wejściem na mapę Tokyo jest tydzień przygotowawczy: Tokyo Warmup.
+
+Podczas tego Warmup:
+- 6 serwerów jest grupowanych razem
+- podczas pierwszego Tokyo serwery są generalnie dopasowywane z serwerami podobnego wieku
+- Warmup daje już bardzo ważne nagrody:
+  - Pierwsze 25 może odblokować **Chizuru**
+  - **Chizuru** jest pierwszą artystką ze zdolnością rally capacity
+  - Serwer który skończy 1. zdobywa bonus **+10% statów** na całą przygodę Tokyo
+  - Serwery które skończą 2. i 3. zdobywają bonus **+5% statów**
+
+Warmup jest więc bardzo ważny. Dobra forma przed otwarciem mapy daje prawdziwą przewagę na całą przygodę.
+
+#### Ogólne działanie Tokyo
+Tokyo trwa **3 tygodnie** na dedykowanej nowej mapie.
+
+Ogólny system przypomina fazę początkową gry:
+- Umiejscowienie HQ
+- Farming zasobów
+- Progresja na mapie
+- Podbój Landmarks
+- Walki o UR
+- Końcowy cel kontrolny
+
+Duża różnica polega na tym, że Tokyo jest grane w środowisku Abroad, z wieloma serwerami, większą presją i większą potrzebą koordynacji.
+
+Końcowym celem przygody jest **Tokyo Tower**, która pełni podobną rolę co Burj Khalifa na serwerze domowym.
+
+#### Nowe systemy w Tokyo
+
+**Metro** — Tokyo wprowadza Metro. Ten system pozwala uzyskać boosty, nagrody i dodatkową progresję podczas przygody. Zobacz [Poradnik Metro & Subway](/pl/guides/event-metro-subway/).
+
+**Budynki Tokyo** — Tokyo dodaje również specyficzne budynki. Te budynki generują doświadczenie na podstawie poziomu sklepów i Twojego poziomu Management. To sprawia, że stat Management / Economy jest jeszcze ważniejszy w tej przygodzie.
+
+#### Znaczenie grupy w Tokyo
+Tokyo bardzo karze słabo zorganizowane serwery. Serwery z złymi liderami, konfliktami wewnętrznymi, brakiem koordynacji lub grupami które nie współpracują cierpią ogromnie podczas Tokyo.
+
+Ponieważ transfery przychodzą dużo później, zły start może być bardzo kosztowny. Tokyo nagradza serwery które są zjednoczone, aktywne i dobrze zorganizowane.
+
+#### Oś czasu Tokyo
+
+**Przybycie do Tokyo** — Na początku przygody musisz umiejscowić HQ, zacząć szybko farmić i awansować jak na serwerze domowym. Po przybyciu są również różne pakiety, wydarzenie doładowania i **Kokoro** w Tokyo Shop. Kokoro jest ważną artystką dla bardzo silnej wczesnej kompozycji EDM. Jest również początek wydarzenia **Who is the richest in Tokyo?**.
+
+**Tydzień 1** — Pierwszy tydzień zawiera: Ultimate CEO, Ayaka w Slot Machine, początkowa faza w Chamber, start Stock Market w dzień 3, otwarcie opłaty 1 w dzień 4, otwarcie pierwszych stref dzielonych z innymi serwerami i pierwsze kwestionowane Landmarks. Chamber jest bezpieczną strefą Twojego serwera na początku Tokyo.
+
+**Tydzień 2** — Drugi tydzień zawiera: walki o UR, Dice Event z Sora, Ultimate Group Event i Versus Event. To tydzień silnego wzrostu napięcia. Koordynacja grupy staje się jeszcze ważniejsza.
+
+**Tydzień 3** — Trzeci tydzień zawiera: nowe Ultimate CEO, Yuuko w Slot Machine, otwarcie ostatniej strefy i ostateczna walka o Tokyo Tower. To decydująca faza przygody.
+
+#### Rankingi podczas Tokyo
+Przez całe Tokyo istnieją różne rankingi: indywidualny, grupowy i chamber.
+
+Aby zdobywać punkty w wydarzeniu, musisz głównie:
+- Zbierać złoto z hoteli
+- Robić koncerty
+- Robić stadium rally
+- Zabijać fanów
+- Wydawać pieniądze na liniach metra
+
+Tokyo nie ogranicza się więc do podboju mapy. Musisz też regularnie zdobywać punkty w systemach pomocniczych.
+`,
+    content_id: `
+## Panduan Adventure Abroad: Tokyo
+
+### Penjelasan Singkat
+Tokyo adalah petualangan Abroad pertama di Top Girl. Ini juga langkah besar pertama dalam permainan setelah fase awal di server rumah. Acara dimulai dengan Tokyo Warmup, lalu berlanjut dengan 3 minggu di peta baru. Tokyo mengikuti logika penaklukan dari awal permainan, dengan Landmarks, UR, dan tujuan akhir: Tokyo Tower.
+
+### Penjelasan Panjang
+
+#### Tokyo dalam Struktur Permainan
+Tokyo adalah petualangan pertama setelah fase awal di server rumah. Ini adalah fondasi dari semua petualangan Abroad. Untuk memahami Tokyo dengan baik, Anda juga harus membaca [Panduan Struktur Permainan](/id/guides/structure-du-jeu/).
+
+Tokyo kemudian kembali dalam siklus: Tokyo, lalu Tokyo 2, lalu Tokyo 3, dll. Tokyo pertama sangat penting karena menetapkan fondasi progresi untuk sisa permainan.
+
+#### Tokyo Warmup
+Sebelum memasuki peta Tokyo, ada minggu persiapan: Tokyo Warmup.
+
+Selama Warmup ini:
+- 6 server dikelompokkan bersama
+- selama Tokyo pertama, server umumnya dicocokkan dengan server usia serupa
+- Warmup sudah memberikan hadiah yang sangat penting:
+  - 25 teratas dapat membuka **Chizuru**
+  - **Chizuru** adalah artis pertama dengan skill rally capacity
+  - Server yang finishes 1st mendapat bonus **+10% stats** selama seluruh petualangan Tokyo
+  - Server yang finishes 2nd dan 3rd mendapat bonus **+5% stats**
+
+Warmup sangat penting. Performanya dengan baik sebelum pembukaan peta memberikan keuntungan nyata untuk seluruh petualangan.
+
+#### Pengoperasian Umum Tokyo
+Tokyo berlangsung **3 minggu** di peta baru yang ditentukan.
+
+Sistem umum menyerupai fase awal permainan:
+- Penempatan HQ
+- Farming sumber daya
+- Progresi di peta
+- Penaklukan Landmarks
+- Pertempuran untuk UR
+- Tujuan kontrol akhir
+
+Perbedaan besar adalah Tokyo dimainkan di lingkungan Abroad, dengan banyak server, lebih banyak tekanan, dan lebih banyak koordinasi yang diperlukan.
+
+Tujuan akhir petualangan adalah **Tokyo Tower**, yang memainkan peran serupa dengan Burj Khalifa di server rumah.
+
+#### Sistem Baru di Tokyo
+
+**Metro** — Tokyo memperkenalkan Metro. Sistem ini memungkinkan Anda mendapatkan boost, hadiah, dan progresi tambahan selama petualangan. Lihat [Panduan Metro & Subway](/id/guides/event-metro-subway/).
+
+**Bangunan Tokyo** — Tokyo juga menambahkan bangunan spesifik. Bangunan-bangunan ini menghasilkan pengalaman berdasarkan tingkat toko dan tingkat Management Anda. Ini membuat stat Management / Economy menjadi lebih penting dalam petualangan ini.
+
+#### Pentingnya Grup di Tokyo
+Tokyo sangat menghukum server yang tidak terorganisir dengan baik. Server dengan pemimpin buruk, konflik internal, kurang koordinasi, atau grup yang tidak bekerja sama sangat menderita selama Tokyo.
+
+Karena transfer datang jauh kemudian, awal yang buruk bisa sangat mahal. Tokyo memberi penghargaan kepada server yang bersatu, aktif, dan terorganisir dengan baik.
+
+#### Timeline Tokyo
+
+**Kedatangan di Tokyo** — Di awal petualangan, Anda perlu memposisikan HQ, mulai farming dengan cepat, dan maju seperti di server rumah. Saat kedatangan, ada juga berbagai paket, acara isi ulang, dan **Kokoro** di Tokyo Shop. Kokoro adalah artis penting untuk komposisi EDM yang sangat kuat di awal permainan. Ada juga awal acara **Who is the richest in Tokyo?**.
+
+**Minggu 1** — Minggu pertama berisi: Ultimate CEO, Ayaka di Slot Machine, fase awal di Chamber, awal Stock Market di hari 3, pembukaan toll 1 di hari 4, pembukaan zona pertama yang dibagikan dengan server lain dan Landmarks pertama yang disengketakan. Chamber adalah zona aman server Anda di awal Tokyo.
+
+**Minggu 2** — Minggu kedua berisi: pertempuran untuk UR, Dice Event dengan Sora, Ultimate Group Event dan Versus Event. Ini adalah minggu dengan peningkatan ketegangan yang kuat. Koordinasi grup menjadi lebih penting.
+
+**Minggu 3** — Minggu ketiga berisi: Ultimate CEO baru, Yuuko di Slot Machine, pembukaan zona terakhir dan pertempuran akhir untuk Tokyo Tower. Ini adalah fase décisif dari petualangan.
+
+#### Peringkat Selama Tokyo
+Sepanjang Tokyo, ada beberapa peringkat: individu, grup, dan chamber.
+
+Untuk mendapatkan poin dalam acara, Anda terutama perlu:
+- Mengumpulkan emas dari hotel
+- Melakukan konser
+- Melakukan rally stadium
+- Membunuh fans
+- Menghabiskan uang di jalur metro
+
+Tokyo tidak hanya tentang penaklukan peta. Anda juga perlu mendapatkan poin secara teratur di sistem tambahan.
+`,
+    content_ru: `
+## Гайд Adventure Abroad: Tokyo
+
+### Краткое объяснение
+Tokyo — первое приключение Abroad в Top Girl. Это также первый большой шаг в игре после начальной фазы на домашнем сервере. Событие начинается с Tokyo Warmup, затем продолжается 3 недели на новой карте. Tokyo следует логике завоевания начала игры, с Landmarks, UR и конечной целью: Tokyo Tower.
+
+### Подробное объяснение
+
+#### Tokyo в структуре игры
+Tokyo — первое приключение после начальной фазы на домашнем сервере. Это основа всех приключений Abroad. Чтобы хорошо понять Tokyo, вам также следует прочитать [Гайд по структуре игры](/ru/guides/structure-du-jeu/).
+
+Tokyo затем возвращается в циклах: Tokyo, затем Tokyo 2, затем Tokyo 3 и т.д. Первый Tokyo очень важен, потому что он закладывает основы прогрессии для остальной игры.
+
+#### Tokyo Warmup
+Перед входом на карту Tokyo есть неделя подготовки: Tokyo Warmup.
+
+Во время этого Warmup:
+- 6 серверов группируются вместе
+- во время первого Tokyo серверы обычно объединяются с серверами схожего возраста
+- Warmup уже даёт очень важные награды:
+  - Первые 25 могут разблокировать **Chizuru**
+  - **Chizuru** — первая артистка со скиллом rally capacity
+  - Сервер, занявший 1 место, получает бонус **+10% статов** на всю авантюру Tokyo
+  - Серверы, занявшие 2 и 3 места, получают бонус **+5% статов**
+
+Warmup очень важен. Хорошая игра до открытия карты даёт реальное преимущество на всю авантюру.
+
+#### Общая работа Tokyo
+Tokyo длится **3 недели** на выделенной новой карте.
+
+Общая система похожа на начальную фазу игры:
+- Размещение HQ
+- Фарм ресурсов
+- Прогресс на карте
+- Завоевание Landmarks
+- Битвы за UR
+- Конечная цель контроля
+
+Большая разница в том, что Tokyo играется в среде Abroad, с несколькими серверами, большим давлением и большей потребностью в координации.
+
+Конечная цель авантюры — **Tokyo Tower**, которая играет роль, аналогичную Бурдж-Халифа на домашнем сервере.
+
+#### Новые системы в Tokyo
+
+**Метро** — Tokyo представляет Метро. Эта система позволяет получать бусты, награды и дополнительный прогресс во время авантюры. См. [Гайд по Metro & Subway](/ru/guides/event-metro-subway/).
+
+**Здания Tokyo** — Tokyo также добавляет специфические здания. Эти здания генерируют опыт в зависимости от уровня магазинов и вашего уровня Management. Это делает стат Management / Economy ещё более важным в этой авантюре.
+
+#### Важность группы в Tokyo
+Tokyo сильно наказывает плохо организованные серверы. Серверы с плохими лидерами, внутренними конфликтами, отсутствием координации или группами, которые не сотрудничают, очень страдают во время Tokyo.
+
+Поскольку трансферы приходят намного позже, плохой старт может стоить очень дорого. Tokyo вознаграждает объединённые, активные и хорошо организованные серверы.
+
+#### Хронология Tokyo
+
+**Прибытие в Tokyo** — В начале авантюры вам нужно разместить HQ, быстро начать фармить и продвигаться как на домашнем сервере. По прибытии также есть различные пакеты, событие пополнения и **Kokoro** в Tokyo Shop. Kokoro — важная артистка для очень сильной начальной EDM-композиции. Также есть начало события **Who is the richest in Tokyo?**.
+
+**Неделя 1** — Первая неделя содержит: Ultimate CEO, Ayaka в Slot Machine, начальную фазу в Chamber, начало Stock Market в день 3, открытие toll 1 в день 4, открытие первых общих зон с другими серверами и первые оспариваемые Landmarks. Chamber — безопасная зона вашего сервера в начале Tokyo.
+
+**Неделя 2** — Вторая неделя содержит: битвы за UR, Dice Event с Sora, Ultimate Group Event и Versus Event. Это неделя сильного нарастания напряжения. Координация группы становится ещё важнее.
+
+**Неделя 3** — Третья неделя содержит: новый Ultimate CEO, Yuuko в Slot Machine, открытие последней зоны и финальную битву за Tokyo Tower. Это решающая фаза авантюры.
+
+#### Рейтинги во время Tokyo
+На протяжении всего Tokyo существует несколько рейтингов: индивидуальный, групповой и chamber.
+
+Чтобы набирать очки в событии, вам в основном нужно:
+- Собирать золото в отелях
+- Делать концерты
+- Делать stadium rally
+- Убивать фанов
+- Тратить деньги на линиях метро
+
+Tokyo — это не только завоевание карты. Вам также нужно регулярно набирать очки в дополнительных системах.
+`,
+    tips: `
+- Prépare ton arrivée avant l'ouverture de Tokyo. Regarde la map à l'avance si possible.
+- Essaie aussi de contacter rapidement les serveurs voisins ou les groupes proches de ta zone.
+- Garde de l'AP avant d'arriver à Tokyo si le classement chamber ou individuel est déjà joué. Cela peut te donner un peu plus de monnaie, ce qui aide beaucoup pour avancer dans le Metro.
+- Ne sous-estime pas le Tokyo Warmup. Les bonus de stats et Chizuru peuvent faire une vraie différence sur toute l'aventure.
+- Organise ton serveur très tôt. Tokyo punit fortement les serveurs avec des conflits internes.
+- Fais attention aux UR de Tokyo. Une Tokyo UR ne peut être liée qu'à une artiste de Tokyo.
+- Surveille bien les événements secondaires de Tokyo. Ils donnent souvent des objets exclusifs très importants pour la progression.
+`,
+    tips_en: `
+- Prepare your arrival before Tokyo opens. Look at the map in advance if possible.
+- Also try to contact neighboring servers or groups close to your area quickly.
+- Save AP before arriving at Tokyo if the chamber or individual ranking is already played. This can give you a bit more currency, which helps a lot for progressing in the Metro.
+- Don't underestimate Tokyo Warmup. The stats bonuses and Chizuru can make a real difference throughout the adventure.
+- Organize your server very early. Tokyo heavily punishes servers with internal conflicts.
+- Be careful with Tokyo URs. A Tokyo UR can only be linked to a Tokyo artist.
+- Watch Tokyo's secondary events closely. They often give exclusive items that are very important for progression.
+`,
+    tips_it: `
+- Prepara il tuo arrivo prima dell'apertura di Tokyo. Guarda la mappa in anticipo se possibile.
+- Prova anche a contattare rapidamente i server vicini o i gruppi vicini alla tua zona.
+- Risparmia AP prima di arrivare a Tokyo se la classifica chamber o individuale è già giocata. Questo può darti un po' più di valuta, il che aiuta molto per avanzare nel Metro.
+- Non sottovalutare Tokyo Warmup. I bonus di stats e Chizuru possono fare una vera differenza per tutta l'avventura.
+- Organizza il tuo server molto presto. Tokyo punisce pesantemente i server con conflitti interni.
+- Fai attenzione agli UR di Tokyo. Un UR di Tokyo può essere collegato solo a un'artista di Tokyo.
+- Osserva bene gli eventi secondari di Tokyo. Spesso danno oggetti esclusivi molto importanti per la progressione.
+`,
+    tips_es: `
+- Prepara tu llegada antes de la apertura de Tokyo. Mira el mapa de antemano si es posible.
+- También intenta contactar rápidamente con los servidores vecinos o los grupos cercanos a tu zona.
+- Ahorra AP antes de llegar a Tokyo si la clasificación chamber o individual ya se ha jugado. Esto puede darte un poco más de moneda, lo cual ayuda mucho para avanzar en el Metro.
+- No subestimes Tokyo Warmup. Los bonos de stats y Chizuru pueden hacer una diferencia real durante toda la aventura.
+- Organiza tu servidor muy temprano. Tokyo castiga fuertemente a los servidores con conflictos internos.
+- Ten cuidado con los UR de Tokyo. Un UR de Tokyo solo puede vincularse a una artista de Tokyo.
+- Observa bien los eventos secundarios de Tokyo. A menudo dan objetos exclusivos muy importantes para la progresión.
+`,
+    tips_pt: `
+- Prepare sua chegada antes da abertura de Tokyo. Olhe o mapa com antecedência se possível.
+- Também tente contatar rapidamente servidores vizinhos ou grupos próximos da sua zona.
+- Economize AP antes de chegar a Tokyo se a classificação chamber ou individual já foi jogada. Isso pode te dar um pouco mais de moeda, o que ajuda muito para avançar no Metro.
+- Não subestime Tokyo Warmup. Os bônus de stats e Chizuru podem fazer uma diferença real durante toda a aventura.
+- Organize seu servidor muito cedo. Tokyo pune fortemente servidores com conflitos internos.
+- Tenha cuidado com os UR de Tokyo. Um UR de Tokyo só pode ser vinculado a uma artista de Tokyo.
+- Observe bem os eventos secundários de Tokyo. Eles frequentemente dão objetos exclusivos muito importantes para a progressão.
+`,
+    tips_pl: `
+- Przygotuj swoje przybycie przed otwarciem Tokyo. Sprawdź mapę wcześniej, jeśli to możliwe.
+- Spróbuj również szybko skontaktować się z sąsiednimi serwerami lub grupami bliskimi Twojej strefie.
+- Oszczędzaj AP przed przybyciem do Tokyo, jeśli ranking chamber lub indywidualny jest już rozegrany. To może dać Ci trochę więcej waluty, co bardzo pomaga w postępie w Metro.
+- Nie lekceważ Tokyo Warmup. Bonusy do statów i Chizuru mogą naprawdę zrobić różnicę przez całą przygodę.
+- Zorganizuj swój serwer bardzo wcześnie. Tokyo mocno karze serwery z konfliktami wewnętrznymi.
+- Uważaj na UR Tokyo. UR Tokyo może być powiązany tylko z artystką Tokyo.
+- Uważnie obserwuj drugorzędne wydarzenia Tokyo. Często dają wyłączne przedmioty bardzo ważne dla progresji.
+`,
+    tips_id: `
+- Siapkan kedatangan Anda sebelum pembukaan Tokyo. Lihat peta sebelumnya jika memungkinkan.
+- Juga coba hubungi server tetangga atau grup dekat zona Anda dengan cepat.
+- Hemat AP sebelum tiba di Tokyo jika ranking chamber atau individu sudah dimainkan. Ini bisa memberi Anda sedikit lebih banyak mata uang, yang sangat membantu untuk maju di Metro.
+- Jangan remehkan Tokyo Warmup. Bonus stats dan Chizuru bisa membuat perbedaan nyata sepanjang petualangan.
+- Organisir server Anda lebih awal. Tokyo sangat menghukum server dengan konflik internal.
+- Berhati-hatilah dengan UR Tokyo. UR Tokyo hanya bisa ditautkan ke artis Tokyo.
+- Perhatikan baik-baik acara sekunder Tokyo. Mereka sering memberikan item eksklusif yang sangat penting untuk progresi.
+`,
+    tips_ru: `
+- Подготовьте своё прибытие до открытия Tokyo. Заранее посмотрите карту, если возможно.
+- Также попробуйте быстро связаться с соседними серверами или группами рядом с вашей зоной.
+- Сэкономьте AP перед прибытием в Tokyo, если рейтинг chamber или индивидуальный уже сыгран. Это может дать вам немного больше валюты, что очень помогает для продвижения в Метро.
+- Не недооценивайте Tokyo Warmup. Бонусы к статам и Chizuru могут реально повлиять на всю авантюру.
+- Организуйте свой сервер очень рано. Tokyo сильно наказывает серверы с внутренними конфликтами.
+- Будьте осторожны с UR Tokyo. UR Tokyo может быть привязан только к артистке Tokyo.
+- Внимательно следите за второстепенными событиями Tokyo. Они часто дают эксклюзивные предметы, очень важные для прогрессии.
+`,
+    rewards: `
+**Récompenses du Warmup :**
+- Chizuru pour les 25 premiers
+- +10% de stats pendant toute l'aventure pour le serveur 1er
+- +5% de stats pour les serveurs 2e et 3e
+
+**Récompenses et gains importants pendant Tokyo :**
+Tokyo et ses événements liés peuvent donner :
+- Kokoro dans le Tokyo Shop
+- Des objets exclusifs pour une voiture T4
+- Des Exclusive Tokyo Assets
+- Des skins
+- Des Tokyo artists
+- Beaucoup d'autres récompenses utiles
+
+Les Exclusive Tokyo Assets donnent un bonus sur les Tokyo artists.
+
+Le Stock Auction de Tokyo donne aussi des récompenses différentes, dont :
+- L'un des meilleurs skins du jeu
+- La meilleure artiste du jeu
+`,
+    rewards_en: `
+**Warmup Rewards:**
+- Chizuru for the top 25
+- +10% stats for the entire adventure for the 1st place server
+- +5% stats for 2nd and 3rd place servers
+
+**Important Rewards and Gains During Tokyo:**
+Tokyo and its related events can give:
+- Kokoro in the Tokyo Shop
+- Exclusive items for a T4 car
+- Exclusive Tokyo Assets
+- Skins
+- Tokyo artists
+- Many other useful rewards
+
+Exclusive Tokyo Assets give a bonus on Tokyo artists.
+
+The Tokyo Stock Auction also gives different rewards, including:
+- One of the best skins in the game
+- The best artist in the game
 `,
   },
   // New guides from images
