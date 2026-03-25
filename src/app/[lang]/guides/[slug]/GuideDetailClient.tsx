@@ -7104,7 +7104,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
 
         {/* Internal Linking Hubs */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px" }}>
-          <Link href={`/${lang}/artists/`} style={{
+          <Link href={`/${lang}/teambuilder/`} style={{
             padding: "18px", background: "rgba(244,114,182,0.1)",
             borderRadius: "12px", border: "1px solid rgba(244,114,182,0.25)",
             textDecoration: "none", display: "block",

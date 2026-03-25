@@ -117,7 +117,7 @@ export default async function LocaleLayout({
   const ui = getUiStrings(lang);
   const navItems = [
     { href: `/${lang}/codes/`, label: ui.nav.codes },
-    { href: `/${lang}/artists/`, label: ui.nav.artists },
+    { href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder },
     { href: `/${lang}/tierlist/`, label: ui.nav.tierList },
     { href: `/${lang}/guides/`, label: ui.nav.guides },
     { href: `/${lang}/tools/`, label: ui.nav.tools, cta: true },
@@ -198,7 +198,7 @@ export default async function LocaleLayout({
             <h4>{ui.footer.navigation}</h4>
             <Link href={`/${lang}/`}>{ui.nav.home}</Link>
             <Link href={`/${lang}/codes/`}>{ui.nav.codes}</Link>
-            <Link href={`/${lang}/artists/`}>{ui.nav.artists}</Link>
+            <Link href={`/${lang}/teambuilder/`}>{ui.nav.teambuilder}</Link>
             <Link href={`/${lang}/tools/`}>{ui.nav.tools}</Link>
             <Link href={`/${lang}/tierlist/`}>{ui.nav.tierList}</Link>
           </div>

@@ -66,7 +66,7 @@ export function MobileNav() {
 
   const navItems = [
     { href: `/${lang}/codes/`, label: ui.nav.codes },
-    { href: `/${lang}/artists/`, label: ui.nav.artists },
+    { href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder },
     { href: `/${lang}/tierlist/`, label: ui.nav.tierList },
     { href: `/${lang}/guides/`, label: ui.nav.guides },
     { href: `/${lang}/tools/`, label: ui.nav.tools, cta: true },

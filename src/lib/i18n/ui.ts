@@ -2,7 +2,7 @@ export type UiStrings = {
   nav: {
     home: string;
     codes: string;
-    artists: string;
+    teambuilder: string;
     tierList: string;
     guides: string;
     tools: string;
@@ -31,7 +31,7 @@ export type UiStrings = {
 
 const uiStrings: Record<string, UiStrings> = {
   fr: {
-    nav: { home: "Accueil", codes: "Codes", artists: "Artistes", tierList: "Tier List", guides: "Guides", tools: "Outils" },
+    nav: { home: "Accueil", codes: "Codes", teambuilder: "Team Builder", tierList: "Tier List", guides: "Guides", tools: "Outils" },
     header: { logoTitle: "Top Girl Guide" },
     skip: "Aller au contenu principal",
     footer: {
@@ -49,7 +49,7 @@ const uiStrings: Record<string, UiStrings> = {
     mobile: { menu: "MENU", languageLabel: "Langue" },
   },
   en: {
-    nav: { home: "Home", codes: "Codes", artists: "Artists", tierList: "Tier List", guides: "Guides", tools: "Tools" },
+    nav: { home: "Home", codes: "Codes", teambuilder: "Team Builder", tierList: "Tier List", guides: "Guides", tools: "Tools" },
     header: { logoTitle: "Top Girl Guide" },
     skip: "Skip to main content",
     footer: {
@@ -67,7 +67,7 @@ const uiStrings: Record<string, UiStrings> = {
     mobile: { menu: "MENU", languageLabel: "Language" },
   },
   it: {
-    nav: { home: "Home", codes: "Codici", artists: "Artisti", tierList: "Tier List", guides: "Guide", tools: "Strumenti" },
+    nav: { home: "Home", codes: "Codici", teambuilder: "Team Builder", tierList: "Tier List", guides: "Guide", tools: "Strumenti" },
     header: { logoTitle: "Top Girl Guide" },
     skip: "Vai al contenuto principale",
     footer: {
@@ -85,7 +85,7 @@ const uiStrings: Record<string, UiStrings> = {
     mobile: { menu: "MENU", languageLabel: "Lingua" },
   },
   es: {
-    nav: { home: "Inicio", codes: "Códigos", artists: "Artistas", tierList: "Tier List", guides: "Guías", tools: "Herramientas" },
+    nav: { home: "Inicio", codes: "Códigos", teambuilder: "Team Builder", tierList: "Tier List", guides: "Guías", tools: "Herramientas" },
     header: { logoTitle: "Top Girl Guide" },
     skip: "Ir al contenido principal",
     footer: {
@@ -103,7 +103,7 @@ const uiStrings: Record<string, UiStrings> = {
     mobile: { menu: "MENU", languageLabel: "Idioma" },
   },
   pt: {
-    nav: { home: "Início", codes: "Códigos", artists: "Artistas", tierList: "Tier List", guides: "Guias", tools: "Ferramentas" },
+    nav: { home: "Início", codes: "Códigos", teambuilder: "Team Builder", tierList: "Tier List", guides: "Guias", tools: "Ferramentas" },
     header: { logoTitle: "Top Girl Guide" },
     skip: "Ir para o conteúdo principal",
     footer: {
@@ -121,7 +121,7 @@ const uiStrings: Record<string, UiStrings> = {
     mobile: { menu: "MENU", languageLabel: "Idioma" },
   },
   pl: {
-    nav: { home: "Strona", codes: "Kody", artists: "Artyści", tierList: "Tier List", guides: "Poradniki", tools: "Narzędzia" },
+    nav: { home: "Strona", codes: "Kody", teambuilder: "Team Builder", tierList: "Tier List", guides: "Poradniki", tools: "Narzędzia" },
     header: { logoTitle: "Top Girl Guide" },
     skip: "Przejdź do treści głównej",
     footer: {
@@ -139,7 +139,7 @@ const uiStrings: Record<string, UiStrings> = {
     mobile: { menu: "MENU", languageLabel: "Język" },
   },
   id: {
-    nav: { home: "Beranda", codes: "Kode", artists: "Artis", tierList: "Tier List", guides: "Panduan", tools: "Alat" },
+    nav: { home: "Beranda", codes: "Kode", teambuilder: "Team Builder", tierList: "Tier List", guides: "Panduan", tools: "Alat" },
     header: { logoTitle: "Top Girl Guide" },
     skip: "Lewati ke konten utama",
     footer: {
@@ -157,7 +157,7 @@ const uiStrings: Record<string, UiStrings> = {
     mobile: { menu: "MENU", languageLabel: "Bahasa" },
   },
   ru: {
-    nav: { home: "Главная", codes: "Коды", artists: "Артисты", tierList: "Tier List", guides: "Гайды", tools: "Инструменты" },
+    nav: { home: "Главная", codes: "Коды", teambuilder: "Team Builder", tierList: "Tier List", guides: "Гайды", tools: "Инструменты" },
     header: { logoTitle: "Top Girl Guide" },
     skip: "Перейти к основному содержанию",
     footer: {

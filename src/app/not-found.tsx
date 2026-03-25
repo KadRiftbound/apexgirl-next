@@ -39,7 +39,7 @@ export default function NotFound() {
             }}>
               <span aria-hidden="true">🏠</span> Home
             </Link>
-            <Link href="/en/artists/" style={{
+            <Link href="/en/teambuilder/" style={{
               padding: "12px 28px",
               background: "rgba(255,255,255,0.08)",
               color: "#fff",

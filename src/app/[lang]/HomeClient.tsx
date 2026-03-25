@@ -425,7 +425,7 @@ export default function HomeClient({ lang }: { lang: string }) {
           <span><strong>5+</strong> {t.statTools}</span>
         </div>
         <div className="hero-ctas">
-          <Link href={`/${lang}/artists/`} style={btnArtistsDesktop}>🎤 {t.discoverArtists}</Link>
+          <Link href={`/${lang}/teambuilder/`} style={btnArtistsDesktop}>🎤 {t.discoverArtists}</Link>
           <Link href={`/${lang}/tierlist/`} style={btnTierDesktop}   >🏆 {t.tierListVotes}</Link>
           <Link href={`/${lang}/tools/`}   style={btnToolsDesktop}   >🛠️ {t.seeTools}</Link>
         </div>
@@ -444,7 +444,7 @@ export default function HomeClient({ lang }: { lang: string }) {
           <span><strong>5+</strong> {t.statTools}</span>
         </div>
         <div className="hero-ctas">
-          <Link href={`/${lang}/artists/`} style={btnArtists}  >🎤 {t.discoverArtists}</Link>
+          <Link href={`/${lang}/teambuilder/`} style={btnArtists}  >🎤 {t.discoverArtists}</Link>
           <Link href={`/${lang}/tierlist/`} style={btnTier}    >🏆 {t.tierListVotes}</Link>
           <Link href={`/${lang}/tools/`}   style={btnTools}    >🛠️ {t.seeTools}</Link>
         </div>
@@ -481,7 +481,7 @@ export default function HomeClient({ lang }: { lang: string }) {
         <div className="artist-strip-inner">
           <div className="strip-header">
             <h2 className="strip-title">🎤 {t.artistsOnGame}</h2>
-            <Link href={`/${lang}/artists/`} className="strip-see-all">{t.seeAllArtists}</Link>
+            <Link href={`/${lang}/teambuilder/`} className="strip-see-all">{t.seeAllArtists}</Link>
           </div>
           <div className="artist-strip">
             {featuredArtists.map((artist: any) => (

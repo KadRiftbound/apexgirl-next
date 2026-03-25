@@ -34,7 +34,7 @@ const GUIDES = [
 ];
 
 // Pages shared by all languages
-const COMMON_PAGES = ['', 'artists', 'tierlist', 'guides', 'tools', 'codes', 'contact', 'cookie-settings'];
+const COMMON_PAGES = ['', 'teambuilder', 'tierlist', 'guides', 'tools', 'codes', 'contact', 'cookie-settings'];
 
 // Legal pages differ by language
 const LEGAL_PAGES_FR  = ['mentions-legales', 'confidentialite'];
@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${BASE_URL}${path}`,
         lastModified: today,
         changeFrequency: isHome ? 'daily' : page === 'tierlist' || page === 'codes' ? 'daily' : 'weekly',
-        priority: isHome ? 1.0 : ['artists', 'guides', 'tierlist'].includes(page) ? 0.9 : 0.8,
+        priority: isHome ? 1.0 : ['teambuilder', 'guides', 'tierlist'].includes(page) ? 0.9 : 0.8,
       });
     }
 
