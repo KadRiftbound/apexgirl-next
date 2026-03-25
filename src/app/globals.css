@@ -235,10 +235,10 @@ img {
   left: 0;
   right: 0;
   height: var(--header-height);
-  background: rgba(10, 10, 20, 0.82);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 1px 24px rgba(0,0,0,0.35);
+  background: rgba(20, 20, 35, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
   z-index: 1000;
   transition: transform 0.3s ease;
 }
@@ -296,30 +296,32 @@ img {
 .nav {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
 }
 
 .nav a {
-  padding: 8px 14px;
-  font-size: 0.88rem;
+  padding: 10px 16px;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  border-radius: var(--radius);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
   transition: all 0.2s ease;
   position: relative;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
 }
 
 .nav a::after {
   content: '';
   position: absolute;
-  bottom: 4px;
+  bottom: 6px;
   left: 50%;
   width: 0;
   height: 2px;
   background: var(--primary);
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   transform: translateX(-50%);
   border-radius: 2px;
 }
@@ -327,24 +329,26 @@ img {
 .nav a:hover,
 .nav a.active {
   color: #fff;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav a:hover::after,
 .nav a.active::after {
-  width: 28px;
+  width: 30px;
 }
 
 .nav-cta {
   background: linear-gradient(135deg, var(--primary), #ff80ab) !important;
   color: white !important;
-  margin-left: 6px;
-  padding: 8px 18px !important;
-  box-shadow: 0 2px 12px rgba(255, 77, 141, 0.3);
+  margin-left: 8px;
+  padding: 10px 20px !important;
+  box-shadow: 0 2px 12px rgba(255, 77, 141, 0.35);
+  border: none !important;
 }
 
 .nav-cta:hover {
-  box-shadow: 0 4px 18px rgba(255, 77, 141, 0.5);
+  box-shadow: 0 4px 20px rgba(255, 77, 141, 0.5);
   transform: translateY(-1px);
 }
 
