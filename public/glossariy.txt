@@ -1,378 +1,378 @@
 Глоссарий Top Girl
 Структура игры
 
-Родной сервер (Home Server)— Serveur principal de ton compte après la phase de départ, sauf migration.
+Родной сервер (Home Server)— После начального этапа основной сервер вашей учетной записи, если не производится миграция.
 
-Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+Abroad— Известный во всем мире центр крупных циклических путешествий, таких как Токио, Бали и Рим.
 
-Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+Warmup— Неделя подготовки к зарубежному приключению, включающая подбор партнеров, подсчет баллов и важные награды.
 
-Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+Tokyo— Первое зарубежное приключение в игре, на новой карте, с конечной целью — Токийская башня.
 
-Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+Bali— Второе крупное приключение, «За границей», следует той же общей логике, что и «Токио».
 
-Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+Roma / Ancient Rome— Третье крупное приключение за границей, также построенное по принципу "разминка + основное приключение".
 
-Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+Tokyo 2 / Bali 2 / Roma 2— Вторая часть одноименного цикла "За границей".
 
-Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+Tokyo 3 / Bali 3 / Roma 3— Третья часть одноименного цикла "За границей".
 
-Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+Chamber— Группа из 2 или 3 серверов, которые вместе продвигаются во время определенных приключений за границей.
 
-Территория Chamber— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+Территория Chamber— Территория, созданная и контролируемая Палатой, полезна для обороны и позиционирования.
 
-HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+HQ— Штаб-квартира группы, центральное здание для развития, обороны и ряда систем.
 
-Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+Landmark— Важное здание на карте, часто вызывающее споры, обеспечивающее очки, ресурсы или контроль над территорией.
 
-Первое занятие Landmark— Récompense obtenue lors de la première prise d’un Landmark.
+Первое занятие Landmark— Награда, получаемая при первом захвате достопримечательности.
 
-Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+Burj Khalifa— Центральная цель исходного сервера и главная мишень в нескольких войнах серверов.
 
-Tokyo Tower— Objectif final de l’aventure Tokyo.
+Tokyo Tower— Конечная цель токийского приключения.
 
-Мэр (Mayor)— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+Мэр (Mayor)— Титул присваивается серверу или группе, контролирующей Бурдж-Халифа или аналогичный объект.
 
-Должности Burj— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+Должности Burj— Функции, распределяемые после захвата Бурдж-Халифы, с соответствующими бонусами.
 
-Пул серверов— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+Пул серверов— Набор серверов, ожидания которых игра ожидает перед запуском определённых фаз или циклов.
 
-Миграция— Changement de serveur après certaines étapes avancées du jeu.
+Миграция— Смена сервера происходит после прохождения определённых продвинутых этапов игры.
 
-Билеты миграции— Objets permettant de migrer vers un autre serveur.
+Билеты миграции— Объекты, позволяющие выполнить миграцию на другой сервер.
 
 Статы и прогресс
 
-Пение (Sing)— L’une des 3 stats principales du jeu.
+Пение (Sing)— Один из трёх основных показателей в игре.
 
-Защита (Defense)— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+Защита (Defense)— Один из трёх основных показателей в игре, часто ассоциируемый с термином «Защита».
 
-Экономика (Economy)— L’une des 3 stats principales du jeu, très importante pour l’économie.
+Экономика (Economy)— Один из трёх основных показателей в игре, очень важный для экономики.
 
-Активный буст— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+Активный буст— Улучшения применяются непосредственно к играемым персонажам, например, к уровню, навыкам, ресурсам или основным характеристикам Пика.
 
-Пассивный буст— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+Пассивный буст— Улучшение, которое принесет пользу всем командам, работающим с данным аккаунтом, таким как головной офис, автопарк, служба доставки или вилла.
 
-Базовое значение (Base Value)— Montant de stats de base donné par un système avant les bonus en pourcentage.
+Базовое значение (Base Value)— Базовое значение характеристик, присваиваемое системой до применения процентных бонусов.
 
-Процентное увеличение (Percentage Increase)— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+Процентное увеличение (Percentage Increase)— Множитель применяется к исходному значению для повышения итоговых характеристик.
 
-Базовые статы— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+Базовые статы— Базовые характеристики художника или системы до применения условных эффектов.
 
-Базовая защита от урона— Réduction ou résistance liée aux dégâts basiques.
+Базовая защита от урона— Снижение или сопротивление, связанные с базовым повреждением.
 
-Базовый урон атаки— Bonus de dégâts sur les attaques basiques.
+Базовый урон атаки— Бонус к урону при базовых атаках.
 
-Урон навыка— Bonus de dégâts provenant des compétences.
+Урон навыка— Бонус к урону от навыков.
 
-Сопротивление навыкам— Résistance contre les dégâts ou effets liés aux compétences.
+Сопротивление навыкам— Сопротивление урону или эффектам, связанным с навыками.
 
-Урон по игроку— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+Урон по игроку— Бонус к урону, наносимый непосредственно противнику, очень эффективен при захвате целей.
 
-Ёмкость фанатов— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+Ёмкость фанатов— Количество болельщиков, которое может вместить команда, автомобиль или автобус.
 
-Ёмкость рейда— Capacité maximale d’un bus de rassemblement.
+Ёмкость рейда— Максимальная вместимость раллийного автобуса.
 
-Глобальный буст статов— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+Глобальный буст статов— Бонус к характеристикам применяется ко всему аккаунту или ко всем командам.
 
-Основной жанр (Main Genre)— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+Основной жанр (Main Genre)— Основной музыкальный жанр, вокруг которого вы строите свою команду или системы.
 
 Артисты, команды и навыки
 
-Артист— Unité principale de combat et de progression dans Top Girl.
+Артист— Основной боевой юнит для игры Top Girl и обеспечения прогресса.
 
-UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+UR— Редкость работ этого художника очень высока, иногда его работы запрещаются на определенных мероприятиях, таких как Radio Battle.
 
-Основная команда— Composition la plus importante de ton compte, à prioriser pour les ressources.
+Основная команда— Наиболее важный компонент вашей учетной записи, которому следует отдавать приоритет при распределении ресурсов.
 
-Вторая команда— Deuxième équipe utile pour défense, support ou contenu spécifique.
+Вторая команда— Полезная вторая команда для защиты, поддержки или выполнения определённых задач.
 
-EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+EDM Team— Очень агрессивная и доминирующая команда на ранней и средней стадии игры, сильная в борьбе за крупные цели.
 
-RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+RNB Team— Доступная команда, особенно сильная в обороне штаба и отлично подходящая для игроков, не вкладывающих деньги в игру.
 
-Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+Rock Team— Универсальная и стабильная команда в долгосрочной перспективе, с очень хорошим соотношением убийств и поражений.
 
-Защита HQ— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+Защита HQ— Использование команды, созданной для защиты штаб-квартиры и минимизации потерь среди болельщиков.
 
-Соло машина— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+Соло машина— Использование команды или автомобиля для одиночных действий, без объединения в группы.
 
-Поддерживающая задача— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+Поддерживающая задача— Вспомогательные задачи, такие как пополнение запасов, перемещение или тактическая помощь.
 
-Скорость вождения— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+Скорость вождения— Полезный параметр или навык для увеличения скорости передвижения, особенно в ролях поддержки.
 
-3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+3 Skills Gold— Необходимое условие для разблокировки артиста в системе Peak.
 
-Жанровый навык— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+Жанровый навык— Навык, который активируется только в том случае, если исполнитель соответствует жанру песни или контексту.
 
-Позиционный навык— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+Позиционный навык— Этот навык активируется только в том случае, если художник находится в правильном положении.
 
-Базовый навык— Compétence qui peut toujours se déclencher.
+Базовый навык— Навык, который всегда можно активировать.
 
-Буст себя— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+Буст себя— Навык, эффект которого зависит главным образом от характеристик художника, которым он обладает.
 
-Буст всех артистов— Skill dont l’effet dépend des stats globales de toute l’équipe.
+Буст всех артистов— Навык, эффект которого зависит от общих характеристик всей команды.
 
-Center— Poste central dans une équipe de performance, comme au Grammy Award.
+Center— Центральная позиция в команде исполнителей, например, на церемонии вручения премии «Грэмми».
 
-Певец— Poste de chanteuse dans une équipe de performance.
+Певец— Вакансия вокалиста в составе танцевальной труппы.
 
-Танцор— Poste de danseuse dans une équipe de performance.
+Танцор— Вакансия танцора в составе танцевальной труппы.
 
-Back— Poste de soutien arrière dans une équipe de performance.
+Back— Должность специалиста по поддержке спины в команде, ориентированной на результат.
 
 Ассеты и снаряжение
 
-Ассеты— Nom global des équipements d’artiste : bijou, voiture et propriété.
+Ассеты— Общее название оборудования художника: ювелирные изделия, автомобиль и имущество.
 
-Украшение (Jewelry)— Premier type d’Asset, souvent le plus simple à obtenir.
+Украшение (Jewelry)— Первый тип активов, зачастую самый простой для приобретения.
 
-Машина (Car)— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+Машина (Car)— Второй тип активов, более редкий и более важный для характеристик и способностей.
 
-Недвижимость (Property / Real Estate)— Troisième type d’Asset, souvent plus coûteux à améliorer.
+Недвижимость (Property / Real Estate)— Третий тип активов, модернизация которых зачастую обходится дороже.
 
-Ассет-коины— Ressource utilisée pour monter les équipements.
+Ассет-коины— Ресурсы, использованные для сборки оборудования.
 
-Матч-бонус— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+Матч-бонус— +20% бонус, когда художник использует предмет, соответствующий его сезону или происхождению.
 
-Tokyo ассеты— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+Tokyo ассеты— Ассортимент материалов, посвященных исключительно Токио, особенно сильный, посвящен токийским художникам.
 
-Эксклюзивные Tokyo ассеты— Assets exclusifs obtenus via Tokyo et ses événements liés.
+Эксклюзивные Tokyo ассеты— Эксклюзивные материалы, полученные в Токио и в связи с мероприятиями, связанными с ним.
 
-Аукционный дом— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+Аукционный дом— Система еженедельных аукционов для приобретения редких предметов, включая работы художников или автомобили.
 
-Продвигать— Amélioration d’un Asset à un niveau supérieur, non réversible.
+Продвигать— Улучшение актива до более высокого, необратимого уровня.
 
-T4 машина— Objet ou ressource de tier avancé lié au système voiture.
+T4 машина— Предмет или ресурс продвинутого уровня, связанный с автомобильной системой.
 
 Peak, Tier и пассивные системы
 
-Уровень Peak— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+Уровень Peak— Система, которая предоставляет общие бонусы и дополнительные базовые характеристики определенным артистам.
 
-Система Peak— Ensemble du système Peak et de ses paliers de progression.
+Система Peak— Вся система Peak и уровни её развития.
 
-Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+Tier— Система, увеличивающая пассивные бонусы к характеристикам на определённый процент.
 
-T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+T1 / T2 / T3 / T4 / T5— Повышаются уровни, каждый следующий дает больше бонусов, чем предыдущий.
 
-T2 (C) (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+T2 (C) (C)— Первый настоящий уровень детализации, используемый для нескольких систем.
 
-T3 (B) (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+T3 (B) (B)— Промежуточный уровень, часто очень интересный для разблокировки на ранних этапах.
 
-T4 (A) (A)— Tier avancé, très important mais difficile à obtenir.
+T4 (A) (A)— Продвинутый уровень, очень важный, но получить его непросто.
 
-T5 (A+) (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+T5 (A+) (A+)— Очень продвинутый уровень, редкий и предназначенный для аккаунтов высокого уровня или высоких позиций в рейтинге.
 
-Пассивная машина— Système passif de voiture qui booste les stats de tout le compte.
+Пассивная машина— Пассивная система управления автомобилем, которая повышает характеристики всего аккаунта.
 
-Коллекция— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+Коллекция— Пассивная система, привязанная к музыкальным жанрам, предназначенная для специализации на основе общей базы.
 
-Вилла— Système passif de stats, également lié à la progression par genre.
+Вилла— Пассивная система статистики, также связанная с продвижением по гендерному признаку.
 
-CEO наряд— Système passif récent, suivant la même logique de base value + Tier.
+CEO наряд— Недавно разработанная пассивная система, основанная на той же базовой логике «ценность + уровень».
 
-HQ скин— Skin du HQ donnant des bonus passifs qui se cumulent.
+HQ скин— Высококачественный скин, предоставляющий пассивные бонусы, которые суммируются.
 
-Командная функция— Système tardif et complexe, surtout orienté late game et whales.
+Командная функция— Поздняя и сложная система, ориентированная в основном на игроков поздних стадий игры и крупных игроков.
 
 Ресурсы и экономика
 
-Алмазы— Monnaie premium du jeu.
+Алмазы— Премиальная внутриигровая валюта.
 
-Золото— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+Золото— Базовый ресурс, используемый во многих системах и при обновлениях.
 
-Золотые слитки— Ressource obtenue notamment via le Tour, très utile au début.
+Золотые слитки— Этот ресурс можно получить в основном во время тура, и он очень полезен на начальном этапе.
 
-Интервью— Source fréquente de photos d’artistes et de progression.
+Интервью— Частый источник фотографий художников и процесса их работы.
 
-Универсальные фото— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+Универсальные фото— Типичные фотографии, которые могут быть использованы в отношении определенных артистов, чтобы ускорить их восхождение к славе.
 
-Реликвии— Système influençant notamment le score au Grammy Award.
+Реликвии— Система, которая оказывает существенное влияние на оценку присуждения премии «Грэмми».
 
-Демо— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+Демо— Музыкальная система, уровень которой оказывает сильное влияние на определенные музыкальные произведения, например, на церемонии вручения премии «Грэмми».
 
-CD— Objet du Group Shop permettant d’obtenir des fans.
+CD— Предмет в групповом магазине, позволяющий получить фанатов.
 
-Промо-мануалы— Objet du Group Shop permettant de récupérer des fans.
+Промо-мануалы— В групповом магазине вы можете приобрести фанатов.
 
-CEO-коины— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+CEO-коины— Валюта, приобретаемая за реальные деньги, является основой многих оптимизированных покупок.
 
-Месячная карта— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+Месячная карта— Очень выгодная покупка, которую часто рекомендуют как лучшую трату в игре.
 
-Недельный пасс— Pass hebdomadaire, généralement rentable.
+Недельный пасс— Недельный абонемент, как правило, экономически выгоден.
 
-Месячный пасс— Pass mensuel, souvent bon en valeur.
+Месячный пасс— Месячный абонемент, часто выгодный по цене.
 
-Корпоративное поглощение— Type de pass ou offre souvent jugé rentable.
+Корпоративное поглощение— Тип пропуска или предложения, часто считающийся выгодным.
 
-Ивент пополнения— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+Ивент пополнения— Событие, предоставляющее дополнительные бонусы при совершении определённых покупок в реальном мире.
 
-Веха— Palier de récompense atteint pendant un événement ou une recharge.
+Веха— Уровень вознаграждения, достигнутый во время события или пополнения счета.
 
 Магазины
 
-VIP магазин— Boutique liée au niveau VIP, vendant notamment certains Assets.
+VIP магазин— VIP-магазин, предлагающий, помимо прочего, продажу определённых активов.
 
-Биржевой магазин— Boutique du Stock Market, utile pour certaines ressources et artistes.
+Биржевой магазин— Магазин фондовой биржи, полезный для получения определённых ресурсов и работы с художниками.
 
-Tokyo магазин— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+Tokyo магазин— Магазин, расположенный в Токио, примечательный тем, что в нём продаётся Kokoro.
 
-Победный магазин— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+Победный магазин— Магазин предназначен для серверов, которые управляли небоскребом Бурдж-Халифа в режиме «Городское превосходство».
 
-Серебряный магазин— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+Серебряный магазин— В конце мероприятия происходит промежуточное хранение данных в зависимости от результата обработки сервером.
 
-Бронзовый магазин— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+Бронзовый магазин— Магазин, где можно приобрести товары для официантов, не имеющих доступа к небоскребу Бурдж-Халифа, по окончании мероприятия.
 
-Групповой магазин— Boutique de groupe qui reset chaque lundi.
+Групповой магазин— Групповой магазин, который обновляется каждый понедельник.
 
-Магазин Parking Wars— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+Магазин Parking Wars— Магазин, связанный с режимом «Парковочные войны», полезен для получения определенных ресурсов, таких как уровень штаб-квартиры.
 
 Группа и координация
 
-Группа (Group)— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+Группа (Group)— Главная гильдия или альянс в игре, находящаяся в центре практически всего процесса развития персонажа.
 
-Групповые коины— Monnaie de groupe utilisée dans le Group Shop.
+Групповые现今— Групповая валюта, используемая в групповом магазине.
 
-Групповые очки— Points liés à la contribution au groupe.
+Групповые очки— Вопросы, касающиеся участия в работе группы.
 
-Личные очки— Points personnels gagnés dans certains événements.
+Личные очки— Персональные баллы, заработанные в определенных соревнованиях.
 
-Финансовая мощь— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+Финансовая мощь— Уровень власти или экономическая ценность группы, используемая при доступе к определенным мероприятиям.
 
-Командная игра— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+Командная игра— Коллективный аспект игры: координация, синхронизация, роли, дипломатия и макроуровень.
 
-Кит— Joueuse ou joueur qui dépense énormément.
+Кит— Игрок, который тратит много денег.
 
-F2P (Free to Play) (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+F2P (Free to Play) (Free to Play)— Игрок, который не тратит деньги или тратит их очень мало.
 
-Макро игра— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+Макро игра— Общее управление сервером, группой, циклами и долгосрочными целями.
 
-Микро игра— Gestion fine des combats, placements, timings et décisions immédiates.
+Микро игра— Отличное управление боем, позиционирование, выбор времени и принятие мгновенных решений.
 
-Мета— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+Мета— Совокупность вариантов или стратегий, считающихся наиболее эффективными в данный момент времени.
 
-Дипломатия— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+Дипломатия— Управление взаимоотношениями между группами, серверами или помещениями для предотвращения или подготовки к конфликтам.
 
 Бой и война
 
-Соло атака— Attaque immédiate avec une seule voiture, rapide mais risquée.
+Соло атака— Немедленная атака с использованием одного автомобиля, быстрая, но рискованная.
 
-Ралли— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+Ралли— Групповое собрание перед атакой, гораздо эффективнее, чем атака в одиночку.
 
-Лидер рейда— Joueuse qui ouvre et dirige un rally.
+Лидер рейда— Игрок, который открывает и руководит митингом.
 
-Автобус— Véhicule collectif utilisé lors d’un rally.
+Автобус— Коллективное транспортное средство, используемое во время митинга.
 
-Рефилл— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+Рефилл— Действие, заключающееся в отправке команд обратно в бой или здание для поддержания атаки или обороны.
 
-Киллы— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+Киллы— Количество побежденных врагов, часто используемое в качестве индивидуальных наград.
 
-Потери— Pertes subies en fans pendant les combats.
+Потери— Потери среди болельщиков во время боевых действий.
 
-Соотношение K/L— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+Соотношение K/L— Соотношение между нанесенным ущербом и понесенными потерями очень полезно для оценки эффективности команды.
 
-Первое требование— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+Первое требование— Бонус присуждается первой группе, которая сохранит контроль над зданием в течение достаточно длительного времени.
 
-Потери фанатов— Quantité de fans perdus pendant un combat.
+Потери фанатов— Количество болельщиков, погибших во время боя.
 
-Безопасная зона— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+Безопасная зона— Начальная или защищенная зона, например, стартовая камера в Токио.
 
 Главные события
 
-Городское превосходство— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+Городское превосходство— Событие "сервер против сервера" в два этапа: расходование ресурсов, за которым следует война вокруг Бурдж-Халифы.
 
-Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+Ultimate CEO / Top CEO— Крупное еженедельное событие, требующее значительных ресурсов и имеющее решающее значение для прогресса.
 
-Групповая битва— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+Групповая битва— 6-дневное групповое мероприятие, включающее подготовку и заключительный этап «Быстрый натиск».
 
-Раш-атака— Phase finale du Group Battle où l’on attaque les territoires adverses.
+Раш-атака— Финальный этап группового сражения, в котором вы атакуете территории противника.
 
-Радио-битва— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+Радио-битва— Еженедельное мероприятие с участием 4 групп на специальной карте, без художников UR.
 
-Grammy Award— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+Grammy Award— Еженедельное мероприятие по созданию музыкальных композиций, рассчитанное на 5 дней и охватывающее 5 жанров.
 
-Рыбалка— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+Fishing Event— Семидневная акция, в рамках которой за покупку рыбы можно получить ваучеры для магазина.
 
-Fan Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+Fan Meeting— Мини-групповое мероприятие каждые 48 часов, важное для получения автомобильных призов.
 
-Пьяное свидание— Événement utile notamment pour échanger certains équipements violets.
+Пьяное свидание— Это событие особенно полезно для обмена определённого фиолетового снаряжения.
 
-Кубик— Événement récurrent, souvent très important pour obtenir certaines artistes.
+Кубик— Повторяющееся событие, зачастую очень важное для привлечения определённых артистов.
 
-Версус— Événement de confrontation mentionné pendant Tokyo.
+Версус— Об этом инциденте упоминалось во время токийского мероприятия.
 
-Финальное групповое событие— Événement de groupe important pendant certaines semaines d’aventure.
+Финальное групповое событие— Важное групповое событие, происходящее в определенные недели приключения.
 
-Кто самый богатый в Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+Кто самый богатый в Tokyo?— Небольшое мероприятие в Токио с хорошими наградами и продуманной системой подсчета очков.
 
-Parking Wars— Mode ou système lié à certaines boutiques et ressources.
+Parking Wars— Мода или система, связанные с определенными магазинами и ресурсами.
 
-Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+Producer25— Продвинутая мода или магазин, особенно полезный для использования определенных ресурсов виллы.
 
 События Tokyo и связанные системы
 
-Метро— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+Метро— Токийская система позволяет получать бонусы и награды за прохождение определенных этапов игры.
 
-Биржа— Système économique récurrent, avec shop et parfois scoring.
+Биржа— Повторяющаяся экономическая система с магазином и иногда системой начисления очков.
 
-Аукцион акций— Vente liée au stock market, parfois source de très grosses récompenses.
+Аукцион акций— Сделки, связанные с фондовым рынком, порой приносящие очень большую прибыль.
 
-Толл 1— Première ouverture de passage ou zone après le début de Tokyo.
+Толл 1— Первое открытие прохода или зоны после начала строительства Токио.
 
-Отели— Source importante d’or et de scoring sur certaines maps.
+Отели— Важный источник золота и очков на некоторых картах.
 
-Концерты— Action de score utilisée dans plusieurs aventures ou classements.
+Концерты— Действие, дающее очки, используется в различных приключениях или рейтингах.
 
-Стадион— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+Стадион— На некоторых картах, в частности, на карте Токио, используется система начисления очков или ориентированная на действия активность.
 
 Рыбалка
 
-Бесплатная наживка— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+Бесплатная наживка— Бесплатная приманка, которая восстанавливается со временем в рамках Рыболовного события.
 
-Платная наживка— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+Платная наживка— Платная или высококачественная приманка более эффективна для ловли крупной рыбы.
 
-Ваучер— Monnaie du Fishing Event générée par les poissons.
+Ваучер— Валюта, получаемая в ходе рыболовного события за пойманную рыбу.
 
-Пруд с рыбой— Ensemble de poissons disponibles dans une piscine donnée.
+Пруд с рыбой— Набор рыб, доступных в данном водоеме.
 
-Бесплатный бассейн— Pool de poissons accessible avec le Free Bait.
+Бесплатный бассейн— Доступ к пруду для ловли рыбы с бесплатной наживкой.
 
-Платный бассейн— Pool de poissons accessible avec le Paid Bait.
+Платный бассейн— Доступ к рыбному пруду возможен при использовании платной приманки.
 
-Аквариум— Espace où les poissons conservés génèrent des Vouchers.
+Аквариум— Место, где за консервированную рыбу выдаются ваучеры.
 
-Слот бака— Place disponible dans l’aquarium pour stocker un poisson.
+Слот бака— В аквариуме должно быть достаточно места для содержания рыбы.
 
-Синие ракушки— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+Синие ракушки— Ресурс, получаемый путем переработки излишков рыбы для разблокировки дополнительных слотов.
 
-Система жалости— Système garantissant un minimum de rareté après un certain nombre de captures.
+Система жалости— Система, гарантирующая минимальный уровень редкости после определенного количества захватов.
 
-Деталь машины— Récompense importante du Fishing Event, utile pour la voiture.
+Деталь машины— Важная награда за рыбалку, полезная для автомобиля.
 
-Дизайн машины— Récompense importante du Fishing Event, également liée à la voiture.
+Дизайн машины— Значительная награда за участие в рыболовном мероприятии, также связанная с автомобилем.
 
 Групповая битва
 
-Боевые очки— Points gagnés dans Group Battle pour le score.
+Боевые очки— Очки начисляются в групповом бою за итоговый результат.
 
-Фаза подготовки— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+Фаза подготовки— С 1 по 5 день групповых сражений были посвящены выполнению ежедневных заданий.
 
-Финальная фаза битвы— Jour 6 de Group Battle, avec affrontements décisifs.
+Финальная фаза битвы— Шестой день группового турнира, полный решающих столкновений.
 
-Абсолютная победа— Victoire finale du groupe ayant le meilleur score cumulé.
+Абсолютная победа— Окончательная победа досталась группе с лучшим суммарным результатом.
 
-Боевые чертежи— Ressources d’amélioration pour mieux performer dans Group Battle.
+Боевые чертежи— Ресурсы для повышения эффективности в групповых сражениях.
 
-Мастер-чертежи— Version plus rare et plus importante des Blueprints.
+Мастер-чертежи— Более редкая и важная версия чертежей.
 
-Награды Tier— Récompenses débloquées par paliers dans Group Battle.
+Награды Tier— Награды разблокируются по уровням в групповых боях.
 
 VIP и расходы
 
-Уровень VIP— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+Уровень VIP— VIP-уровень аккаунта зависит главным образом от потраченных средств.
 
-VIP клуб— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+VIP клуб— Система разблокируется начиная с VIP 12, предоставляя награды и специальные услуги.
 
-Служба поддержки— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+Служба поддержки— Служба поддержки игроков доступна как в самой игре, так и через VIP-клуб в зависимости от уровня.
 
-Прямое пополнение— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.
+Прямое пополнение— Приобретение CEO Coins напрямую через официальные каналы зачастую выгоднее, чем через традиционные магазины.

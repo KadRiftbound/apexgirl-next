@@ -1,378 +1,378 @@
 Glosarium Top Girl
 Struktur Permainan
 
-Server Utama (Home Server)— Serveur principal de ton compte après la phase de départ, sauf migration.
+Server Utama (Home Server)— Server utama akun Anda setelah fase awal, kecuali jika terjadi migrasi.
 
-Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+Abroad— Nama global untuk petualangan siklus besar seperti Tokyo, Bali, dan Roma.
 
-Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+Warmup— Seminggu persiapan sebelum petualangan ke luar negeri, termasuk perjodohan, penilaian, dan hadiah penting.
 
-Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+Tokyo— Petualangan Luar Negeri pertama dalam game ini, di peta baru dengan tujuan akhir Menara Tokyo.
 
-Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+Bali— Petualangan besar kedua, Luar Negeri, mengikuti logika umum yang sama seperti Tokyo.
 
-Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+Roma / Ancient Rome— Petualangan besar ketiga di luar negeri, juga mengikuti struktur Pemanasan + petualangan utama.
 
-Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+Tokyo 2 / Bali 2 / Roma 2— Bagian kedua dari siklus Luar Negeri dengan judul yang sama.
 
-Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+Tokyo 3 / Bali 3 / Roma 3— Bagian ketiga dari siklus Luar Negeri dengan judul yang sama.
 
-Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+Chamber— Sekelompok 2 atau 3 server yang maju bersama selama petualangan Luar Negeri tertentu.
 
-Teritori Chamber— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+Teritori Chamber— Wilayah yang dibangun dan dikendalikan oleh Kamar, berguna untuk pertahanan dan penempatan posisi.
 
-HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+HQ— Kantor pusat grup, gedung utama untuk pengembangan, pertahanan, dan beberapa sistem.
 
-Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+Landmark— Bangunan penting di peta, sering diperebutkan, memberikan poin, sumber daya, atau kendali wilayah.
 
-Pendudukan Landmark Pertama— Récompense obtenue lors de la première prise d’un Landmark.
+Pendudukan Landmark Pertama— Hadiah yang diperoleh setelah pertama kali merebut Landmark.
 
-Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+Burj Khalifa— Tujuan utama dari server asal dan target utama dalam beberapa perang antar server.
 
-Tokyo Tower— Objectif final de l’aventure Tokyo.
+Tokyo Tower— Tujuan utama dari petualangan di Tokyo.
 
-Wali Kota (Mayor)— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+Wali Kota (Mayor)— Gelar yang diberikan kepada server atau grup yang mengendalikan Burj Khalifa atau tujuan yang setara.
 
-Posisi Burj— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+Posisi Burj— Jabatan yang didistribusikan setelah penaklukan Burj Khalifa, beserta bonus terkait.
 
-Pool Server— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+Pool Server— Sekumpulan server yang ditunggu oleh gim sebelum meluncurkan fase atau siklus tertentu.
 
-Migrasi— Changement de serveur après certaines étapes avancées du jeu.
+Migrasi— Pergantian server setelah mencapai tahap-tahap lanjutan tertentu dalam permainan.
 
-Tiket Migrasi— Objets permettant de migrer vers un autre serveur.
+Tiket Migrasi— Objek yang memungkinkan migrasi ke server lain.
 
 Stats dan Progresi
 
-Bernyanyi (Sing)— L’une des 3 stats principales du jeu.
+Bernyanyi (Sing)— Salah satu dari 3 statistik utama dalam permainan.
 
-Defense (Defense)— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+Defense (Defense)— Salah satu dari 3 statistik utama dalam permainan, sering dikaitkan dengan istilah Pertahanan dalam permainan.
 
-Ekonomi (Economy)— L’une des 3 stats principales du jeu, très importante pour l’économie.
+Ekonomi (Economy)— Salah satu dari 3 statistik utama dalam permainan, sangat penting untuk perekonomian.
 
-Boost Aktif— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+Boost Aktif— Peningkatan diterapkan langsung pada artis yang dimainkan, seperti level, keterampilan, aset, atau statistik dasar dari Peak.
 
-Boost Pasif— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+Boost Pasif— Peningkatan yang menguntungkan semua tim di akun tersebut, seperti tim kantor pusat, mobil, koleksi, atau vila.
 
-Nilai Dasar (Base Value)— Montant de stats de base donné par un système avant les bonus en pourcentage.
+Nilai Dasar (Base Value)— Jumlah statistik dasar yang diberikan oleh sistem sebelum bonus persentase.
 
-Peningkatan Persentase (Percentage Increase)— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+Peningkatan Persentase (Percentage Increase)— Pengali diterapkan pada nilai mentah untuk meningkatkan statistik akhir.
 
-Stats Dasar— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+Stats Dasar— Statistik dasar seorang artis atau sistem, sebelum efek bersyarat.
 
-Hambatan Kerusakan Dasar— Réduction ou résistance liée aux dégâts basiques.
+Hambatan Kerusakan Dasar— Pengurangan atau resistensi terkait dengan kerusakan dasar.
 
-Kerusakan Serangan Dasar— Bonus de dégâts sur les attaques basiques.
+Kerusakan Serangan Dasar— Bonus kerusakan pada serangan dasar.
 
-Kerusakan Skill— Bonus de dégâts provenant des compétences.
+Kerusakan Skill— Bonus kerusakan dari skill.
 
-Hambatan Skill— Résistance contre les dégâts ou effets liés aux compétences.
+Hambatan Skill— Ketahanan terhadap kerusakan atau efek yang terkait dengan keterampilan.
 
-Kerusakan ke Pemain— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+Kerusakan ke Pemain— Bonus kerusakan yang diberikan langsung kepada pemain lawan, sangat kuat dalam mencapai tujuan.
 
-Kapasitas Fan— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+Kapasitas Fan— Jumlah penggemar yang dapat diangkut oleh sebuah tim, mobil, atau bus.
 
-Kapasitas Rally— Capacité maximale d’un bus de rassemblement.
+Kapasitas Rally— Kapasitas maksimum bus reli.
 
-Boost Stat Global— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+Boost Stat Global— Bonus statistik diterapkan ke seluruh akun atau ke semua tim.
 
-Genre Utama (Main Genre)— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+Genre Utama (Main Genre)— Genre musik utama yang menjadi dasar pembangunan tim atau sistem Anda.
 
 Artis, Tim dan Skill
 
-Artis— Unité principale de combat et de progression dans Top Girl.
+Artis— Unit utama untuk pertempuran dan kemajuan di Top Girl.
 
-UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+UR— Tingkat kelangkaan artis yang tinggi, terkadang dilarang dalam acara tertentu seperti Radio Battle.
 
-Tim Utama— Composition la plus importante de ton compte, à prioriser pour les ressources.
+Tim Utama— Komponen terpenting dari akun Anda, yang perlu diprioritaskan untuk alokasi sumber daya.
 
-Tim Kedua— Deuxième équipe utile pour défense, support ou contenu spécifique.
+Tim Kedua— Tim kedua yang berguna untuk pertahanan, dukungan, atau konten spesifik.
 
-EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+EDM Team— Tim yang sangat agresif dan dominan di awal/pertengahan permainan, kuat dalam mencapai tujuan-tujuan besar.
 
-RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+RNB Team— Tim yang mudah diakses, sangat kuat dalam pertahanan markas besar dan sangat bagus untuk pemain F2P.
 
-Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+Rock Team— Sebuah tim yang serbaguna dan solid dalam jangka panjang, dengan rasio kemenangan/kekalahan yang sangat baik.
 
-Defense HQ— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+Defense HQ— Menggunakan tim yang dirancang untuk mempertahankan markas besar dan meminimalkan kerugian bagi para penggemar.
 
-Mobil Solo— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+Mobil Solo— Menggunakan tim atau mobil untuk aksi solo, tanpa mengikuti reli.
 
-Tugas Pendukung— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+Tugas Pendukung— Tugas pendukung, seperti pengisian ulang, pemindahan, atau bantuan taktis.
 
-Kecepatan Mengemudi— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+Kecepatan Mengemudi— Stat atau skill yang berguna untuk kecepatan gerakan, terutama dalam peran pendukung.
 
-3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+3 Skills Gold— Syarat yang diperlukan untuk membuka kunci seorang artis di Peak System.
 
-Skill Genre— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+Skill Genre— Suatu kemampuan yang hanya aktif jika artis tersebut sesuai dengan genre lagu atau konteksnya.
 
-Skill Posisi— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+Skill Posisi— Suatu kemampuan yang hanya aktif jika sang seniman ditempatkan pada posisi yang tepat.
 
-Skill Dasar— Compétence qui peut toujours se déclencher.
+Skill Dasar— Suatu kemampuan yang selalu dapat diaktifkan.
 
-Boost dirinya— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+Boost dirinya— Suatu kemampuan yang efeknya sebagian besar bergantung pada statistik seniman yang memilikinya.
 
-Boost semua artis— Skill dont l’effet dépend des stats globales de toute l’équipe.
+Boost semua artis— Suatu kemampuan yang efeknya bergantung pada statistik keseluruhan tim.
 
-Center— Poste central dans une équipe de performance, comme au Grammy Award.
+Center— Posisi sentral dalam tim pertunjukan, seperti di ajang Grammy Awards.
 
-Penyanyi— Poste de chanteuse dans une équipe de performance.
+Penyanyi— Posisi sebagai penyanyi dalam sebuah tim pertunjukan.
 
-Penari— Poste de danseuse dans une équipe de performance.
+Penari— Posisi sebagai penari dalam tim pertunjukan.
 
-Back— Poste de soutien arrière dans une équipe de performance.
+Back— Posisi pendukung di lini belakang dalam tim pertunjukan.
 
 Aset dan Peralatan
 
-Aset— Nom global des équipements d’artiste : bijou, voiture et propriété.
+Aset— Nama umum perlengkapan artis: perhiasan, mobil, dan properti.
 
-Perhiasan (Jewelry)— Premier type d’Asset, souvent le plus simple à obtenir.
+Perhiasan (Jewelry)— Jenis aset pertama, seringkali yang paling mudah diperoleh.
 
-Mobil (Car)— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+Mobil (Car)— Tipe aset kedua, lebih langka dan lebih penting untuk statistik dan kemampuan.
 
-Properti (Property / Real Estate)— Troisième type d’Asset, souvent plus coûteux à améliorer.
+Properti (Property / Real Estate)— Jenis aset ketiga, yang seringkali lebih mahal untuk ditingkatkan.
 
-Koin Aset— Ressource utilisée pour monter les équipements.
+Koin Aset— Sumber daya yang digunakan untuk merakit peralatan.
 
-Bonus Match— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+Bonus Match— Bonus +20% saat seorang artis melengkapi Aset yang sesuai dengan musim atau asal mereka.
 
-Aset Tokyo— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+Aset Tokyo— Aset khusus untuk Tokyo, sangat kuat dalam menampilkan seniman-seniman Tokyo.
 
-Aset Eksklusif Tokyo— Assets exclusifs obtenus via Tokyo et ses événements liés.
+Aset Eksklusif Tokyo— Aset eksklusif yang diperoleh melalui Tokyo dan acara-acara terkaitnya.
 
-Rumah Lelang— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+Rumah Lelang— Sistem lelang mingguan untuk mendapatkan barang-barang yang sangat langka, termasuk karya seni atau mobil.
 
-Promosikan— Amélioration d’un Asset à un niveau supérieur, non réversible.
+Promosikan— Peningkatan suatu aset ke tingkat yang lebih tinggi dan tidak dapat diubah.
 
-Mobil T4— Objet ou ressource de tier avancé lié au système voiture.
+Mobil T4— Item atau sumber daya tingkat lanjut yang terkait dengan sistem mobil.
 
 Peak, Tier dan Sistem Pasif
 
-Level Peak— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+Level Peak— Sebuah sistem yang memberikan peningkatan keseluruhan dan statistik dasar tambahan kepada artis-artis tertentu.
 
-Sistem Peak— Ensemble du système Peak et de ses paliers de progression.
+Sistem Peak— Seluruh sistem Peak dan tingkat progresinya.
 
-Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+Tier— Sistem yang meningkatkan peningkatan statistik pasif sebesar persentase tertentu.
 
-T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+T1 / T2 / T3 / T4 / T5— Tingkat Tier yang semakin tinggi, masing-masing memberikan bonus yang lebih besar daripada tingkat sebelumnya.
 
-T2 (C) (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+T2 (C) (C)— Tingkat Tier sejati pertama yang digunakan untuk berbagai sistem.
 
-T3 (B) (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+T3 (B) (B)— Tingkat menengah, seringkali sangat menarik untuk dibuka di awal permainan.
 
-T4 (A) (A)— Tier avancé, très important mais difficile à obtenir.
+T4 (A) (A)— Tingkat lanjut, sangat penting tetapi sulit diperoleh.
 
-T5 (A+) (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+T5 (A+) (A+)— Tingkat sangat lanjut, langka dan ditujukan untuk akun tingkat tinggi atau peringkat tinggi.
 
-Mobil Pasif— Système passif de voiture qui booste les stats de tout le compte.
+Mobil Pasif— Sistem mobil pasif yang meningkatkan statistik seluruh akun.
 
-Koleksi— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+Koleksi— Sistem pasif yang terkait dengan genre musik, yang akan dikhususkan setelah basis umum.
 
-Villa— Système passif de stats, également lié à la progression par genre.
+Villa— Sistem statistik pasif, juga terkait dengan perkembangan berdasarkan jenis kelamin.
 
-Pakaian CEO— Système passif récent, suivant la même logique de base value + Tier.
+Pakaian CEO— Sistem pasif terbaru, mengikuti logika nilai dasar + tingkatan yang sama.
 
-Skin HQ— Skin du HQ donnant des bonus passifs qui se cumulent.
+Skin HQ— Skin berkualitas tinggi yang memberikan bonus pasif yang dapat ditumpuk.
 
-Fitur Tim— Système tardif et complexe, surtout orienté late game et whales.
+Fitur Tim— Sebuah sistem yang rumit dan terlambat, terutama ditujukan untuk permainan tahap akhir dan para pemain kelas atas (whales).
 
 Sumber daya dan Ekonomi
 
-Diamond— Monnaie premium du jeu.
+Diamond— Mata uang dalam game premium.
 
-Emas— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+Emas— Sumber daya dasar yang digunakan dalam banyak sistem dan peningkatan.
 
-Batangan Emas— Ressource obtenue notamment via le Tour, très utile au début.
+Batangan Emas— Sumber daya yang diperoleh terutama melalui Tur, sangat berguna di awal.
 
-Wawancara— Source fréquente de photos d’artistes et de progression.
+Wawancara— Sumber foto yang sering menampilkan para seniman dan perkembangan karya mereka.
 
-Foto Universal— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+Foto Universal— Foto-foto generik yang dapat digunakan pada artis tertentu untuk mempercepat kenaikan popularitas mereka.
 
-Relik— Système influençant notamment le score au Grammy Award.
+Relik— Sebuah sistem yang secara signifikan memengaruhi skor penghargaan Grammy.
 
-Demo— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+Demo— Suatu sistem musik yang tingkatannya sangat memengaruhi skor tertentu, seperti pada ajang Grammy Awards.
 
-CD— Objet du Group Shop permettant d’obtenir des fans.
+CD— Sebuah item di Toko Grup yang memungkinkan Anda untuk mendapatkan penggemar.
 
-Manual Promosi— Objet du Group Shop permettant de récupérer des fans.
+Manual Promosi— Item di Toko Grup memungkinkan Anda untuk mendapatkan penggemar.
 
-Koin CEO— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+Koin CEO— Mata uang yang dibeli dengan uang sungguhan, yang menjadi dasar dari banyak pembelian yang dioptimalkan.
 
-Kartu Bulanan— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+Kartu Bulanan— Pembelian berulang yang sangat menguntungkan, sering direkomendasikan sebagai pengeluaran terbaik dalam permainan.
 
-Pass Mingguan— Pass hebdomadaire, généralement rentable.
+Pass Mingguan— Tiket mingguan, umumnya hemat biaya.
 
-Pass Bulanan— Pass mensuel, souvent bon en valeur.
+Pass Bulanan— Langganan bulanan, seringkali menawarkan harga yang terjangkau.
 
-Akuisisi Korporat— Type de pass ou offre souvent jugé rentable.
+Akuisisi Korporat— Jenis penawaran atau tiket yang sering dianggap menguntungkan.
 
-Event Isi Ulang— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+Event Isi Ulang— Suatu acara yang memberikan bonus tambahan selama pengeluaran nyata tertentu.
 
-Pencapaian— Palier de récompense atteint pendant un événement ou une recharge.
+Pencapaian— Tingkat hadiah yang dicapai selama acara atau pengisian ulang.
 
 Toko dan Boutique
 
-Toko VIP— Boutique liée au niveau VIP, vendant notamment certains Assets.
+Toko VIP— Toko yang terhubung dengan level VIP, menjual aset tertentu di antara barang-barang lainnya.
 
-Toko Stock Market— Boutique du Stock Market, utile pour certaines ressources et artistes.
+Toko Stock Market— Toko pasar saham, berguna untuk sumber daya dan seniman tertentu.
 
-Toko Tokyo— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+Toko Tokyo— Sebuah toko yang berlokasi khusus di Tokyo, yang secara khusus menjual produk Kokoro.
 
-Toko Kemenangan— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+Toko Kemenangan— Toko ini dikhususkan untuk para pelayan yang telah menguasai Burj Khalifa di City Supremacy.
 
-Toko Perak— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+Toko Perak— Penyimpanan sementara di akhir acara, bergantung pada hasil server.
 
-Toko Perunggu— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+Toko Perunggu— Toko akhir acara untuk server tanpa Burj Khalifa.
 
-Toko Grup— Boutique de groupe qui reset chaque lundi.
+Toko Grup— Toko kelompok yang diatur ulang setiap hari Senin.
 
-Toko Parking Wars— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+Toko Parking Wars— Toko yang terhubung dengan Parking Wars, berguna untuk sumber daya tertentu seperti Tier HQ.
 
 Grup dan Koordinasi
 
-Grup (Group)— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+Grup (Group)— Guild atau aliansi utama dalam game, yang menjadi pusat hampir semua kemajuan.
 
-Koin Grup— Monnaie de groupe utilisée dans le Group Shop.
+Koin Grup— Mata uang grup yang digunakan di Toko Grup.
 
-Poin Grup— Points liés à la contribution au groupe.
+Poin Grup— Poin-poin terkait kontribusi kepada kelompok.
 
-Poin Pribadi— Points personnels gagnés dans certains événements.
+Poin Pribadi— Poin pribadi yang diperoleh dalam acara-acara tertentu.
 
-Kekuatan Finansial— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+Kekuatan Finansial— Tingkat kekuatan atau nilai ekonomi suatu kelompok, digunakan dalam akses ke acara tertentu.
 
-Bermain Tim— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+Bermain Tim— Dimensi kolektif permainan: koordinasi, pengaturan waktu, peran, diplomasi, dan makro.
 
-Paus— Joueuse ou joueur qui dépense énormément.
+Paus— Seorang pemain yang menghabiskan banyak uang.
 
-F2P (Free to Play) (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+F2P (Free to Play) (Free to Play)— Pemain yang tidak mengeluarkan uang, atau hampir tidak pernah mengeluarkan uang.
 
-Makro game— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+Makro game— Manajemen keseluruhan server, grup, siklus, dan tujuan jangka panjang.
 
-Mikro game— Gestion fine des combats, placements, timings et décisions immédiates.
+Mikro game— Pengelolaan pertarungan yang baik, penempatan posisi, pengaturan waktu, dan pengambilan keputusan yang cepat.
 
-Meta— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+Meta— Serangkaian pilihan atau strategi yang dianggap paling efektif pada waktu tertentu.
 
-Diplomasi— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+Diplomasi— Mengelola hubungan antar grup, server, atau ruangan untuk menghindari atau mempersiapkan diri menghadapi konflik.
 
 Pertempuran dan Perang
 
-Serangan Solo— Attaque immédiate avec une seule voiture, rapide mais risquée.
+Serangan Solo— Serangan mendadak dengan satu mobil, cepat namun berisiko.
 
-Rally— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+Rally— Berkumpul dalam kelompok sebelum menyerang, jauh lebih ampuh daripada serangan solo.
 
-Pemimpin Rally— Joueuse qui ouvre et dirige un rally.
+Pemimpin Rally— Pemain yang memulai dan mengarahkan reli.
 
-Bus— Véhicule collectif utilisé lors d’un rally.
+Bus— Kendaraan kolektif yang digunakan selama reli.
 
-Refill— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+Refill— Tindakan mengirim tim kembali ke medan pertempuran atau gedung untuk mempertahankan serangan atau pertahanan.
 
-Kill— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+Kill— Jumlah musuh yang dikalahkan, sering digunakan untuk hadiah individu.
 
-Loss— Pertes subies en fans pendant les combats.
+Loss— Kerugian yang diderita para penggemar selama pertempuran.
 
-Rasio Kill/Loss— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+Rasio Kill/Loss— Rasio antara kerusakan yang ditimbulkan dan kerugian yang diderita, sangat berguna untuk menilai efektivitas sebuah tim.
 
-Klaim Pertama— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+Klaim Pertama— Bonus diberikan kepada kelompok pertama yang berhasil menguasai sebuah bangunan dalam jangka waktu yang cukup lama.
 
-Kehilangan Fan— Quantité de fans perdus pendant un combat.
+Kehilangan Fan— Jumlah penggemar yang hilang selama perkelahian.
 
-Zona Aman— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+Zona Aman— Area awal atau area yang dilindungi, seperti ruang start di Tokyo.
 
 Event Utama
 
-Supremasi Kota— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+Supremasi Kota— Peristiwa server lawan server dalam dua fase: pengeluaran sumber daya diikuti oleh perang di sekitar Burj Khalifa.
 
-Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+Ultimate CEO / Top CEO— Peristiwa pengeluaran sumber daya mingguan utama, yang sangat penting untuk kemajuan.
 
-Pertempuran Grup— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+Pertempuran Grup— Acara kelompok selama 6 hari, dengan persiapan yang diikuti oleh fase Serangan Kilat (Rush Attack) terakhir.
 
-Serangan Rush— Phase finale du Group Battle où l’on attaque les territoires adverses.
+Serangan Rush— Fase terakhir dari Pertempuran Kelompok di mana Anda menyerang wilayah lawan.
 
-Pertempuran Radio— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+Pertempuran Radio— Acara mingguan antara 4 grup di peta khusus, tanpa artis UR.
 
-Grammy Award— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+Grammy Award— Acara penulisan musik mingguan yang berlangsung selama 5 hari dan mencakup 5 genre.
 
-Event Memancing— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+Fishing Event— Acara 7 hari di mana ikan menghasilkan voucher untuk toko.
 
-Fan Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+Fan Meeting— Acara grup mini setiap 48 jam, penting untuk mendapatkan hadiah mobil.
 
-Kencan Mabuk— Événement utile notamment pour échanger certains équipements violets.
+Kencan Mabuk— Acara ini sangat berguna untuk menukarkan peralatan berwarna ungu tertentu.
 
-Event Dadu— Événement récurrent, souvent très important pour obtenir certaines artistes.
+Event Dadu— Suatu acara yang berulang, seringkali sangat penting untuk mengamankan artis-artis tertentu.
 
-Event Versus— Événement de confrontation mentionné pendant Tokyo.
+Event Versus— Peristiwa konfrontasi tersebut disebutkan selama acara di Tokyo.
 
-Event Grup Akhir— Événement de groupe important pendant certaines semaines d’aventure.
+Event Grup Akhir— Acara kelompok penting selama minggu-minggu tertentu dalam petualangan.
 
-Siapa terkaya di Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+Siapa terkaya di Tokyo?— Sebuah sub-event di Tokyo dengan hadiah dan logika penilaian yang bagus.
 
-Parking Wars— Mode ou système lié à certaines boutiques et ressources.
+Parking Wars— Suatu tren atau sistem yang terkait dengan toko dan sumber daya tertentu.
 
-Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+Producer25— Mode atau toko tingkat lanjut, sangat berguna untuk sumber daya vila tertentu.
 
 Event Tokyo dan Sistem Terkait
 
-Metro— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+Metro— Sistem Tokyo memungkinkan peningkatan dan hadiah diperoleh melalui kemajuan tertentu.
 
-Pasar Saham— Système économique récurrent, avec shop et parfois scoring.
+Pasar Saham— Sistem ekonomi berulang, dengan toko dan terkadang penilaian skor.
 
-Lelang Saham— Vente liée au stock market, parfois source de très grosses récompenses.
+Lelang Saham— Penjualan yang terkait dengan pasar saham, terkadang menjadi sumber keuntungan yang sangat besar.
 
-Tol 1— Première ouverture de passage ou zone après le début de Tokyo.
+Tol 1— Pembukaan jalur atau zona pertama setelah dimulainya pembangunan di Tokyo.
 
-Hotel— Source importante d’or et de scoring sur certaines maps.
+Hotel— Sumber emas dan poin penting di peta tertentu.
 
-Konser— Action de score utilisée dans plusieurs aventures ou classements.
+Konser— Suatu aksi penilaian yang digunakan dalam beberapa petualangan atau peringkat.
 
-Stadion— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+Stadion— Aktivitas berbasis skor atau berorientasi aksi pada peta tertentu, terutama Tokyo.
 
 Event Memancing
 
-Umpan Gratis— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+Umpan Gratis— Umpan gratis yang dapat pulih seiring waktu dalam Acara Memancing.
 
-Umpan Berbayar— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+Umpan Berbayar— Umpan berbayar atau premium lebih efektif untuk menargetkan ikan-ikan terbaik.
 
-Voucher— Monnaie du Fishing Event générée par les poissons.
+Voucher— Mata uang Event Memancing dihasilkan dari ikan.
 
-Kolam Ikan— Ensemble de poissons disponibles dans une piscine donnée.
+Kolam Ikan— Jenis ikan yang tersedia di kolam tertentu.
 
-Kolam Gratis— Pool de poissons accessible avec le Free Bait.
+Kolam Gratis— Kolam ikan dapat diakses dengan umpan gratis.
 
-Kolam Berbayar— Pool de poissons accessible avec le Paid Bait.
+Kolam Berbayar— Kolam ikan dapat diakses dengan umpan berbayar.
 
-Akuarium— Espace où les poissons conservés génèrent des Vouchers.
+Akuarium— Sebuah tempat di mana ikan yang diawetkan menghasilkan voucher.
 
-Slot Tank— Place disponible dans l’aquarium pour stocker un poisson.
+Slot Tank— Ruang yang tersedia di akuarium untuk menyimpan ikan.
 
-Cangkang Biru— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+Cangkang Biru— Sumber daya yang diperoleh dengan mengubah kelebihan ikan untuk membuka lebih banyak slot.
 
-Sistem Kasian— Système garantissant un minimum de rareté après un certain nombre de captures.
+Sistem Kasian— Sistem yang menjamin tingkat kelangkaan minimum setelah sejumlah penangkapan tertentu.
 
-Bagian Mobil— Récompense importante du Fishing Event, utile pour la voiture.
+Bagian Mobil— Hadiah penting dari Acara Memancing, berguna untuk mobil.
 
-Desain Mobil— Récompense importante du Fishing Event, également liée à la voiture.
+Desain Mobil— Hadiah signifikan dari Acara Memancing, yang juga terkait dengan mobil.
 
 Pertempuran Grup
 
-Poin Pertempuran— Points gagnés dans Group Battle pour le score.
+Poin Pertempuran— Poin yang diperoleh dalam Pertempuran Grup untuk skor.
 
-Fase Persiapan— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+Fase Persiapan— Hari ke-1 hingga ke-5 Pertempuran Grup, berfokus pada tugas harian.
 
-Fase Pertempuran Akhir— Jour 6 de Group Battle, avec affrontements décisifs.
+Fase Pertempuran Akhir— Hari ke-6 Babak Penyisihan Grup, dengan bentrokan yang menentukan.
 
-Kemenangan Tertinggi— Victoire finale du groupe ayant le meilleur score cumulé.
+Kemenangan Tertinggi— Kemenangan akhir diraih oleh grup dengan skor kumulatif terbaik.
 
-Blueprint Pertempuran— Ressources d’amélioration pour mieux performer dans Group Battle.
+Blueprint Pertempuran— Sumber daya untuk meningkatkan performa dalam Pertempuran Grup.
 
-Blueprint Master— Version plus rare et plus importante des Blueprints.
+Blueprint Master— Versi Cetak Biru yang lebih langka dan lebih penting.
 
-Hadiah Tier— Récompenses débloquées par paliers dans Group Battle.
+Hadiah Tier— Hadiah terbuka secara bertahap di Pertempuran Grup.
 
 VIP dan Pengeluaran
 
-Level VIP— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+Level VIP— Level VIP akun, terutama bergantung pada jumlah uang yang dibelanjakan.
 
-Klub VIP— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+Klub VIP— Sistem terbuka untuk VIP 12, dengan hadiah dan layanan khusus.
 
-Layanan Pelanggan— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+Layanan Pelanggan— Layanan pelanggan game, dapat diakses di dalam game dan melalui Klub VIP tergantung pada levelnya.
 
-Top-up Langsung— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.
+Top-up Langsung— Membeli CEO Coin secara langsung melalui saluran resmi seringkali lebih menguntungkan daripada melalui toko tradisional.

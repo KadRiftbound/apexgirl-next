@@ -1,378 +1,378 @@
 Słownik Top Girl
 Struktura gry
 
-Serwer główny (Home Server)— Serveur principal de ton compte après la phase de départ, sauf migration.
+Serwer główny (Home Server)— Główny serwer Twojego konta po fazie początkowej, chyba że nastąpi migracja.
 
-Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+Abroad— Globalna nazwa wielkich cyklicznych wypraw, takich jak Tokio, Bali i Rzym.
 
-Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+Warmup— Tydzień przygotowań przed zagraniczną przygodą, obejmujący dobieranie partnerów, punktację i ważne nagrody.
 
-Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+Tokyo— Pierwsza zagraniczna przygoda gry, rozgrywająca się na nowej mapie, której ostatecznym celem jest Wieża Tokijska.
 
-Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+Bali— Druga wielka przygoda, Abroad, podąża za tą samą logiką co Tokio.
 
-Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+Roma / Ancient Rome— Trzecia duża przygoda za granicą, również bazująca na strukturze Warmup + główna przygoda.
 
-Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+Tokyo 2 / Bali 2 / Roma 2— Druga część cyklu Abroad o tym samym tytule.
 
-Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+Tokyo 3 / Bali 3 / Roma 3— Trzecia część cyklu Abroad o tym samym tytule.
 
-Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+Chamber— Grupa składająca się z 2 lub 3 serwerów, którzy wspólnie postępują naprzód podczas niektórych przygód za granicą.
 
-Terytorium Chamber— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+Terytorium Chamber— Terytorium zbudowane i kontrolowane przez Izbę, przydatne do obrony i pozycjonowania.
 
-HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+HQ— Siedziba grupy, budynek centralny do celów rozwoju, obrony i zarządzania kilkoma systemami.
 
-Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+Landmark— Ważny budynek na mapie, często będący przedmiotem walk, zapewniający punkty, zasoby i kontrolę nad obszarem.
 
-Pierwsza okupacja Landmark— Récompense obtenue lors de la première prise d’un Landmark.
+Pierwsza okupacja Landmark— Nagroda przyznawana po pierwszym zdobyciu punktu orientacyjnego.
 
-Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+Burj Khalifa— Główny cel serwera źródłowego i jeden z głównych celów w wielu wojnach serwer kontra serwer.
 
-Tokyo Tower— Objectif final de l’aventure Tokyo.
+Tokyo Tower— Ostateczny cel tokijskiej przygody.
 
-Burmistrz (Mayor)— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+Burmistrz (Mayor)— Nazwa nadana serwerowi lub grupie kontrolującej Burdż Chalifa lub podobny obiekt.
 
-Stanowiska Burj— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+Stanowiska Burj— Funkcje rozdysponowane po zdobyciu Burdż Chalifa, wraz z powiązanymi bonusami.
 
-Pula serwerów— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+Pula serwerów— Zestaw serwerów, na które gra czeka przed uruchomieniem pewnych faz lub cykli.
 
-Migracja— Changement de serveur après certaines étapes avancées du jeu.
+Migracja— Zmiana serwera po osiągnięciu pewnych zaawansowanych etapów gry.
 
-Bilety migracyjne— Objets permettant de migrer vers un autre serveur.
+Bilety migracyjne— Obiekty umożliwiające migrację na inny serwer.
 
 Statystyki i postęp
 
-Śpiew (Sing)— L’une des 3 stats principales du jeu.
+Śpiew (Sing)— Jedna z 3 głównych statystyk w grze.
 
-Obrona (Defense)— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+Obrona (Defense)— Jedna z 3 głównych statystyk w grze, często łączona z pojęciem Obrony.
 
-Ekonomia (Economy)— L’une des 3 stats principales du jeu, très importante pour l’économie.
+Ekonomia (Economy)— Jedna z 3 głównych statystyk w grze, bardzo ważna dla gospodarki.
 
-Aktywny boost— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+Aktywny boost— Ulepszenia stosowane bezpośrednio do granych artystów, takie jak poziom, umiejętności, zasoby lub podstawowe statystyki Szczytu.
 
-Pasywny boost— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+Pasywny boost— Ulepszenie, które przynosi korzyści wszystkim drużynom na koncie, np. kwaterze głównej, samochodowi, kolekcji lub willi.
 
-Wartość bazowa (Base Value)— Montant de stats de base donné par un système avant les bonus en pourcentage.
+Wartość bazowa (Base Value)— Wartość statystyk bazowych podana przez system przed premiami procentowymi.
 
-Procentowy wzrost (Percentage Increase)— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+Procentowy wzrost (Percentage Increase)— Mnożnik zastosowany do surowej wartości w celu zwiększenia ostatecznych statystyk.
 
-Statystyki bazowe— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+Statystyki bazowe— Podstawowe statystyki artysty lub systemu przed efektami warunkowymi.
 
-Odporność na bazowe obrażenia— Réduction ou résistance liée aux dégâts basiques.
+Odporność na bazowe obrażenia— Redukcja lub opór związany z podstawowymi uszkodzeniami.
 
-Bazowe obrażenia ataku— Bonus de dégâts sur les attaques basiques.
+Bazowe obrażenia ataku— Premia do obrażeń przy atakach podstawowych.
 
-Obrażenia od umiejętności— Bonus de dégâts provenant des compétences.
+Obrażenia od umiejętności— Premia do obrażeń od umiejętności.
 
-Odporność na umiejętności— Résistance contre les dégâts ou effets liés aux compétences.
+Odporność na umiejętności— Odporność na obrażenia lub efekty związane z umiejętnościami.
 
-Obrażenia gracza— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+Obrażenia gracza— Premia do obrażeń zadawana bezpośrednio przeciwnikowi, bardzo skuteczna w przypadku celów.
 
-Pojemność fanów— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+Pojemność fanów— Liczba kibiców, jaką może przewieźć drużyna, samochód lub autobus.
 
-Pojemność rally— Capacité maximale d’un bus de rassemblement.
+Pojemność rally— Maksymalna pojemność autobusu rajdowego.
 
-Globalny boost statystyk— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+Globalny boost statystyk— Bonus statystyk dotyczy całego konta lub wszystkich drużyn.
 
-Główny gatunek (Main Genre)— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+Główny gatunek (Main Genre)— Główny gatunek muzyczny, wokół którego budujesz swój zespół lub systemy.
 
 Artyści, drużyny i umiejętności
 
-Artysta— Unité principale de combat et de progression dans Top Girl.
+Artysta— Główna jednostka walki i rozwoju w grze Top Girl.
 
-UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+UR— Wysoki poziom rzadkości artysty, czasami banowany podczas pewnych wydarzeń, np. Radio Battle.
 
-Główna drużyna— Composition la plus importante de ton compte, à prioriser pour les ressources.
+Główna drużyna— Najważniejszy komponent Twojego konta, dla którego należy ustalić priorytety pod względem zasobów.
 
-Drużyna drugorzędna— Deuxième équipe utile pour défense, support ou contenu spécifique.
+Drużyna drugorzędna— Przydatny drugi zespół do obrony, wsparcia lub do określonych zadań.
 
-EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+EDM Team— Bardzo agresywna i dominująca drużyna na początku i w połowie gry, silna w realizacji dużych celów.
 
-RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+RNB Team— Dostępny zespół, szczególnie silny w obronie HQ i bardzo dobry dla graczy F2P.
 
-Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+Rock Team— Wszechstronny i solidny zespół na dłuższą metę, z bardzo dobrym stosunkiem zabójstw do strat.
 
-Obrona HQ— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+Obrona HQ— Wykorzystanie zespołu mającego na celu obronę siedziby głównej i ograniczenie strat kibiców.
 
-Solo Samochód— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+Solo Samochód— Wykorzystanie zespołu lub samochodu do działań indywidualnych, bez grupowania się.
 
-Zadanie wspierające— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+Zadanie wspierające— Zadania pomocnicze, takie jak uzupełnianie zapasów, przemieszczanie lub pomoc taktyczna.
 
-Prędkość jazdy— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+Prędkość jazdy— Przydatna statystyka lub umiejętność zwiększająca szybkość poruszania się, szczególnie w rolach wsparcia.
 
-3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+3 Skills Gold— Warunek konieczny do odblokowania artysty w Systemie Szczytowym.
 
-Umiejętność gatunku— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+Umiejętność gatunku— Umiejętność, która aktywuje się tylko wtedy, gdy artysta dopasuje się do gatunku utworu lub kontekstu.
 
-Umiejętność pozycji— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+Umiejętność pozycji— Umiejętność, która aktywuje się tylko wtedy, gdy artysta znajdzie się w odpowiednim miejscu.
 
-Umiejętność bazowa— Compétence qui peut toujours se déclencher.
+Umiejętność bazowa— Umiejętność, którą zawsze można uruchomić.
 
-Boost siebie— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+Boost siebie— Umiejętność, której efekt zależy głównie od statystyk artysty, który ją posiada.
 
-Boost wszystkich artystów— Skill dont l’effet dépend des stats globales de toute l’équipe.
+Boost wszystkich artystów— Umiejętność, której efekt zależy od ogólnych statystyk całego zespołu.
 
-Center— Poste central dans une équipe de performance, comme au Grammy Award.
+Center— Centralna pozycja w zespole wykonawczym, np. na gali rozdania nagród Grammy.
 
-Śpiewaczka— Poste de chanteuse dans une équipe de performance.
+Śpiewaczka— Pozycja śpiewaka w zespole wykonawczym.
 
-Tancerka— Poste de danseuse dans une équipe de performance.
+Tancerka— Stanowisko tancerza w zespole scenicznym.
 
-Back— Poste de soutien arrière dans une équipe de performance.
+Back— Stanowisko wsparcia w zespole wykonawczym.
 
 Zasoby i wyposażenie
 
-Assets— Nom global des équipements d’artiste : bijou, voiture et propriété.
+Assets— Ogólna nazwa wyposażenia artysty: biżuteria, samochód i nieruchomość.
 
-Biżuteria (Jewelry)— Premier type d’Asset, souvent le plus simple à obtenir.
+Biżuteria (Jewelry)— Pierwszy rodzaj aktywów, często najłatwiejszy do zdobycia.
 
-Samochód (Car)— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+Samochód (Car)— Drugi typ zasobu, rzadszy i ważniejszy ze względu na statystyki i umiejętności.
 
-Nieruchomość (Property / Real Estate)— Troisième type d’Asset, souvent plus coûteux à améliorer.
+Nieruchomość (Property / Real Estate)— Trzeci typ aktywów, którego ulepszenie jest często droższe.
 
-Monety Asset— Ressource utilisée pour monter les équipements.
+Monety Asset— Zasób użyty do montażu sprzętu.
 
-Bonus dopasowania— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+Bonus dopasowania— +20% premii, gdy artysta wyposaży się w przedmiot odpowiadający jego porze roku lub pochodzeniu.
 
-Assety Tokyo— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+Assety Tokyo— Aktywa charakterystyczne dla Tokio, szczególnie mocne w przypadku artystów z Tokio.
 
-Ekskluzywne assety Tokyo— Assets exclusifs obtenus via Tokyo et ses événements liés.
+Ekskluzywne assety Tokyo— Materiały ekskluzywne uzyskane za pośrednictwem Tokio i powiązanych z nim wydarzeń.
 
-Dom aukcyjny— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+Dom aukcyjny— Tygodniowy system aukcyjny, w ramach którego można nabyć bardzo rzadkie przedmioty, w tym dzieła artystów lub samochody.
 
-Awansuj— Amélioration d’un Asset à un niveau supérieur, non réversible.
+Awansuj— Ulepszenie aktywów do wyższego, nieodwracalnego poziomu.
 
-Samochód T4— Objet ou ressource de tier avancé lié au système voiture.
+Samochód T4— Zaawansowany element lub zasób związany z systemem samochodowym.
 
 Peak, Tier i systemy pasywne
 
-Poziom Peak— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+Poziom Peak— System zapewniający ogólne wzmocnienia i dodatkowe podstawowe statystyki niektórym artystom.
 
-System Peak— Ensemble du système Peak et de ses paliers de progression.
+System Peak— Cały system Peak i jego poziomy progresji.
 
-Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+Tier— System zwiększający pasywne wzmocnienia statystyk o określony procent.
 
-T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+T1 / T2 / T3 / T4 / T5— Coraz wyższe poziomy Tier, każdy dający więcej bonusów niż poprzedni.
 
-T2 (C) (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+T2 (C) (C)— Pierwszy prawdziwy poziom Tier używany w wielu systemach.
 
-T3 (B) (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+T3 (B) (B)— Poziom średni, często bardzo ciekawy do odblokowania na wczesnym etapie.
 
-T4 (A) (A)— Tier avancé, très important mais difficile à obtenir.
+T4 (A) (A)— Poziom zaawansowany, bardzo ważny, ale trudny do osiągnięcia.
 
-T5 (A+) (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+T5 (A+) (A+)— Bardzo zaawansowany poziom, rzadki i przeznaczony dla kont wysokiego poziomu lub wysokich rang.
 
-Pasywny samochód— Système passif de voiture qui booste les stats de tout le compte.
+Pasywny samochód— Pasywny system samochodów, który zwiększa statystyki całego konta.
 
-Kolekcja— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+Kolekcja— System pasywny powiązany z gatunkami muzycznymi, mający na celu specjalizację na wspólnej bazie.
 
-Willa— Système passif de stats, également lié à la progression par genre.
+Willa— Pasywny system statystyk, powiązany także z postępem opartym na płci.
 
-Strój CEO— Système passif récent, suivant la même logique de base value + Tier.
+Strój CEO— Nowo powstały system pasywny, bazujący na tej samej podstawowej logice wartości i poziomów.
 
-Skin HQ— Skin du HQ donnant des bonus passifs qui se cumulent.
+Skin HQ— Skórka HQ zapewniająca pasywne bonusy, które się kumulują.
 
-Funkcja drużyny— Système tardif et complexe, surtout orienté late game et whales.
+Funkcja drużyny— Późny i złożony system, ukierunkowany głównie na późną fazę rozgrywki i wieloryby.
 
 Zasoby i ekonomia
 
-Diamenty— Monnaie premium du jeu.
+Diamenty— Waluta premium w grze.
 
-Złoto— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+Złoto— Podstawowy zasób używany w wielu systemach i aktualizacjach.
 
-Sztabki złota— Ressource obtenue notamment via le Tour, très utile au début.
+Sztabki złota— Zasób dostępny głównie podczas wycieczki, bardzo przydatny na początku.
 
-Wywiady— Source fréquente de photos d’artistes et de progression.
+Wywiady— Częste źródło zdjęć artystów i ich postępów.
 
-Uniwersalne zdjęcia— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+Uniwersalne zdjęcia— Zdjęcia ogólne, które można wykorzystać w odniesieniu do konkretnych artystów, aby przyspieszyć ich drogę do sławy.
 
-Relikwie— Système influençant notamment le score au Grammy Award.
+Relikwie— System, który znacząco wpływa na wynik nagrody Grammy.
 
-Demo— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+Demo— System muzyczny, którego poziom ma duży wpływ na niektóre wyniki, np. na rozdaniu nagród Grammy.
 
-CD— Objet du Group Shop permettant d’obtenir des fans.
+CD— Przedmiot w sklepie grupowym umożliwiający zdobycie fanów.
 
-Podręczniki promocyjne— Objet du Group Shop permettant de récupérer des fans.
+Podręczniki promocyjne— Przedmiot w sklepie grupowym umożliwia zdobycie fanów.
 
-Monety CEO— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+Monety CEO— Waluta zakupiona za prawdziwe pieniądze, podstawa wielu zoptymalizowanych zakupów.
 
-Karta miesięczna— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+Karta miesięczna— Bardzo opłacalny, powtarzający się zakup, często polecany jako najlepszy wydatek w grze.
 
-Tygodniowy pass— Pass hebdomadaire, généralement rentable.
+Tygodniowy pass— Karnet tygodniowy, zazwyczaj opłacalny.
 
-Miesięczny pass— Pass mensuel, souvent bon en valeur.
+Miesięczny pass— Bilet miesięczny, często w dobrej cenie.
 
-Przejęcie korporacyjne— Type de pass ou offre souvent jugé rentable.
+Przejęcie korporacyjne— Rodzaj przepustki lub oferty często uważanej za opłacalną.
 
-Wydarzenie doładowania— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+Wydarzenie doładowania— Wydarzenie zapewniające dodatkowe bonusy podczas dokonywania pewnych wydatków w świecie rzeczywistym.
 
-Kamień milowy— Palier de récompense atteint pendant un événement ou une recharge.
+Kamień milowy— Poziom nagród osiągnięty podczas wydarzenia lub doładowania.
 
 Sklepy i butiki
 
-Sklep VIP— Boutique liée au niveau VIP, vendant notamment certains Assets.
+Sklep VIP— Sklep połączony o poziomie VIP, sprzedający m.in. określone aktywa.
 
-Sklep giełdowy— Boutique du Stock Market, utile pour certaines ressources et artistes.
+Sklep giełdowy— Sklep Giełdowy, przydatny dla niektórych zasobów i artystów.
 
-Sklep Tokyo— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+Sklep Tokyo— Sklep zlokalizowany w Tokio, w którym sprzedawany jest między innymi Kokoro.
 
-Sklep zwycięski— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+Sklep zwycięski— Sklep zarezerwowany dla kelnerów, którzy kontrolowali Burdż Chalifa w City Supremacy.
 
-Sklep Srebrny— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+Sklep Srebrny— Magazyn pośredni na końcu zdarzenia, zależny od wyniku serwera.
 
-Sklep Brązowy— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+Sklep Brązowy— Sklep na zakończenie imprezy dla kelnerów bez Burdż Chalifa.
 
-Sklep grupowy— Boutique de groupe qui reset chaque lundi.
+Sklep grupowy— Sklep grupowy, który resetuje się w każdy poniedziałek.
 
-Sklep Parking Wars— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+Sklep Parking Wars— Sklep powiązany z Parking Wars, przydatny w przypadku niektórych zasobów, np. poziomu HQ.
 
 Grupa i koordynacja
 
-Grupa (Group)— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+Grupa (Group)— Główna gildia lub sojusz w grze, będąca centrum niemal całego postępu.
 
-Monety grupowe— Monnaie de groupe utilisée dans le Group Shop.
+Monety grupowe— Waluta grupowa używana w sklepie grupowym.
 
-Punkty grupowe— Points liés à la contribution au groupe.
+Punkty grupowe— Punkty związane z wkładem w grupę.
 
-Punkty osobiste— Points personnels gagnés dans certains événements.
+Punkty osobiste— Punkty osobiste zdobywane w określonych wydarzeniach.
 
-Siła finansowa— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+Siła finansowa— Poziom władzy lub wartość ekonomiczna grupy, używana w dostępie do pewnych zdarzeń.
 
-Gra grupowa— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+Gra grupowa— Wspólny wymiar gry: koordynacja, wyczucie czasu, role, dyplomacja i makro.
 
-Wieloryb— Joueuse ou joueur qui dépense énormément.
+Wieloryb— Gracz, który wydaje dużo pieniędzy.
 
-F2P (Free to Play) (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+F2P (Free to Play) (Free to Play)— Gracz, który nie wydaje pieniędzy lub wydaje ich bardzo mało.
 
-Makro gra— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+Makro gra— Całościowe zarządzanie serwerem, grupą, cyklami i celami długoterminowymi.
 
-Mikro gra— Gestion fine des combats, placements, timings et décisions immédiates.
+Mikro gra— Dobre zarządzanie walkami, pozycjonowanie, wyczucie czasu i szybkie podejmowanie decyzji.
 
-Meta— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+Meta— Zbiór wyborów lub strategii uznanych za najskuteczniejsze w danym czasie.
 
-Dyplomacja— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+Dyplomacja— Zarządzanie relacjami między grupami, serwerami lub pokojami w celu uniknięcia konfliktów lub przygotowania się na nie.
 
 Walka i wojna
 
-Atak solo— Attaque immédiate avec une seule voiture, rapide mais risquée.
+Atak solo— Natychmiastowy atak jednym samochodem, szybki, ale ryzykowny.
 
-Rally— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+Rally— Zbieranie się grupy przed atakiem jest znacznie potężniejsze niż atak w pojedynkę.
 
-Lider rally— Joueuse qui ouvre et dirige un rally.
+Lider rally— Gracz otwierający i kierujący rajdem.
 
-Autobus— Véhicule collectif utilisé lors d’un rally.
+Autobus— Pojazd zbiorowy używany podczas wiecu.
 
-Uzupełnienie— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+Uzupełnienie— Działanie polegające na odesłaniu drużyny z powrotem do walki lub budynku w celu utrzymania ataku lub obrony.
 
-Zabójstwa— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+Zabójstwa— Liczba pokonanych wrogów, często używana jako nagroda indywidualna.
 
-Straty— Pertes subies en fans pendant les combats.
+Straty— Straty w kibicach poniesione podczas walk.
 
-Stosunek K/L— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+Stosunek K/L— Stosunek między zadanymi obrażeniami a poniesionymi stratami, bardzo przydatny do oceny skuteczności zespołu.
 
-Pierwsze roszczenie— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+Pierwsze roszczenie— Premia przyznawana pierwszej grupie, która utrzyma kontrolę nad budynkiem przez wystarczająco długi czas.
 
-Straty fanów— Quantité de fans perdus pendant un combat.
+Straty fanów— Liczba fanów straconych podczas walki.
 
-Bezpieczna strefa— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+Bezpieczna strefa— Obszar początkowy lub chroniony, jak np. komora startowa w Tokio.
 
 Główne wydarzenia
 
-Dominacja miejska— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+Dominacja miejska— Wydarzenie serwer kontra serwer w dwóch fazach: wydatkowanie zasobów, a następnie wojna wokół Burdż Chalifa.
 
-Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+Ultimate CEO / Top CEO— Ważne cotygodniowe wydarzenie wymagające wydatkowania zasobów, kluczowe dla postępu.
 
-Bitwa grupowa— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+Bitwa grupowa— 6-dniowe wydarzenie grupowe, obejmujące przygotowania i końcową fazę Rush Attack.
 
-Atak rush— Phase finale du Group Battle où l’on attaque les territoires adverses.
+Atak rush— Ostatnia faza bitwy grupowej, w której atakujesz terytoria przeciwnika.
 
-Bitwa radiowa— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+Bitwa radiowa— Tygodniowe wydarzenie z udziałem 4 grup na specjalnej mapie, bez artystów UR.
 
-Nagroda Grammy— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+Nagroda Grammy— Tygodniowe wydarzenie poświęcone muzyce, trwające 5 dni i obejmujące 5 gatunków.
 
-Wydarzenie wędkarskie— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+Fishing Event— 7-dniowe wydarzenie, w ramach którego ryby generują bony do wykorzystania w sklepie.
 
-Fan Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+Fan Meeting— Mini wydarzenie grupowe co 48 godzin, ważne dla nagród samochodowych.
 
-Pijana randka— Événement utile notamment pour échanger certains équipements violets.
+Pijana randka— To wydarzenie jest szczególnie przydatne do wymiany pewnego rodzaju fioletowego wyposażenia.
 
-Wydarzenie z kośćmi— Événement récurrent, souvent très important pour obtenir certaines artistes.
+Wydarzenie z kośćmi— Wydarzenie cykliczne, często bardzo ważne dla pozyskania konkretnych artystów.
 
-Wydarzenie Versus— Événement de confrontation mentionné pendant Tokyo.
+Wydarzenie Versus— Wspomniano o konfrontacji w Tokio.
 
-Ostateczne wydarzenie grupowe— Événement de groupe important pendant certaines semaines d’aventure.
+Ostateczne wydarzenie grupowe— Ważne wydarzenie grupowe w niektórych tygodniach przygody.
 
-Kto jest najbogatszy w Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+Kto jest najbogatszy w Tokyo?— Podwydarzenie w Tokio z dobrymi nagrodami i logiką punktacji.
 
-Wojny parkingowe— Mode ou système lié à certaines boutiques et ressources.
+Wojny parkingowe— Moda lub system powiązany z konkretnymi sklepami i zasobami.
 
-Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+Producer25— Zaawansowana moda lub sklep, szczególnie przydatne w przypadku niektórych zasobów willi.
 
 Wydarzenia Tokyo i powiązane systemy
 
-Metro— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+Metro— System Tokio umożliwiający zdobywanie wzmocnień i nagród poprzez określone postępy.
 
-Giełda— Système économique récurrent, avec shop et parfois scoring.
+Giełda— Powtarzalny system ekonomiczny z możliwością zakupów i czasami punktowania.
 
-Aukcja giełdowa— Vente liée au stock market, parfois source de très grosses récompenses.
+Aukcja giełdowa— Sprzedaż na giełdzie, czasami źródło bardzo dużych zysków.
 
-Opłata 1— Première ouverture de passage ou zone après le début de Tokyo.
+Opłata 1— Pierwsze otwarcie przejścia lub strefy po starcie Tokio.
 
-Hotele— Source importante d’or et de scoring sur certaines maps.
+Hotele— Ważne źródło złota i punktów na niektórych mapach.
 
-Koncerty— Action de score utilisée dans plusieurs aventures ou classements.
+Koncerty— Akcja punktowa wykorzystywana w różnych przygodach lub rankingach.
 
-Stadion— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+Stadion— Aktywność oparta na punktach lub zorientowana na akcję na niektórych mapach, szczególnie w Tokio.
 
 Wydarzenie wędkarskie
 
-Darmowa przynęta— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+Darmowa przynęta— Darmowa przynęta, która regeneruje się z czasem podczas wydarzenia wędkarskiego.
 
-Płatna przynęta— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+Płatna przynęta— Płatna lub premium przynęta jest skuteczniejsza w łowieniu najlepszych ryb.
 
-Voucher— Monnaie du Fishing Event générée par les poissons.
+Voucher— Waluta wydarzenia wędkarskiego generowana przez ryby.
 
-Basen z rybami— Ensemble de poissons disponibles dans une piscine donnée.
+Basen z rybami— Zestaw ryb dostępnych w danym basenie.
 
-Basen darmowy— Pool de poissons accessible avec le Free Bait.
+Basen darmowy— Dostęp do stawu z rybami i darmową przynętą.
 
-Basen płatny— Pool de poissons accessible avec le Paid Bait.
+Basen płatny— Dostęp do stawu z rybami po zapłaceniu za przynętę.
 
-Akwarium— Espace où les poissons conservés génèrent des Vouchers.
+Akwarium— Miejsce, w którym konserwowane ryby generują bony.
 
-Slot zbiornika— Place disponible dans l’aquarium pour stocker un poisson.
+Slot zbiornika— Miejsce dostępne w akwarium do przechowywania ryb.
 
-Niebieskie muszle— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+Niebieskie muszle— Zasób uzyskiwany poprzez zamianę nadmiaru ryb w celu odblokowania większej liczby slotów.
 
-System litości— Système garantissant un minimum de rareté après un certain nombre de captures.
+System litości— System gwarantujący minimalny poziom rzadkości po określonej liczbie złapań.
 
-Część samochodu— Récompense importante du Fishing Event, utile pour la voiture.
+Część samochodu— Ważna nagroda z wydarzenia wędkarskiego, przydatna dla samochodu.
 
-Projekt samochodu— Récompense importante du Fishing Event, également liée à la voiture.
+Projekt samochodu— Znaczna nagroda z wydarzenia wędkarskiego, również powiązana z samochodem.
 
 Bitwa grupowa
 
-Punkty bitwy— Points gagnés dans Group Battle pour le score.
+Punkty bitwy— Punkty zdobyte w Bitwie Grupowej liczą się do wyniku.
 
-Faza przygotowawcza— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+Faza przygotowawcza— Dni od 1 do 5 Bitwy Grupowej poświęcone są codziennym zadaniom.
 
-Faza ostatecznej bitwy— Jour 6 de Group Battle, avec affrontements décisifs.
+Faza ostatecznej bitwy— Dzień 6 Bitwy Grupowej, z decydującymi starciami.
 
-Ostateczne zwycięstwo— Victoire finale du groupe ayant le meilleur score cumulé.
+Ostateczne zwycięstwo— Ostateczne zwycięstwo odniesie grupa, która uzyska najlepszy łączny wynik.
 
-Plany bitewne— Ressources d’amélioration pour mieux performer dans Group Battle.
+Plany bitewne— Zasoby umożliwiające poprawę wyników w bitwach grupowych.
 
-Główne plany— Version plus rare et plus importante des Blueprints.
+Główne plany— Rzadsza i ważniejsza wersja Blueprintów.
 
-Nagrody Tier— Récompenses débloquées par paliers dans Group Battle.
+Nagrody Tier— Nagrody odblokowywane w poziomach w bitwach grupowych.
 
 VIP i wydatki
 
-Poziom VIP— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+Poziom VIP— Poziom VIP konta, zależny głównie od wydanych pieniędzy.
 
-Klub VIP— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+Klub VIP— System odblokowany od VIP 12, z nagrodami i usługami specjalnymi.
 
-Obsługa klienta— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+Obsługa klienta— Obsługa klienta gry dostępna w grze i za pośrednictwem Klubu VIP, w zależności od poziomu.
 
-Bezpośrednie doładowanie— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.
+Bezpośrednie doładowanie— Zakup CEO Coins bezpośrednio za pośrednictwem oficjalnych kanałów jest często bardziej opłacalny niż w tradycyjnych sklepach.

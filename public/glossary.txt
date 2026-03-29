@@ -1,378 +1,378 @@
 Top Girl Glossary
 Game Structure
 
-Home Server— Serveur principal de ton compte après la phase de départ, sauf migration.
+Home Server— Your account's primary server after the initial phase, unless there is a migration.
 
-Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+Abroad— Global name for major cyclical adventures like Tokyo, Bali and Roma.
 
-Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+Warmup— A week of preparation before an Abroad adventure, with matchmaking, scoring and important rewards.
 
-Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+Tokyo— The game's first Abroad adventure, on a new map with the final objective being Tokyo Tower.
 
-Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+Bali— The second major adventure, Abroad, follows the same general logic as Tokyo.
 
-Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+Roma / Ancient Rome— Third major Abroad adventure, also following the Warmup + main adventure structure.
 
-Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+Tokyo 2 / Bali 2 / Roma 2— Second installment of an Abroad cycle of the same name.
 
-Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+Tokyo 3 / Bali 3 / Roma 3— Third installment of an Abroad cycle of the same name.
 
-Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+Chamber— A group of 2 or 3 servers who progress together during certain Abroad adventures.
 
-Chamber Territory— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+Chamber Territory— Territory built and controlled by the Chamber, useful for defense and positioning.
 
-HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+HQ— Group headquarters, central building for advancement, defense and several systems.
 
-Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+Landmark— An important building on the map, often contested, providing score, resources or area control.
 
-Landmark First Occupation— Récompense obtenue lors de la première prise d’un Landmark.
+Landmark First Occupation— Reward obtained upon first capturing a Landmark.
 
-Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+Burj Khalifa— Central objective of the origin server and major target in several server versus server wars.
 
-Tokyo Tower— Objectif final de l’aventure Tokyo.
+Tokyo Tower— The ultimate goal of the Tokyo adventure.
 
-Mayor— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+Mayor— Title given to the server or group controlling a Burj Khalifa or equivalent objective.
 
-Burj Posts— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+Burj Posts— Functions distributed after the capture of the Burj Khalifa, with associated bonuses.
 
-Server Pool— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+Server Pool— A set of servers that the game waits for before launching certain phases or cycles.
 
-Migration— Changement de serveur après certaines étapes avancées du jeu.
+Migration— Server change after certain advanced stages of the game.
 
-Migration Tickets— Objets permettant de migrer vers un autre serveur.
+Migration Tickets— Objects that allow migration to another server.
 
 Stats and Progression
 
-Sing— L’une des 3 stats principales du jeu.
+Sing— One of the 3 main stats in the game.
 
-Defense— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+Defense— One of the 3 main stats in the game, often linked to the term Defense in the game.
 
-Economy— L’une des 3 stats principales du jeu, très importante pour l’économie.
+Economy— One of the 3 main stats in the game, very important for the economy.
 
-Active Boost— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+Active Boost— Improvement applied directly to the artists played, such as level, skills, assets or basic stats of the Peak.
 
-Passive Boost— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+Passive Boost— An improvement that benefits all teams on the account, such as HQ, car, collection or villa.
 
-Base Value— Montant de stats de base donné par un système avant les bonus en pourcentage.
+Base Value— Base stat amount given by a system before percentage bonuses.
 
-Percentage Increase— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+Percentage Increase— Multiplier applied to a raw value to boost the final stats.
 
-Basic Stats— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+Basic Stats— Base stats of an artist or system, before conditional effects.
 
-Basic Damage Resistance— Réduction ou résistance liée aux dégâts basiques.
+Basic Damage Resistance— Reduction or resistance related to basic damage.
 
-Basic Attack Damage— Bonus de dégâts sur les attaques basiques.
+Basic Attack Damage— Damage bonus on basic attacks.
 
-Skill Damage— Bonus de dégâts provenant des compétences.
+Skill Damage— Damage bonus from skills.
 
-Skill Resistance— Résistance contre les dégâts ou effets liés aux compétences.
+Skill Resistance— Resistance against damage or effects related to skills.
 
-Damage to Player— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+Damage to Player— Damage bonus dealt directly to the opposing player, very strong on objectives.
 
-Fan Capacity— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+Fan Capacity— Number of fans that a team, car or bus can carry.
 
-Rally Capacity— Capacité maximale d’un bus de rassemblement.
+Rally Capacity— Maximum capacity of a rally bus.
 
-Global Stat Boost— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+Global Stat Boost— Stat bonus applied to the entire account or to all teams.
 
-Main Genre— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+Main Genre— The main musical genre around which you build your team or systems.
 
 Artists, Teams and Skills
 
-Artist— Unité principale de combat et de progression dans Top Girl.
+Artist— Main unit for combat and progression in Top Girl.
 
-UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+UR— High artist rarity level, sometimes banned in certain events like Radio Battle.
 
-Main Team— Composition la plus importante de ton compte, à prioriser pour les ressources.
+Main Team— The most important component of your account, to prioritize for resources.
 
-Second Team— Deuxième équipe utile pour défense, support ou contenu spécifique.
+Second Team— A useful second team for defense, support, or specific content.
 
-EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+EDM Team— A very aggressive and dominant team in the early/mid game, strong on big objectives.
 
-RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+RNB Team— An accessible team, especially strong in HQ defense and very good for F2P players.
 
-Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+Rock Team— A versatile and solid team in the long term, with a very good kill/loss ratio.
 
-HQ Defense— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+HQ Defense— Using a team designed to defend the HQ and limit fan losses.
 
-Solo Car— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+Solo Car— Using a team or a car for solo actions, without rallying.
 
-Supportive Task— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+Supportive Task— Support tasks, such as refilling, moving, or tactical assistance.
 
-Driving Speed— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+Driving Speed— A useful stat or skill for movement speed, especially in support roles.
 
-3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+3 Skills Gold— A necessary condition to unlock an artist in the Peak System.
 
-Genre Skill— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+Genre Skill— A skill that is only activated if the artist matches the genre of the song or the context.
 
-Position Skill— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+Position Skill— A skill that is only activated if the artist is placed in the right position.
 
-Base Skill— Compétence qui peut toujours se déclencher.
+Base Skill— A skill that can always be triggered.
 
-Boost herself— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+Boost herself— A skill whose effect depends mainly on the stats of the artist who possesses it.
 
-Boost all artist— Skill dont l’effet dépend des stats globales de toute l’équipe.
+Boost all artist— A skill whose effect depends on the overall stats of the entire team.
 
-Center— Poste central dans une équipe de performance, comme au Grammy Award.
+Center— A central position in a performance team, such as at the Grammy Awards.
 
-Singer— Poste de chanteuse dans une équipe de performance.
+Singer— Position as a singer in a performance team.
 
-Dancer— Poste de danseuse dans une équipe de performance.
+Dancer— Position as a dancer in a performance team.
 
-Back— Poste de soutien arrière dans une équipe de performance.
+Back— Back support position in a performance team.
 
 Assets and Equipment
 
-Assets— Nom global des équipements d’artiste : bijou, voiture et propriété.
+Assets— Overall name of artist equipment: jewelry, car and property.
 
-Jewelry— Premier type d’Asset, souvent le plus simple à obtenir.
+Jewelry— The first type of asset, often the easiest to obtain.
 
-Car— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+Car— Second type of Asset, rarer and more important for stats and ability.
 
-Property— Troisième type d’Asset, souvent plus coûteux à améliorer.
+Property— Third type of asset, often more expensive to upgrade.
 
-Asset Coins— Ressource utilisée pour monter les équipements.
+Asset Coins— Resource used to assemble the equipment.
 
-Match Bonus— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+Match Bonus— +20% bonus when an artist equips an Asset corresponding to their season or origin.
 
-Tokyo Assets— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+Tokyo Assets— Assets specific to Tokyo, very strong on Tokyo artists.
 
-Exclusive Tokyo Assets— Assets exclusifs obtenus via Tokyo et ses événements liés.
+Exclusive Tokyo Assets— Exclusive assets obtained through Tokyo and its related events.
 
-Auction House— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+Auction House— Weekly auction system to obtain certain very rare items, including artists or cars.
 
-Promote— Amélioration d’un Asset à un niveau supérieur, non réversible.
+Promote— Improvement of an asset to a higher, irreversible level.
 
-T4 Car— Objet ou ressource de tier avancé lié au système voiture.
+T4 Car— Advanced tier item or resource related to the car system.
 
 Peak, Tier and Passive Systems
 
-Peak Level— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+Peak Level— A system that provides overall boosts and additional basic stats to certain artists.
 
-Peak System— Ensemble du système Peak et de ses paliers de progression.
+Peak System— The entire Peak system and its progression levels.
 
-Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+Tier— A system that increases passive stat boosts by a percentage.
 
-T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+T1 / T2 / T3 / T4 / T5— Increasing Tier levels, each giving more bonuses than the previous one.
 
-T2 (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+T2 (C)— First true Tier level used for multiple systems.
 
-T3 (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+T3 (B)— Intermediate tier, often very interesting to unlock early.
 
-T4 (A)— Tier avancé, très important mais difficile à obtenir.
+T4 (A)— Advanced tier, very important but difficult to obtain.
 
-T5 (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+T5 (A+)— Very advanced tier, rare and geared towards high-level accounts or high rankings.
 
-Passive Car— Système passif de voiture qui booste les stats de tout le compte.
+Passive Car— Passive car system that boosts the stats of the entire account.
 
-Collection— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+Collection— Passive system linked to musical genres, to be specialized after a common base.
 
-Villa— Système passif de stats, également lié à la progression par genre.
+Villa— Passive stats system, also linked to gender-based progression.
 
-CEO Outfit— Système passif récent, suivant la même logique de base value + Tier.
+CEO Outfit— A recent passive system, following the same basic value + Tier logic.
 
-HQ Skin— Skin du HQ donnant des bonus passifs qui se cumulent.
+HQ Skin— HQ skin providing passive bonuses that stack.
 
-Team Feature— Système tardif et complexe, surtout orienté late game et whales.
+Team Feature— A late and complex system, mainly geared towards the late game and whales.
 
 Resources and Economy
 
-Diamonds— Monnaie premium du jeu.
+Diamonds— Premium in-game currency.
 
-Gold— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+Gold— A basic resource used in many systems and upgrades.
 
-Gold Ingots— Ressource obtenue notamment via le Tour, très utile au début.
+Gold Ingots— A resource obtained primarily through the Tour, very useful at the beginning.
 
-Interviews— Source fréquente de photos d’artistes et de progression.
+Interviews— Frequent source of photos of artists and their progress.
 
-Universal Photos— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+Universal Photos— Generic photos that can be used on certain artists to accelerate their rise to fame.
 
-Relics— Système influençant notamment le score au Grammy Award.
+Relics— A system that notably influences the Grammy Award score.
 
-Demos— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+Demos— A musical system whose level strongly influences certain scores, such as at the Grammy Awards.
 
-CD— Objet du Group Shop permettant d’obtenir des fans.
+CD— An item in the Group Shop that allows you to obtain fans.
 
-Promotion Manuals— Objet du Group Shop permettant de récupérer des fans.
+Promotion Manuals— The Group Shop item allows you to acquire fans.
 
-CEO Coins— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+CEO Coins— Currency purchased with real money, the basis of many optimized purchases.
 
-Monthly Card— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+Monthly Card— A very profitable recurring purchase, often recommended as the best expense in the game.
 
-Weekly Pass— Pass hebdomadaire, généralement rentable.
+Weekly Pass— Weekly pass, generally cost-effective.
 
-Monthly Pass— Pass mensuel, souvent bon en valeur.
+Monthly Pass— Monthly pass, often good value.
 
-Corporate Acquisition— Type de pass ou offre souvent jugé rentable.
+Corporate Acquisition— Type of pass or offer often considered profitable.
 
-Recharge Event— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+Recharge Event— An event that provides additional bonuses during certain real-world spending.
 
-Milestone— Palier de récompense atteint pendant un événement ou une recharge.
+Milestone— Reward tier reached during an event or recharge.
 
 Shops and Boutiques
 
-VIP Shop— Boutique liée au niveau VIP, vendant notamment certains Assets.
+VIP Shop— VIP-level linked store, selling certain Assets among other things.
 
-Stock Market Shop— Boutique du Stock Market, utile pour certaines ressources et artistes.
+Stock Market Shop— Stock Market shop, useful for certain resources and artists.
 
-Tokyo Shop— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+Tokyo Shop— A shop specifically located in Tokyo, notably containing Kokoro.
 
-Victorious Shop— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+Victorious Shop— Shop reserved for servers who have controlled a Burj Khalifa in City Supremacy.
 
-Silver Shop— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+Silver Shop— Intermediate store at the end of the event, depending on the server result.
 
-Bronze Shop— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+Bronze Shop— End-of-event shop for servers without Burj Khalifa.
 
-Group Shop— Boutique de groupe qui reset chaque lundi.
+Group Shop— Group shop that resets every Monday.
 
-Parking Wars Shop— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+Parking Wars Shop— Shop linked to Parking Wars, useful for certain resources like the HQ Tier.
 
 Group and Coordination
 
-Group— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+Group— The main guild or alliance in the game, at the center of almost all progression.
 
-Group Coins— Monnaie de groupe utilisée dans le Group Shop.
+Group Coins— Group currency used in the Group Shop.
 
-Group Points— Points liés à la contribution au groupe.
+Group Points— Points related to contributing to the group.
 
-Personal Points— Points personnels gagnés dans certains événements.
+Personal Points— Personal points earned in certain events.
 
-Financial Power— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+Financial Power— Power level or economic value of a group, used in certain event accesses.
 
-Teamplay— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+Teamplay— Collective dimension of the game: coordination, timing, roles, diplomacy and macro.
 
-Whale— Joueuse ou joueur qui dépense énormément.
+Whale— A player who spends a lot of money.
 
-F2P (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+F2P (Free to Play)— Player who doesn't spend, or hardly spends.
 
-Macro game— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+Macro game— Overall management of the server, the group, cycles and long-term objectives.
 
-Micro game— Gestion fine des combats, placements, timings et décisions immédiates.
+Micro game— Fine management of fights, positioning, timing and immediate decisions.
 
-Meta— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+Meta— The set of choices or strategies deemed most effective at a given time.
 
-Diplomacy— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+Diplomacy— Managing relationships between groups, servers or rooms to avoid or prepare for conflicts.
 
 Combat and War
 
-Solo Attack— Attaque immédiate avec une seule voiture, rapide mais risquée.
+Solo Attack— Immediate attack with a single car, quick but risky.
 
-Rally— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+Rally— Group gathering before an attack, much more powerful than a solo attack.
 
-Rally Leader— Joueuse qui ouvre et dirige un rally.
+Rally Leader— Player who opens and directs a rally.
 
-Bus— Véhicule collectif utilisé lors d’un rally.
+Bus— Collective vehicle used during a rally.
 
-Refill— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+Refill— The act of sending teams back into a fight or building to maintain the attack or defense.
 
-Kills— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+Kills— Number of enemies defeated, often used for individual rewards.
 
-Losses— Pertes subies en fans pendant les combats.
+Losses— Losses suffered in fans during the fighting.
 
-Kill/Loss Ratio— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+Kill/Loss Ratio— Ratio between damage inflicted and losses suffered, very useful for judging the effectiveness of a team.
 
-First Claim— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+First Claim— Bonus awarded to the first group that retains control of a building for a sufficient amount of time.
 
-Fan Losses— Quantité de fans perdus pendant un combat.
+Fan Losses— Number of fans lost during a fight.
 
-Safe Zone— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+Safe Zone— Initial or protected area, like the starting chamber in Tokyo.
 
 Major Events
 
-City Supremacy— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+City Supremacy— Server versus server event in two phases: resource expenditure followed by war around the Burj Khalifa.
 
-Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+Ultimate CEO / Top CEO— Major weekly resource expenditure event, central to progression.
 
-Group Battle— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+Group Battle— 6-day group event, with preparation followed by the final Rush Attack phase.
 
-Rush Attack— Phase finale du Group Battle où l’on attaque les territoires adverses.
+Rush Attack— Final phase of the Group Battle where you attack the opposing territories.
 
-Radio Battle— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+Radio Battle— Weekly event between 4 groups on a special map, without UR artists.
 
-Grammy Award— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+Grammy Award— Weekly music scoring event spanning 5 days and 5 genres.
 
-Fishing Event— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+Fishing Event— 7-day event where fish generate vouchers for the shop.
 
-Fan Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+Fan Meeting— Mini group event every 48 hours, important for car rewards.
 
-Tipsy Date— Événement utile notamment pour échanger certains équipements violets.
+Tipsy Date— This event is particularly useful for exchanging certain purple equipment.
 
-Dice Event— Événement récurrent, souvent très important pour obtenir certaines artistes.
+Dice Event— A recurring event, often very important for securing certain artists.
 
-Versus Event— Événement de confrontation mentionné pendant Tokyo.
+Versus Event— The confrontation event was mentioned during Tokyo.
 
-Ultimate Group Event— Événement de groupe important pendant certaines semaines d’aventure.
+Ultimate Group Event— Important group event during certain weeks of the adventure.
 
-Who is the richest in Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+Who is the richest in Tokyo?— A sub-event in Tokyo with good rewards and scoring logic.
 
-Parking Wars— Mode ou système lié à certaines boutiques et ressources.
+Parking Wars— A fashion or system linked to certain shops and resources.
 
-Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+Producer25— Advanced fashion or shop, particularly useful for certain villa resources.
 
 Tokyo Events and Related Systems
 
-Metro— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+Metro— Tokyo system allowing boosts and rewards to be obtained through specific progression.
 
-Stock Market— Système économique récurrent, avec shop et parfois scoring.
+Stock Market— Recurring economic system, with shop and sometimes scoring.
 
-Stock Auction— Vente liée au stock market, parfois source de très grosses récompenses.
+Stock Auction— Stock market-related sales, sometimes a source of very large rewards.
 
-Toll 1— Première ouverture de passage ou zone après le début de Tokyo.
+Toll 1— First opening of passage or zone after the start of Tokyo.
 
-Hotels— Source importante d’or et de scoring sur certaines maps.
+Hotels— An important source of gold and scoring on certain maps.
 
-Concerts— Action de score utilisée dans plusieurs aventures ou classements.
+Concerts— A scoring action used in several adventures or rankings.
 
-Stadium— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+Stadium— Score-based or action-oriented activity on certain maps, notably Tokyo.
 
 Fishing Event
 
-Free Bait— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+Free Bait— Free bait that regenerates over time in the Fishing Event.
 
-Paid Bait— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+Paid Bait— Paid or premium bait is more effective for targeting the best fish.
 
-Voucher— Monnaie du Fishing Event générée par les poissons.
+Voucher— Fishing Event currency generated by fish.
 
-Fish Pool— Ensemble de poissons disponibles dans une piscine donnée.
+Fish Pool— The set of fish available in a given pool.
 
-Free Pool— Pool de poissons accessible avec le Free Bait.
+Free Pool— Fish pool accessible with Free Bait.
 
-Paid Pool— Pool de poissons accessible avec le Paid Bait.
+Paid Pool— Fish pool accessible with Paid Bait.
 
-Aquarium— Espace où les poissons conservés génèrent des Vouchers.
+Aquarium— A space where preserved fish generate vouchers.
 
-Tank Slot— Place disponible dans l’aquarium pour stocker un poisson.
+Tank Slot— Space available in the aquarium to store a fish.
 
-Blue Shells— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+Blue Shells— Resource obtained by converting excess fish to unlock more slots.
 
-Pity System— Système garantissant un minimum de rareté après un certain nombre de captures.
+Pity System— System guaranteeing a minimum level of rarity after a certain number of captures.
 
-Car Part— Récompense importante du Fishing Event, utile pour la voiture.
+Car Part— Important reward from the Fishing Event, useful for the car.
 
-Car Design— Récompense importante du Fishing Event, également liée à la voiture.
+Car Design— A significant reward from the Fishing Event, also linked to the car.
 
 Group Battle
 
-Battle Points— Points gagnés dans Group Battle pour le score.
+Battle Points— Points earned in Group Battle for the score.
 
-Preparation Phase— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+Preparation Phase— Days 1 to 5 of Group Battle, focused on daily tasks.
 
-Final Battle Phase— Jour 6 de Group Battle, avec affrontements décisifs.
+Final Battle Phase— Day 6 of Group Battle, with decisive clashes.
 
-Ultimate Victory— Victoire finale du groupe ayant le meilleur score cumulé.
+Ultimate Victory— Final victory for the group with the best cumulative score.
 
-Battle Blueprints— Ressources d’amélioration pour mieux performer dans Group Battle.
+Battle Blueprints— Resources for improving performance in Group Battle.
 
-Master Blueprints— Version plus rare et plus importante des Blueprints.
+Master Blueprints— A rarer and more important version of the Blueprints.
 
-Tier Rewards— Récompenses débloquées par paliers dans Group Battle.
+Tier Rewards— Rewards unlocked in tiers in Group Battle.
 
 VIP and Spending
 
-VIP Level— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+VIP Level— VIP level of the account, depending mainly on the money spent.
 
-VIP Club— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+VIP Club— System unlocked from VIP 12, with rewards and special services.
 
-Customer Service— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+Customer Service— Game customer support, accessible in-game and via VIP Club depending on the level.
 
-Direct Top-up— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.
+Direct Top-up— Purchasing CEO Coins directly through official channels is often more profitable than through traditional stores.
