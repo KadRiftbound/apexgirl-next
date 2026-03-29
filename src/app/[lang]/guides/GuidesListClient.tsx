@@ -615,13 +615,14 @@ export default function GuidesListClient({ lang }: { lang: string }) {
                 background: "rgba(20,20,40,0.92)",
                 borderRadius: "20px",
                 border: `1.5px solid ${guide.color}66`,
-                padding: "18px",
+                padding: 0,
                 cursor: "pointer",
                 transition: "all 0.3s ease",
                 position: "relative",
                 overflow: "hidden",
                 textDecoration: "none",
-                display: "block",
+                display: "flex",
+                flexDirection: "column",
                 boxShadow: `0 2px 16px ${guide.color}18`,
                 filter: guide.inProgress ? "grayscale(0.45)" : "none",
               }}
@@ -649,39 +650,48 @@ export default function GuidesListClient({ lang }: { lang: string }) {
                 background: `linear-gradient(90deg, ${guide.color}, ${guide.color}88)`,
               }} />
 
+              {/* Compartiment 1: Logo + titre */}
               <div style={{
                 display: "flex",
                 alignItems: "flex-start",
                 justifyContent: "space-between",
                 gap: "12px",
-                marginBottom: "10px",
+                padding: "18px",
+                borderBottom: "1px solid rgba(255,255,255,0.08)",
               }}>
-                <div style={{ display: "flex", gap: "10px", alignItems: "flex-start", flex: 1 }}>
+                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start", flex: 1 }}>
                   <div style={{
-                    width: "36px",
-                    height: "36px",
-                    borderRadius: "10px",
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "12px",
                     background: `${guide.color}22`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "1.1rem",
+                    fontSize: "1.15rem",
                     flexShrink: 0,
+                    border: `1px solid ${guide.color}33`,
                   }}>
                     {guide.icon || "📘"}
                   </div>
-                  <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, margin: 0 }}>
-                  {getGuideTitle(guide, lang)}
-                  </h3>
+                  <div>
+                    <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, margin: 0 }}>
+                      {getGuideTitle(guide, lang)}
+                    </h3>
+                    <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.75rem", marginTop: "4px" }}>
+                      {guide.readTime}
+                    </div>
+                  </div>
                 </div>
                 {guide.thumbnail && (
                   <div style={{
                     height: "52px",
                     width: "52px",
-                    borderRadius: "10px",
+                    borderRadius: "12px",
                     overflow: "hidden",
                     position: "relative",
                     flexShrink: 0,
+                    border: "1px solid rgba(255,255,255,0.12)",
                   }}>
                     <Image
                       src={guide.thumbnail}
@@ -694,20 +704,32 @@ export default function GuidesListClient({ lang }: { lang: string }) {
                 )}
               </div>
 
-              <p style={{
-                color: "rgba(255,255,255,0.6)",
-                fontSize: "0.85rem",
-                lineHeight: 1.6,
-                marginBottom: "12px",
-                display: "-webkit-box",
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
+              {/* Compartiment 2: explication */}
+              <div style={{
+                padding: "16px 18px",
+                borderBottom: "1px solid rgba(255,255,255,0.08)",
               }}>
-                {getPreviewDescription(getGuideDescription(guide, lang))}
-              </p>
+                <p style={{
+                  color: "rgba(255,255,255,0.7)",
+                  fontSize: "0.88rem",
+                  lineHeight: 1.6,
+                  margin: 0,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                }}>
+                  {getPreviewDescription(getGuideDescription(guide, lang))}
+                </p>
+              </div>
 
-              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+              {/* Compartiment 3: tags */}
+              <div style={{
+                display: "flex",
+                gap: "8px",
+                flexWrap: "wrap",
+                padding: "14px 18px 18px",
+              }}>
                 {guide.isNew && (
                   <span style={{
                     padding: "4px 10px",
@@ -746,16 +768,6 @@ export default function GuidesListClient({ lang }: { lang: string }) {
                   border: `1px solid ${guide.color}66`,
                 }}>
                   {getCategoryLabel(guide, t)}
-                </span>
-                <span style={{
-                  padding: "4px 10px",
-                  borderRadius: "8px",
-                  fontSize: "0.7rem",
-                  background: "rgba(255,255,255,0.12)",
-                  color: "rgba(255,255,255,0.65)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                }}>
-                  {guide.readTime}
                 </span>
               </div>
             </Link>
