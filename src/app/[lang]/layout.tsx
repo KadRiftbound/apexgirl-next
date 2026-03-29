@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { LanguageSelector } from "@/components/LanguageSelector";
 import { BackgroundManager } from "@/components/BackgroundManager";
 import CookieConsent from "@/components/CookieConsent";
 import { Analytics } from "@vercel/analytics/react";
 import { MobileNav } from "@/components/MobileNav";
 import { NavVoteWidget } from "@/components/NavVoteWidget";
+import { HeaderNav } from "@/components/HeaderNav";
 import { getUiStrings } from "@/lib/i18n/ui";
 
 const localeNames: Record<string, string> = {
@@ -164,18 +164,7 @@ export default async function LocaleLayout({
             </Link>
             <NavVoteWidget lang={lang} />
           </div>
-          <nav className="nav" role="navigation" aria-label="Main navigation">
-            {navItems.map((item) => (
-              <Link 
-                key={item.href} 
-                href={item.href} 
-                className={item.cta ? "nav-cta" : ""}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <LanguageSelector currentLang={lang} />
-          </nav>
+          <HeaderNav lang={lang} items={navItems} />
         </div>
       </header>
       <MobileNav />

@@ -6811,12 +6811,14 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
     const lines = normalizedText.split('\n');
     const elements: ReactNode[] = [];
     let listMode = false;
+    let pendingBullet = false;
     let lastNonEmpty = '';
     let lastWasEmpty = false;
     const isSectionTitle = (line: string, nextLine?: string) => {
       const trimmed = line.trim();
       if (!trimmed) return false;
       if (trimmed.endsWith(':')) return false;
+      if (trimmed.includes(':')) return false;
       if (trimmed.startsWith('- ') || /^\d+\.\s/.test(trimmed)) return false;
       if (/[.!?]/.test(trimmed)) return false;
       if (trimmed.length > 70) return false;
@@ -6834,13 +6836,23 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
 
     for (let i = 0; i < lines.length; i += 1) {
       const line = lines[i];
-      const trimmed = line.trim();
+      const normalizedLine = line.replace(/[\u200B-\u200D\uFEFF]/g, '').replace(/\u00a0/g, ' ');
+      const trimmed = normalizedLine.trim();
+      const trimmedNoSpaces = trimmed.replace(/\s+/g, '');
+      const bulletInlineText = trimmed.replace(/^[•·-]\s*/, '').trim();
+      const isBulletOnly = /^[\s•·\-–—]+$/.test(normalizedLine);
+      const isDashList = normalizedLine.startsWith('- ');
+      const isNumbered = /^\d+\.\s/.test(trimmed);
+      const isNumberOnly = /^\d+\.$/.test(trimmed);
 
-      if (trimmed === '•' || trimmed === '-' || trimmed === '·') {
+      if (isBulletOnly || trimmedNoSpaces === '•' || trimmedNoSpaces === '-' || trimmedNoSpaces === '·') {
+        pendingBullet = true;
+        listMode = true;
         continue;
       }
 
       if (!trimmed) {
+        if (pendingBullet) continue;
         if (lastWasEmpty) continue;
         lastWasEmpty = true;
         if (listMode) {
@@ -6853,8 +6865,94 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
       }
       lastWasEmpty = false;
 
+      if ((trimmed.startsWith('•') || trimmed.startsWith('·')) && bulletInlineText) {
+        listMode = true;
+        pendingBullet = false;
+        elements.push(
+          <div key={i} className="guide-li">
+            <span className="guide-li-dot">•</span>
+            <span className="guide-li-text">{parseInlineBold(bulletInlineText, color)}</span>
+          </div>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+
+      if (isDashList) {
+        pendingBullet = false;
+        listMode = true;
+        elements.push(
+          <div key={i} className="guide-li">
+            <span className="guide-li-dot">▸</span>
+            <span className="guide-li-text">{parseInlineBold(trimmed.replace('- ', ''), color)}</span>
+          </div>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+
+      if (isNumbered) {
+        pendingBullet = false;
+        listMode = true;
+        elements.push(
+          <div key={i} className="guide-num">
+            <span className="guide-num-badge">{trimmed.match(/^\d+/)![0]}.</span>
+            <span className="guide-li-text">{parseInlineBold(trimmed.replace(/^\d+\.\s/, ''), color)}</span>
+          </div>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+
+      if (isNumberOnly) {
+        pendingBullet = false;
+        listMode = true;
+        const nextRaw = lines[i + 1] || '';
+        const nextNormalized = nextRaw.replace(/[\u200B-\u200D\uFEFF]/g, '').replace(/\u00a0/g, ' ');
+        const nextTrimmed = nextNormalized.trim();
+        if (nextTrimmed && !nextTrimmed.startsWith('- ') && !nextTrimmed.startsWith('•') && !nextTrimmed.startsWith('·') && !/^\d+\./.test(nextTrimmed) && !nextTrimmed.startsWith('#')) {
+          elements.push(
+            <div key={i} className="guide-num">
+              <span className="guide-num-badge">{trimmed.replace('.', '')}.</span>
+              <span className="guide-li-text">{parseInlineBold(nextTrimmed, color)}</span>
+            </div>
+          );
+          lastNonEmpty = nextTrimmed;
+          i += 1;
+          continue;
+        }
+        elements.push(
+          <div key={i} className="guide-num">
+            <span className="guide-num-badge">{trimmed.replace('.', '')}.</span>
+            <span className="guide-li-text"></span>
+          </div>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+
+      if (pendingBullet) {
+        if (trimmed.endsWith(':')) {
+          pendingBullet = false;
+          listMode = false;
+        } else if (trimmed.length <= 80 && !/[.!?]$/.test(trimmed)) {
+          elements.push(
+            <div key={i} className="guide-li">
+              <span className="guide-li-dot">•</span>
+              <span className="guide-li-text">{parseInlineBold(trimmed, color)}</span>
+            </div>
+          );
+          pendingBullet = false;
+          listMode = true;
+          continue;
+        }
+        pendingBullet = false;
+      }
+
       if (listMode && lastNonEmpty.endsWith(':')) {
-        if (trimmed.length <= 80 && !/[.!?]$/.test(trimmed)) {
+        if (trimmed.endsWith(':')) {
+          listMode = false;
+        } else if (trimmed.length <= 80 && !/[.!?]$/.test(trimmed)) {
           elements.push(
             <div key={i} className="guide-li">
               <span className="guide-li-dot">•</span>
@@ -6942,28 +7040,6 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
         continue;
       }
 
-      if (line.startsWith('- ')) {
-        listMode = true;
-        elements.push(
-          <div key={i} className="guide-li">
-            <span className="guide-li-dot">▸</span>
-            <span className="guide-li-text">{parseInlineBold(line.replace('- ', ''), color)}</span>
-          </div>
-        );
-        lastNonEmpty = trimmed;
-        continue;
-      }
-      if (/^\d+\.\s/.test(line)) {
-        listMode = true;
-        elements.push(
-          <div key={i} className="guide-num">
-            <span className="guide-num-badge">{line.match(/^\d+/)![0]}.</span>
-            <span className="guide-li-text">{parseInlineBold(line.replace(/^\d+\.\s/, ''), color)}</span>
-          </div>
-        );
-        lastNonEmpty = trimmed;
-        continue;
-      }
       if (line.startsWith('**') && line.endsWith('**')) {
         listMode = false;
         elements.push(

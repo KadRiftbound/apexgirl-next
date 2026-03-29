@@ -1,6 +1,8 @@
 // Lightweight guide metadata — used server-side for generateMetadata only.
 // Full guide content lives in GuideDetailClient.tsx.
 
+import guidesData from "@/lib/data/guides.json";
+
 export type GuideMeta = {
   id: string;
   title: string;
@@ -9,344 +11,40 @@ export type GuideMeta = {
   description: string;
   description_en?: string; description_it?: string; description_es?: string;
   description_pt?: string; description_pl?: string; description_id?: string; description_ru?: string; description_de?: string;
-  category: string;
+  category?: string;
   category_en?: string; category_it?: string; category_es?: string;
   category_pt?: string; category_pl?: string; category_id?: string; category_ru?: string; category_de?: string;
+  guideType?: "classic" | "event" | "special";
+  stage?: "early" | "mid" | "late" | null;
+  difficulty?: "beginner" | "intermediate" | "advanced" | null;
   thumbnail?: string;
   readTime?: string;
   isDone?: boolean;
   isNew?: boolean;
 };
 
-export const guidesMeta: GuideMeta[] = [
-  {
-    id: "structure-du-jeu",
-    title: "Structure du jeu", title_en: "Game Structure", title_de: "Spielstruktur",
-    description: "Comprendre la structure globale de TopGirl/ApexGirl : serveurs, cycles Abroad, événements récurrents.",
-    description_en: "Understand the global structure of TopGirl/ApexGirl: servers, Abroad cycles, recurring events.",
-    description_de: "Verstehe die globale Struktur von TopGirl/ApexGirl: Server, Abroad-Zyklen, wiederkehrende Ereignisse.",
-    category: "Débutant", category_en: "Beginner", category_de: "Anfänger",
-    readTime: "12 min", isDone: true,
+const guidesMeta = guidesData as GuideMeta[];
+
+const categoryLabels = {
+  type: {
+    classic: { fr: "Classique", en: "Classic", it: "Classica", es: "Clásica", pt: "Clássico", pl: "Klasyczny", id: "Klasik", ru: "Классический", de: "Klassisch" },
+    event: { fr: "Événement", en: "Event", it: "Evento", es: "Evento", pt: "Evento", pl: "Wydarzenie", id: "Event", ru: "Событие", de: "Event" },
+    special: { fr: "Spécial", en: "Special", it: "Speciale", es: "Especial", pt: "Especial", pl: "Specjalny", id: "Spesial", ru: "Специальный", de: "Spezial" },
   },
-  {
-    id: "equipment",
-    title: "Guide Équipement", title_en: "Equipment Guide", title_it: "Guida Equipaggiamento",
-    title_es: "Guía de Equipamiento", title_pt: "Guia de Equipamento",
-    title_pl: "Poradnik Wyposażenia", title_id: "Panduan Peralatan", title_ru: "Гайд по снаряжению", title_de: "Ausrüstungs-Leitfaden",
-    description: "Bijoux, Voitures et Propriétés pour optimiser vos statistiques. Comparaison Gold vs Purple et priorités d'achat.",
-    description_en: "Jewelry, Cars and Properties to optimize your stats. Gold vs Purple comparison and purchase priorities.",
-    description_de: "Schmuck, Autos und Immobilien zur Optimierung deiner Stats. Gold vs Lila Vergleich und Kaufprioritäten.",
-    category: "Débutant", category_en: "Beginner", category_de: "Anfänger",
-    readTime: "10 min", isDone: true,
+  stage: {
+    early: { fr: "Early", en: "Early", it: "Early", es: "Early", pt: "Early", pl: "Early", id: "Early", ru: "Early", de: "Early" },
+    mid: { fr: "Mid", en: "Mid", it: "Mid", es: "Mid", pt: "Mid", pl: "Mid", id: "Mid", ru: "Mid", de: "Mid" },
+    late: { fr: "Late", en: "Late", it: "Late", es: "Late", pt: "Late", pl: "Late", id: "Late", ru: "Late", de: "Late" },
   },
-  {
-    id: "construction-equipe-debut",
-    title: "Construction d'équipe début de jeu", title_en: "Early Game Team Building", title_de: "Frühspiel-Teamaufbau",
-    description: "Choisir ses artistes au début et éviter de gaspiller des ressources.",
-    description_en: "Choosing your artists early and avoiding wasting resources.",
-    description_de: "Wähle dein frühes Team und vermeide verschwendete Ressourcen.",
-    category: "Avancé - Début de jeu", category_en: "Advanced - Early Game", category_de: "Fortgeschritten - Frühspiel",
-    readTime: "12 min", isDone: true,
+  difficulty: {
+    beginner: { fr: "Débutant", en: "Beginner", it: "Principiante", es: "Principiante", pt: "Iniciante", pl: "Początkujący", id: "Pemula", ru: "Начинающий", de: "Anfänger" },
+    intermediate: { fr: "Intermédiaire", en: "Intermediate", it: "Intermedio", es: "Intermedio", pt: "Intermediário", pl: "Średni", id: "Menengah", ru: "Средний", de: "Fortgeschritten" },
+    advanced: { fr: "Avancé", en: "Advanced", it: "Avanzato", es: "Avanzado", pt: "Avançado", pl: "Zaawansowany", id: "Lanjutan", ru: "Продвинутый", de: "Experte" },
   },
-  {
-    id: "construction-equipe-fin",
-    title: "Construction d'équipe fin de jeu", title_en: "Late Game Team Building", title_de: "Spätspiel-Teamaufbau",
-    description: "Construire une équipe optimisée en fin de jeu selon l'adversaire.",
-    description_en: "Building an optimized late-game team based on the opponent.",
-    description_de: "Erstelle ein optimiertes Team basierend auf Gegner und Kontext.",
-    category: "Avancé - Fin de jeu", category_en: "Advanced - Late Game", category_de: "Fortgeschritten - Spätspiel",
-    readTime: "12 min", isDone: true,
-  },
-  {
-    id: "event-echo-death-match",
-    title: "Guide Echo Death Match", title_en: "Echo Death Match Guide", title_de: "Echo Death Match Leitfaden",
-    description: "Guide du Echo Death Match : difficulté, stages, récompenses par palier.",
-    description_en: "Echo Death Match guide: difficulty, stages, tier rewards.",
-    description_de: "Echo Death Match Leitfaden: Schwierigkeit, Stufen, Stufen-Belohnungen.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    readTime: "8 min", isDone: true,
-  },
-  {
-    id: "event-muse",
-    title: "Guide Muse Event", title_en: "Muse Event Guide", title_de: "Muse Event Leitfaden",
-    description: "Guide du Muse Event : gameplay musical, Crystals, upgrades et stratégies.",
-    description_en: "Muse Event guide: musical gameplay, Crystals, upgrades and strategies.",
-    description_de: "Muse Event Leitfaden: Musik-Gameplay, Crystals, Upgrades und Strategien.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    readTime: "8 min", isDone: true,
-  },
-  {
-    id: "event-cleanup-party",
-    title: "Guide Cleanup Party", title_en: "Cleanup Party Guide", title_de: "Cleanup Party Leitfaden",
-    description: "Guide de l'événement Cleanup Party. Associez des tuiles, complétez des stages et récupérez des récompenses.",
-    description_en: "Cleanup Party event guide. Match tiles, complete stages and collect rewards.",
-    description_de: "Cleanup Party Leitfaden. Kombiniere Kacheln, schließe Stufen ab und sammle Belohnungen.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    thumbnail: "/assets/images/guides/cleanup-party.jpg",
-    readTime: "5 min", isDone: true, isNew: true,
-  },
-  {
-    id: "event-muse",
-    title: "Guide Muse Event", title_en: "Muse Event Guide",
-    description: "Guide du Muse Event : gameplay musical, Crystals, upgrades et stratégies.",
-    description_en: "Muse Event guide: musical gameplay, Crystals, upgrades and strategies.",
-    category: "Événements", category_en: "Events",
-    readTime: "8 min", isDone: true,
-  },
-  {
-    id: "event-vs-group",
-    title: "Guide VS Group Event", title_en: "Group Battle Guide",
-    title_it: "Guida Group Battle", title_es: "Guía Group Battle",
-    title_pt: "Guia Group Battle", title_pl: "Przewodnik Group Battle",
-    title_id: "Panduan Group Battle", title_ru: "Гайд Group Battle",
-    title_de: "VS Group Event Leitfaden",
-    description: "Group Battle est un événement de groupe de 6 jours. Rush Attack, Blueprints et stratégies.",
-    description_en: "Group Battle is a 6-day group event. Rush Attack, Blueprints and strategies.",
-    description_it: "Group Battle è un evento di gruppo da 6 giorni. Rush Attack, Blueprint e strategie.",
-    description_es: "Group Battle es un evento de grupo de 6 días. Rush Attack, Blueprints y estrategias.",
-    description_pt: "Group Battle é um evento de grupo de 6 dias. Rush Attack, Blueprints e estratégias.",
-    description_pl: "Group Battle to 6-dniowe wydarzenie grupowe. Rush Attack, Blueprints i strategie.",
-    description_id: "Group Battle adalah acara grup 6 hari. Rush Attack, Blueprint dan strategi.",
-    description_ru: "Group Battle — групповое событие на 6 дней. Rush Attack, Blueprints и стратегии.",
-    description_de: "VS Group Event ist ein 6-tägiges Gruppen-Event. Rush Attack, Blueprints und Strategien.",
-    category: "Événements", category_en: "Events",
-    category_it: "Eventi", category_es: "Eventos", category_pt: "Eventos",
-    category_pl: "Wydarzenia", category_id: "Acara", category_ru: "События", category_de: "Veranstaltungen",
-    readTime: "8 min", isDone: true,
-  },
-  {
-    id: "event-fishing",
-    title: "Guide Fishing Event", title_en: "Fishing Event Guide",
-    title_it: "Guida Fishing Event", title_es: "Guía Fishing Event",
-    title_pt: "Guia Fishing Event", title_pl: "Przewodnik Fishing Event",
-    title_id: "Panduan Fishing Event", title_ru: "Гайд Fishing Event",
-    title_de: "Fishing Event Leitfaden",
-    description: "Fishing Event dure 7 jours. Attrapez des poissons, gérez votre Aquarium et échangez des Vouchers.",
-    description_en: "Fishing Event lasts 7 days. Catch fish, manage your Aquarium and exchange Vouchers for rewards.",
-    description_de: "Fishing Event dauert 7 Tage. Fange Fische, verwalte dein Aquarium und tausche Gutscheine gegen Belohnungen ein.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    readTime: "6 min", isDone: true,
-  },
-  {
-    id: "event-cleanup-party",
-    title: "Guide Cleanup Party", title_en: "Cleanup Party Guide",
-    description: "Guide de l'événement Cleanup Party. Associez des tuiles, complétez des stages et récupérez des récompenses.",
-    description_en: "Cleanup Party event guide. Match tiles, complete stages and collect rewards.",
-    category: "Événements", category_en: "Events",
-    thumbnail: "/assets/images/guides/cleanup-party.jpg",
-    readTime: "5 min", isDone: true, isNew: true,
-  },
-  {
-    id: "event-metro-subway",
-    title: "Guide Metro & Subway", title_en: "Metro & Subway Guide",
-    title_it: "Guida Metro & Subway", title_es: "Guía Metro & Subway",
-    title_pt: "Guia Metro & Subway", title_pl: "Przewodnik Metro & Subway",
-    title_id: "Panduan Metro & Subway", title_ru: "Гайд Metro & Subway",
-    title_de: "Metro & Subway Leitfaden",
-    description: "Guide de l'événement Adventure Abroad Metro. Débloquez des stations, gérez vos Fonds d'Investissement.",
-    description_en: "Adventure Abroad Metro event guide. Unlock stations, manage your Investment Funds and maximize rewards.",
-    description_de: "Vollständiger Leitfaden zum Adventure Abroad Metro-Event. Entsperre Stationen, verwalte deine Investitionsfonds und maximiere Belohnungen.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    thumbnail: "/assets/images/guides/metro-subway.jpg",
-    readTime: "8 min", isDone: true, isNew: true,
-  },
-  {
-    id: "event-adventure-abroad-tokyo",
-    title: "Guide Adventure Abroad : Tokyo", title_en: "Adventure Abroad: Tokyo Guide",
-    title_it: "Guida Adventure Abroad: Tokyo", title_es: "Guía Adventure Abroad: Tokyo",
-    title_pt: "Guia Adventure Abroad: Tokyo", title_pl: "Poradnik Adventure Abroad: Tokyo",
-    title_id: "Panduan Adventure Abroad: Tokyo", title_ru: "Гайд Adventure Abroad: Tokyo",
-    title_de: "Adventure Abroad: Tokyo Leitfaden",
-    description: "Guide complet de l'événement Adventure Abroad Tokyo. Warmup, système de conquête, Metro, événements et récompenses.",
-    description_en: "Complete guide to the Adventure Abroad Tokyo event. Warmup, conquest system, Metro, events and rewards.",
-    description_it: "Guida completa dell'evento Adventure Abroad Tokyo. Warmup, sistema di conquista, Metro, eventi e ricompense.",
-    description_es: "Guía completa del evento Adventure Abroad Tokyo. Warmup, sistema de conquista, Metro, eventos y recompensas.",
-    description_pt: "Guia completo do evento Adventure Abroad Tokyo. Warmup, sistema de conquista, Metro, eventos e recompensas.",
-    description_pl: "Kompletny poradnik wydarzenia Adventure Abroad Tokyo. Warmup, system podboju, Metro, wydarzenia i nagrody.",
-    description_id: "Panduan lengkap acara Adventure Abroad Tokyo. Warmup, sistem penaklukan, Metro, acara dan hadiah.",
-    description_ru: "Полный гайд по событию Adventure Abroad Tokyo. Warmup, система завоевания, Metro, события и награды.",
-    description_de: "Vollständiger Leitfaden zum Adventure Abroad Tokyo-Event. Warmup, Eroberungssystem, Metro, Ereignisse und Belohnungen.",
-    category: "Événements", category_en: "Events",
-    category_it: "Eventi", category_es: "Eventos", category_pt: "Eventos",
-    category_pl: "Wydarzenia", category_id: "Acara", category_ru: "События", category_de: "Veranstaltungen",
-    thumbnail: "/assets/images/artists/Chizuru.jpg",
-    readTime: "12 min", isDone: true, isNew: true,
-  },
-  {
-    id: "team-builder",
-    title: "Team Builder", title_en: "Team Builder", title_de: "Team-Builder-Leitfaden",
-    description: "Comment construire l'équipe parfaite. Synergies de genre et bonus d'équipement.",
-    description_en: "How to build the perfect team. Genre synergies and equipment bonuses.",
-    description_de: "Wie du das perfekte Team aufbaust. Genresynergie-Berechnung und Ausrüstungsboni.",
-    category: "Intermédiaire", category_en: "Intermediate", category_de: "Mittelstufe",
-    readTime: "15 min",
-  },
-  {
-    id: "recommended-teams",
-    title: "Équipes Recommandées", title_en: "Recommended Teams", title_de: "Empfohlene Teams",
-    description: "Les meilleures compositions d'équipes UR et SSR. Stratégies offensives, équilibrées et défensives.",
-    description_en: "Best UR and SSR team compositions. Offensive, balanced and defensive strategies.",
-    description_de: "Beste UR und SSR Teamzusammensetzungen. Offensive, ausgewogene und defensive Strategien.",
-    category: "Avancé", category_en: "Advanced", category_de: "Fortgeschritten",
-    readTime: "12 min",
-  },
-  {
-    id: "leveling-ssr",
-    title: "Montée en Niveau SSR", title_en: "SSR Level Up Guide", title_de: "SSR-Leveling-Leitfaden",
-    description: "Nombre de cartes nécessaires pour level up vos personnages SSR jusqu'au niveau 115.",
-    description_en: "Number of cards needed to level up your SSR characters to level 115.",
-    description_de: "Anzahl der Karten, die benötigt werden, um deine SSR-Charaktere auf Level 115 zu bringen.",
-    category: "Débutant", category_en: "Beginner", category_de: "Anfänger",
-    readTime: "8 min",
-  },
-  {
-    id: "blueprints",
-    title: "Guide Blueprints", title_en: "Blueprints Guide", title_de: "Blueprints-Leitfaden",
-    description: "Requirements en blueprints par tier (1-21) pour améliorer vos installations.",
-    description_en: "Blueprint requirements per tier (1-21) to upgrade your facilities.",
-    description_de: "Blueprint-Anforderungen nach Stufe (1-21) zur Aufrüstung deiner Einrichtungen.",
-    category: "Intermédiaire", category_en: "Intermediate", category_de: "Mittelstufe",
-    readTime: "10 min",
-  },
-  {
-    id: "hq-upgrade",
-    title: "Guide HQ (Quartier Général)", title_en: "HQ Upgrade Guide", title_de: "HQ-Aufstiegs-Leitfaden",
-    description: "Cartes de bâtiment nécessaires pour chaque niveau du HQ.",
-    description_en: "Building cards needed for each HQ level.",
-    description_de: "Benötigte Gebäude-Karten für jedes HQ-Level.",
-    category: "Débutant", category_en: "Beginner", category_de: "Anfänger",
-    readTime: "5 min",
-  },
-  {
-    id: "vehicle-system",
-    title: "Système de Véhicules", title_en: "Vehicle System Guide", title_de: "Fahrzeug-System-Leitfaden",
-    description: "Système complet : Avancement, Pièces (Moteur, Châsis, Suspension, Jantes), Skins débloqués.",
-    description_en: "Complete system: Advancement, Parts (Engine, Chassis, Suspension, Rims), unlocked Skins.",
-    description_de: "Vollständiges System: Aufstieg, Teile (Motor, Chassis, Federung, Felgen), freigeschaltete Skins.",
-    category: "Avancé", category_en: "Advanced", category_de: "Fortgeschritten",
-    readTime: "15 min",
-  },
-  {
-    id: "gold-equipment",
-    title: "Équipement Gold Optimal", title_en: "Optimal Gold Equipment", title_de: "Gold-Ausrüstungs-Leitfaden",
-    description: "Setup complet Gold pour Vocalist, Dancer et Center.",
-    description_en: "Complete Gold setup for Vocalist, Dancer and Center.",
-    description_de: "Vollständiges Gold-Setup für Vocalist, Dancer und Center.",
-    category: "Avancé", category_en: "Advanced", category_de: "Fortgeschritten",
-    readTime: "10 min",
-  },
-  {
-    id: "purple-equipment",
-    title: "Équipement Purple (Budget)", title_en: "Purple Equipment (Budget)", title_de: "Lila-Ausrüstungs-Leitfaden",
-    description: "Setup économique Purple. Stratégie Gold/Purple mixte.",
-    description_en: "Budget Purple setup. Mixed Gold/Purple strategy.",
-    description_de: "Budget Lila-Setup. Gemischte Gold/Lila Strategie.",
-    category: "Intermédiaire", category_en: "Intermediate", category_de: "Mittelstufe",
-    readTime: "8 min",
-  },
-  {
-    id: "event-ancient-rome",
-    title: "Guide Ancient Rome", title_en: "Ancient Rome Event Guide", title_de: "Altes Rom Leitfaden",
-    description: "Guide complet de l'événement Adventure Abroad Rome.",
-    description_en: "Complete guide for the Adventure Abroad Rome event.",
-    description_de: "Vollständiger Leitfaden zum Adventure Abroad Rom-Event.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    readTime: "10 min",
-  },
-  {
-    id: "event-radio-battle",
-    title: "Guide Radio Battle", title_en: "Radio Battle Guide", title_de: "Radio Battle Leitfaden",
-    description: "Guide complet du Radio Battle.",
-    description_en: "Complete Radio Battle guide.",
-    description_de: "Vollständiger Radio Battle Leitfaden.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    readTime: "8 min",
-  },
-  {
-    id: "event-grammy",
-    title: "Guide Grammy Awards", title_en: "Grammy Awards Guide", title_de: "Grammy Awards Leitfaden",
-    description: "Guide des 8 catégories Grammy.",
-    description_en: "Guide to all 8 Grammy categories.",
-    description_de: "Leitfaden zu den 8 Grammy-Kategorien.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    readTime: "10 min",
-  },
-  {
-    id: "event-ultimate-ceo",
-    title: "Guide Ultimate CEO", title_en: "Ultimate CEO Guide", title_de: "Ultimate CEO Leitfaden",
-    description: "Guide complet de l'Ultimate CEO.",
-    description_en: "Complete Ultimate CEO guide.",
-    description_de: "Vollständiger Ultimate CEO Leitfaden.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    readTime: "8 min",
-  },
-  {
-    id: "event-chamber-territory",
-    title: "Guide Chamber Territory", title_en: "Chamber Territory Guide", title_de: "Chamber Territory Leitfaden",
-    description: "Guide de l'événement Chamber Territory.",
-    description_en: "Chamber Territory event guide.",
-    description_de: "Leitfaden zum Chamber Territory Event.",
-    category: "Événements", category_en: "Events", category_de: "Veranstaltungen",
-    readTime: "8 min",
-  },
-  {
-    id: "world-building",
-    title: "Guide World Building", title_en: "World Building Guide", title_de: "World Building Leitfaden",
-    description: "Guide de construction et développement du monde.",
-    description_en: "World building and development guide.",
-    description_de: "Leitfaden zum Bau und zur Entwicklung der Welt.",
-    category: "Intermédiaire", category_en: "Intermediate", category_de: "Mittelstufe",
-    readTime: "10 min",
-  },
-  {
-    id: "vip-level",
-    title: "Guide VIP Level", title_en: "VIP Level Guide", title_de: "VIP Level Leitfaden",
-    description: "Points requis pour chaque niveau VIP et bénéfices associés.",
-    description_en: "Points required for each VIP level and associated benefits.",
-    description_de: "Punkte, die für jedes VIP-Level und zugehörige Vorteile erforderlich sind.",
-    category: "Avancé", category_en: "Advanced", category_de: "Fortgeschritten",
-    readTime: "15 min",
-  },
-  {
-    id: "peak-level",
-    title: "Guide Peak Level", title_en: "Peak Level Guide", title_de: "Peak Level Leitfaden",
-    description: "Système de Peak Level pour les artistes SSR. Milestones importants et stratégies F2P.",
-    description_en: "Peak Level system for SSR artists. Key milestones and F2P strategies.",
-    description_de: "Peak Level System für SSR-Künstler. Wichtige Meilensteine und F2P-Strategien.",
-    category: "Avancé", category_en: "Advanced", category_de: "Fortgeschritten",
-    readTime: "15 min", isDone: true,
-  },
-  {
-    id: "group-shop",
-    title: "Guide Group Shop", title_en: "Group Shop Guide", title_de: "Group Shop Leitfaden",
-    description: "Que acheter dans le Group Shop ? Ordre de priorité des achats.",
-    description_en: "What to buy in the Group Shop? Purchase priority order.",
-    description_de: "Was du im Group Shop kaufen solltest? Kaufprioritätsreihenfolge.",
-    category: "Débutant", category_en: "Beginner", category_de: "Anfänger",
-    readTime: "5 min", isDone: true,
-  },
-  {
-    id: "alliance-management",
-    title: "Guide Gestion d'Alliance", title_en: "Alliance Management Guide", title_de: "Allianz-Management Leitfaden",
-    description: "Rôles, responsabilités et stratégies pour gérer une alliance dans TopGirl.",
-    description_en: "Roles, responsibilities and strategies for managing an alliance in TopGirl.",
-    description_de: "Rollen, Verantwortlichkeiten und Strategien für die Verwaltung einer Allianz in TopGirl.",
-    category: "Avancé", category_en: "Advanced", category_de: "Fortgeschritten",
-    readTime: "12 min", isDone: true,
-  },
-  {
-    id: "ceo-coins",
-    title: "Guide CEO Coins", title_en: "CEO Coins Purchase Guide", title_de: "CEO Coins Kaufleitfaden",
-    description: "Comment acheter des CEO Coins sur le site de paiement officiel.",
-    description_en: "How to purchase CEO Coins on the official payment website.",
-    description_de: "Wie man CEO Coins auf der offiziellen Zahlungswebsite kauft.",
-    category: "Avancé", category_en: "Advanced", category_de: "Fortgeschritten",
-    readTime: "5 min", isDone: true,
-  },
-];
+} as const;
 
 export function getGuideMeta(slug: string): GuideMeta | undefined {
-  return guidesMeta.find(g => g.id === slug);
+  return guidesMeta.find((guide) => guide.id === slug);
 }
 
 export function getGuideTitle(guide: GuideMeta, lang: string): string {
@@ -358,5 +56,22 @@ export function getGuideDescription(guide: GuideMeta, lang: string): string {
 }
 
 export function getGuideCategory(guide: GuideMeta, lang: string): string {
-  return (guide as any)[`category_${lang}`] || guide.category;
+  const localized = (guide as any)[`category_${lang}`] || guide.category;
+  if (localized) return localized;
+
+  const parts: string[] = [];
+  if (guide.guideType) {
+    const label = (categoryLabels.type as any)[guide.guideType]?.[lang] || (categoryLabels.type as any)[guide.guideType]?.en;
+    if (label) parts.push(label);
+  }
+  if (guide.stage) {
+    const label = (categoryLabels.stage as any)[guide.stage]?.[lang] || (categoryLabels.stage as any)[guide.stage]?.en;
+    if (label) parts.push(label);
+  }
+  if (guide.difficulty) {
+    const label = (categoryLabels.difficulty as any)[guide.difficulty]?.[lang] || (categoryLabels.difficulty as any)[guide.difficulty]?.en;
+    if (label) parts.push(label);
+  }
+
+  return parts.join(" • ") || "Guide";
 }
