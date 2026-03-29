@@ -3,17 +3,20 @@
 
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
+import { useEffect, useState } from "react";
+import guidesData from "@/lib/data/guides.json";
+import artistsData from "@/lib/data/artists.json";
 
 const guideTranslations: Record<string, any> = {
-   fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication", artistDatabaseTitle: "Base de Données Artistes", artistDatabaseDesc: "Découvrez tous les artistes", tierListTitle: "Tier List", tierListDesc: "Classement des meilleurs artistes" },
-   en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation", artistDatabaseTitle: "Artist Database", artistDatabaseDesc: "Discover all artists", tierListTitle: "Tier List", tierListDesc: "Best artists ranking" },
-   it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione", artistDatabaseTitle: "Database Artisti", artistDatabaseDesc: "Scopri tutti gli artisti", tierListTitle: "Tier List", tierListDesc: "Classifica dei migliori artisti" },
-   es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación", artistDatabaseTitle: "Base de Datos de Artistas", artistDatabaseDesc: "Descubre todos los artistas", tierListTitle: "Tier List", tierListDesc: "Ranking de los mejores artistas" },
-   pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação", artistDatabaseTitle: "Base de Artistas", artistDatabaseDesc: "Descubra todas as artistas", tierListTitle: "Tier List", tierListDesc: "Ranking das melhores artistas" },
-   pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie", artistDatabaseTitle: "Baza Artystów", artistDatabaseDesc: "Poznaj wszystkich artystów", tierListTitle: "Tier List", tierListDesc: "Ranking najlepszych artystów" },
-   id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan", artistDatabaseTitle: "Database Artis", artistDatabaseDesc: "Lihat semua artis", tierListTitle: "Tier List", tierListDesc: "Peringkat artis terbaik" },
-   ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение", artistDatabaseTitle: "База артистов", artistDatabaseDesc: "Все артисты", tierListTitle: "Tier List", tierListDesc: "Рейтинг лучших артистов" },
-   de: { notFound: "Leitfaden nicht gefunden", backToGuides: "← Zurück zu den Leitfäden", otherGuides: "Weitere Leitfäden", tips: "Tipps", rewards: "Belohnungen", explanation: "Erklärung", artistDatabaseTitle: "Künstlerdatenbank", artistDatabaseDesc: "Entdecke alle Künstler", tierListTitle: "Tier Liste", tierListDesc: "Beste Künstler Rangliste" },
+   fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication", artistDatabaseTitle: "Base de Données Artistes", artistDatabaseDesc: "Découvrez tous les artistes", tierListTitle: "Tier List", tierListDesc: "Classement des meilleurs artistes", relatedGuides: "Guides liés", relatedArtists: "Artistes liés", glossary: "Glossaire du guide", noRelatedGuides: "Aucun guide lié", noRelatedArtists: "Aucun artiste lié" },
+   en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation", artistDatabaseTitle: "Artist Database", artistDatabaseDesc: "Discover all artists", tierListTitle: "Tier List", tierListDesc: "Best artists ranking", relatedGuides: "Related guides", relatedArtists: "Related artists", glossary: "Guide glossary", noRelatedGuides: "No related guides", noRelatedArtists: "No related artists" },
+   it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione", artistDatabaseTitle: "Database Artisti", artistDatabaseDesc: "Scopri tutti gli artisti", tierListTitle: "Tier List", tierListDesc: "Classifica dei migliori artisti", relatedGuides: "Guide correlate", relatedArtists: "Artisti correlati", glossary: "Glossario della guida", noRelatedGuides: "Nessuna guida correlata", noRelatedArtists: "Nessun artista correlato" },
+   es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación", artistDatabaseTitle: "Base de Datos de Artistas", artistDatabaseDesc: "Descubre todos los artistas", tierListTitle: "Tier List", tierListDesc: "Ranking de los mejores artistas", relatedGuides: "Guías relacionadas", relatedArtists: "Artistas relacionados", glossary: "Glosario del guía", noRelatedGuides: "No hay guías relacionadas", noRelatedArtists: "No hay artistas relacionados" },
+   pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação", artistDatabaseTitle: "Base de Artistas", artistDatabaseDesc: "Descubra todas as artistas", tierListTitle: "Tier List", tierListDesc: "Ranking das melhores artistas", relatedGuides: "Guias relacionados", relatedArtists: "Artistas relacionados", glossary: "Glossário do guia", noRelatedGuides: "Sem guias relacionados", noRelatedArtists: "Sem artistas relacionados" },
+   pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie", artistDatabaseTitle: "Baza Artystów", artistDatabaseDesc: "Poznaj wszystkich artystów", tierListTitle: "Tier List", tierListDesc: "Ranking najlepszych artystów", relatedGuides: "Powiązane poradniki", relatedArtists: "Powiązani artyści", glossary: "Słownik poradnika", noRelatedGuides: "Brak powiązanych poradników", noRelatedArtists: "Brak powiązanych artystów" },
+   id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan", artistDatabaseTitle: "Database Artis", artistDatabaseDesc: "Lihat semua artis", tierListTitle: "Tier List", tierListDesc: "Peringkat artis terbaik", relatedGuides: "Panduan terkait", relatedArtists: "Artis terkait", glossary: "Glosarium panduan", noRelatedGuides: "Tidak ada panduan terkait", noRelatedArtists: "Tidak ada artis terkait" },
+   ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение", artistDatabaseTitle: "База артистов", artistDatabaseDesc: "Все артисты", tierListTitle: "Tier List", tierListDesc: "Рейтинг лучших артистов", relatedGuides: "Связанные гайды", relatedArtists: "Связанные артисты", glossary: "Глоссарий гайда", noRelatedGuides: "Нет связанных гайдов", noRelatedArtists: "Нет связанных артистов" },
+   de: { notFound: "Leitfaden nicht gefunden", backToGuides: "← Zurück zu den Leitfäden", otherGuides: "Weitere Leitfäden", tips: "Tipps", rewards: "Belohnungen", explanation: "Erklärung", artistDatabaseTitle: "Künstlerdatenbank", artistDatabaseDesc: "Entdecke alle Künstler", tierListTitle: "Tier Liste", tierListDesc: "Beste Künstler Rangliste", relatedGuides: "Verwandte Leitfäden", relatedArtists: "Verwandte Künstler", glossary: "Leitfaden-Glossar", noRelatedGuides: "Keine verwandten Leitfäden", noRelatedArtists: "Keine verwandten Künstler" },
 };
 
 type Guide = {
@@ -75,6 +78,11 @@ type Guide = {
   rewards_id?: string;
   rewards_ru?: string;
   rewards_de?: string;
+  guideType?: "classic" | "event" | "special";
+  stage?: "early" | "mid" | "late" | null;
+  difficulty?: "beginner" | "intermediate" | "advanced" | null;
+  relatedGuides?: string[];
+  relatedArtists?: string[];
 };
 
 const guides: Guide[] = [
@@ -6746,10 +6754,34 @@ Die Kombination Monica + die neuesten Künstlerinnen macht das Genre sehr kompet
   },
 ];
 
+const slugify = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+const allGuides: Guide[] = (() => {
+  const merged = new Map<string, Guide>();
+  [...guides, ...((guidesData as Guide[]) || [])].forEach((guide) => {
+    if (!guide?.id) return;
+    merged.set(guide.id, guide);
+  });
+  return Array.from(merged.values());
+})();
+
+const artistsBySlug = new Map(
+  (artistsData as { name: string }[]).map((artist) => [slugify(artist.name), artist])
+);
+
 export default function GuideDetailClient({ lang, slug }: { lang: string; slug: string }) {
   const t = guideTranslations[lang] || guideTranslations.en;
   
-  const guide = guides.find(g => g.id === slug);
+  const guide = allGuides.find(g => g.id === slug);
+  const [glossaryContent, setGlossaryContent] = useState<string>("");
+
+  useEffect(() => {
+    fetch("/glossaire.txt")
+      .then((res) => (res.ok ? res.text() : ""))
+      .then((text) => setGlossaryContent(text))
+      .catch(() => setGlossaryContent(""));
+  }, []);
 
   if (!guide) {
     return (
@@ -6767,52 +6799,235 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
     return parts.map((part, idx) => {
       if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={idx} style={{ color: accentColor, fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
+        return <strong key={idx} style={{ fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
       }
       return <span key={idx}>{part}</span>;
     });
   };
 
   // Helper to render markdown-like content
-  const renderContent = (text: string, color: string) =>
-    text.split('\n').map((line, i) => {
-      if (line.startsWith('## '))
-        return <h2 key={i} style={{ color, fontSize: "1.4rem", fontWeight: 700, marginTop: "24px", marginBottom: "12px", borderBottom: `1px solid ${color}44`, paddingBottom: "8px" }}>{parseInlineBold(line.replace('## ', ''), color)}</h2>;
-      if (line.startsWith('### '))
-        return <h3 key={i} style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 600, marginTop: "18px", marginBottom: "8px" }}>{parseInlineBold(line.replace('### ', ''), color)}</h3>;
-      if (line.startsWith('#### '))
-        return <div key={i} style={{ color, fontSize: "0.95rem", fontWeight: 600, marginTop: "14px", marginBottom: "6px" }}>{parseInlineBold(line.replace('#### ', ''), color)}</div>;
+  const renderContent = (text: string, color: string) => {
+    const normalizedText = text.replace(/\n{3,}/g, '\n\n');
+    const lines = normalizedText.split('\n');
+    const elements: JSX.Element[] = [];
+    let listMode = false;
+    let lastNonEmpty = '';
+    let lastWasEmpty = false;
+    const isSectionTitle = (line: string, nextLine?: string) => {
+      const trimmed = line.trim();
+      if (!trimmed) return false;
+      if (trimmed.endsWith(':')) return false;
+      if (trimmed.startsWith('- ') || /^\d+\.\s/.test(trimmed)) return false;
+      if (/[.!?]/.test(trimmed)) return false;
+      if (trimmed.length > 70) return false;
+      const nextTrimmed = (nextLine || '').trim();
+      return nextTrimmed === '' || nextTrimmed.startsWith('- ') || nextTrimmed.length < 40;
+    };
+
+    const pushParagraph = (contentLine: string, key: number) => {
+      elements.push(
+        <p key={key} className="guide-p">
+          {parseInlineBold(contentLine, color)}
+        </p>
+      );
+    };
+
+    for (let i = 0; i < lines.length; i += 1) {
+      const line = lines[i];
+      const trimmed = line.trim();
+
+      if (trimmed === '•' || trimmed === '-' || trimmed === '·') {
+        continue;
+      }
+
+      if (!trimmed) {
+        if (lastWasEmpty) continue;
+        lastWasEmpty = true;
+        if (listMode) {
+          elements.push(<div key={i} style={{ height: "4px" }} />);
+          continue;
+        }
+        listMode = false;
+        elements.push(<div key={i} style={{ height: "8px" }} />);
+        continue;
+      }
+      lastWasEmpty = false;
+
+      if (listMode && lastNonEmpty.endsWith(':')) {
+        if (trimmed.length <= 80 && !/[.!?]$/.test(trimmed)) {
+          elements.push(
+            <div key={i} className="guide-li">
+              <span className="guide-li-dot">•</span>
+              <span className="guide-li-text">{parseInlineBold(trimmed, color)}</span>
+            </div>
+          );
+          continue;
+        }
+        listMode = false;
+      }
+
+      if (isSectionTitle(trimmed, lines[i + 1])) {
+        listMode = false;
+        elements.push(
+          <h3 key={i} className="guide-section">
+            {parseInlineBold(trimmed, color)}
+          </h3>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+
+      if (line.startsWith('## ')) {
+        listMode = false;
+        elements.push(
+          <h2 key={i} className="guide-h2">
+            {parseInlineBold(line.replace('## ', ''), color)}
+          </h2>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+      if (line.startsWith('### ')) {
+        listMode = false;
+        elements.push(
+          <h3 key={i} className="guide-h3">
+            {parseInlineBold(line.replace('### ', ''), color)}
+          </h3>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+      if (line.startsWith('#### ')) {
+        listMode = false;
+        elements.push(
+          <div key={i} className="guide-h4">
+            {parseInlineBold(line.replace('#### ', ''), color)}
+          </div>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+      if (/^(explication courte|explication longue|short explanation|long explanation|spiegazione breve|spiegazione dettagliata|explicación corta|explicación larga|explicação curta|explicação longa|krótkie wyjaśnienie|długie wyjaśnienie|penjelasan singkat|penjelasan panjang|краткое объяснение|подробное объяснение|kurze erklärung|lange erklärung|conseils|tips|tipps|rewards|récompenses|guides liés|glossaire)/i.test(trimmed)) {
+        listMode = false;
+        elements.push(
+          <h3 key={i} className="guide-label">
+            {parseInlineBold(trimmed, color)}
+          </h3>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+      if (/^(type\s*:\s*|niveau\s*:\s*|level\s*:\s*)/i.test(trimmed)) {
+        listMode = false;
+        elements.push(
+          <div key={i} className="guide-meta">
+            {parseInlineBold(trimmed, color)}
+          </div>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
       if (line.startsWith('| ')) {
+        listMode = false;
         const cells = line.split('|').filter(c => c.trim() && !c.match(/^[-\s]+$/));
-        if (cells.length === 0) return null;
-        return (
-          <div key={i} style={{ display: "flex", gap: "8px", margin: "2px 0", fontSize: "0.82rem" }}>
+        if (cells.length === 0) continue;
+        elements.push(
+          <div key={i} className="guide-table-row">
             {cells.map((cell, j) => (
-              <span key={j} style={{ color: "rgba(255,255,255,0.8)", flex: 1, padding: "2px 4px", background: "rgba(255,255,255,0.05)", borderRadius: "4px" }}>{cell.trim()}</span>
+              <span key={j} className="guide-table-cell">{cell.trim()}</span>
             ))}
           </div>
         );
+        lastNonEmpty = trimmed;
+        continue;
       }
-      if (line.startsWith('- '))
-        return (
-          <div key={i} style={{ display: "flex", gap: "8px", marginBottom: "6px", alignItems: "flex-start" }}>
-            <span style={{ color, flexShrink: 0, marginTop: "2px" }}>▸</span>
-            <span style={{ color: "rgba(255,255,255,0.85)" }}>{parseInlineBold(line.replace('- ', ''), color)}</span>
+
+      if (line.startsWith('- ')) {
+        listMode = true;
+        elements.push(
+          <div key={i} className="guide-li">
+            <span className="guide-li-dot">▸</span>
+            <span className="guide-li-text">{parseInlineBold(line.replace('- ', ''), color)}</span>
           </div>
         );
-      if (/^\d+\.\s/.test(line))
-        return (
-          <div key={i} style={{ display: "flex", gap: "8px", marginBottom: "6px", alignItems: "flex-start" }}>
-            <span style={{ color, flexShrink: 0, marginTop: "2px", minWidth: "18px" }}>{line.match(/^\d+/)![0]}.</span>
-            <span style={{ color: "rgba(255,255,255,0.85)" }}>{parseInlineBold(line.replace(/^\d+\.\s/, ''), color)}</span>
+        lastNonEmpty = trimmed;
+        continue;
+      }
+      if (/^\d+\.\s/.test(line)) {
+        listMode = true;
+        elements.push(
+          <div key={i} className="guide-num">
+            <span className="guide-num-badge">{line.match(/^\d+/)![0]}.</span>
+            <span className="guide-li-text">{parseInlineBold(line.replace(/^\d+\.\s/, ''), color)}</span>
           </div>
         );
-      if (line.startsWith('**') && line.endsWith('**'))
-        return <div key={i} style={{ fontWeight: 700, marginTop: "12px", color, fontSize: "0.95rem" }}>{parseInlineBold(line.replace(/\*\*/g, ''), color)}</div>;
-      return line.trim()
-        ? <div key={i} style={{ marginBottom: "6px", color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}>{parseInlineBold(line, color)}</div>
-        : <div key={i} style={{ height: "10px" }} />;
-    });
+        lastNonEmpty = trimmed;
+        continue;
+      }
+      if (line.startsWith('**') && line.endsWith('**')) {
+        listMode = false;
+        elements.push(
+          <div key={i} className="guide-strong">
+            {parseInlineBold(line.replace(/\*\*/g, ''), color)}
+          </div>
+        );
+        lastNonEmpty = trimmed;
+        continue;
+      }
+
+      if (trimmed.endsWith(':') && trimmed.length <= 90) {
+        elements.push(
+          <div key={i} className="guide-subhead">
+            {parseInlineBold(trimmed, color)}
+          </div>
+        );
+      } else {
+        pushParagraph(trimmed, i);
+      }
+      lastNonEmpty = trimmed;
+      listMode = lastNonEmpty.endsWith(':');
+    }
+
+    return (
+      <div className="guide-content" style={{ "--accent": color } as React.CSSProperties}>
+        {elements}
+      </div>
+    );
+  };
+
+  const parseGlossaryEntries = (text: string) => {
+    if (!text) return [] as { term: string; definition: string }[];
+    return text
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .map((line) => {
+        const parts = line.split(' — ');
+        if (parts.length < 2) return null;
+        const term = parts[0].trim();
+        const definition = parts.slice(1).join(' — ').trim();
+        if (!term || !definition) return null;
+        return { term, definition };
+      })
+      .filter(Boolean) as { term: string; definition: string }[];
+  };
+
+  const getGlossaryForGuide = (entries: { term: string; definition: string }[], contentText: string) => {
+    if (!entries.length || !contentText) return [] as { term: string; definition: string }[];
+    const contentLower = contentText.toLowerCase();
+    const matches = entries
+      .map((entry) => {
+        const termLower = entry.term.toLowerCase();
+        const index = contentLower.indexOf(termLower);
+        if (index === -1) return null;
+        return { ...entry, index };
+      })
+      .filter(Boolean) as { term: string; definition: string; index: number }[];
+
+    return matches
+      .sort((a, b) => a.index - b.index)
+      .map(({ term, definition }) => ({ term, definition }));
+  };
 
   const sectionHeadings = {
     fr: { short: ["Explication courte"], long: ["Explication longue"] },
@@ -6826,44 +7041,105 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
     de: { short: ["Kurze Erklärung"], long: ["Lange Erklärung"] },
   } as const;
 
-  const extractShortExplanation = (content: string | undefined, currentLang: string) => {
-    if (!content) return { short: "", rest: content || "" };
-    const headings = sectionHeadings[currentLang as keyof typeof sectionHeadings] || sectionHeadings.en;
-    const lines = content.split('\n');
-    const isHeading = (line: string, list: readonly string[]) =>
-      line.startsWith('### ') && list.includes(line.replace('### ', '').trim());
+  const categoryLabels = {
+    type: {
+      classic: { fr: "Classique", en: "Classic", it: "Classica", es: "Clásica", pt: "Clássico", pl: "Klasyczny", id: "Klasik", ru: "Классический", de: "Klassisch" },
+      event: { fr: "Événement", en: "Event", it: "Evento", es: "Evento", pt: "Evento", pl: "Wydarzenie", id: "Event", ru: "Событие", de: "Event" },
+      special: { fr: "Spécial", en: "Special", it: "Speciale", es: "Especial", pt: "Especial", pl: "Specjalny", id: "Spesial", ru: "Специальный", de: "Spezial" },
+    },
+    stage: {
+      early: { fr: "Early", en: "Early", it: "Early", es: "Early", pt: "Early", pl: "Early", id: "Early", ru: "Early", de: "Early" },
+      mid: { fr: "Mid", en: "Mid", it: "Mid", es: "Mid", pt: "Mid", pl: "Mid", id: "Mid", ru: "Mid", de: "Mid" },
+      late: { fr: "Late", en: "Late", it: "Late", es: "Late", pt: "Late", pl: "Late", id: "Late", ru: "Late", de: "Late" },
+    },
+    difficulty: {
+      beginner: { fr: "Débutant", en: "Beginner", it: "Principiante", es: "Principiante", pt: "Iniciante", pl: "Początkujący", id: "Pemula", ru: "Начинающий", de: "Anfänger" },
+      intermediate: { fr: "Intermédiaire", en: "Intermediate", it: "Intermedio", es: "Intermedio", pt: "Intermediário", pl: "Średni", id: "Menengah", ru: "Средний", de: "Fortgeschritten" },
+      advanced: { fr: "Avancé", en: "Advanced", it: "Avanzato", es: "Avanzado", pt: "Avançado", pl: "Zaawansowany", id: "Lanjutan", ru: "Продвинутый", de: "Experte" },
+    },
+  } as const;
 
-    const startIndex = lines.findIndex(line => isHeading(line, headings.short));
-    if (startIndex === -1) return { short: "", rest: content };
+  const getCategoryLabel = (currentGuide: Guide, currentLang: string) => {
+    const localized = currentGuide[`category_${currentLang}` as keyof typeof currentGuide] as string | undefined;
+    if (localized) return localized;
+    if (currentGuide.category) return currentGuide.category;
 
-    let endIndex = -1;
-    for (let i = startIndex + 1; i < lines.length; i += 1) {
-      if (lines[i].startsWith('### ')) {
-        const heading = lines[i].replace('### ', '').trim();
-        if ((headings.long as readonly string[]).includes(heading)) {
-          endIndex = i;
-          break;
-        }
-        endIndex = i;
-        break;
-      }
+    const parts: string[] = [];
+    if (currentGuide.guideType) {
+      const label = categoryLabels.type[currentGuide.guideType]?.[currentLang as keyof typeof categoryLabels.type.classic]
+        || categoryLabels.type[currentGuide.guideType]?.en;
+      if (label) parts.push(label);
     }
-
-    if (endIndex === -1) endIndex = lines.length;
-
-    const shortLines = lines.slice(startIndex + 1, endIndex);
-    const restLines = [...lines.slice(0, startIndex), ...lines.slice(endIndex)];
-
-    return {
-      short: shortLines.join('\n').trim(),
-      rest: restLines.join('\n').trim(),
-    };
+    if (currentGuide.stage) {
+      const label = categoryLabels.stage[currentGuide.stage]?.[currentLang as keyof typeof categoryLabels.stage.early]
+        || categoryLabels.stage[currentGuide.stage]?.en;
+      if (label) parts.push(label);
+    }
+    if (currentGuide.difficulty) {
+      const label = categoryLabels.difficulty[currentGuide.difficulty]?.[currentLang as keyof typeof categoryLabels.difficulty.beginner]
+        || categoryLabels.difficulty[currentGuide.difficulty]?.en;
+      if (label) parts.push(label);
+    }
+    return parts.join(" • ");
   };
 
-  const tipsContent = guide[`tips_${lang}` as keyof typeof guide] as string || guide.tips;
   const rewardsContent = guide[`rewards_${lang}` as keyof typeof guide] as string || guide.rewards;
   const rawContent = guide[`content_${lang}` as keyof typeof guide] as string || guide.content;
-  const { short: shortExplanation, rest: mainContent } = extractShortExplanation(rawContent, lang);
+  const descriptionText = (guide[`description_${lang}` as keyof typeof guide] as string) || guide.description;
+  const extractedContent = rawContent || '';
+  const stripLeadingTitle = (contentText: string, titleText: string) => {
+    if (!contentText) return contentText;
+    const lines = contentText.split('\n');
+    const firstIndex = lines.findIndex((line) => line.trim());
+    if (firstIndex === -1) return contentText;
+    const firstLine = lines[firstIndex].trim();
+    const normalizedTitle = titleText.toLowerCase();
+    const normalizedLine = firstLine.toLowerCase();
+    if (normalizedLine === normalizedTitle || normalizedLine === `guide ${normalizedTitle}`) {
+      return [...lines.slice(0, firstIndex), ...lines.slice(firstIndex + 1)].join('\n').trim();
+    }
+    return contentText;
+  };
+  const stripLeadingDescription = (contentText: string, description: string) => {
+    if (!contentText || !description) return contentText;
+    const lines = contentText.split('\n');
+    const firstIndex = lines.findIndex((line) => line.trim());
+    if (firstIndex === -1) return contentText;
+    const firstLine = lines[firstIndex].trim();
+    if (firstLine === description.trim()) {
+      return [...lines.slice(0, firstIndex), ...lines.slice(firstIndex + 1)].join('\n').trim();
+    }
+    return contentText;
+  };
+  const stripMetaLines = (contentText: string) => {
+    if (!contentText) return contentText;
+    const lines = contentText.split('\n');
+    const filtered = lines.filter((line) => {
+      const trimmed = line.trim();
+      if (!trimmed) return true;
+      if (/^type\b/i.test(trimmed)) return false;
+      if (/^niveau\b/i.test(trimmed)) return false;
+      if (/^level\b/i.test(trimmed)) return false;
+      return true;
+    });
+    return filtered.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+  };
+
+  let mainContent = stripLeadingTitle(extractedContent, guide.title);
+  mainContent = stripLeadingDescription(mainContent, descriptionText);
+  mainContent = stripMetaLines(mainContent);
+  const glossaryEntries = getGlossaryForGuide(parseGlossaryEntries(glossaryContent), rawContent || "");
+  const relatedGuideEntries = (guide.relatedGuides || [])
+    .map((id) => allGuides.find((g) => g.id === id))
+    .filter(Boolean) as Guide[];
+  const relatedArtistEntries = (guide.relatedArtists || [])
+    .map((slugValue) => {
+      const artist = artistsBySlug.get(slugValue);
+      return {
+        slug: slugValue,
+        name: artist?.name || slugValue,
+      };
+    });
 
   return (
     <>
@@ -6907,7 +7183,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
                   background: `${guide.color}22`, color: guide.color,
                   fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em",
                 }}>
-                  {guide.category}
+                  {getCategoryLabel(guide, lang)}
                 </span>
                 <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>⏱️ {guide.readTime}</span>
               </div>
@@ -6925,77 +7201,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
 
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 20px 0" }}>
 
-        {/* ROW 1 : Explication rapide + Tips côte à côte */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "16px",
-          marginBottom: "16px",
-        }}
-          className="guide-top-row"
-        >
-          {/* Explication rapide */}
-          <div style={{
-            background: "rgba(10,10,24,0.78)",
-            borderRadius: "16px",
-            border: `1px solid ${guide.color}33`,
-            padding: "24px",
-            backdropFilter: "blur(10px)",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
-              <span style={{
-                width: "28px", height: "28px", borderRadius: "8px",
-                background: `${guide.color}22`, display: "flex", alignItems: "center",
-                justifyContent: "center", fontSize: "0.9rem",
-              }}>📋</span>
-              <h2 style={{ margin: 0, color: guide.color, fontSize: "1rem", fontWeight: 700 }}>
-                {t.explanation || "En résumé"}
-              </h2>
-            </div>
-            {shortExplanation ? (
-              <div style={{ fontSize: "0.95rem" }}>
-                {renderContent(shortExplanation, guide.color)}
-              </div>
-            ) : (
-              <p style={{
-                color: "rgba(255,255,255,0.75)", fontSize: "0.95rem",
-                lineHeight: 1.7, margin: 0,
-              }}>
-                {guide[`description_${lang}` as keyof typeof guide] as string || guide.description}
-              </p>
-            )}
-          </div>
-
-          {/* Tips */}
-          {tipsContent ? (
-            <div style={{
-              background: "rgba(8,30,42,0.78)",
-              borderRadius: "16px",
-              border: "1px solid rgba(34,211,238,0.25)",
-              padding: "24px",
-              backdropFilter: "blur(10px)",
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
-                <span style={{
-                  width: "28px", height: "28px", borderRadius: "8px",
-                  background: "rgba(34,211,238,0.15)", display: "flex", alignItems: "center",
-                  justifyContent: "center", fontSize: "0.9rem",
-                }}>💡</span>
-                <h2 style={{ margin: 0, color: "#22d3ee", fontSize: "1rem", fontWeight: 700 }}>
-                  {t.tips}
-                </h2>
-              </div>
-              <div style={{ fontSize: "0.9rem" }}>
-                {renderContent(tipsContent, "#22d3ee")}
-              </div>
-            </div>
-          ) : (
-            /* Si pas de tips, explication prend toute la largeur */
-            <div />
-          )}
-        </div>
-
-        {/* ROW 2 : Récompenses — pleine largeur */}
+        {/* Rewards */}
         {rewardsContent && (
           <div style={{
             background: "rgba(8,32,14,0.78)",
@@ -7040,33 +7246,117 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
           </div>
         )}
 
-        {/* ROW 3 : Description complète — pleine largeur */}
+        {/* Main content */}
         {mainContent && (
+          <div className="guide-article">
+            {renderContent(mainContent, guide.color)}
+          </div>
+        )}
+
+        {(relatedGuideEntries.length > 0 || relatedArtistEntries.length > 0) && (
           <div style={{
-            background: "rgba(10,10,24,0.78)",
+            background: "rgba(12,12,28,0.82)",
             borderRadius: "16px",
-            border: `1px solid ${guide.color}22`,
-            overflow: "hidden",
+            border: "1px solid rgba(255,255,255,0.08)",
             marginBottom: "24px",
+            overflow: "hidden",
             backdropFilter: "blur(10px)",
           }}>
-            <div style={{
-              padding: "16px 24px",
-              borderBottom: `1px solid ${guide.color}22`,
-              background: `${guide.color}0a`,
-              display: "flex", alignItems: "center", gap: "8px",
-            }}>
-              <span style={{
-                width: "28px", height: "28px", borderRadius: "8px",
-                background: `${guide.color}22`, display: "flex", alignItems: "center",
-                justifyContent: "center", fontSize: "0.9rem",
-              }}>📖</span>
-              <h2 style={{ margin: 0, color: guide.color, fontSize: "1rem", fontWeight: 700 }}>
-                {t.explanation || "Guide complet"}
+            <div style={{ padding: "18px 20px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+              <h2 style={{ margin: 0, color: "rgba(255,255,255,0.85)", fontSize: "1rem", fontWeight: 700 }}>
+                {t.relatedGuides}
               </h2>
             </div>
-            <div style={{ padding: "24px", fontSize: "0.92rem", lineHeight: 1.8 }}>
-              {renderContent(mainContent, guide.color)}
+            <div style={{ padding: "18px 20px" }}>
+              {relatedGuideEntries.length ? (
+                <div style={{ display: "grid", gap: "10px" }}>
+                  {relatedGuideEntries.map((relatedGuide) => (
+                    <Link
+                      key={relatedGuide.id}
+                      href={`/${lang}/guides/${relatedGuide.id}/`}
+                      style={{
+                        textDecoration: "none",
+                        padding: "12px 14px",
+                        borderRadius: "10px",
+                        border: `1px solid ${relatedGuide.color}33`,
+                        background: "rgba(255,255,255,0.03)",
+                        color: "rgba(255,255,255,0.85)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <span>{relatedGuide.icon}</span>
+                      <span>{relatedGuide[`title_${lang}` as keyof typeof relatedGuide] as string || relatedGuide.title}</span>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}>{t.noRelatedGuides}</div>
+              )}
+            </div>
+
+            <div style={{ padding: "0 20px 18px" }}>
+              <h3 style={{ margin: "0 0 12px", color: "rgba(255,255,255,0.7)", fontSize: "0.9rem", fontWeight: 700 }}>
+                {t.relatedArtists}
+              </h3>
+              {relatedArtistEntries.length ? (
+                <div style={{ display: "grid", gap: "10px" }}>
+                  {relatedArtistEntries.map((artist) => (
+                    <Link
+                      key={artist.slug}
+                      href={`/${lang}/artist/${artist.slug}/`}
+                      style={{
+                        textDecoration: "none",
+                        padding: "12px 14px",
+                        borderRadius: "10px",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                        background: "rgba(255,255,255,0.03)",
+                        color: "rgba(255,255,255,0.85)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <span>🎤</span>
+                      <span>{artist.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}>{t.noRelatedArtists}</div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {glossaryEntries.length > 0 && (
+          <div style={{
+            background: "rgba(8,12,22,0.82)",
+            borderRadius: "16px",
+            border: "1px solid rgba(255,255,255,0.08)",
+            marginBottom: "24px",
+            padding: "20px",
+          }}>
+            <h2 style={{ margin: "0 0 14px", color: "rgba(255,255,255,0.85)", fontSize: "1rem", fontWeight: 700 }}>
+              {t.glossary}
+            </h2>
+            <div style={{ display: "grid", gap: "12px" }}>
+              {glossaryEntries.map((entry) => (
+                <div key={entry.term} style={{
+                  borderRadius: "12px",
+                  padding: "12px 14px",
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}>
+                  <div style={{ color: guide.color, fontWeight: 700, fontSize: "0.9rem", marginBottom: "6px" }}>
+                    {entry.term}
+                  </div>
+                  <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.88rem", lineHeight: 1.6 }}>
+                    {entry.definition}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -7079,7 +7369,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
             {t.otherGuides}
           </h3>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {guides.filter(g => g.id !== guide.id).slice(0, 5).map(g => (
+            {allGuides.filter(g => g.id !== guide.id).slice(0, 5).map(g => (
               <Link
                 key={g.id}
                 href={`/${lang}/guides/${g.id}/`}
@@ -7138,9 +7428,151 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
 
       <style>{`
         @media (max-width: 640px) {
-          .guide-top-row {
-            grid-template-columns: 1fr !important;
-          }
+        .guide-top-row {
+          grid-template-columns: 1fr !important;
+        }
+      }
+
+      .guide-article {
+        background: linear-gradient(180deg, rgba(12,12,28,0.92), rgba(10,10,24,0.92));
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        padding: 28px;
+        margin-bottom: 24px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      }
+
+        .guide-content {
+          color: rgba(230,232,245,0.92);
+          font-size: 0.98rem;
+          line-height: 1.85;
+          font-weight: 430;
+          letter-spacing: 0.01em;
+        }
+
+        .guide-h2 {
+          margin: 28px 0 12px;
+          font-size: 1.3rem;
+          font-weight: 700;
+          color: #fff;
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+          padding-bottom: 6px;
+          position: relative;
+        }
+
+        .guide-h2::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          width: 48px;
+          height: 2px;
+          background: var(--accent);
+          opacity: 0.6;
+        }
+
+        .guide-h3 {
+          margin: 18px 0 8px;
+          font-size: 1.02rem;
+          font-weight: 700;
+          color: rgba(255,255,255,0.95);
+        }
+
+        .guide-h4 {
+          margin: 14px 0 6px;
+          font-size: 0.95rem;
+          font-weight: 600;
+          color: var(--accent);
+        }
+
+        .guide-label {
+          margin: 18px 0 6px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--accent);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+
+        .guide-section {
+          margin: 18px 0 6px;
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--accent);
+        }
+
+        .guide-subhead {
+          margin: 12px 0 6px;
+          font-size: 0.95rem;
+          font-weight: 600;
+          color: rgba(255,255,255,0.9);
+          border-left: 2px solid var(--accent);
+          padding-left: 10px;
+        }
+
+        .guide-meta {
+          font-size: 0.85rem;
+          color: rgba(255,255,255,0.6);
+          margin-bottom: 6px;
+        }
+
+      .guide-p {
+        margin: 0 0 12px;
+        color: rgba(240,240,255,0.88);
+      }
+
+      .guide-li,
+      .guide-num {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 8px;
+        align-items: flex-start;
+        color: rgba(255,255,255,0.85);
+      }
+
+        .guide-li-dot {
+          color: var(--accent);
+          margin-top: 2px;
+          flex-shrink: 0;
+          font-size: 0.85rem;
+          opacity: 0.85;
+        }
+
+      .guide-li-text {
+        color: rgba(240,240,255,0.86);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+        .guide-num-badge {
+          min-width: 20px;
+          color: var(--accent);
+          margin-top: 2px;
+          font-weight: 700;
+          font-size: 0.85rem;
+        }
+
+        .guide-table-row {
+          display: flex;
+          gap: 8px;
+          margin: 2px 0;
+          font-size: 0.82rem;
+        }
+
+      .guide-table-cell {
+        color: rgba(255,255,255,0.8);
+        flex: 1;
+        padding: 6px 8px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+        .guide-strong {
+          margin-top: 12px;
+          font-weight: 700;
+          color: var(--accent);
+          font-size: 0.95rem;
         }
       `}</style>
     </>

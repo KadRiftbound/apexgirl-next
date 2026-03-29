@@ -5,16 +5,22 @@ import Image from "next/image";
 
 import { useState, useMemo } from "react";
 import { AdBanner } from "@/components/AdSense";
+import guidesData from "@/lib/data/guides.json";
 
 const guideListTranslations: Record<string, any> = {
   fr: { 
     title: "Guides & Stratégies", 
     subtitle: "Tutoriels et stratégies pour maîtriser le jeu",
-    categories: ["Tous", "Guide classique", "Guide événement", "Début de jeu", "Fin de jeu"],
-    categoryClassic: "Guide classique",
-    categoryEvent: "Guide événement",
-    categoryEarly: "Début de jeu",
-    categoryLate: "Fin de jeu",
+    categories: ["Tous", "Classique", "Événement", "Spécial", "Early", "Mid", "Late", "Débutant", "Intermédiaire", "Avancé"],
+    categoryClassic: "Classique",
+    categoryEvent: "Événement",
+    categorySpecial: "Spécial",
+    categoryEarly: "Early",
+    categoryMid: "Mid",
+    categoryLate: "Late",
+    categoryBeginner: "Débutant",
+    categoryIntermediate: "Intermédiaire",
+    categoryAdvanced: "Avancé",
     inProgress: "En cours",
     new: "Nouveau",
     searchPlaceholder: "Rechercher un guide...",
@@ -23,11 +29,16 @@ const guideListTranslations: Record<string, any> = {
   en: { 
       title: "Guides & Strategies", 
       subtitle: "Tutorials and strategies to master the game",
-      categories: ["All", "Classic Guide", "Event Guide", "Early game", "Late game"],
-      categoryClassic: "Classic Guide",
-      categoryEvent: "Event Guide",
-      categoryEarly: "Early game",
-      categoryLate: "Late game",
+      categories: ["All", "Classic", "Event", "Special", "Early", "Mid", "Late", "Beginner", "Intermediate", "Advanced"],
+      categoryClassic: "Classic",
+      categoryEvent: "Event",
+      categorySpecial: "Special",
+      categoryEarly: "Early",
+      categoryMid: "Mid",
+      categoryLate: "Late",
+      categoryBeginner: "Beginner",
+      categoryIntermediate: "Intermediate",
+      categoryAdvanced: "Advanced",
       inProgress: "In Progress",
       new: "New",
       searchPlaceholder: "Search a guide...",
@@ -36,11 +47,16 @@ const guideListTranslations: Record<string, any> = {
     it: { 
       title: "Guide e Strategie", 
       subtitle: "Tutoriali e strategie per padroneggiare il gioco",
-      categories: ["Tutti", "Guida classica", "Guida evento", "Inizio gioco", "Fine gioco"],
-      categoryClassic: "Guida classica",
-      categoryEvent: "Guida evento",
-      categoryEarly: "Inizio gioco",
-      categoryLate: "Fine gioco",
+      categories: ["Tutti", "Classica", "Evento", "Speciale", "Early", "Mid", "Late", "Principiante", "Intermedio", "Avanzato"],
+      categoryClassic: "Classica",
+      categoryEvent: "Evento",
+      categorySpecial: "Speciale",
+      categoryEarly: "Early",
+      categoryMid: "Mid",
+      categoryLate: "Late",
+      categoryBeginner: "Principiante",
+      categoryIntermediate: "Intermedio",
+      categoryAdvanced: "Avanzato",
       inProgress: "In corso",
       new: "Nuovo",
       searchPlaceholder: "Cerca una guida...",
@@ -49,11 +65,16 @@ const guideListTranslations: Record<string, any> = {
     es: { 
       title: "Guías y Estrategias", 
       subtitle: "Tutoriales y estrategias para dominar el juego",
-      categories: ["Todos", "Guía clásica", "Guía evento", "Inicio del juego", "Final del juego"],
-      categoryClassic: "Guía clásica",
-      categoryEvent: "Guía evento",
-      categoryEarly: "Inicio del juego",
-      categoryLate: "Final del juego",
+      categories: ["Todos", "Clásica", "Evento", "Especial", "Early", "Mid", "Late", "Principiante", "Intermedio", "Avanzado"],
+      categoryClassic: "Clásica",
+      categoryEvent: "Evento",
+      categorySpecial: "Especial",
+      categoryEarly: "Early",
+      categoryMid: "Mid",
+      categoryLate: "Late",
+      categoryBeginner: "Principiante",
+      categoryIntermediate: "Intermedio",
+      categoryAdvanced: "Avanzado",
       inProgress: "En progreso",
       new: "Nuevo",
       searchPlaceholder: "Buscar una guía...",
@@ -62,11 +83,16 @@ const guideListTranslations: Record<string, any> = {
     pt: { 
       title: "Guias e Estratégias", 
       subtitle: "Tutoriais e estratégias para dominar o jogo",
-      categories: ["Todos", "Guia clássico", "Guia evento", "Início do jogo", "Fim do jogo"],
-      categoryClassic: "Guia clássico",
-      categoryEvent: "Guia evento",
-      categoryEarly: "Início do jogo",
-      categoryLate: "Fim do jogo",
+      categories: ["Todos", "Clássico", "Evento", "Especial", "Early", "Mid", "Late", "Iniciante", "Intermediário", "Avançado"],
+      categoryClassic: "Clássico",
+      categoryEvent: "Evento",
+      categorySpecial: "Especial",
+      categoryEarly: "Early",
+      categoryMid: "Mid",
+      categoryLate: "Late",
+      categoryBeginner: "Iniciante",
+      categoryIntermediate: "Intermediário",
+      categoryAdvanced: "Avançado",
       inProgress: "Em progresso",
       new: "Novo",
       searchPlaceholder: "Pesquisar um guia...",
@@ -75,11 +101,16 @@ const guideListTranslations: Record<string, any> = {
     pl: { 
       title: "Poradniki i Strategie", 
       subtitle: "Samouczki i strategie, aby opanować grę",
-      categories: ["Wszystkie", "Poradnik klasyczny", "Poradnik wydarzenia", "Wczesna gra", "Późna gra"],
-      categoryClassic: "Poradnik klasyczny",
-      categoryEvent: "Poradnik wydarzenia",
-      categoryEarly: "Wczesna gra",
-      categoryLate: "Późna gra",
+      categories: ["Wszystkie", "Klasyczny", "Wydarzenie", "Specjalny", "Early", "Mid", "Late", "Początkujący", "Średni", "Zaawansowany"],
+      categoryClassic: "Klasyczny",
+      categoryEvent: "Wydarzenie",
+      categorySpecial: "Specjalny",
+      categoryEarly: "Early",
+      categoryMid: "Mid",
+      categoryLate: "Late",
+      categoryBeginner: "Początkujący",
+      categoryIntermediate: "Średni",
+      categoryAdvanced: "Zaawansowany",
       inProgress: "W toku",
       new: "Nowy",
       searchPlaceholder: "Szukaj poradnika...",
@@ -88,11 +119,16 @@ const guideListTranslations: Record<string, any> = {
     id: { 
       title: "Panduan dan Strategi", 
       subtitle: "Tutorial dan strategi untuk menguasai permainan",
-      categories: ["Semua", "Panduan klasik", "Panduan acara", "Awal permainan", "Akhir permainan"],
-      categoryClassic: "Panduan klasik",
-      categoryEvent: "Panduan acara",
-      categoryEarly: "Awal permainan",
-      categoryLate: "Akhir permainan",
+      categories: ["Semua", "Klasik", "Event", "Spesial", "Early", "Mid", "Late", "Pemula", "Menengah", "Lanjutan"],
+      categoryClassic: "Klasik",
+      categoryEvent: "Event",
+      categorySpecial: "Spesial",
+      categoryEarly: "Early",
+      categoryMid: "Mid",
+      categoryLate: "Late",
+      categoryBeginner: "Pemula",
+      categoryIntermediate: "Menengah",
+      categoryAdvanced: "Lanjutan",
       inProgress: "Sedang berlangsung",
       new: "Baru",
       searchPlaceholder: "Cari panduan...",
@@ -101,11 +137,16 @@ const guideListTranslations: Record<string, any> = {
     ru: { 
       title: "Гайды и Стратегии", 
       subtitle: "Учебники и стратегии для освоения игры",
-      categories: ["Все", "Классический гайд", "Гайд события", "Ранняя игра", "Поздняя игра"],
-      categoryClassic: "Классический гайд",
-      categoryEvent: "Гайд события",
-      categoryEarly: "Ранняя игра",
-      categoryLate: "Поздняя игра",
+      categories: ["Все", "Классический", "Событие", "Специальный", "Early", "Mid", "Late", "Начинающий", "Средний", "Продвинутый"],
+      categoryClassic: "Классический",
+      categoryEvent: "Событие",
+      categorySpecial: "Специальный",
+      categoryEarly: "Early",
+      categoryMid: "Mid",
+      categoryLate: "Late",
+      categoryBeginner: "Начинающий",
+      categoryIntermediate: "Средний",
+      categoryAdvanced: "Продвинутый",
       inProgress: "В процессе",
       new: "Новый",
       searchPlaceholder: "Поиск гайда...",
@@ -366,370 +407,75 @@ const guideTranslations: Record<string, Record<string, { title: string; descript
 type Guide = {
   id: string;
   title: string;
+  title_en?: string;
+  title_it?: string;
+  title_es?: string;
+  title_pt?: string;
+  title_pl?: string;
+  title_id?: string;
+  title_ru?: string;
+  title_de?: string;
   description: string;
+  description_en?: string;
+  description_it?: string;
+  description_es?: string;
+  description_pt?: string;
+  description_pl?: string;
+  description_id?: string;
+  description_ru?: string;
+  description_de?: string;
   icon: string;
   color: string;
-  category: string;
-  guideType: "classic" | "event";
+  category?: string;
+  guideType: "classic" | "event" | "special";
   readTime: string;
   isNew?: boolean;
   inProgress?: boolean;
-  stage?: "early" | "late";
+  stage?: "early" | "mid" | "late" | null;
+  difficulty?: "beginner" | "intermediate" | "advanced" | null;
   isDone?: boolean;
   // thumbnail: chemin image guide OU artiste SSR si pas de logo
   thumbnail?: string;
 };
 
-const guides: Guide[] = [
-  {
-    id: "structure-du-jeu",
-    title: "Structure du jeu",
-    description: "Comprendre la structure du jeu Top Girl. Serveur d'origine, cycles Abroad, City Supremacy et boucle principale.",
-    icon: "📊",
-    color: "#8b5cf6",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "10 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/artists/Alice.jpg",
-  },
-  {
-    id: "equipment",
-    title: "Guide Équipement",
-    description: "Bijoux, Voitures et Propriétés pour optimiser vos statistiques. Comparaison Gold vs Purple et priorités d'achat.",
-    icon: "💍",
-    color: "#fbbf24",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "10 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/artists/Aurora.jpg",
-  },
-  {
-    id: "construction-equipe-debut",
-    title: "Construction d'équipe début de jeu",
-    description: "Choisir ses artistes au début et éviter de gaspiller des ressources.",
-    icon: "🎯",
-    color: "#f97316",
-    category: "Avancé - Début de jeu",
-    guideType: "classic",
-    readTime: "12 min",
-    stage: "early",
-    isDone: true,
-    thumbnail: "/assets/images/artists/Ayaka.jpg",
-  },
-  {
-    id: "construction-equipe-fin",
-    title: "Construction d'équipe fin de jeu",
-    description: "Construire une équipe optimisée en fin de jeu selon l'adversaire.",
-    icon: "🧠",
-    color: "#f59e0b",
-    category: "Avancé - Fin de jeu",
-    guideType: "classic",
-    readTime: "12 min",
-    stage: "late",
-    isDone: true,
-    thumbnail: "/assets/images/artists/Brooklyn.jpg",
-  },
-  {
-    id: "team-builder",
-    title: "Team Builder",
-    description: "Comment construire l'équipe parfaite. Calcul des synergies de genre et bonus d'équipement.",
-    icon: "👥",
-    color: "#22d3ee",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "15 min",
-    inProgress: true,
-  },
-  {
-    id: "recommended-teams",
-    title: "Équipes Recommandées",
-    description: "Les meilleures compositions d'équipes UR et SSR. Stratégies offensives, équilibrées et défensives.",
-    icon: "🏆",
-    color: "#f472b6",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "12 min",
-    inProgress: true,
-  },
-  {
-    id: "leveling-ssr",
-    title: "Montée en Niveau SSR",
-    description: "Nombre de cartes nécessaires pour level up vos personnages SSR jusqu'au niveau 115.",
-    icon: "📈",
-    color: "#34d399",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "8 min",
-    inProgress: true,
-  },
-  {
-    id: "blueprints",
-    title: "Guide Blueprints",
-    description: "Requirements en blueprints par tier (1-21) pour améliorer vos installations. Tier 7-12 Gold.",
-    icon: "🛠️",
-    color: "#818cf8",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "10 min",
-    inProgress: true,
-  },
-  {
-    id: "hq-upgrade",
-    title: "Guide HQ (Quartier Général)",
-    description: "Cartes de bâtiment nécessaires pour chaque niveau du HQ. Requirement total: 29,922 cartes.",
-    icon: "🏢",
-    color: "#a855f7",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "5 min",
-    inProgress: true,
-  },
-  {
-    id: "vehicle-system",
-    title: "Système de Véhicules",
-    description: "Système complet: Avancement, Pièces (Moteur, Châsis, Suspension, Jantes), Skins débloqués.",
-    icon: "🚗",
-    color: "#f87171",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "15 min",
-    inProgress: true,
-  },
-  {
-    id: "gold-equipment",
-    title: "Équipement Gold Optimal",
-    description: "Setup complet Gold pour Vocalist, Dancer et Center. +19,730 stats et 86,000 fans par personnage.",
-    icon: "✨",
-    color: "#fbbf24",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "10 min",
-    inProgress: true,
-  },
-  {
-    id: "event-ancient-rome",
-    title: "Guide Ancient Rome",
-    description: "Guide complet de l'événement Adventure Abroad Rome. Phases, stratégies et rewards.",
-    icon: "🏛️",
-    color: "#f97316",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "10 min",
-    inProgress: true,
-  },
-  {
-    id: "event-radio-battle",
-    title: "Guide Radio Battle",
-    description: "Guide complet du Radio Battle. 5 phases, stratégies pour maximiser vos Radio Coins.",
-    icon: "📻",
-    color: "#06b6d4",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "8 min",
-    inProgress: true,
-  },
-  {
-    id: "event-grammy",
-    title: "Guide Grammy Awards",
-    description: "Guide des 8 catégories Grammy. Meilleures équipes et stratégies pour gagner des medals.",
-    icon: "🏆",
-    color: "#fbbf24",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "10 min",
-    inProgress: true,
-  },
-  {
-    id: "event-ultimate-ceo",
-    title: "Guide Ultimate CEO",
-    description: "Guide complet de l'Ultimate CEO. Comment vaincre le CEO et obtenir les meilleures rewards.",
-    icon: "💼",
-    color: "#ef4444",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "8 min",
-    inProgress: true,
-  },
-  {
-    id: "event-echo-death-match",
-    title: "Guide Echo Death Match",
-    description: "Événement de 3 jours. Choisissez une difficulté et terminez les stages pour des récompenses.",
-    icon: "👻",
-    color: "#8b5cf6",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "8 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/guides/echo-death-match.jpg",
-  },
-  {
-    id: "event-muse",
-    title: "Guide Muse Event",
-    description: "Guide du Muse Event. Mini-jeu musical avec Entry Tickets et upgrades.",
-    icon: "🎵",
-    color: "#a855f7",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "8 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/artists/Ayaka.jpg",
-  },
-  {
-    id: "event-chamber-territory",
-    title: "Guide Chamber Territory",
-    description: "Guide du Chamber Territory. Capturez et défendez des territoires pour des rewards.",
-    icon: "🏰",
-    color: "#14b8a6",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "8 min",
-    inProgress: true,
-  },
-  {
-    id: "event-cleanup-party",
-    title: "Guide Cleanup Party",
-    description: "Guide de l'événement Cleanup Party. Associez des tuiles, complétez des stages et récupérez des récompenses.",
-    icon: "🧹",
-    color: "#22c55e",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "5 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/guides/cleanup-party.jpg",
-  },
-  {
-    id: "event-adventure-abroad-tokyo",
-    title: "Guide Adventure Abroad : Tokyo",
-    description: "Guide complet de l'événement Adventure Abroad Tokyo. Warmup, système de conquête, Metro, événements et récompenses.",
-    icon: "🗼",
-    color: "#ef4444",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "12 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/artists/Chizuru.jpg",
-  },
-  {
-    id: "event-metro-subway",
-    title: "Guide Metro & Subway",
-    description: "Guide de l'événement Adventure Abroad Metro. Débloquez des stations, gérez vos Fonds d'Investissement et maximisez vos récompenses.",
-    icon: "🚇",
-    color: "#3b82f6",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "8 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/guides/metro-subway.jpg",
-  },
-  {
-    id: "event-vs-group",
-    title: "Guide VS Group Event",
-    description: "Guide du VS Group Event. Bataille entre groupes avec 5 jours de préparation et 1 jour de combat final.",
-    icon: "⚔️",
-    color: "#ef4444",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "8 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/artists/Brooklyn.jpg",
-  },
-  {
-    id: "event-fishing",
-    title: "Guide Fishing Event",
-    description: "Guide du Fishing Event. Configurez votre aquarium, attrapez des poissons et gagnez des récompenses.",
-    icon: "🎣",
-    color: "#06b6d4",
-    category: "Guide événement",
-    guideType: "event",
-    readTime: "6 min",
-    isNew: true,
-    isDone: true,
-    thumbnail: "/assets/images/artists/Lily.jpg",
-  },
-  {
-    id: "world-building",
-    title: "World Building Guide",
-    description: "Guide World Building. Construisez et développez votre monde dans le jeu.",
-    icon: "🌍",
-    color: "#10b981",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "10 min",
-    inProgress: true,
-  },
-  {
-    id: "vip-level",
-    title: "VIP Level Guide",
-    description: "Guide VIP Level. Détails des points requis pour chaque niveau VIP.",
-    icon: "⭐",
-    color: "#f59e0b",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "15 min",
-    inProgress: true,
-  },
-  {
-    id: "ceo-coins",
-    title: "CEO Coins Purchase Guide",
-    description: "Guide d'achat de CEO Coins via le site de paiement officiel.",
-    icon: "💰",
-    color: "#84cc16",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "5 min",
-    inProgress: true,
-  },
-  {
-    id: "alliance-management",
-    title: "Alliance Management Guide",
-    description: "Guide de gestion d'alliance. Rôles, responsabilités et stratégies pour gérer votre guilde.",
-    icon: "🏰",
-    color: "#8b5cf6",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "12 min",
-    inProgress: true,
-  },
-  {
-    id: "peak-level",
-    title: "Peak Level Guide",
-    description: "Guide Peak Level. Système de progression late-game pour SSR girls avec 5 étoiles.",
-    icon: "📊",
-    color: "#ec4899",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "15 min",
-    inProgress: true,
-  },
-  {
-    id: "group-shop",
-    title: "Group Shop Guide",
-    description: "Guide Group Shop. Quoi acheter dans la boutique de guilde pour optimiser vos progrès.",
-    icon: "🛒",
-    color: "#f97316",
-    category: "Guide classique",
-    guideType: "classic",
-    readTime: "5 min",
-    inProgress: true,
-  },
-];
+const guides = (guidesData as Guide[]).map((guide) => ({
+  ...guide,
+  icon: guide.icon || "📘",
+  color: guide.color || "#8b5cf6",
+  guideType: guide.guideType || "classic",
+}));
 
-function getGuideTitle(id: string, lang: string, fallback: string): string {
-  return guideTranslations[lang]?.[id]?.title || fallback;
+function getGuideTitle(guide: Guide, lang: string): string {
+  const translated = guide[`title_${lang}` as keyof Guide] as string | undefined;
+  return translated || guideTranslations[lang]?.[guide.id]?.title || guide.title;
 }
 
-function getGuideDescription(id: string, lang: string, fallback: string): string {
-  return guideTranslations[lang]?.[id]?.description || fallback;
+function getGuideDescription(guide: Guide, lang: string): string {
+  const translated = guide[`description_${lang}` as keyof Guide] as string | undefined;
+  return translated || guideTranslations[lang]?.[guide.id]?.description || guide.description;
+}
+
+function getPreviewDescription(text: string): string {
+  const cleaned = text.replace(/\s+/g, ' ').trim();
+  if (cleaned.length <= 160) return cleaned;
+  return `${cleaned.slice(0, 157).trim()}...`;
+}
+
+function getCategoryLabel(guide: Guide, t: Record<string, any>): string {
+  const parts: string[] = [];
+  if (guide.guideType === "classic") parts.push(t.categoryClassic);
+  if (guide.guideType === "event") parts.push(t.categoryEvent);
+  if (guide.guideType === "special") parts.push(t.categorySpecial);
+
+  if (guide.stage === "early") parts.push(t.categoryEarly);
+  if (guide.stage === "mid") parts.push(t.categoryMid);
+  if (guide.stage === "late") parts.push(t.categoryLate);
+
+  if (guide.difficulty === "beginner") parts.push(t.categoryBeginner);
+  if (guide.difficulty === "intermediate") parts.push(t.categoryIntermediate);
+  if (guide.difficulty === "advanced") parts.push(t.categoryAdvanced);
+
+  return parts.filter(Boolean).join(" • ");
 }
 
 export default function GuidesListClient({ lang }: { lang: string }) {
@@ -743,20 +489,30 @@ export default function GuidesListClient({ lang }: { lang: string }) {
     if (activeCategoryState !== t.categories[0]) {
       if (activeCategoryState === t.categoryEarly) {
         filtered = filtered.filter((g) => g.stage === "early");
+      } else if (activeCategoryState === t.categoryMid) {
+        filtered = filtered.filter((g) => g.stage === "mid");
       } else if (activeCategoryState === t.categoryLate) {
         filtered = filtered.filter((g) => g.stage === "late");
+      } else if (activeCategoryState === t.categoryBeginner) {
+        filtered = filtered.filter((g) => g.difficulty === "beginner");
+      } else if (activeCategoryState === t.categoryIntermediate) {
+        filtered = filtered.filter((g) => g.difficulty === "intermediate");
+      } else if (activeCategoryState === t.categoryAdvanced) {
+        filtered = filtered.filter((g) => g.difficulty === "advanced");
       } else if (activeCategoryState === t.categoryClassic) {
         filtered = filtered.filter((g) => g.guideType === "classic");
       } else if (activeCategoryState === t.categoryEvent) {
         filtered = filtered.filter((g) => g.guideType === "event");
+      } else if (activeCategoryState === t.categorySpecial) {
+        filtered = filtered.filter((g) => g.guideType === "special");
       }
     }
     
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter((g) => {
-        const title = getGuideTitle(g.id, lang, g.title).toLowerCase();
-        const description = getGuideDescription(g.id, lang, g.description).toLowerCase();
+        const title = getGuideTitle(g, lang).toLowerCase();
+        const description = getGuideDescription(g, lang).toLowerCase();
         return title.includes(query) || description.includes(query);
       });
     }
@@ -900,9 +656,24 @@ export default function GuidesListClient({ lang }: { lang: string }) {
                 gap: "12px",
                 marginBottom: "10px",
               }}>
-                <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, margin: 0, flex: 1 }}>
-                  {getGuideTitle(guide.id, lang, guide.title)}
-                </h3>
+                <div style={{ display: "flex", gap: "10px", alignItems: "flex-start", flex: 1 }}>
+                  <div style={{
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "10px",
+                    background: `${guide.color}22`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "1.1rem",
+                    flexShrink: 0,
+                  }}>
+                    {guide.icon || "📘"}
+                  </div>
+                  <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, margin: 0 }}>
+                  {getGuideTitle(guide, lang)}
+                  </h3>
+                </div>
                 {guide.thumbnail && (
                   <div style={{
                     height: "52px",
@@ -923,8 +694,17 @@ export default function GuidesListClient({ lang }: { lang: string }) {
                 )}
               </div>
 
-              <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", lineHeight: 1.6, marginBottom: "12px" }}>
-                {getGuideDescription(guide.id, lang, guide.description)}
+              <p style={{
+                color: "rgba(255,255,255,0.6)",
+                fontSize: "0.85rem",
+                lineHeight: 1.6,
+                marginBottom: "12px",
+                display: "-webkit-box",
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}>
+                {getPreviewDescription(getGuideDescription(guide, lang))}
               </p>
 
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
@@ -965,7 +745,7 @@ export default function GuidesListClient({ lang }: { lang: string }) {
                   color: "#fff",
                   border: `1px solid ${guide.color}66`,
                 }}>
-                  {guide.category}
+                  {getCategoryLabel(guide, t)}
                 </span>
                 <span style={{
                   padding: "4px 10px",
