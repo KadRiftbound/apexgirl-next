@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import guidesData from "@/lib/data/guides.json";
 import artistsData from "@/lib/data/artists.json";
 
@@ -6809,7 +6809,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
   const renderContent = (text: string, color: string) => {
     const normalizedText = text.replace(/\n{3,}/g, '\n\n');
     const lines = normalizedText.split('\n');
-    const elements: JSX.Element[] = [];
+    const elements: ReactNode[] = [];
     let listMode = false;
     let lastNonEmpty = '';
     let lastWasEmpty = false;
