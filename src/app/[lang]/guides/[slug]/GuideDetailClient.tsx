@@ -8,15 +8,15 @@ import guidesData from "@/lib/data/guides.json";
 import artistsData from "@/lib/data/artists.json";
 
 const guideTranslations: Record<string, any> = {
-   fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication", artistDatabaseTitle: "Base de Données Artistes", artistDatabaseDesc: "Découvrez tous les artistes", tierListTitle: "Tier List", tierListDesc: "Classement des meilleurs artistes", relatedGuides: "Guides liés", relatedArtists: "Artistes liés", glossary: "Glossaire du guide", noRelatedGuides: "Aucun guide lié", noRelatedArtists: "Aucun artiste lié" },
-   en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation", artistDatabaseTitle: "Artist Database", artistDatabaseDesc: "Discover all artists", tierListTitle: "Tier List", tierListDesc: "Best artists ranking", relatedGuides: "Related guides", relatedArtists: "Related artists", glossary: "Guide glossary", noRelatedGuides: "No related guides", noRelatedArtists: "No related artists" },
-   it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione", artistDatabaseTitle: "Database Artisti", artistDatabaseDesc: "Scopri tutti gli artisti", tierListTitle: "Tier List", tierListDesc: "Classifica dei migliori artisti", relatedGuides: "Guide correlate", relatedArtists: "Artisti correlati", glossary: "Glossario della guida", noRelatedGuides: "Nessuna guida correlata", noRelatedArtists: "Nessun artista correlato" },
-   es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación", artistDatabaseTitle: "Base de Datos de Artistas", artistDatabaseDesc: "Descubre todos los artistas", tierListTitle: "Tier List", tierListDesc: "Ranking de los mejores artistas", relatedGuides: "Guías relacionadas", relatedArtists: "Artistas relacionados", glossary: "Glosario del guía", noRelatedGuides: "No hay guías relacionadas", noRelatedArtists: "No hay artistas relacionados" },
-   pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação", artistDatabaseTitle: "Base de Artistas", artistDatabaseDesc: "Descubra todas as artistas", tierListTitle: "Tier List", tierListDesc: "Ranking das melhores artistas", relatedGuides: "Guias relacionados", relatedArtists: "Artistas relacionados", glossary: "Glossário do guia", noRelatedGuides: "Sem guias relacionados", noRelatedArtists: "Sem artistas relacionados" },
-   pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie", artistDatabaseTitle: "Baza Artystów", artistDatabaseDesc: "Poznaj wszystkich artystów", tierListTitle: "Tier List", tierListDesc: "Ranking najlepszych artystów", relatedGuides: "Powiązane poradniki", relatedArtists: "Powiązani artyści", glossary: "Słownik poradnika", noRelatedGuides: "Brak powiązanych poradników", noRelatedArtists: "Brak powiązanych artystów" },
-   id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan", artistDatabaseTitle: "Database Artis", artistDatabaseDesc: "Lihat semua artis", tierListTitle: "Tier List", tierListDesc: "Peringkat artis terbaik", relatedGuides: "Panduan terkait", relatedArtists: "Artis terkait", glossary: "Glosarium panduan", noRelatedGuides: "Tidak ada panduan terkait", noRelatedArtists: "Tidak ada artis terkait" },
-   ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение", artistDatabaseTitle: "База артистов", artistDatabaseDesc: "Все артисты", tierListTitle: "Tier List", tierListDesc: "Рейтинг лучших артистов", relatedGuides: "Связанные гайды", relatedArtists: "Связанные артисты", glossary: "Глоссарий гайда", noRelatedGuides: "Нет связанных гайдов", noRelatedArtists: "Нет связанных артистов" },
-   de: { notFound: "Leitfaden nicht gefunden", backToGuides: "← Zurück zu den Leitfäden", otherGuides: "Weitere Leitfäden", tips: "Tipps", rewards: "Belohnungen", explanation: "Erklärung", artistDatabaseTitle: "Künstlerdatenbank", artistDatabaseDesc: "Entdecke alle Künstler", tierListTitle: "Tier Liste", tierListDesc: "Beste Künstler Rangliste", relatedGuides: "Verwandte Leitfäden", relatedArtists: "Verwandte Künstler", glossary: "Leitfaden-Glossar", noRelatedGuides: "Keine verwandten Leitfäden", noRelatedArtists: "Keine verwandten Künstler" },
+   fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication", artistDatabaseTitle: "Base de Données Artistes", artistDatabaseDesc: "Découvrez tous les artistes", tierListTitle: "Tier List", tierListDesc: "Classement des meilleurs artistes", relatedGuides: "Guides liés", relatedArtists: "Artistes liés", glossary: "Glossaire du guide", viewFullGlossary: "→ Voir le glossaire complet", noRelatedGuides: "Aucun guide lié", noRelatedArtists: "Aucun artiste lié" },
+   en: { notFound: "Guide not found", backToGuides: "← Back to Guides", otherGuides: "Other Guides", tips: "Tips", rewards: "Rewards", explanation: "Explanation", artistDatabaseTitle: "Artist Database", artistDatabaseDesc: "Discover all artists", tierListTitle: "Tier List", tierListDesc: "Best artists ranking", relatedGuides: "Related guides", relatedArtists: "Related artists", glossary: "Guide glossary", viewFullGlossary: "→ View full glossary", noRelatedGuides: "No related guides", noRelatedArtists: "No related artists" },
+   it: { notFound: "Guida non trovata", backToGuides: "← Torna alle guide", otherGuides: "Altre guide", tips: "Consigli", rewards: "Ricompense", explanation: "Spiegazione", artistDatabaseTitle: "Database Artisti", artistDatabaseDesc: "Scopri tutti gli artisti", tierListTitle: "Tier List", tierListDesc: "Classifica dei migliori artisti", relatedGuides: "Guide correlate", relatedArtists: "Artisti correlati", glossary: "Glossario della guida", viewFullGlossary: "→ Vedi glossario completo", noRelatedGuides: "Nessuna guida correlata", noRelatedArtists: "Nessun artista correlato" },
+   es: { notFound: "Guía no encontrada", backToGuides: "← Volver a las guías", otherGuides: "Otras guías", tips: "Consejos", rewards: "Recompensas", explanation: "Explicación", artistDatabaseTitle: "Base de Datos de Artistas", artistDatabaseDesc: "Descubre todos los artistas", tierListTitle: "Tier List", tierListDesc: "Ranking de los mejores artistas", relatedGuides: "Guías relacionadas", relatedArtists: "Artistas relacionados", glossary: "Glosario del guía", viewFullGlossary: "→ Ver glosario completo", noRelatedGuides: "No hay guías relacionadas", noRelatedArtists: "No hay artistas relacionados" },
+   pt: { notFound: "Guia não encontrado", backToGuides: "← Voltar aos guias", otherGuides: "Outros guias", tips: "Dicas", rewards: "Recompensas", explanation: "Explicação", artistDatabaseTitle: "Base de Artistas", artistDatabaseDesc: "Descubra todas as artistas", tierListTitle: "Tier List", tierListDesc: "Ranking das melhores artistas", relatedGuides: "Guias relacionados", relatedArtists: "Artistas relacionados", glossary: "Glossário do guia", viewFullGlossary: "→ Ver glossário completo", noRelatedGuides: "Sem guias relacionados", noRelatedArtists: "Sem artistas relacionados" },
+   pl: { notFound: "Poradnik nie znaleziony", backToGuides: "← Wróć do poradników", otherGuides: "Inne poradniki", tips: "Wskazówki", rewards: "Nagrody", explanation: "Wyjaśnienie", artistDatabaseTitle: "Baza Artystów", artistDatabaseDesc: "Poznaj wszystkich artystów", tierListTitle: "Tier List", tierListDesc: "Ranking najlepszych artystów", relatedGuides: "Powiązane poradników", relatedArtists: "Powiązani artyści", glossary: "Słownik poradnika", viewFullGlossary: "→ Zobacz pełny słownik", noRelatedGuides: "Brak powiązanych poradników", noRelatedArtists: "Brak powiązanych artystów" },
+   id: { notFound: "Panduan tidak ditemukan", backToGuides: "← Kembali ke panduan", otherGuides: "Panduan lain", tips: "Tips", rewards: "Hadiah", explanation: "Penjelasan", artistDatabaseTitle: "Database Artis", artistDatabaseDesc: "Lihat semua artis", tierListTitle: "Tier List", tierListDesc: "Peringkat artis terbaik", relatedGuides: "Panduan terkait", relatedArtists: "Artis terkait", glossary: "Glosarium panduan", viewFullGlossary: "→ Lihat glosarium lengkap", noRelatedGuides: "Tidak ada panduan terkait", noRelatedArtists: "Tidak ada artis terkait" },
+   ru: { notFound: "Гайд не найден", backToGuides: "← Вернуться к гайдам", otherGuides: "Другие гайды", tips: "Советы", rewards: "Награды", explanation: "Объяснение", artistDatabaseTitle: "База артистов", artistDatabaseDesc: "Все артисты", tierListTitle: "Tier List", tierListDesc: "Рейтинг лучших артистов", relatedGuides: "Связанные гайды", relatedArtists: "Связанные артисты", glossary: "Глоссарий гайда", viewFullGlossary: "→ Смотреть полный глоссарий", noRelatedGuides: "Нет связанных гайдов", noRelatedArtists: "Нет связанных артистов" },
+   de: { notFound: "Leitfaden nicht gefunden", backToGuides: "← Zurück zu den Leitfäden", otherGuides: "Weitere Leitfäden", tips: "Tipps", rewards: "Belohnungen", explanation: "Erklärung", artistDatabaseTitle: "Künstlerdatenbank", artistDatabaseDesc: "Entdecke alle Künstler", tierListTitle: "Tier Liste", tierListDesc: "Beste Künstler Rangliste", relatedGuides: "Verwandte Leitfäden", relatedArtists: "Verwandte Künstler", glossary: "Leitfaden-Glossar", viewFullGlossary: "→ Vollständiges Glossar ansehen", noRelatedGuides: "Keine verwandten Leitfäden", noRelatedArtists: "Keine verwandten Künstler" },
 };
 
 type Guide = {
@@ -7093,6 +7093,8 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
     );
   };
 
+  const emDash = '\u2014';
+
   const parseGlossaryEntries = (text: string) => {
     if (!text) return [] as { term: string; definition: string }[];
     return text
@@ -7100,10 +7102,17 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
       .map((line) => line.trim())
       .filter(Boolean)
       .map((line) => {
-        const parts = line.split(' — ');
-        if (parts.length < 2) return null;
-        const term = parts[0].trim();
-        const definition = parts.slice(1).join(' — ').trim();
+        const emIdx = line.indexOf(emDash);
+        if (emIdx === -1) {
+          const hypIdx = line.indexOf(' - ');
+          if (hypIdx === -1) return null;
+          const term = line.substring(0, hypIdx).trim();
+          const definition = line.substring(hypIdx + 3).trim();
+          if (!term || !definition) return null;
+          return { term, definition };
+        }
+        const term = line.substring(0, emIdx).trim();
+        const definition = line.substring(emIdx + 1).trim();
         if (!term || !definition) return null;
         return { term, definition };
       })
@@ -7455,6 +7464,19 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
                   </div>
                 </div>
               ))}
+            </div>
+            <div style={{ marginTop: "14px", textAlign: "right" }}>
+              <Link
+                href={`/${lang}/glossary/`}
+                style={{
+                  color: "rgba(139, 92, 246, 0.85)",
+                  fontSize: "0.88rem",
+                  textDecoration: "none",
+                  fontWeight: 600,
+                }}
+              >
+                {t.viewFullGlossary}
+              </Link>
             </div>
           </div>
         )}

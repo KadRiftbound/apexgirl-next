@@ -11,6 +11,7 @@ const guideListTranslations: Record<string, any> = {
   fr: { 
     title: "Guides & Stratégies", 
     subtitle: "Tutoriels et stratégies pour maîtriser le jeu",
+    glossary: "Consulter le Glossaire",
     categories: ["Tous", "Classique", "Événement", "Spécial", "Early", "Mid", "Late", "Débutant", "Intermédiaire", "Avancé"],
     categoryClassic: "Classique",
     categoryEvent: "Événement",
@@ -29,6 +30,7 @@ const guideListTranslations: Record<string, any> = {
   en: { 
       title: "Guides & Strategies", 
       subtitle: "Tutorials and strategies to master the game",
+      glossary: "View Glossary",
       categories: ["All", "Classic", "Event", "Special", "Early", "Mid", "Late", "Beginner", "Intermediate", "Advanced"],
       categoryClassic: "Classic",
       categoryEvent: "Event",
@@ -47,6 +49,7 @@ const guideListTranslations: Record<string, any> = {
     it: { 
       title: "Guide e Strategie", 
       subtitle: "Tutoriali e strategie per padroneggiare il gioco",
+      glossary: "Consulta il Glossario",
       categories: ["Tutti", "Classica", "Evento", "Speciale", "Early", "Mid", "Late", "Principiante", "Intermedio", "Avanzato"],
       categoryClassic: "Classica",
       categoryEvent: "Evento",
@@ -65,6 +68,7 @@ const guideListTranslations: Record<string, any> = {
     es: { 
       title: "Guías y Estrategias", 
       subtitle: "Tutoriales y estrategias para dominar el juego",
+      glossary: "Ver Glosario",
       categories: ["Todos", "Clásica", "Evento", "Especial", "Early", "Mid", "Late", "Principiante", "Intermedio", "Avanzado"],
       categoryClassic: "Clásica",
       categoryEvent: "Evento",
@@ -83,6 +87,7 @@ const guideListTranslations: Record<string, any> = {
     pt: { 
       title: "Guias e Estratégias", 
       subtitle: "Tutoriais e estratégias para dominar o jogo",
+      glossary: "Ver Glossário",
       categories: ["Todos", "Clássico", "Evento", "Especial", "Early", "Mid", "Late", "Iniciante", "Intermediário", "Avançado"],
       categoryClassic: "Clássico",
       categoryEvent: "Evento",
@@ -101,6 +106,7 @@ const guideListTranslations: Record<string, any> = {
     pl: { 
       title: "Poradniki i Strategie", 
       subtitle: "Samouczki i strategie, aby opanować grę",
+      glossary: "Zobacz Słownik",
       categories: ["Wszystkie", "Klasyczny", "Wydarzenie", "Specjalny", "Early", "Mid", "Late", "Początkujący", "Średni", "Zaawansowany"],
       categoryClassic: "Klasyczny",
       categoryEvent: "Wydarzenie",
@@ -119,6 +125,7 @@ const guideListTranslations: Record<string, any> = {
     id: { 
       title: "Panduan dan Strategi", 
       subtitle: "Tutorial dan strategi untuk menguasai permainan",
+      glossary: "Lihat Glosarium",
       categories: ["Semua", "Klasik", "Event", "Spesial", "Early", "Mid", "Late", "Pemula", "Menengah", "Lanjutan"],
       categoryClassic: "Klasik",
       categoryEvent: "Event",
@@ -137,6 +144,7 @@ const guideListTranslations: Record<string, any> = {
     ru: { 
       title: "Гайды и Стратегии", 
       subtitle: "Учебники и стратегии для освоения игры",
+      glossary: "Смотреть Глоссарий",
       categories: ["Все", "Классический", "Событие", "Специальный", "Early", "Mid", "Late", "Начинающий", "Средний", "Продвинутый"],
       categoryClassic: "Классический",
       categoryEvent: "Событие",
@@ -151,6 +159,25 @@ const guideListTranslations: Record<string, any> = {
       new: "Новый",
       searchPlaceholder: "Поиск гайда...",
       "event-adventure-abroad-tokyo": { title: "Гайд Adventure Abroad: Tokyo", description: "Полный гайд по событию Adventure Abroad Tokyo. Warmup, система завоевания, Metro, события и награды." },
+    },
+    de: {
+      title: "Leitfäden & Strategien",
+      subtitle: "Anleitungen und Strategien, um das Spiel zu meistern",
+      glossary: "Glossar ansehen",
+      categories: ["Alle", "Klassisch", "Event", "Spezial", "Early", "Mid", "Late", "Anfänger", "Mittelstufe", "Fortgeschritten"],
+      categoryClassic: "Klassisch",
+      categoryEvent: "Event",
+      categorySpecial: "Spezial",
+      categoryEarly: "Early",
+      categoryMid: "Mid",
+      categoryLate: "Late",
+      categoryBeginner: "Anfänger",
+      categoryIntermediate: "Mittelstufe",
+      categoryAdvanced: "Fortgeschritten",
+      inProgress: "In Bearbeitung",
+      new: "Neu",
+      searchPlaceholder: "Leitfaden suchen...",
+      "event-adventure-abroad-tokyo": { title: "Abenteuer Abroad: Tokyo Leitfaden", description: "Vollständiger Leitfaden zum Adventure Abroad Tokyo Event. Warmup, Eroberungssystem, Metro, Events und Belohnungen." },
     },
 };
 
@@ -543,9 +570,26 @@ export default function GuidesListClient({ lang }: { lang: string }) {
           }}>
             📖 {t.title}
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem" }}>
+          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem", marginBottom: "8px" }}>
             {t.subtitle}
           </p>
+          <Link
+            href={`/${lang}/glossary/`}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              color: "rgba(139, 92, 246, 0.85)",
+              fontSize: "0.88rem",
+              textDecoration: "none",
+              fontWeight: 600,
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "#c084fc"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(139, 92, 246, 0.85)"; }}
+          >
+            📚 {t.glossary}
+          </Link>
         </div>
       </div>
 
