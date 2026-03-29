@@ -141,7 +141,7 @@ export default function GlossaryClient({ lang }: { lang: string }) {
     <>
       <div
         style={{
-          background: "rgba(15, 15, 26, 0.78)",
+          background: "rgba(15, 15, 26, 0.96)",
           backdropFilter: "blur(16px)",
           borderBottom: "1px solid rgba(139, 92, 246, 0.3)",
           padding: "32px 0 24px",
@@ -167,7 +167,7 @@ export default function GlossaryClient({ lang }: { lang: string }) {
             </h1>
             <p
               style={{
-                color: "rgba(255,255,255,0.55)",
+                color: "rgba(255,255,255,0.80)",
                 fontSize: "0.95rem",
                 marginBottom: "20px",
               }}
@@ -182,8 +182,8 @@ export default function GlossaryClient({ lang }: { lang: string }) {
               style={{
                 width: "100%",
                 padding: "12px 16px",
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
+                background: "rgba(255,255,255,0.14)",
+                border: "1px solid rgba(255,255,255,0.22)",
                 borderRadius: "12px",
                 color: "#fff",
                 fontSize: "1rem",
@@ -191,19 +191,19 @@ export default function GlossaryClient({ lang }: { lang: string }) {
                 boxSizing: "border-box",
               }}
               onFocus={(e) => {
-                e.currentTarget.style.borderColor = "rgba(139, 92, 246, 0.6)";
-                e.currentTarget.style.background = "rgba(255,255,255,0.09)";
+                e.currentTarget.style.borderColor = "rgba(139, 92, 246, 0.8)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.20)";
               }}
               onBlur={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
-                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.22)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.14)";
               }}
             />
           </div>
         </div>
       </div>
 
-      <div className="container" style={{ padding: "32px 0 60px" }}>
+      <div className="container" style={{ padding: "32px 0 60px", background: "rgba(10, 10, 20, 0.92)", minHeight: "60vh" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <Link
             href={`/${lang}/guides/`}
@@ -211,7 +211,7 @@ export default function GlossaryClient({ lang }: { lang: string }) {
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
-              color: "rgba(255,255,255,0.5)",
+              color: "rgba(255,255,255,0.75)",
               fontSize: "0.88rem",
               marginBottom: "28px",
               textDecoration: "none",
@@ -226,7 +226,7 @@ export default function GlossaryClient({ lang }: { lang: string }) {
               style={{
                 textAlign: "center",
                 padding: "60px 20px",
-                color: "rgba(255,255,255,0.4)",
+                color: "rgba(255,255,255,0.65)",
                 fontSize: "1.1rem",
               }}
             >
@@ -266,7 +266,7 @@ export default function GlossaryClient({ lang }: { lang: string }) {
                       style={{
                         marginLeft: "auto",
                         fontSize: "0.78rem",
-                        color: "rgba(255,255,255,0.35)",
+                        color: "rgba(255,255,255,0.60)",
                         fontWeight: 500,
                       }}
                     >
@@ -278,23 +278,23 @@ export default function GlossaryClient({ lang }: { lang: string }) {
                       <div
                         key={`${entry.term}-${entryIdx}`}
                         style={{
-                          background: "rgba(255,255,255,0.03)",
-                          border: "1px solid rgba(255,255,255,0.07)",
+                          background: "rgba(255,255,255,0.10)",
+                          border: "1px solid rgba(255,255,255,0.20)",
                           borderRadius: "14px",
                           padding: "16px 18px",
                           transition: "background 0.2s, border-color 0.2s",
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.background =
-                            "rgba(255,255,255,0.06)";
+                            "rgba(255,255,255,0.18)";
                           e.currentTarget.style.borderColor =
-                            "rgba(255,255,255,0.14)";
+                            "rgba(255,255,255,0.32)";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background =
-                            "rgba(255,255,255,0.03)";
+                            "rgba(255,255,255,0.10)";
                           e.currentTarget.style.borderColor =
-                            "rgba(255,255,255,0.07)";
+                            "rgba(255,255,255,0.20)";
                         }}
                       >
                         <div
@@ -309,7 +309,7 @@ export default function GlossaryClient({ lang }: { lang: string }) {
                         </div>
                         <div
                           style={{
-                            color: "rgba(255,255,255,0.72)",
+                            color: "rgba(255,255,255,0.90)",
                             fontSize: "0.9rem",
                             lineHeight: 1.65,
                           }}
@@ -328,7 +328,7 @@ export default function GlossaryClient({ lang }: { lang: string }) {
             <div
               style={{
                 textAlign: "center",
-                color: "rgba(255,255,255,0.4)",
+                color: "rgba(255,255,255,0.65)",
                 fontSize: "0.88rem",
                 marginTop: "8px",
               }}
