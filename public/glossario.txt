@@ -1,0 +1,378 @@
+Glossario Top Girl
+Struttura del gioco
+
+Server principale (Home Server)— Serveur principal de ton compte après la phase de départ, sauf migration.
+
+Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+
+Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+
+Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+
+Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+
+Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+
+Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+
+Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+
+Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+
+Territorio Chamber— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+
+HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+
+Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+
+Prima occupazione Landmark— Récompense obtenue lors de la première prise d’un Landmark.
+
+Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+
+Tokyo Tower— Objectif final de l’aventure Tokyo.
+
+Sindaco (Mayor)— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+
+Posizioni Burj— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+
+Pool di server— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+
+Migrazione— Changement de serveur après certaines étapes avancées du jeu.
+
+Biglietti di migrazione— Objets permettant de migrer vers un autre serveur.
+
+Statistiche e progressione
+
+Canto (Sing)— L’une des 3 stats principales du jeu.
+
+Difesa (Defense)— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+
+Economia (Economy)— L’une des 3 stats principales du jeu, très importante pour l’économie.
+
+Boost attivo— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+
+Boost passivo— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+
+Valore base (Base Value)— Montant de stats de base donné par un système avant les bonus en pourcentage.
+
+Aumento percentuale (Percentage Increase)— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+
+Statistiche base— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+
+Resistenza danni base— Réduction ou résistance liée aux dégâts basiques.
+
+Danno attacco base— Bonus de dégâts sur les attaques basiques.
+
+Danno da competenza— Bonus de dégâts provenant des compétences.
+
+Resistenza competenze— Résistance contre les dégâts ou effets liés aux compétences.
+
+Danno al giocatore— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+
+Capacità fan— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+
+Capacità rally— Capacité maximale d’un bus de rassemblement.
+
+Boost stat globale— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+
+Genere principale (Main Genre)— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+
+Artisti, team e competenze
+
+Artista— Unité principale de combat et de progression dans Top Girl.
+
+UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+
+Team principale— Composition la plus importante de ton compte, à prioriser pour les ressources.
+
+Secondo team— Deuxième équipe utile pour défense, support ou contenu spécifique.
+
+EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+
+RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+
+Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+
+Difesa HQ— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+
+Auto singola— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+
+Compito di supporto— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+
+Velocità di guida— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+
+3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+
+Skill di genere— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+
+Skill di posizione— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+
+Skill base— Compétence qui peut toujours se déclencher.
+
+Boost sé stessa— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+
+Boost tutti gli artisti— Skill dont l’effet dépend des stats globales de toute l’équipe.
+
+Center— Poste central dans une équipe de performance, comme au Grammy Award.
+
+Cantante— Poste de chanteuse dans une équipe de performance.
+
+Ballerino— Poste de danseuse dans une équipe de performance.
+
+Back— Poste de soutien arrière dans une équipe de performance.
+
+Asset e attrezzature
+
+Asset— Nom global des équipements d’artiste : bijou, voiture et propriété.
+
+Gioiello (Jewelry)— Premier type d’Asset, souvent le plus simple à obtenir.
+
+Auto (Car)— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+
+Proprietà (Property / Real Estate)— Troisième type d’Asset, souvent plus coûteux à améliorer.
+
+Monete Asset— Ressource utilisée pour monter les équipements.
+
+Bonus Match— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+
+Asset Tokyo— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+
+Asset esclusivi Tokyo— Assets exclusifs obtenus via Tokyo et ses événements liés.
+
+Casa d'aste— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+
+Promuovi— Amélioration d’un Asset à un niveau supérieur, non réversible.
+
+Auto T4— Objet ou ressource de tier avancé lié au système voiture.
+
+Peak, Tier e sistemi passivi
+
+Livello Peak— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+
+Sistema Peak— Ensemble du système Peak et de ses paliers de progression.
+
+Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+
+T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+
+T2 (C) (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+
+T3 (B) (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+
+T4 (A) (A)— Tier avancé, très important mais difficile à obtenir.
+
+T5 (A+) (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+
+Auto passiva— Système passif de voiture qui booste les stats de tout le compte.
+
+Collezione— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+
+Villa— Système passif de stats, également lié à la progression par genre.
+
+Outfit CEO— Système passif récent, suivant la même logique de base value + Tier.
+
+Skin HQ— Skin du HQ donnant des bonus passifs qui se cumulent.
+
+Funzione team— Système tardif et complexe, surtout orienté late game et whales.
+
+Risorse ed economia
+
+Diamanti— Monnaie premium du jeu.
+
+Oro— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+
+Lingotti d'oro— Ressource obtenue notamment via le Tour, très utile au début.
+
+Interviste— Source fréquente de photos d’artistes et de progression.
+
+Foto universali— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+
+Reliquie— Système influençant notamment le score au Grammy Award.
+
+Demo— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+
+CD— Objet du Group Shop permettant d’obtenir des fans.
+
+Manuali di promozione— Objet du Group Shop permettant de récupérer des fans.
+
+Monete CEO— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+
+Carta mensile— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+
+Pass settimanale— Pass hebdomadaire, généralement rentable.
+
+Pass mensile— Pass mensuel, souvent bon en valeur.
+
+Acquisizione aziendale— Type de pass ou offre souvent jugé rentable.
+
+Evento ricarica— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+
+Traguardo— Palier de récompense atteint pendant un événement ou une recharge.
+
+Negozi e boutique
+
+Negozio VIP— Boutique liée au niveau VIP, vendant notamment certains Assets.
+
+Negozio Stock Market— Boutique du Stock Market, utile pour certaines ressources et artistes.
+
+Negozio Tokyo— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+
+Negozio vittorioso— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+
+Negozio Argento— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+
+Negozio Bronzo— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+
+Negozio gruppo— Boutique de groupe qui reset chaque lundi.
+
+Negozio Parking Wars— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+
+Gruppo e coordinazione
+
+Gruppo (Group)— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+
+Monete gruppo— Monnaie de groupe utilisée dans le Group Shop.
+
+Punti gruppo— Points liés à la contribution au groupe.
+
+Punti personali— Points personnels gagnés dans certains événements.
+
+Potere finanziario— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+
+Gioco di gruppo— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+
+Balena— Joueuse ou joueur qui dépense énormément.
+
+F2P (Free to Play) (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+
+Macro gioco— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+
+Micro gioco— Gestion fine des combats, placements, timings et décisions immédiates.
+
+Meta— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+
+Diplomazia— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+
+Combattimento e guerra
+
+Attacco solo— Attaque immédiate avec une seule voiture, rapide mais risquée.
+
+Rally— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+
+Capo rally— Joueuse qui ouvre et dirige un rally.
+
+Bus— Véhicule collectif utilisé lors d’un rally.
+
+Rifornimento— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+
+Uccisioni— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+
+Perdite— Pertes subies en fans pendant les combats.
+
+Rapporto Kill/Loss— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+
+Prima richiesta— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+
+Perdite di fan— Quantité de fans perdus pendant un combat.
+
+Zona sicura— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+
+Eventi principali
+
+Supremazia cittadina— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+
+Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+
+Battaglia di gruppo— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+
+Attacco rush— Phase finale du Group Battle où l’on attaque les territoires adverses.
+
+Battaglia radio— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+
+Grammy Award— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+
+Evento di pesca— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+
+Fan Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+
+Appuntamento brillo— Événement utile notamment pour échanger certains équipements violets.
+
+Evento dei dadi— Événement récurrent, souvent très important pour obtenir certaines artistes.
+
+Evento Versus— Événement de confrontation mentionné pendant Tokyo.
+
+Evento gruppo finale— Événement de groupe important pendant certaines semaines d’aventure.
+
+Chi è il più ricco a Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+
+Guerre di parcheggio— Mode ou système lié à certaines boutiques et ressources.
+
+Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+
+Eventi di Tokyo e sistemi correlati
+
+Metro— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+
+Stock Market— Système économique récurrent, avec shop et parfois scoring.
+
+Asta azionaria— Vente liée au stock market, parfois source de très grosses récompenses.
+
+Pedaggio 1— Première ouverture de passage ou zone après le début de Tokyo.
+
+Hotel— Source importante d’or et de scoring sur certaines maps.
+
+Concerti— Action de score utilisée dans plusieurs aventures ou classements.
+
+Stadio— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+
+Evento di pesca
+
+Esca gratuita— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+
+Esca a pagamento— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+
+Buono— Monnaie du Fishing Event générée par les poissons.
+
+Pesciera— Ensemble de poissons disponibles dans une piscine donnée.
+
+Piscina gratuita— Pool de poissons accessible avec le Free Bait.
+
+Piscina a pagamento— Pool de poissons accessible avec le Paid Bait.
+
+Acquario— Espace où les poissons conservés génèrent des Vouchers.
+
+Slot vasca— Place disponible dans l’aquarium pour stocker un poisson.
+
+Gusci blu— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+
+Sistema di pietà— Système garantissant un minimum de rareté après un certain nombre de captures.
+
+Pezzo auto— Récompense importante du Fishing Event, utile pour la voiture.
+
+Design auto— Récompense importante du Fishing Event, également liée à la voiture.
+
+Battaglia di gruppo
+
+Punti battaglia— Points gagnés dans Group Battle pour le score.
+
+Fase di preparazione— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+
+Fase battaglia finale— Jour 6 de Group Battle, avec affrontements décisifs.
+
+Vittoria finale— Victoire finale du groupe ayant le meilleur score cumulé.
+
+Progetti battaglia— Ressources d’amélioration pour mieux performer dans Group Battle.
+
+Progetti master— Version plus rare et plus importante des Blueprints.
+
+Ricompense Tier— Récompenses débloquées par paliers dans Group Battle.
+
+VIP e spese
+
+Livello VIP— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+
+Club VIP— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+
+Servizio clienti— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+
+Ricarica diretta— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.

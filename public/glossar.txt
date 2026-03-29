@@ -1,0 +1,378 @@
+Top Girl Glossar
+Spielstruktur
+
+Heimserver (Home Server)— Serveur principal de ton compte après la phase de départ, sauf migration.
+
+Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+
+Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+
+Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+
+Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+
+Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+
+Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+
+Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+
+Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+
+Chamber-Territorium— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+
+HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+
+Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+
+Landmark-Erste Besetzung— Récompense obtenue lors de la première prise d’un Landmark.
+
+Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+
+Tokyo Tower— Objectif final de l’aventure Tokyo.
+
+Bürgermeister (Mayor)— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+
+Burj-Positionen— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+
+Server-Pool— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+
+Migration— Changement de serveur après certaines étapes avancées du jeu.
+
+Migrations-Tickets— Objets permettant de migrer vers un autre serveur.
+
+Stats und Fortschritt
+
+Singen (Sing)— L’une des 3 stats principales du jeu.
+
+Verteidigung (Defense)— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+
+Wirtschaft (Economy)— L’une des 3 stats principales du jeu, très importante pour l’économie.
+
+Aktiver Boost— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+
+Passiver Boost— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+
+Grundwert (Base Value)— Montant de stats de base donné par un système avant les bonus en pourcentage.
+
+Prozentuale Erhöhung (Percentage Increase)— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+
+Basis-Stats— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+
+Basis-Schadensresistenz— Réduction ou résistance liée aux dégâts basiques.
+
+Basis-Angriffsschaden— Bonus de dégâts sur les attaques basiques.
+
+Fähigkeitsschaden— Bonus de dégâts provenant des compétences.
+
+Fähigkeitsresistenz— Résistance contre les dégâts ou effets liés aux compétences.
+
+Spielerschaden— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+
+Fan-Kapazität— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+
+Rally-Kapazität— Capacité maximale d’un bus de rassemblement.
+
+Globaler Stat-Boost— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+
+Hauptgenre (Main Genre)— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+
+Künstler, Teams und Fähigkeiten
+
+Künstler— Unité principale de combat et de progression dans Top Girl.
+
+UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+
+Hauptteam— Composition la plus importante de ton compte, à prioriser pour les ressources.
+
+Zweitteam— Deuxième équipe utile pour défense, support ou contenu spécifique.
+
+EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+
+RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+
+Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+
+HQ-Verteidigung— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+
+Solo-Auto— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+
+Unterstützende Aufgabe— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+
+Fahrgeschwindigkeit— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+
+3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+
+Genre-Skill— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+
+Positions-Skill— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+
+Basis-Skill— Compétence qui peut toujours se déclencher.
+
+Boost selbst— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+
+Boost alle Künstler— Skill dont l’effet dépend des stats globales de toute l’équipe.
+
+Center— Poste central dans une équipe de performance, comme au Grammy Award.
+
+Sänger— Poste de chanteuse dans une équipe de performance.
+
+Tänzer— Poste de danseuse dans une équipe de performance.
+
+Back— Poste de soutien arrière dans une équipe de performance.
+
+Assets und Ausrüstung
+
+Assets— Nom global des équipements d’artiste : bijou, voiture et propriété.
+
+Schmuck (Jewelry)— Premier type d’Asset, souvent le plus simple à obtenir.
+
+Auto (Car)— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+
+Eigentum (Property / Real Estate)— Troisième type d’Asset, souvent plus coûteux à améliorer.
+
+Asset-Münzen— Ressource utilisée pour monter les équipements.
+
+Match-Bonus— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+
+Tokyo Assets— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+
+Exklusive Tokyo Assets— Assets exclusifs obtenus via Tokyo et ses événements liés.
+
+Auktionshaus— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+
+Verbessern— Amélioration d’un Asset à un niveau supérieur, non réversible.
+
+T4-Auto— Objet ou ressource de tier avancé lié au système voiture.
+
+Peak, Tier und passive Systeme
+
+Peak-Level— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+
+Peak-System— Ensemble du système Peak et de ses paliers de progression.
+
+Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+
+T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+
+T2 (C) (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+
+T3 (B) (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+
+T4 (A) (A)— Tier avancé, très important mais difficile à obtenir.
+
+T5 (A+) (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+
+Passives Auto— Système passif de voiture qui booste les stats de tout le compte.
+
+Sammlung— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+
+Villa— Système passif de stats, également lié à la progression par genre.
+
+CEO-Outfit— Système passif récent, suivant la même logique de base value + Tier.
+
+HQ-Skin— Skin du HQ donnant des bonus passifs qui se cumulent.
+
+Team-Funktion— Système tardif et complexe, surtout orienté late game et whales.
+
+Ressourcen und Wirtschaft
+
+Diamanten— Monnaie premium du jeu.
+
+Gold— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+
+Goldbarren— Ressource obtenue notamment via le Tour, très utile au début.
+
+Interviews— Source fréquente de photos d’artistes et de progression.
+
+Universelle Fotos— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+
+Relikte— Système influençant notamment le score au Grammy Award.
+
+Demos— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+
+CD— Objet du Group Shop permettant d’obtenir des fans.
+
+Promo-Handbücher— Objet du Group Shop permettant de récupérer des fans.
+
+CEO-Münzen— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+
+Monatskarte— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+
+Wochenpass— Pass hebdomadaire, généralement rentable.
+
+Monatspass— Pass mensuel, souvent bon en valeur.
+
+Unternehmensübernahme— Type de pass ou offre souvent jugé rentable.
+
+Auflade-Event— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+
+Meilenstein— Palier de récompense atteint pendant un événement ou une recharge.
+
+Läden und Shops
+
+VIP-Shop— Boutique liée au niveau VIP, vendant notamment certains Assets.
+
+Börsen-Shop— Boutique du Stock Market, utile pour certaines ressources et artistes.
+
+Tokyo-Shop— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+
+Sieger-Shop— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+
+Silber-Shop— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+
+Bronze-Shop— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+
+Gruppen-Shop— Boutique de groupe qui reset chaque lundi.
+
+Parking Wars Shop— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+
+Gruppe und Koordination
+
+Gruppe (Group)— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+
+Gruppen-Münzen— Monnaie de groupe utilisée dans le Group Shop.
+
+Gruppen-Punkte— Points liés à la contribution au groupe.
+
+Persönliche Punkte— Points personnels gagnés dans certains événements.
+
+Finanzkraft— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+
+Teamspiel— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+
+Wal— Joueuse ou joueur qui dépense énormément.
+
+F2P (Free to Play) (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+
+Makro-Spiel— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+
+Mikro-Spiel— Gestion fine des combats, placements, timings et décisions immédiates.
+
+Meta— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+
+Diplomatie— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+
+Kampf und Krieg
+
+Solo-Angriff— Attaque immédiate avec une seule voiture, rapide mais risquée.
+
+Rally— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+
+Rally-Leader— Joueuse qui ouvre et dirige un rally.
+
+Bus— Véhicule collectif utilisé lors d’un rally.
+
+Nachfüllen— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+
+Kills— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+
+Verluste— Pertes subies en fans pendant les combats.
+
+Kill/Loss-Verhältnis— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+
+Erste Beanspruchung— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+
+Fan-Verluste— Quantité de fans perdus pendant un combat.
+
+Sicherheitszone— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+
+Große Events
+
+Stadt-Vorherrschaft— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+
+Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+
+Gruppenkampf— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+
+Rush-Angriff— Phase finale du Group Battle où l’on attaque les territoires adverses.
+
+Radio-Battle— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+
+Grammy Award— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+
+Angel-Event— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+
+Fan-Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+
+Betrunkener Date— Événement utile notamment pour échanger certains équipements violets.
+
+Würfel-Event— Événement récurrent, souvent très important pour obtenir certaines artistes.
+
+Versus-Event— Événement de confrontation mentionné pendant Tokyo.
+
+Ultimatives Gruppen-Event— Événement de groupe important pendant certaines semaines d’aventure.
+
+Wer ist der Reichste in Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+
+Parking Wars— Mode ou système lié à certaines boutiques et ressources.
+
+Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+
+Tokyo-Events und zugehörige Systeme
+
+Metro— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+
+Börse— Système économique récurrent, avec shop et parfois scoring.
+
+Aktienauktion— Vente liée au stock market, parfois source de très grosses récompenses.
+
+Maut 1— Première ouverture de passage ou zone après le début de Tokyo.
+
+Hotels— Source importante d’or et de scoring sur certaines maps.
+
+Konzerte— Action de score utilisée dans plusieurs aventures ou classements.
+
+Stadion— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+
+Angel-Event
+
+Kostenloser Köder— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+
+Bezahlter Köder— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+
+Gutschein— Monnaie du Fishing Event générée par les poissons.
+
+Fischbecken— Ensemble de poissons disponibles dans une piscine donnée.
+
+Kostenloses Becken— Pool de poissons accessible avec le Free Bait.
+
+Bezahltes Becken— Pool de poissons accessible avec le Paid Bait.
+
+Aquarium— Espace où les poissons conservés génèrent des Vouchers.
+
+Becken-Platz— Place disponible dans l’aquarium pour stocker un poisson.
+
+Blaue Muscheln— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+
+Mitleids-System— Système garantissant un minimum de rareté après un certain nombre de captures.
+
+Auto-Teil— Récompense importante du Fishing Event, utile pour la voiture.
+
+Auto-Design— Récompense importante du Fishing Event, également liée à la voiture.
+
+Gruppenkampf
+
+Kampfpunkte— Points gagnés dans Group Battle pour le score.
+
+Vorbereitungsphase— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+
+Endkampfphase— Jour 6 de Group Battle, avec affrontements décisifs.
+
+Ultimativer Sieg— Victoire finale du groupe ayant le meilleur score cumulé.
+
+Kampf-Blaupausen— Ressources d’amélioration pour mieux performer dans Group Battle.
+
+Meister-Blaupausen— Version plus rare et plus importante des Blueprints.
+
+Tier-Belohnungen— Récompenses débloquées par paliers dans Group Battle.
+
+VIP und Ausgaben
+
+VIP-Level— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+
+VIP-Club— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+
+Kundenservice— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+
+Direkte Aufladung— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.

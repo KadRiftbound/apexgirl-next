@@ -1,0 +1,378 @@
+Glosario Top Girl
+Estructura del juego
+
+Servidor principal (Home Server)— Serveur principal de ton compte après la phase de départ, sauf migration.
+
+Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+
+Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+
+Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+
+Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+
+Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+
+Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+
+Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+
+Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+
+Territorio Chamber— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+
+HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+
+Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+
+Primera ocupación de Landmark— Récompense obtenue lors de la première prise d’un Landmark.
+
+Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+
+Tokyo Tower— Objectif final de l’aventure Tokyo.
+
+Alcalde (Mayor)— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+
+Puestos del Burj— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+
+Grupo de servidores— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+
+Migración— Changement de serveur après certaines étapes avancées du jeu.
+
+Tickets de migración— Objets permettant de migrer vers un autre serveur.
+
+Estadísticas y progresión
+
+Canto (Sing)— L’une des 3 stats principales du jeu.
+
+Defensa (Defense)— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+
+Economía (Economy)— L’une des 3 stats principales du jeu, très importante pour l’économie.
+
+Boost activo— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+
+Boost pasivo— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+
+Valor base (Base Value)— Montant de stats de base donné par un système avant les bonus en pourcentage.
+
+Aumento porcentual (Percentage Increase)— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+
+Stats básicos— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+
+Resistencia de daño base— Réduction ou résistance liée aux dégâts basiques.
+
+Daño de ataque base— Bonus de dégâts sur les attaques basiques.
+
+Daño de habilidad— Bonus de dégâts provenant des compétences.
+
+Resistencia de habilidad— Résistance contre les dégâts ou effets liés aux compétences.
+
+Daño al jugador— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+
+Capacidad de fans— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+
+Capacidad de rally— Capacité maximale d’un bus de rassemblement.
+
+Boost de stat global— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+
+Género principal (Main Genre)— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+
+Artistas, equipos y habilidades
+
+Artista— Unité principale de combat et de progression dans Top Girl.
+
+UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+
+Equipo principal— Composition la plus importante de ton compte, à prioriser pour les ressources.
+
+Segundo equipo— Deuxième équipe utile pour défense, support ou contenu spécifique.
+
+EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+
+RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+
+Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+
+Defensa HQ— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+
+Coche solitario— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+
+Tarea de apoyo— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+
+Velocidad de conducción— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+
+3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+
+Habilidad de género— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+
+Habilidad de posición— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+
+Habilidad base— Compétence qui peut toujours se déclencher.
+
+Boost ella misma— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+
+Boost todos los artistas— Skill dont l’effet dépend des stats globales de toute l’équipe.
+
+Center— Poste central dans une équipe de performance, comme au Grammy Award.
+
+Cantante— Poste de chanteuse dans une équipe de performance.
+
+Bailarín— Poste de danseuse dans une équipe de performance.
+
+Back— Poste de soutien arrière dans une équipe de performance.
+
+Assets y equipamiento
+
+Assets— Nom global des équipements d’artiste : bijou, voiture et propriété.
+
+Joyería (Jewelry)— Premier type d’Asset, souvent le plus simple à obtenir.
+
+Coche (Car)— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+
+Propiedad (Property / Real Estate)— Troisième type d’Asset, souvent plus coûteux à améliorer.
+
+Monedas de Asset— Ressource utilisée pour monter les équipements.
+
+Bonus de coincidencia— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+
+Assets de Tokyo— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+
+Assets exclusivos de Tokyo— Assets exclusifs obtenus via Tokyo et ses événements liés.
+
+Casa de subastas— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+
+Promover— Amélioration d’un Asset à un niveau supérieur, non réversible.
+
+Coche T4— Objet ou ressource de tier avancé lié au système voiture.
+
+Peak, Tier y sistemas pasivos
+
+Nivel Peak— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+
+Sistema Peak— Ensemble du système Peak et de ses paliers de progression.
+
+Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+
+T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+
+T2 (C) (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+
+T3 (B) (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+
+T4 (A) (A)— Tier avancé, très important mais difficile à obtenir.
+
+T5 (A+) (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+
+Coche pasivo— Système passif de voiture qui booste les stats de tout le compte.
+
+Colección— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+
+Villa— Système passif de stats, également lié à la progression par genre.
+
+Traje de CEO— Système passif récent, suivant la même logique de base value + Tier.
+
+Skin de HQ— Skin du HQ donnant des bonus passifs qui se cumulent.
+
+Función de equipo— Système tardif et complexe, surtout orienté late game et whales.
+
+Recursos y economía
+
+Diamantes— Monnaie premium du jeu.
+
+Oro— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+
+Lingotes de oro— Ressource obtenue notamment via le Tour, très utile au début.
+
+Entrevistas— Source fréquente de photos d’artistes et de progression.
+
+Fotos universales— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+
+Reliquias— Système influençant notamment le score au Grammy Award.
+
+Demo— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+
+CD— Objet du Group Shop permettant d’obtenir des fans.
+
+Manuales de promoción— Objet du Group Shop permettant de récupérer des fans.
+
+Monedas CEO— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+
+Tarjeta mensual— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+
+Pase semanal— Pass hebdomadaire, généralement rentable.
+
+Pase mensual— Pass mensuel, souvent bon en valeur.
+
+Adquisición corporativa— Type de pass ou offre souvent jugé rentable.
+
+Evento de recarga— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+
+Hito— Palier de récompense atteint pendant un événement ou une recharge.
+
+Tiendas y boutiques
+
+Tienda VIP— Boutique liée au niveau VIP, vendant notamment certains Assets.
+
+Tienda Stock Market— Boutique du Stock Market, utile pour certaines ressources et artistes.
+
+Tienda de Tokyo— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+
+Tienda victoriosa— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+
+Tienda Plata— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+
+Tienda Bronce— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+
+Tienda de grupo— Boutique de groupe qui reset chaque lundi.
+
+Tienda Parking Wars— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+
+Grupo y coordinación
+
+Grupo (Group)— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+
+Monedas de grupo— Monnaie de groupe utilisée dans le Group Shop.
+
+Puntos de grupo— Points liés à la contribution au groupe.
+
+Puntos personales— Points personnels gagnés dans certains événements.
+
+Poder financiero— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+
+Juego en grupo— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+
+Ballena— Joueuse ou joueur qui dépense énormément.
+
+F2P (Free to Play) (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+
+Macro juego— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+
+Micro juego— Gestion fine des combats, placements, timings et décisions immédiates.
+
+Meta— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+
+Diplomacia— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+
+Combate y guerra
+
+Ataque solitario— Attaque immédiate avec une seule voiture, rapide mais risquée.
+
+Rally— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+
+Líder de rally— Joueuse qui ouvre et dirige un rally.
+
+Bus— Véhicule collectif utilisé lors d’un rally.
+
+Relleno— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+
+Eliminaciones— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+
+Pérdidas— Pertes subies en fans pendant les combats.
+
+Ratio Kill/Loss— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+
+Primera reclamación— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+
+Pérdidas de fans— Quantité de fans perdus pendant un combat.
+
+Zona segura— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+
+Eventos principales
+
+Supremacía urbana— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+
+Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+
+Batalla de grupo— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+
+Ataque rush— Phase finale du Group Battle où l’on attaque les territoires adverses.
+
+Batalla de radio— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+
+Grammy Award— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+
+Evento de pesca— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+
+Fan Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+
+Cita borracha— Événement utile notamment pour échanger certains équipements violets.
+
+Evento de dados— Événement récurrent, souvent très important pour obtenir certaines artistes.
+
+Evento Versus— Événement de confrontation mentionné pendant Tokyo.
+
+Evento de grupo definitivo— Événement de groupe important pendant certaines semaines d’aventure.
+
+¿Quién es el más rico en Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+
+Guerras de estacionamiento— Mode ou système lié à certaines boutiques et ressources.
+
+Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+
+Eventos de Tokyo y sistemas relacionados
+
+Metro— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+
+Stock Market— Système économique récurrent, avec shop et parfois scoring.
+
+Subasta de acciones— Vente liée au stock market, parfois source de très grosses récompenses.
+
+Peaje 1— Première ouverture de passage ou zone après le début de Tokyo.
+
+Hoteles— Source importante d’or et de scoring sur certaines maps.
+
+Conciertos— Action de score utilisée dans plusieurs aventures ou classements.
+
+Estadio— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+
+Evento de pesca
+
+Cebo gratis— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+
+Cebo de pago— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+
+Vale— Monnaie du Fishing Event générée par les poissons.
+
+Piscina de peces— Ensemble de poissons disponibles dans une piscine donnée.
+
+Piscina gratuita— Pool de poissons accessible avec le Free Bait.
+
+Piscina de pago— Pool de poissons accessible avec le Paid Bait.
+
+Acuario— Espace où les poissons conservés génèrent des Vouchers.
+
+Ranura de tanque— Place disponible dans l’aquarium pour stocker un poisson.
+
+Conchas azules— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+
+Sistema de lástima— Système garantissant un minimum de rareté après un certain nombre de captures.
+
+Pieza de coche— Récompense importante du Fishing Event, utile pour la voiture.
+
+Diseño de coche— Récompense importante du Fishing Event, également liée à la voiture.
+
+Batalla de grupo
+
+Puntos de batalla— Points gagnés dans Group Battle pour le score.
+
+Fase de preparación— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+
+Fase de batalla final— Jour 6 de Group Battle, avec affrontements décisifs.
+
+Victoria definitiva— Victoire finale du groupe ayant le meilleur score cumulé.
+
+Planos de batalla— Ressources d’amélioration pour mieux performer dans Group Battle.
+
+Planos maestros— Version plus rare et plus importante des Blueprints.
+
+Recompensas de Tier— Récompenses débloquées par paliers dans Group Battle.
+
+VIP y gastos
+
+Nivel VIP— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+
+Club VIP— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+
+Atención al cliente— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+
+Recarga directa— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.

@@ -1,0 +1,378 @@
+Glosarium Top Girl
+Struktur Permainan
+
+Server Utama (Home Server)— Serveur principal de ton compte après la phase de départ, sauf migration.
+
+Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+
+Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+
+Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+
+Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+
+Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+
+Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+
+Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+
+Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+
+Teritori Chamber— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+
+HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+
+Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+
+Pendudukan Landmark Pertama— Récompense obtenue lors de la première prise d’un Landmark.
+
+Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+
+Tokyo Tower— Objectif final de l’aventure Tokyo.
+
+Wali Kota (Mayor)— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+
+Posisi Burj— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+
+Pool Server— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+
+Migrasi— Changement de serveur après certaines étapes avancées du jeu.
+
+Tiket Migrasi— Objets permettant de migrer vers un autre serveur.
+
+Stats dan Progresi
+
+Bernyanyi (Sing)— L’une des 3 stats principales du jeu.
+
+Defense (Defense)— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+
+Ekonomi (Economy)— L’une des 3 stats principales du jeu, très importante pour l’économie.
+
+Boost Aktif— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+
+Boost Pasif— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+
+Nilai Dasar (Base Value)— Montant de stats de base donné par un système avant les bonus en pourcentage.
+
+Peningkatan Persentase (Percentage Increase)— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+
+Stats Dasar— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+
+Hambatan Kerusakan Dasar— Réduction ou résistance liée aux dégâts basiques.
+
+Kerusakan Serangan Dasar— Bonus de dégâts sur les attaques basiques.
+
+Kerusakan Skill— Bonus de dégâts provenant des compétences.
+
+Hambatan Skill— Résistance contre les dégâts ou effets liés aux compétences.
+
+Kerusakan ke Pemain— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+
+Kapasitas Fan— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+
+Kapasitas Rally— Capacité maximale d’un bus de rassemblement.
+
+Boost Stat Global— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+
+Genre Utama (Main Genre)— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+
+Artis, Tim dan Skill
+
+Artis— Unité principale de combat et de progression dans Top Girl.
+
+UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+
+Tim Utama— Composition la plus importante de ton compte, à prioriser pour les ressources.
+
+Tim Kedua— Deuxième équipe utile pour défense, support ou contenu spécifique.
+
+EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+
+RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+
+Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+
+Defense HQ— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+
+Mobil Solo— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+
+Tugas Pendukung— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+
+Kecepatan Mengemudi— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+
+3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+
+Skill Genre— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+
+Skill Posisi— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+
+Skill Dasar— Compétence qui peut toujours se déclencher.
+
+Boost dirinya— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+
+Boost semua artis— Skill dont l’effet dépend des stats globales de toute l’équipe.
+
+Center— Poste central dans une équipe de performance, comme au Grammy Award.
+
+Penyanyi— Poste de chanteuse dans une équipe de performance.
+
+Penari— Poste de danseuse dans une équipe de performance.
+
+Back— Poste de soutien arrière dans une équipe de performance.
+
+Aset dan Peralatan
+
+Aset— Nom global des équipements d’artiste : bijou, voiture et propriété.
+
+Perhiasan (Jewelry)— Premier type d’Asset, souvent le plus simple à obtenir.
+
+Mobil (Car)— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+
+Properti (Property / Real Estate)— Troisième type d’Asset, souvent plus coûteux à améliorer.
+
+Koin Aset— Ressource utilisée pour monter les équipements.
+
+Bonus Match— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+
+Aset Tokyo— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+
+Aset Eksklusif Tokyo— Assets exclusifs obtenus via Tokyo et ses événements liés.
+
+Rumah Lelang— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+
+Promosikan— Amélioration d’un Asset à un niveau supérieur, non réversible.
+
+Mobil T4— Objet ou ressource de tier avancé lié au système voiture.
+
+Peak, Tier dan Sistem Pasif
+
+Level Peak— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+
+Sistem Peak— Ensemble du système Peak et de ses paliers de progression.
+
+Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+
+T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+
+T2 (C) (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+
+T3 (B) (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+
+T4 (A) (A)— Tier avancé, très important mais difficile à obtenir.
+
+T5 (A+) (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+
+Mobil Pasif— Système passif de voiture qui booste les stats de tout le compte.
+
+Koleksi— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+
+Villa— Système passif de stats, également lié à la progression par genre.
+
+Pakaian CEO— Système passif récent, suivant la même logique de base value + Tier.
+
+Skin HQ— Skin du HQ donnant des bonus passifs qui se cumulent.
+
+Fitur Tim— Système tardif et complexe, surtout orienté late game et whales.
+
+Sumber daya dan Ekonomi
+
+Diamond— Monnaie premium du jeu.
+
+Emas— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+
+Batangan Emas— Ressource obtenue notamment via le Tour, très utile au début.
+
+Wawancara— Source fréquente de photos d’artistes et de progression.
+
+Foto Universal— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+
+Relik— Système influençant notamment le score au Grammy Award.
+
+Demo— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+
+CD— Objet du Group Shop permettant d’obtenir des fans.
+
+Manual Promosi— Objet du Group Shop permettant de récupérer des fans.
+
+Koin CEO— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+
+Kartu Bulanan— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+
+Pass Mingguan— Pass hebdomadaire, généralement rentable.
+
+Pass Bulanan— Pass mensuel, souvent bon en valeur.
+
+Akuisisi Korporat— Type de pass ou offre souvent jugé rentable.
+
+Event Isi Ulang— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+
+Pencapaian— Palier de récompense atteint pendant un événement ou une recharge.
+
+Toko dan Boutique
+
+Toko VIP— Boutique liée au niveau VIP, vendant notamment certains Assets.
+
+Toko Stock Market— Boutique du Stock Market, utile pour certaines ressources et artistes.
+
+Toko Tokyo— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+
+Toko Kemenangan— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+
+Toko Perak— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+
+Toko Perunggu— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+
+Toko Grup— Boutique de groupe qui reset chaque lundi.
+
+Toko Parking Wars— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+
+Grup dan Koordinasi
+
+Grup (Group)— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+
+Koin Grup— Monnaie de groupe utilisée dans le Group Shop.
+
+Poin Grup— Points liés à la contribution au groupe.
+
+Poin Pribadi— Points personnels gagnés dans certains événements.
+
+Kekuatan Finansial— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+
+Bermain Tim— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+
+Paus— Joueuse ou joueur qui dépense énormément.
+
+F2P (Free to Play) (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+
+Makro game— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+
+Mikro game— Gestion fine des combats, placements, timings et décisions immédiates.
+
+Meta— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+
+Diplomasi— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+
+Pertempuran dan Perang
+
+Serangan Solo— Attaque immédiate avec une seule voiture, rapide mais risquée.
+
+Rally— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+
+Pemimpin Rally— Joueuse qui ouvre et dirige un rally.
+
+Bus— Véhicule collectif utilisé lors d’un rally.
+
+Refill— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+
+Kill— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+
+Loss— Pertes subies en fans pendant les combats.
+
+Rasio Kill/Loss— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+
+Klaim Pertama— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+
+Kehilangan Fan— Quantité de fans perdus pendant un combat.
+
+Zona Aman— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+
+Event Utama
+
+Supremasi Kota— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+
+Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+
+Pertempuran Grup— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+
+Serangan Rush— Phase finale du Group Battle où l’on attaque les territoires adverses.
+
+Pertempuran Radio— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+
+Grammy Award— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+
+Event Memancing— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+
+Fan Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+
+Kencan Mabuk— Événement utile notamment pour échanger certains équipements violets.
+
+Event Dadu— Événement récurrent, souvent très important pour obtenir certaines artistes.
+
+Event Versus— Événement de confrontation mentionné pendant Tokyo.
+
+Event Grup Akhir— Événement de groupe important pendant certaines semaines d’aventure.
+
+Siapa terkaya di Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+
+Parking Wars— Mode ou système lié à certaines boutiques et ressources.
+
+Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+
+Event Tokyo dan Sistem Terkait
+
+Metro— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+
+Pasar Saham— Système économique récurrent, avec shop et parfois scoring.
+
+Lelang Saham— Vente liée au stock market, parfois source de très grosses récompenses.
+
+Tol 1— Première ouverture de passage ou zone après le début de Tokyo.
+
+Hotel— Source importante d’or et de scoring sur certaines maps.
+
+Konser— Action de score utilisée dans plusieurs aventures ou classements.
+
+Stadion— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+
+Event Memancing
+
+Umpan Gratis— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+
+Umpan Berbayar— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+
+Voucher— Monnaie du Fishing Event générée par les poissons.
+
+Kolam Ikan— Ensemble de poissons disponibles dans une piscine donnée.
+
+Kolam Gratis— Pool de poissons accessible avec le Free Bait.
+
+Kolam Berbayar— Pool de poissons accessible avec le Paid Bait.
+
+Akuarium— Espace où les poissons conservés génèrent des Vouchers.
+
+Slot Tank— Place disponible dans l’aquarium pour stocker un poisson.
+
+Cangkang Biru— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+
+Sistem Kasian— Système garantissant un minimum de rareté après un certain nombre de captures.
+
+Bagian Mobil— Récompense importante du Fishing Event, utile pour la voiture.
+
+Desain Mobil— Récompense importante du Fishing Event, également liée à la voiture.
+
+Pertempuran Grup
+
+Poin Pertempuran— Points gagnés dans Group Battle pour le score.
+
+Fase Persiapan— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+
+Fase Pertempuran Akhir— Jour 6 de Group Battle, avec affrontements décisifs.
+
+Kemenangan Tertinggi— Victoire finale du groupe ayant le meilleur score cumulé.
+
+Blueprint Pertempuran— Ressources d’amélioration pour mieux performer dans Group Battle.
+
+Blueprint Master— Version plus rare et plus importante des Blueprints.
+
+Hadiah Tier— Récompenses débloquées par paliers dans Group Battle.
+
+VIP dan Pengeluaran
+
+Level VIP— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+
+Klub VIP— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+
+Layanan Pelanggan— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+
+Top-up Langsung— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.

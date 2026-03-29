@@ -1,0 +1,378 @@
+Глоссарий Top Girl
+Структура игры
+
+Родной сервер (Home Server)— Serveur principal de ton compte après la phase de départ, sauf migration.
+
+Abroad— Nom global des grandes aventures cycliques comme Tokyo, Bali et Roma.
+
+Warmup— Semaine de préparation avant une aventure Abroad, avec matchmaking, score et récompenses importantes.
+
+Tokyo— Première aventure Abroad du jeu, sur une nouvelle map avec objectif final Tokyo Tower.
+
+Bali— Deuxième grande aventure Abroad, suivant la même logique générale que Tokyo.
+
+Roma / Ancient Rome— Troisième grande aventure Abroad, suivant aussi la structure Warmup + aventure principale.
+
+Tokyo 2 / Bali 2 / Roma 2— Deuxième passage d’un cycle Abroad du même nom.
+
+Tokyo 3 / Bali 3 / Roma 3— Troisième passage d’un cycle Abroad du même nom.
+
+Chamber— Groupe de 2 ou 3 serveurs qui avancent ensemble pendant certaines aventures Abroad.
+
+Территория Chamber— Territoire construit et contrôlé par la Chamber, utile pour la défense et le positionnement.
+
+HQ— Quartier général du groupe, bâtiment central pour la progression, la défense et plusieurs systèmes.
+
+Landmark— Bâtiment important sur la map, souvent contesté, donnant score, ressources ou contrôle de zone.
+
+Первое занятие Landmark— Récompense obtenue lors de la première prise d’un Landmark.
+
+Burj Khalifa— Objectif central du serveur d’origine et cible majeure dans plusieurs guerres serveur contre serveur.
+
+Tokyo Tower— Objectif final de l’aventure Tokyo.
+
+Мэр (Mayor)— Titre donné au serveur ou groupe contrôlant un Burj Khalifa ou objectif équivalent.
+
+Должности Burj— Fonctions distribuées après la prise du Burj Khalifa, avec bonus associés.
+
+Пул серверов— Ensemble de serveurs que le jeu attend avant de lancer certaines phases ou cycles.
+
+Миграция— Changement de serveur après certaines étapes avancées du jeu.
+
+Билеты миграции— Objets permettant de migrer vers un autre serveur.
+
+Статы и прогресс
+
+Пение (Sing)— L’une des 3 stats principales du jeu.
+
+Защита (Defense)— L’une des 3 stats principales du jeu, souvent liée au terme Defense en jeu.
+
+Экономика (Economy)— L’une des 3 stats principales du jeu, très importante pour l’économie.
+
+Активный буст— Amélioration appliquée directement aux artistes jouées, comme niveau, skills, assets ou basic stats du Peak.
+
+Пассивный буст— Amélioration qui profite à toutes les équipes du compte, comme HQ, voiture, collection ou villa.
+
+Базовое значение (Base Value)— Montant de stats de base donné par un système avant les bonus en pourcentage.
+
+Процентное увеличение (Percentage Increase)— Multiplicateur appliqué à une valeur brute pour renforcer les stats finales.
+
+Базовые статы— Stats de base d’une artiste ou d’un système, avant les effets conditionnels.
+
+Базовая защита от урона— Réduction ou résistance liée aux dégâts basiques.
+
+Базовый урон атаки— Bonus de dégâts sur les attaques basiques.
+
+Урон навыка— Bonus de dégâts provenant des compétences.
+
+Сопротивление навыкам— Résistance contre les dégâts ou effets liés aux compétences.
+
+Урон по игроку— Bonus de dégâts infligés directement au joueur adverse, très fort sur les objectifs.
+
+Ёмкость фанатов— Nombre de fans qu’une équipe, une voiture ou un bus peut emporter.
+
+Ёмкость рейда— Capacité maximale d’un bus de rassemblement.
+
+Глобальный буст статов— Bonus de stats appliqué à l’ensemble du compte ou à toutes les équipes.
+
+Основной жанр (Main Genre)— Genre musical principal autour duquel tu construis ton équipe ou tes systèmes.
+
+Артисты, команды и навыки
+
+Артист— Unité principale de combat et de progression dans Top Girl.
+
+UR— Niveau de rareté élevé d’artiste, parfois interdit dans certains événements comme Radio Battle.
+
+Основная команда— Composition la plus importante de ton compte, à prioriser pour les ressources.
+
+Вторая команда— Deuxième équipe utile pour défense, support ou contenu spécifique.
+
+EDM Team— Équipe très agressive et dominante en early/mid game, forte sur les gros objectifs.
+
+RNB Team— Équipe accessible, surtout forte pour la défense du HQ et très bonne pour les joueuses F2P.
+
+Rock Team— Équipe polyvalente et solide sur le long terme, avec très bon ratio kills / losses.
+
+Защита HQ— Utilisation d’une équipe pensée pour défendre le HQ et limiter les pertes de fans.
+
+Соло машина— Utilisation d’une équipe ou d’une voiture pour des actions en solo, sans rally.
+
+Поддерживающая задача— Tâche de soutien, comme refill, déplacement ou assistance tactique.
+
+Скорость вождения— Stat ou compétence utile pour la vitesse de déplacement, surtout en soutien.
+
+3 Skills Gold— Condition nécessaire pour débloquer une artiste dans le Peak System.
+
+Жанровый навык— Compétence qui ne s’active que si l’artiste correspond au genre de la chanson ou du contexte.
+
+Позиционный навык— Compétence qui ne s’active que si l’artiste est placée au bon poste.
+
+Базовый навык— Compétence qui peut toujours se déclencher.
+
+Буст себя— Skill dont l’effet dépend surtout des stats de l’artiste qui le possède.
+
+Буст всех артистов— Skill dont l’effet dépend des stats globales de toute l’équipe.
+
+Center— Poste central dans une équipe de performance, comme au Grammy Award.
+
+Певец— Poste de chanteuse dans une équipe de performance.
+
+Танцор— Poste de danseuse dans une équipe de performance.
+
+Back— Poste de soutien arrière dans une équipe de performance.
+
+Ассеты и снаряжение
+
+Ассеты— Nom global des équipements d’artiste : bijou, voiture et propriété.
+
+Украшение (Jewelry)— Premier type d’Asset, souvent le plus simple à obtenir.
+
+Машина (Car)— Deuxième type d’Asset, plus rare et important pour les stats et la capacité.
+
+Недвижимость (Property / Real Estate)— Troisième type d’Asset, souvent plus coûteux à améliorer.
+
+Ассет-коины— Ressource utilisée pour monter les équipements.
+
+Матч-бонус— Bonus de +20% quand une artiste équipe un Asset correspondant à sa saison ou origine.
+
+Tokyo ассеты— Assets spécifiques à Tokyo, très forts sur les artistes Tokyo.
+
+Эксклюзивные Tokyo ассеты— Assets exclusifs obtenus via Tokyo et ses événements liés.
+
+Аукционный дом— Système d’enchères hebdomadaire pour obtenir certains objets très rares, dont des artistes ou voitures.
+
+Продвигать— Amélioration d’un Asset à un niveau supérieur, non réversible.
+
+T4 машина— Objet ou ressource de tier avancé lié au système voiture.
+
+Peak, Tier и пассивные системы
+
+Уровень Peak— Système donnant des boosts globaux et des basic stats supplémentaires à certaines artistes.
+
+Система Peak— Ensemble du système Peak et de ses paliers de progression.
+
+Tier— Système qui augmente en pourcentage les boosts passifs de stats.
+
+T1 / T2 / T3 / T4 / T5— Niveaux de Tier croissants, chacun donnant plus de bonus que le précédent.
+
+T2 (C) (C)— Premier vrai niveau de Tier utilisé pour plusieurs systèmes.
+
+T3 (B) (B)— Tier intermédiaire, souvent très intéressant à débloquer tôt.
+
+T4 (A) (A)— Tier avancé, très important mais difficile à obtenir.
+
+T5 (A+) (A+)— Tier très avancé, rare et orienté gros comptes ou classements élevés.
+
+Пассивная машина— Système passif de voiture qui booste les stats de tout le compte.
+
+Коллекция— Système passif lié aux genres musicaux, à spécialiser après une base commune.
+
+Вилла— Système passif de stats, également lié à la progression par genre.
+
+CEO наряд— Système passif récent, suivant la même logique de base value + Tier.
+
+HQ скин— Skin du HQ donnant des bonus passifs qui se cumulent.
+
+Командная функция— Système tardif et complexe, surtout orienté late game et whales.
+
+Ресурсы и экономика
+
+Алмазы— Monnaie premium du jeu.
+
+Золото— Ressource de base utilisée dans de nombreux systèmes et upgrades.
+
+Золотые слитки— Ressource obtenue notamment via le Tour, très utile au début.
+
+Интервью— Source fréquente de photos d’artistes et de progression.
+
+Универсальные фото— Photos génériques utilisables sur certaines artistes pour accélérer leur montée.
+
+Реликвии— Système influençant notamment le score au Grammy Award.
+
+Демо— Système musical dont le niveau influence fortement certains scores, comme au Grammy Award.
+
+CD— Objet du Group Shop permettant d’obtenir des fans.
+
+Промо-мануалы— Objet du Group Shop permettant de récupérer des fans.
+
+CEO-коины— Monnaie achetée avec de l’argent réel, base de beaucoup d’achats optimisés.
+
+Месячная карта— Achat récurrent très rentable, souvent conseillé comme meilleure dépense du jeu.
+
+Недельный пасс— Pass hebdomadaire, généralement rentable.
+
+Месячный пасс— Pass mensuel, souvent bon en valeur.
+
+Корпоративное поглощение— Type de pass ou offre souvent jugé rentable.
+
+Ивент пополнения— Événement donnant des bonus supplémentaires pendant certaines dépenses réelles.
+
+Веха— Palier de récompense atteint pendant un événement ou une recharge.
+
+Магазины
+
+VIP магазин— Boutique liée au niveau VIP, vendant notamment certains Assets.
+
+Биржевой магазин— Boutique du Stock Market, utile pour certaines ressources et artistes.
+
+Tokyo магазин— Boutique spécifique à Tokyo, contenant notamment Kokoro.
+
+Победный магазин— Boutique réservée aux serveurs ayant contrôlé un Burj Khalifa en City Supremacy.
+
+Серебряный магазин— Boutique intermédiaire de fin d’événement selon le résultat serveur.
+
+Бронзовый магазин— Boutique de fin d’événement pour les serveurs sans Burj Khalifa.
+
+Групповой магазин— Boutique de groupe qui reset chaque lundi.
+
+Магазин Parking Wars— Boutique liée à Parking Wars, utile pour certaines ressources comme le HQ Tier.
+
+Группа и координация
+
+Группа (Group)— Guilde ou alliance principale du jeu, au centre de presque toute la progression.
+
+Групповые коины— Monnaie de groupe utilisée dans le Group Shop.
+
+Групповые очки— Points liés à la contribution au groupe.
+
+Личные очки— Points personnels gagnés dans certains événements.
+
+Финансовая мощь— Niveau de puissance ou de valeur économique d’un groupe, utilisé dans certains accès d’événement.
+
+Командная игра— Dimension collective du jeu : coordination, timing, rôles, diplomatie et macro.
+
+Кит— Joueuse ou joueur qui dépense énormément.
+
+F2P (Free to Play) (Free to Play)— Joueuse ou joueur qui ne dépense pas, ou presque pas.
+
+Макро игра— Gestion globale du serveur, du groupe, des cycles et des objectifs long terme.
+
+Микро игра— Gestion fine des combats, placements, timings et décisions immédiates.
+
+Мета— Ensemble des choix ou stratégies jugés les plus efficaces à un moment donné.
+
+Дипломатия— Gestion des relations entre groupes, serveurs ou chambres pour éviter ou préparer les conflits.
+
+Бой и война
+
+Соло атака— Attaque immédiate avec une seule voiture, rapide mais risquée.
+
+Ралли— Rassemblement de groupe avant une attaque, beaucoup plus puissant qu’une attaque solo.
+
+Лидер рейда— Joueuse qui ouvre et dirige un rally.
+
+Автобус— Véhicule collectif utilisé lors d’un rally.
+
+Рефилл— Action de renvoyer des équipes dans un combat ou un bâtiment pour maintenir l’attaque ou la défense.
+
+Киллы— Nombre d’ennemis vaincus, souvent utilisé pour les récompenses individuelles.
+
+Потери— Pertes subies en fans pendant les combats.
+
+Соотношение K/L— Rapport entre dégâts infligés et pertes subies, très utile pour juger l’efficacité d’une équipe.
+
+Первое требование— Bonus accordé au premier groupe qui garde le contrôle d’un bâtiment suffisamment longtemps.
+
+Потери фанатов— Quantité de fans perdus pendant un combat.
+
+Безопасная зона— Zone initiale ou protégée, comme la chamber de départ à Tokyo.
+
+Главные события
+
+Городское превосходство— Événement serveur contre serveur en deux phases : dépense de ressources puis guerre autour des Burj Khalifa.
+
+Ultimate CEO / Top CEO— Grand événement hebdomadaire de dépense de ressources, central pour la progression.
+
+Групповая битва— Événement de groupe sur 6 jours, avec préparation puis phase finale Rush Attack.
+
+Раш-атака— Phase finale du Group Battle où l’on attaque les territoires adverses.
+
+Радио-битва— Événement hebdomadaire entre 4 groupes sur une carte spéciale, sans artistes UR.
+
+Grammy Award— Événement musical hebdomadaire de score sur 5 jours et 5 genres.
+
+Рыбалка— Événement de 7 jours où les poissons génèrent des Vouchers pour la boutique.
+
+Fan Meeting— Mini événement de groupe toutes les 48 heures, important pour les récompenses voiture.
+
+Пьяное свидание— Événement utile notamment pour échanger certains équipements violets.
+
+Кубик— Événement récurrent, souvent très important pour obtenir certaines artistes.
+
+Версус— Événement de confrontation mentionné pendant Tokyo.
+
+Финальное групповое событие— Événement de groupe important pendant certaines semaines d’aventure.
+
+Кто самый богатый в Tokyo?— Sous-événement de Tokyo avec bonnes récompenses et logique de score.
+
+Parking Wars— Mode ou système lié à certaines boutiques et ressources.
+
+Producer25— Mode ou shop avancé, utile notamment pour certaines ressources de villa.
+
+События Tokyo и связанные системы
+
+Метро— Système de Tokyo permettant d’obtenir boosts et récompenses grâce à une progression spécifique.
+
+Биржа— Système économique récurrent, avec shop et parfois scoring.
+
+Аукцион акций— Vente liée au stock market, parfois source de très grosses récompenses.
+
+Толл 1— Première ouverture de passage ou zone après le début de Tokyo.
+
+Отели— Source importante d’or et de scoring sur certaines maps.
+
+Концерты— Action de score utilisée dans plusieurs aventures ou classements.
+
+Стадион— Activité de score ou d’action sur certaines maps, notamment Tokyo.
+
+Рыбалка
+
+Бесплатная наживка— Appât gratuit qui se régénère avec le temps dans le Fishing Event.
+
+Платная наживка— Appât payant ou premium, plus efficace pour viser les meilleurs poissons.
+
+Ваучер— Monnaie du Fishing Event générée par les poissons.
+
+Пруд с рыбой— Ensemble de poissons disponibles dans une piscine donnée.
+
+Бесплатный бассейн— Pool de poissons accessible avec le Free Bait.
+
+Платный бассейн— Pool de poissons accessible avec le Paid Bait.
+
+Аквариум— Espace où les poissons conservés génèrent des Vouchers.
+
+Слот бака— Place disponible dans l’aquarium pour stocker un poisson.
+
+Синие ракушки— Ressource obtenue en convertissant des poissons en trop pour débloquer plus de slots.
+
+Система жалости— Système garantissant un minimum de rareté après un certain nombre de captures.
+
+Деталь машины— Récompense importante du Fishing Event, utile pour la voiture.
+
+Дизайн машины— Récompense importante du Fishing Event, également liée à la voiture.
+
+Групповая битва
+
+Боевые очки— Points gagnés dans Group Battle pour le score.
+
+Фаза подготовки— Jours 1 à 5 de Group Battle, centrés sur les tâches quotidiennes.
+
+Финальная фаза битвы— Jour 6 de Group Battle, avec affrontements décisifs.
+
+Абсолютная победа— Victoire finale du groupe ayant le meilleur score cumulé.
+
+Боевые чертежи— Ressources d’amélioration pour mieux performer dans Group Battle.
+
+Мастер-чертежи— Version plus rare et plus importante des Blueprints.
+
+Награды Tier— Récompenses débloquées par paliers dans Group Battle.
+
+VIP и расходы
+
+Уровень VIP— Niveau VIP du compte, dépendant surtout de l’argent dépensé.
+
+VIP клуб— Système débloqué à partir du VIP 12, avec récompenses et services spéciaux.
+
+Служба поддержки— Support client du jeu, accessible en jeu et via VIP Club selon le niveau.
+
+Прямое пополнение— Achat direct de CEO Coins via les canaux officiels, souvent plus rentable que via les stores classiques.

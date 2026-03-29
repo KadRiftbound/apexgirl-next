@@ -6776,12 +6776,34 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
   const guide = allGuides.find(g => g.id === slug);
   const [glossaryContent, setGlossaryContent] = useState<string>("");
 
+  const glossaryFileMap: Record<string, string> = {
+    fr: "/glossaire.txt",
+    en: "/glossary.txt",
+    it: "/glossario.txt",
+    es: "/glosario.txt",
+    pt: "/glossario_pt.txt",
+    pl: "/glosariusz.txt",
+    id: "/glosarium.txt",
+    ru: "/glossariy.txt",
+    de: "/glossar.txt",
+  };
+  const glossaryFile = glossaryFileMap[lang] || "/glossary.txt";
+
   useEffect(() => {
-    fetch("/glossaire.txt")
+    fetch(glossaryFile)
       .then((res) => (res.ok ? res.text() : ""))
       .then((text) => setGlossaryContent(text))
-      .catch(() => setGlossaryContent(""));
-  }, []);
+      .catch(() => {
+        if (glossaryFile !== "/glossary.txt") {
+          fetch("/glossary.txt")
+            .then((r) => (r.ok ? r.text() : ""))
+            .then((t) => setGlossaryContent(t))
+            .catch(() => setGlossaryContent(""));
+        } else {
+          setGlossaryContent("");
+        }
+      });
+  }, [lang]);
 
   if (!guide) {
     return (
