@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ToolsClient from "./ToolsClient";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 const BASE_URL = "https://apexgirlguide.com";
 
@@ -34,5 +35,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export default async function ToolsPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  return <ToolsClient lang={lang} />;
+  return (
+    <>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+        <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Tools', href: '/tools/' }]} lang={lang} />
+      </div>
+      <ToolsClient lang={lang} />
+    </>
+  );
 }

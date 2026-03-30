@@ -10,6 +10,7 @@ import MobileArtistsPage from "@/components/MobileArtistsPage";
 import { slugify } from "@/lib/utils/slugify";
 import { calculateTeamStats } from "@/lib/utils/calculateTeamStats";
 import type { Artist } from "@/lib/types/artist";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 const filterTranslations: Record<string, any> = {
   fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", team1Stats: "Stats Équipe 1", team2Stats: "Stats Équipe 2", vs: "VS", total: "Total", acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Chargement...", viewProfileTitle: "Cliquer pour voir la fiche", rankLabel: "Rang", allSeasons: "Toutes saisons", maxSeason: "Max saison", season: "Saison", tooltipSingle: "Clic simple : voir la fiche", tooltipDouble: "Double clic : sélectionner équipe", pageTitle: "🎤 Artistes", pageSubtitle: "Découvrez tous les personnages" },
@@ -273,6 +274,13 @@ export default function ArtistsClient({ lang }: { lang: string }) {
           <p className="page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
           <AdBanner />
         </div>
+
+        <Breadcrumb
+          items={[
+            { label: "Team Builder", href: "/teambuilder/" },
+          ]}
+          lang={lang}
+        />
 
         {/* Sentinel: when this scrolls out of view, panel becomes fixed */}
         <div ref={panelSentinelRef} style={{ height: 0, pointerEvents: 'none' }} />

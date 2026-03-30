@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 const SECTION_COLORS = [
   "#8b5cf6",
@@ -205,6 +206,12 @@ export default function GlossaryClient({ lang }: { lang: string }) {
 
       <div className="container" style={{ padding: "32px 0 60px", background: "rgba(10, 10, 20, 0.92)", minHeight: "60vh" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <Breadcrumb
+            items={[
+              { label: "Glossary", href: "/glossary/" },
+            ]}
+            lang={lang}
+          />
           <Link
             href={`/${lang}/guides/`}
             style={{

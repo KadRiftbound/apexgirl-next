@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { activeCodes } from "@/lib/data/codes";
 import CodesClient from "./CodesClient";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 const BASE_URL = "https://apexgirlguide.com";
 
@@ -68,6 +69,9 @@ export default async function CodesPage({ params }: { params: Promise<{ lang: st
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+        <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Codes', href: '/codes/' }]} lang={lang} />
+      </div>
       <CodesClient lang={lang} />
     </>
   );

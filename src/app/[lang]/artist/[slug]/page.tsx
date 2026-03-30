@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import artistsData from '@/lib/data/artists.json';
 import ArtistDetailClient from './ArtistDetailClient';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 const BASE_URL = 'https://apexgirlguide.com';
 
@@ -100,5 +101,18 @@ export default async function ArtistDetailPage(
 
   if (!artist) notFound();
 
-  return <ArtistDetailClient lang={lang} slug={slug} />;
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Artists', href: '/teambuilder/' },
+    { label: artist.name, href: `/artist/${slug}/` },
+  ];
+
+  return (
+    <>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+        <Breadcrumb items={breadcrumbItems} lang={lang} />
+      </div>
+      <ArtistDetailClient lang={lang} slug={slug} />
+    </>
+  );
 }

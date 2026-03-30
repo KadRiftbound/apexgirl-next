@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getGuideMeta, getGuideTitle, getGuideDescription, getGuideCategory } from './guide-meta';
 import GuideDetailClient from './GuideDetailClient';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 const BASE_URL = 'https://apexgirlguide.com';
 
@@ -119,11 +120,23 @@ export default async function GuideDetailPage(
   const { lang, slug } = await params;
   const guide = getGuideMeta(slug);
 
+  if (!guide) {
+    notFound();
+  }
+
+  const guideTitle = getGuideTitle(guide, lang);
+
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Guides', href: '/guides/' },
+    { label: guideTitle, href: `/guides/${slug}/` },
+  ];
+
   // Article JSON-LD schema
-  const articleSchema = guide ? {
+  const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": getGuideTitle(guide, lang),
+    "headline": guideTitle,
     "description": getGuideDescription(guide, lang),
     "url": `${BASE_URL}/${lang}/guides/${slug}/`,
     "datePublished": "2025-01-01",
@@ -142,16 +155,17 @@ export default async function GuideDetailPage(
     "image": guide.thumbnail
       ? `${BASE_URL}${guide.thumbnail}`
       : `${BASE_URL}/${lang}/opengraph-image`,
-  } : null;
+  };
 
   return (
     <>
-      {articleSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+        <Breadcrumb items={breadcrumbItems} lang={lang} />
+      </div>
       <GuideDetailClient lang={lang} slug={slug} />
     </>
   );
