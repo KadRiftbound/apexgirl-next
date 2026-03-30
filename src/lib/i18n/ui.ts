@@ -22,6 +22,7 @@ export type UiStrings = {
     cookies: string;
     contact: string;
     copyright: string;
+    support: string;
   };
   mobile: {
     menu: string;
@@ -45,6 +46,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Contact",
       copyright: "© 2026 TopGirl Fansite. Tous droits réservés. Ce site est un fansite non officiel.",
+      support: "Soutenir le site",
     },
     mobile: { menu: "MENU", languageLabel: "Langue" },
   },
@@ -63,6 +65,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Contact",
       copyright: "© 2026 TopGirl Fansite. All rights reserved. This is an unofficial fansite.",
+      support: "Support the site",
     },
     mobile: { menu: "MENU", languageLabel: "Language" },
   },
@@ -81,6 +84,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Kontakt",
       copyright: "© 2026 TopGirl Fansite. Alle Rechte vorbehalten. Dies ist eine inoffizielle Fanseite.",
+      support: "Seite unterstützen",
     },
     mobile: { menu: "MENU", languageLabel: "Sprache" },
   },
@@ -99,6 +103,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Contatto",
       copyright: "© 2026 TopGirl Fansite. Tutti i diritti riservati. Questo è un fansite non ufficiale.",
+      support: "Sostieni il sito",
     },
     mobile: { menu: "MENU", languageLabel: "Lingua" },
   },
@@ -117,6 +122,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Contacto",
       copyright: "© 2026 TopGirl Fansite. Todos los derechos reservados. Este es un fansite no oficial.",
+      support: "Apoyar el sitio",
     },
     mobile: { menu: "MENU", languageLabel: "Idioma" },
   },
@@ -135,6 +141,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Contato",
       copyright: "© 2026 TopGirl Fansite. Todos os direitos reservados. Este é um fansite não oficial.",
+      support: "Apoiar o site",
     },
     mobile: { menu: "MENU", languageLabel: "Idioma" },
   },
@@ -153,6 +160,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Kontakt",
       copyright: "© 2026 TopGirl Fansite. Wszelkie prawa zastrzeżone. To jest nieoficjalny serwis.",
+      support: "Wesprzyj stronę",
     },
     mobile: { menu: "MENU", languageLabel: "Język" },
   },
@@ -171,6 +179,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Kontak",
       copyright: "© 2026 TopGirl Fansite. Semua hak dilindungi. Ini adalah fansite tidak resmi.",
+      support: "Dukung situs",
     },
     mobile: { menu: "MENU", languageLabel: "Bahasa" },
   },
@@ -189,6 +198,7 @@ const uiStrings: Record<string, UiStrings> = {
       cookies: "Cookies",
       contact: "Контакт",
       copyright: "© 2026 TopGirl Fansite. Все права защищены. Это неофициальный фан-сайт.",
+      support: "Поддержать сайт",
     },
     mobile: { menu: "MENU", languageLabel: "Язык" },
   },

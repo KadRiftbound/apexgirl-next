@@ -219,6 +219,26 @@ export function MobileNav() {
               </Link>
             ))}
             
+            <a
+              href="https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
+              style={{
+                padding: '16px 20px',
+                background: 'transparent',
+                border: '2px solid #ffd700',
+                borderRadius: '12px',
+                textDecoration: 'none',
+                color: '#ffd700',
+                fontSize: '18px',
+                fontWeight: 600,
+                textAlign: 'center'
+              }}
+            >
+              {ui.footer.support}
+            </a>
+            
             <div style={{ 
               marginTop: '20px', 
               padding: '16px', 

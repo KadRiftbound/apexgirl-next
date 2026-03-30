@@ -182,6 +182,34 @@ export default async function LocaleLayout({
             <p className="text-sm text-muted">
               {ui.footer.subtitle}
             </p>
+            <a
+              href="https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-support"
+              style={{
+                display: "inline-block",
+                marginTop: "16px",
+                padding: "10px 24px",
+                border: "2px solid #ffd700",
+                borderRadius: "8px",
+                color: "#ffd700",
+                textDecoration: "none",
+                fontWeight: 600,
+                fontSize: "14px",
+                transition: "all 0.2s ease",
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = "rgba(255, 215, 0, 0.15)";
+                e.currentTarget.style.boxShadow = "0 0 20px rgba(255, 215, 0, 0.3)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              {ui.footer.support}
+            </a>
           </div>
           <div>
             <h4>{ui.footer.navigation}</h4>
