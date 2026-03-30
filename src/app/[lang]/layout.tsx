@@ -199,14 +199,6 @@ export default async function LocaleLayout({
                 fontSize: "14px",
                 transition: "all 0.2s ease",
               }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.background = "rgba(255, 215, 0, 0.15)";
-                e.currentTarget.style.boxShadow = "0 0 20px rgba(255, 215, 0, 0.3)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.boxShadow = "none";
-              }}
             >
               {ui.footer.support}
             </a>

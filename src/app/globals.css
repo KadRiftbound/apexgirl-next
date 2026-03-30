@@ -444,6 +444,15 @@ img {
   transform: translateX(4px);
 }
 
+.btn-support {
+  background: transparent;
+}
+
+.btn-support:hover {
+  background: rgba(255, 215, 0, 0.15);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
 .footer-bottom {
   max-width: var(--max-width);
   margin: 40px auto 0;
