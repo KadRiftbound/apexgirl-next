@@ -45,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const urls: MetadataRoute.Sitemap = [];
 
   for (const lang of LANGUAGES) {
-    // Common pages
+    // Common pages (same URL structure across languages - add hreflang alternates)
     for (const page of COMMON_PAGES) {
       const path = page === '' ? `/${lang}/` : `/${lang}/${page}/`;
       const isHome = page === '';
@@ -54,10 +54,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: today,
         changeFrequency: isHome ? 'daily' : page === 'tierlist' || page === 'codes' ? 'daily' : 'weekly',
         priority: isHome ? 1.0 : ['teambuilder', 'guides', 'tierlist'].includes(page) ? 0.9 : 0.8,
+        alternates: {
+          languages: Object.fromEntries(
+            LANGUAGES.map((l) => {
+              const langPath = page === '' ? `/${l}/` : `/${l}/${page}/`;
+              return [l, `${BASE_URL}${langPath}`];
+            })
+          ),
+        },
       });
     }
 
-    // Legal pages (language-specific)
+    // Legal pages (language-specific - no alternates since paths differ)
     const legalPages = lang === 'fr' ? LEGAL_PAGES_FR : LEGAL_PAGES_OTHER;
     for (const page of legalPages) {
       urls.push({
@@ -68,23 +76,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
-    // Guide pages
+    // Guide pages (same slug across languages - add hreflang alternates)
     for (const guide of GUIDES) {
       urls.push({
         url: `${BASE_URL}/${lang}/guides/${guide}/`,
         lastModified: today,
         changeFrequency: 'monthly',
         priority: 0.7,
+        alternates: {
+          languages: Object.fromEntries(
+            LANGUAGES.map((l) => [l, `${BASE_URL}/${l}/guides/${guide}/`])
+          ),
+        },
       });
     }
 
-    // Individual artist pages
+    // Individual artist pages (same slug across languages - add hreflang alternates)
     for (const slug of ARTIST_SLUGS) {
       urls.push({
         url: `${BASE_URL}/${lang}/artist/${slug}/`,
         lastModified: today,
         changeFrequency: 'monthly',
         priority: 0.6,
+        alternates: {
+          languages: Object.fromEntries(
+            LANGUAGES.map((l) => [l, `${BASE_URL}/${l}/artist/${slug}/`])
+          ),
+        },
       });
     }
   }
