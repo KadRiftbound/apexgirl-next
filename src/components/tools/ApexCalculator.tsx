@@ -860,6 +860,7 @@ export default function ApexCalculator() {
             value={selectedGirl}
             onChange={(e) => setSelectedGirl(e.target.value)}
             style={{ ...selectStyle, minWidth: "160px" }}
+            className="calculator-select"
           >
             {girlMultipliers.map((g) => (
               <option key={g.name} value={g.name}>
@@ -912,6 +913,7 @@ export default function ApexCalculator() {
               value={bpFromTier}
               onChange={(e) => { setBpFromTier(e.target.value); setBpFromStep(0); }}
               style={selectStyle}
+              className="calculator-select"
             >
               {bpTierNames.map((tn) => (
                 <option key={tn} value={tn}>{tn}</option>
@@ -921,6 +923,7 @@ export default function ApexCalculator() {
               value={bpFromStep}
               onChange={(e) => setBpFromStep(parseInt(e.target.value))}
               style={{ ...selectStyle, width: "90px" }}
+              className="calculator-select"
             >
               {(blueprintData.tiers[bpFromTier] || []).map((_, idx) => (
                 <option key={idx} value={idx}>Step {idx + 1}</option>
@@ -933,6 +936,7 @@ export default function ApexCalculator() {
               value={bpToTier}
               onChange={(e) => { setBpToTier(e.target.value); setBpToStep((blueprintData.tiers[e.target.value] || []).length - 1); }}
               style={selectStyle}
+              className="calculator-select"
             >
               {bpTierNames.map((tn) => (
                 <option key={tn} value={tn}>{tn}</option>
@@ -942,6 +946,7 @@ export default function ApexCalculator() {
               value={bpToStep}
               onChange={(e) => setBpToStep(parseInt(e.target.value))}
               style={{ ...selectStyle, width: "90px" }}
+              className="calculator-select"
             >
               {(blueprintData.tiers[bpToTier] || []).map((_, idx) => (
                 <option key={idx} value={idx}>Step {idx + 1}</option>
@@ -960,6 +965,7 @@ export default function ApexCalculator() {
               value={cpFromIdx}
               onChange={(e) => setCpFromIdx(parseInt(e.target.value))}
               style={{ ...selectStyle, minWidth: "120px" }}
+              className="calculator-select"
             >
               {cpOptions.map((o) => (
                 <option key={o.idx} value={o.idx}>{o.label}</option>
@@ -972,6 +978,7 @@ export default function ApexCalculator() {
               value={cpToIdx}
               onChange={(e) => setCpToIdx(parseInt(e.target.value))}
               style={{ ...selectStyle, minWidth: "120px" }}
+              className="calculator-select"
             >
               {cpOptions.map((o) => (
                 <option key={o.idx} value={o.idx}>{o.label}</option>
@@ -990,6 +997,7 @@ export default function ApexCalculator() {
               value={villaFromIdx}
               onChange={(e) => setVillaFromIdx(parseInt(e.target.value))}
               style={{ ...selectStyle, minWidth: "200px" }}
+              className="calculator-select"
             >
               {villaOptions.map((o) => (
                 <option key={o.idx} value={o.idx}>{o.label}</option>
@@ -1002,6 +1010,7 @@ export default function ApexCalculator() {
               value={villaToIdx}
               onChange={(e) => setVillaToIdx(parseInt(e.target.value))}
               style={{ ...selectStyle, minWidth: "200px" }}
+              className="calculator-select"
             >
               {villaOptions.map((o) => (
                 <option key={o.idx} value={o.idx}>{o.label}</option>

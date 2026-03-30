@@ -432,6 +432,13 @@ export default function ToolsClient({ lang }: { lang: string }) {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
         }
+        .calculator-select {
+          color: #fff !important;
+        }
+        .calculator-select option {
+          background: #1a1a2e !important;
+          color: #fff !important;
+        }
       `}</style>
     </div>
   );
