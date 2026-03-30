@@ -789,7 +789,7 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
     "image": "Cornelia.jpg",
-    "specialty": "Mixte",
+    "specialty": "HQ defense",
     "event": "Rome 2",
     "singStat": 25071,
     "danceStat": 34827
@@ -1690,7 +1690,7 @@
     "description": "A talented Dancer from DreamCatcher.",
     "acquisitionTier": "f2p",
     "image": "Nova.jpg",
-    "specialty": "Augmentation dommage",
+    "specialty": "HQ defense",
     "event": "Original",
     "singStat": 22464,
     "danceStat": 22464
@@ -2174,7 +2174,7 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
     "image": "Vivienne.jpg",
-    "specialty": "Mixte",
+    "specialty": "HQ defense",
     "event": "Bali 3",
     "singStat": 25071,
     "danceStat": 34827
