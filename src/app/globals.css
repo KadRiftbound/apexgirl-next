@@ -139,7 +139,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/assets/images/bgs/background.png') center center / 75% no-repeat;
+  background: url('/assets/images/bgs/background.png') center 15% / cover no-repeat;
   pointer-events: none;
   z-index: -2;
 }
