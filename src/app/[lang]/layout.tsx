@@ -35,6 +35,8 @@ const metadataByLang: Record<string, { title: string; description: string; keywo
 
 const BASE_URL = "https://apexgirlguide.com";
 
+export const metadataBase = BASE_URL;
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const meta = metadataByLang[lang] || metadataByLang.en;

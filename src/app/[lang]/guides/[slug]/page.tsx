@@ -18,6 +18,32 @@ const titleTemplates: Record<string, (title: string, cat: string) => string> = {
   ru: (title, cat) => `${title} — Гайд TopGirl | ${cat}`,
 };
 
+const faqTemplates: Record<string, { q: string; a: string }[]> = {
+  en: [
+    { q: "What is the best strategy for this guide?", a: "This guide provides step-by-step instructions and proven strategies to help you succeed in Top Girl/Apex Girl." },
+    { q: "Is this guide updated for 2026?", a: "Yes, this guide is regularly updated to reflect the latest game mechanics and events." },
+    { q: "Can beginners follow this guide?", a: "Yes, our guides are designed for all skill levels from beginners to advanced players." },
+    { q: "Does this work in Idol Company too?", a: "Yes, Top Girl, Apex Girl, and Idol Company are the same game with different regional names." },
+  ],
+  fr: [
+    { q: "Quelle est la meilleure stratégie pour ce guide ?", a: "Ce guide fournit des instructions étape par étape et des stratégies éprouvées pour vous aider à réussir dans Top Girl/Apex Girl." },
+    { q: "Ce guide est-il mis à jour pour 2026 ?", a: "Oui, ce guide est régulièrement mis à jour pour refléter les derniers mécanismes et événements du jeu." },
+    { q: "Les débutants peuvent-ils suivre ce guide ?", a: "Oui, nos guides sont conçus pour tous les niveaux de compétence." },
+    { q: "Cela fonctionne aussi dans Idol Company ?", a: "Oui, Top Girl, Apex Girl et Idol Company sont le même jeu avec des noms régionaux différents." },
+  ],
+};
+
+const articleAuthor = {
+  "@type": "Person",
+  "name": "ApexGirl Guide Team",
+  "url": BASE_URL,
+  "sameAs": [
+    "https://twitter.com/ApexGirlGuide"
+  ]
+};
+
+const today = new Date().toISOString().split('T')[0];
+
 export async function generateMetadata(
   { params }: { params: Promise<{ lang: string; slug: string }> }
 ): Promise<Metadata> {
@@ -103,6 +129,9 @@ export async function generateMetadata(
       url: canonicalUrl,
       siteName: 'TopGirl Guide',
       type: 'article',
+      publishedTime: '2025-01-01T00:00:00Z',
+      modifiedTime: today + 'T00:00:00Z',
+      authors: ['ApexGirl Guide Team'],
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
     twitter: {
@@ -132,7 +161,7 @@ export default async function GuideDetailPage(
     { label: guideTitle, href: `/guides/${slug}/` },
   ];
 
-  // Article JSON-LD schema
+  // Article JSON-LD schema with E-E-A-T signals
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -140,21 +169,36 @@ export default async function GuideDetailPage(
     "description": getGuideDescription(guide, lang),
     "url": `${BASE_URL}/${lang}/guides/${slug}/`,
     "datePublished": "2025-01-01",
-    "dateModified": "2026-03-19",
+    "dateModified": today,
     "inLanguage": lang,
-    "author": {
-      "@type": "Organization",
-      "name": "TopGirl Guide",
-      "url": BASE_URL,
-    },
+    "author": articleAuthor,
     "publisher": {
       "@type": "Organization",
       "name": "TopGirl Guide",
       "url": BASE_URL,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${BASE_URL}/assets/logo.png`
+      }
     },
     "image": guide.thumbnail
       ? `${BASE_URL}${guide.thumbnail}`
       : `${BASE_URL}/${lang}/opengraph-image`,
+  };
+
+  // FAQ schema for rich snippets
+  const faqs = faqTemplates[lang] || faqTemplates['en'] || faqTemplates['fr'];
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
   };
 
   return (
@@ -162,6 +206,10 @@ export default async function GuideDetailPage(
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         <Breadcrumb items={breadcrumbItems} lang={lang} />

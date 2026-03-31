@@ -12,6 +12,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: "https://apexgirlguide.com",
   authors: [{ name: "TopGirl Guide" }],
   creator: "TopGirl Guide",
   publisher: "TopGirl Guide",
