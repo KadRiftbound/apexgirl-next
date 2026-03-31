@@ -28,15 +28,15 @@ const titleByLang: Record<string, (a: ArtistData) => string> = {
 };
 
 const descByLang: Record<string, (a: ArtistData) => string> = {
-  fr: a => a.description || `${a.name} est une artiste ${a.rank} ${a.genre} (${a.position}) dans TopGirl/ApexGirl. Spécialité : ${a.specialty || 'N/A'}. Tier : ${a.calculatedTier || 'N/A'}.`,
-  en: a => a.description || `${a.name} is a ${a.rank} ${a.genre} ${a.position} in TopGirl/ApexGirl. Specialty: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  de: a => a.description || `${a.name} ist eine ${a.rank} ${a.genre} ${a.position} in TopGirl/ApexGirl. Spezialität: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  it: a => a.description || `${a.name} è una artista ${a.rank} ${a.genre} (${a.position}) in TopGirl/ApexGirl. Specialità: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  es: a => a.description || `${a.name} es una artista ${a.rank} ${a.genre} (${a.position}) en TopGirl/ApexGirl. Especialidad: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  pt: a => a.description || `${a.name} é uma artista ${a.rank} ${a.genre} (${a.position}) no TopGirl/ApexGirl. Especialidade: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  pl: a => a.description || `${a.name} jest artystką ${a.rank} ${a.genre} (${a.position}) w TopGirl/ApexGirl. Specjalność: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  id: a => a.description || `${a.name} adalah artis ${a.rank} ${a.genre} (${a.position}) di TopGirl/ApexGirl. Spesialitas: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  ru: a => a.description || `${a.name} — артист ${a.rank} ${a.genre} (${a.position}) в TopGirl/ApexGirl. Специализация: ${a.specialty || 'N/A'}. Тир: ${a.calculatedTier || 'N/A'}.`,
+  fr: a => a.description || `${a.name} est une artiste ${a.rank} ${a.genre} (${a.position}) dans TopGirl/ApexGirl/Idol Company. Spécialité : ${a.specialty || 'N/A'}. Tier : ${a.calculatedTier || 'N/A'}.`,
+  en: a => a.description || `${a.name} is a ${a.rank} ${a.genre} ${a.position} in TopGirl/ApexGirl/Idol Company. Specialty: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
+  de: a => a.description || `${a.name} ist eine ${a.rank} ${a.genre} ${a.position} in TopGirl/ApexGirl/Idol Company. Spezialität: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
+  it: a => a.description || `${a.name} è una artista ${a.rank} ${a.genre} (${a.position}) in TopGirl/ApexGirl/Idol Company. Specialità: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
+  es: a => a.description || `${a.name} es una artista ${a.rank} ${a.genre} (${a.position}) en TopGirl/ApexGirl/Idol Company. Especialidad: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
+  pt: a => a.description || `${a.name} é uma artista ${a.rank} ${a.genre} (${a.position}) no TopGirl/ApexGirl/Idol Company. Especialidade: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
+  pl: a => a.description || `${a.name} jest artystką ${a.rank} ${a.genre} (${a.position}) w TopGirl/ApexGirl/Idol Company. Specjalność: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
+  id: a => a.description || `${a.name} adalah artis ${a.rank} ${a.genre} (${a.position}) di TopGirl/ApexGirl/Idol Company. Spesialitas: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
+  ru: a => a.description || `${a.name} — артист ${a.rank} ${a.genre} (${a.position}) в TopGirl/ApexGirl/Idol Company. Специализация: ${a.specialty || 'N/A'}. Тир: ${a.calculatedTier || 'N/A'}.`,
 };
 
 export async function generateMetadata(

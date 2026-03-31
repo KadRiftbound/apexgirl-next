@@ -22,15 +22,15 @@ const localeNames: Record<string, string> = {
 };
 
 const metadataByLang: Record<string, { title: string; description: string; keywords: string }> = {
-  fr: { title: "TopGirl - Guide et Outils", description: "Le fansite officiel de TopGirl/ApexGirl avec guides, outils et codes promo", keywords: "TopGirl, ApexGirl, guide, tips, codes promo" },
-  en: { title: "TopGirl - Guides & Tools", description: "The official TopGirl/ApexGirl fansite with guides, tools and promo codes", keywords: "TopGirl, ApexGirl, guide, tips, promo codes" },
-  de: { title: "TopGirl - Guides & Werkzeuge", description: "Die offizielle TopGirl/ApexGirl Fanseite mit Guides, Werkzeugen und Promo-Codes", keywords: "TopGirl, ApexGirl, guide, tips, promo codes" },
-  it: { title: "TopGirl - Guide e Strumenti", description: "Il fansite ufficiale di TopGirl/ApexGirl con guide, strumenti e codici promozionali", keywords: "TopGirl, ApexGirl, guida, tips, codici promozionali" },
-  es: { title: "TopGirl - Guías y Herramientas", description: "El fansite oficial de TopGirl/ApexGirl con guías, herramientas y códigos promocionales", keywords: "TopGirl, ApexGirl, guía, tips, códigos promocionales" },
-  pt: { title: "TopGirl - Guias e Ferramentas", description: "O fansite oficial da TopGirl/ApexGirl com guias, ferramentas e códigos promocionais", keywords: "TopGirl, ApexGirl, guia, tips, códigos promocionais" },
-  pl: { title: "TopGirl - Poradniki i Narzędzia", description: "Nieoficjalny serwis TopGirl/ApexGirl z poradnikami, narzędziami i kodami promocyjnymi", keywords: "TopGirl, ApexGirl, poradnik, tips, kody promocyjne" },
-  id: { title: "TopGirl - Panduan dan Alat", description: "Fansite resmi TopGirl/ApexGirl dengan panduan, alat, dan kode promo", keywords: "TopGirl, ApexGirl, panduan, tips, kode promo" },
-  ru: { title: "TopGirl - Руководства и Инструменты", description: "Неофициальный фан-сайт TopGirl/ApexGirl с руководствами, инструментами и промокодами", keywords: "TopGirl, ApexGirl, руководство, tips, промокоды" },
+  fr: { title: "TopGirl - Guide et Outils", description: "Le fansite officiel de TopGirl/ApexGirl/Idol Company avec guides, outils et codes promo", keywords: "TopGirl, ApexGirl, Idol Company, guide, tips, codes promo" },
+  en: { title: "TopGirl - Guides & Tools", description: "The official TopGirl/ApexGirl/Idol Company fansite with guides, tools and promo codes", keywords: "TopGirl, ApexGirl, Idol Company, guide, tips, promo codes" },
+  de: { title: "TopGirl - Guides & Werkzeuge", description: "Die offizielle TopGirl/ApexGirl/Idol Company Fanseite mit Guides, Werkzeugen und Promo-Codes", keywords: "TopGirl, ApexGirl, Idol Company, guide, tips, promo codes" },
+  it: { title: "TopGirl - Guide e Strumenti", description: "Il fansite ufficiale di TopGirl/ApexGirl/Idol Company con guide, strumenti e codici promozionali", keywords: "TopGirl, ApexGirl, Idol Company, guida, tips, codici promozionali" },
+  es: { title: "TopGirl - Guías y Herramientas", description: "El fansite oficial de TopGirl/ApexGirl/Idol Company con guías, herramientas y códigos promocionales", keywords: "TopGirl, ApexGirl, Idol Company, guía, tips, códigos promocionales" },
+  pt: { title: "TopGirl - Guias e Ferramentas", description: "O fansite oficial da TopGirl/ApexGirl/Idol Company com guias, ferramentas e códigos promocionais", keywords: "TopGirl, ApexGirl, Idol Company, guia, tips, códigos promocionais" },
+  pl: { title: "TopGirl - Poradniki i Narzędzia", description: "Nieoficjalny serwis TopGirl/ApexGirl/Idol Company z poradnikami, narzędziami i kodami promocyjnymi", keywords: "TopGirl, ApexGirl, Idol Company, poradnik, tips, kody promocyjne" },
+  id: { title: "TopGirl - Panduan dan Alat", description: "Fansite resmi TopGirl/ApexGirl/Idol Company dengan panduan, alat, dan kode promo", keywords: "TopGirl, ApexGirl, Idol Company, panduan, tips, kode promo" },
+  ru: { title: "TopGirl - Руководства и Инструменты", description: "Неофициальный фан-сайт TopGirl/ApexGirl/Idol Company с руководствами, инструментами и промокодами", keywords: "TopGirl, ApexGirl, Idol Company, руководство, tips, промокоды" },
 };
 
 const BASE_URL = "https://apexgirlguide.com";
