@@ -851,13 +851,13 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
                    borderRadius: "10px",
                   color: "rgba(255,255,255,0.8)",
                   textDecoration: "none",
-                  border: `1px solid ${g.color}33`,
+                  border: `1px solid ${g.color || "#8b5cf6"}33`,
                   display: "flex", alignItems: "center", gap: "8px",
                   fontSize: "0.85rem", fontWeight: 500,
                   transition: "all 0.2s",
                 }}
               >
-                <span>{g.icon}</span>
+                <span>{g.icon || "📘"}</span>
                 <span>{g[`title_${lang}` as keyof typeof g] as string || g.title}</span>
               </Link>
             ))}
