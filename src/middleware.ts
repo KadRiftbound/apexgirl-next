@@ -39,18 +39,29 @@ function getLocale(request: NextRequest) {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  const legacyRedirects: Record<string, string> = {
+    "/events": "/en/guides",
+    "/artists": "/en/teambuilder",
+    "/guides/vip-level": "/en/vip-system-guide",
+    "/guides/vip": "/en/vip-system-guide",
+    "/vip": "/en/vip-system-guide",
+    "/sw.js": "/sw.js",
+  };
+
+  if (legacyRedirects[pathname]) {
+    return NextResponse.redirect(new URL(legacyRedirects[pathname], request.url));
+  }
+
   const matchedLocale = locales.find(
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  // Locale already in URL — pass through and set x-lang header for root layout
   if (matchedLocale) {
     const response = NextResponse.next();
     response.headers.set("x-lang", matchedLocale);
     return response;
   }
 
-  // Redirect to locale-prefixed URL
   const locale = getLocale(request) || defaultLocale;
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
