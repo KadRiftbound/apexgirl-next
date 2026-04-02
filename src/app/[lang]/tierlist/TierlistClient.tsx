@@ -126,16 +126,36 @@ const tierColors: Record<string, { bg: string; border: string; text: string }> =
 
 const tierOrder: string[] = ["S+", "S", "A", "B", "C", "D"];
 
-const allSpecialties = [
-  "Augmentation dommage",
-  "Dommage réduction",
-  "Vitesse de conduite",
-  "Solo car",
-  "Mixte",
-  "Rassemblement",
-  "Économie",
-  "HQ Defense",
-];
+// Specialty keys for internal use
+const SPECIALTY_KEYS = ['damage_boost', 'damage_reduction', 'driving_speed', 'solo_car', 'mixed', 'gathering', 'economy', 'hq_defense'] as const;
+
+// French values from artists.json (used for matching)
+const SPECIALTY_VALUES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de conduite', 'Solo car', 'Mixte', 'Rassemblement', 'Économie', 'HQ Defense'] as const;
+
+// Mapping from French to key
+const SPECIALTY_FR_TO_KEY: Record<string, string> = {
+  'Augmentation dommage': 'damage_boost',
+  'Dommage réduction': 'damage_reduction',
+  'Vitesse de conduite': 'driving_speed',
+  'Solo car': 'solo_car',
+  'Mixte': 'mixed',
+  'Rassemblement': 'gathering',
+  'Économie': 'economy',
+  'HQ Defense': 'hq_defense',
+};
+
+// Translated labels by language
+const SPECIALTY_LABELS: Record<string, Record<string, string>> = {
+  fr: { damage_boost: 'Augmentation dommage', damage_reduction: 'Dommage réduction', driving_speed: 'Vitesse de conduite', solo_car: 'Solo car', mixed: 'Mixte', gathering: 'Rassemblement', economy: 'Économie', hq_defense: 'HQ Defense' },
+  en: { damage_boost: 'Damage Boost', damage_reduction: 'Damage Reduction', driving_speed: 'Driving Speed', solo_car: 'Solo Car', mixed: 'Mixed', gathering: 'Gathering', economy: 'Economy', hq_defense: 'HQ Defense' },
+  it: { damage_boost: 'Boost Danno', damage_reduction: 'Riduzione Danno', driving_speed: 'Velocità Guida', solo_car: 'Auto Solitaria', mixed: 'Misto', gathering: 'Raccolta', economy: 'Economia', hq_defense: 'HQ Difesa' },
+  es: { damage_boost: 'Aumento de Daño', damage_reduction: 'Reducción de Daño', driving_speed: 'Velocidad de Conducción', solo_car: 'Coche Solitario', mixed: 'Mixto', gathering: 'Reunión', economy: 'Economía', hq_defense: 'HQ Defensa' },
+  pt: { damage_boost: 'Aumento de Dano', damage_reduction: 'Redução de Dano', driving_speed: 'Velocidade de Condução', solo_car: 'Carro Solo', mixed: 'Misto', gathering: 'Reunião', economy: 'Economia', hq_defense: 'HQ Defesa' },
+  pl: { damage_boost: 'Zwiększenie Obrażeń', damage_reduction: 'Redukcja Obrażeń', driving_speed: 'Prędkość Prowadzenia', solo_car: 'Samochód Solo', mixed: 'Mieszany', gathering: 'Zbieranie', economy: 'Ekonomia', hq_defense: 'HQ Obrona' },
+  id: { damage_boost: 'Peningkat Kerusakan', damage_reduction: 'Pengurangan Kerusakan', driving_speed: 'Kecepatan Mengemudi', solo_car: 'Mobil Solo', mixed: 'Campuran', gathering: 'Pengumpulan', economy: 'Ekonomi', hq_defense: 'HQ Pertahanan' },
+  ru: { damage_boost: 'Увеличение урона', damage_reduction: 'Уменьшение урона', driving_speed: 'Скорость вождения', solo_car: 'Соло Машина', mixed: 'Смешанный', gathering: 'Сбор', economy: 'Экономика', hq_defense: 'HQ Защита' },
+  de: { damage_boost: 'Schadensboost', damage_reduction: 'Schadensreduzierung', driving_speed: 'Fahrgeschwindigkeit', solo_car: 'Solo Auto', mixed: 'Gemischt', gathering: 'Sammeln', economy: 'Wirtschaft', hq_defense: 'HQ Verteidigung' },
+};
 
 const getTierOrder = (tier: string): number => {
   return tierOrder.indexOf(tier);
@@ -381,9 +401,11 @@ function TierListPageInner({ lang }: { lang: string }) {
                 }}
               >
                 <option value="">{t.allSpecialties || "All specialties"}</option>
-                {allSpecialties.map(s => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
+                {SPECIALTY_KEYS.map(key => {
+                  const frValue = SPECIALTY_VALUES[SPECIALTY_KEYS.indexOf(key)];
+                  const label = SPECIALTY_LABELS[lang]?.[key] || SPECIALTY_LABELS['en']?.[key] || frValue;
+                  return <option key={key} value={frValue}>{label}</option>;
+                })}
               </select>
             </div>
 

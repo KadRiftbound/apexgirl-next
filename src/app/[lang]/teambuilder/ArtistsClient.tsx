@@ -49,7 +49,37 @@ const seasonLabels: Record<string, string> = {
 
 const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
 const RANKS = ['UR', 'UR Roma', 'UR Bali', 'SSR', 'SR', 'R'];
-const SPECIALTIES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de conduite', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'];
+
+// French values from artists.json (used internally)
+const SPECIALTY_VALUES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de conduite', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'] as const;
+
+// Key-based mapping for filtering
+const SPECIALTY_KEYS = ['damage_boost', 'damage_reduction', 'driving_speed', 'hq_defense', 'mixed', 'gathering', 'solo_car', 'economy'] as const;
+
+// French values to keys mapping
+const SPECIALTY_FR_TO_KEY: Record<string, string> = {
+  'Augmentation dommage': 'damage_boost',
+  'Dommage réduction': 'damage_reduction',
+  'Vitesse de conduite': 'driving_speed',
+  'HQ Defense': 'hq_defense',
+  'Mixte': 'mixed',
+  'Rassemblement': 'gathering',
+  'Solo car': 'solo_car',
+  'Économie': 'economy',
+};
+
+// Translated display labels by language
+const SPECIALTY_LABELS_BY_LANG: Record<string, Record<string, string>> = {
+  fr: { damage_boost: 'Augmentation dommage', damage_reduction: 'Dommage réduction', driving_speed: 'Vitesse de conduite', hq_defense: 'HQ Defense', mixed: 'Mixte', gathering: 'Rassemblement', solo_car: 'Solo car', economy: 'Économie' },
+  en: { damage_boost: 'Damage Boost', damage_reduction: 'Damage Reduction', driving_speed: 'Driving Speed', hq_defense: 'HQ Defense', mixed: 'Mixed', gathering: 'Gathering', solo_car: 'Solo Car', economy: 'Economy' },
+  it: { damage_boost: 'Boost Danno', damage_reduction: 'Riduzione Danno', driving_speed: 'Velocità Guida', hq_defense: 'HQ Difesa', mixed: 'Misto', gathering: 'Raccolta', solo_car: 'Auto Solitaria', economy: 'Economia' },
+  es: { damage_boost: 'Aumento de Daño', damage_reduction: 'Reducción de Daño', driving_speed: 'Velocidad de Conducción', hq_defense: 'HQ Defensa', mixed: 'Mixto', gathering: 'Reunión', solo_car: 'Coche Solitario', economy: 'Economía' },
+  pt: { damage_boost: 'Aumento de Dano', damage_reduction: 'Redução de Dano', driving_speed: 'Velocidade de Condução', hq_defense: 'HQ Defesa', mixed: 'Misto', gathering: 'Reunião', solo_car: 'Carro Solo', economy: 'Economia' },
+  pl: { damage_boost: 'Zwiększenie Obrażeń', damage_reduction: 'Redukcja Obrażeń', driving_speed: 'Prędkość Prowadzenia', hq_defense: 'HQ Obrona', mixed: 'Mieszany', gathering: 'Zbieranie', solo_car: 'Samochód Solo', economy: 'Ekonomia' },
+  id: { damage_boost: 'Peningkat Kerusakan', damage_reduction: 'Pengurangan Kerusakan', driving_speed: 'Kecepatan Mengemudi', hq_defense: 'HQ Pertahanan', mixed: 'Campuran', gathering: 'Pengumpulan', solo_car: 'Mobil Solo', economy: 'Ekonomi' },
+  ru: { damage_boost: 'Увеличение урона', damage_reduction: 'Уменьшение урона', driving_speed: 'Скорость вождения', hq_defense: 'HQ Защита', mixed: 'Смешанный', gathering: 'Сбор', solo_car: 'Соло Машина', economy: 'Экономика' },
+  de: { damage_boost: 'Schadensboost', damage_reduction: 'Schadensreduzierung', driving_speed: 'Fahrgeschwindigkeit', hq_defense: 'HQ Verteidigung', mixed: 'Gemischt', gathering: 'Sammeln', solo_car: 'Solo Auto', economy: 'Wirtschaft' },
+};
 
 export default function ArtistsClient({ lang }: { lang: string }) {
   const router = useRouter();
@@ -515,7 +545,11 @@ export default function ArtistsClient({ lang }: { lang: string }) {
             <label htmlFor="filter-specialty" className="sr-only">{t.allSpecialties}</label>
             <select id="filter-specialty" value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
               <option value="">{t.allSpecialties}</option>
-              {SPECIALTIES.map(spec => (<option key={spec} value={spec}>{spec}</option>))}
+              {SPECIALTY_KEYS.map(key => {
+                const frValue = SPECIALTY_VALUES[SPECIALTY_KEYS.indexOf(key)];
+                const label = SPECIALTY_LABELS_BY_LANG[lang]?.[key] || SPECIALTY_LABELS_BY_LANG['en'][key] || frValue;
+                return <option key={key} value={frValue}>{label}</option>;
+              })}
             </select>
             <label htmlFor="filter-season" className="sr-only">{t.allSeasons || "Toutes saisons"}</label>
             <select id="filter-season" value={filterMaxSeason} onChange={(e) => setFilterMaxSeason(e.target.value)}>

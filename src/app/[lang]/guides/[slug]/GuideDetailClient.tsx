@@ -573,15 +573,35 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
   };
   const stripMetaLines = (contentText: string) => {
     if (!contentText) return contentText;
+    
+    // Patterns to strip from content (all languages)
+    const metaPatterns = [
+      // Type/Niveau/Level
+      /^type\s*:/i, /^niveau\s*:/i, /^level\s*:/i,
+      /^type\s*—/i, /^niveau\s*—/i, /^level\s*—/i,
+      // Section headers (standalone or with colon)
+      /^(short explanation|long explanation|explication courte|explication longue|court|long|kurz erklärung|lange erklärung|spiegazione breve|spiegazione lunga|explicación corta|explicación larga|explicação curta|explicação longa)$/i,
+      /^(short|long|court|long|kurz|lang|corto|largo|breve|lunga)$/i,
+      // Guide prefix that might appear in content
+      /^guide\s*:/i,
+    ];
+    
     const lines = contentText.split('\n');
     const filtered = lines.filter((line) => {
       const trimmed = line.trim();
       if (!trimmed) return true;
-      if (/^type\b/i.test(trimmed)) return false;
-      if (/^niveau\b/i.test(trimmed)) return false;
-      if (/^level\b/i.test(trimmed)) return false;
+      
+      // Skip empty-ish lines
+      if (trimmed.length < 2) return true;
+      
+      // Skip meta patterns
+      for (const pattern of metaPatterns) {
+        if (pattern.test(trimmed)) return false;
+      }
+      
       return true;
     });
+    
     return filtered.join('\n').replace(/\n{3,}/g, '\n\n').trim();
   };
 

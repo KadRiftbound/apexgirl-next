@@ -150,26 +150,22 @@ const slugify = (name: string) =>
   name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 const specialtyGuides: Record<string, string[]> = {
-  'Augmentation dommage': ['team-builder', 'recommended-teams', 'equipment'],
-  'Dommage réduction':    ['team-builder', 'recommended-teams'],
-  'Solo car':             ['vehicle-system', 'gold-equipment'],
-  'Mixte':                ['team-builder', 'recommended-teams'],
-  'HQ Defense':           ['hq-upgrade', 'team-builder'],
-  'Rassemblement':        ['team-builder', 'alliance-management'],
-  'Vitesse de conduite':  ['vehicle-system'],
-  'Économie':             ['group-shop', 'ceo-coins'],
+  'Augmentation dommage': ['guide-des-equipements', 'guide-construction-d-equipe-debut-de-jeu'],
+  'Dommage réduction':    ['guide-des-equipements', 'guide-construction-d-equipe-debut-de-jeu'],
+  'Solo car':             ['guide-des-equipements'],
+  'Mixte':                ['guide-construction-d-equipe-debut-de-jeu', 'guide-des-equipements'],
+  'HQ Defense':           ['guide-des-batiments-de-la-ville'],
+  'Rassemblement':        ['type-special'],
+  'Vitesse de conduite':  ['guide-des-equipements'],
+  'Économie':             ['guide-du-group-shop'],
 };
 
 const guidesMeta: Record<string, { icon: string; label: Record<string, string>; color: string }> = {
-  'team-builder':      { icon: '👥', color: '#22d3ee', label: { fr: 'Team Builder', en: 'Team Builder', it: 'Team Builder', es: 'Team Builder', pt: 'Team Builder', pl: 'Team Builder', id: 'Team Builder', ru: 'Team Builder' } },
-  'recommended-teams': { icon: '🏆', color: '#fbbf24', label: { fr: 'Équipes Recommandées', en: 'Recommended Teams', it: 'Team Consigliati', es: 'Equipos Recomendados', pt: 'Times Recomendados', pl: 'Zalecane Drużyny', id: 'Tim yang Direkomendasikan', ru: 'Рекомендуемые команды' } },
-  'equipment':         { icon: '💍', color: '#f472b6', label: { fr: 'Guide Équipement', en: 'Equipment Guide', it: 'Guida Equipaggiamento', es: 'Guía Equipamiento', pt: 'Guia Equipamento', pl: 'Poradnik Wyposażenia', id: 'Panduan Peralatan', ru: 'Гайд по снаряжению' } },
-  'vehicle-system':    { icon: '🚗', color: '#f87171', label: { fr: 'Système Véhicules', en: 'Vehicle System', it: 'Sistema Veicoli', es: 'Sistema Vehículos', pt: 'Sistema Veículos', pl: 'System Pojazdów', id: 'Sistem Kendaraan', ru: 'Система транспорта' } },
-  'gold-equipment':    { icon: '✨', color: '#fbbf24', label: { fr: 'Équipement Gold', en: 'Gold Equipment', it: 'Equipaggiamento Oro', es: 'Equipamiento Oro', pt: 'Equipamento Ouro', pl: 'Wyposażenie Złote', id: 'Peralatan Emas', ru: 'Золотое снаряжение' } },
-  'hq-upgrade':        { icon: '🏢', color: '#a855f7', label: { fr: 'Guide HQ', en: 'HQ Upgrade', it: 'Guida HQ', es: 'Guía HQ', pt: 'Guia HQ', pl: 'Poradnik HQ', id: 'Panduan HQ', ru: 'Гайд по HQ' } },
-  'alliance-management':{ icon: '🏰', color: '#8b5cf6', label: { fr: 'Gestion Alliance', en: 'Alliance Management', it: 'Gestione Alleanza', es: 'Gestión Alianza', pt: 'Gestão Aliança', pl: 'Zarządzanie Sojuszem', id: 'Manajemen Aliansi', ru: 'Управление альянсом' } },
-  'group-shop':        { icon: '🛒', color: '#f97316', label: { fr: 'Group Shop', en: 'Group Shop', it: 'Group Shop', es: 'Group Shop', pt: 'Group Shop', pl: 'Group Shop', id: 'Group Shop', ru: 'Group Shop' } },
-  'ceo-coins':         { icon: '💰', color: '#84cc16', label: { fr: 'CEO Coins', en: 'CEO Coins', it: 'CEO Coins', es: 'CEO Coins', pt: 'CEO Coins', pl: 'CEO Coins', id: 'CEO Coins', ru: 'CEO Coins' } },
+  'guide-des-equipements': { icon: '💍', color: '#f472b6', label: { fr: 'Guide Équipement', en: 'Equipment Guide', it: 'Guida Equipaggiamento', es: 'Guía Equipamiento', pt: 'Guia Equipamento', pl: 'Poradnik Wyposażenia', id: 'Panduan Peralatan', ru: 'Гайд по снаряжению', de: 'Ausrüstungsleitfaden' } },
+  'guide-construction-d-equipe-debut-de-jeu': { icon: '👥', color: '#22d3ee', label: { fr: 'Guide Construction Équipe', en: 'Early Game Team Building', it: 'Guida Costruzione Squadra', es: 'Guía Construcción Equipo', pt: 'Guia Construção Time', pl: 'Przewodnik Konstrukcja Drużyny', id: 'Panduan Konstruksi Tim', ru: 'Гайд Конструкция Команды', de: 'Teamaufbau Frühspiel' } },
+  'guide-des-batiments-de-la-ville': { icon: '🏢', color: '#a855f7', label: { fr: 'Guide Bâtiments', en: 'City Buildings Guide', it: 'Guida Edifici Città', es: 'Guía Edificios Ciudad', pt: 'Guia Edifícios Cidade', pl: 'Przewodnik Budynki Miasta', id: 'Panduan Bangunan Kota', ru: 'Гайд Городские Здания', de: 'Stadtgebäude Leitfaden' } },
+  'type-special': { icon: '🏰', color: '#8b5cf6', label: { fr: 'Gestion Alliance', en: 'Alliance & Server Management', it: 'Gestione Alleanza', es: 'Gestión Alianza', pt: 'Gestão Aliança', pl: 'Zarządzanie Sojuszem', id: 'Manajemen Aliansi', ru: 'Управление альянсом', de: 'Allianz-Verwaltung' } },
+  'guide-du-group-shop': { icon: '🛒', color: '#f97316', label: { fr: 'Group Shop', en: 'Group Shop Guide', it: 'Group Shop', es: 'Group Shop', pt: 'Group Shop', pl: 'Group Shop', id: 'Group Shop', ru: 'Group Shop', de: 'Group Shop' } },
 };
 
 const rankColors: Record<string, string> = {
@@ -234,7 +230,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
     .filter(a => a.specialty === artist.specialty && a.id !== artist.id)
     .slice(0, 4);
 
-  const relevantGuides = (specialtyGuides[artist.specialty || ''] || ['team-builder', 'recommended-teams']);
+  const relevantGuides = (specialtyGuides[artist.specialty || ''] || ['guide-des-equipements', 'guide-construction-d-equipe-debut-de-jeu']);
   const skillCats = artist.skillCategories;
   const hasSkillCats = skillCats && Object.values(skillCats).some(v => v && v.length > 0);
 
