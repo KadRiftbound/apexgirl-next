@@ -3,8 +3,21 @@
 
 import guidesData from "@/lib/data/guides.json";
 
+export type GuideSlug = {
+  fr?: string;
+  en?: string;
+  it?: string;
+  es?: string;
+  pt?: string;
+  pl?: string;
+  id?: string;
+  ru?: string;
+  de?: string;
+};
+
 export type GuideMeta = {
   id: string;
+  slugs?: GuideSlug;
   title: string;
   title_en?: string; title_it?: string; title_es?: string;
   title_pt?: string; title_pl?: string; title_id?: string; title_ru?: string; title_de?: string;
@@ -44,7 +57,38 @@ const categoryLabels = {
 } as const;
 
 export function getGuideMeta(slug: string): GuideMeta | undefined {
-  return guidesMeta.find((guide) => guide.id === slug);
+  const guide = guidesMeta.find((guide) => guide.id === slug);
+  if (guide) return guide;
+  
+  // Also search by language-specific slugs
+  return guidesMeta.find((guide) => {
+    if (guide.slugs) {
+      const slugs = guide.slugs as GuideSlug;
+      return Object.values(slugs).includes(slug);
+    }
+    return false;
+  });
+}
+
+export function getGuideSlug(guide: GuideMeta, lang: string): string {
+  if (guide.slugs) {
+    const slugs = guide.slugs as GuideSlug;
+    return slugs[lang as keyof GuideSlug] || guide.id;
+  }
+  return guide.id;
+}
+
+export function getAllGuideSlugs(guide: GuideMeta): string[] {
+  if (guide.slugs) {
+    const slugs = guide.slugs as GuideSlug;
+    return Object.values(slugs).filter(Boolean) as string[];
+  }
+  return [guide.id];
+}
+
+export function getGuideIdBySlug(slug: string): string | undefined {
+  const guide = getGuideMeta(slug);
+  return guide?.id;
 }
 
 export function getGuideTitle(guide: GuideMeta, lang: string): string {

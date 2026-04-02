@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getGuideMeta, getGuideTitle, getGuideDescription, getGuideCategory } from './guide-meta';
+import { getGuideMeta, getGuideTitle, getGuideDescription, getGuideCategory, getGuideSlug, getAllGuideSlugs } from './guide-meta';
 import GuideDetailClient from './GuideDetailClient';
 import { Breadcrumb } from '@/components/Breadcrumb';
 
@@ -61,7 +61,8 @@ export async function generateMetadata(
   const description = getGuideDescription(guide, lang);
   const category = getGuideCategory(guide, lang);
   const pageTitle = (titleTemplates[lang] || titleTemplates.en)(title, category);
-  const canonicalUrl = `${BASE_URL}/${lang}/guides/${slug}/`;
+  const langSlug = getGuideSlug(guide, lang);
+  const canonicalUrl = `${BASE_URL}/${lang}/guides/${langSlug}/`;
   const ogImage = guide.thumbnail
     ? `${BASE_URL}${guide.thumbnail}`
     : `${BASE_URL}/${lang}/opengraph-image`;
@@ -110,18 +111,11 @@ export async function generateMetadata(
     keywords,
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        fr: `${BASE_URL}/fr/guides/${slug}/`,
-        en: `${BASE_URL}/en/guides/${slug}/`,
-        de: `${BASE_URL}/de/guides/${slug}/`,
-        it: `${BASE_URL}/it/guides/${slug}/`,
-        es: `${BASE_URL}/es/guides/${slug}/`,
-        pt: `${BASE_URL}/pt/guides/${slug}/`,
-        pl: `${BASE_URL}/pl/guides/${slug}/`,
-        id: `${BASE_URL}/id/guides/${slug}/`,
-        ru: `${BASE_URL}/ru/guides/${slug}/`,
-        'x-default': `${BASE_URL}/en/guides/${slug}/`,
-      },
+      languages: Object.fromEntries(
+        (['fr', 'en', 'de', 'it', 'es', 'pt', 'pl', 'id', 'ru'] as const).map(
+          (l) => [l, `${BASE_URL}/${l}/guides/${getGuideSlug(guide, l)}/`]
+        )
+      ),
     },
     openGraph: {
       title: pageTitle,
@@ -154,11 +148,12 @@ export default async function GuideDetailPage(
   }
 
   const guideTitle = getGuideTitle(guide, lang);
+  const langSlug = getGuideSlug(guide, lang);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Guides', href: '/guides/' },
-    { label: guideTitle, href: `/guides/${slug}/` },
+    { label: guideTitle, href: `/guides/${langSlug}/` },
   ];
 
   // Article JSON-LD schema with E-E-A-T signals
@@ -167,7 +162,7 @@ export default async function GuideDetailPage(
     "@type": "Article",
     "headline": guideTitle,
     "description": getGuideDescription(guide, lang),
-    "url": `${BASE_URL}/${lang}/guides/${slug}/`,
+    "url": `${BASE_URL}/${lang}/guides/${langSlug}/`,
     "datePublished": "2025-01-01",
     "dateModified": today,
     "inLanguage": lang,
@@ -214,7 +209,7 @@ export default async function GuideDetailPage(
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         <Breadcrumb items={breadcrumbItems} lang={lang} />
       </div>
-      <GuideDetailClient lang={lang} slug={slug} />
+      <GuideDetailClient lang={lang} slug={langSlug} guideId={guide.id} />
     </>
   );
 }

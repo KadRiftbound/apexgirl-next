@@ -19,8 +19,21 @@ const guideTranslations: Record<string, any> = {
    de: { notFound: "Leitfaden nicht gefunden", backToGuides: "← Zurück zu den Leitfäden", otherGuides: "Weitere Leitfäden", tips: "Tipps", rewards: "Belohnungen", explanation: "Erklärung", artistDatabaseTitle: "Künstlerdatenbank", artistDatabaseDesc: "Entdecke alle Künstler", tierListTitle: "Tier Liste", tierListDesc: "Beste Künstler Rangliste", relatedGuides: "Verwandte Leitfäden", relatedArtists: "Verwandte Künstler", glossary: "Leitfaden-Glossar", viewFullGlossary: "→ Vollständiges Glossar ansehen", noRelatedGuides: "Keine verwandten Leitfäden", noRelatedArtists: "Keine verwandten Künstler" },
 };
 
+type GuideSlug = {
+  fr?: string;
+  en?: string;
+  it?: string;
+  es?: string;
+  pt?: string;
+  pl?: string;
+  id?: string;
+  ru?: string;
+  de?: string;
+};
+
 type Guide = {
   id: string;
+  slugs?: GuideSlug;
   title: string;
   title_en?: string;
   title_it?: string;
@@ -39,9 +52,9 @@ type Guide = {
   description_id?: string;
   description_ru?: string;
   description_de?: string;
-  icon: string;
-  color: string;
-  category: string;
+  icon?: string;
+  color?: string;
+  category?: string;
   category_en?: string;
   category_it?: string;
   category_es?: string;
@@ -50,7 +63,7 @@ type Guide = {
   category_id?: string;
   category_ru?: string;
   category_de?: string;
-  readTime: string;
+  readTime?: string;
   content?: string;
   content_en?: string;
   content_it?: string;
@@ -94,7 +107,7 @@ const slugify = (name: string) =>
 
 const allGuides: Guide[] = (() => {
   const merged = new Map<string, Guide>();
-  [...guides, ...((guidesData as Guide[]) || [])].forEach((guide) => {
+  [...guides, ...((guidesData as unknown as Guide[]) || [])].forEach((guide) => {
     if (!guide?.id) return;
     merged.set(guide.id, guide);
   });
@@ -105,10 +118,14 @@ const artistsBySlug = new Map(
   (artistsData as { name: string }[]).map((artist) => [slugify(artist.name), artist])
 );
 
-export default function GuideDetailClient({ lang, slug }: { lang: string; slug: string }) {
+export default function GuideDetailClient({ lang, slug, guideId }: { lang: string; slug: string; guideId?: string }) {
   const t = guideTranslations[lang] || guideTranslations.en;
   
-  const guide = allGuides.find(g => g.id === slug);
+  const guide = guideId ? allGuides.find(g => g.id === guideId) : allGuides.find(g => g.id === slug);
+  const langSlug = guide?.slugs?.[lang as keyof typeof guide.slugs] || guide?.id || slug;
+  const guideColor = guide?.color || "#8b5cf6";
+  
+  const getGuideSlug = (g: typeof guide) => g?.slugs?.[lang as keyof typeof g.slugs] || g?.id || '';
   const [glossaryContent, setGlossaryContent] = useState<string>("");
 
   const glossaryFileMap: Record<string, string> = {
@@ -589,7 +606,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
       <div style={{
         background: "rgba(15,15,26,0.78)",
         backdropFilter: "blur(16px)",
-        borderBottom: `1px solid ${guide.color}44`,
+        borderBottom: `1px solid ${guideColor}44`,
         padding: "32px 0 24px",
         position: "sticky",
         top: 0,
@@ -611,10 +628,10 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
           <div style={{ display: "flex", alignItems: "center", gap: "14px", flexWrap: "wrap" }}>
             <div style={{
               width: "52px", height: "52px", borderRadius: "14px", flexShrink: 0,
-              background: `linear-gradient(135deg, ${guide.color}, ${guide.color}88)`,
+              background: `linear-gradient(135deg, ${guideColor}, ${guideColor}88)`,
               display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: "1.6rem",
-              boxShadow: `0 8px 24px ${guide.color}55`,
+              boxShadow: `0 8px 24px ${guideColor}55`,
             }}>
               {guide.icon}
             </div>
@@ -622,7 +639,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px", flexWrap: "wrap" }}>
                 <span style={{
                   padding: "3px 10px", borderRadius: "20px",
-                  background: `${guide.color}22`, color: guide.color,
+                  background: `${guideColor}22`, color: guideColor,
                   fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em",
                 }}>
                   {getCategoryLabel(guide, lang)}
@@ -631,7 +648,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
               </div>
               <h1 style={{
                 fontSize: "1.7rem", fontWeight: 800, margin: 0,
-                background: `linear-gradient(135deg, ${guide.color}, #fff)`,
+                background: `linear-gradient(135deg, ${guideColor}, #fff)`,
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               }}>
                 {guide.title}
@@ -691,7 +708,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
         {/* Main content */}
         {mainContent && (
           <div className="guide-article">
-            {renderContent(mainContent, guide.color)}
+            {renderContent(mainContent, guideColor)}
           </div>
         )}
 
@@ -715,7 +732,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
                   {relatedGuideEntries.map((relatedGuide) => (
                     <Link
                       key={relatedGuide.id}
-                      href={`/${lang}/guides/${relatedGuide.id}/`}
+                      href={`/${lang}/guides/${getGuideSlug(relatedGuide)}/`}
                       style={{
                         textDecoration: "none",
                         padding: "12px 14px",
@@ -791,7 +808,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
                   background: "rgba(255,255,255,0.03)",
                   border: "1px solid rgba(255,255,255,0.08)",
                 }}>
-                  <div style={{ color: guide.color, fontWeight: 700, fontSize: "0.9rem", marginBottom: "6px" }}>
+                  <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.9rem", marginBottom: "6px" }}>
                     {entry.term}
                   </div>
                   <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.88rem", lineHeight: 1.6 }}>
@@ -827,7 +844,7 @@ export default function GuideDetailClient({ lang, slug }: { lang: string; slug: 
             {allGuides.filter(g => g.id !== guide.id).slice(0, 5).map(g => (
               <Link
                 key={g.id}
-                href={`/${lang}/guides/${g.id}/`}
+                href={`/${lang}/guides/${getGuideSlug(g)}/`}
                 style={{
                   padding: "10px 16px",
                    background: "rgba(10,10,24,0.72)",

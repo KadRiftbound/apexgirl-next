@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
+import guidesData from '@/lib/data/guides.json';
 
 const BASE_URL = 'https://apexgirlguide.com';
-const LANGUAGES = ['fr', 'en', 'de', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
+const LANGUAGES = ['fr', 'en', 'de', 'it', 'es', 'pt', 'pl', 'id', 'ru'] as const;
 
 // All artist slugs (117 artists)
 const ARTIST_SLUGS = [
@@ -20,51 +21,36 @@ const ARTIST_SLUGS = [
   "selene","sloane","kendell","valerie","anastasia","beatrice","elizabeth","gabriella",
 ];
 
-// All guide slugs (from guides.json)
-const GUIDES = [
-  'ancient-rome-event',
-  'guide-des-batiments-de-la-ville',
-  'guide-des-achats-integres',
-  'guide-du-chamber-territory',
-  'guide-city-supremacy',
-  'guide-du-systeme-de-collection',
-  'guide-echo-death-match',
-  'guide-de-l-equipe-edm',
-  'comprendre-la-structure-du-jeu-top-girl',
-  'type-classique-early-game-debutant',
-  'guide-fishing-event',
-  'guide-grammy-award',
-  'guide-du-group-shop',
-  'type-special',
-  'guide-construction-d-equipe-debut-de-jeu',
-  'guide-construction-d-equipe-fin-de-jeu',
-  'guide-des-equipements',
-  'guide-de-planification-long-terme',
-  'guide-peak',
-  'metro-guide',
-  'guide-muse-event',
-  'guide-du-systeme-de-tier',
-  'guide-radio-battle',
-  'guide-de-l-equipe-rnb',
-  'ce-guide-n-inclus-pas-les-artistes-apres-roma-3',
-  'type-classique-mid-game-avance',
-  'guide-des-attaques-et-des-rassemblements',
-  'guide-tokyo',
-  'guide-ultimate-ceo',
-  'ultimate-group-guide',
-  'guide-group-battle',
-  'guide-du-systeme-vip',
-  'roulette-event-guide',
-  'tips-and-tricks-guide',
-  'how-to-unlock-all-artists',
-];
-
 // Pages shared by all languages
 const COMMON_PAGES = ['', 'teambuilder', 'tierlist', 'guides', 'tools', 'codes', 'contact', 'cookie-settings'];
 
 // Legal pages differ by language
 const LEGAL_PAGES_FR  = ['mentions-legales', 'confidentialite'];
 const LEGAL_PAGES_OTHER = ['legal-notice', 'privacy-policy'];
+
+type GuideSlug = {
+  fr?: string;
+  en?: string;
+  it?: string;
+  es?: string;
+  pt?: string;
+  pl?: string;
+  id?: string;
+  ru?: string;
+  de?: string;
+};
+
+type Guide = {
+  id: string;
+  slugs?: GuideSlug;
+};
+
+const guides = guidesData as Guide[];
+
+function getGuideSlug(guide: Guide, lang: string): string {
+  const slug = guide.slugs as Record<string, string | undefined>;
+  return slug?.[lang] || guide.id;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const today = new Date().toISOString().split('T')[0];
@@ -102,16 +88,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
-    // Guide pages (same slug across languages - add hreflang alternates)
-    for (const guide of GUIDES) {
+    // Guide pages (language-specific slugs)
+    for (const guide of guides) {
+      const langSlug = getGuideSlug(guide, lang);
       urls.push({
-        url: `${BASE_URL}/${lang}/guides/${guide}/`,
+        url: `${BASE_URL}/${lang}/guides/${langSlug}/`,
         lastModified: today,
         changeFrequency: 'monthly',
         priority: 0.7,
         alternates: {
           languages: Object.fromEntries(
-            LANGUAGES.map((l) => [l, `${BASE_URL}/${l}/guides/${guide}/`])
+            LANGUAGES.map((l) => [l, `${BASE_URL}/${l}/guides/${getGuideSlug(guide, l)}/`])
           ),
         },
       });

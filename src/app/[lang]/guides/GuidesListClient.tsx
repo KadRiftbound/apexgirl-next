@@ -651,10 +651,12 @@ export default function GuidesListClient({ lang }: { lang: string }) {
           gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
           gap: "16px",
         }}>
-          {filteredGuides.map((guide) => (
+          {filteredGuides.map((guide) => {
+              const langSlug = (guide as any).slugs?.[lang] || guide.id;
+              return (
             <Link
               key={guide.id}
-              href={`/${lang}/guides/${guide.id}/`}
+              href={`/${lang}/guides/${langSlug}/`}
               style={{
                 background: "rgba(20,20,40,0.92)",
                 borderRadius: "20px",
@@ -815,7 +817,8 @@ export default function GuidesListClient({ lang }: { lang: string }) {
                 </span>
               </div>
             </Link>
-          ))}
+          );
+        })}
         </div>
       </div>
     </div>
