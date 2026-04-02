@@ -651,7 +651,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
                 background: `linear-gradient(135deg, ${guideColor}, #fff)`,
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               }}>
-                {guide.title}
+                {(guide as any)[`title_${lang}`] || guide.title}
               </h1>
             </div>
           </div>
