@@ -41,11 +41,12 @@ export function middleware(request: NextRequest) {
 
   const legacyRedirects: Record<string, string> = {
     "/events": "/en/guides",
+    "/en/events": "/en/guides",
     "/artists": "/en/teambuilder",
+    "/en/artists": "/en/teambuilder",
     "/guides/vip-level": "/en/vip-system-guide",
     "/guides/vip": "/en/vip-system-guide",
     "/vip": "/en/vip-system-guide",
-    "/sw.js": "/sw.js",
   };
 
   if (legacyRedirects[pathname]) {
