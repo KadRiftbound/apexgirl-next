@@ -46,6 +46,7 @@ function formatExpiry(dateStr: string, lang: string): string {
 const translations: Record<string, any> = {
   fr: {
     homeTitle: "TOPGIRL GUIDE",
+    lastUpdated: "Dernière mise à jour",
     subtitle: "Le guide complet pour <strong>TopGirl / ApexGirl</strong> — artistes, tier lists, outils et codes promo",
     discoverArtists: "Voir les Artistes",
     seeTools: "Outils",
@@ -100,6 +101,7 @@ const translations: Record<string, any> = {
   },
   en: {
     homeTitle: "TOPGIRL GUIDE",
+    lastUpdated: "Last updated",
     subtitle: "The complete guide for <strong>TopGirl / ApexGirl</strong> — artists, tier lists, tools and promo codes",
     discoverArtists: "Browse Artists",
     seeTools: "Tools",
@@ -415,6 +417,15 @@ export default function HomeClient({ lang }: { lang: string }) {
       {/* Sur desktop le contenu s'affiche sous l'éventail */}
       <div className="hero-content hero-content-desktop">
         <div className="hero-badge">TopGirl / ApexGirl</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+          <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>
+            {t.lastUpdated}: April 2026
+          </span>
+          <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'rgba(255,255,255,0.3)' }} />
+          <span style={{ fontSize: '0.75rem', color: '#4ade80', fontWeight: 500 }}>
+            Updated weekly
+          </span>
+        </div>
         <h1 className="hero-title">{t.homeTitle}</h1>
         <p className="hero-subtitle" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
         <div className="hero-stats">
@@ -434,6 +445,15 @@ export default function HomeClient({ lang }: { lang: string }) {
       {/* Mobile hero content — stacked below the mosaic */}
       <div className="hero-content-mobile">
         <div className="hero-badge">TopGirl / ApexGirl</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>
+            {t.lastUpdated}: April 2026
+          </span>
+          <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'rgba(255,255,255,0.3)' }} />
+          <span style={{ fontSize: '0.75rem', color: '#4ade80', fontWeight: 500 }}>
+            Updated weekly
+          </span>
+        </div>
         <h1 className="hero-title">{t.homeTitle}</h1>
         <p className="hero-subtitle" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
         <div className="hero-stats">
@@ -449,6 +469,75 @@ export default function HomeClient({ lang }: { lang: string }) {
           <Link href={`/${lang}/tools/`}   style={btnTools}    >🛠️ {t.seeTools}</Link>
         </div>
       </div>
+
+      {/* ═══════════════════════════════════════════
+          TL;DR — Quick answers in 10 seconds
+      ═══════════════════════════════════════════ */}
+      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 20px' }}>
+        <div style={{ 
+          background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1))',
+          borderRadius: '20px',
+          border: '1px solid rgba(139, 92, 246, 0.3)',
+          padding: '32px',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+            <span style={{ fontSize: '1.5rem' }}>⚡</span>
+            <h2 style={{ margin: 0, fontSize: '1.25rem', color: '#fff', fontWeight: 700 }}>
+              Quick Answers — Get what you need fast
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+            <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', padding: '20px' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
+                🏆 Best Artists Tier List
+              </div>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', margin: '0 0 12px 0', lineHeight: 1.5 }}>
+                S+ Tier: Genevieve, Isadora, Alexandra<br/>
+                Check our community tier list for weekly updated rankings.
+              </p>
+              <Link href={`/${lang}/tierlist/`} style={{ color: '#8b5cf6', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                View Tier List →
+              </Link>
+            </div>
+            <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', padding: '20px' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
+                🎤 Best SSR Artists
+              </div>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', margin: '0 0 12px 0', lineHeight: 1.5 }}>
+                Top picks: Genevieve (Sing), Isadora (Defense), Alexandra (Economy).
+                Full list of 112+ artists with stats.
+              </p>
+              <Link href={`/${lang}/teambuilder/`} style={{ color: '#8b5cf6', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                Browse Artists →
+              </Link>
+            </div>
+            <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', padding: '20px' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
+                💰 Free Promo Codes
+              </div>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', margin: '0 0 12px 0', lineHeight: 1.5 }}>
+                All codes are expired but kept for reference.
+                Enter in game: Profile → Settings → Gift Code
+              </p>
+              <Link href={`/${lang}/codes/`} style={{ color: '#8b5cf6', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                View Codes →
+              </Link>
+            </div>
+            <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', padding: '20px' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
+                📖 Beginner Guide
+              </div>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', margin: '0 0 12px 0', lineHeight: 1.5 }}>
+                Learn game structure, team building basics, and key strategies.
+                Start here if you're new!
+              </p>
+              <Link href={`/${lang}/guides/`} style={{ color: '#8b5cf6', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                View Guides →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ═══════════════════════════════════════════
           SECTIONS — ce qu'on propose (premier contenu vu)
