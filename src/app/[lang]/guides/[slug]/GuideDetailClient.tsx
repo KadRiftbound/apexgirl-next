@@ -545,6 +545,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
   const rewardsContent = guide[`rewards_${lang}` as keyof typeof guide] as string || guide.rewards;
   const rawContent = guide[`content_${lang}` as keyof typeof guide] as string || guide.content;
   const descriptionText = (guide[`description_${lang}` as keyof typeof guide] as string) || guide.description;
+  const localizedTitle = (guide as any)[`title_${lang}`] || guide.title;
   const extractedContent = rawContent || '';
   const stripLeadingTitle = (contentText: string, titleText: string) => {
     if (!contentText) return contentText;
@@ -584,7 +585,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
     return filtered.join('\n').replace(/\n{3,}/g, '\n\n').trim();
   };
 
-  let mainContent = stripLeadingTitle(extractedContent, guide.title);
+  let mainContent = stripLeadingTitle(extractedContent, localizedTitle);
   mainContent = stripLeadingDescription(mainContent, descriptionText);
   mainContent = stripMetaLines(mainContent);
   const glossaryEntries = getGlossaryForGuide(parseGlossaryEntries(glossaryContent), rawContent || "");
