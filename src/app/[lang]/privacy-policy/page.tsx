@@ -1,12 +1,14 @@
-'use client';
-
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { getPrivacyContent } from '@/lib/i18n/privacy';
 
-export default function PrivacyPolicy() {
-  const params = useParams();
-  const lang = (params?.lang as string) || 'fr';
+export default async function PrivacyPolicy({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+
+  if (lang === 'fr') {
+    redirect('/fr/confidentialite/');
+  }
+
   const content = getPrivacyContent(lang);
 
   return (
