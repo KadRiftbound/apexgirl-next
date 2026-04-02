@@ -1,12 +1,14 @@
-'use client';
-
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { getLegalNoticeContent } from '@/lib/i18n/legalNotice';
 
-export default function MentionsLegales() {
-  const params = useParams();
-  const lang = (params?.lang as string) || 'fr';
+export default async function MentionsLegales({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+
+  if (lang !== 'fr') {
+    redirect(`/${lang}/legal-notice/`);
+  }
+
   const content = getLegalNoticeContent(lang);
 
   return (
@@ -89,7 +91,7 @@ export default function MentionsLegales() {
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.7)' }}>
             {content.privacy.content}{' '}
-            <Link href={`/${lang}/confidentialite`} style={{ color: '#8b5cf6' }}>{content.privacy.link}</Link>
+            <Link href='/fr/confidentialite/' style={{ color: '#8b5cf6' }}>{content.privacy.link}</Link>
           </p>
         </section>
 
