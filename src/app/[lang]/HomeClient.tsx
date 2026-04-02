@@ -475,7 +475,7 @@ export default function HomeClient({ lang }: { lang: string }) {
       ═══════════════════════════════════════════ */}
       <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 20px' }}>
         <div style={{ 
-          background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1))',
+          background: 'linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(20, 20, 40, 0.95))',
           borderRadius: '20px',
           border: '1px solid rgba(139, 92, 246, 0.3)',
           padding: '32px',
@@ -483,53 +483,49 @@ export default function HomeClient({ lang }: { lang: string }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
             <span style={{ fontSize: '1.5rem' }}>⚡</span>
             <h2 style={{ margin: 0, fontSize: '1.25rem', color: '#fff', fontWeight: 700 }}>
-              Quick Answers — Get what you need fast
+              Quick Access
             </h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
-            <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', padding: '20px' }}>
+            <div style={{ background: 'rgba(30,30,50,0.8)', borderRadius: '12px', padding: '20px' }}>
               <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
-                🏆 Best Artists Tier List
+                🏆 Community Tier List
               </div>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', margin: '0 0 12px 0', lineHeight: 1.5 }}>
-                S+ Tier: Genevieve, Isadora, Alexandra<br/>
-                Check our community tier list for weekly updated rankings.
+                Vote for your favorite artists. Rankings updated weekly based on player feedback.
               </p>
               <Link href={`/${lang}/tierlist/`} style={{ color: '#8b5cf6', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
                 View Tier List →
               </Link>
             </div>
-            <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', padding: '20px' }}>
+            <div style={{ background: 'rgba(30,30,50,0.8)', borderRadius: '12px', padding: '20px' }}>
               <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
-                🎤 Best SSR Artists
+                🎤 Artist Database
               </div>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', margin: '0 0 12px 0', lineHeight: 1.5 }}>
-                Top picks: Genevieve (Sing), Isadora (Defense), Alexandra (Economy).
-                Full list of 112+ artists with stats.
+                Browse 117+ artists with stats, skills, and team recommendations. Find the perfect team.
               </p>
               <Link href={`/${lang}/teambuilder/`} style={{ color: '#8b5cf6', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
                 Browse Artists →
               </Link>
             </div>
-            <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', padding: '20px' }}>
+            <div style={{ background: 'rgba(30,30,50,0.8)', borderRadius: '12px', padding: '20px' }}>
               <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
-                💰 Free Promo Codes
+                💰 Promo Codes
               </div>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', margin: '0 0 12px 0', lineHeight: 1.5 }}>
-                All codes are expired but kept for reference.
-                Enter in game: Profile → Settings → Gift Code
+                All codes are expired but kept for reference. Enter in game: Profile → Settings → Gift Code
               </p>
               <Link href={`/${lang}/codes/`} style={{ color: '#8b5cf6', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
                 View Codes →
               </Link>
             </div>
-            <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '12px', padding: '20px' }}>
+            <div style={{ background: 'rgba(30,30,50,0.8)', borderRadius: '12px', padding: '20px' }}>
               <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
-                📖 Beginner Guide
+                📖 Game Guides
               </div>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', margin: '0 0 12px 0', lineHeight: 1.5 }}>
-                Learn game structure, team building basics, and key strategies.
-                Start here if you're new!
+                From beginner tips to advanced strategies. Comprehensive guides written by experienced players.
               </p>
               <Link href={`/${lang}/guides/`} style={{ color: '#8b5cf6', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
                 View Guides →
