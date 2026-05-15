@@ -43,6 +43,18 @@ function formatExpiry(dateStr: string, lang: string): string {
   return date.toLocaleDateString(localeMap[lang] || "en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
 
+function formatLastUpdated(lang: string): string {
+  const localeMap: Record<string, string> = {
+    fr: "fr-FR", en: "en-GB", it: "it-IT", es: "es-ES",
+    pt: "pt-BR", pl: "pl-PL", id: "id-ID", ru: "ru-RU", de: "de-DE",
+  };
+
+  return new Date().toLocaleDateString(localeMap[lang] || "en-GB", {
+    month: "long",
+    year: "numeric",
+  });
+}
+
 const translations: Record<string, any> = {
   fr: {
     homeTitle: "TOPGIRL GUIDE",
@@ -338,6 +350,9 @@ const MOSAIC_POSITIONS: number[][] = (() => {
 
 export default function HomeClient({ lang }: { lang: string }) {
   const t = translations[lang] || translations.en;
+  const lastUpdatedText = formatLastUpdated(lang);
+  const lastUpdatedLabel = t.lastUpdated || (lang === "fr" ? "Derniere mise a jour" : "Last updated");
+  const updatedFrequency = lang === "fr" ? "Mise a jour hebdomadaire" : "Updated weekly";
 
   // Hero artists: picked client-side only to avoid SSR/hydration mismatch
   const [heroArtists] = useState<string[]>(() => pickRandom(ALL_SSR_IMAGES, 13));
@@ -419,11 +434,11 @@ export default function HomeClient({ lang }: { lang: string }) {
         <div className="hero-badge">TopGirl / ApexGirl</div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
           <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>
-            {t.lastUpdated}: April 2026
+            {lastUpdatedLabel}: {lastUpdatedText}
           </span>
           <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'rgba(255,255,255,0.3)' }} />
           <span style={{ fontSize: '0.75rem', color: '#4ade80', fontWeight: 500 }}>
-            Updated weekly
+            {updatedFrequency}
           </span>
         </div>
         <h1 className="hero-title">{t.homeTitle}</h1>
@@ -447,11 +462,11 @@ export default function HomeClient({ lang }: { lang: string }) {
         <div className="hero-badge">TopGirl / ApexGirl</div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>
-            {t.lastUpdated}: April 2026
+            {lastUpdatedLabel}: {lastUpdatedText}
           </span>
           <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'rgba(255,255,255,0.3)' }} />
           <span style={{ fontSize: '0.75rem', color: '#4ade80', fontWeight: 500 }}>
-            Updated weekly
+            {updatedFrequency}
           </span>
         </div>
         <h1 className="hero-title">{t.homeTitle}</h1>
