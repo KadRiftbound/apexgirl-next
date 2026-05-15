@@ -84,12 +84,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     icons: {
       icon: [
-        { url: "/assets/favicon.png", sizes: "48x48" },
-        { url: "/assets/favicon.png", sizes: "96x96" },
-        { url: "/assets/favicon.png", sizes: "192x192" },
-        { url: "/assets/favicon.png", sizes: "512x512" },
+        { url: "/icon.png", sizes: "192x192", type: "image/png" },
+        { url: "/assets/logositenew.png", sizes: "512x512", type: "image/png" },
       ],
-      apple: { url: "/assets/favicon.png" },
+      apple: { url: "/apple-icon.png", type: "image/png" },
     },
     robots: {
       index: true,
@@ -161,7 +159,7 @@ export default async function LocaleLayout({
         <div className="header-inner">
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
             <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
-              <Image src="/assets/logo.png" alt="TopGirl" width={36} height={36} priority />
+              <Image src="/assets/logositenew.png" alt="TopGirl" width={36} height={36} priority />
               <span>{ui.header.logoTitle}</span>
             </Link>
             <NavVoteWidget lang={lang} />

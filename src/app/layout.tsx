@@ -16,6 +16,14 @@ export const metadata: Metadata = {
   authors: [{ name: "TopGirl Guide" }],
   creator: "TopGirl Guide",
   publisher: "TopGirl Guide",
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+      { url: "/assets/logositenew.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/icon.png"],
+  },
 };
 
 export default async function RootLayout({

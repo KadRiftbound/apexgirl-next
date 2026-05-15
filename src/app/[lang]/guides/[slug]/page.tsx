@@ -173,7 +173,7 @@ export default async function GuideDetailPage(
       "url": BASE_URL,
       "logo": {
         "@type": "ImageObject",
-        "url": `${BASE_URL}/assets/logo.png`
+        "url": `${BASE_URL}/assets/logositenew.png`
       }
     },
     "image": guide.thumbnail
