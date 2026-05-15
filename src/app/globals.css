@@ -57,7 +57,7 @@
   --header-height: 70px;
   
   --background: #0a0a12;
-  --background-image: url('/assets/images/bgs/background.png');
+  --background-image: url('/assets/images/bgs/backgroundnew.png');
   --foreground: #ffffff;
   
   --font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, sans-serif;
@@ -108,27 +108,27 @@ body {
 
 /* Background with Images - Default */
 body {
-  --bg-image: url('/assets/images/bgs/background.png');
+  --bg-image: url('/assets/images/bgs/backgroundnew.png');
 }
 
 /* Page-specific backgrounds */
 body.bg-home {
-  --bg-image: url('/assets/images/bgs/background.png');
+  --bg-image: url('/assets/images/bgs/backgroundnew.png');
 }
 body.bg-database {
-  --bg-image: url('/assets/images/bgs/background.png');
+  --bg-image: url('/assets/images/bgs/backgroundnew.png');
 }
 body.bg-tierlist {
-  --bg-image: url('/assets/images/bgs/background.png');
+  --bg-image: url('/assets/images/bgs/backgroundnew.png');
 }
 body.bg-events {
-  --bg-image: url('/assets/images/bgs/background.png');
+  --bg-image: url('/assets/images/bgs/backgroundnew.png');
 }
 body.bg-guides {
-  --bg-image: url('/assets/images/bgs/background.png');
+  --bg-image: url('/assets/images/bgs/backgroundnew.png');
 }
 body.bg-tools {
-  --bg-image: url('/assets/images/bgs/background.png');
+  --bg-image: url('/assets/images/bgs/backgroundnew.png');
 }
 
 /* Background with Images */
@@ -139,7 +139,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/assets/images/bgs/background.png') center 5% / cover no-repeat;
+  background: url('/assets/images/bgs/backgroundnew.png') center 5% / cover no-repeat;
   pointer-events: none;
   z-index: -2;
 }
