@@ -22,7 +22,21 @@ const ARTIST_SLUGS = [
 ];
 
 // Pages shared by all languages
-const COMMON_PAGES = ['', 'teambuilder', 'tierlist', 'guides', 'tools', 'codes', 'contact', 'cookie-settings'];
+const COMMON_PAGES = [
+  '',
+  'teambuilder',
+  'tierlist',
+  'guides',
+  'tools',
+  'codes',
+  'contact',
+  'cookie-settings',
+  'about',
+  'methodology',
+  'editorial-policy',
+  'corrections',
+  'advertising-disclosure',
+];
 
 // Legal pages differ by language
 const LEGAL_PAGES_FR  = ['mentions-legales', 'confidentialite'];

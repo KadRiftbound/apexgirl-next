@@ -4,15 +4,15 @@ import HomeClient from "./HomeClient";
 const BASE_URL = "https://apexgirlguide.com";
 
 const meta: Record<string, { title: string; description: string; keywords: string }> = {
-  fr: { title: "TopGirl Guide 2026 — Guides, Tier List & Outils gratuits", description: "Le guide #1 non officiel de TopGirl/ApexGirl/Idol Company. Tier list, 117+ artistes avec stats, codes promo et outils gratuits. Mis à jour en avril 2026.", keywords: "TopGirl guide, ApexGirl guide, Idol Company guide, tier list, codes promo, artistes TopGirl, guide Top Girl" },
-  en: { title: "TopGirl Guide 2026 — Best Tier List, Guides & Free Tools", description: "The #1 unofficial TopGirl/ApexGirl/Idol Company guide. Tier list, 117+ artists with stats, promo codes & free tools. Updated April 2026.", keywords: "TopGirl guide, ApexGirl guide, Idol Company guide, tier list, promo codes, TopGirl artists, Top Girl game guide" },
-  de: { title: "TopGirl Guide 2026 — Beste Tier List, Guides & Kostenlose Tools", description: "Der beste inoffizielle TopGirl/ApexGirl/Idol Company Guide. Tier List, 117+ Künstlerinnen mit Stats, Promo-Codes & kostenlose Tools. Stand April 2026.", keywords: "TopGirl Leitfaden, ApexGirl Leitfaden, Idol Company Leitfaden, Tier List, Promo-Codes, TopGirl Künstlerinnen" },
-  it: { title: "TopGirl Guide 2026 — Migliore Tier List, Guide & Strumenti Gratuiti", description: "La migliore guida non ufficiale di TopGirl/ApexGirl/Idol Company. Tier list, 117+ artisti con stats, codici promo e strumenti gratuiti. Aggiornato Aprile 2026.", keywords: "TopGirl guida, ApexGirl guida, Idol Company guida, tier list, codici promo, artisti TopGirl" },
-  es: { title: "TopGirl Guide 2026 — Mejor Tier List, Guías y Herramientas Gratis", description: "La mejor guía no oficial de TopGirl/ApexGirl/Idol Company. Tier list, 117+ artistas con stats, códigos promo y herramientas gratis. Actualizado Abril 2026.", keywords: "TopGirl guía, ApexGirl guía, Idol Company guía, tier list, códigos promo, artistas TopGirl" },
-  pt: { title: "TopGirl Guide 2026 — Melhor Tier List, Guias e Ferramentas Grátis", description: "O melhor guia não oficial de TopGirl/ApexGirl/Idol Company. Tier list, 117+ artistas com stats, códigos promo e ferramentas grátis. Atualizado Abril 2026.", keywords: "TopGirl guia, ApexGirl guia, Idol Company guia, tier list, códigos promo, artistas TopGirl" },
-  pl: { title: "TopGirl Guide 2026 — Najlepsza Tier List, Poradniki i Darmowe Narzędzia", description: "Najlepszy nieoficjalny przewodnik TopGirl/ApexGirl/Idol Company. Tier list, 117+ artystów ze statystykami, kody promo i darmowe narzędzia. Zaktualizowano Kwiecień 2026.", keywords: "TopGirl poradnik, ApexGirl poradnik, Idol Company poradnik, tier list, kody promo, artyści TopGirl" },
-  id: { title: "TopGirl Guide 2026 — Tier List Terbaik, Panduan & Alat Gratis", description: "Panduan tidak resmi terbaik untuk TopGirl/ApexGirl/Idol Company. Tier list, 117+ artis dengan stats, kode promo & alat gratis. Diperbarui April 2026.", keywords: "TopGirl panduan, ApexGirl panduan, Idol Company panduan, tier list, kode promo, artis TopGirl" },
-  ru: { title: "TopGirl Guide 2026 — Лучший Tier List, Гайды и Бесплатные Инструменты", description: "Лучший неофициальный гайд по TopGirl/ApexGirl/Idol Company. Tier list, 117+ артистов со статами, промокоды и бесплатные инструменты. Обновлено Апрель 2026.", keywords: "TopGirl гайд, ApexGirl гайд, Idol Company гайд, tier list, промокоды, артисты TopGirl" },
+  fr: { title: "TopGirl Guide — Guides, Tier List et Outils", description: "Fansite non officiel TopGirl/ApexGirl/Idol Company avec guides pratiques, tier list communautaire, artistes et outils de progression.", keywords: "TopGirl guide, ApexGirl guide, Idol Company guide, tier list, codes promo, artistes TopGirl, guide Top Girl" },
+  en: { title: "TopGirl Guide — Guides, Tier List and Tools", description: "Unofficial TopGirl/ApexGirl/Idol Company fansite with practical guides, community tier list, artist data, and progression tools.", keywords: "TopGirl guide, ApexGirl guide, Idol Company guide, tier list, promo codes, TopGirl artists, Top Girl game guide" },
+  de: { title: "TopGirl Guide — Leitfaden, Tier List und Tools", description: "Inoffizielle TopGirl/ApexGirl/Idol Company Fanseite mit praxisnahen Guides, Community Tier List und hilfreichen Tools.", keywords: "TopGirl Leitfaden, ApexGirl Leitfaden, Idol Company Leitfaden, Tier List, Promo-Codes, TopGirl Künstlerinnen" },
+  it: { title: "TopGirl Guide — Guide, Tier List e Strumenti", description: "Fansite non ufficiale TopGirl/ApexGirl/Idol Company con guide pratiche, tier list della community, artisti e strumenti utili.", keywords: "TopGirl guida, ApexGirl guida, Idol Company guida, tier list, codici promo, artisti TopGirl" },
+  es: { title: "TopGirl Guide — Guías, Tier List y Herramientas", description: "Fansite no oficial de TopGirl/ApexGirl/Idol Company con guías prácticas, tier list comunitaria, artistas y herramientas.", keywords: "TopGirl guía, ApexGirl guía, Idol Company guía, tier list, códigos promo, artistas TopGirl" },
+  pt: { title: "TopGirl Guide — Guias, Tier List e Ferramentas", description: "Fansite não oficial TopGirl/ApexGirl/Idol Company com guias práticos, tier list da comunidade, artistas e ferramentas.", keywords: "TopGirl guia, ApexGirl guia, Idol Company guia, tier list, códigos promo, artistas TopGirl" },
+  pl: { title: "TopGirl Guide — Poradniki, Tier List i Narzędzia", description: "Nieoficjalny serwis TopGirl/ApexGirl/Idol Company z praktycznymi poradnikami, tier listą społeczności i narzędziami.", keywords: "TopGirl poradnik, ApexGirl poradnik, Idol Company poradnik, tier list, kody promo, artyści TopGirl" },
+  id: { title: "TopGirl Guide — Panduan, Tier List, dan Alat", description: "Fansite tidak resmi TopGirl/ApexGirl/Idol Company dengan panduan praktis, tier list komunitas, data artis, dan alat.", keywords: "TopGirl panduan, ApexGirl panduan, Idol Company panduan, tier list, kode promo, artis TopGirl" },
+  ru: { title: "TopGirl Guide — Гайды, Tier List и Инструменты", description: "Неофициальный сайт по TopGirl/ApexGirl/Idol Company с практическими гайдами, tier list сообщества и инструментами.", keywords: "TopGirl гайд, ApexGirl гайд, Idol Company гайд, tier list, промокоды, артисты TopGirl" },
 };
 
 const faqSchema = {
@@ -45,18 +45,18 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      "name": "How often is the tier list updated?",
+      "name": "How often is the tier list reviewed?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The tier list is community-driven and updated weekly based on player votes and feedback from the Top Girl competitive scene."
+        "text": "The tier list is community-driven and reviewed regularly after major events, season shifts, and gameplay updates."
       }
     },
     {
       "@type": "Question",
-      "name": "Which artists are in the S+ tier?",
+      "name": "Do you explain ranking changes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Based on current community rankings, Genevieve, Isadora, and Alexandra are consistently rated as S+ tier for their exceptional stats and skills."
+        "text": "Yes. Important ranking changes are explained directly on tier-related pages with context about mode, synergy, and resource cost." 
       }
     }
   ]

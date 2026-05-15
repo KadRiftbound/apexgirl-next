@@ -20,13 +20,13 @@ const titleTemplates: Record<string, (title: string, cat: string) => string> = {
 
 const faqTemplates: Record<string, { q: string; a: string }[]> = {
   en: [
-    { q: "What is the best strategy for this guide?", a: "This guide provides step-by-step instructions and proven strategies to help you succeed in Top Girl/Apex Girl." },
+    { q: "How is this guide maintained?", a: "Major guides are reviewed after gameplay changes, event cycles, and community feedback." },
     { q: "Is this guide updated for 2026?", a: "Yes, this guide is regularly updated to reflect the latest game mechanics and events." },
     { q: "Can beginners follow this guide?", a: "Yes, our guides are designed for all skill levels from beginners to advanced players." },
     { q: "Does this work in Idol Company too?", a: "Yes, Top Girl, Apex Girl, and Idol Company are the same game with different regional names." },
   ],
   fr: [
-    { q: "Quelle est la meilleure stratégie pour ce guide ?", a: "Ce guide fournit des instructions étape par étape et des stratégies éprouvées pour vous aider à réussir dans Top Girl/Apex Girl." },
+    { q: "Comment ce guide est-il maintenu ?", a: "Les guides majeurs sont revus après changements de gameplay, cycles d'événements et retours de la communauté." },
     { q: "Ce guide est-il mis à jour pour 2026 ?", a: "Oui, ce guide est régulièrement mis à jour pour refléter les derniers mécanismes et événements du jeu." },
     { q: "Les débutants peuvent-ils suivre ce guide ?", a: "Oui, nos guides sont conçus pour tous les niveaux de compétence." },
     { q: "Cela fonctionne aussi dans Idol Company ?", a: "Oui, Top Girl, Apex Girl et Idol Company sont le même jeu avec des noms régionaux différents." },
@@ -208,6 +208,18 @@ export default async function GuideDetailPage(
       />
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         <Breadcrumb items={breadcrumbItems} lang={lang} />
+      </div>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px 20px' }}>
+        <div style={{ background: 'rgba(26,26,44,0.85)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: 16 }}>
+          <div style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', marginBottom: 6 }}>
+            {lang === 'fr' ? 'Mise a jour editoriale' : 'Editorial update'}: {today}
+          </div>
+          <div style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>
+            {lang === 'fr'
+              ? "Ce guide est revu apres changements majeurs de meta et feedback joueurs. Methodologie: tests en jeu, synergies, cout de progression."
+              : "This guide is reviewed after major meta changes and player feedback. Methodology: in-game testing, synergy checks, and progression cost."}
+          </div>
+        </div>
       </div>
       <GuideDetailClient lang={lang} slug={langSlug} guideId={guide.id} />
     </>

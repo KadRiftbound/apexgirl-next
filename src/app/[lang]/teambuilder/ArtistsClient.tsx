@@ -302,6 +302,16 @@ export default function ArtistsClient({ lang }: { lang: string }) {
         <div className="page-header">
           <h1 className="page-title">{t.pageTitle || "🎤 Artists"}</h1>
           <p className="page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
+          <div style={{ maxWidth: 920, margin: "12px auto 16px", textAlign: "left", background: "rgba(26,26,44,0.85)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: 14 }}>
+            <div style={{ fontSize: "0.94rem", color: "rgba(255,255,255,0.9)", marginBottom: 6 }}>
+              {lang === "fr" ? "Methodologie du Team Builder" : "Team Builder methodology"}
+            </div>
+            <div style={{ fontSize: "0.84rem", color: "rgba(255,255,255,0.68)", lineHeight: 1.6 }}>
+              {lang === "fr"
+                ? "Les comparaisons d'equipes s'appuient sur stats combinees, synergies de genre/specialite et cout de progression. Utilisez les filtres pour adapter les suggestions a votre serveur et votre saison."
+                : "Team comparisons use combined stats, genre/specialty synergy, and progression cost. Use filters to adapt recommendations to your server and season."}
+            </div>
+          </div>
           <AdBanner />
         </div>
 

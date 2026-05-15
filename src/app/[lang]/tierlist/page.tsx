@@ -5,15 +5,15 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 const BASE_URL = "https://apexgirlguide.com";
 
 const meta: Record<string, { title: string; description: string; keywords: string }> = {
-  fr: { title: "TopGirl Tier List 2026 — Meilleurs Artistes Classés (S+ à D)", description: "Classement ultime des meilleurs artistes TopGirl/ApexGirl/Idol Company. Tiers S+, S, A, B, C, D. Découvrez qui vote ! Updated April 2026.", keywords: "TopGirl tier list, meilleurs artistes TopGirl, classement ApexGirl, Idol Company tier list, vote artiste, Genevieve tier, Isadora tier" },
-  en: { title: "TopGirl Tier List 2026 — Best Artists Ranked (S+ to D)", description: "Ultimate TopGirl/ApexGirl/Idol Company tier list. See who ranks S+, S, A, B, C, D. Community-driven rankings with weekly updates. Updated April 2026.", keywords: "TopGirl tier list, best TopGirl artists, ApexGirl ranking, Idol Company tier list, artist vote, Genevieve tier, Isadora tier" },
-  de: { title: "TopGirl Tier List 2026 — Beste Künstlerinnen im Ranking (S+ bis D)", description: "Ultimative TopGirl/ApexGirl/Idol Company Tier List. Wer steht bei S+, S, A, B, C, D? Community-basiertes Ranking mit wöchentlichen Updates. Stand April 2026.", keywords: "TopGirl tier list, beste TopGirl Künstlerinnen, ApexGirl Ranking, Idol Company tier list" },
-  it: { title: "TopGirl Tier List 2026 — Migliori Artisti Classificati (S+ fino a D)", description: "Tier list definitiva di TopGirl/ApexGirl/Idol Company. Scopri chi è classificato S+, S, A, B, C, D. Classifiche community-driven con aggiornamenti settimanali. Aggiornato Aprile 2026.", keywords: "TopGirl tier list, migliori artisti TopGirl, classifica ApexGirl, Idol Company tier list" },
-  es: { title: "TopGirl Tier List 2026 — Mejores Artistas Clasificados (S+ a D)", description: "Lista de niveles definitiva de TopGirl/ApexGirl/Idol Company. Descubre quién está en S+, S, A, B, C, D. Clasificaciones de la comunidad con actualizaciones semanales. Actualizado Abril 2026.", keywords: "TopGirl tier list, mejores artistas TopGirl, clasificación ApexGirl, Idol Company tier list" },
-  pt: { title: "TopGirl Tier List 2026 — Melhores Artistas Classificados (S+ a D)", description: "Lista de níveis definitiva de TopGirl/ApexGirl/Idol Company. Veja quem está classificado S+, S, A, B, C, D. Rankings da comunidade com atualizações semanais. Atualizado Abril 2026.", keywords: "TopGirl tier list, melhores artistas TopGirl, ranking ApexGirl, Idol Company tier list" },
-  pl: { title: "TopGirl Tier List 2026 — Najlepsi Artyści w Rankingu (S+ do D)", description: "Ostateczna lista tier TopGirl/ApexGirl/Idol Company. Zobacz kto jest w S+, S, A, B, C, D. Rankingi społecznościowe z cotygodniowymi aktualizacjami. Zaktualizowano Kwiecień 2026.", keywords: "TopGirl tier list, najlepsi artyści TopGirl, ranking ApexGirl, Idol Company tier list" },
-  id: { title: "TopGirl Tier List 2026 — Artis Terbaik di Ranking (S+ hingga D)", description: "Tier list终极 TopGirl/ApexGirl/Idol Company. Lihat siapa yang masuk S+, S, A, B, C, D. Peringkat komunitas dengan pembaruan mingguan. Diperbarui April 2026.", keywords: "TopGirl tier list, artis terbaik TopGirl, ranking ApexGirl, Idol Company tier list" },
-  ru: { title: "TopGirl Tier List 2026 — Лучшие Артисты в Рейтинге (S+ до D)", description: "Итоговый тир-лист TopGirl/ApexGirl/Idol Company. Узнайте, кто в S+, S, A, B, C, D. Рейтинги сообщества с еженедельными обновлениями. Обновлено Апрель 2026.", keywords: "TopGirl tier list, лучшие артисты TopGirl, рейтинг ApexGirl, Idol Company tier list" },
+  fr: { title: "TopGirl Tier List — Classement des artistes (S+ a D)", description: "Tier list TopGirl/ApexGirl/Idol Company basee sur votes, synergies et retours de jeu. Classements S+ a D avec contexte d'utilisation.", keywords: "TopGirl tier list, meilleurs artistes TopGirl, classement ApexGirl, Idol Company tier list, vote artiste, Genevieve tier, Isadora tier" },
+  en: { title: "TopGirl Tier List — Artist Rankings (S+ to D)", description: "TopGirl/ApexGirl/Idol Company tier list based on votes, synergy, and gameplay feedback. S+ to D rankings with usage context.", keywords: "TopGirl tier list, best TopGirl artists, ApexGirl ranking, Idol Company tier list, artist vote, Genevieve tier, Isadora tier" },
+  de: { title: "TopGirl Tier List — Künstlerinnen Ranking (S+ bis D)", description: "TopGirl/ApexGirl/Idol Company Tier List auf Basis von Stimmen, Synergien und Gameplay-Feedback.", keywords: "TopGirl tier list, beste TopGirl Künstlerinnen, ApexGirl Ranking, Idol Company tier list" },
+  it: { title: "TopGirl Tier List — Classifica artisti (S+ a D)", description: "Tier list TopGirl/ApexGirl/Idol Company basata su voti, sinergie e feedback di gioco.", keywords: "TopGirl tier list, migliori artisti TopGirl, classifica ApexGirl, Idol Company tier list" },
+  es: { title: "TopGirl Tier List — Ranking de artistas (S+ a D)", description: "Tier list de TopGirl/ApexGirl/Idol Company basada en votos, sinergias y feedback de juego.", keywords: "TopGirl tier list, mejores artistas TopGirl, clasificación ApexGirl, Idol Company tier list" },
+  pt: { title: "TopGirl Tier List — Ranking de artistas (S+ a D)", description: "Tier list TopGirl/ApexGirl/Idol Company com base em votos, sinergias e feedback de gameplay.", keywords: "TopGirl tier list, melhores artistas TopGirl, ranking ApexGirl, Idol Company tier list" },
+  pl: { title: "TopGirl Tier List — Ranking artystow (S+ do D)", description: "Tier list TopGirl/ApexGirl/Idol Company oparta na glosach, synergii i feedbacku z gry.", keywords: "TopGirl tier list, najlepsi artyści TopGirl, ranking ApexGirl, Idol Company tier list" },
+  id: { title: "TopGirl Tier List — Ranking artis (S+ sampai D)", description: "Tier list TopGirl/ApexGirl/Idol Company berdasarkan vote, sinergi, dan feedback gameplay.", keywords: "TopGirl tier list, artis terbaik TopGirl, ranking ApexGirl, Idol Company tier list" },
+  ru: { title: "TopGirl Tier List — Рейтинг артистов (S+ до D)", description: "Тир-лист TopGirl/ApexGirl/Idol Company на основе голосов, синергий и игрового фидбека.", keywords: "TopGirl tier list, лучшие артисты TopGirl, рейтинг ApexGirl, Idol Company tier list" },
 };
 
 const faqSchema = {
@@ -82,6 +82,18 @@ export default async function TierlistPage({ params }: { params: Promise<{ lang:
       />
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Tier List', href: '/tierlist/' }]} lang={lang} />
+      </div>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px 20px' }}>
+        <div style={{ background: 'rgba(26,26,44,0.85)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: 16 }}>
+          <div style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.9)', marginBottom: 6 }}>
+            {lang === 'fr' ? 'Methodologie du classement' : 'Ranking methodology'}
+          </div>
+          <div style={{ fontSize: '0.84rem', color: 'rgba(255,255,255,0.68)', lineHeight: 1.6 }}>
+            {lang === 'fr'
+              ? "Cette tier list combine votes communautaires, performances en jeu, synergies d'equipe et cout de progression. Les changements majeurs sont revus apres updates et evenements competitifs."
+              : "This tier list combines community voting, in-game performance, team synergy, and progression cost. Major shifts are reviewed after game updates and competitive events."}
+          </div>
+        </div>
       </div>
       <TierlistClient lang={lang} />
     </>

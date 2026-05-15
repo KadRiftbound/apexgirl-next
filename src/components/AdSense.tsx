@@ -8,6 +8,8 @@ interface AdSenseProps {
 }
 
 export function AdSense({ adSlot, adFormat = "auto" }: AdSenseProps) {
+  if (!adSlot) return null;
+
   const pushed = useRef(false);
 
   useEffect(() => {
@@ -34,17 +36,23 @@ export function AdSense({ adSlot, adFormat = "auto" }: AdSenseProps) {
 }
 
 export function AdBanner() {
+  const slot = process.env.NEXT_PUBLIC_ADSENSE_BANNER_SLOT;
+  if (!slot) return null;
+
   return (
     <div className="ad-banner" style={{ margin: "16px 0", minHeight: "90px" }}>
-      <AdSense adSlot="1234567890" />
+      <AdSense adSlot={slot} />
     </div>
   );
 }
 
 export function AdSidebar() {
+  const slot = process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_SLOT;
+  if (!slot) return null;
+
   return (
     <div className="ad-sidebar" style={{ margin: "var(--space-4) 0", minHeight: "250px" }}>
-      <AdSense adSlot="1234567891" adFormat="rectangle" />
+      <AdSense adSlot={slot} adFormat="rectangle" />
     </div>
   );
 }

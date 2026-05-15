@@ -66,7 +66,7 @@ const translations: Record<string, any> = {
         title: "Artistes",
         desc: "112+ fiches complètes",
         detail: "Stats, skills, tier et conseils pour chaque artiste du jeu",
-        href: "artists",
+        href: "teambuilder",
         color: "#ff4d8d",
       },
       {
@@ -121,7 +121,7 @@ const translations: Record<string, any> = {
         title: "Artists",
         desc: "112+ full profiles",
         detail: "Stats, skills, tier and tips for every artist in the game",
-        href: "artists",
+        href: "teambuilder",
         color: "#ff4d8d",
       },
       {
@@ -170,7 +170,7 @@ const translations: Record<string, any> = {
     artistsOnGame: "Artisti SSR del gioco",
     seeAllArtists: "Vedi tutti gli artisti →",
     sections: [
-      { emoji: "🎤", title: "Artisti", desc: "112+ schede complete", detail: "Stats, skill, tier e consigli per ogni artista", href: "artists", color: "#ff4d8d" },
+      { emoji: "🎤", title: "Artisti", desc: "112+ schede complete", detail: "Stats, skill, tier e consigli per ogni artista", href: "teambuilder", color: "#ff4d8d" },
       { emoji: "🏆", title: "Tier List", desc: "Classifica community", detail: "Vota e scopri gli artisti più potenti della settimana", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Strumenti", desc: "Team builder & calcolatori", detail: "Costruisci il tuo team ideale e simula composizioni", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Guide", desc: "Strategie & tutorial", detail: "Da principiante a esperto: tutto per migliorare", href: "guides", color: "#4ade80" },
@@ -193,7 +193,7 @@ const translations: Record<string, any> = {
     artistsOnGame: "Artistas SSR del juego",
     seeAllArtists: "Ver todos los artistas →",
     sections: [
-      { emoji: "🎤", title: "Artistas", desc: "112+ fichas completas", detail: "Stats, habilidades, tier y consejos para cada artista", href: "artists", color: "#ff4d8d" },
+      { emoji: "🎤", title: "Artistas", desc: "112+ fichas completas", detail: "Stats, habilidades, tier y consejos para cada artista", href: "teambuilder", color: "#ff4d8d" },
       { emoji: "🏆", title: "Tier List", desc: "Ranking comunidad", detail: "Vota y descubre los artistas más poderosos esta semana", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Herramientas", desc: "Team builder & calculadoras", detail: "Construye tu equipo ideal y simula composiciones", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Guías", desc: "Estrategias & tutoriales", detail: "De principiante a experto: todo para mejorar", href: "guides", color: "#4ade80" },
@@ -216,7 +216,7 @@ const translations: Record<string, any> = {
     artistsOnGame: "Artistas SSR do jogo",
     seeAllArtists: "Ver todos os artistas →",
     sections: [
-      { emoji: "🎤", title: "Artistas", desc: "112+ perfis completos", detail: "Stats, skills, tier e dicas para cada artista", href: "artists", color: "#ff4d8d" },
+      { emoji: "🎤", title: "Artistas", desc: "112+ perfis completos", detail: "Stats, skills, tier e dicas para cada artista", href: "teambuilder", color: "#ff4d8d" },
       { emoji: "🏆", title: "Tier List", desc: "Ranking da comunidade", detail: "Vote e descubra os artistas mais poderosos desta semana", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Ferramentas", desc: "Team builder & calculadoras", detail: "Monte seu time ideal e simule composições", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Guias", desc: "Estratégias & tutoriais", detail: "Do iniciante ao expert: tudo para evoluir", href: "guides", color: "#4ade80" },
@@ -239,7 +239,7 @@ const translations: Record<string, any> = {
     artistsOnGame: "Artystki SSR w grze",
     seeAllArtists: "Zobacz wszystkich artystów →",
     sections: [
-      { emoji: "🎤", title: "Artyści", desc: "112+ pełnych profili", detail: "Statystyki, umiejętności, tier i porady dla każdego artysty", href: "artists", color: "#ff4d8d" },
+      { emoji: "🎤", title: "Artyści", desc: "112+ pełnych profili", detail: "Statystyki, umiejętności, tier i porady dla każdego artysty", href: "teambuilder", color: "#ff4d8d" },
       { emoji: "🏆", title: "Tier List", desc: "Ranking społeczności", detail: "Głosuj i odkryj najpotężniejszych artystów tego tygodnia", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Narzędzia", desc: "Team builder i kalkulatory", detail: "Zbuduj idealny zespół i symuluj kompozycje", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Poradniki", desc: "Strategie i samouczki", detail: "Od początkującego do eksperta: wszystko by się rozwijać", href: "guides", color: "#4ade80" },
@@ -262,7 +262,7 @@ const translations: Record<string, any> = {
     artistsOnGame: "Artis SSR dalam game",
     seeAllArtists: "Lihat semua artis →",
     sections: [
-      { emoji: "🎤", title: "Artis", desc: "112+ profil lengkap", detail: "Stats, skill, tier dan tips untuk setiap artis", href: "artists", color: "#ff4d8d" },
+      { emoji: "🎤", title: "Artis", desc: "112+ profil lengkap", detail: "Stats, skill, tier dan tips untuk setiap artis", href: "teambuilder", color: "#ff4d8d" },
       { emoji: "🏆", title: "Tier List", desc: "Ranking komunitas", detail: "Pilih dan temukan artis terkuat minggu ini", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Alat", desc: "Team builder & kalkulator", detail: "Bangun tim ideal dan simulasikan komposisi", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Panduan", desc: "Strategi & tutorial", detail: "Dari pemula hingga ahli: semua untuk berkembang", href: "guides", color: "#4ade80" },
@@ -285,7 +285,7 @@ const translations: Record<string, any> = {
     artistsOnGame: "Артисты SSR в игре",
     seeAllArtists: "Все артисты →",
     sections: [
-      { emoji: "🎤", title: "Артисты", desc: "112+ полных профилей", detail: "Статы, умения, тир и советы для каждого артиста", href: "artists", color: "#ff4d8d" },
+      { emoji: "🎤", title: "Артисты", desc: "112+ полных профилей", detail: "Статы, умения, тир и советы для каждого артиста", href: "teambuilder", color: "#ff4d8d" },
       { emoji: "🏆", title: "Тир-лист", desc: "Рейтинг сообщества", detail: "Голосуйте и узнайте сильнейших артистов недели", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Инструменты", desc: "Team builder и калькуляторы", detail: "Стройте идеальную команду и симулируйте составы", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Гайды", desc: "Стратегии и туториалы", detail: "От новичка до эксперта: всё для прогресса", href: "guides", color: "#4ade80" },
@@ -308,7 +308,7 @@ const translations: Record<string, any> = {
     artistsOnGame: "SSR-Künstlerinnen im Spiel",
     seeAllArtists: "Alle Künstlerinnen anzeigen →",
     sections: [
-      { emoji: "🎤", title: "Künstlerinnen", desc: "112+ vollständige Profile", detail: "Stats, Fähigkeiten, Tier und Tipps für jede Künstlerin im Spiel", href: "artists", color: "#ff4d8d" },
+      { emoji: "🎤", title: "Künstlerinnen", desc: "112+ vollständige Profile", detail: "Stats, Fähigkeiten, Tier und Tipps für jede Künstlerin im Spiel", href: "teambuilder", color: "#ff4d8d" },
       { emoji: "🏆", title: "Tier Liste", desc: "Community-Ranking", detail: "Abstimmen und entdecke die stärksten Künstlerinnen dieser Woche", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Werkzeuge", desc: "Team-Builder & Rechner", detail: "Baue dein ideales Team und simuliere Zusammenstellungen", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Leitfäden", desc: "Strategien & Tutorials", detail: "Vom Anfänger zum Experten: alles was du zum Verbessern brauchst", href: "guides", color: "#4ade80" },
@@ -555,6 +555,41 @@ export default function HomeClient({ lang }: { lang: string }) {
                 <div className="offer-card-arrow" style={{ color: s.color }}>→</div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="editorial-section">
+        <div className="editorial-inner">
+          <h2 className="editorial-title">{lang === "fr" ? "Comment nous maintenons le contenu" : "How we maintain content quality"}</h2>
+          <div className="editorial-grid">
+            <article className="editorial-card">
+              <h3>{lang === "fr" ? "Methodologie claire" : "Clear methodology"}</h3>
+              <p>
+                {lang === "fr"
+                  ? "Nos tiers et recommandations sont bases sur tests en jeu, synergies d'equipe, cout de progression et feedback communautaire."
+                  : "Our tiers and recommendations are based on in-game testing, team synergy, progression cost, and community feedback."}
+              </p>
+              <Link href={`/${lang}/methodology/`}>{lang === "fr" ? "Voir la methodologie" : "Read methodology"} →</Link>
+            </article>
+            <article className="editorial-card">
+              <h3>{lang === "fr" ? "Mises a jour tracees" : "Tracked updates"}</h3>
+              <p>
+                {lang === "fr"
+                  ? "Nous corrigeons les pages majeures apres changements de meta et signalements des joueurs."
+                  : "We revise major pages after meta changes and player reports."}
+              </p>
+              <Link href={`/${lang}/corrections/`}>{lang === "fr" ? "Signaler une correction" : "Report a correction"} →</Link>
+            </article>
+            <article className="editorial-card">
+              <h3>{lang === "fr" ? "Independance editoriale" : "Editorial independence"}</h3>
+              <p>
+                {lang === "fr"
+                  ? "La monetisation ne modifie pas les classements ni les conseils."
+                  : "Monetization does not change rankings or gameplay recommendations."}
+              </p>
+              <Link href={`/${lang}/advertising-disclosure/`}>{lang === "fr" ? "Voir la transparence pub" : "Read ad disclosure"} →</Link>
+            </article>
           </div>
         </div>
       </section>
@@ -814,6 +849,50 @@ export default function HomeClient({ lang }: { lang: string }) {
           border-color: currentColor;
         }
 
+        /* ── EDITORIAL TRUST ─────────────────────── */
+        .editorial-section {
+          padding: 42px 20px 24px;
+        }
+        .editorial-inner {
+          max-width: 980px;
+          margin: 0 auto;
+        }
+        .editorial-title {
+          font-size: 1.35rem;
+          font-weight: 800;
+          color: #fff;
+          margin: 0 0 18px;
+          text-align: center;
+        }
+        .editorial-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 14px;
+        }
+        .editorial-card {
+          background: rgba(26,26,44,0.86);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 14px;
+          padding: 18px;
+        }
+        .editorial-card h3 {
+          margin: 0 0 8px;
+          color: #fff;
+          font-size: 1rem;
+        }
+        .editorial-card p {
+          margin: 0 0 10px;
+          color: rgba(255,255,255,0.72);
+          font-size: 0.88rem;
+          line-height: 1.55;
+        }
+        .editorial-card :global(a) {
+          color: #8b5cf6;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.85rem;
+        }
+
         /* ── ARTIST STRIP ─────────────────────────── */
         .artist-strip-section {
           padding: 40px 0 36px;
@@ -1054,6 +1133,10 @@ export default function HomeClient({ lang }: { lang: string }) {
           .offer-card-desc { font-size: 0.68rem; margin-bottom: 0; }
           .offer-card-detail { display: none; }
           .offer-card-arrow { display: none; }
+          .editorial-section { padding: 22px 12px 6px; }
+          .editorial-grid { grid-template-columns: 1fr; gap: 10px; }
+          .editorial-title { font-size: 1.05rem; }
+          .editorial-card { padding: 14px; }
           .codes-header { flex-direction: column; }
         }
       `}</style>

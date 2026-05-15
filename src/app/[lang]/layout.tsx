@@ -216,6 +216,9 @@ export default async function LocaleLayout({
           <div>
             <h4>{ui.footer.resources}</h4>
             <Link href={`/${lang}/guides/`}>{ui.nav.guides}</Link>
+            <Link href={`/${lang}/methodology/`}>{lang === "fr" ? "Methodologie" : "Methodology"}</Link>
+            <Link href={`/${lang}/editorial-policy/`}>{lang === "fr" ? "Politique editoriale" : "Editorial Policy"}</Link>
+            <Link href={`/${lang}/about/`}>{lang === "fr" ? "A propos" : "About"}</Link>
           </div>
           <div>
             <h4>{ui.footer.legal}</h4>
@@ -223,6 +226,8 @@ export default async function LocaleLayout({
             <Link href={lang === 'fr' ? `/${lang}/confidentialite` : `/${lang}/privacy-policy`}>{ui.footer.privacy}</Link>
             <Link href={`/${lang}/cookie-settings`}>{ui.footer.cookies}</Link>
             <Link href={`/${lang}/contact`}>{ui.footer.contact}</Link>
+            <Link href={`/${lang}/corrections/`}>{lang === "fr" ? "Corrections" : "Corrections"}</Link>
+            <Link href={`/${lang}/advertising-disclosure/`}>{lang === "fr" ? "Transparence pub" : "Ad Disclosure"}</Link>
           </div>
         </div>
         <div className="footer-bottom">

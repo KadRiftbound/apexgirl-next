@@ -246,6 +246,16 @@ function TierListPageInner({ lang }: { lang: string }) {
         <div className="text-center" style={{ marginBottom: "40px" }}>
           <h1 className="section-title">🏆 {t.title}</h1>
           <p className="section-subtitle">{t.subtitle}</p>
+          <div style={{ maxWidth: 860, margin: "14px auto 0", textAlign: "left", background: "rgba(26,26,44,0.85)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: 14 }}>
+            <div style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.9)", marginBottom: 6 }}>
+              {lang === "fr" ? "Notes de classement" : "Ranking notes"}
+            </div>
+            <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.68)", lineHeight: 1.6 }}>
+              {lang === "fr"
+                ? "Les tiers combinent votes, performance en jeu, synergie d'equipe et regularite en event competitif."
+                : "Tiers combine voting data, in-game performance, team synergy, and consistency in competitive events."}
+            </div>
+          </div>
         </div>
 
         <AdBanner />

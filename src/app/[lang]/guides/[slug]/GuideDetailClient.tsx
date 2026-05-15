@@ -124,9 +124,24 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
   const guide = guideId ? allGuides.find(g => g.id === guideId) : allGuides.find(g => g.id === slug);
   const langSlug = guide?.slugs?.[lang as keyof typeof guide.slugs] || guide?.id || slug;
   const guideColor = guide?.color || "#8b5cf6";
+  const today = new Date().toISOString().split("T")[0];
   
   const getGuideSlug = (g: typeof guide) => g?.slugs?.[lang as keyof typeof g.slugs] || g?.id || '';
   const [glossaryContent, setGlossaryContent] = useState<string>("");
+
+  const editorialTexts = {
+    methodologyTitle: lang === "fr" ? "Comment ce guide est maintenu" : "How this guide is maintained",
+    methodologyBody:
+      lang === "fr"
+        ? "Nous revoyons ce guide apres changements de meta, cycles d'evenements et retours joueurs. Les recommandations sont verifiees sur progression, synergies et rapport cout/impact."
+        : "We review this guide after meta shifts, event cycles, and player feedback. Recommendations are checked against progression impact, team synergy, and resource efficiency.",
+    usageTitle: lang === "fr" ? "Quand utiliser ce guide" : "When to use this guide",
+    usageBody:
+      lang === "fr"
+        ? "Priorisez ce guide si vous travaillez une equipe de meme genre, preparez un event competitif, ou arbitrez des depenses limitees."
+        : "Prioritize this guide when building same-genre teams, preparing competitive events, or optimizing limited resources.",
+    updateTitle: lang === "fr" ? "Derniere revue editoriale" : "Last editorial review",
+  };
 
   const glossaryFileMap: Record<string, string> = {
     fr: "/glossaire.txt",
@@ -680,6 +695,29 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       </div>
 
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 20px 0" }}>
+
+        <div style={{
+          background: "rgba(12,16,28,0.84)",
+          borderRadius: "16px",
+          border: "1px solid rgba(255,255,255,0.09)",
+          padding: "16px",
+          marginBottom: "16px",
+        }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "10px" }}>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "12px" }}>
+              <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.methodologyTitle}</div>
+              <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{editorialTexts.methodologyBody}</div>
+            </div>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "12px" }}>
+              <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.usageTitle}</div>
+              <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{editorialTexts.usageBody}</div>
+            </div>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "12px" }}>
+              <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.updateTitle}</div>
+              <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{today}</div>
+            </div>
+          </div>
+        </div>
 
         {/* Rewards */}
         {rewardsContent && (

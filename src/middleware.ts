@@ -44,9 +44,12 @@ export function middleware(request: NextRequest) {
     "/en/events": "/en/guides",
     "/artists": "/en/teambuilder",
     "/en/artists": "/en/teambuilder",
-    "/guides/vip-level": "/en/vip-system-guide",
-    "/guides/vip": "/en/vip-system-guide",
-    "/vip": "/en/vip-system-guide",
+    "/guides/vip-level": "/en/guides/vip-system-guide/",
+    "/guides/vip-level/": "/en/guides/vip-system-guide/",
+    "/guides/vip": "/en/guides/vip-system-guide/",
+    "/guides/vip/": "/en/guides/vip-system-guide/",
+    "/vip": "/en/guides/vip-system-guide/",
+    "/vip/": "/en/guides/vip-system-guide/",
   };
 
   if (legacyRedirects[pathname]) {
