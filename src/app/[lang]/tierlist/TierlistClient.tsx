@@ -116,12 +116,12 @@ const genreColors: Record<string, string> = {
 };
 
 const tierColors: Record<string, { bg: string; border: string; text: string }> = {
-  "S+": { bg: "rgba(255, 215, 0, 0.25)", border: "#ffd700", text: "#ffd700" },
-  S: { bg: "rgba(255, 215, 0, 0.15)", border: "#ffd700", text: "#ffd700" },
-  A: { bg: "rgba(34, 197, 94, 0.15)", border: "#22c55e", text: "#22c55e" },
-  B: { bg: "rgba(59, 130, 246, 0.15)", border: "#3b82f6", text: "#3b82f6" },
-  C: { bg: "rgba(245, 158, 11, 0.15)", border: "#f59e0b", text: "#f59e0b" },
-  D: { bg: "rgba(148, 163, 184, 0.15)", border: "#94a3b8", text: "#94a3b8" },
+  "S+": { bg: "rgba(255, 215, 0, 0.45)", border: "#ffd700", text: "#ffd700" },
+  S: { bg: "rgba(255, 215, 0, 0.35)", border: "#ffd700", text: "#ffd700" },
+  A: { bg: "rgba(34, 197, 94, 0.30)", border: "#22c55e", text: "#22c55e" },
+  B: { bg: "rgba(59, 130, 246, 0.30)", border: "#3b82f6", text: "#3b82f6" },
+  C: { bg: "rgba(245, 158, 11, 0.30)", border: "#f59e0b", text: "#f59e0b" },
+  D: { bg: "rgba(148, 163, 184, 0.30)", border: "#94a3b8", text: "#94a3b8" },
 };
 
 const tierOrder: string[] = ["S+", "S", "A", "B", "C", "D"];
@@ -456,10 +456,10 @@ function TierListPageInner({ lang }: { lang: string }) {
                     overflow: "hidden"
                   }}
                  >
-                   <div style={{
-                     padding: "12px 20px",
-                     background: `${tierColors[tier]?.border}22`,
-                     borderBottom: `1px solid ${tierColors[tier]?.border}44`,
+                    <div style={{
+                      padding: "12px 20px",
+                      background: `${tierColors[tier]?.border}55`,
+                      borderBottom: `1px solid ${tierColors[tier]?.border}66`,
                      display: "flex",
                      alignItems: "center",
                      justifyContent: "space-between"
