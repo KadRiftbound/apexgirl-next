@@ -39,6 +39,32 @@ function getLocale(request: NextRequest) {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  const localeVipSlugs: Record<string, string> = {
+    fr: "guide-systeme-vip",
+    en: "vip-system-guide",
+    de: "leitfaden-vip-system",
+    it: "guida-sistema-vip",
+    es: "guia-sistema-vip",
+    pt: "guia-sistema-vip",
+    pl: "przewodnik-system-vip",
+    id: "panduan-sistem-vip",
+    ru: "rukovodstvo-sistem-vip",
+  };
+
+  const localeVipMatch = pathname.match(/^\/(fr|en|de|it|es|pt|pl|id|ru)\/guides\/vip-level\/?$/);
+  if (localeVipMatch) {
+    const locale = localeVipMatch[1];
+    const targetSlug = localeVipSlugs[locale] || localeVipSlugs.en;
+    return NextResponse.redirect(new URL(`/${locale}/guides/${targetSlug}/`, request.url));
+  }
+
+  const localeVipShortMatch = pathname.match(/^\/(fr|en|de|it|es|pt|pl|id|ru)\/guides\/vip\/?$/);
+  if (localeVipShortMatch) {
+    const locale = localeVipShortMatch[1];
+    const targetSlug = localeVipSlugs[locale] || localeVipSlugs.en;
+    return NextResponse.redirect(new URL(`/${locale}/guides/${targetSlug}/`, request.url));
+  }
+
   const legacyRedirects: Record<string, string> = {
     "/events": "/en/guides",
     "/en/events": "/en/guides",
