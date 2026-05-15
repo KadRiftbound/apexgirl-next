@@ -640,7 +640,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
     <>
       {/* Hero Header */}
       <div style={{
-        background: "rgba(15,15,26,0.78)",
+        background: "rgba(10,12,22,0.94)",
         backdropFilter: "blur(16px)",
         borderBottom: `1px solid ${guideColor}44`,
         padding: "32px 0 24px",
@@ -697,22 +697,22 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 20px 0" }}>
 
         <div style={{
-          background: "rgba(12,16,28,0.84)",
+          background: "rgba(10,14,24,0.92)",
           borderRadius: "16px",
           border: "1px solid rgba(255,255,255,0.09)",
           padding: "16px",
           marginBottom: "16px",
         }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "10px" }}>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "12px" }}>
+            <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", padding: "12px" }}>
               <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.methodologyTitle}</div>
               <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{editorialTexts.methodologyBody}</div>
             </div>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "12px" }}>
+            <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", padding: "12px" }}>
               <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.usageTitle}</div>
               <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{editorialTexts.usageBody}</div>
             </div>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px", padding: "12px" }}>
+            <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", padding: "12px" }}>
               <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.updateTitle}</div>
               <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{today}</div>
             </div>

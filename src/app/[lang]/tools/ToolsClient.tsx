@@ -169,8 +169,9 @@ export default function ToolsClient({ lang }: { lang: string }) {
 
       {/* Hero Header */}
       <div style={{
+        background: "rgba(10,12,22,0.90)",
         backdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(139, 92, 246, 0.25)",
+        borderBottom: "1px solid rgba(139, 92, 246, 0.38)",
         padding: "40px 0 30px",
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 20px" }}>
@@ -233,7 +234,7 @@ export default function ToolsClient({ lang }: { lang: string }) {
                     : `1.5px solid rgba(255,255,255,0.12)`,
                   background: isActive
                     ? `${tool.gradient}`
-                    : "rgba(255,255,255,0.06)",
+                    : "rgba(255,255,255,0.12)",
                   color: "#fff",
                   cursor: "pointer",
                   transition: "all 0.25s ease",
@@ -280,7 +281,7 @@ export default function ToolsClient({ lang }: { lang: string }) {
 
         {/* Active Tool Panel */}
         <div style={{
-          background: `${activeTool.color}40`,
+          background: `${activeTool.color}55`,
           borderRadius: "20px",
           border: `1.5px solid ${activeTool.color}44`,
           backdropFilter: "blur(20px)",
@@ -291,7 +292,7 @@ export default function ToolsClient({ lang }: { lang: string }) {
           <div style={{
             padding: "16px 24px",
             borderBottom: `1px solid ${activeTool.color}55`,
-            background: `${activeTool.color}20`,
+            background: `${activeTool.color}36`,
             display: "flex",
             alignItems: "center",
             gap: "12px",
@@ -384,7 +385,7 @@ export default function ToolsClient({ lang }: { lang: string }) {
           {/* Tool Content */}
           <div style={{ padding: "24px" }}>
             <div style={{
-              background: "rgba(15,15,32,0.85)",
+              background: "rgba(12,12,26,0.93)",
               borderRadius: "14px",
               padding: "20px",
               margin: "0 4px 4px",

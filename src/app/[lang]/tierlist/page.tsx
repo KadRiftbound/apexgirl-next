@@ -84,7 +84,7 @@ export default async function TierlistPage({ params }: { params: Promise<{ lang:
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Tier List', href: '/tierlist/' }]} lang={lang} />
       </div>
       <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px 20px' }}>
-        <div style={{ background: 'rgba(26,26,44,0.85)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: 16 }}>
+        <div style={{ background: 'rgba(18,20,34,0.93)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 14, padding: 16 }}>
           <div style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.9)', marginBottom: 6 }}>
             {lang === 'fr' ? 'Methodologie du classement' : 'Ranking methodology'}
           </div>

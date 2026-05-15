@@ -246,7 +246,7 @@ function TierListPageInner({ lang }: { lang: string }) {
         <div className="text-center" style={{ marginBottom: "40px" }}>
           <h1 className="section-title">🏆 {t.title}</h1>
           <p className="section-subtitle">{t.subtitle}</p>
-          <div style={{ maxWidth: 860, margin: "14px auto 0", textAlign: "left", background: "rgba(26,26,44,0.85)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: 14 }}>
+          <div style={{ maxWidth: 860, margin: "14px auto 0", textAlign: "left", background: "rgba(18,20,34,0.93)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: 14, padding: 14 }}>
             <div style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.9)", marginBottom: 6 }}>
               {lang === "fr" ? "Notes de classement" : "Ranking notes"}
             </div>
