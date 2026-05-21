@@ -70,6 +70,32 @@ export default async function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5737915177617454"
           crossOrigin="anonymous"
         />
+        <Script
+          id="grow-initializer"
+          strategy="afterInteractive"
+          data-grow-initializer=""
+          dangerouslySetInnerHTML={{
+            __html: `
+              !(function () {
+                window.growMe ||
+                  ((window.growMe = function (e) {
+                    window.growMe._.push(e);
+                  }),
+                  (window.growMe._ = []));
+                var e = document.createElement("script");
+                (e.type = "text/javascript"),
+                  (e.src = "https://faves.grow.me/main.js"),
+                  (e.defer = !0),
+                  e.setAttribute(
+                    "data-grow-faves-site-id",
+                    "U2l0ZTpiMTI1NDRjMS1lMjk3LTRiZjAtOWZlNy1mNzRkYTA0NWFiOGY="
+                  );
+                var t = document.getElementsByTagName("script")[0];
+                t.parentNode.insertBefore(e, t);
+              })();
+            `,
+          }}
+        />
       </body>
     </html>
   );
