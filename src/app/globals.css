@@ -445,12 +445,14 @@ img {
 }
 
 .btn-support {
-  background: transparent;
+  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
 }
 
 .btn-support:hover {
-  background: rgba(255, 215, 0, 0.15);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 28px rgba(255, 215, 0, 0.45);
+  transform: scale(1.03);
 }
 
 .footer-bottom {
