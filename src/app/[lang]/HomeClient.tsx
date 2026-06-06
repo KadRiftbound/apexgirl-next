@@ -324,7 +324,6 @@ export default function HomeClient({ lang }: { lang: string }) {
     <>
       {/* ═══════════════════════════════════════════
           HERO
-      ═══════════════════════════════════════════ */}
       <div className="hero-content">
         <div className="hero-badge">TopGirl / ApexGirl</div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -353,9 +352,7 @@ export default function HomeClient({ lang }: { lang: string }) {
       </div>
 
       {/* ═══════════════════════════════════════════
-          TL;DR — Quick answers in 10 seconds
-      ═══════════════════════════════════════════ */}
-      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 20px' }}>
+          TL;DR — Quick answers in 10 seconds      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 20px' }}>
         <div style={{ 
           background: 'linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(20, 20, 40, 0.95))',
           borderRadius: '20px',
@@ -418,9 +415,7 @@ export default function HomeClient({ lang }: { lang: string }) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTIONS — ce qu'on propose (premier contenu vu)
-      ═══════════════════════════════════════════ */}
-      <section className="offer-section">
+          SECTIONS — ce qu'on propose (premier contenu vu)      <section className="offer-section">
         <div className="offer-inner">
           <h2 className="offer-title">{t.whatWeOffer}</h2>
           <div className="offer-grid">
@@ -474,9 +469,52 @@ export default function HomeClient({ lang }: { lang: string }) {
             </article>
           </div>
         </div>
+            </section>
+
+      {/* ═══════════════════════════════════════════
+          WHAT IS TOPGIRL — war game explainer
+      <section className="explainer-section">
+        <div className="explainer-inner">
+          <h2 className="explainer-title">
+            {lang === "fr"
+              ? "Qu'est-ce que TopGirl / ApexGirl ?"
+              : "What is TopGirl / ApexGirl?"}
+          </h2>
+
+          <p className="explainer-p">
+            {lang === "fr"
+              ? "TopGirl (aussi appelé ApexGirl ou Idol Company) est un jeu de guerre stratégique multijoueur sur mobile. Contrairement à ce que son apparence et son nom suggèrent, il ne s'agit pas d'un simple jeu de rythme ou de gestion d'idoles — c'est un vrai war game basé sur la coopération en groupe, la conquête de territoires et la gestion de ressources."
+              : "TopGirl (also known as ApexGirl or Idol Company) is a multiplayer strategic war game for mobile. Despite its appearance and name, it is not a simple rhythm or idol management game — it is a real war game based on group cooperation, territory conquest, and resource management."}
+          </p>
+
+          <p className="explainer-p">
+            {lang === "fr"
+              ? "Le jeu fonctionne sur un système de serveurs. Chaque serveur est une communauté de joueurs qui doivent collaborer pour progresser, conquérir des zones sur la carte, et affronter d'autres serveurs lors des cycles Abroad (Tokyo, Bali, Rome Antique). La coordination de groupe est essentielle : un serveur désorganisé est rapidement pénalisé."
+              : "The game operates on a server system. Each server is a community of players who must collaborate to progress, conquer zones on the map, and face other servers during Abroad cycles (Tokyo, Bali, Ancient Rome). Group coordination is essential: a disorganized server is quickly penalized."}
+          </p>
+
+          <p className="explainer-p">
+            {lang === "fr"
+              ? "Comme beaucoup de jeux de guerre mobiles, TopGirl repose sur un modèle freemium avec microtransactions. Les artistes (SSR et UR) sont les personnages que vous collectionnez et améliorez. Les artistes SSR sont la base de votre progression, tandis que les UR sont des versions spéciales liées à vos SSR. Les ressources (or, diamants, lingots) servent à améliorer vos bâtiments, vos artistes et votre équipement."
+              : "Like many mobile war games, TopGirl relies on a freemium model with microtransactions. Artists (SSR and UR) are the characters you collect and upgrade. SSR artists are the foundation of your progression, while URs are special versions linked to your SSRs. Resources (gold, diamonds, ingots) are used to upgrade your buildings, artists, and equipment."}
+          </p>
+
+          <p className="explainer-p">
+            {lang === "fr"
+              ? "Pour bien débuter, concentrez-vous sur vos bâtiments de ville, recrutez une équipe équilibrée, et rejoignez un groupe actif. La progression passe par la coopération : personne ne réussit seul dans TopGirl."
+              : "To start well, focus on your city buildings, recruit a balanced team, and join an active group. Progression comes through cooperation — no one succeeds alone in TopGirl."}
+          </p>
+
+          <div className="explainer-links">
+            <Link href={`/${lang}/guides/comprendre-la-structure-du-jeu-top-girl/`} className="explainer-link">
+              {lang === "fr" ? "Lire le guide de structure du jeu" : "Read the game structure guide"} →
+            </Link>
+            <Link href={`/${lang}/guides/guide-construction-d-equipe-debut-de-jeu/`} className="explainer-link">
+              {lang === "fr" ? "Guide équipe débutant" : "Beginner team building guide"} →
+            </Link>
+          </div>
+        </div>
       </section>
-
-
 
       {/* ═══════════════════════════════════════════
           CODES PROMO
@@ -812,6 +850,52 @@ export default function HomeClient({ lang }: { lang: string }) {
           color: #22c55e;
         }
 
+        /* ── EXPLAINER SECTION ────────────────────── */
+        .explainer-section {
+          background: rgba(18,20,34,0.92);
+          border-top: 1px solid rgba(255,255,255,0.08);
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+          padding: 48px 20px;
+        }
+        .explainer-inner {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .explainer-title {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #fff;
+          margin: 0 0 24px;
+          text-align: center;
+        }
+        .explainer-p {
+          font-size: 0.98rem;
+          color: rgba(255,255,255,0.82);
+          line-height: 1.7;
+          margin: 0 0 18px;
+        }
+        .explainer-links {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          margin-top: 24px;
+          justify-content: center;
+        }
+        .explainer-link {
+          font-size: 0.9rem;
+          color: #8b5cf6;
+          text-decoration: none;
+          font-weight: 600;
+          padding: 10px 20px;
+          border: 1px solid rgba(139,92,246,0.3);
+          border-radius: 10px;
+          transition: background 0.2s;
+        }
+        .explainer-link:hover {
+          background: rgba(139,92,246,0.1);
+          color: #a78bfa;
+        }
+
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 600px) {
           .hero-content {
@@ -837,6 +921,10 @@ export default function HomeClient({ lang }: { lang: string }) {
           .editorial-title { font-size: 1.05rem; }
           .editorial-card { padding: 14px; }
           .codes-header { flex-direction: column; }
+          .explainer-section { padding: 28px 16px; }
+          .explainer-title { font-size: 1.2rem; margin-bottom: 16px; }
+          .explainer-p { font-size: 0.88rem; margin-bottom: 14px; }
+          .explainer-links { flex-direction: column; align-items: center; }
         }
       `}</style>
     </>

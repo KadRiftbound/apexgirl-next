@@ -28,7 +28,8 @@
     "specialty": "Augmentation dommage",
     "image": "Alexandra.jpg",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position lead d'équipe, genre Pop. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
     "id": 2,
@@ -59,7 +60,8 @@
     "calculatedTier": "A",
     "specialty": "Dommage réduction",
     "singStat": 19076,
-    "danceStat": 25851
+    "danceStat": 25851,
+    "thoughts": "UR spéciale. Stat Dance (25851) > Sing (19076) → profil défensif. Spécialité défensive : réduit les dégâts subis. Compétences : ↓12% skill damage taken, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre Rock. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
     "id": 3,
@@ -90,7 +92,8 @@
     "specialty": "Dommage réduction",
     "image": "Isadora.jpg",
     "singStat": 22464,
-    "danceStat": 22464
+    "danceStat": 22464,
+    "thoughts": "UR spéciale. Stats équilibrées (22464/22464). Spécialité défensive : réduit les dégâts subis. Compétences : ↓12% skill damage taken, ↓12% basic attack damage taken. Classement communauté : Tier A. Position lead d'équipe, genre EDM. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
     "id": 4,
@@ -121,7 +124,8 @@
     "specialty": "Augmentation dommage",
     "image": "Josephine.jpg",
     "singStat": 29023,
-    "danceStat": 20893
+    "danceStat": 20893,
+    "thoughts": "UR spéciale. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS vocal, genre Hip Hop. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
     "id": 5,
@@ -152,7 +156,8 @@
     "specialty": "Augmentation dommage",
     "singStat": 25851,
     "danceStat": 19076,
-    "image": "Marguerite.jpg"
+    "image": "Marguerite.jpg",
+    "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS vocal, genre R&B. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
     "id": 6,
@@ -276,7 +281,8 @@
     "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "SSR. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS vocal, genre EDM. Bon investissement polyvalent."
   },
   {
     "id": 10,
@@ -308,7 +314,8 @@
     "specialty": "Solo car",
     "event": "Rome 3",
     "singStat": 25071,
-    "danceStat": 34827
+    "danceStat": 34827,
+    "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑24% skill damage, ↑12% fan cap. Classement communauté : Tier B. Position DPS danse, genre Rock. Utilisation situationnelle."
   },
   {
     "id": 11,
@@ -341,7 +348,8 @@
     "specialty": "Solo car",
     "event": "Anniversary",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑200 dps when attacking gc/club/lm, ↑10% fan cap. Classement communauté : Tier C. Position lead d'équipe, genre EDM. Utilisation situationnelle."
   },
   {
     "id": 12,
@@ -373,7 +381,8 @@
     "specialty": "Mixte",
     "event": "Rome 1",
     "singStat": 20893,
-    "danceStat": 29023
+    "danceStat": 29023,
+    "thoughts": "SSR. Stat Dance (29023) > Sing (20893) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑50% basic attack damage dealt, ↓12% basic attack damage taken. Classement communauté : Tier A. Position lead d'équipe, genre Pop. Bon investissement polyvalent."
   },
   {
     "id": 13,
@@ -405,7 +414,8 @@
     "specialty": "Mixte",
     "event": "Original",
     "singStat": 22464,
-    "danceStat": 22464
+    "danceStat": 22464,
+    "thoughts": "SSR. Stats équilibrées (22464/22464). Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑30% damage to world building guard, ↓12% skill damage taken. Classement communauté : Tier C. Position lead d'équipe, genre Hip Hop. Utilisation situationnelle."
   },
   {
     "id": 14,
@@ -437,7 +447,8 @@
     "specialty": "Solo car",
     "event": "Rome 2",
     "singStat": 34827,
-    "danceStat": 25071
+    "danceStat": 25071,
+    "thoughts": "SSR. Stat Sing (34827) > Dance (25071) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑24% player damage, ↑12% fan cap. Classement communauté : Tier S. Position DPS vocal, genre EDM. Priorité d'investissement haute."
   },
   {
     "id": 15,
@@ -470,7 +481,8 @@
     "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 22464,
-    "danceStat": 22464
+    "danceStat": 22464,
+    "thoughts": "SSR. Stats équilibrées (22464/22464). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position lead d'équipe, genre Pop. Bon investissement polyvalent."
   },
   {
     "id": 16,
@@ -502,7 +514,8 @@
     "specialty": "Dommage réduction",
     "event": "Original",
     "singStat": 19076,
-    "danceStat": 25851
+    "danceStat": 25851,
+    "thoughts": "SSR. Stat Dance (25851) > Sing (19076) → profil défensif. Spécialité défensive : réduit les dégâts subis. Compétences : ↓12% skill damage taken, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre Hip Hop. Bon investissement polyvalent."
   },
   {
     "id": 17,
@@ -534,7 +547,8 @@
     "specialty": "Solo car",
     "event": "Tokyo 4",
     "singStat": 35540,
-    "danceStat": 35540
+    "danceStat": 35540,
+    "thoughts": "SSR. Stats équilibrées (35540/35540). Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑70% basic attack damage dealt, ↑14% fan cap. Classement communauté : Tier A. Position lead d'équipe, genre R&B. Bon investissement polyvalent."
   },
   {
     "id": 18,
@@ -566,7 +580,8 @@
     "specialty": "Dommage réduction",
     "event": "Tokyo 1",
     "singStat": 29023,
-    "danceStat": 20893
+    "danceStat": 20893,
+    "thoughts": "SSR. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité défensive : réduit les dégâts subis. Compétences : ↓12% skill damage taken, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS vocal, genre Hip Hop. Bon investissement polyvalent."
   },
   {
     "id": 19,
@@ -595,10 +610,11 @@
     "calculatedTier": "D",
     "description": "A talented Vocalist from Echo.",
     "image": "Brooklyn.jpg",
-    "specialty": "HQ Defense",
+    "specialty": "HQ defense",
     "event": "Original",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "SSR. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité défense de QG : protection de base. Compétences : ↑200 dps when defending, ↑36% damage to world building guard. Classement communauté : Tier D. Position DPS vocal, genre Pop. Faible priorité."
   },
   {
     "id": 20,
@@ -630,7 +646,8 @@
     "specialty": "Solo car",
     "event": "Rome 1",
     "singStat": 29023,
-    "danceStat": 20893
+    "danceStat": 20893,
+    "thoughts": "SSR. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑50% basic attack damage dealt, ↑10% fan cap. Classement communauté : Tier A. Position DPS danse, genre Rock. Bon investissement polyvalent."
   },
   {
     "id": 21,
@@ -663,7 +680,8 @@
     "specialty": "Rassemblement",
     "event": "Tokyo 1",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité rassemblement : boost la capacité de rally. Compétences : ↑20% player damage, ↑10% rally fan cap. Classement communauté : Tier S. Position lead d'équipe, genre Pop. Priorité d'investissement haute."
   },
   {
     "id": 22,
@@ -695,7 +713,8 @@
     "specialty": "Mixte",
     "event": "SvS Event",
     "singStat": 22464,
-    "danceStat": 22464
+    "danceStat": 22464,
+    "thoughts": "SSR. Stats équilibrées (22464/22464). Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑20% skill damage, ↓12% basic attack damage taken. Classement communauté : Tier A. Position lead d'équipe, genre EDM. Bon investissement polyvalent."
   },
   {
     "id": 23,
@@ -728,7 +747,8 @@
     "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 22464,
-    "danceStat": 22464
+    "danceStat": 22464,
+    "thoughts": "SSR. Stats équilibrées (22464/22464). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position lead d'équipe, genre Rock. Bon investissement polyvalent."
   },
   {
     "id": 24,
@@ -759,7 +779,8 @@
     "specialty": "Augmentation dommage",
     "event": "Rome 3",
     "singStat": 34827,
-    "danceStat": 25071
+    "danceStat": 25071,
+    "thoughts": "SSR. Stat Sing (34827) > Dance (25071) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑24% player damage, ↑24% player damage. Classement communauté : Tier S+. Position DPS vocal, genre Hip Hop. Priorité d'investissement haute."
   },
   {
     "id": 25,
@@ -792,7 +813,8 @@
     "specialty": "HQ defense",
     "event": "Rome 2",
     "singStat": 25071,
-    "danceStat": 34827
+    "danceStat": 34827,
+    "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité défense de QG : protection de base. Compétences : ↑240 dps when defending, ↓12% skill damage taken. Classement communauté : Tier A. Position DPS danse, genre R&B. Bon investissement polyvalent."
   },
   {
     "id": 26,
@@ -823,7 +845,8 @@
     "specialty": "Augmentation dommage",
     "event": "Rome 1",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS vocal, genre Hip Hop. Bon investissement polyvalent."
   },
   {
     "id": 27,
@@ -854,7 +877,8 @@
     "event": "Bali 2",
     "image": "Dewi.jpg",
     "singStat": 29950,
-    "danceStat": 29950
+    "danceStat": 29950,
+    "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑24% skill damage, ↑60% basic attack damage dealt. Classement communauté : Tier S. Position lead d'équipe, genre R&B. Priorité d'investissement haute."
   },
   {
     "id": 28,
@@ -886,7 +910,8 @@
     "specialty": "Mixte",
     "event": "Rome 1",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑50% basic attack damage dealt, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS vocal, genre R&B. Bon investissement polyvalent."
   },
   {
     "id": 29,
@@ -919,7 +944,8 @@
     "event": "Tokyo 3",
     "image": "Eri.jpg",
     "singStat": 25071,
-    "danceStat": 34827
+    "danceStat": 34827,
+    "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑12% fan cap, ↓12% basic attack damage taken. Classement communauté : Tier B. Position DPS danse, genre R&B. Utilisation situationnelle."
   },
   {
     "id": 30,
@@ -953,7 +979,8 @@
     "specialty": "Mixte",
     "event": "Original",
     "singStat": 22464,
-    "danceStat": 22464
+    "danceStat": 22464,
+    "thoughts": "SSR. Stats équilibrées (22464/22464). Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑20% skill damage, ↓12% basic attack damage taken. Classement communauté : Tier A. Position lead d'équipe, genre EDM. Bon investissement polyvalent."
   },
   {
     "id": 31,
@@ -986,7 +1013,8 @@
     "specialty": "Solo car",
     "event": "Rome 3",
     "singStat": 29950,
-    "danceStat": 29950
+    "danceStat": 29950,
+    "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑12% fan cap, ↓12% basic attack damage taken. Classement communauté : Tier B. Position lead d'équipe, genre EDM. Utilisation situationnelle."
   },
   {
     "id": 32,
@@ -1018,7 +1046,8 @@
     "event": "Tokyo 2",
     "image": "Haruki.jpg",
     "singStat": 29950,
-    "danceStat": 29950
+    "danceStat": 29950,
+    "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑60% basic attack damage dealt, ↑12% fan cap. Classement communauté : Tier S. Position lead d'équipe, genre Hip Hop. Priorité d'investissement haute."
   },
   {
     "id": 33,
@@ -1050,7 +1079,8 @@
     "specialty": "Rassemblement",
     "event": "Special",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité rassemblement : boost la capacité de rally. Compétences : ↑20% player damage, ↑10% rally fan cap. Classement communauté : Tier S. Position lead d'équipe, genre Hip Hop. Priorité d'investissement haute."
   },
   {
     "id": 34,
@@ -1082,7 +1112,8 @@
     "specialty": "Mixte",
     "event": "Tokyo 3",
     "singStat": 29950,
-    "danceStat": 29950
+    "danceStat": 29950,
+    "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑24% player damage, ↓12% skill damage taken. Classement communauté : Tier S. Position lead d'équipe, genre Rock. Priorité d'investissement haute."
   },
   {
     "id": 35,
@@ -1114,7 +1145,8 @@
     "specialty": "Mixte",
     "event": "Bali 3",
     "singStat": 29950,
-    "danceStat": 29950
+    "danceStat": 29950,
+    "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑24% player damage, ↓12% skill damage taken. Classement communauté : Tier S. Position lead d'équipe, genre Pop. Priorité d'investissement haute."
   },
   {
     "id": 36,
@@ -1147,7 +1179,8 @@
     "specialty": "Vitesse de conduite",
     "event": "Original",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "SSR. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité vitesse : déplacement plus rapide. Compétences : ↑20% skill damage, ↑75% drive speed. Classement communauté : Tier C. Position DPS vocal, genre R&B. Utilisation situationnelle."
   },
   {
     "id": 37,
@@ -1178,7 +1211,8 @@
     "specialty": "Augmentation dommage",
     "event": "Anniversary",
     "singStat": 25071,
-    "danceStat": 34827
+    "danceStat": 34827,
+    "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑24% player damage, ↑60% basic attack damage dealt. Classement communauté : Tier S. Position DPS danse, genre Rock. Priorité d'investissement haute."
   },
   {
     "id": 38,
@@ -1211,7 +1245,8 @@
     "specialty": "Rassemblement",
     "event": "Special",
     "singStat": 19033,
-    "danceStat": 10903
+    "danceStat": 10903,
+    "thoughts": "SSR. Stat Sing (19033) > Dance (10903) → profil offensif. Spécialité rassemblement : boost la capacité de rally. Compétences : Damage factor 1800, Fans capacity ↑ 10%, Rally fans capacity ↑ 10%. Classement communauté : Tier D. Position DPS vocal, genre Rock. Faible priorité."
   },
   {
     "id": 39,
@@ -1243,7 +1278,8 @@
     "specialty": "Économie",
     "event": "Anniversary",
     "singStat": 19076,
-    "danceStat": 25851
+    "danceStat": 25851,
+    "thoughts": "SSR. Stat Dance (25851) > Sing (19076) → profil défensif. Spécialité économie : farm d'or et ressources. Compétences : ↑40% gold mining speed, ↑40% gold mining speed. Classement communauté : Tier D. Position DPS vocal, genre R&B. Faible priorité."
   },
   {
     "id": 40,
@@ -1275,7 +1311,8 @@
     "specialty": "Augmentation dommage",
     "event": "Tokyo 1",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑60% basic attack damage dealt. Classement communauté : Tier A. Position lead d'équipe, genre EDM. Bon investissement polyvalent."
   },
   {
     "id": 41,
@@ -1306,7 +1343,8 @@
     "specialty": "Augmentation dommage",
     "event": "Bali 1",
     "singStat": 20893,
-    "danceStat": 29023
+    "danceStat": 29023,
+    "thoughts": "SSR. Stat Dance (29023) > Sing (20893) → profil défensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS danse, genre Hip Hop. Bon investissement polyvalent."
   },
   {
     "id": 42,
@@ -1335,10 +1373,11 @@
     "calculatedTier": "D",
     "description": "A talented Vocalist from Breezara.",
     "image": "Lestari.jpg",
-    "specialty": "HQ Defense",
+    "specialty": "HQ defense",
     "event": "Bali 2",
     "singStat": 34827,
-    "danceStat": 25071
+    "danceStat": 25071,
+    "thoughts": "SSR. Stat Sing (34827) > Dance (25071) → profil offensif. Spécialité défense de QG : protection de base. Compétences : ↑240 dps when defending, ↑36% damage to world building guard. Classement communauté : Tier D. Position DPS vocal, genre Pop. Faible priorité."
   },
   {
     "id": 43,
@@ -1370,7 +1409,8 @@
     "event": "Bali 4",
     "image": "Margot.jpg",
     "singStat": 40439,
-    "danceStat": 26213
+    "danceStat": 26213,
+    "thoughts": "SSR. Stat Sing (40439) > Dance (26213) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑28% skill damage, ↑14% fan cap. Classement communauté : Tier A. Position DPS vocal, genre EDM. Bon investissement polyvalent."
   },
   {
     "id": 44,
@@ -1403,7 +1443,8 @@
     "event": "Bali 3",
     "singStat": 34827,
     "danceStat": 25071,
-    "image": "Marina.jpg"
+    "image": "Marina.jpg",
+    "thoughts": "SSR. Stat Sing (34827) > Dance (25071) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑240 dps when attacking gc/club/lm, ↑12% fan cap. Classement communauté : Tier D. Position DPS vocal, genre Hip Hop. Faible priorité."
   },
   {
     "id": 45,
@@ -1435,7 +1476,8 @@
     "specialty": "Augmentation dommage",
     "event": "Special",
     "singStat": 20893,
-    "danceStat": 29023
+    "danceStat": 29023,
+    "thoughts": "SSR. Stat Dance (29023) > Sing (20893) → profil défensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% player damage, ↑40% gold mining speed. Classement communauté : Tier C. Position DPS danse, genre Hip Hop. Utilisation situationnelle."
   },
   {
     "id": 46,
@@ -1467,7 +1509,8 @@
     "specialty": "Solo car",
     "event": "Special",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑50% basic attack damage dealt, ↑10% fan cap. Classement communauté : Tier B. Position lead d'équipe, genre Rock. Utilisation situationnelle."
   },
   {
     "id": 47,
@@ -1499,7 +1542,8 @@
     "event": "Tokyo 4",
     "image": "Mio.jpg",
     "singStat": 28069,
-    "danceStat": 42152
+    "danceStat": 42152,
+    "thoughts": "SSR. Stat Dance (42152) > Sing (28069) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑70% basic attack damage dealt, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre Hip Hop. Bon investissement polyvalent."
   },
   {
     "id": 48,
@@ -1531,7 +1575,8 @@
     "event": "Tokyo 2",
     "image": "Miyuki.jpg",
     "singStat": 25071,
-    "danceStat": 34827
+    "danceStat": 34827,
+    "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑60% basic attack damage dealt, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre EDM. Bon investissement polyvalent."
   },
   {
     "id": 49,
@@ -1563,7 +1608,8 @@
     "event": "Bali 1",
     "singStat": 29023,
     "danceStat": 20893,
-    "image": "Moana.jpg"
+    "image": "Moana.jpg",
+    "thoughts": "SSR. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité défensive : réduit les dégâts subis. Compétences : ↓12% skill damage taken, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS vocal, genre Pop. Bon investissement polyvalent."
   },
   {
     "id": 50,
@@ -1595,7 +1641,8 @@
     "specialty": "Rassemblement",
     "event": "Special",
     "singStat": 29023,
-    "danceStat": 20893
+    "danceStat": 20893,
+    "thoughts": "SSR. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité rassemblement : boost la capacité de rally. Compétences : ↑20% player damage, ↑10% rally fan cap. Classement communauté : Tier S. Position DPS vocal, genre EDM. Priorité d'investissement haute."
   },
   {
     "id": 51,
@@ -1628,7 +1675,8 @@
     "specialty": "Solo car",
     "event": "Bali 2",
     "singStat": 25071,
-    "danceStat": 34827
+    "danceStat": 34827,
+    "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑240 dps when attacking company, ↑12% fan cap. Classement communauté : Tier D. Position DPS danse, genre Hip Hop. Faible priorité."
   },
   {
     "id": 52,
@@ -1660,7 +1708,8 @@
     "specialty": "Augmentation dommage",
     "event": "Special",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑40% gold mining speed, ↑50% basic attack damage dealt. Classement communauté : Tier C. Position lead d'équipe, genre R&B. Utilisation situationnelle."
   },
   {
     "id": 53,
@@ -1693,7 +1742,8 @@
     "specialty": "HQ defense",
     "event": "Original",
     "singStat": 22464,
-    "danceStat": 22464
+    "danceStat": 22464,
+    "thoughts": "SSR. Stats équilibrées (22464/22464). Spécialité défense de QG : protection de base. Compétences : ↑200 dps when defending, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS danse, genre R&B. Bon investissement polyvalent."
   },
   {
     "id": 54,
@@ -1726,7 +1776,8 @@
     "specialty": "Solo car",
     "event": "Rome 2",
     "singStat": 29950,
-    "danceStat": 29950
+    "danceStat": 29950,
+    "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑240 dps when attacking company, ↑12% fan cap. Classement communauté : Tier D. Position lead d'équipe, genre Pop. Faible priorité."
   },
   {
     "id": 55,
@@ -1760,7 +1811,8 @@
     "specialty": "Dommage réduction",
     "event": "Original",
     "singStat": 19076,
-    "danceStat": 25851
+    "danceStat": 25851,
+    "thoughts": "SSR. Stat Dance (25851) > Sing (19076) → profil défensif. Spécialité défensive : réduit les dégâts subis. Compétences : ↓12% skill damage taken, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre Rock. Bon investissement polyvalent."
   },
   {
     "id": 56,
@@ -1792,7 +1844,8 @@
     "specialty": "Mixte",
     "event": "Bali 1",
     "singStat": 20893,
-    "danceStat": 29023
+    "danceStat": 29023,
+    "thoughts": "SSR. Stat Dance (29023) > Sing (20893) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑50% basic attack damage dealt, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre R&B. Bon investissement polyvalent."
   },
   {
     "id": 57,
@@ -1824,7 +1877,8 @@
     "specialty": "Mixte",
     "event": "Tokyo 2",
     "singStat": 34827,
-    "danceStat": 25071
+    "danceStat": 25071,
+    "thoughts": "SSR. Stat Sing (34827) > Dance (25071) → profil offensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑24% player damage, ↓12% basic attack damage taken. Classement communauté : Tier S. Position DPS vocal, genre Rock. Priorité d'investissement haute."
   },
   {
     "id": 58,
@@ -1856,7 +1910,8 @@
     "specialty": "Solo car",
     "event": "Tokyo 3",
     "singStat": 34827,
-    "danceStat": 25071
+    "danceStat": 25071,
+    "thoughts": "SSR. Stat Sing (34827) > Dance (25071) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑24% skill damage, ↑12% fan cap. Classement communauté : Tier S. Position DPS vocal, genre EDM. Priorité d'investissement haute."
   },
   {
     "id": 59,
@@ -1888,7 +1943,8 @@
     "specialty": "Solo car",
     "event": "Special",
     "singStat": 29023,
-    "danceStat": 20893
+    "danceStat": 20893,
+    "thoughts": "SSR. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑50% basic attack damage dealt, ↑10% fan cap. Classement communauté : Tier B. Position DPS vocal, genre Pop. Utilisation situationnelle."
   },
   {
     "id": 60,
@@ -1919,7 +1975,8 @@
     "specialty": "Augmentation dommage",
     "event": "Discord Event",
     "singStat": 20893,
-    "danceStat": 29023
+    "danceStat": 29023,
+    "thoughts": "SSR. Stat Dance (29023) > Sing (20893) → profil défensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% player damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS danse, genre Pop. Bon investissement polyvalent."
   },
   {
     "id": 61,
@@ -1951,7 +2008,8 @@
     "specialty": "Rassemblement",
     "event": "Bali 1",
     "singStat": 29023,
-    "danceStat": 20893
+    "danceStat": 20893,
+    "thoughts": "SSR. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité rassemblement : boost la capacité de rally. Compétences : ↑20% player damage, ↑10% rally fan cap. Classement communauté : Tier S. Position DPS vocal, genre EDM. Priorité d'investissement haute."
   },
   {
     "id": 62,
@@ -1984,7 +2042,8 @@
     "specialty": "Solo car",
     "event": "Original",
     "singStat": 19076,
-    "danceStat": 25851
+    "danceStat": 25851,
+    "thoughts": "SSR. Stat Dance (25851) > Sing (19076) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑200 dps when attacking company, ↑10% fan cap. Classement communauté : Tier D. Position DPS danse, genre Pop. Faible priorité."
   },
   {
     "id": 63,
@@ -2016,7 +2075,8 @@
     "event": "Bali 4",
     "image": "Sienna.jpg",
     "singStat": 33542,
-    "danceStat": 33542
+    "danceStat": 33542,
+    "thoughts": "SSR. Stats équilibrées (33542/33542). Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑28% player damage, ↓12% skill damage taken. Classement communauté : Tier S. Position lead d'équipe, genre Rock. Priorité d'investissement haute."
   },
   {
     "id": 64,
@@ -2047,7 +2107,8 @@
     "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "SSR. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑30% damage to world building guard. Classement communauté : Tier C. Position DPS vocal, genre Rock. Utilisation situationnelle."
   },
   {
     "id": 65,
@@ -2079,7 +2140,8 @@
     "specialty": "Solo car",
     "event": "Tokyo 1",
     "singStat": 29023,
-    "danceStat": 20893
+    "danceStat": 20893,
+    "thoughts": "SSR. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑50% basic attack damage dealt, ↑10% fan cap. Classement communauté : Tier B. Position DPS vocal, genre R&B. Utilisation situationnelle."
   },
   {
     "id": 66,
@@ -2111,7 +2173,8 @@
     "specialty": "Solo car",
     "event": "Bali 1",
     "singStat": 24959,
-    "danceStat": 24959
+    "danceStat": 24959,
+    "thoughts": "SSR. Stats équilibrées (24959/24959). Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑50% basic attack damage dealt, ↑10% fan cap. Classement communauté : Tier B. Position lead d'équipe, genre Rock. Utilisation situationnelle."
   },
   {
     "id": 67,
@@ -2144,7 +2207,8 @@
     "event": "Bali 4",
     "image": "Valentina.jpg",
     "singStat": 26071,
-    "danceStat": 40154
+    "danceStat": 40154,
+    "thoughts": "SSR. Stat Dance (40154) > Sing (26071) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑14% fan cap, ↓12% basic attack damage taken. Classement communauté : Tier B. Position DPS danse, genre R&B. Utilisation situationnelle."
   },
   {
     "id": 68,
@@ -2177,7 +2241,8 @@
     "specialty": "HQ defense",
     "event": "Bali 3",
     "singStat": 25071,
-    "danceStat": 34827
+    "danceStat": 34827,
+    "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité défense de QG : protection de base. Compétences : ↑240 dps when defending, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre Rock. Bon investissement polyvalent."
   },
   {
     "id": 69,
@@ -2209,7 +2274,8 @@
     "specialty": "Rassemblement",
     "event": "Rome 1",
     "singStat": 20893,
-    "danceStat": 29023
+    "danceStat": 29023,
+    "thoughts": "SSR. Stat Dance (29023) > Sing (20893) → profil défensif. Spécialité rassemblement : boost la capacité de rally. Compétences : ↑20% player damage, ↑10% rally fan cap. Classement communauté : Tier S. Position lead d'équipe, genre EDM. Priorité d'investissement haute."
   },
   {
     "id": 70,
@@ -2241,7 +2307,8 @@
     "event": "Tokyo 4",
     "image": "Yumeno.jpg",
     "singStat": 42437,
-    "danceStat": 28211
+    "danceStat": 28211,
+    "thoughts": "SSR. Stat Sing (42437) > Dance (28211) → profil offensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑28% player damage, ↓12% basic attack damage taken. Classement communauté : Tier S. Position DPS vocal, genre Pop. Priorité d'investissement haute."
   },
   {
     "id": 71,
@@ -2274,7 +2341,8 @@
     "specialty": "Mixte",
     "event": "Tokyo 1",
     "singStat": 20893,
-    "danceStat": 29023
+    "danceStat": 29023,
+    "thoughts": "SSR. Stat Dance (29023) > Sing (20893) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑50% basic attack damage dealt, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre Rock. Bon investissement polyvalent."
   },
   {
     "id": 72,
@@ -2308,7 +2376,8 @@
     "specialty": "Vitesse de conduite",
     "event": "Original",
     "singStat": 19076,
-    "danceStat": 25851
+    "danceStat": 25851,
+    "thoughts": "SSR. Stat Dance (25851) > Sing (19076) → profil défensif. Spécialité vitesse : déplacement plus rapide. Compétences : \"↑50% drive speed,  ↑20% WBG damage\". Classement communauté : Tier C. Position lead d'équipe, genre R&B. Utilisation situationnelle."
   },
   {
     "id": 73,
@@ -2340,7 +2409,8 @@
     "specialty": "Solo car",
     "event": "Original",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "SSR. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑20% skill damage, ↑10% fan cap. Classement communauté : Tier B. Position DPS vocal, genre Hip Hop. Utilisation situationnelle."
   },
   {
     "id": 74,
@@ -2372,7 +2442,8 @@
     "event": "VIP 10",
     "singStat": 19076,
     "danceStat": 25851,
-    "image": "Caroline.jpg"
+    "image": "Caroline.jpg",
+    "thoughts": "SSR. Stat Dance (25851) > Sing (19076) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑200 dps when attacking gc/club/lm, ↑10% fan cap. Classement communauté : Tier C. Position DPS danse, genre EDM. Utilisation situationnelle."
   },
   {
     "id": 75,
@@ -2405,7 +2476,8 @@
     "specialty": "Augmentation dommage",
     "event": "Home Auction",
     "singStat": 29950,
-    "danceStat": 29950
+    "danceStat": 29950,
+    "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑30% skill damage, ↑30% player damage. Classement communauté : Tier S+. Position lead d'équipe, genre EDM. Priorité d'investissement haute."
   },
   {
     "id": 76,
@@ -2436,7 +2508,8 @@
     "specialty": "Augmentation dommage",
     "event": "Abroad Auction",
     "singStat": 29950,
-    "danceStat": 29950
+    "danceStat": 29950,
+    "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑30% player damage, ↑30% player damage. Classement communauté : Tier S+. Position lead d'équipe, genre Pop. Priorité d'investissement haute."
   },
   {
     "id": 77,
@@ -3501,7 +3574,8 @@
     "event": "Roma 3",
     "image": "Sloane.jpg",
     "singStat": 21554,
-    "danceStat": 21554
+    "danceStat": 21554,
+    "thoughts": "SSR. Stats équilibrées (21554/21554). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑28% skill damage, ↑28% damage to player. Classement communauté : Tier S. Position lead d'équipe, genre Pop. Priorité d'investissement haute."
   },
   {
     "id": 112,
@@ -3533,7 +3607,8 @@
     "event": "Roma 3",
     "image": "Kendell.jpg",
     "singStat": 2845,
-    "danceStat": 14225
+    "danceStat": 14225,
+    "thoughts": "SSR. Stat Dance (14225) > Sing (2845) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑14% fan cap, ↑28% skill damage. Classement communauté : Tier B. Position DPS vocal, genre Hip Hop. Utilisation situationnelle."
   },
   {
     "id": 113,
@@ -3565,7 +3640,8 @@
     "event": "Roma 3",
     "image": "Valerie.jpg",
     "singStat": 14083,
-    "danceStat": 28166
+    "danceStat": 28166,
+    "thoughts": "SSR. Stat Dance (28166) > Sing (14083) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↓12% basic damage reduction, ↑28% skill damage. Classement communauté : Tier A. Position DPS danse, genre Rock. Bon investissement polyvalent."
   },
   {
     "id": 114,
@@ -3596,7 +3672,8 @@
     "calculatedTier": "A",
     "specialty": "Augmentation dommage",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position lead d'équipe, genre Pop. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
     "id": 115,
@@ -3628,7 +3705,8 @@
     "calculatedTier": "S",
     "specialty": "Solo car",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑10% fan capacity, ↑20% damage to player. Classement communauté : Tier S. Position rôle spécial, genre Hip Hop. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
     "id": 116,
@@ -3659,7 +3737,8 @@
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier S. Position rôle polyvalent, genre Pop. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
     "id": 117,
@@ -3690,6 +3769,7 @@
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
     "singStat": 25851,
-    "danceStat": 19076
+    "danceStat": 19076,
+    "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier S. Position rôle spécial, genre Rock. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   }
 ]

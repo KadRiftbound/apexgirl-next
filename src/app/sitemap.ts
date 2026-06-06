@@ -36,6 +36,7 @@ const COMMON_PAGES = [
   'editorial-policy',
   'corrections',
   'advertising-disclosure',
+  'glossary',
 ];
 
 // Legal pages differ by language

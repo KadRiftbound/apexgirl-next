@@ -3,21 +3,22 @@
     "id": "ancient-rome-event",
     "title": "Ancient Rome Event",
     "description": "Ancient Rome Event",
-    "content": "",
-    "guideType": "classic",
+    "content": "Guide de l'événement Rome Antique\n\nType : Guide événement\n\nExplication courte\n\nRome Antique est la troisième aventure Abroad de Top Girl, après Tokyo et Bali.\n\nContrairement aux aventures précédentes, Rome n'impose pas de construire des bâtiments pour atteindre les objectifs sur la carte. Vous pouvez attaquer directement.\n\nL'objectif final est le Colisée, qui joue un rôle similaire à la Tokyo Tower ou au Grand Palace.\n\nRome a ses propres artistes UR liées aux artistes SSR de Rome.\n\nExplication longue\n\nRome dans la structure du jeu\n\nRome Antique est la troisième grande étape du cycle Abroad.\n\nAprès Tokyo (première aventure) et Bali (deuxième aventure), Rome représente un tournant dans la difficulté et l'engagement requis.\n\nRome suit la même logique générale que les autres Abroad :\n\npositionnement du QG\n\nfarm de ressources\ndéplacement sur la carte\n\nconquête de landmarks\n\nbataille pour les UR\n\nobjectif final\n\nLa particularité de Rome\n\nRome se distingue des autres Abroad par une mécanique unique : il n'est pas nécessaire de construire des bâtiments pour attaquer.\n\nDans Tokyo et Bali, la progression sur la carte suit la mécanique classique : il faut construire pour atteindre les zones suivantes et sécuriser ses positions.\n\nÀ Rome, cette contrainte est supprimée. Les combats sont plus directs et plus fréquents.\n\nCela change la dynamique de l'aventure :\n\nla progression est plus rapide\n\nla compétition entre serveurs est plus intense\n\nla coordination de groupe est encore plus importante\n\nles fenêtres d'opportunité sont plus courtes\n\nCette mécanique favorise les serveurs organisés et agressifs.\n\nLes artistes UR de Rome\n\nComme chaque Abroad, Rome introduit ses propres artistes UR.\n\nCes UR sont liées aux artistes SSR de Rome.\n\nComme pour toutes les UR Abroad :\n\nune UR Rome ne peut être liée qu'à une artiste SSR de Rome\n\nvous ne pouvez déployer qu'une seule UR à la fois sur la carte de Rome\n\nle niveau de l'UR suit celui de la SSR liée\n\nConseils pour Rome\n\nPréparez votre serveur avant l'ouverture.\n\nRome punit encore plus les serveurs désorganisés que Tokyo ou Bali.\n\nÉtablissez des alliances claires.\n\nCommuniquez avec les serveurs voisins.\n\nSoyez prêts à combattre dès le début.\n\nContrairement aux autres Abroad, il n'y a pas de phase de construction pour se préparer.\n\nGérez vos ressources efficacement.\n\nLa progression plus rapide signifie que les ressources s'épuisent plus vite.\n\nGardez un œil sur les événements secondaires.\n\nIls donnent souvent des récompenses exclusives importantes.\n\nNe négligez pas le Warmup de Rome.\n\nLes bonus de statistiques font une vraie différence.\n\nRécompenses\n\nRome donne accès à :\n\nles artistes UR exclusives de Rome\n\ndes récompenses de classement\n\ndes objets exclusifs\n\ndes skins\n\net bien d'autres récompenses utiles pour la progression.",
+    "guideType": "event",
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
-      "guide-des-batiments-de-la-ville",
+      "comprendre-la-structure-du-jeu-top-girl",
       "guide-du-chamber-territory",
-      "guide-du-systeme-de-collection"
+      "guide-tokyo"
     ],
     "relatedArtists": [],
-    "readTime": "3 min",
-    "icon": "📘",
-    "color": "#8b5cf6",
+    "readTime": "5 min",
+    "icon": "🏛️",
+    "color": "#dc2626",
     "title_en": "Ancient Rome Event",
-    "description_en": "Ancient Rome Event",
+    "description_en": "Ancient Rome is the third Abroad adventure in Top Girl, after Tokyo and Bali. Unlike previous adventures, Rome has a unique mechanic: no buildings are needed to attack.",
+    "content_en": "Ancient Rome Event Guide\n\nType: Event Guide\n\nShort Explanation\n\nAncient Rome is the third Abroad adventure in Top Girl, after Tokyo and Bali.\n\nUnlike previous adventures, Rome does not require building structures to reach objectives on the map. You can attack directly.\n\nThe final objective is the Coliseum, which plays a role similar to Tokyo Tower or the Grand Palace.\n\nRome has its own UR artists linked to Rome SSR artists.\n\nLong Explanation\n\nRome in the Game Structure\n\nAncient Rome is the third major step in the Abroad cycle.\n\nAfter Tokyo (first adventure) and Bali (second adventure), Rome represents a turning point in difficulty and required commitment.\n\nRome follows the same general logic as other Abroad adventures:\n\nHQ placement\n\nresource farming\n\nmap progression\n\nlandmark conquest\n\nbattle for URs\n\nfinal objective\n\nThe Unique Mechanic of Rome\n\nRome stands out from other Abroad adventures with a unique mechanic: no buildings are required to attack.\n\nIn Tokyo and Bali, map progression follows the classic mechanic: you build to reach the next zones and secure positions.\n\nIn Rome, this constraint is removed. Combat is more direct and more frequent.\n\nThis changes the dynamic of the adventure:\n\nfaster progression\n\nmore intense server competition\n\neven more important group coordination\n\nshorter opportunity windows\n\nThis mechanic favors organized and aggressive servers.\n\nRome UR Artists\n\nLike every Abroad, Rome introduces its own UR artists.\n\nThese URs are linked to Rome SSR artists.\n\nAs with all Abroad URs:\n\na Rome UR can only be linked to a Rome SSR artist\n\nyou can only deploy one UR at a time on the Rome map\n\nthe UR's level follows that of the linked SSR\n\nTips for Rome\n\nPrepare your server before opening.\n\nRome punishes disorganized servers even more than Tokyo or Bali.\n\nEstablish clear alliances.\n\nCommunicate with neighboring servers.\n\nBe ready to fight from the start.\n\nUnlike other Abroad adventures, there is no building phase to prepare.\n\nManage your resources effectively.\n\nFaster progression means resources deplete faster.\n\nKeep an eye on side events.\n\nThey often give important exclusive rewards.\n\nDon't neglect the Rome Warmup.\n\nStat bonuses make a real difference.\n\nRewards\n\nRome grants access to:\n\nexclusive Rome UR artists\n\nranking rewards\n\nexclusive items\n\nskins\n\nand many other useful rewards for progression.",
     "title_it": "Evento nell'antica Roma",
     "description_it": "Evento nell'antica Roma",
     "title_es": "Evento de la Antigua Roma",
@@ -53,8 +54,9 @@
     "stage": "early",
     "difficulty": "beginner",
     "relatedGuides": [
-      "guide-tokyo",
-      "guide-des-equipements"
+      "guide-des-equipements",
+      "guide-du-systeme-de-collection",
+      "guide-tokyo"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -106,9 +108,10 @@
     "difficulty": null,
     "relatedGuides": [
       "guide-des-equipements",
-      "guide-tokyo",
+      "guide-du-systeme-vip",
       "guide-fishing-event",
-      "guide-group-battle"
+      "guide-group-battle",
+      "guide-tokyo"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -210,8 +213,9 @@
     "stage": "mid",
     "difficulty": "beginner",
     "relatedGuides": [
-      "guide-tokyo",
+      "comprendre-la-structure-du-jeu-top-girl",
       "guide-group-battle",
+      "guide-tokyo",
       "guide-ultimate-ceo"
     ],
     "relatedArtists": [],
@@ -263,6 +267,7 @@
     "stage": "early",
     "difficulty": "beginner",
     "relatedGuides": [
+      "guide-des-achats-integres",
       "guide-des-batiments-de-la-ville"
     ],
     "relatedArtists": [],
@@ -314,7 +319,9 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
-      "guide-des-equipements"
+      "guide-de-l-equipe-edm",
+      "guide-des-equipements",
+      "roulette-event-guide"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -365,16 +372,17 @@
     "stage": "early",
     "difficulty": null,
     "relatedGuides": [
-      "guide-tokyo",
-      "guide-des-equipements"
+      "guide-de-l-equipe-rnb",
+      "guide-des-equipements",
+      "guide-tokyo"
     ],
     "relatedArtists": [
       "alice",
       "everly",
       "kokoro",
+      "longkui",
       "sari",
-      "xenia",
-      "longkui"
+      "xenia"
     ],
     "readTime": "5 min",
     "icon": "📘",
@@ -424,6 +432,7 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "ancient-rome-event",
       "guide-city-supremacy",
       "guide-tokyo"
     ],
@@ -471,7 +480,7 @@
     "id": "type-classique-early-game-debutant",
     "title": "Guide Fan Meeting",
     "description": "Guide Fan Meeting",
-    "content": "Type : Classique, Early Game, Débutant\n\nLe fan meeting est un mini evennement toutes les 48h interne au groupe.\n\nLe but est de scorer le plus possible pour obtenir des récompenses boostant votre voiture.\n\nLe fan meeting peut être construit directement après la construction du HQ et être fait tout de suite.\n\nPour participer vous devez démarrer un rassemblement sur le fan meeting et rejoindre les autres rassemblement de vos alliés\n\nDeux choses influent votre scoring, la puissante de l'équipe faisant le rassemblement et votre nombre de fans dans le bus (fan capacity de votre équipe). Il est donc conseillé de rejoindre les bus les plus forts possible pour optimiser votre scoring.\n\nTips :\n\nPositionné les meilleurs joueurs proches du fan meeting pour qu'ils puissent ouvrir un maximum de rassemblement pour tout le monde\n\nChoisissez une horaire fixe qui convient a un maximum de personne, si aucun horaire ne correspond choisissez en deux pour permettre une rotation",
+    "content": "Type : Classique, Early Game, Débutant\n\nExplication courte\n\nLe Fan Meeting est un mini-événement interne au groupe qui a lieu toutes les 48h.\n\nLe but est de scorer le plus possible pour obtenir des récompenses qui boostent votre voiture de tournée. Le score total du groupe détermine les paliers de récompenses débloqués, donc la participation de tous est importante.\n\nLe Fan Meeting peut être construit directement après la construction du HQ. Plus tard, vous pouvez améliorer son bâtiment pour augmenter la capacité en fans de votre bus.\n\nExplication détaillée\n\nPour participer, lancez un rassemblement sur le Fan Meeting ou rejoignez celui d'un allié. Deux facteurs influencent votre score : la puissance de l'équipe qui organise le rassemblement (le bus leader) et la capacité en fans de votre propre bus.\n\nLa puissance du bus leader est déterminée par ses artistes. Pour maximiser les dégâts et le score, privilégiez les artistes avec un haut score de Sing (Attaque) et des compétences qui augmentent les dégâts. Les artistes axés Dance (Défense) ou Management sont moins efficaces ici, car le Fan Meeting ne demande que de la puissance offensive.\n\nLa capacité en fans de votre bus dépend du niveau de votre bâtiment Fan Meeting. Plus elle est élevée, plus vous embarquez de fans et plus votre score augmente. Investir dans l'amélioration de ce bâtiment est donc rentable sur le long terme.\n\nConseils\n\nPlacez vos meilleurs joueurs près du Fan Meeting pour réduire les temps de trajet et ouvrir un maximum de rassemblements.\n\nSi vous êtes un petit joueur, rejoignez les bus des plus forts plutôt que d'ouvrir le vôtre. Vous obtiendrez un meilleur score.\n\nChoisissez un horaire fixe qui convient au maximum de membres. Si un seul créneau ne suffit pas, en prévoir deux en rotation.",
     "guideType": "classic",
     "stage": null,
     "difficulty": null,
@@ -485,8 +494,8 @@
     "icon": "📘",
     "color": "#8b5cf6",
     "title_en": "Fan Meeting Guide",
-    "description_en": "Fan Meeting Guide",
-    "content_en": "Type: Classic, Early Game, Beginner\n\nThe Fan Meeting is a mini-event held every 48 hours within the group.\n\nThe goal is to score as high as possible to earn rewards that boost your car.\n\nThe Fan Meeting can be built immediately after the HQ is built and can be done right away.\n\nTo participate, you must start a gathering at the Fan Meeting and join other gatherings of your allies.\n\nTwo things influence your score: the strength of the team hosting the gathering and the number of fans in your bus (your team's fan capacity). It is therefore advisable to join the strongest buses possible to maximize your score.\n\nTips:\n\nPosition the best players near the Fan Meeting so they can open as many gatherings as possible for everyone.\n\nChoose a fixed time that works for the most people. If no time works, choose two to allow for rotation.",
+    "description_en": "Complete guide to the Fan Meeting mini-event in Top Girl/ApexGirl: how it works, scoring mechanics, strategies to maximize your rewards.",
+    "content_en": "Type: Classic, Early Game, Beginner\n\nShort Explanation\n\nThe Fan Meeting is a mini-event held every 48 hours within the group.\n\nThe goal is to score as high as possible to earn rewards that boost your tour bus. The group's total score determines the reward tiers unlocked, so everyone's participation matters.\n\nThe Fan Meeting can be built immediately after the HQ. Later, you can upgrade its building to increase your bus's fan capacity.\n\nDetailed Explanation\n\nTo participate, start a gathering at the Fan Meeting or join an ally's gathering. Two factors influence your score: the strength of the team hosting the gathering (the bus leader) and your own bus's fan capacity.\n\nThe bus leader's strength is determined by their artists. To maximize damage and score, prioritize artists with high Sing (Attack) stats and skills that increase damage output. Artists focused on Dance (Defense) or Management are less effective here, since the Fan Meeting only requires offensive power.\n\nYour bus's fan capacity depends on your Fan Meeting building level. The higher it is, the more fans you can carry and the higher your score. Investing in upgrading this building is worthwhile in the long run.\n\nTips\n\nPosition your strongest players near the Fan Meeting to reduce travel time and open as many gatherings as possible.\n\nIf you are a smaller player, join the buses of stronger players rather than opening your own. You will achieve a better score.\n\nChoose a fixed time that suits the most members. If a single slot is not enough, set up two in rotation.",
     "title_it": "Guida Fan Meeting",
     "description_it": "Guida Fan Meeting",
     "content_it": "Tipo: Classico, Inizio partita, Principiante\n\nL'incontro dei fan è un mini-evento che si tiene ogni 48 ore all'interno del gruppo.\n\nL'obiettivo è ottenere il punteggio più alto possibile per guadagnare ricompense che potenziano il tuo autobus.\n\nL'incontro dei fan può essere costruito subito dopo la costruzione del quartier generale e può essere organizzato immediatamente.\n\nPer partecipare, devi avviare un raduno presso l'incontro dei fan e unirti ad altri raduni dei tuoi alleati.\n\nDue fattori influenzano il tuo punteggio: la forza della squadra che ospita il raduno e il numero di fan nel tuo autobus (la capacità di fan della tua squadra). Si consiglia quindi di unirsi agli autobus più forti possibile per massimizzare il punteggio.\n\nSuggerimenti:\n\nPosiziona i giocatori più forti vicino all'incontro dei fan in modo che possano avviare il maggior numero possibile di raduni per tutti.\n\nScegli un orario fisso che vada bene per la maggior parte dei giocatori. Se nessun orario va bene, scegline due per consentire la rotazione.",
@@ -529,8 +538,9 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "guide-city-supremacy",
       "guide-des-equipements",
-      "guide-city-supremacy"
+      "roulette-event-guide"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -581,13 +591,15 @@
     "stage": "early",
     "difficulty": "advanced",
     "relatedGuides": [
-      "guide-du-systeme-de-collection",
-      "guide-des-equipements",
-      "guide-des-batiments-de-la-ville",
       "guide-de-l-equipe-edm",
-      "guide-de-l-equipe-rnb"
+      "guide-de-l-equipe-rnb",
+      "guide-des-batiments-de-la-ville",
+      "guide-des-equipements",
+      "guide-du-systeme-de-collection"
     ],
-    "relatedArtists": [],
+    "relatedArtists": [
+      "sari"
+    ],
     "readTime": "3 min",
     "icon": "🎟️",
     "color": "#f59e0b",
@@ -741,6 +753,8 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "ce-guide-n-inclus-pas-les-artistes-apres-roma-3",
+      "guide-construction-d-equipe-fin-de-jeu",
       "guide-des-equipements",
       "guide-fishing-event",
       "guide-tokyo"
@@ -753,14 +767,14 @@
       "everly",
       "julia",
       "kokoro",
+      "longkui",
       "nova",
       "paisley",
       "sari",
       "skylar",
       "xenia",
       "yuuko",
-      "zendayah",
-      "longkui"
+      "zendayah"
     ],
     "readTime": "3 min",
     "icon": "📘",
@@ -810,7 +824,9 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
-      "guide-des-equipements"
+      "guide-construction-d-equipe-debut-de-jeu",
+      "guide-des-equipements",
+      "type-classique-mid-game-avance"
     ],
     "relatedArtists": [
       "longkui",
@@ -864,6 +880,7 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "guide-peak",
       "guide-tokyo"
     ],
     "relatedArtists": [],
@@ -915,11 +932,16 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "ce-guide-n-inclus-pas-les-artistes-apres-roma-3",
+      "guide-de-l-equipe-edm",
+      "guide-de-l-equipe-rnb",
+      "guide-du-systeme-vip",
       "guide-tokyo",
       "guide-ultimate-ceo"
     ],
     "relatedArtists": [
-      "claire"
+      "claire",
+      "sari"
     ],
     "readTime": "7 min",
     "icon": "⭐",
@@ -969,9 +991,9 @@
     "stage": "mid",
     "difficulty": "intermediate",
     "relatedGuides": [
-      "guide-de-planification-long-terme",
       "guide-de-l-equipe-edm",
       "guide-de-l-equipe-rnb",
+      "guide-de-planification-long-terme",
       "guide-des-equipements"
     ],
     "relatedArtists": [],
@@ -1023,8 +1045,10 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "guide-city-supremacy",
+      "guide-group-battle",
       "guide-ultimate-ceo",
-      "guide-group-battle"
+      "ultimate-group-guide"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -1075,7 +1099,8 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
-      "guide-des-equipements"
+      "guide-des-equipements",
+      "guide-grammy-award"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -1127,8 +1152,9 @@
     "difficulty": "intermediate",
     "relatedGuides": [
       "guide-city-supremacy",
-      "guide-tokyo",
       "guide-de-planification-long-terme",
+      "guide-peak",
+      "guide-tokyo",
       "guide-ultimate-ceo"
     ],
     "relatedArtists": [],
@@ -1180,9 +1206,10 @@
     "stage": "mid",
     "difficulty": "beginner",
     "relatedGuides": [
-      "guide-des-equipements",
       "guide-de-l-equipe-rnb",
-      "guide-de-planification-long-terme"
+      "guide-de-planification-long-terme",
+      "guide-des-equipements",
+      "guide-group-battle"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -1233,10 +1260,11 @@
     "stage": "mid",
     "difficulty": "beginner",
     "relatedGuides": [
-      "guide-tokyo",
-      "guide-ultimate-ceo",
+      "guide-construction-d-equipe-debut-de-jeu",
       "guide-de-l-equipe-edm",
-      "guide-radio-battle"
+      "guide-radio-battle",
+      "guide-tokyo",
+      "guide-ultimate-ceo"
     ],
     "relatedArtists": [
       "cornelia",
@@ -1296,6 +1324,8 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "guide-construction-d-equipe-debut-de-jeu",
+      "guide-de-l-equipe-edm",
       "guide-tokyo",
       "guide-ultimate-ceo"
     ],
@@ -1361,8 +1391,11 @@
     "difficulty": null,
     "relatedGuides": [
       "ancient-rome-event",
+      "guide-construction-d-equipe-fin-de-jeu",
+      "guide-de-planification-long-terme",
       "guide-des-batiments-de-la-ville",
-      "guide-du-chamber-territory"
+      "guide-du-chamber-territory",
+      "guide-du-systeme-de-tier"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -1413,12 +1446,12 @@
     "stage": "early",
     "difficulty": "intermediate",
     "relatedGuides": [
-      "guide-radio-battle",
       "guide-city-supremacy",
-      "guide-tokyo",
-      "guide-du-chamber-territory",
       "guide-de-l-equipe-edm",
-      "guide-de-l-equipe-rnb"
+      "guide-de-l-equipe-rnb",
+      "guide-du-chamber-territory",
+      "guide-radio-battle",
+      "guide-tokyo"
     ],
     "relatedArtists": [],
     "readTime": "4 min",
@@ -1469,8 +1502,11 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "ancient-rome-event",
+      "comprendre-la-structure-du-jeu-top-girl",
+      "guide-des-equipements",
       "guide-ultimate-ceo",
-      "guide-des-equipements"
+      "ultimate-group-guide"
     ],
     "relatedArtists": [
       "ayaka",
@@ -1528,9 +1564,10 @@
     "difficulty": "beginner",
     "relatedGuides": [
       "guide-de-planification-long-terme",
+      "guide-des-achats-integres",
       "guide-du-systeme-de-tier",
-      "guide-tokyo",
-      "guide-des-achats-integres"
+      "guide-du-systeme-vip",
+      "guide-tokyo"
     ],
     "relatedArtists": [
       "nova",
@@ -1584,7 +1621,9 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
-      "guide-ultimate-ceo"
+      "guide-group-battle",
+      "guide-ultimate-ceo",
+      "metro-guide"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -1636,7 +1675,8 @@
     "difficulty": null,
     "relatedGuides": [
       "guide-city-supremacy",
-      "guide-des-equipements"
+      "guide-des-equipements",
+      "guide-radio-battle"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -1687,9 +1727,9 @@
     "stage": null,
     "difficulty": null,
     "relatedGuides": [
+      "guide-de-planification-long-terme",
       "guide-des-achats-integres",
-      "guide-ultimate-ceo",
-      "guide-de-planification-long-terme"
+      "guide-ultimate-ceo"
     ],
     "relatedArtists": [],
     "readTime": "3 min",
@@ -1782,64 +1822,6 @@
       "id": "panduan-acara-roulette",
       "ru": "rukovodstvo-sobytie-ruletka",
       "de": "leitfaden-roulette-ereignis"
-    }
-  },
-  {
-    "id": "tips-and-tricks-guide",
-    "title": "Guide des Astuces et Conseils",
-    "description": "Maîtrisez Top Girl avec nos meilleures astuces et conseils pour progresser plus vite, gagner plus de pièces et dominer les classements.",
-    "content": "Tips and Tricks Guide\n\nType: Tips Guide\nLevel: All levels\n\nShort Explanation\n\nDiscover the best tips and tricks for Top Girl/Apex Girl/Idol Company. These proven strategies will help you progress faster and dominate the rankings.\n\nLong Explanation\n\nWhether you're a beginner or experienced player, these tips will help you optimize your progress in Top Girl.\n\n💎 Beginner Tips\n\nFocus on One Team\nDon't waste resources building multiple teams early on.\nChoose 5 artists that work well together and focus your upgrades on them.\n\nInvest in Key Stats\nSing stat is crucial for singing contests.\nDance stat is essential for dance contests.\nManagement stat boosts your economy and buildings.\n\n🎯 Intermediate Tips\n\nParticipate in Events\nEvents offer valuable rewards.\nFocus on events that match your team genre.\n\nLevel Up Regularly\nComplete daily quests for free rewards.\nUse your resources wisely.\n\n🏆 Advanced Tips\n\nOptimize Your Artists\nChoose artists with complementary specialties.\nInvest in high-quality equipment.\n\nWatch for Updates\nThe game regularly evolves with new content.\nStay informed about new strategies.\n\nQuick FAQ\n\nQ: What's the best strategy for beginners?\nR: Focus on a team of 5 complementary artists and invest in their main stats.\n\nQ: How to earn coins faster?\nR: Upgrade your buildings and participate in regular events for bonus rewards.\n\nQ: Are promo codes still active?\nR: Yes! Check our promo codes page for the latest active codes.\n\nQ: Which artist is the best?\nR: It depends on your strategy. Check our tier list to see current rankings.",
-    "guideType": "classic",
-    "stage": null,
-    "difficulty": null,
-    "relatedGuides": [
-      "guide-des-batiments-de-la-ville"
-    ],
-    "relatedArtists": [],
-    "readTime": "5 min",
-    "icon": "💡",
-    "color": "#f59e0b",
-    "title_en": "Tips and Tricks Guide",
-    "description_en": "Master Top Girl with our best tips and tricks to progress faster, earn more coins, and dominate the rankings.",
-    "slugs": {
-      "fr": "guide-astuces-et-conseils",
-      "en": "tips-and-tricks-guide",
-      "it": "guida-suggerimenti-e-trucchi",
-      "es": "guia-consejos-y-trucos",
-      "pt": "guia-dicas-e-truques",
-      "pl": "przewodnik-wskazowki-i-porady",
-      "id": "panduan-kiat-dan-triks",
-      "ru": "rukovodstvo-sovety-i-priemy",
-      "de": "leitfaden-tipps-und-tricks"
-    }
-  },
-  {
-    "id": "how-to-unlock-all-artists",
-    "title": "Comment Débloquer Tous les Artistes",
-    "description": "Guide complet pour débloquer et collecter tous les artistes dans Top Girl.",
-    "content": "How to Unlock All Artists\n\nType: Collection Guide\nLevel: All levels\n\nShort Explanation\n\nDiscover how to unlock and collect all artists in Top Girl/Apex Girl/Idol Company. This guide covers methods to obtain every character type, from common to rare.\n\nLong Explanation\n\nCollecting all artists is a major goal for many Top Girl players. Each artist brings unique stats and special skills.\n\n🎤 Methods to Get Artists\n\nStandard Recruitment\nThis is the most common method to get new artists.\nUse your coins or gems to perform draws.\nPremium draws offer better chances for rare characters.\n\n🎁 Special Events\nSome events feature exclusive artists.\nParticipate actively in events to not miss these opportunities.\nSome artists are only available during limited periods.\n\n🏆 Rankings and Rewards\nReach top ranks in contests to get artists as rewards.\nEnd-of-season rankings often offer rare artists.\n\n💎 UR and SSR Artists\nUR artists are the rarest and most powerful.\nThey usually require more significant investments.\nSSR artists are very powerful but slightly more accessible.\n\n📊 Summary Table\n\nRarity | Main Method | Difficulty\nR | Standard recruitment | Easy\nSR | Premium recruitment | Medium\nSSR | Events / Rankings | Hard\nUR | Special events / Purchases | Very Hard\n\nQuick FAQ\n\nQ: Are unlocked artists kept?\nR: Yes, once unlocked, artists remain in your collection.\n\nQ: Can you get UR for free?\nR: It's very difficult but possible through events and rankings.\n\nQ: What's the most efficient method?\nR: Participate in regular events and save gems for premium recruitment.",
-    "guideType": "classic",
-    "stage": null,
-    "difficulty": null,
-    "relatedGuides": [
-      "tips-and-tricks-guide"
-    ],
-    "relatedArtists": [],
-    "readTime": "6 min",
-    "icon": "🎤",
-    "color": "#ec4899",
-    "title_en": "How to Unlock All Artists",
-    "description_en": "Complete guide to unlocking and collecting all artists in Top Girl/Apex Girl/Idol Company.",
-    "slugs": {
-      "fr": "comment-debloquer-tous-les-artistes",
-      "en": "how-to-unlock-all-artists",
-      "it": "come-sbloccare-tutti-gli-artisti",
-      "es": "como-desbloquear-todos-los-artistas",
-      "pt": "como-desbloquear-todos-os-artistas",
-      "pl": "jak-odblokowac-wszystkich-artystow",
-      "id": "cara-membuka-semua-artis",
-      "ru": "kak-otkryt-vseh-artistov",
-      "de": "wie-man-alle-kuenstler-freischaltet"
     }
   }
 ]
