@@ -49,31 +49,16 @@ export default async function OGImage({ params }: { params: Promise<{ lang: stri
           display: "flex",
         }} />
 
-        {/* Logo placeholder text */}
-        <div style={{
-          fontSize: "80px",
-          fontWeight: 800,
-          background: "linear-gradient(135deg, #ec4899, #8b5cf6)",
-          backgroundClip: "text",
-          color: "transparent",
-          letterSpacing: "-2px",
-          marginBottom: "12px",
-          display: "flex",
-        }}>
-          TopGirl
-        </div>
-
-        <div style={{
-          fontSize: "28px",
-          color: "rgba(255,255,255,0.5)",
-          fontWeight: 400,
-          letterSpacing: "3px",
-          textTransform: "uppercase",
-          marginBottom: "40px",
-          display: "flex",
-        }}>
-          Guide
-        </div>
+        {/* Logo */}
+        <img
+          src="https://apexgirlguide.com/assets/logositenew.png"
+          width={100}
+          height={100}
+          style={{
+            marginBottom: "16px",
+            display: "flex",
+          }}
+        />
 
         {/* Divider */}
         <div style={{
