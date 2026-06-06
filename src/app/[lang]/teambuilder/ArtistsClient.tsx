@@ -11,17 +11,7 @@ import { slugify } from "@/lib/utils/slugify";
 import { calculateTeamStats } from "@/lib/utils/calculateTeamStats";
 import type { Artist } from "@/lib/types/artist";
 import { Breadcrumb } from "@/components/Breadcrumb";
-
-const filterTranslations: Record<string, any> = {
-  fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", team1Stats: "Stats Équipe 1", team2Stats: "Stats Équipe 2", vs: "VS", total: "Total", acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Chargement...", viewProfileTitle: "Cliquer pour voir la fiche", rankLabel: "Rang", allSeasons: "Toutes saisons", maxSeason: "Max saison", season: "Saison", tooltipSingle: "Clic simple : voir la fiche", tooltipDouble: "Double clic : sélectionner équipe", pageTitle: "🎤 Artistes", pageSubtitle: "Découvrez tous les personnages" },
-  en: { all: "All", allGenres: "All genres", search: "Search...", artistOverview: "Artist Overview", skills: "Skills", viewFullProfile: "View full profile", selectArtist: "Select an artist", teamBuilder: "Team Builder", combinedStats: "Combined Stats", genres: "Genres", allRanks: "All ranks", allSpecialties: "All specialties", foundArtists: "artists found", clearTeam: "Clear", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Profile", clickToRemove: "Click to remove", team1Stats: "Team 1 Stats", team2Stats: "Team 2 Stats", vs: "VS", total: "Total", acquisition: "Access", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Loading...", viewProfileTitle: "Click to view profile", rankLabel: "Rank", allSeasons: "All seasons", maxSeason: "Max season", season: "Season", tooltipSingle: "Single click: view profile", tooltipDouble: "Double click: select team", pageTitle: "🎤 Artists", pageSubtitle: "Discover all characters" },
-  it: { all: "Tutti", allGenres: "Tutti i generi", search: "Cerca...", artistOverview: "Panoramica Artista", skills: "Abilità", viewFullProfile: "Visualizza profilo completo", selectArtist: "Seleziona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinati", genres: "Generi", allRanks: "Tutti i ranghi", allSpecialties: "Tutte le specialità", foundArtists: "artisti trovati", clearTeam: "Cancella", addTeam1: "+ Team 1", addTeam2: "+ Team 2", profile: "Scheda", clickToRemove: "Clicca per rimuovere", team1Stats: "Stats Team 1", team2Stats: "Stats Team 2", vs: "VS", total: "Totale", acquisition: "Accesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Caricamento...", viewProfileTitle: "Clicca per vedere la scheda", rankLabel: "Rango", allSeasons: "Tutte le stagioni", maxSeason: "Stagione max", tooltipSingle: "Clic singolo: vedi scheda", tooltipDouble: "Doppio clic: seleziona team", pageTitle: "🎤 Artisti", pageSubtitle: "Scopri tutti i personaggi" },
-  es: { all: "Todos", allGenres: "Todos los géneros", search: "Buscar...", artistOverview: "Resumen del Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecciona un artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Géneros", allRanks: "Todos los rangos", allSpecialties: "Todas las especialidades", foundArtists: "artistas encontrados", clearTeam: "Borrar", addTeam1: "+ Equipo 1", addTeam2: "+ Equipo 2", profile: "Perfil", clickToRemove: "Clic para eliminar", team1Stats: "Stats Equipo 1", team2Stats: "Stats Equipo 2", vs: "VS", total: "Total", acquisition: "Acceso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Cargando...", viewProfileTitle: "Clic para ver el perfil", rankLabel: "Rango", allSeasons: "Todas las temporadas", maxSeason: "Temporada máx", tooltipSingle: "Clic simple: ver perfil", tooltipDouble: "Doble clic: seleccionar equipo", pageTitle: "🎤 Artistas", pageSubtitle: "Descubre todos los personajes" },
-  pt: { all: "Todos", allGenres: "Todos os gêneros", search: "Pesquisar...", artistOverview: "Visão Geral do Artista", skills: "Habilidades", viewFullProfile: "Ver perfil completo", selectArtist: "Selecione um artista", teamBuilder: "Team Builder", combinedStats: "Stats combinados", genres: "Gêneros", allRanks: "Todas as patentes", allSpecialties: "Todas as especialidades", foundArtists: "artistas encontrados", clearTeam: "Limpar", addTeam1: "+ Time 1", addTeam2: "+ Time 2", profile: "Perfil", clickToRemove: "Clique para remover", team1Stats: "Stats Time 1", team2Stats: "Stats Time 2", vs: "VS", total: "Total", acquisition: "Acesso", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Carregando...", viewProfileTitle: "Clique para ver o perfil", rankLabel: "Rank", allSeasons: "Todas as temporadas", maxSeason: "Temporada máx", tooltipSingle: "Clique simples: ver perfil", tooltipDouble: "Clique duplo: selecionar time", pageTitle: "🎤 Artistas", pageSubtitle: "Descubra todos os personagens" },
-  pl: { all: "Wszystkie", allGenres: "Wszystkie gatunki", search: "Szukaj...", artistOverview: "Przegląd Artysty", skills: "Umiejętności", viewFullProfile: "Zobacz pełny profil", selectArtist: "Wybierz artystę", teamBuilder: "Team Builder", combinedStats: "Łączne statystyki", genres: "Gatunki", allRanks: "Wszystkie rangi", allSpecialties: "Wszystkie specjalności", foundArtists: "znalezionych artystów", clearTeam: "Wyczyść", addTeam1: "+ Drużyna 1", addTeam2: "+ Drużyna 2", profile: "Profil", clickToRemove: "Kliknij aby usunąć", team1Stats: "Stats Drużyna 1", team2Stats: "Stats Drużyna 2", vs: "VS", total: "Suma", acquisition: "Dostęp", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Ładowanie...", viewProfileTitle: "Kliknij aby zobaczyć profil", rankLabel: "Ranga", allSeasons: "Wszystkie sezony", maxSeason: "Maks sezon", tooltipSingle: "Pojedynczy klik: zobacz profil", tooltipDouble: "Podwójny klik: wybierz drużynę", pageTitle: "🎤 Artyści", pageSubtitle: "Odkryj wszystkich postaci" },
-  id: { all: "Semua", allGenres: "Semua genre", search: "Cari...", artistOverview: "Ringkasan Artis", skills: "Skill", viewFullProfile: "Lihat profil lengkap", selectArtist: "Pilih artis", teamBuilder: "Team Builder", combinedStats: "Stats gabungan", genres: "Genre", allRanks: "Semua rank", allSpecialties: "Semua specialtis", foundArtists: "artis ditemukan", clearTeam: "Hapus", addTeam1: "+ Tim 1", addTeam2: "+ Tim 2", profile: "Profil", clickToRemove: "Klik untuk hapus", team1Stats: "Stats Tim 1", team2Stats: "Stats Tim 2", vs: "VS", total: "Total", acquisition: "Akses", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Memuat...", viewProfileTitle: "Klik untuk melihat profil", rankLabel: "Rank", allSeasons: "Semua musim", maxSeason: "Musim maks", tooltipSingle: "Klik tunggal: lihat profil", tooltipDouble: "Klik ganda: pilih tim", pageTitle: "🎤 Artis", pageSubtitle: "Temukan semua karakter" },
-  ru: { all: "Все", allGenres: "Все жанры", search: "Поиск...", artistOverview: "Обзор Артиста", skills: "Навыки", viewFullProfile: "Посмотреть полный профиль", selectArtist: "Выберите артиста", teamBuilder: "Team Builder", combinedStats: "Общие статы", genres: "Жанры", allRanks: "Все ранги", allSpecialties: "Все специализации", foundArtists: "артистов найдено", clearTeam: "Очистить", addTeam1: "+ Команда 1", addTeam2: "+ Команда 2", profile: "Профиль", clickToRemove: "Нажмите чтобы убрать", team1Stats: "Stats Команда 1", team2Stats: "Stats Команда 2", vs: "VS", total: "Всего", acquisition: "Доступ", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Загрузка...", viewProfileTitle: "Нажмите чтобы открыть профиль", rankLabel: "Ранг", allSeasons: "Все сезоны", maxSeason: "Макс сезон", tooltipSingle: "Одиночный клик: открыть профиль", tooltipDouble: "Двойной клик: выбрать в команду", pageTitle: "🎤 Артисты", pageSubtitle: "Откройте всех персонажей" },
-};
+import { getArtistContent } from "@/lib/i18n/artists";
 
 const rankColors: Record<string, string> = {
   UR: "#ff6b6b", "UR Roma": "#ef4444", "UR Bali": "#ef4444", SSR: "#fbbf24", SR: "#8b5cf6", R: "#3b82f6",
@@ -136,7 +126,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   const [panelFixed, setPanelFixed] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const panelSentinelRef = useRef<HTMLDivElement>(null);
-  const t = filterTranslations[lang] || filterTranslations.fr;
+  const t = getArtistContent(lang);
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
     f2p: { label: t.acqF2p || "F2P", color: "#22c55e", bg: "rgba(34,197,94,0.18)" },
@@ -304,12 +294,10 @@ export default function ArtistsClient({ lang }: { lang: string }) {
           <p className="page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
           <div style={{ maxWidth: 920, margin: "12px auto 16px", textAlign: "left", background: "rgba(26,26,44,0.85)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: 14 }}>
             <div style={{ fontSize: "0.94rem", color: "rgba(255,255,255,0.9)", marginBottom: 6 }}>
-              {lang === "fr" ? "Methodologie du Team Builder" : "Team Builder methodology"}
+              {t.teamBuilderMethodology}
             </div>
             <div style={{ fontSize: "0.84rem", color: "rgba(255,255,255,0.68)", lineHeight: 1.6 }}>
-              {lang === "fr"
-                ? "Les comparaisons d'equipes s'appuient sur stats combinees, synergies de genre/specialite et cout de progression. Utilisez les filtres pour adapter les suggestions a votre serveur et votre saison."
-                : "Team comparisons use combined stats, genre/specialty synergy, and progression cost. Use filters to adapt recommendations to your server and season."}
+              {t.teamBuilderMethodologyDesc}
             </div>
           </div>
           <AdBanner />
@@ -392,7 +380,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                       <div className="detail-col">
                         <p>🎵 {selectedArtist.genre}</p>
                         <p>📊 {t.rankLabel}: <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.rank}</span></p>
-                        {selectedArtist.calculatedTier && <p>⭐ {t.tier || 'Tier'}: {selectedArtist.calculatedTier}</p>}
+                        {selectedArtist.calculatedTier && <p>⭐ {t.tier}: {selectedArtist.calculatedTier}</p>}
                         {(selectedArtist as any).season && <p>📍 {seasonLabels[lang]}: {(selectedArtist as any).season}</p>}
                       </div>
                     </div>
@@ -561,10 +549,10 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                 return <option key={key} value={frValue}>{label}</option>;
               })}
             </select>
-            <label htmlFor="filter-season" className="sr-only">{t.allSeasons || "Toutes saisons"}</label>
+            <label htmlFor="filter-season" className="sr-only">{t.allSeasons}</label>
             <select id="filter-season" value={filterMaxSeason} onChange={(e) => setFilterMaxSeason(e.target.value)}>
-              <option value="">{t.allSeasons || "Toutes saisons"}</option>
-              {SEASON_LABELS.map(s => (<option key={s} value={s}>{t.maxSeason ? `${t.maxSeason} : ${s}` : `Max : ${s}`}</option>))}
+              <option value="">{t.allSeasons}</option>
+              {SEASON_LABELS.map(s => (<option key={s} value={s}>{`${t.maxSeason} : ${s}`}</option>))}
             </select>
           </div>
           <div className="artists-count">{filteredArtists.length} {t.foundArtists}</div>
@@ -648,8 +636,8 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                 color: "rgba(255,255,255,0.75)",
                 lineHeight: 1.7,
               }}>
-                <div>👆 {t.tooltipSingle || "Clic simple : voir la fiche"}</div>
-                <div>👆 {t.tooltipDouble || "Double clic : sélectionner équipe"}</div>
+                <div>👆 {t.tooltipSingle}</div>
+                <div>👆 {t.tooltipDouble}</div>
               </div>
             )}
           </div>
