@@ -121,6 +121,7 @@ export default async function LocaleLayout({
     { href: `/${lang}/tierlist/`, label: ui.nav.tierList },
     { href: `/${lang}/guides/`, label: ui.nav.guides },
     { href: `/${lang}/tools/`, label: ui.nav.tools, cta: true },
+    { href: "https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00", label: ui.footer.support, cta: true, variant: "support" },
   ];
 
   const languages = [
@@ -182,26 +183,7 @@ export default async function LocaleLayout({
             <p className="text-sm text-muted">
               {ui.footer.subtitle}
             </p>
-            <a
-              href="https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-support"
-              style={{
-                display: "inline-block",
-                marginTop: "16px",
-                padding: "10px 24px",
-                border: "2px solid #ffd700",
-                borderRadius: "8px",
-                color: "#ffd700",
-                textDecoration: "none",
-                fontWeight: 600,
-                fontSize: "14px",
-                transition: "all 0.2s ease",
-              }}
-            >
-              {ui.footer.support}
-            </a>
+
           </div>
           <div>
             <h4>{ui.footer.navigation}</h4>
@@ -229,6 +211,26 @@ export default async function LocaleLayout({
           </div>
         </div>
         <div className="footer-bottom">
+          <a
+            href="https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-support"
+            style={{
+              display: "inline-block",
+              marginBottom: "16px",
+              padding: "12px 32px",
+              border: "2px solid #ffd700",
+              borderRadius: "10px",
+              color: "#ffd700",
+              textDecoration: "none",
+              fontWeight: 700,
+              fontSize: "16px",
+              transition: "all 0.2s ease",
+            }}
+          >
+            ⭐ {ui.footer.support}
+          </a>
           {ui.footer.copyright}
         </div>
       </footer>

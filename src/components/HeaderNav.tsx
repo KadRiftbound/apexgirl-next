@@ -8,6 +8,7 @@ type NavItem = {
   href: string;
   label: string;
   cta?: boolean;
+  variant?: string;
 };
 
 export function HeaderNav({ lang, items }: { lang: string; items: NavItem[] }) {
@@ -21,11 +22,28 @@ export function HeaderNav({ lang, items }: { lang: string; items: NavItem[] }) {
     return normalizedPath.startsWith(normalizedHref);
   };
 
+  const isExternal = (href: string) => href.startsWith("http://") || href.startsWith("https://");
+
   return (
     <nav className="nav" role="navigation" aria-label="Main navigation">
       {items.map((item) => {
-        const active = isActive(item.href);
-        const className = `${item.cta ? "nav-cta" : ""}${active ? " active" : ""}`.trim();
+        const active = !isExternal(item.href) && isActive(item.href);
+        const className = `${item.cta ? "nav-cta" : ""}${item.variant ? ` nav-cta-${item.variant}` : ""}${active ? " active" : ""}`.trim();
+
+        if (isExternal(item.href)) {
+          return (
+            <a
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={className}
+            >
+              ⭐ {item.label}
+            </a>
+          );
+        }
+
         return (
           <Link
             key={item.href}

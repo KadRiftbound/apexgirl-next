@@ -384,6 +384,24 @@ img {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3), 0 8px 20px rgba(255, 77, 141, 0.45);
 }
 
+.nav-cta-support {
+  background: linear-gradient(135deg, #f59e0b, #ffd700) !important;
+  color: #1a1a2e !important;
+  margin-left: 8px;
+  padding: 10px 20px !important;
+  box-shadow: 0 2px 12px rgba(245, 158, 11, 0.35);
+  border: none !important;
+}
+
+.nav-cta-support:hover {
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.55);
+  transform: translateY(-1px);
+}
+
+.nav-cta-support::after {
+  display: none !important;
+}
+
 /* Main Content */
 .main-content {
   min-height: 100vh;
