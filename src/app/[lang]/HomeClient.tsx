@@ -324,6 +324,7 @@ export default function HomeClient({ lang }: { lang: string }) {
     <>
       {/* ═══════════════════════════════════════════
           HERO
+      ═══════════════════════════════════════════ */}
       <div className="hero-content">
         <div className="hero-badge">TopGirl / ApexGirl</div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -350,9 +351,10 @@ export default function HomeClient({ lang }: { lang: string }) {
           <Link href={`/${lang}/tools/`}   style={btnToolsDesktop}   >🛠️ {t.seeTools}</Link>
         </div>
       </div>
-
       {/* ═══════════════════════════════════════════
-          TL;DR — Quick answers in 10 seconds      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 20px' }}>
+          TL;DR — Quick answers in 10 seconds
+      ═══════════════════════════════════════════ */}
+      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 20px' }}>
         <div style={{ 
           background: 'linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(20, 20, 40, 0.95))',
           borderRadius: '20px',
@@ -413,9 +415,10 @@ export default function HomeClient({ lang }: { lang: string }) {
           </div>
         </div>
       </section>
-
       {/* ═══════════════════════════════════════════
-          SECTIONS — ce qu'on propose (premier contenu vu)      <section className="offer-section">
+          SECTIONS — ce qu'on propose (premier contenu vu)
+      ═══════════════════════════════════════════ */}
+      <section className="offer-section">
         <div className="offer-inner">
           <h2 className="offer-title">{t.whatWeOffer}</h2>
           <div className="offer-grid">
@@ -473,6 +476,7 @@ export default function HomeClient({ lang }: { lang: string }) {
 
       {/* ═══════════════════════════════════════════
           WHAT IS TOPGIRL — war game explainer
+      ═══════════════════════════════════════════ */}
       <section className="explainer-section">
         <div className="explainer-inner">
           <h2 className="explainer-title">
