@@ -7,15 +7,15 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 const BASE_URL = 'https://apexgirlguide.com';
 
 const titleTemplates: Record<string, (title: string, cat: string) => string> = {
-  fr: (title, cat) => `${title} — TopGirl Guide | ${cat}`,
-  en: (title, cat) => `${title} — TopGirl Guide | ${cat}`,
-  de: (title, cat) => `${title} — TopGirl Guide | ${cat}`,
-  it: (title, cat) => `${title} — Guida TopGirl | ${cat}`,
-  es: (title, cat) => `${title} — Guía TopGirl | ${cat}`,
-  pt: (title, cat) => `${title} — Guia TopGirl | ${cat}`,
-  pl: (title, cat) => `${title} — Poradnik TopGirl | ${cat}`,
-  id: (title, cat) => `${title} — Panduan TopGirl | ${cat}`,
-  ru: (title, cat) => `${title} — Гайд TopGirl | ${cat}`,
+  fr: (title, cat) => `${title} — Guide TopGirl & Apex Girl | ${cat}`,
+  en: (title, cat) => `${title} — TopGirl & Apex Girl Guide | ${cat}`,
+  de: (title, cat) => `${title} — TopGirl & Apex Girl Leitfaden | ${cat}`,
+  it: (title, cat) => `${title} — Guida TopGirl & Apex Girl | ${cat}`,
+  es: (title, cat) => `${title} — Guía TopGirl & Apex Girl | ${cat}`,
+  pt: (title, cat) => `${title} — Guia TopGirl & Apex Girl | ${cat}`,
+  pl: (title, cat) => `${title} — Poradnik TopGirl & Apex Girl | ${cat}`,
+  id: (title, cat) => `${title} — Panduan TopGirl & Apex Girl | ${cat}`,
+  ru: (title, cat) => `${title} — Гайд TopGirl и Apex Girl | ${cat}`,
 };
 
 const faqTemplates: Record<string, { q: string; a: string }[]> = {
@@ -67,43 +67,7 @@ export async function generateMetadata(
     ? `${BASE_URL}${guide.thumbnail}`
     : `${BASE_URL}/${lang}/opengraph-image`;
 
-  const keywordsBySlug: Record<string, Record<string, string[]>> = {
-    'event-adventure-abroad-tokyo': {
-      fr: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo', 'Top Girl aventure Tokyo', 'guide Tokyo Top Girl', 'événement Tokyo Top Girl'],
-      en: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo', 'Top Girl Tokyo adventure', 'Tokyo event Top Girl', 'Top Girl guide Tokyo'],
-      de: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo', 'Top Girl Tokio Abenteuer', 'Tokio Event Top Girl'],
-      it: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo'],
-      es: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo'],
-      pt: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo'],
-      pl: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo'],
-      id: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo'],
-      ru: ['Top Girl Tokyo', 'Apex Girl Tokyo', 'Idol Company Tokyo', 'Adventure Abroad Tokyo'],
-    },
-    'event-ancient-rome': {
-      fr: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma', 'Rome antique Top Girl', 'Top Girl Rome', 'événement Roma Top Girl'],
-      en: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma', 'Ancient Rome Top Girl', 'Rome event Top Girl'],
-      de: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma', 'Antikes Rom Top Girl', 'Rom Event Top Girl'],
-      it: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma'],
-      es: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma'],
-      pt: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma'],
-      pl: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma'],
-      id: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma'],
-      ru: ['Top Girl Roma', 'Apex Girl Roma', 'Idol Company Roma', 'Adventure Abroad Roma'],
-    },
-    'event-metro-subway': {
-      fr: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro', 'Top Girl métro', 'événement Metro Top Girl'],
-      en: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro', 'Tokyo Metro Top Girl'],
-      de: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro', 'Tokio Metro Top Girl'],
-      it: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
-      es: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
-      pt: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
-      pl: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
-      id: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
-      ru: ['Top Girl Metro', 'Apex Girl Metro', 'Idol Company Metro', 'Metro Subway Top Girl', 'Adventure Abroad Metro'],
-    },
-  };
-
-  const keywords = keywordsBySlug[slug]?.[lang] || keywordsBySlug[slug]?.['en'] || [];
+  const keywords = [title, `Top Girl ${title}`, `Apex Girl ${title}`, `TopGirl ${title}`, `Idol Company ${title}`, category, `Top Girl guide`, `Apex Girl guide`];
 
   return {
     title: pageTitle,

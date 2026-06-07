@@ -3,6 +3,9 @@
 
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
+import { CorrectionCallout } from "@/components/CorrectionCallout";
+import { SummaryBox, type SummaryBoxData } from "@/components/SummaryBox";
+import { TipCallout, type CalloutData } from "@/components/TipCallout";
 import { useEffect, useState, type ReactNode } from "react";
 import guidesData from "@/lib/data/guides.json";
 import artistsData from "@/lib/data/artists.json";
@@ -96,6 +99,8 @@ type Guide = {
   difficulty?: "beginner" | "intermediate" | "advanced" | null;
   relatedGuides?: string[];
   relatedArtists?: string[];
+  summaryBox?: SummaryBoxData;
+  callouts?: CalloutData[];
 };
 
 const guides: Guide[] = [
@@ -128,13 +133,9 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
   
   const getGuideSlug = (g: typeof guide) => g?.slugs?.[lang as keyof typeof g.slugs] || g?.id || '';
   const [glossaryContent, setGlossaryContent] = useState<string>("");
+  const [tocOpen, setTocOpen] = useState(false);
 
   const editorialTexts = {
-    methodologyTitle: lang === "fr" ? "Comment ce guide est maintenu" : "How this guide is maintained",
-    methodologyBody:
-      lang === "fr"
-        ? "Nous revoyons ce guide apres changements de meta, cycles d'evenements et retours joueurs. Les recommandations sont verifiees sur progression, synergies et rapport cout/impact."
-        : "We review this guide after meta shifts, event cycles, and player feedback. Recommendations are checked against progression impact, team synergy, and resource efficiency.",
     usageTitle: lang === "fr" ? "Quand utiliser ce guide" : "When to use this guide",
     usageBody:
       lang === "fr"
@@ -356,7 +357,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       if (isSectionTitle(trimmed, lines[i + 1])) {
         listMode = false;
         elements.push(
-          <h3 key={i} className="guide-section">
+          <h3 key={i} className="guide-section" id={slugifyHeading(trimmed)}>
             {parseInlineBold(trimmed, color)}
           </h3>
         );
@@ -365,30 +366,33 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       }
 
       if (line.startsWith('## ')) {
+        const headingText = line.replace('## ', '').trim();
         listMode = false;
         elements.push(
-          <h2 key={i} className="guide-h2">
-            {parseInlineBold(line.replace('## ', ''), color)}
+          <h2 key={i} className="guide-h2" id={slugifyHeading(headingText)}>
+            {parseInlineBold(headingText, color)}
           </h2>
         );
         lastNonEmpty = trimmed;
         continue;
       }
       if (line.startsWith('### ')) {
+        const headingText = line.replace('### ', '').trim();
         listMode = false;
         elements.push(
-          <h3 key={i} className="guide-h3">
-            {parseInlineBold(line.replace('### ', ''), color)}
+          <h3 key={i} className="guide-h3" id={slugifyHeading(headingText)}>
+            {parseInlineBold(headingText, color)}
           </h3>
         );
         lastNonEmpty = trimmed;
         continue;
       }
       if (line.startsWith('#### ')) {
+        const headingText = line.replace('#### ', '').trim();
         listMode = false;
         elements.push(
-          <div key={i} className="guide-h4">
-            {parseInlineBold(line.replace('#### ', ''), color)}
+          <div key={i} className="guide-h4" id={slugifyHeading(headingText)}>
+            {parseInlineBold(headingText, color)}
           </div>
         );
         lastNonEmpty = trimmed;
@@ -397,7 +401,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       if (/^(explication courte|explication longue|short explanation|long explanation|spiegazione breve|spiegazione dettagliata|explicación corta|explicación larga|explicação curta|explicação longa|krótkie wyjaśnienie|długie wyjaśnienie|penjelasan singkat|penjelasan panjang|краткое объяснение|подробное объяснение|kurze erklärung|lange erklärung|conseils|tips|tipps|rewards|récompenses|guides liés|glossaire)/i.test(trimmed)) {
         listMode = false;
         elements.push(
-          <h3 key={i} className="guide-label">
+          <h3 key={i} className="guide-label" id={slugifyHeading(trimmed)}>
             {parseInlineBold(trimmed, color)}
           </h3>
         );
@@ -461,6 +465,43 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
   };
 
   const emDash = '\u2014';
+
+  const slugifyHeading = (text: string) =>
+    text.toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+
+  const parseHeadings = (contentText: string) => {
+    if (!contentText) return [] as { text: string; id: string; level: number }[];
+    const lines = contentText.split('\n');
+    const headings: { text: string; id: string; level: number }[] = [];
+    for (let i = 0; i < lines.length; i++) {
+      const trimmed = lines[i].trim();
+      if (!trimmed) continue;
+      if (lines[i].startsWith('## ')) {
+        const text = lines[i].replace('## ', '').trim();
+        headings.push({ text, id: slugifyHeading(text), level: 2 });
+        continue;
+      }
+      if (lines[i].startsWith('### ')) {
+        const text = lines[i].replace('### ', '').trim();
+        headings.push({ text, id: slugifyHeading(text), level: 3 });
+        continue;
+      }
+      if (lines[i].startsWith('#### ')) {
+        const text = lines[i].replace('#### ', '').trim();
+        headings.push({ text, id: slugifyHeading(text), level: 4 });
+        continue;
+      }
+      const nextLine = lines[i + 1] || '';
+      const nextTrimmed = nextLine.trim();
+      if (!trimmed.endsWith(':') && !trimmed.includes(':') && !trimmed.startsWith('- ') && !/^\d+\.\s/.test(trimmed) && !/[.!?]/.test(trimmed) && trimmed.length <= 70 && trimmed.length > 0 && (nextTrimmed === '' || nextTrimmed.startsWith('- ') || nextTrimmed.length < 40)) {
+        headings.push({ text: trimmed, id: slugifyHeading(trimmed), level: 2 });
+      }
+    }
+    return headings;
+  };
 
   const parseGlossaryEntries = (text: string) => {
     if (!text) return [] as { term: string; definition: string }[];
@@ -635,6 +676,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
         name: artist?.name || slugValue,
       };
     });
+  const tocHeadings = parseHeadings(mainContent);
 
   return (
     <>
@@ -681,6 +723,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
                   {getCategoryLabel(guide, lang)}
                 </span>
                 <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>⏱️ {guide.readTime}</span>
+                <span style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.75rem" }}>🕐 {lang === "fr" ? "Récemment mis à jour" : "Recently updated"}</span>
               </div>
               <h1 style={{
                 fontSize: "1.7rem", fontWeight: 800, margin: 0,
@@ -705,16 +748,15 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
         }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "10px" }}>
             <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", padding: "12px" }}>
-              <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.methodologyTitle}</div>
-              <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{editorialTexts.methodologyBody}</div>
-            </div>
-            <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", padding: "12px" }}>
               <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.usageTitle}</div>
               <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{editorialTexts.usageBody}</div>
             </div>
             <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", padding: "12px" }}>
               <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.updateTitle}</div>
               <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{today}</div>
+              <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.75rem", marginTop: "8px", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "8px" }}>
+                {lang === "fr" ? "Aussi connu sous le nom de Top Girl, Apex Girl, Idol Company" : "Also known as Top Girl, Apex Girl, Idol Company"}
+              </div>
             </div>
           </div>
         </div>
@@ -764,12 +806,92 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
           </div>
         )}
 
+        <CorrectionCallout lang={lang} />
+
+        {guide.summaryBox && <SummaryBox data={guide.summaryBox} lang={lang} />}
+
+        {guide.callouts && guide.callouts.length > 0 && (
+          <div style={{ marginBottom: "16px" }}>
+            {guide.callouts.map((c, i) => (
+              <TipCallout key={i} callout={c} lang={lang} />
+            ))}
+          </div>
+        )}
+
+        {tocHeadings.length > 2 && (
+          <div style={{
+            background: "rgba(10,14,24,0.92)",
+            borderRadius: "16px",
+            border: "1px solid rgba(255,255,255,0.09)",
+            marginBottom: "16px",
+            overflow: "hidden",
+          }}>
+            <button
+              onClick={() => setTocOpen(!tocOpen)}
+              style={{
+                width: "100%",
+                background: "none",
+                border: "none",
+                padding: "14px 18px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                cursor: "pointer",
+                color: "rgba(255,255,255,0.8)",
+                fontSize: "0.9rem",
+                fontWeight: 600,
+              }}
+            >
+              <span>{lang === "fr" ? "Table des matières" : "Table of Contents"}</span>
+              <span style={{
+                transform: tocOpen ? "rotate(180deg)" : "rotate(0deg)",
+                transition: "transform 0.2s",
+                fontSize: "0.8rem",
+              }}>▾</span>
+            </button>
+            {tocOpen && (
+              <div style={{ padding: "0 18px 14px", display: "flex", flexDirection: "column", gap: "4px" }}>
+                {tocHeadings.map((h) => (
+                  <a
+                    key={h.id}
+                    href={`#${h.id}`}
+                    style={{
+                      color: "rgba(255,255,255,0.65)",
+                      textDecoration: "none",
+                      fontSize: "0.85rem",
+                      padding: "4px 0 4px 0",
+                      transition: "color 0.15s",
+                      borderBottom: "1px solid rgba(255,255,255,0.04)",
+                    }}
+                  >
+                    {h.text}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Main content */}
         {mainContent && (
           <div className="guide-article">
             {renderContent(mainContent, guideColor)}
           </div>
         )}
+
+        <div style={{ textAlign: "right", marginBottom: "16px" }}>
+          <Link
+            href={`/${lang}/methodology/`}
+            style={{
+              color: "rgba(255,255,255,0.3)",
+              fontSize: "0.75rem",
+              textDecoration: "none",
+              transition: "color 0.15s",
+            }}
+          >
+            {lang === "fr" ? "Méthodologie des guides →" : "Guide methodology →"}
+          </Link>
+        </div>
 
         {(relatedGuideEntries.length > 0 || relatedArtistEntries.length > 0) && (
           <div style={{
@@ -958,20 +1080,14 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       </div>
 
       <style>{`
-        @media (max-width: 640px) {
-        .guide-top-row {
-          grid-template-columns: 1fr !important;
+        .guide-article {
+          background: linear-gradient(180deg, rgba(12,12,28,0.92), rgba(10,10,24,0.92));
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 18px;
+          padding: 28px;
+          margin-bottom: 24px;
+          box-shadow: 0 12px 30px rgba(0,0,0,0.35);
         }
-      }
-
-      .guide-article {
-        background: linear-gradient(180deg, rgba(12,12,28,0.92), rgba(10,10,24,0.92));
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 18px;
-        padding: 28px;
-        margin-bottom: 24px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-      }
 
         .guide-content {
           color: rgba(230,232,245,0.92);
@@ -981,13 +1097,19 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
           letter-spacing: 0.01em;
         }
 
+        .guide-content h2,
+        .guide-content h3,
+        .guide-content h4 {
+          scroll-margin-top: 80px;
+        }
+
         .guide-h2 {
-          margin: 28px 0 12px;
+          margin: 36px 0 14px;
           font-size: 1.3rem;
           font-weight: 700;
           color: #fff;
           border-bottom: 1px solid rgba(255,255,255,0.08);
-          padding-bottom: 6px;
+          padding-bottom: 8px;
           position: relative;
         }
 
@@ -1003,21 +1125,21 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
         }
 
         .guide-h3 {
-          margin: 18px 0 8px;
-          font-size: 1.02rem;
+          margin: 26px 0 10px;
+          font-size: 1.05rem;
           font-weight: 700;
           color: rgba(255,255,255,0.95);
         }
 
         .guide-h4 {
-          margin: 14px 0 6px;
+          margin: 20px 0 8px;
           font-size: 0.95rem;
           font-weight: 600;
           color: var(--accent);
         }
 
         .guide-label {
-          margin: 18px 0 6px;
+          margin: 24px 0 8px;
           font-size: 0.85rem;
           font-weight: 700;
           color: var(--accent);
@@ -1026,10 +1148,18 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
         }
 
         .guide-section {
-          margin: 18px 0 6px;
+          margin: 24px 0 10px;
           font-size: 0.95rem;
           font-weight: 700;
           color: var(--accent);
+          border-left: 2px solid var(--accent);
+          padding-left: 10px;
+        }
+
+        .guide-section + .guide-p,
+        .guide-h2 + .guide-p,
+        .guide-h3 + .guide-p {
+          margin-top: 4px;
         }
 
         .guide-subhead {
@@ -1047,40 +1177,52 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
           margin-bottom: 6px;
         }
 
-      .guide-p {
-        margin: 0 0 12px;
-        color: rgba(240,240,255,0.88);
-      }
+        .guide-p {
+          margin: 0 0 16px;
+          color: rgba(240,240,255,0.88);
+          line-height: 1.75;
+        }
 
-      .guide-li,
-      .guide-num {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 8px;
-        align-items: flex-start;
-        color: rgba(255,255,255,0.85);
-      }
+        .guide-li,
+        .guide-num {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 10px;
+          align-items: flex-start;
+          color: rgba(255,255,255,0.85);
+        }
 
         .guide-li-dot {
           color: var(--accent);
-          margin-top: 2px;
+          margin-top: 3px;
           flex-shrink: 0;
-          font-size: 0.85rem;
-          opacity: 0.85;
+          font-size: 0.9rem;
+          opacity: 0.9;
         }
 
-      .guide-li-text {
-        color: rgba(240,240,255,0.86);
-        font-size: 0.95rem;
-        line-height: 1.7;
-      }
+        .guide-li-text {
+          color: rgba(240,240,255,0.86);
+          font-size: 0.95rem;
+          line-height: 1.75;
+        }
 
         .guide-num-badge {
           min-width: 20px;
           color: var(--accent);
-          margin-top: 2px;
+          margin-top: 3px;
           font-weight: 700;
           font-size: 0.85rem;
+        }
+
+        .guide-li + .guide-li,
+        .guide-num + .guide-num {
+          border-top: 1px solid rgba(255,255,255,0.04);
+          padding-top: 8px;
+        }
+
+        .guide-table-wrap {
+          overflow-x: auto;
+          margin-bottom: 12px;
         }
 
         .guide-table-row {
@@ -1088,22 +1230,53 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
           gap: 8px;
           margin: 2px 0;
           font-size: 0.82rem;
+          min-width: max-content;
         }
 
-      .guide-table-cell {
-        color: rgba(255,255,255,0.8);
-        flex: 1;
-        padding: 6px 8px;
-        background: rgba(255,255,255,0.05);
-        border-radius: 8px;
-        border: 1px solid rgba(255,255,255,0.08);
-      }
+        .guide-table-cell {
+          color: rgba(255,255,255,0.8);
+          flex: 1;
+          min-width: 120px;
+          padding: 6px 8px;
+          background: rgba(255,255,255,0.05);
+          border-radius: 8px;
+          border: 1px solid rgba(255,255,255,0.08);
+        }
 
         .guide-strong {
           margin-top: 12px;
           font-weight: 700;
           color: var(--accent);
           font-size: 0.95rem;
+        }
+
+        @media (max-width: 640px) {
+          .guide-article {
+            padding: 18px 16px;
+          }
+          .guide-h2 {
+            margin: 22px 0 10px;
+            font-size: 1.15rem;
+          }
+          .guide-h3 {
+            margin: 14px 0 6px;
+            font-size: 0.95rem;
+          }
+          .guide-content {
+            font-size: 0.92rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+          .guide-li-text {
+            font-size: 0.9rem;
+          }
+          .guide-table-cell {
+            min-width: 100px;
+          }
+          a, button {
+            min-height: 44px;
+          }
         }
       `}</style>
     </>

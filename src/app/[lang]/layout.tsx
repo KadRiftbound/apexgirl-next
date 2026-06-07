@@ -29,7 +29,7 @@ const metadataByLang: Record<string, { title: string; description: string; keywo
   es: { title: "TopGirl - Guías y Herramientas", description: "El fansite no oficial de TopGirl/ApexGirl/Idol Company con guías, herramientas y códigos promocionales", keywords: "TopGirl, ApexGirl, Idol Company, guía, tips, códigos promocionales" },
   pt: { title: "TopGirl - Guias e Ferramentas", description: "O fansite não oficial da TopGirl/ApexGirl/Idol Company com guias, ferramentas e códigos promocionais", keywords: "TopGirl, ApexGirl, Idol Company, guia, tips, códigos promocionais" },
   pl: { title: "TopGirl - Poradniki i Narzędzia", description: "Nieoficjalny serwis TopGirl/ApexGirl/Idol Company z poradnikami, narzędziami i kodami promocyjnymi", keywords: "TopGirl, ApexGirl, Idol Company, poradnik, tips, kody promocyjne" },
-  id: { title: "TopGirl - Panduan dan Alat", description: "Fansite resmi TopGirl/ApexGirl/Idol Company dengan panduan, alat, dan kode promo", keywords: "TopGirl, ApexGirl, Idol Company, panduan, tips, kode promo" },
+  id: { title: "TopGirl - Panduan dan Alat", description: "Fansite tidak resmi TopGirl/ApexGirl/Idol Company dengan panduan, alat, dan kode promo", keywords: "TopGirl, ApexGirl, Idol Company, panduan, tips, kode promo" },
   ru: { title: "TopGirl - Руководства и Инструменты", description: "Неофициальный фан-сайт TopGirl/ApexGirl/Idol Company с руководствами, инструментами и промокодами", keywords: "TopGirl, ApexGirl, Idol Company, руководство, tips, промокоды" },
 };
 

@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
 import GuidesListClient from "./GuidesListClient";
+import guidesData from "@/lib/data/guides.json";
 
 const BASE_URL = "https://apexgirlguide.com";
+
+function guideTitle(guide: any, lang: string): string {
+  if (lang === "fr") return guide.title;
+  const key = `title_${lang}`;
+  return guide[key] || guide.title_en || guide.title;
+}
+
+function guideSlug(guide: any, lang: string): string {
+  const fallbacks: Record<string, string> = { fr: guide.slugs?.fr, en: guide.slugs?.en };
+  return guide.slugs?.[lang] || fallbacks[lang] || guide.slugs?.en || guide.id;
+}
 
 const meta: Record<string, { title: string; description: string; keywords: string }> = {
   fr: { title: "TopGirl Guides — Tous les guides de jeu", description: "Tous les guides TopGirl/ApexGirl/Idol Company : équipement, construction d'équipe, événements et plus. Guides pour débutants et joueurs avancés.", keywords: "TopGirl guides, guides ApexGirl, Idol Company guides, guide équipement TopGirl, guide débutant TopGirl" },
@@ -34,5 +46,25 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export default async function GuidesPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  return <GuidesListClient lang={lang} />;
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": (guidesData as any[]).map((guide, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `${BASE_URL}/${lang}/guides/${guideSlug(guide, lang)}/`,
+      "name": guideTitle(guide, lang),
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <GuidesListClient lang={lang} />
+    </>
+  );
 }
