@@ -489,6 +489,20 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
           )}
         </div>
 
+        <div style={{ textAlign: 'right', marginBottom: '8px' }}>
+          <a
+            href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === 'fr' ? 'Nouvelle artiste' : 'New artist submission')}%3A%20${encodeURIComponent(artist.name)}`}
+            style={{
+              color: 'rgba(255,255,255,0.3)',
+              fontSize: '0.75rem',
+              textDecoration: 'none',
+              transition: 'color 0.15s',
+            }}
+          >
+            {lang === 'fr' ? 'Soumettre une nouvelle artiste →' : 'Submit a new artist →'}
+          </a>
+        </div>
+
         {/* Footer nav */}
         <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '8px' }}>
           <Link href={`/${lang}/teambuilder/`} style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>← {t.backToArtists}</Link>

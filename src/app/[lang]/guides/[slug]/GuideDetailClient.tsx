@@ -129,6 +129,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
   const guide = guideId ? allGuides.find(g => g.id === guideId) : allGuides.find(g => g.id === slug);
   const langSlug = guide?.slugs?.[lang as keyof typeof guide.slugs] || guide?.id || slug;
   const guideColor = guide?.color || "#8b5cf6";
+  const guideTitle = (guide as any)[`title_${lang}`] || guide?.title || "";
   const today = new Date().toISOString().split("T")[0];
   
   const getGuideSlug = (g: typeof guide) => g?.slugs?.[lang as keyof typeof g.slugs] || g?.id || '';
@@ -879,18 +880,43 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
           </div>
         )}
 
-        <div style={{ textAlign: "right", marginBottom: "16px" }}>
-          <Link
-            href={`/${lang}/methodology/`}
-            style={{
-              color: "rgba(255,255,255,0.3)",
-              fontSize: "0.75rem",
-              textDecoration: "none",
-              transition: "color 0.15s",
-            }}
-          >
-            {lang === "fr" ? "Méthodologie des guides →" : "Guide methodology →"}
-          </Link>
+        <div style={{ textAlign: "right", marginBottom: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "flex-end", flexWrap: "wrap" }}>
+            <a
+              href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Nouveau guide" : "New guide submission")}%3A%20${encodeURIComponent(guideTitle)}`}
+              style={{
+                color: "rgba(255,255,255,0.3)",
+                fontSize: "0.75rem",
+                textDecoration: "none",
+                transition: "color 0.15s",
+              }}
+            >
+              {lang === "fr" ? "Soumettre un guide →" : "Submit a guide →"}
+            </a>
+            <a
+              href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Amélioration de guide" : "Guide improvement")}%3A%20${encodeURIComponent(guideTitle)}`}
+              style={{
+                color: "rgba(255,255,255,0.3)",
+                fontSize: "0.75rem",
+                textDecoration: "none",
+                transition: "color 0.15s",
+              }}
+            >
+              {lang === "fr" ? "Suggérer une amélioration →" : "Suggest an improvement →"}
+            </a>
+          </div>
+          <div>
+            <Link
+              href={`/${lang}/methodology/`}
+              style={{
+                color: "rgba(255,255,255,0.25)",
+                fontSize: "0.7rem",
+                textDecoration: "none",
+              }}
+            >
+              {lang === "fr" ? "Méthodologie des guides" : "Guide methodology"}
+            </Link>
+          </div>
         </div>
 
         {(relatedGuideEntries.length > 0 || relatedArtistEntries.length > 0) && (
