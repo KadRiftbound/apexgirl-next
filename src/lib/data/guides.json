@@ -386,9 +386,13 @@
     ],
     "summaryBox": {
       "bestFor": "Early and mid-game players who want a high-damage offensive team",
+      "bestFor_fr": "Joueurs débutants et intermédiaires qui veulent une équipe offensive à haut dégâts",
       "mainPriority": "Stack Rally Capacity and Damage to Player stats",
+      "mainPriority_fr": "Empilez les stats de Rally Capacity et Damage to Player",
       "keyRewards": "Dominant performance on major objectives like Burj Khalifa and Tokyo Tower",
-      "commonMistake": "Building EDM without sufficient overall stats — it can lose badly to balanced teams of the same level"
+      "keyRewards_fr": "Performance dominante sur les objectifs majeurs comme Burj Khalifa et Tokyo Tower",
+      "commonMistake": "Building EDM without sufficient overall stats — it can lose badly to balanced teams of the same level",
+      "commonMistake_fr": "Construire une EDM sans stats générales suffisantes — elle peut perdre lourdement face à une équipe équilibrée de même niveau"
     },
     "callouts": [
       { "type": "priority", "text": "The EDM team's power comes from the combo of Rally Capacity and Damage to Player — very strong for major structures." },
@@ -556,9 +560,13 @@
     "relatedArtists": [],
     "summaryBox": {
       "bestFor": "All players looking to earn event rewards through the 7-day fishing mechanic",
+      "bestFor_fr": "Tous les joueurs cherchant à gagner des récompenses d'événement via la pêche",
       "mainPriority": "Expand your Aquarium slots and aim for higher-rarity fish to maximize Vouchers per minute",
+      "mainPriority_fr": "Agrandissez votre Aquarium et visez les poissons de plus haute rareté pour maximiser les Vouchers par minute",
       "keyRewards": "Event shop rewards purchased with Vouchers from caught fish",
-      "commonMistake": "Not monitoring the fish pools regularly — they auto-refresh after 30 minutes of inactivity, wasting bait opportunity"
+      "keyRewards_fr": "Récompenses de la boutique d'événement achetées avec les Vouchers des poissons pêchés",
+      "commonMistake": "Not monitoring the fish pools regularly — they auto-refresh after 30 minutes of inactivity, wasting bait opportunity",
+      "commonMistake_fr": "Ne pas surveiller les pools de poissons — ils se rafraîchissent après 30 minutes d'inactivité, gaspillant des appâts"
     },
     "callouts": [
       { "type": "tip", "text": "The event has a pity system — every 50 catches guarantees at least a 3★ or 4★ fish." },
@@ -624,9 +632,13 @@
     ],
     "summaryBox": {
       "bestFor": "Early game players looking for consistent weekly rewards that stay useful long-term",
+      "bestFor_fr": "Joueurs en début de jeu cherchant des récompenses hebdomadaires constantes et utiles longtemps",
       "mainPriority": "Optimize genre matching, Relic levels, and artist skills for each daily song",
+      "mainPriority_fr": "Optimisez la correspondance de genre, les niveaux de Reliques et les compétences pour chaque chanson quotidienne",
       "keyRewards": "Weekly ranking rewards including valuable resources for early and mid-game progression",
-      "commonMistake": "Ignoring the genre matching bonus between artist and song — it significantly impacts score"
+      "keyRewards_fr": "Récompenses de classement hebdomadaire incluant des ressources précieuses pour la progression",
+      "commonMistake": "Ignoring the genre matching bonus between artist and song — it significantly impacts score",
+      "commonMistake_fr": "Ignorer le bonus de correspondance de genre entre l'artiste et la chanson — il impacte fortement le score"
     },
     "callouts": [
       { "type": "tip", "text": "Skills account for the vast majority of your score — focus on skill activation probability and matching genre skills." },
@@ -810,9 +822,13 @@
     ],
     "summaryBox": {
       "bestFor": "New players deciding which artists to invest in at the start of the game",
+      "bestFor_fr": "Nouveaux joueurs décidant dans quels artistes investir en début de jeu",
       "mainPriority": "Choose artists wisely by season — a strong early team can become mediocre later",
+      "mainPriority_fr": "Choisissez vos artistes judicieusement par saison — une équipe forte au début peut devenir moyenne plus tard",
       "keyRewards": "Optimized team composition for any budget (F2P, mid, or whale)",
-      "commonMistake": "Wasting resources on artists you won't level up long-term"
+      "keyRewards_fr": "Composition d'équipe optimisée pour tout budget (F2P, moyen ou whale)",
+      "commonMistake": "Wasting resources on artists you won't level up long-term",
+      "commonMistake_fr": "Gaspiller des ressources sur des artistes que vous ne monterez pas à long terme"
     },
     "callouts": [
       { "type": "tip", "text": "Claire is very strong and easy to level up thanks to her photos — a great early investment." },
@@ -929,9 +945,13 @@
     "relatedArtists": [],
     "summaryBox": {
       "bestFor": "All players looking to maximize artist power through equipment",
+      "bestFor_fr": "Tous les joueurs cherchant à maximiser la puissance des artistes via l'équipement",
       "mainPriority": "Always match Assets to your artist's origin or season for the +20% stat bonus",
+      "mainPriority_fr": "Associez toujours les Assets à l'origine ou à la saison de votre artiste pour le bonus de +20%",
       "keyRewards": "Major stat boosts and fan capacity increases from well-equipped Assets",
-      "commonMistake": "Equipping mismatched Assets and missing the 20% matching bonus"
+      "keyRewards_fr": "Gros bonus de stats et d'augmentation de capacité de fans grâce à des Assets bien équipés",
+      "commonMistake": "Equipping mismatched Assets and missing the 20% matching bonus",
+      "commonMistake_fr": "Équiper des Assets non correspondants et manquer le bonus d'appariement de 20%"
     },
     "callouts": [
       { "type": "tip", "text": "Jewelry is the easiest category to obtain — start with classic jewelry from VIP Shop and Landmark rewards." },
@@ -1332,9 +1352,13 @@
     ],
     "summaryBox": {
       "bestFor": "F2P players and those with limited resources who need a strong defensive team",
+      "bestFor_fr": "Joueurs F2P ou avec des ressources limitées ayant besoin d'une équipe défensive solide",
       "mainPriority": "Build for HQ defense — RNB excels at protecting your fans in War Zones and Radio Battle",
+      "mainPriority_fr": "Construisez pour la défense du QG — le RNB excelle à protéger vos fans en Zones de Guerre et Radio Battle",
       "keyRewards": "Reliable HQ defense capability with very accessible artists",
-      "commonMistake": "Using Universal Photos on Zendayah — she's a low-tier artist who will be replaced later"
+      "keyRewards_fr": "Capacité de défense du QG fiable avec des artistes très accessibles",
+      "commonMistake": "Using Universal Photos on Zendayah — she's a low-tier artist who will be replaced later",
+      "commonMistake_fr": "Utiliser des Photos Universelles sur Zendayah — elle sera remplacée plus tard"
     },
     "callouts": [
       { "type": "priority", "text": "The RNB team is one of the best options for F2P players — it's very accessible and effective for HQ defense." },
@@ -1582,9 +1606,13 @@
     ],
     "summaryBox": {
       "bestFor": "Players finishing the initial server phase, ready for their first Abroad adventure",
+      "bestFor_fr": "Joueurs terminant la phase initiale du serveur, prêts pour leur première aventure Abroad",
       "mainPriority": "Perform well in Tokyo Warmup for stat bonuses and the Chizuru unlock",
+      "mainPriority_fr": "Performez bien dans Tokyo Warmup pour les bonus de stats et le déblocage de Chizuru",
       "keyRewards": "Chizuru (first Rally Capacity artist), Warmup stat bonuses, UR artists, Tokyo Tower rewards",
-      "commonMistake": "Underestimating Tokyo Warmup — the stat bonuses from Warmup give a real advantage for the entire 3-week adventure"
+      "keyRewards_fr": "Chizuru (1ère artiste Rally Capacity), bonus de stats Warmup, artistes UR, récompenses Tokyo Tower",
+      "commonMistake": "Underestimating Tokyo Warmup — the stat bonuses from Warmup give a real advantage for the entire 3-week adventure",
+      "commonMistake_fr": "Sous-estimer Tokyo Warmup — les bonus de stats donnent un vrai avantage pour toute l'aventure de 3 semaines"
     },
     "callouts": [
       { "type": "priority", "text": "Tokyo Warmup is crucial — the 1st place server gets a 10% stat bonus for the entire Tokyo adventure, while 2nd-3rd get 5%." },

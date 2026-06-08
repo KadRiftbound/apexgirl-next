@@ -44,29 +44,6 @@ export default function HomeClient({ lang }: { lang: string }) {
     setTimeout(() => setCopiedCode(""), 2000);
   };
 
-  // Styles inline boutons — immune aux overrides Tailwind/globals
-  const btnBase: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "8px",
-    fontWeight: 800,
-    borderRadius: "14px",
-    textDecoration: "none",
-    color: "#fff",
-    transition: "transform 0.2s, box-shadow 0.2s",
-    padding: "13px 22px",
-    fontSize: "1.05rem",
-  };
-  const btnBaseDesktop: React.CSSProperties = {
-    ...btnBase,
-    padding: "20px 44px",
-    fontSize: "2rem",
-    borderRadius: "16px",
-  };
-  const btnArtistsDesktop: React.CSSProperties = { ...btnBaseDesktop, background: "linear-gradient(135deg,#ff2d78,#ff80ab)", boxShadow: "0 6px 32px rgba(255,45,120,0.50)" };
-  const btnTierDesktop:    React.CSSProperties = { ...btnBaseDesktop, background: "linear-gradient(135deg,#f59e0b,#ffd700)", boxShadow: "0 6px 32px rgba(245,158,11,0.45)" };
-  const btnToolsDesktop:   React.CSSProperties = { ...btnBaseDesktop, background: "linear-gradient(135deg,#3b82f6,#06b6d4)", boxShadow: "0 6px 32px rgba(59,130,246,0.45)"  };
-
   return (
     <>
       {/* ═══════════════════════════════════════════
@@ -93,9 +70,18 @@ export default function HomeClient({ lang }: { lang: string }) {
           <span><strong>5+</strong> {t.statTools}</span>
         </div>
         <div className="hero-ctas">
-          <Link href={`/${lang}/teambuilder/`} style={btnArtistsDesktop}>🎤 {t.discoverArtists}</Link>
-          <Link href={`/${lang}/tierlist/`} style={btnTierDesktop}   >🏆 {t.tierListVotes}</Link>
-          <Link href={`/${lang}/tools/`}   style={btnToolsDesktop}   >🛠️ {t.seeTools}</Link>
+          <Link href={`/${lang}/teambuilder/`} className="hero-cta cta-artists">
+            <span className="cta-emoji">🎤</span>
+            <span className="cta-label">{t.discoverArtists}</span>
+          </Link>
+          <Link href={`/${lang}/tierlist/`} className="hero-cta cta-tier">
+            <span className="cta-emoji">🏆</span>
+            <span className="cta-label">{t.tierListVotes}</span>
+          </Link>
+          <Link href={`/${lang}/tools/`} className="hero-cta cta-tools">
+            <span className="cta-emoji">🛠️</span>
+            <span className="cta-label">{t.seeTools}</span>
+          </Link>
         </div>
       </div>
       {/* ═══════════════════════════════════════════
@@ -292,7 +278,57 @@ export default function HomeClient({ lang }: { lang: string }) {
         }
         .hero-stats strong { color: rgba(255,255,255,0.95); }
         .stat-dot { opacity: 0.35; }
-        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .hero-ctas {
+          display: flex;
+          gap: 14px;
+          justify-content: center;
+          width: 100%;
+        }
+        .hero-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          padding: 16px 30px;
+          border-radius: 16px;
+          text-decoration: none;
+          color: #fff;
+          font-weight: 800;
+          font-size: 1.1rem;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          border: 1px solid rgba(255,255,255,0.12);
+          min-width: 0;
+        }
+        .hero-cta:hover {
+          transform: translateY(-3px);
+        }
+        .cta-artists {
+          background: linear-gradient(135deg, #ff2d78, #ff80ab);
+          box-shadow: 0 6px 28px rgba(255,45,120,0.40);
+        }
+        .cta-artists:hover {
+          box-shadow: 0 10px 40px rgba(255,45,120,0.55);
+        }
+        .cta-tier {
+          background: linear-gradient(135deg, #f59e0b, #ffd700);
+          box-shadow: 0 6px 28px rgba(245,158,11,0.35);
+        }
+        .cta-tier:hover {
+          box-shadow: 0 10px 40px rgba(245,158,11,0.50);
+        }
+        .cta-tools {
+          background: linear-gradient(135deg, #3b82f6, #06b6d4);
+          box-shadow: 0 6px 28px rgba(59,130,246,0.35);
+        }
+        .cta-tools:hover {
+          box-shadow: 0 10px 40px rgba(59,130,246,0.50);
+        }
+        .cta-emoji {
+          font-size: 1.7rem;
+          flex-shrink: 0;
+        }
+        .cta-label {
+          white-space: nowrap;
+        }
 
         /* ── OFFER SECTION ────────────────────────── */
         .offer-section {
@@ -580,8 +616,9 @@ export default function HomeClient({ lang }: { lang: string }) {
           .hero-title { font-size: 1.8rem; letter-spacing: -1px; margin-bottom: 6px; }
           .hero-subtitle { display: none; }
           .hero-stats { display: none; }
-          .hero-ctas { flex-direction: row; gap: 6px; justify-content: center; width: 100%; flex-wrap: nowrap; }
-          .hero-ctas a { padding: 8px 12px; font-size: 0.75rem; border-radius: 10px; box-shadow: none; white-space: nowrap; }
+          .hero-ctas { flex-direction: column; gap: 10px; padding: 0 12px; }
+          .hero-cta { padding: 14px 20px; font-size: 1rem; border-radius: 14px; justify-content: center; }
+          .cta-emoji { font-size: 1.3rem; }
           .offer-section { padding: 24px 12px; }
           .offer-inner { padding: 0; }
           .offer-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }

@@ -17,11 +17,15 @@ const labels: Record<string, Record<string, string>> = {
 
 export function SummaryBox({ data, lang }: SummaryBoxProps) {
   const t = labels[lang] || labels.en;
+  const val = (key: string) => {
+    const frKey = `${key}_fr` as keyof typeof data;
+    return lang === "fr" && data[frKey] ? data[frKey] : (data as any)[key];
+  };
   const items = [
-    { key: "bestFor", label: t.bestFor, value: data.bestFor, color: "#8b5cf6" },
-    { key: "mainPriority", label: t.mainPriority, value: data.mainPriority, color: "#22c55e" },
-    { key: "keyRewards", label: t.keyRewards, value: data.keyRewards, color: "#fbbf24" },
-    { key: "commonMistake", label: t.commonMistake, value: data.commonMistake, color: "#ef4444" },
+    { key: "bestFor", label: t.bestFor, value: val("bestFor"), color: "#8b5cf6" },
+    { key: "mainPriority", label: t.mainPriority, value: val("mainPriority"), color: "#22c55e" },
+    { key: "keyRewards", label: t.keyRewards, value: val("keyRewards"), color: "#fbbf24" },
+    { key: "commonMistake", label: t.commonMistake, value: val("commonMistake"), color: "#ef4444" },
   ].filter((item) => item.value);
 
   if (items.length === 0) return null;

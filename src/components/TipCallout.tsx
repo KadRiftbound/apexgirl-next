@@ -7,22 +7,22 @@ const calloutStyles: Record<string, { icon: string; color: string; bg: string; b
   tip: {
     icon: "💡",
     color: "#22c55e",
-    bg: "rgba(34,197,94,0.1)",
-    border: "rgba(34,197,94,0.25)",
+    bg: "rgba(34,197,94,0.18)",
+    border: "rgba(34,197,94,0.3)",
     label: { fr: "Astuce", en: "Quick tip" },
   },
   mistake: {
     icon: "⚠️",
     color: "#ef4444",
-    bg: "rgba(239,68,68,0.1)",
-    border: "rgba(239,68,68,0.25)",
+    bg: "rgba(239,68,68,0.18)",
+    border: "rgba(239,68,68,0.3)",
     label: { fr: "Erreur fréquente", en: "Common mistake" },
   },
   priority: {
     icon: "⭐",
     color: "#fbbf24",
-    bg: "rgba(251,191,36,0.1)",
-    border: "rgba(251,191,36,0.25)",
+    bg: "rgba(251,191,36,0.18)",
+    border: "rgba(251,191,36,0.3)",
     label: { fr: "Priorité", en: "Priority" },
   },
 };

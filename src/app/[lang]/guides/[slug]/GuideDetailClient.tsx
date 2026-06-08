@@ -880,45 +880,6 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
           </div>
         )}
 
-        <div style={{ textAlign: "right", marginBottom: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "flex-end", flexWrap: "wrap" }}>
-            <a
-              href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Nouveau guide" : "New guide submission")}%3A%20${encodeURIComponent(guideTitle)}`}
-              style={{
-                color: "rgba(255,255,255,0.3)",
-                fontSize: "0.75rem",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-            >
-              {lang === "fr" ? "Soumettre un guide →" : "Submit a guide →"}
-            </a>
-            <a
-              href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Amélioration de guide" : "Guide improvement")}%3A%20${encodeURIComponent(guideTitle)}`}
-              style={{
-                color: "rgba(255,255,255,0.3)",
-                fontSize: "0.75rem",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-            >
-              {lang === "fr" ? "Suggérer une amélioration →" : "Suggest an improvement →"}
-            </a>
-          </div>
-          <div>
-            <Link
-              href={`/${lang}/methodology/`}
-              style={{
-                color: "rgba(255,255,255,0.25)",
-                fontSize: "0.7rem",
-                textDecoration: "none",
-              }}
-            >
-              {lang === "fr" ? "Méthodologie des guides" : "Guide methodology"}
-            </Link>
-          </div>
-        </div>
-
         {(relatedGuideEntries.length > 0 || relatedArtistEntries.length > 0) && (
           <div style={{
             background: "rgba(12,12,28,0.82)",
@@ -1102,6 +1063,45 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
               {t.tierListDesc}
             </div>
           </Link>
+        </div>
+
+        <div style={{ textAlign: "right", marginBottom: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "flex-end", flexWrap: "wrap" }}>
+            <a
+              href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Nouveau guide" : "New guide submission")}%3A%20${encodeURIComponent(guideTitle)}`}
+              style={{
+                color: "rgba(255,255,255,0.3)",
+                fontSize: "0.75rem",
+                textDecoration: "none",
+                transition: "color 0.15s",
+              }}
+            >
+              {lang === "fr" ? "Soumettre un guide →" : "Submit a guide →"}
+            </a>
+            <a
+              href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Amélioration de guide" : "Guide improvement")}%3A%20${encodeURIComponent(guideTitle)}`}
+              style={{
+                color: "rgba(255,255,255,0.3)",
+                fontSize: "0.75rem",
+                textDecoration: "none",
+                transition: "color 0.15s",
+              }}
+            >
+              {lang === "fr" ? "Suggérer une amélioration →" : "Suggest an improvement →"}
+            </a>
+          </div>
+          <div>
+            <Link
+              href={`/${lang}/methodology/`}
+              style={{
+                color: "rgba(255,255,255,0.25)",
+                fontSize: "0.7rem",
+                textDecoration: "none",
+              }}
+            >
+              {lang === "fr" ? "Méthodologie des guides" : "Guide methodology"}
+            </Link>
+          </div>
         </div>
       </div>
 
