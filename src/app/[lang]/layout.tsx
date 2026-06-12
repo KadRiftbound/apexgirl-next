@@ -146,9 +146,11 @@ export default async function LocaleLayout({
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "TopGirl Guide",
+            "alternateName": "Top Girl Guide",
             "url": "https://apexgirlguide.com/",
             "description": metadataByLang[lang]?.description || metadataByLang.en.description,
             "inLanguage": localeNames[lang] || "en-US",
+            "sameAs": ["https://play.google.com/store/apps/details?id=com.a3.topgirl"],
           })
         }}
       />

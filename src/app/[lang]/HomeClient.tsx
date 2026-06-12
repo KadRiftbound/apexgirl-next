@@ -294,12 +294,15 @@ export default function HomeClient({ lang }: { lang: string }) {
           color: #fff;
           font-weight: 800;
           font-size: 1.1rem;
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
-          border: 1px solid rgba(255,255,255,0.12);
+          transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease, border-color 0.25s ease;
+          border: 1.5px solid rgba(255,255,255,0.18);
           min-width: 0;
+          cursor: pointer;
         }
         .hero-cta:hover {
           transform: translateY(-3px);
+          filter: brightness(1.08);
+          border-color: rgba(255,255,255,0.35);
         }
         .cta-artists {
           background: linear-gradient(135deg, #ff2d78, #ff80ab);
