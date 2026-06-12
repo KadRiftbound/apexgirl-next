@@ -69,23 +69,26 @@ export default function HomeClient({ lang }: { lang: string }) {
           <span className="stat-dot">·</span>
           <span><strong>5+</strong> {t.statTools}</span>
         </div>
-        <div className="hero-ctas">
-          <Link href={`/${lang}/teambuilder/`} className="hero-cta cta-artists">
-            <span className="cta-emoji">🎤</span>
-            <span className="cta-label">{t.discoverArtists}</span>
-          </Link>
-          <Link href={`/${lang}/tierlist/`} className="hero-cta cta-tier">
-            <span className="cta-emoji">🏆</span>
-            <span className="cta-label">{t.tierListVotes}</span>
-          </Link>
-          <Link href={`/${lang}/tools/`} className="hero-cta cta-tools">
-            <span className="cta-emoji">🛠️</span>
-            <span className="cta-label">{t.seeTools}</span>
-          </Link>
-          <Link href={`/${lang}/guides/`} className="hero-cta cta-guides">
-            <span className="cta-emoji">📖</span>
-            <span className="cta-label">{t.seeGuides}</span>
-          </Link>
+        <div className="hero-cta-frame">
+          <div className="hero-cta-label">{t.quickAccessTitle}</div>
+          <div className="hero-ctas">
+            <Link href={`/${lang}/teambuilder/`} className="hero-cta cta-artists">
+              <span className="cta-emoji">🎤</span>
+              <span className="cta-label">{t.discoverArtists}</span>
+            </Link>
+            <Link href={`/${lang}/tierlist/`} className="hero-cta cta-tier">
+              <span className="cta-emoji">🏆</span>
+              <span className="cta-label">{t.tierListVotes}</span>
+            </Link>
+            <Link href={`/${lang}/tools/`} className="hero-cta cta-tools">
+              <span className="cta-emoji">🛠️</span>
+              <span className="cta-label">{t.seeTools}</span>
+            </Link>
+            <Link href={`/${lang}/guides/`} className="hero-cta cta-guides">
+              <span className="cta-emoji">📖</span>
+              <span className="cta-label">{t.seeGuides}</span>
+            </Link>
+          </div>
         </div>
       </div>
       {/* ═══════════════════════════════════════════
@@ -282,6 +285,24 @@ export default function HomeClient({ lang }: { lang: string }) {
         }
         .hero-stats strong { color: rgba(255,255,255,0.95); }
         .stat-dot { opacity: 0.35; }
+        .hero-cta-frame {
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 18px;
+          padding: 24px 28px 20px;
+          background: rgba(255,255,255,0.03);
+          width: 100%;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+        .hero-cta-label {
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+          color: rgba(255,255,255,0.3);
+          margin-bottom: 14px;
+          text-align: center;
+        }
         .hero-ctas {
           display: flex;
           gap: 14px;
@@ -630,9 +651,11 @@ export default function HomeClient({ lang }: { lang: string }) {
           .hero-title { font-size: 1.8rem; letter-spacing: -1px; margin-bottom: 6px; }
           .hero-subtitle { display: none; }
           .hero-stats { display: none; }
-          .hero-ctas { flex-direction: column; gap: 10px; padding: 0 12px; }
-          .hero-cta { padding: 14px 20px; font-size: 1rem; border-radius: 14px; justify-content: center; }
-          .cta-emoji { font-size: 1.3rem; }
+          .hero-cta-frame { padding: 16px 14px 14px; border-radius: 14px; }
+          .hero-cta-label { margin-bottom: 10px; font-size: 0.65rem; }
+          .hero-ctas { flex-direction: column; gap: 8px; padding: 0; }
+          .hero-cta { padding: 12px 16px; font-size: 0.9rem; border-radius: 12px; justify-content: center; border-width: 1.5px; }
+          .cta-emoji { font-size: 1.2rem; }
           .offer-section { padding: 24px 12px; }
           .offer-inner { padding: 0; }
           .offer-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
