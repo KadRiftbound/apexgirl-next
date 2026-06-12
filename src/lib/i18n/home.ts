@@ -27,6 +27,7 @@ export type HomeContent = {
   subtitle: string;
   discoverArtists: string;
   seeTools: string;
+  seeGuides: string;
   tierListVotes: string;
   statArtists: string;
   statGuides: string;
@@ -58,6 +59,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "Le guide complet pour <strong>TopGirl / ApexGirl</strong> — artistes, tier lists, outils et codes promo",
     discoverArtists: "Voir les Artistes",
     seeTools: "Outils",
+    seeGuides: "Guides",
     tierListVotes: "Tier List",
     statArtists: "artistes",
     statGuides: "guides",
@@ -110,6 +112,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "The complete guide for <strong>TopGirl / ApexGirl</strong> — artists, tier lists, tools and promo codes",
     discoverArtists: "Browse Artists",
     seeTools: "Tools",
+    seeGuides: "Guides",
     tierListVotes: "Tier List",
     statArtists: "artists",
     statGuides: "guides",
@@ -162,6 +165,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "La guida completa per <strong>TopGirl / ApexGirl</strong> — artisti, tier list, strumenti e codici promo",
     discoverArtists: "Scopri Artisti",
     seeTools: "Strumenti",
+    seeGuides: "Guide",
     tierListVotes: "Tier List",
     statArtists: "artisti",
     statGuides: "guide",
@@ -214,6 +218,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "La guía completa para <strong>TopGirl / ApexGirl</strong> — artistas, tier lists, herramientas y códigos promo",
     discoverArtists: "Ver Artistas",
     seeTools: "Herramientas",
+    seeGuides: "Guías",
     tierListVotes: "Tier List",
     statArtists: "artistas",
     statGuides: "guías",
@@ -266,6 +271,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "O guia completo para <strong>TopGirl / ApexGirl</strong> — artistas, tier lists, ferramentas e códigos promo",
     discoverArtists: "Ver Artistas",
     seeTools: "Ferramentas",
+    seeGuides: "Guias",
     tierListVotes: "Tier List",
     statArtists: "artistas",
     statGuides: "guias",
@@ -318,6 +324,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "Kompletny przewodnik po <strong>TopGirl / ApexGirl</strong> — artyści, tier listy, narzędzia i kody promo",
     discoverArtists: "Przeglądaj Artystów",
     seeTools: "Narzędzia",
+    seeGuides: "Poradniki",
     tierListVotes: "Tier List",
     statArtists: "artystów",
     statGuides: "poradników",
@@ -370,6 +377,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "Panduan lengkap untuk <strong>TopGirl / ApexGirl</strong> — artis, tier list, alat dan kode promo",
     discoverArtists: "Lihat Artis",
     seeTools: "Alat",
+    seeGuides: "Panduan",
     tierListVotes: "Tier List",
     statArtists: "artis",
     statGuides: "panduan",
@@ -422,6 +430,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "Полный гайд по <strong>TopGirl / ApexGirl</strong> — артисты, тир-листы, инструменты и промокоды",
     discoverArtists: "Артисты",
     seeTools: "Инструменты",
+    seeGuides: "Гайды",
     tierListVotes: "Тир-лист",
     statArtists: "артистов",
     statGuides: "гайдов",
@@ -474,6 +483,7 @@ const homeContent: Record<string, HomeContent> = {
     subtitle: "Der vollständige Leitfaden für <strong>TopGirl / ApexGirl</strong> — Künstlerinnen, Tier-Listen, Werkzeuge und Promo-Codes",
     discoverArtists: "Künstlerinnen entdecken",
     seeTools: "Werkzeuge",
+    seeGuides: "Guides",
     tierListVotes: "Tier Liste",
     statArtists: "Künstlerinnen",
     statGuides: "Leitfäden",

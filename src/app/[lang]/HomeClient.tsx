@@ -82,6 +82,10 @@ export default function HomeClient({ lang }: { lang: string }) {
             <span className="cta-emoji">🛠️</span>
             <span className="cta-label">{t.seeTools}</span>
           </Link>
+          <Link href={`/${lang}/guides/`} className="hero-cta cta-guides">
+            <span className="cta-emoji">📖</span>
+            <span className="cta-label">{t.seeGuides}</span>
+          </Link>
         </div>
       </div>
       {/* ═══════════════════════════════════════════
@@ -287,46 +291,53 @@ export default function HomeClient({ lang }: { lang: string }) {
         .hero-cta {
           display: inline-flex;
           align-items: center;
-          gap: 12px;
-          padding: 16px 30px;
-          border-radius: 16px;
+          gap: 14px;
+          padding: 18px 36px;
+          border-radius: 14px;
           text-decoration: none;
           color: #fff;
           font-weight: 800;
-          font-size: 1.1rem;
+          font-size: 1.25rem;
           transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease, border-color 0.25s ease;
-          border: 1.5px solid rgba(255,255,255,0.18);
+          border: 2px solid rgba(255,255,255,0.22);
           min-width: 0;
           cursor: pointer;
         }
         .hero-cta:hover {
-          transform: translateY(-3px);
-          filter: brightness(1.08);
-          border-color: rgba(255,255,255,0.35);
+          transform: translateY(-3px) scale(1.03);
+          filter: brightness(1.12);
+          border-color: rgba(255,255,255,0.45);
         }
         .cta-artists {
           background: linear-gradient(135deg, #ff2d78, #ff80ab);
-          box-shadow: 0 6px 28px rgba(255,45,120,0.40);
+          box-shadow: 0 6px 28px rgba(255,45,120,0.45);
         }
         .cta-artists:hover {
-          box-shadow: 0 10px 40px rgba(255,45,120,0.55);
+          box-shadow: 0 10px 40px rgba(255,45,120,0.60);
         }
         .cta-tier {
           background: linear-gradient(135deg, #f59e0b, #ffd700);
-          box-shadow: 0 6px 28px rgba(245,158,11,0.35);
+          box-shadow: 0 6px 28px rgba(245,158,11,0.40);
         }
         .cta-tier:hover {
-          box-shadow: 0 10px 40px rgba(245,158,11,0.50);
+          box-shadow: 0 10px 40px rgba(245,158,11,0.55);
         }
         .cta-tools {
           background: linear-gradient(135deg, #3b82f6, #06b6d4);
-          box-shadow: 0 6px 28px rgba(59,130,246,0.35);
+          box-shadow: 0 6px 28px rgba(59,130,246,0.40);
         }
         .cta-tools:hover {
-          box-shadow: 0 10px 40px rgba(59,130,246,0.50);
+          box-shadow: 0 10px 40px rgba(59,130,246,0.55);
+        }
+        .cta-guides {
+          background: linear-gradient(135deg, #22c55e, #4ade80);
+          box-shadow: 0 6px 28px rgba(34,197,94,0.40);
+        }
+        .cta-guides:hover {
+          box-shadow: 0 10px 40px rgba(34,197,94,0.55);
         }
         .cta-emoji {
-          font-size: 1.7rem;
+          font-size: 1.8rem;
           flex-shrink: 0;
         }
         .cta-label {
