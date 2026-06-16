@@ -256,6 +256,17 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       }
       lastWasEmpty = false;
 
+      const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (imgMatch) {
+        elements.push(
+          <div key={i} className="guide-img-wrapper">
+            <img src={`/assets/images/guides/${imgMatch[2]}`} alt={imgMatch[1]} className="guide-img" />
+            <span className="guide-img-caption">{imgMatch[1]}</span>
+          </div>
+        );
+        continue;
+      }
+
       if ((trimmed.startsWith('•') || trimmed.startsWith('·')) && bulletInlineText) {
         listMode = true;
         pendingBullet = false;
@@ -1121,6 +1132,24 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
           line-height: 1.85;
           font-weight: 430;
           letter-spacing: 0.01em;
+        }
+        .guide-img-wrapper {
+          margin: 24px 0;
+          text-align: center;
+        }
+        .guide-img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 12px;
+          border: 1px solid rgba(255,255,255,0.12);
+          box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+        .guide-img-caption {
+          display: block;
+          margin-top: 10px;
+          font-size: 0.8rem;
+          color: rgba(255,255,255,0.5);
+          font-style: italic;
         }
 
         .guide-content h2,
