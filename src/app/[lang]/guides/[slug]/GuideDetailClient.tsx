@@ -6,7 +6,7 @@ import { AdBanner } from "@/components/AdSense";
 import { CorrectionCallout } from "@/components/CorrectionCallout";
 import { SummaryBox, type SummaryBoxData } from "@/components/SummaryBox";
 import { TipCallout, type CalloutData } from "@/components/TipCallout";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import guidesData from "@/lib/data/guides.json";
 import artistsData from "@/lib/data/artists.json";
 
@@ -197,7 +197,9 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
   };
 
   // Helper to render markdown-like content
+  // Returns { elements, headings } where headings are collected during rendering
   const renderContent = (text: string, color: string) => {
+    const headings: { text: string; id: string; level: number }[] = [];
     const normalizedText = text.replace(/\n{3,}/g, '\n\n');
     const lines = normalizedText.split('\n');
     const elements: ReactNode[] = [];
@@ -368,6 +370,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
 
       if (isSectionTitle(trimmed, lines[i + 1])) {
         listMode = false;
+        headings.push({ text: trimmed, id: slugifyHeading(trimmed), level: 2 });
         elements.push(
           <h3 key={i} className="guide-section" id={slugifyHeading(trimmed)}>
             {parseInlineBold(trimmed, color)}
@@ -380,6 +383,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       if (line.startsWith('## ')) {
         const headingText = line.replace('## ', '').trim();
         listMode = false;
+        headings.push({ text: headingText, id: slugifyHeading(headingText), level: 2 });
         elements.push(
           <h2 key={i} className="guide-h2" id={slugifyHeading(headingText)}>
             {parseInlineBold(headingText, color)}
@@ -391,6 +395,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       if (line.startsWith('### ')) {
         const headingText = line.replace('### ', '').trim();
         listMode = false;
+        headings.push({ text: headingText, id: slugifyHeading(headingText), level: 3 });
         elements.push(
           <h3 key={i} className="guide-h3" id={slugifyHeading(headingText)}>
             {parseInlineBold(headingText, color)}
@@ -402,6 +407,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       if (line.startsWith('#### ')) {
         const headingText = line.replace('#### ', '').trim();
         listMode = false;
+        headings.push({ text: headingText, id: slugifyHeading(headingText), level: 4 });
         elements.push(
           <div key={i} className="guide-h4" id={slugifyHeading(headingText)}>
             {parseInlineBold(headingText, color)}
@@ -469,11 +475,14 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       listMode = lastNonEmpty.endsWith(':');
     }
 
-    return (
-      <div className="guide-content" style={{ "--accent": color } as React.CSSProperties}>
-        {elements}
-      </div>
-    );
+    return {
+      elements: (
+        <div className="guide-content" style={{ "--accent": color } as React.CSSProperties}>
+          {elements}
+        </div>
+      ),
+      headings,
+    };
   };
 
   const emDash = '\u2014';
@@ -483,37 +492,6 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/-+/g, '-')
       .replace(/^-|-$/g, '');
-
-  const parseHeadings = (contentText: string) => {
-    if (!contentText) return [] as { text: string; id: string; level: number }[];
-    const lines = contentText.split('\n');
-    const headings: { text: string; id: string; level: number }[] = [];
-    for (let i = 0; i < lines.length; i++) {
-      const trimmed = lines[i].trim();
-      if (!trimmed) continue;
-      if (lines[i].startsWith('## ')) {
-        const text = lines[i].replace('## ', '').trim();
-        headings.push({ text, id: slugifyHeading(text), level: 2 });
-        continue;
-      }
-      if (lines[i].startsWith('### ')) {
-        const text = lines[i].replace('### ', '').trim();
-        headings.push({ text, id: slugifyHeading(text), level: 3 });
-        continue;
-      }
-      if (lines[i].startsWith('#### ')) {
-        const text = lines[i].replace('#### ', '').trim();
-        headings.push({ text, id: slugifyHeading(text), level: 4 });
-        continue;
-      }
-      const nextLine = lines[i + 1] || '';
-      const nextTrimmed = nextLine.trim();
-      if (!trimmed.endsWith(':') && !trimmed.includes(':') && !trimmed.startsWith('- ') && !/^\d+\.\s/.test(trimmed) && !/[.!?]/.test(trimmed) && trimmed.length <= 70 && trimmed.length > 0 && (nextTrimmed === '' || nextTrimmed.startsWith('- ') || nextTrimmed.length < 40)) {
-        headings.push({ text: trimmed, id: slugifyHeading(trimmed), level: 2 });
-      }
-    }
-    return headings;
-  };
 
   const parseGlossaryEntries = (text: string) => {
     if (!text) return [] as { term: string; definition: string }[];
@@ -688,7 +666,8 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
         name: artist?.name || slugValue,
       };
     });
-  const tocHeadings = parseHeadings(mainContent);
+  const contentResult = useMemo(() => renderContent(mainContent, guideColor), [mainContent, guideColor]);
+  const tocHeadings = contentResult.headings;
 
   return (
     <>
@@ -887,7 +866,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
         {/* Main content */}
         {mainContent && (
           <div className="guide-article">
-            {renderContent(mainContent, guideColor)}
+            {contentResult.elements}
           </div>
         )}
 
