@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { AdBanner } from '@/components/AdSense';
+import { AdSlot } from "@/components/AdSlot";
 import { activeCodes, expiredCodes } from '@/lib/data/codes';
 
 const codesData = {
@@ -337,7 +337,7 @@ export default function CodesClient({ lang }: { lang: string }) {
         )}
       </section>
 
-      <AdBanner />
+      <AdSlot slot="codes" lang={lang} />
 
 
     </div>

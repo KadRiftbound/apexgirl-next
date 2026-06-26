@@ -6,7 +6,7 @@ import SVSCalculator from "@/components/tools/SVSCalculator";
 import CEOCalculator from "@/components/tools/CEOCalculator";
 import ApexCalculator from "@/components/tools/ApexCalculator";
 import BurjLottery from "@/components/tools/BurjLottery";
-import { AdBanner } from "@/components/AdSense";
+import { AdSlot } from "@/components/AdSlot";
 
 const translations: Record<string, any> = {
   fr: {
@@ -210,7 +210,7 @@ export default function ToolsClient({ lang }: { lang: string }) {
       </div>
 
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "32px 20px 0" }}>
-        <AdBanner />
+        <AdSlot slot="tools" lang={lang} />
 
         {/* Tool Cards Selector */}
         <div style={{

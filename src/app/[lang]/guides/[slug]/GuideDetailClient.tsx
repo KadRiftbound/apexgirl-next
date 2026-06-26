@@ -2,7 +2,7 @@
 
 
 import Link from "next/link";
-import { AdBanner } from "@/components/AdSense";
+import { AdSlot } from "@/components/AdSlot";
 import { CorrectionCallout } from "@/components/CorrectionCallout";
 import { SummaryBox, type SummaryBoxData } from "@/components/SummaryBox";
 import { TipCallout, type CalloutData } from "@/components/TipCallout";
@@ -991,7 +991,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
           </div>
         )}
 
-        <AdBanner />
+        <AdSlot slot="guide-detail" lang={lang} />
 
         {/* Autres guides */}
         <div style={{ marginTop: "32px", marginBottom: "24px" }}>
