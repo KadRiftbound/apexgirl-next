@@ -20,7 +20,7 @@ const products: Record<string, AffiliateProduct> = {
     name: "Google Pixel Buds Pro 2",
     url: "https://amzn.to/4oPpYGx",
     tagline: "Pro-level noise cancellation, crystal-clear audio",
-    imageUrl: "https://lh3.googleusercontent.com/MP4ymmRItYWpJsY0cjGQfkR38WYCvrqGWv8PF-sOJQwK0A9oM2u0sr-BKD2kq_SxImwincyudgTwJRiNF5UofQwXT0IljAXKq-Zm=rw-e365-w1200-rj-sc0xffffffff",
+    imageUrl: "https://lh3.googleusercontent.com/1bShJhmclltYScVkuR056z8YdTBygAAAGpA0VOtDOZCl9I0OSpzRzDMDbSyIrsJXRFCb0RonqVa1iVn-Z5nU3cXcHNDxRZXXP-Q8=s0",
     color: "#f472b6",
   },
 };

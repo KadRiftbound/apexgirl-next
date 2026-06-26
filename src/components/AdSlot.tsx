@@ -80,7 +80,8 @@ export function AdSlot({ slot, lang }: AdSlotProps) {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
+            padding: "6px",
             display: imgLoaded ? "block" : "none",
           }}
         />
