@@ -92,6 +92,35 @@ export default function HomeClient({ lang }: { lang: string }) {
         </div>
       </div>
       {/* ═══════════════════════════════════════════
+          PATCH NOTE
+      ═══════════════════════════════════════════ */}
+      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px 8px' }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          flexWrap: 'wrap',
+          background: 'rgba(139, 92, 246, 0.07)',
+          border: '1px solid rgba(139, 92, 246, 0.22)',
+          borderRadius: '12px',
+          padding: '10px 16px',
+          fontSize: '0.82rem',
+        }}>
+          <span style={{
+            flexShrink: 0,
+            color: '#c4b5fd',
+            fontWeight: 700,
+            fontSize: '0.72rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+          }}>
+            {t.patchNoteBadge}
+          </span>
+          <span style={{ width: '3px', height: '14px', borderRadius: '2px', background: 'rgba(139, 92, 246, 0.35)' }} aria-hidden="true" />
+          <span style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.45 }}>{t.patchNoteText}</span>
+        </div>
+      </section>
+      {/* ═══════════════════════════════════════════
           TL;DR — Quick answers in 10 seconds
       ═══════════════════════════════════════════ */}
       <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 20px' }}>

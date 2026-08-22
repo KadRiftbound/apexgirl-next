@@ -25,6 +25,7 @@ const guideListTranslations: Record<string, any> = {
     inProgress: "En cours",
     new: "Nouveau",
     searchPlaceholder: "Rechercher un guide...",
+    outdatedNotice: "Le jeu évolue rapidement ces derniers temps : certains guides sur la structure du jeu peuvent être légèrement obsolètes. Nous les mettons à jour progressivement.",
     "event-adventure-abroad-tokyo": { title: "Guide Adventure Abroad : Tokyo", description: "Guide complet de l'événement Adventure Abroad Tokyo. Warmup, système de conquête, Metro, événements et récompenses." },
   },
   en: { 
@@ -44,6 +45,7 @@ const guideListTranslations: Record<string, any> = {
       inProgress: "In Progress",
       new: "New",
       searchPlaceholder: "Search a guide...",
+      outdatedNotice: "The game has been evolving quickly lately: some guides about the game structure may be slightly outdated. We are updating them progressively.",
       "event-adventure-abroad-tokyo": { title: "Adventure Abroad: Tokyo Guide", description: "Complete guide to the Adventure Abroad Tokyo event. Warmup, conquest system, Metro, events and rewards." },
     },
     it: { 
@@ -63,6 +65,7 @@ const guideListTranslations: Record<string, any> = {
       inProgress: "In corso",
       new: "Nuovo",
       searchPlaceholder: "Cerca una guida...",
+      outdatedNotice: "Il gioco sta evolvendo rapidamente ultimamente: alcune guide sulla struttura del gioco potrebbero essere leggermente datate. Le stiamo aggiornando progressivamente.",
       "event-adventure-abroad-tokyo": { title: "Guida Adventure Abroad: Tokyo", description: "Guida completa dell'evento Adventure Abroad Tokyo. Warmup, sistema di conquista, Metro, eventi e ricompense." },
     },
     es: { 
@@ -82,6 +85,7 @@ const guideListTranslations: Record<string, any> = {
       inProgress: "En progreso",
       new: "Nuevo",
       searchPlaceholder: "Buscar una guía...",
+      outdatedNotice: "El juego ha evolucionado rápido últimamente: algunas guías sobre la estructura del juego pueden estar ligeramente obsoletas. Las estamos actualizando progresivamente.",
       "event-adventure-abroad-tokyo": { title: "Guía Adventure Abroad: Tokyo", description: "Guía completa del evento Adventure Abroad Tokyo. Warmup, sistema de conquista, Metro, eventos y recompensas." },
     },
     pt: { 
@@ -101,6 +105,7 @@ const guideListTranslations: Record<string, any> = {
       inProgress: "Em progresso",
       new: "Novo",
       searchPlaceholder: "Pesquisar um guia...",
+      outdatedNotice: "O jogo vem evoluindo rápido ultimamente: alguns guias sobre a estrutura do jogo podem estar levemente desatualizados. Estamos atualizando-os progressivamente.",
       "event-adventure-abroad-tokyo": { title: "Guia Adventure Abroad: Tokyo", description: "Guia completo do evento Adventure Abroad Tokyo. Warmup, sistema de conquista, Metro, eventos e recompensas." },
     },
     pl: { 
@@ -120,6 +125,7 @@ const guideListTranslations: Record<string, any> = {
       inProgress: "W toku",
       new: "Nowy",
       searchPlaceholder: "Szukaj poradnika...",
+    outdatedNotice: "Gra ostatnio szybko się rozwija: niektóre poradniki dotyczące struktury gry mogą być nieco nieaktualne. Stopniowo je aktualizujemy.",
       "event-adventure-abroad-tokyo": { title: "Poradnik Adventure Abroad: Tokyo", description: "Kompletny poradnik wydarzenia Adventure Abroad Tokyo. Warmup, system podboju, Metro, wydarzenia i nagrody." },
     },
     id: { 
@@ -139,6 +145,7 @@ const guideListTranslations: Record<string, any> = {
       inProgress: "Sedang berlangsung",
       new: "Baru",
       searchPlaceholder: "Cari panduan...",
+    outdatedNotice: "Permainan berkembang cepat belakangan ini: beberapa panduan tentang struktur permainan mungkin sedikit usang. Kami memperbaruinya secara bertahap.",
       "event-adventure-abroad-tokyo": { title: "Panduan Adventure Abroad: Tokyo", description: "Panduan lengkap acara Adventure Abroad Tokyo. Warmup, sistem penaklukan, Metro, acara dan hadiah." },
     },
     ru: { 
@@ -158,6 +165,7 @@ const guideListTranslations: Record<string, any> = {
       inProgress: "В процессе",
       new: "Новый",
       searchPlaceholder: "Поиск гайда...",
+    outdatedNotice: "В последнее время игра быстро развивается: некоторые руководства о структуре игры могут быть немного устаревшими. Мы постепенно их обновляем.",
       "event-adventure-abroad-tokyo": { title: "Гайд Adventure Abroad: Tokyo", description: "Полный гайд по событию Adventure Abroad Tokyo. Warmup, система завоевания, Metro, события и награды." },
     },
     de: {
@@ -177,6 +185,7 @@ const guideListTranslations: Record<string, any> = {
       inProgress: "In Bearbeitung",
       new: "Neu",
       searchPlaceholder: "Leitfaden suchen...",
+    outdatedNotice: "Das Spiel entwickelt sich derzeit schnell weiter: Einige Anleitungen zur Spielstruktur könnten leicht veraltet sein. Wir aktualisieren sie nach und nach.",
       "event-adventure-abroad-tokyo": { title: "Abenteuer Abroad: Tokyo Leitfaden", description: "Vollständiger Leitfaden zum Adventure Abroad Tokyo Event. Warmup, Eroberungssystem, Metro, Events und Belohnungen." },
     },
 };
@@ -573,6 +582,21 @@ export default function GuidesListClient({ lang }: { lang: string }) {
           <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem", marginBottom: "8px" }}>
             {t.subtitle}
           </p>
+          {t.outdatedNotice && (
+            <p style={{
+              display: "inline-block",
+              color: "rgba(251, 191, 36, 0.85)",
+              background: "rgba(251, 191, 36, 0.07)",
+              border: "1px solid rgba(251, 191, 36, 0.22)",
+              borderRadius: "8px",
+              padding: "6px 12px",
+              fontSize: "0.8rem",
+              lineHeight: 1.45,
+              margin: "0 0 10px 0",
+            }}>
+              ⚠️ {t.outdatedNotice}
+            </p>
+          )}
           <Link
             href={`/${lang}/glossary/`}
             style={{

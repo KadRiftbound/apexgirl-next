@@ -33,6 +33,8 @@ export type HomeContent = {
   statGuides: string;
   statTools: string;
   newLabel: string;
+  patchNoteBadge: string;
+  patchNoteText: string;
   lastUpdatedLabel: string;
   updatedFrequency: string;
   whatWeOffer: string;
@@ -65,6 +67,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "guides",
     statTools: "outils",
     newLabel: "Nouveau",
+    patchNoteBadge: "Patch note",
+    patchNoteText: "Les artistes des Saisons 13 à 15 (Tokyo 5, Bali 5, Rome 5) sont désormais disponibles dans le team builder.",
     lastUpdatedLabel: "Dernière mise à jour",
     updatedFrequency: "Mise à jour hebdomadaire",
     whatWeOffer: "Tout ce dont vous avez besoin",
@@ -118,6 +122,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "guides",
     statTools: "tools",
     newLabel: "New",
+    patchNoteBadge: "Patch note",
+    patchNoteText: "Season 13–15 artists (Tokyo 5, Bali 5, Rome 5) are now available in the team builder.",
     lastUpdatedLabel: "Last updated",
     updatedFrequency: "Updated weekly",
     whatWeOffer: "Everything you need",
@@ -171,6 +177,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "guide",
     statTools: "strumenti",
     newLabel: "Nuovo",
+    patchNoteBadge: "Note di patch",
+    patchNoteText: "Le artiste delle Stagioni 13–15 (Tokyo 5, Bali 5, Roma 5) sono ora disponibili nel team builder.",
     lastUpdatedLabel: "Ultimo aggiornamento",
     updatedFrequency: "Aggiornato settimanalmente",
     whatWeOffer: "Tutto quello che ti serve",
@@ -224,6 +232,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "guías",
     statTools: "herramientas",
     newLabel: "Nuevo",
+    patchNoteBadge: "Notas del parche",
+    patchNoteText: "Las artistas de las Temporadas 13–15 (Tokio 5, Bali 5, Roma 5) ya están disponibles en el team builder.",
     lastUpdatedLabel: "Última actualización",
     updatedFrequency: "Actualizado semanalmente",
     whatWeOffer: "Todo lo que necesitas",
@@ -277,6 +287,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "guias",
     statTools: "ferramentas",
     newLabel: "Novo",
+    patchNoteBadge: "Notas do patch",
+    patchNoteText: "As artistas das Temporadas 13–15 (Tóquio 5, Bali 5, Roma 5) já estão disponíveis no construtor de equipes.",
     lastUpdatedLabel: "Última atualização",
     updatedFrequency: "Atualizado semanalmente",
     whatWeOffer: "Tudo que você precisa",
@@ -330,6 +342,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "poradników",
     statTools: "narzędzi",
     newLabel: "Nowy",
+    patchNoteBadge: "Notatka o aktualizacji",
+    patchNoteText: "Artystki z Sezonów 13–15 (Tokio 5, Bali 5, Rzym 5) są już dostępne w kreatorze drużyn.",
     lastUpdatedLabel: "Ostatnia aktualizacja",
     updatedFrequency: "Aktualizowane co tydzień",
     whatWeOffer: "Wszystko czego potrzebujesz",
@@ -383,6 +397,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "panduan",
     statTools: "alat",
     newLabel: "Baru",
+    patchNoteBadge: "Catatan pembaruan",
+    patchNoteText: "Artis Musim 13–15 (Tokyo 5, Bali 5, Roma 5) kini tersedia di team builder.",
     lastUpdatedLabel: "Terakhir diperbarui",
     updatedFrequency: "Diperbarui mingguan",
     whatWeOffer: "Semua yang kamu butuhkan",
@@ -436,6 +452,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "гайдов",
     statTools: "инструментов",
     newLabel: "Новый",
+    patchNoteBadge: "Список изменений",
+    patchNoteText: "Артистки Сезонов 13–15 (Токио 5, Бали 5, Рим 5) теперь доступны в конструкторе команд.",
     lastUpdatedLabel: "Последнее обновление",
     updatedFrequency: "Обновляется еженедельно",
     whatWeOffer: "Всё что нужно",
@@ -489,6 +507,8 @@ const homeContent: Record<string, HomeContent> = {
     statGuides: "Leitfäden",
     statTools: "Werkzeuge",
     newLabel: "Neu",
+    patchNoteBadge: "Patch-Notizen",
+    patchNoteText: "Die Künstlerinnen der Staffeln 13–15 (Tokio 5, Bali 5, Rom 5) sind jetzt im Team-Builder verfügbar.",
     lastUpdatedLabel: "Zuletzt aktualisiert",
     updatedFrequency: "Wöchentlich aktualisiert",
     whatWeOffer: "Alles was du brauchst",
