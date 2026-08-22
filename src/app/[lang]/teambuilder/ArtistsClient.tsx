@@ -232,6 +232,9 @@ export default function ArtistsClient({ lang }: { lang: string }) {
     "Tokyo 4": 10,
     "Bali 4": 11,
     "Rome 4": 12, "Roma 4": 12,
+    "Tokyo 5": 13,
+    "Bali 5": 14,
+    "Rome 5": 15, "Roma 5": 15,
   };
   const SEASON_LABELS: string[] = [
     "Original", "Tokyo 1", "Événement",
@@ -239,6 +242,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
     "Tokyo 2", "Bali 2", "Rome 2",
     "Tokyo 3", "Bali 3", "Rome 3",
     "Tokyo 4", "Bali 4", "Rome 4",
+    "Tokyo 5", "Bali 5", "Rome 5",
   ];
 
   const getArtistSeasonOrder = (artist: Artist): number => {

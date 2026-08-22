@@ -3771,5 +3771,275 @@
     "singStat": 25851,
     "danceStat": 19076,
     "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier S. Position rôle spécial, genre Rock. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
+  },
+  {
+    "id": 118,
+    "name": "Rena",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Vocalist",
+    "genre": "R&B",
+    "skills": [
+      "↑32% damage to player",
+      "↓12% basic attack damage taken"
+    ],
+    "season": "Tokyo 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "32% Damage to Player"
+      ],
+      "hp": [],
+      "defense": [
+        "12% Basic Damage Reduction"
+      ],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Vocalist from None.",
+    "specialty": "Mixte",
+    "event": "Tokyo 5",
+    "image": "Rena.webp"
+  },
+  {
+    "id": 119,
+    "name": "Mizakura",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Center",
+    "genre": "EDM",
+    "skills": [
+      "↑80% basic attack damage dealt",
+      "↑16% fan cap"
+    ],
+    "season": "Tokyo 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "80% Basic Attack Damage"
+      ],
+      "hp": [
+        "16% Fan Capacity"
+      ],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Center from None.",
+    "specialty": "Solo car",
+    "event": "Tokyo 5",
+    "image": "Mizakura.png"
+  },
+  {
+    "id": 120,
+    "name": "Hana",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Dancer",
+    "genre": "Pop",
+    "skills": [
+      "↑80% basic attack damage dealt",
+      "↓12% basic attack damage taken"
+    ],
+    "season": "Tokyo 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "80% Basic Attack Damage"
+      ],
+      "hp": [],
+      "defense": [
+        "12% Basic Damage Reduction"
+      ],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Dancer from None.",
+    "specialty": "Mixte",
+    "event": "Tokyo 5",
+    "image": "Hana.webp"
+  },
+  {
+    "id": 121,
+    "name": "Momosaki",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Vocalist",
+    "genre": "Rock",
+    "skills": [
+      "↑36% damage to world building guard",
+      "↓12% damage taken"
+    ],
+    "season": "Bali 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "36% Damage World Building Guard"
+      ],
+      "hp": [],
+      "defense": [
+        "12% Damage Reduction"
+      ],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Vocalist from None.",
+    "specialty": "Mixte",
+    "event": "Bali 5",
+    "image": "Momosaki.webp"
+  },
+  {
+    "id": 122,
+    "name": "Landy",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Center",
+    "genre": "Hip Hop",
+    "skills": [
+      "↑80% basic attack damage dealt",
+      "↓12% skill damage taken"
+    ],
+    "season": "Bali 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "80% Basic Attack Damage"
+      ],
+      "hp": [],
+      "defense": [
+        "12% Skill Damage Reduction"
+      ],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Center from None.",
+    "specialty": "Mixte",
+    "event": "Bali 5",
+    "image": "Landy.png"
+  },
+  {
+    "id": 123,
+    "name": "Momona",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Dancer",
+    "genre": "EDM",
+    "skills": [
+      "↑80% basic attack damage dealt",
+      "↑12% fan cap"
+    ],
+    "season": "Bali 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "80% Basic Attack Damage"
+      ],
+      "hp": [
+        "12% Fan Capacity"
+      ],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Dancer from None.",
+    "specialty": "Solo car",
+    "event": "Bali 5",
+    "image": "Momona.png"
+  },
+  {
+    "id": 124,
+    "name": "Elame",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Dancer",
+    "genre": "Hip Hop",
+    "skills": [
+      "↑80% basic attack damage dealt",
+      "↑16% fan cap"
+    ],
+    "season": "Rome 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "80% Basic Attack Damage"
+      ],
+      "hp": [
+        "16% Fan Capacity"
+      ],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Dancer from None.",
+    "specialty": "Solo car",
+    "event": "Rome 5",
+    "image": "Elame.png"
+  },
+  {
+    "id": 125,
+    "name": "Layla",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Vocalist",
+    "genre": "Pop",
+    "skills": [
+      "↑80% basic attack damage dealt",
+      "↓12% skill damage taken"
+    ],
+    "season": "Rome 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "80% Basic Attack Damage"
+      ],
+      "hp": [],
+      "defense": [
+        "12% Skill Damage Reduction"
+      ],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Vocalist from None.",
+    "specialty": "Mixte",
+    "event": "Rome 5",
+    "image": "Layla.png"
+  },
+  {
+    "id": 126,
+    "name": "Nephtys",
+    "group": "None",
+    "rank": "SSR",
+    "position": "Center",
+    "genre": "R&B",
+    "skills": [
+      "↑24% damage to player",
+      "↑16% fan cap"
+    ],
+    "season": "Rome 5",
+    "skillCategories": {
+      "dps": [],
+      "offensive": [
+        "10 sec/1800 Damage",
+        "24% Damage to Player"
+      ],
+      "hp": [
+        "16% Fan Capacity"
+      ],
+      "defense": [],
+      "speed": []
+    },
+    "calculatedTier": "A",
+    "description": "A talented Center from None.",
+    "specialty": "Solo car",
+    "event": "Rome 5",
+    "image": "Nephtys.png"
   }
 ]
