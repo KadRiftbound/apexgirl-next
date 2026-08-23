@@ -1,0 +1,63 @@
+Type : Classique, Early Game, Débutant
+
+Le Fan Meeting est un mini-événement interne au groupe qui a lieu toutes les 48 heures.
+
+C'est l'un des premiers systèmes de groupe auxquels vous participez après avoir rejoint une alliance, et il reste pertinent tout au long du jeu.
+
+Objectif
+
+Le but est d'obtenir le meilleur score possible pour débloquer des récompenses qui améliorent votre voiture de tournée. Les récompenses sont débloquées par palier selon le score total du groupe, donc la participation de tous est importante.
+
+Construction et accès
+
+Le Fan Meeting peut être construit immédiatement après la construction du Quartier Général (HQ). Il est accessible directement sans condition de niveau. Plus tard dans le jeu, vous pouvez améliorer le bâtiment du Fan Meeting pour augmenter la capacité en fans de votre bus.
+
+Comment participer
+
+Pour participer, vous devez lancer un rassemblement sur le Fan Meeting de votre groupe. Les autres membres peuvent rejoindre votre rassemblement, et vous pouvez rejoindre ceux de vos alliés.
+
+Chaque joueur peut soit ouvrir son propre rassemblement (devenir le bus leader), soit rejoindre un rassemblement existant. Un même joueur ne peut pas participer à deux rassemblements simultanément, donc choisissez celui qui vous rapporte le plus.
+
+Mécanique de scoring
+
+Deux facteurs principaux déterminent votre score individuel :
+
+la puissance de l'équipe qui organise le rassemblement (le bus leader)
+
+la capacité en fans de votre propre bus (fan capacity)
+
+Plus le bus leader est puissant, plus le multiplicateur de score est élevé pour tous les participants de ce bus. Il est donc très avantageux de rejoindre les bus les plus forts de votre alliance.
+
+La capacité en fans de votre bus dépend du niveau de votre bâtiment Fan Meeting et des améliorations que vous y avez investies. Plus votre capacité est élevée, plus vous pouvez embarquer de fans et plus votre score augmente.
+
+Stratégie avancée
+
+Organisation des bus : les joueurs les plus puissants de l'alliance devraient ouvrir les rassemblements, tandis que les joueurs plus faibles devraient rejoindre ces bus plutôt que d'ouvrir les leurs. Cela maximise le score total du groupe.
+
+Répartition des rôles : idéalement, désignez 3 à 5 gros joueurs comme ouvreurs de bus. Les autres membres rejoignent ces bus. Si vous avez plus de 5 gros joueurs, alternez les ouvreurs à chaque édition pour permettre à tout le monde de bénéficier des rangs de récompenses.
+
+Positionnement sur la carte : placez vos bâtiments près du Fan Meeting pour réduire les temps de déplacement de vos fans. Plus vos fans arrivent vite, plus vous pouvez lancer de rassemblements dans la fenêtre de 30 minutes.
+
+Amélioration du bâtiment : investissez dans l'amélioration du bâtiment Fan Meeting dès que possible. Chaque niveau augmente votre capacité en fans et donc votre score potentiel.
+
+Timing et coordination
+
+Choisissez un horaire fixe qui convient au maximum de membres de votre alliance. Les meilleurs créneaux sont généralement en soirée quand la majorité des joueurs sont connectés.
+
+Si un seul créneau ne suffit pas pour couvrir tous les fuseaux horaires, mettez en place deux créneaux par jour avec une rotation hebdomadaire.
+
+Rappelez les membres 10 minutes avant l'ouverture du Fan Meeting via le chat de l'alliance.
+
+Récompenses
+
+Les récompenses du Fan Meeting incluent : des améliorations pour la voiture de tournée, de l'expérience, des ressources et parfois des objets spéciaux pour les événements. Plus votre groupe score haut, plus les paliers débloqués sont élevés.
+
+Erreurs courantes à éviter
+
+Ouvrir un bus alors que vous êtes faible : vous limitez le score de ceux qui vous rejoignent. Rejoignez plutôt un bus plus fort.
+
+Ne pas améliorer le bâtiment Fan Meeting : c'est un investissement rentable sur le long terme.
+
+Ignorer le Fan Meeting : même une participation rapide rapporte des récompenses utiles à tout le groupe.
+
+Rater le créneau : le Fan Meeting n'est actif que 30 minutes. Manquer la fenêtre vous prive de récompenses jusqu'au prochain cycle.

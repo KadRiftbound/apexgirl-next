@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { useState, useMemo } from "react";
-import { AdSlot } from "@/components/AdSlot";
+import { AdBanner } from "@/components/AdSense";
 import guidesData from "@/lib/data/guides.json";
 
 const guideListTranslations: Record<string, any> = {
@@ -618,7 +618,7 @@ export default function GuidesListClient({ lang }: { lang: string }) {
       </div>
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px 16px" }}>
-        <AdSlot slot="guides-list" lang={lang} />
+        <AdBanner />
 
         <div style={{ display: "flex", gap: "8px", marginBottom: "24px", flexWrap: "wrap", alignItems: "center" }}>
           {t.categories.map((cat: string) => {

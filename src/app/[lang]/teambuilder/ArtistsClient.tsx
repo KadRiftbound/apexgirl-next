@@ -5,7 +5,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import artistsData from "@/lib/data/artists.json";
-import { AdSlot } from "@/components/AdSlot";
+import { AdBanner } from "@/components/AdSense";
 import MobileArtistsPage from "@/components/MobileArtistsPage";
 import { slugify } from "@/lib/utils/slugify";
 import { calculateTeamStats } from "@/lib/utils/calculateTeamStats";
@@ -304,7 +304,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
               {t.teamBuilderMethodologyDesc}
             </div>
           </div>
-          <AdSlot slot="teambuilder" lang={lang} />
+          <AdBanner />
         </div>
 
         <Breadcrumb

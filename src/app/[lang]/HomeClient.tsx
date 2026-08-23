@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { AdSlot } from "@/components/AdSlot";
+import { AdBanner } from "@/components/AdSense";
 import { activeCodes } from "@/lib/data/codes";
 import { getHomeContent } from "@/lib/i18n/home";
 
@@ -250,7 +250,7 @@ export default function HomeClient({ lang }: { lang: string }) {
           </div>
         </section>
 
-        <AdSlot slot="home" lang={lang} />
+        <AdBanner />
       </div>
 
       <style jsx>{`

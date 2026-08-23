@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
-import { AdSlot } from "@/components/AdSlot";
+import { AdBanner } from "@/components/AdSense";
 import { slugify } from "@/lib/utils/slugify";
 import type { Artist } from "@/lib/types/artist";
 
@@ -258,7 +258,7 @@ function TierListPageInner({ lang }: { lang: string }) {
           </div>
         </div>
 
-        <AdSlot slot="tierlist" lang={lang} />
+        <AdBanner />
 
         {/* Tabs */}
         <div role="tablist" style={{ 

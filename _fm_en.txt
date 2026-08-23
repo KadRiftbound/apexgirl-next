@@ -1,0 +1,63 @@
+Type: Classic, Early Game, Beginner
+
+The Fan Meeting is a mini-event held every 48 hours within your alliance.
+
+It's one of the first group systems you'll participate in after joining an alliance, and it remains relevant throughout the entire game.
+
+Goal
+
+The objective is to achieve the highest possible score to unlock rewards that improve your tour bus. Rewards are unlocked by threshold based on the group's total score, so everyone's participation matters.
+
+Building and access
+
+The Fan Meeting can be built immediately after constructing your Headquarters (HQ). It's accessible directly with no level requirement. Later in the game, you can upgrade the Fan Meeting building to increase your bus's fan capacity.
+
+How to participate
+
+To participate, you must start a gathering at your alliance's Fan Meeting. Other members can join your gathering, and you can join those of your allies.
+
+Each player can either open their own gathering (become the bus leader) or join an existing gathering. A single player cannot participate in two gatherings simultaneously, so choose the one that gives you the most points.
+
+Scoring mechanics
+
+Two main factors determine your individual score:
+
+the strength of the team hosting the gathering (the bus leader)
+
+the fan capacity of your own bus
+
+The stronger the bus leader, the higher the score multiplier for all participants in that bus. It is therefore very beneficial to join the strongest buses in your alliance.
+
+Your bus's fan capacity depends on the level of your Fan Meeting building and the upgrades you have invested in it. The higher your capacity, the more fans you can carry and the higher your score.
+
+Advanced strategy
+
+Bus organization: the strongest players in the alliance should open the gatherings, while weaker players should join those buses instead of opening their own. This maximizes the group's total score.
+
+Role distribution: ideally, designate 3 to 5 strong players as bus openers. Other members join these buses. If you have more than 5 strong players, rotate the openers each edition to let everyone benefit from reward tiers.
+
+Map positioning: place your buildings near the Fan Meeting to reduce your fans' travel time. The faster your fans arrive, the more gatherings you can start within the 30-minute window.
+
+Building upgrades: invest in upgrading the Fan Meeting building as soon as possible. Each level increases your fan capacity and therefore your potential score.
+
+Timing and coordination
+
+Choose a fixed time that works for the maximum number of alliance members. The best slots are usually in the evening when most players are online.
+
+If a single slot is not enough to cover all time zones, set up two slots per day with a weekly rotation.
+
+Remind members 10 minutes before the Fan Meeting opens via the alliance chat.
+
+Rewards
+
+Fan Meeting rewards include: tour bus upgrades, experience, resources, and sometimes special event items. The higher your group scores, the higher the unlocked reward tiers.
+
+Common mistakes to avoid
+
+Opening a bus when you are weak: this limits the score of those who join you. Join a stronger bus instead.
+
+Not upgrading the Fan Meeting building: this is a worthwhile long-term investment.
+
+Ignoring the Fan Meeting: even a quick participation earns useful rewards for the whole group.
+
+Missing the window: the Fan Meeting is only active for 30 minutes. Missing the window means no rewards until the next cycle.
