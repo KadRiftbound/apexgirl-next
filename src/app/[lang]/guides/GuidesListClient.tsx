@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { useState, useMemo } from "react";
 import { AdBanner } from "@/components/AdSense";
-import guidesData from "@/lib/data/guides.json";
 
 const guideListTranslations: Record<string, any> = {
   fr: { 
@@ -474,12 +473,16 @@ type Guide = {
   thumbnail?: string;
 };
 
-const guides = (guidesData as Guide[]).map((guide) => ({
-  ...guide,
-  icon: guide.icon || "📘",
-  color: guide.color || "#8b5cf6",
-  guideType: guide.guideType || "classic",
-}));
+export type GuideListItem = Guide;
+
+function normalizeGuides(list: Guide[]): Guide[] {
+  return list.map((guide) => ({
+    ...guide,
+    icon: guide.icon || "📘",
+    color: guide.color || "#8b5cf6",
+    guideType: guide.guideType || "classic",
+  }));
+}
 
 function getGuideTitle(guide: Guide, lang: string): string {
   const translated = guide[`title_${lang}` as keyof Guide] as string | undefined;
@@ -514,8 +517,9 @@ function getCategoryLabel(guide: Guide, t: Record<string, any>): string {
   return parts.filter(Boolean).join(" • ");
 }
 
-export default function GuidesListClient({ lang }: { lang: string }) {
+export default function GuidesListClient({ lang, guides: guidesProp }: { lang: string; guides: GuideListItem[] }) {
   const t = guideListTranslations[lang] || guideListTranslations.en;
+  const guides = useMemo(() => normalizeGuides(guidesProp), [guidesProp]);
   const [activeCategoryState, setActiveCategoryState] = useState(t.categories[0]);
   const [searchQuery, setSearchQuery] = useState("");
 

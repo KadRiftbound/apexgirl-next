@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
-import GuidesListClient from "./GuidesListClient";
+import GuidesListClient, { type GuideListItem } from "./GuidesListClient";
 import guidesData from "@/lib/data/guides.json";
+
+// Strip every content/tips/rewards field and other languages: the list only needs metadata.
+const LANG_SUFFIX = /_(fr|en|it|es|pt|pl|id|ru|de)$/;
+const HEAVY_PREFIX = /^(content|tips|rewards|summaryBox|callouts)/;
+function toListItem(guide: Record<string, unknown>, lang: string): GuideListItem {
+  const out: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(guide)) {
+    if (HEAVY_PREFIX.test(key)) continue;
+    const m = key.match(LANG_SUFFIX);
+    if (m && m[1] !== lang) continue;
+    out[key] = value;
+  }
+  return out as unknown as GuideListItem;
+}
 
 const BASE_URL = "https://apexgirlguide.com";
 
@@ -37,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     keywords: m.keywords.split(", "),
     alternates: {
       canonical,
-      languages: { fr: `${BASE_URL}/fr/guides/`, en: `${BASE_URL}/en/guides/`, de: `${BASE_URL}/de/guides/`, it: `${BASE_URL}/it/guides/`, es: `${BASE_URL}/es/guides/`, pt: `${BASE_URL}/pt/guides/`, pl: `${BASE_URL}/pl/guides/`, id: `${BASE_URL}/id/guides/`, ru: `${BASE_URL}/ru/guides/`, "x-default": `${BASE_URL}/en/guides/` },
+      languages: { fr: `${BASE_URL}/fr/guides/`, en: `${BASE_URL}/en/guides/`, id: `${BASE_URL}/id/guides/`, "x-default": `${BASE_URL}/en/guides/` },
     },
     openGraph: { title: m.title, description: m.description, url: canonical, siteName: "TopGirl Guide", type: "website" },
     twitter: { card: "summary_large_image", title: m.title, description: m.description },
@@ -64,7 +78,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ lang: s
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
-      <GuidesListClient lang={lang} />
+      <GuidesListClient lang={lang} guides={(guidesData as unknown as Record<string, unknown>[]).map((g) => toListItem(g, lang))} />
     </>
   );
 }

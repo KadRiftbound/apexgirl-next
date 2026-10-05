@@ -1,14 +1,15 @@
 "use client";
 
 
+
+import Image from "next/image";
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
 import { CorrectionCallout } from "@/components/CorrectionCallout";
 import { SummaryBox, type SummaryBoxData } from "@/components/SummaryBox";
 import { TipCallout, type CalloutData } from "@/components/TipCallout";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
-import guidesData from "@/lib/data/guides.json";
-import artistsData from "@/lib/data/artists.json";
+import { useMemo, useState, type ReactNode } from "react";
+import guideImageDims from "@/lib/data/guide-image-dims.json";
 
 const guideTranslations: Record<string, any> = {
    fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication", artistDatabaseTitle: "Base de Données Artistes", artistDatabaseDesc: "Découvrez tous les artistes", tierListTitle: "Tier List", tierListDesc: "Classement des meilleurs artistes", relatedGuides: "Guides liés", relatedArtists: "Artistes liés", glossary: "Glossaire du guide", viewFullGlossary: "→ Voir le glossaire complet", noRelatedGuides: "Aucun guide lié", noRelatedArtists: "Aucun artiste lié" },
@@ -103,37 +104,28 @@ type Guide = {
   callouts?: CalloutData[];
 };
 
-const guides: Guide[] = [
-];
+export type GuideLite = Pick<Guide, "id" | "slugs" | "title" | "icon" | "color" | "description"> & Record<string, unknown>;
 
+export type GuideDetailProps = {
+  lang: string;
+  slug: string;
+  guide: Guide | null;
+  relatedGuides: GuideLite[];
+  otherGuides: GuideLite[];
+  relatedArtists: { slug: string; name: string }[];
+  glossaryText: string;
+};
 
-const slugify = (name: string) =>
-  name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-
-const allGuides: Guide[] = (() => {
-  const merged = new Map<string, Guide>();
-  [...guides, ...((guidesData as unknown as Guide[]) || [])].forEach((guide) => {
-    if (!guide?.id) return;
-    merged.set(guide.id, guide);
-  });
-  return Array.from(merged.values());
-})();
-
-const artistsBySlug = new Map(
-  (artistsData as { name: string }[]).map((artist) => [slugify(artist.name), artist])
-);
-
-export default function GuideDetailClient({ lang, slug, guideId }: { lang: string; slug: string; guideId?: string }) {
+export default function GuideDetailClient({ lang, slug, guide, relatedGuides, otherGuides, relatedArtists, glossaryText }: GuideDetailProps) {
   const t = guideTranslations[lang] || guideTranslations.en;
-  
-  const guide = guideId ? allGuides.find(g => g.id === guideId) : allGuides.find(g => g.id === slug);
+
   const langSlug = guide?.slugs?.[lang as keyof typeof guide.slugs] || guide?.id || slug;
   const guideColor = guide?.color || "#8b5cf6";
   const guideTitle = (guide as any)[`title_${lang}`] || guide?.title || "";
   const today = new Date().toISOString().split("T")[0];
   
-  const getGuideSlug = (g: typeof guide) => g?.slugs?.[lang as keyof typeof g.slugs] || g?.id || '';
-  const [glossaryContent, setGlossaryContent] = useState<string>("");
+  const getGuideSlug = (g: GuideLite | Guide | null | undefined) => g?.slugs?.[lang as keyof NonNullable<typeof g>["slugs"]] || g?.id || '';
+  const glossaryContent = glossaryText;
   const [tocOpen, setTocOpen] = useState(false);
 
   const editorialTexts = {
@@ -144,35 +136,6 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
         : "Prioritize this guide when building same-genre teams, preparing competitive events, or optimizing limited resources.",
     updateTitle: lang === "fr" ? "Derniere revue editoriale" : "Last editorial review",
   };
-
-  const glossaryFileMap: Record<string, string> = {
-    fr: "/glossaire.txt",
-    en: "/glossary.txt",
-    it: "/glossario.txt",
-    es: "/glosario.txt",
-    pt: "/glossario_pt.txt",
-    pl: "/glosariusz.txt",
-    id: "/glosarium.txt",
-    ru: "/glossariy.txt",
-    de: "/glossar.txt",
-  };
-  const glossaryFile = glossaryFileMap[lang] || "/glossary.txt";
-
-  useEffect(() => {
-    fetch(glossaryFile)
-      .then((res) => (res.ok ? res.text() : ""))
-      .then((text) => setGlossaryContent(text))
-      .catch(() => {
-        if (glossaryFile !== "/glossary.txt") {
-          fetch("/glossary.txt")
-            .then((r) => (r.ok ? r.text() : ""))
-            .then((t) => setGlossaryContent(t))
-            .catch(() => setGlossaryContent(""));
-        } else {
-          setGlossaryContent("");
-        }
-      });
-  }, [lang]);
 
   if (!guide) {
     return (
@@ -262,7 +225,15 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
       if (imgMatch) {
         elements.push(
           <div key={i} className="guide-img-wrapper">
-            <img src={`/assets/images/guides/${imgMatch[2]}`} alt={imgMatch[1]} className="guide-img" />
+            <Image
+              src={`/assets/images/guides/${imgMatch[2]}`}
+              alt={imgMatch[1]}
+              className="guide-img"
+              width={(guideImageDims as Record<string, number[]>)[imgMatch[2]]?.[0] ?? 1200}
+              height={(guideImageDims as Record<string, number[]>)[imgMatch[2]]?.[1] ?? 800}
+              sizes="(max-width: 900px) 100vw, 800px"
+              style={{ width: "100%", height: "auto" }}
+            />
             <span className="guide-img-caption">{imgMatch[1]}</span>
           </div>
         );
@@ -655,17 +626,8 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
   mainContent = stripLeadingDescription(mainContent, descriptionText);
   mainContent = stripMetaLines(mainContent);
   const glossaryEntries = getGlossaryForGuide(parseGlossaryEntries(glossaryContent), rawContent || "");
-  const relatedGuideEntries = (guide.relatedGuides || [])
-    .map((id) => allGuides.find((g) => g.id === id))
-    .filter(Boolean) as Guide[];
-  const relatedArtistEntries = (guide.relatedArtists || [])
-    .map((slugValue) => {
-      const artist = artistsBySlug.get(slugValue);
-      return {
-        slug: slugValue,
-        name: artist?.name || slugValue,
-      };
-    });
+  const relatedGuideEntries = relatedGuides;
+  const relatedArtistEntries = relatedArtists;
   const contentResult = useMemo(() => renderContent(mainContent, guideColor), [mainContent, guideColor]);
   const tocHeadings = contentResult.headings;
 
@@ -999,7 +961,7 @@ export default function GuideDetailClient({ lang, slug, guideId }: { lang: strin
             {t.otherGuides}
           </h3>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {allGuides.filter(g => g.id !== guide.id).slice(0, 5).map(g => (
+            {otherGuides.map(g => (
               <Link
                 key={g.id}
                 href={`/${lang}/guides/${getGuideSlug(g)}/`}

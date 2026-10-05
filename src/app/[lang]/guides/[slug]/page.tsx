@@ -1,7 +1,8 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getGuideMeta, getGuideTitle, getGuideDescription, getGuideCategory, getGuideSlug, getAllGuideSlugs } from './guide-meta';
-import GuideDetailClient from './GuideDetailClient';
+import GuideDetailClient, { type GuideDetailProps } from './GuideDetailClient';
+import { buildGuidePayload } from './guide-server';
 import { Breadcrumb } from '@/components/Breadcrumb';
 
 const BASE_URL = 'https://apexgirlguide.com';
@@ -76,7 +77,7 @@ export async function generateMetadata(
     alternates: {
       canonical: canonicalUrl,
       languages: Object.fromEntries(
-        (['fr', 'en', 'de', 'it', 'es', 'pt', 'pl', 'id', 'ru'] as const).map(
+        (['fr', 'en', 'id'] as const).map(
           (l) => [l, `${BASE_URL}/${l}/guides/${getGuideSlug(guide, l)}/`]
         )
       ),
@@ -113,6 +114,15 @@ export default async function GuideDetailPage(
 
   const guideTitle = getGuideTitle(guide, lang);
   const langSlug = getGuideSlug(guide, lang);
+
+  // Old localized slugs (or the raw id) still resolve: send them to the canonical URL.
+  if (slug !== langSlug) {
+    permanentRedirect(`/${lang}/guides/${langSlug}/`);
+  }
+  const payload = buildGuidePayload(guide.id, lang);
+  if (!payload) {
+    notFound();
+  }
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -185,7 +195,15 @@ export default async function GuideDetailPage(
           </div>
         </div>
       </div>
-      <GuideDetailClient lang={lang} slug={langSlug} guideId={guide.id} />
+      <GuideDetailClient
+        lang={lang}
+        slug={langSlug}
+        guide={payload.guide as GuideDetailProps["guide"]}
+        relatedGuides={payload.relatedGuides as GuideDetailProps["relatedGuides"]}
+        otherGuides={payload.otherGuides as GuideDetailProps["otherGuides"]}
+        relatedArtists={payload.relatedArtists}
+        glossaryText={payload.glossaryText}
+      />
     </>
   );
 }
