@@ -8,6 +8,7 @@ import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 import { slugify } from "@/lib/utils/slugify";
 import type { Artist } from "@/lib/types/artist";
+import "./tierlist.css";
 
 const tierDescriptions: Record<string, Record<string, string>> = {
   fr: {
@@ -85,7 +86,7 @@ const tierDescriptions: Record<string, Record<string, string>> = {
 };
 
 const tierlistTranslations: Record<string, any> = {
-  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un seul vote par jour.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voted aujourd'hui.", podium: "🏅 Podium — Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Une erreur est survenue.", voteSuccess: "Votre vote a été comptabilisé !", voteAlreadyVoted: "Vous avez déjà voted aujourd'hui.", allGenres: "Tous les genres", allSpecialties: "Toutes spécialités" },
+  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un seul vote par jour.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voté aujourd'hui.", podium: "🏅 Podium — Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Une erreur est survenue.", voteSuccess: "Votre vote a été comptabilisé !", voteAlreadyVoted: "Vous avez déjà voté aujourd'hui.", allGenres: "Tous les genres", allSpecialties: "Toutes spécialités" },
   en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today.", podium: "🏅 Podium — This week", fullRanking: "📊 Full ranking", artistCount: (n: number) => `${n} artist${n > 1 ? "s" : ""}`, voteError: "An error occurred.", voteSuccess: "Your vote has been counted!", voteAlreadyVoted: "You have already voted today.", allGenres: "All genres", allSpecialties: "All specialties" },
   de: { title: "Tier List", subtitle: "Künstler-Rankings und Community-Stimmen", classic: "Klassisch", vote: "Abstimmen", viewProfile: "Profil ansehen", tierListClassic: "Tier List Klassisch", voteForFavorite: "Stimme für deinen Favoriten", voteBanner: "Stimme für deinen Lieblingskünstler! Eine Stimme pro Tag.", voteForArtist: "Für einen Künstler stimmen", alreadyVoted: "Du hast heute schon abgestimmt.", podium: "🏅 Podium — Diese Woche", fullRanking: "📊 Vollständiges Ranking", artistCount: (n: number) => `${n} Künstler${n > 1 ? "nen" : ""}`, voteError: "Ein Fehler ist aufgetreten.", voteSuccess: "Deine Stimme wurde gezählt!", voteAlreadyVoted: "Du hast heute schon abgestimmt.", allGenres: "Alle Genres", allSpecialties: "Alle Spezialitäten" },
   it: { title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo", tierListClassic: "Tier List Classico", voteForFavorite: "Vota il tuo preferito", voteBanner: "Vota il tuo artista preferito! Un voto al giorno.", voteForArtist: "Vota per un artista", alreadyVoted: "Hai già votato oggi.", podium: "🏅 Podio — Questa settimana", fullRanking: "📊 Classifica completa", artistCount: (n: number) => `${n} artista/i`, voteError: "Si è verificato un errore.", voteSuccess: "Il tuo voto è stato conteggiato!", voteAlreadyVoted: "Hai già votato oggi.", allGenres: "Tutti i generi", allSpecialties: "Tutte le specialità" },
@@ -115,13 +116,14 @@ const genreColors: Record<string, string> = {
   "R&B": "#06b6d4",
 };
 
-const tierColors: Record<string, { bg: string; border: string; text: string }> = {
-  "S+": { bg: "rgba(255, 215, 0, 0.45)", border: "#ffd700", text: "#ffd700" },
-  S: { bg: "rgba(255, 215, 0, 0.35)", border: "#ffd700", text: "#ffd700" },
-  A: { bg: "rgba(34, 197, 94, 0.30)", border: "#22c55e", text: "#22c55e" },
-  B: { bg: "rgba(59, 130, 246, 0.30)", border: "#3b82f6", text: "#3b82f6" },
-  C: { bg: "rgba(245, 158, 11, 0.30)", border: "#f59e0b", text: "#f59e0b" },
-  D: { bg: "rgba(148, 163, 184, 0.30)", border: "#94a3b8", text: "#94a3b8" },
+// bg = pill background (legend / badges). Panels use `rgb` for tinted dark surfaces.
+const tierColors: Record<string, { bg: string; border: string; text: string; rgb: string }> = {
+  "S+": { bg: "rgba(255, 215, 0, 0.18)", border: "#ffd700", text: "#ffd700", rgb: "255, 215, 0" },
+  S: { bg: "rgba(250, 204, 21, 0.16)", border: "#facc15", text: "#facc15", rgb: "250, 204, 21" },
+  A: { bg: "rgba(34, 197, 94, 0.16)", border: "#22c55e", text: "#4ade80", rgb: "34, 197, 94" },
+  B: { bg: "rgba(59, 130, 246, 0.16)", border: "#3b82f6", text: "#60a5fa", rgb: "59, 130, 246" },
+  C: { bg: "rgba(245, 158, 11, 0.16)", border: "#f59e0b", text: "#fbbf24", rgb: "245, 158, 11" },
+  D: { bg: "rgba(148, 163, 184, 0.16)", border: "#94a3b8", text: "#cbd5e1", rgb: "148, 163, 184" },
 };
 
 const tierOrder: string[] = ["S+", "S", "A", "B", "C", "D"];
@@ -161,6 +163,16 @@ const getTierOrder = (tier: string): number => {
   return tierOrder.indexOf(tier);
 };
 
+const tierLabels: Record<string, Record<string, string>> = {
+  fr: { "S+": "Incontournables", S: "Excellentes", A: "Solides", B: "Situationnelles", C: "Faibles", D: "À éviter" },
+  en: { "S+": "Must-have", S: "Excellent", A: "Solid", B: "Situational", C: "Weak", D: "Avoid" },
+};
+const getTierLabel = (tier: string, lang: string): string =>
+  tierLabels[lang]?.[tier] || tierLabels.en[tier] || "";
+
+type VoteRow = { artist_id?: number; artist_name: string; rank?: string; count?: number; week_count: number };
+const stripEmoji = (s: string) => s.replace(/^[^\p{L}\p{N}]+/u, "").trim();
+
 const getTierDescription = (tier: string, lang: string): string => {
   return tierDescriptions[lang]?.[tier] || tierDescriptions.en[tier] || "";
 };
@@ -178,6 +190,18 @@ function TierListPageInner({ lang }: { lang: string }) {
   const [voteData, setVoteData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [votedToday, setVotedToday] = useState(false);
+  const [votedFor, setVotedFor] = useState<string | null>(null);
+
+  // Remember today's vote across reloads
+  useEffect(() => {
+    try {
+      const today = new Date().toISOString().split("T")[0];
+      if (localStorage.getItem("voteDate") === today) {
+        setVotedToday(true);
+        setVotedFor(localStorage.getItem("voteFor"));
+      }
+    } catch {}
+  }, []);
   const [voteMessage, setVoteMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [votingArtist, setVotingArtist] = useState<string | null>(null);
   const [filterGenre, setFilterGenre] = useState<string>("");
@@ -212,6 +236,11 @@ function TierListPageInner({ lang }: { lang: string }) {
       if (data.success) {
         setVoteMessage({ type: "success", text: t.voteSuccess });
         setVotedToday(true);
+        setVotedFor(artistName);
+        try {
+          localStorage.setItem("voteDate", new Date().toISOString().split("T")[0]);
+          localStorage.setItem("voteFor", artistName);
+        } catch {}
         fetchVoteData();
       } else {
         const alreadyVotedMsg =
@@ -238,85 +267,31 @@ function TierListPageInner({ lang }: { lang: string }) {
 
   const artists = artistsData as Artist[];
   const tierOrder = ["S+", "S", "A", "B", "C", "D"];
+  const ranking: VoteRow[] = (voteData?.rankings?.this_week || []).slice(0, 15);
+  const top3 = ranking.slice(0, 3);
+  const maxVotes = Math.max(1, ...ranking.map((r) => r.week_count || 0));
+  const rankOrderMap: Record<string, number> = { UR: 1, "UR Roma": 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4, N: 5 };
+  const votableArtists = [...artists].sort((a, b) => (rankOrderMap[a.rank] || 99) - (rankOrderMap[b.rank] || 99));
 
   return (
     <>
 
-      <div className="container" style={{ paddingTop: "40px" }}>
-        <div className="text-center" style={{ marginBottom: "40px" }}>
-          <h1 className="section-title">🏆 {t.title}</h1>
-          <p className="section-subtitle">{t.subtitle}</p>
-          <div style={{ maxWidth: 860, margin: "14px auto 0", textAlign: "left", background: "rgba(18,20,34,0.93)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: 14, padding: 14 }}>
-            <div style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.9)", marginBottom: 6 }}>
-              {lang === "fr" ? "Notes de classement" : "Ranking notes"}
-            </div>
-            <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.68)", lineHeight: 1.6 }}>
-              {lang === "fr"
-                ? "Les tiers combinent votes, performance en jeu, synergie d'equipe et regularite en event competitif."
-                : "Tiers combine voting data, in-game performance, team synergy, and consistency in competitive events."}
-            </div>
-          </div>
-        </div>
+      <div className="container" style={{ paddingTop: "32px" }}>
+        <header className="page-head">
+          <span className="eyebrow">TopGirl · ApexGirl</span>
+          <h1 className="page-head-title">{t.title}</h1>
+          <p className="page-head-sub">{t.subtitle}</p>
+        </header>
 
         <AdBanner />
 
-        {/* Tabs */}
-        <div role="tablist" style={{ 
-          display: "flex", 
-          gap: "8px", 
-          justifyContent: "center", 
-          marginTop: "32px",
-          marginBottom: "32px"
-        }}>
-          <button
-            role="tab"
-            aria-selected={activeTab === "classic"}
-            onClick={() => setActiveTab("classic")}
-            style={{
-              padding: "14px 32px",
-              borderRadius: "var(--radius-full)",
-              border: activeTab === "classic" 
-                ? "2px solid var(--primary)" 
-                : "2px solid var(--border)",
-              background: activeTab === "classic" 
-                ? "linear-gradient(135deg, var(--primary), #ff80ab)" 
-                : "var(--bg-card)",
-              color: activeTab === "classic" ? "#fff" : "var(--text-muted)",
-              cursor: "pointer",
-              fontSize: "1rem",
-              fontWeight: 600,
-              transition: "all 0.2s ease",
-              boxShadow: activeTab === "classic" 
-                ? "0 4px 20px rgba(255, 77, 141, 0.4)" 
-                : "none"
-            }}
-          >
-            📊 {t.tierListClassic}
+        {/* Tabs — segmented control */}
+        <div role="tablist" className="seg">
+          <button role="tab" aria-selected={activeTab === "classic"} onClick={() => setActiveTab("classic")} className={`seg-btn${activeTab === "classic" ? " on" : ""}`}>
+            {t.tierListClassic}
           </button>
-          <button
-            role="tab"
-            aria-selected={activeTab === "vote"}
-            onClick={() => setActiveTab("vote")}
-            style={{
-              padding: "14px 32px",
-              borderRadius: "var(--radius-full)",
-              border: activeTab === "vote" 
-                ? "2px solid var(--secondary)" 
-                : "2px solid var(--border)",
-              background: activeTab === "vote" 
-                ? "linear-gradient(135deg, var(--secondary), #a78bfa)" 
-                : "var(--bg-card)",
-              color: activeTab === "vote" ? "#fff" : "var(--text-muted)",
-              cursor: "pointer",
-              fontSize: "1rem",
-              fontWeight: 600,
-              transition: "all 0.2s ease",
-              boxShadow: activeTab === "vote" 
-                ? "0 4px 20px rgba(139, 92, 246, 0.4)" 
-                : "none"
-            }}
-          >
-            ❤️ {t.voteForFavorite}
+          <button role="tab" aria-selected={activeTab === "vote"} onClick={() => setActiveTab("vote")} className={`seg-btn${activeTab === "vote" ? " on" : ""}`}>
+            {t.voteForFavorite}
           </button>
         </div>
 
@@ -345,266 +320,96 @@ function TierListPageInner({ lang }: { lang: string }) {
             whiteSpace: "nowrap",
             animation: "toastIn 0.25s ease",
           }}>
-            {voteMessage.type === "success" ? "✅ " : "❌ "}{voteMessage.text}
+            {voteMessage.text}
           </div>
         )}
 
         {/* Classic Tier List Tab */}
         {activeTab === "classic" && (
           <div>
-            {/* Filters */}
-            <div style={{ 
-              display: "flex", 
-              gap: "12px", 
-              marginBottom: "24px",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignItems: "center"
-            }}>
-              {tierOrder.map(tier => (
-                <div
-                  key={tier}
-                  style={{
-                    padding: "8px 16px",
-                    borderRadius: "var(--radius)",
-                    background: tierColors[tier]?.bg,
-                    border: `1px solid ${tierColors[tier]?.border}`,
-                    color: tierColors[tier]?.text,
-                    fontWeight: 600,
-                    fontSize: "0.85rem"
-                  }}
-                >
-                  Tier {tier}
-                </div>
-              ))}
-              <select
-                value={filterGenre}
-                onChange={(e) => setFilterGenre(e.target.value)}
-                style={{
-                  padding: "8px 12px",
-                  borderRadius: "var(--radius)",
-                  border: "1px solid var(--border)",
-                  background: "var(--bg-card)",
-                  color: "var(--text-primary)",
-                  fontWeight: 500,
-                  fontSize: "0.85rem",
-                  cursor: "pointer"
-                }}
-              >
-                <option value="">{t.allGenres || "All genres"}</option>
-                {Object.keys(genreColors).map(g => (
-                  <option key={g} value={g}>{g}</option>
+            {/* Toolbar: legend + filters */}
+            <div className="tier-toolbar">
+              <div className="tier-legend" aria-label="Tiers">
+                {tierOrder.map(tier => (
+                  <span key={tier} className="tier-chip" style={{ ["--tier" as string]: tierColors[tier]?.rgb }}>
+                    <b>{tier}</b>
+                  </span>
                 ))}
-              </select>
-              <select
-                value={filterSpecialty}
-                onChange={(e) => setFilterSpecialty(e.target.value)}
-                style={{
-                  padding: "8px 12px",
-                  borderRadius: "var(--radius)",
-                  border: "1px solid var(--border)",
-                  background: "var(--bg-card)",
-                  color: "var(--text-primary)",
-                  fontWeight: 500,
-                  fontSize: "0.85rem",
-                  cursor: "pointer"
-                }}
-              >
-                <option value="">{t.allSpecialties || "All specialties"}</option>
-                {SPECIALTY_KEYS.map(key => {
-                  const frValue = SPECIALTY_VALUES[SPECIALTY_KEYS.indexOf(key)];
-                  const label = SPECIALTY_LABELS[lang]?.[key] || SPECIALTY_LABELS['en']?.[key] || frValue;
-                  return <option key={key} value={frValue}>{label}</option>;
-                })}
-              </select>
-            </div>
-
-            {/* Genre Legend */}
-            <div style={{ 
-              display: "flex", 
-              gap: "16px", 
-              marginBottom: "24px",
-              flexWrap: "wrap",
-              justifyContent: "center"
-            }}>
-              {Object.entries(genreColors).map(([genre, color]) => (
-                <div key={genre} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: color }} />
-                  <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{genre}</span>
-                </div>
-              ))}
+              </div>
+              <div className="tier-filters">
+                <label className="tier-select">
+                  <select value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
+                    <option value="">{t.allGenres || "All genres"}</option>
+                    {Object.keys(genreColors).map(g => (
+                      <option key={g} value={g}>{g}</option>
+                    ))}
+                  </select>
+                </label>
+                <label className="tier-select">
+                  <select value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
+                    <option value="">{t.allSpecialties || "All specialties"}</option>
+                    {SPECIALTY_KEYS.map(key => {
+                      const frValue = SPECIALTY_VALUES[SPECIALTY_KEYS.indexOf(key)];
+                      const label = SPECIALTY_LABELS[lang]?.[key] || SPECIALTY_LABELS['en']?.[key] || frValue;
+                      return <option key={key} value={frValue}>{label}</option>;
+                    })}
+                  </select>
+                </label>
+              </div>
             </div>
 
             {tierOrder.map(tier => {
                const tierArtists = artists.filter(a => 
                  getEffectiveTier(a) === tier
-                 && (a.rank === "UR" || a.rank === "SSR")
+                 && a.rank === "SSR"
                  && (!filterGenre || (a.genre?.trim() || "") === filterGenre.trim())
                  && (!filterSpecialty || (a.specialty?.trim() || "") === filterSpecialty.trim())
+               ).sort((a, b) =>
+                 (b.tierScore || 0) - (a.tierScore || 0)
+                 || ((b.singStat || 0) + (b.danceStat || 0)) - ((a.singStat || 0) + (a.danceStat || 0))
                );
               
               if (tierArtists.length === 0) return null;
               
               return (
-                <div 
-                  key={tier}
-                  style={{
-                    marginBottom: "24px",
-                    borderRadius: "var(--radius-lg)",
-                    background: tierColors[tier]?.bg,
-                    border: `2px solid ${tierColors[tier]?.border}`,
-                    overflow: "hidden"
-                  }}
-                 >
-                    <div style={{
-                      padding: "12px 20px",
-                      background: `${tierColors[tier]?.border}55`,
-                      borderBottom: `1px solid ${tierColors[tier]?.border}66`,
-                     display: "flex",
-                     alignItems: "center",
-                     justifyContent: "space-between"
-                   }}>
-                     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                       <span style={{
-                         fontSize: "1.25rem",
-                         fontWeight: 800,
-                         color: tierColors[tier]?.text,
-                         width: "40px"
-                       }}>
-                         {tier}
-                       </span>
-                       <span style={{ 
-                         color: "var(--text-muted)", 
-                         fontSize: "0.85rem" 
-                       }}>
-                         {t.artistCount(tierArtists.length)}
-                       </span>
-                     </div>
-                     <div style={{ position: "relative" }} className="tier-tooltip-container">
-                       <span 
-                         style={{ 
-                           fontSize: "0.85rem", 
-                           fontWeight: 600,
-                           color: tierColors[tier]?.text,
-                           background: tierColors[tier]?.bg,
-                           border: `1px solid ${tierColors[tier]?.border}`,
-                           borderRadius: "50%",
-                           width: "20px",
-                           height: "20px",
-                           display: "flex",
-                           alignItems: "center",
-                           justifyContent: "center",
-                           cursor: "help",
-                           position: "relative",
-                           zIndex: 101
-                         }}
-                       >
-                         ?
-                       </span>
-                       <div style={{
-                         position: "absolute",
-                         top: "100%",
-                         right: "0",
-                         marginTop: "8px",
-                         padding: "12px 16px",
-                         background: "var(--bg-card)",
-                         border: `1px solid ${tierColors[tier]?.border}`,
-                         borderRadius: "var(--radius-md)",
-                         boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                         zIndex: 1000,
-                         minWidth: "250px",
-                         maxWidth: "300px",
-                         display: "none"
-                       }} className="tier-tooltip">
-                         <div style={{ 
-                           fontSize: "0.8rem", 
-                           color: tierColors[tier]?.text,
-                           fontWeight: 600,
-                           marginBottom: "4px"
-                         }}>
-                           Tier {tier}
-                         </div>
-                         <div style={{ 
-                           fontSize: "0.75rem", 
-                           color: "var(--text-secondary)",
-                           lineHeight: 1.4
-                         }}>
-                           {getTierDescription(tier, lang)}
-                         </div>
-                       </div>
-                     </div>
-                   </div>
-                   
-                   <div style={{
-                     display: "flex",
-                     flexWrap: "wrap",
-                     gap: "8px",
-                     padding: "16px"
-                   }}>
-                      {tierArtists
-                        .sort((a, b) => getTierOrder(getEffectiveTier(a)) - getTierOrder(getEffectiveTier(b)))
-                        .map(artist => (
-                          <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}/`} style={{
-                            textDecoration: 'none',
-                            display: 'inline-block',
-                            width: '90px'
-                          }}>
-                           <div style={{
-                             width: "112px",
-                             height: "140px",
-                             margin: "0 auto 6px",
-                             borderRadius: "var(--radius-md)",
-                             border: `2px solid ${rankColors[artist.rank]}`,
-                             background: "var(--bg-card)",
-                             overflow: "hidden",
-                             display: "flex",
-                             alignItems: "center",
-                             justifyContent: "center",
-                             position: "relative",
-                             transition: "transform 0.2s"
-                           }}>
-                             {artist.image ? (
-                               <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill style={{ objectFit: "cover" }} />
-                             ) : (
-                               <span style={{ 
-                                 fontSize: "2rem", 
-                                 fontWeight: 800, 
-                                 color: rankColors[artist.rank] 
-                               }}>
-                                 {artist.name.charAt(0)}
-                               </span>
-                              )}
-                              <div style={{
-                                position: "absolute",
-                                bottom: "4px",
-                                left: "4px",
-                                right: "4px",
-                                background: genreColors[artist.genre] || "#666",
-                                padding: "2px 6px",
-                                borderRadius: "4px",
-                                fontSize: "0.6rem",
-                                fontWeight: 600,
-                                color: "#fff",
-                                textAlign: "center",
-                                textTransform: "uppercase"
-                              }}>
-                                {artist.genre}
-                              </div>
-                            </div>
-                            <div style={{
-                             fontSize: "0.7rem",
-                             fontWeight: 600,
-                             color: "var(--text-primary)",
-                             whiteSpace: "nowrap",
-                             overflow: "hidden",
-                             textOverflow: "ellipsis"
-                           }}>
-                             {artist.name}
-                           </div>
-                         </Link>
-                       ))}
+                <section key={tier} className="tier-panel" style={{ ["--tier" as string]: tierColors[tier]?.rgb }}>
+                  <header className="tier-head">
+                    <span className="tier-letter">{tier}</span>
+                    <div className="tier-head-text">
+                      <span className="tier-head-title">{getTierLabel(tier, lang)}</span>
+                      <span className="tier-head-count">{t.artistCount(tierArtists.length)}</span>
+                    </div>
+                    <div className="tier-tooltip-container tier-help">
+                      <span className="tier-help-btn" aria-label={getTierDescription(tier, lang)}>i</span>
+                      <div className="tier-tooltip tier-help-pop">
+                        <div className="tier-help-pop-title">Tier {tier}</div>
+                        <div className="tier-help-pop-body">{getTierDescription(tier, lang)}</div>
+                      </div>
+                    </div>
+                  </header>
+
+                  <div className="tier-grid">
+                    {tierArtists.map(artist => (
+                      <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}/`} className="artist-tile" style={{ ["--rank" as string]: rankColors[artist.rank] || "#94a3b8" }}>
+                        <div className="artist-tile-img">
+                          {artist.image ? (
+                            <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="120px" style={{ objectFit: "cover" }} />
+                          ) : (
+                            <span className="artist-tile-letter">{artist.name.charAt(0)}</span>
+                          )}
+                          <span className="artist-tile-rank">{artist.rank.replace("UR ", "UR·")}</span>
+                        </div>
+                        <div className="artist-tile-meta">
+                          <span className="artist-tile-name">{artist.name}</span>
+                          <span className="artist-tile-genre">
+                            <i style={{ background: genreColors[artist.genre] || "#666" }} />
+                            {artist.genre}
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
                   </div>
-                </div>
+                </section>
               );
             })}
           </div>
@@ -612,349 +417,93 @@ function TierListPageInner({ lang }: { lang: string }) {
 
         {/* Voting Tab */}
         {activeTab === "vote" && (
-          <div>
-            {/* Vote Status Banner */}
-            {votedToday ? (
-              <div style={{
-                padding: "16px 20px",
-                borderRadius: "var(--radius-md)",
-                background: "rgba(139, 92, 246, 0.18)",
-                border: "1px solid rgba(139, 92, 246, 0.35)",
-                backdropFilter: "blur(10px)",
-                textAlign: "center",
-                marginBottom: "24px",
-                color: "rgba(167,139,250,0.9)",
-                fontWeight: 600,
-                fontSize: "0.95rem",
-              }}>
-                ✅ {t.alreadyVoted}
-              </div>
-            ) : (
-              <div style={{
-                padding: "16px 20px",
-                borderRadius: "var(--radius-md)",
-                background: "rgba(255, 77, 141, 0.12)",
-                border: "1px solid rgba(255, 77, 141, 0.30)",
-                backdropFilter: "blur(10px)",
-                textAlign: "center",
-                marginBottom: "24px",
-                color: "rgba(255,255,255,0.9)",
-                fontWeight: 600,
-                fontSize: "0.95rem",
-              }}>
-                🎉 {t.voteBanner}
-              </div>
-            )}
-
-            {/* Top 3 Leaderboard */}
-            <div style={{ marginBottom: "40px" }}>
-              <h2 style={{ 
-                fontSize: "1.25rem", 
-                fontWeight: 700, 
-                marginBottom: "20px",
-                color: "var(--text-primary)",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px"
-              }}>
-                {t.podium}
-              </h2>
-              
-              {/* Top 3 with Images */}
-              <div style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "flex-end",
-                gap: "12px",
-                marginBottom: "32px",
-                padding: "0 8px",
-              }}>
-               {/* 2nd Place */}
-                  {voteData?.rankings?.this_week?.[1] && (
-                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[1]?.artist_name)?.name || '')}/`} style={{
-                     textDecoration: 'none',
-                     display: 'inline-block'
-                   }}>
-                     <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                       <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🥈</div>
-                       <div style={{
-                         width: "84px", height: "84px",
-                         borderRadius: "50%",
-                         border: "3px solid #c0c0c0",
-                         background: "rgba(192,192,192,0.1)",
-                         overflow: "hidden",
-                         position: "relative",
-                         boxShadow: "0 0 18px rgba(192,192,192,0.35)",
-                       }}>
-                         {(() => {
-                           const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[1]?.artist_name);
-                           return artist?.image ? (
-                             <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[1]?.artist_name} fill sizes="84px" style={{ objectFit: "cover" }} />
-                           ) : (
-                             <span style={{ fontSize: "2rem", color: "#c0c0c0", display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>2</span>
-                           );
-                         })()}
-                       </div>
-                       <div style={{
-                         marginTop: "8px", fontWeight: 700, color: "#e0e0e0",
-                         fontSize: "0.82rem", maxWidth: "90px", overflow: "hidden",
-                         textOverflow: "ellipsis", whiteSpace: "nowrap",
-                       }}>
-                         {voteData?.rankings?.this_week?.[1]?.artist_name}
-                       </div>
-                       <div style={{ fontSize: "0.75rem", color: "#c0c0c0", fontWeight: 600 }}>
-                         {voteData?.rankings?.this_week?.[1]?.week_count} ⭐
-                       </div>
-                       <div style={{ marginTop: "10px", width: "90px", height: "48px", background: "linear-gradient(180deg,#9ca3af,#6b7280)", borderRadius: "6px 6px 0 0", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1.1rem", color: "#fff" }}>2</div>
-                     </div>
-                   </Link>
-                 )}
-
-                {/* 1st Place */}
-                  {voteData?.rankings?.this_week?.[0] && (
-                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name)?.name || '')}/`} style={{
-                     textDecoration: 'none',
-                     display: 'inline-block'
-                   }}>
-                     <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                       <div style={{ fontSize: "1.5rem", marginBottom: "4px" }}>👑</div>
-                       <div style={{
-                         width: "112px", height: "112px",
-                         borderRadius: "50%",
-                         border: "4px solid #ffd700",
-                         background: "rgba(255,215,0,0.1)",
-                         overflow: "hidden",
-                         position: "relative",
-                         boxShadow: "0 0 32px rgba(255,215,0,0.55)",
-                       }}>
-                         {(() => {
-                           const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name);
-                           return artist?.image ? (
-                             <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[0]?.artist_name} fill sizes="112px" style={{ objectFit: "cover" }} />
-                           ) : (
-                             <span style={{ fontSize: "2.5rem", color: "#ffd700", display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>1</span>
-                           );
-                         })()}
-                       </div>
-                       <div style={{
-                         marginTop: "8px", fontWeight: 800, color: "#ffd700",
-                         fontSize: "0.9rem", maxWidth: "116px", overflow: "hidden",
-                         textOverflow: "ellipsis", whiteSpace: "nowrap",
-                       }}>
-                         {voteData?.rankings?.this_week?.[0]?.artist_name}
-                       </div>
-                       <div style={{ fontSize: "0.8rem", color: "#ffd700", fontWeight: 700 }}>
-                         {voteData?.rankings?.this_week?.[0]?.week_count} ⭐
-                       </div>
-                       <div style={{ marginTop: "10px", width: "116px", height: "68px", background: "linear-gradient(180deg,#ffd700,#d97706)", borderRadius: "6px 6px 0 0", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: "1.4rem", color: "#000" }}>1</div>
-                     </div>
-                   </Link>
-                 )}
-
-                {/* 3rd Place */}
-                  {voteData?.rankings?.this_week?.[2] && (
-                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name)?.name || '')}/`} style={{
-                     textDecoration: 'none',
-                     display: 'inline-block'
-                   }}>
-                     <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                       <div style={{ fontSize: "1.2rem", marginBottom: "4px" }}>🥉</div>
-                       <div style={{
-                         width: "76px", height: "76px",
-                         borderRadius: "50%",
-                         border: "3px solid #cd7f32",
-                         background: "rgba(205,127,50,0.1)",
-                         overflow: "hidden",
-                         position: "relative",
-                         boxShadow: "0 0 16px rgba(205,127,50,0.3)",
-                       }}>
-                         {(() => {
-                           const artist = artists.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name);
-                           return artist?.image ? (
-                             <Image src={`/assets/images/artists/${artist.image}`} alt={voteData?.rankings?.this_week?.[2]?.artist_name} fill sizes="76px" style={{ objectFit: "cover" }} />
-                           ) : (
-                             <span style={{ fontSize: "1.5rem", color: "#cd7f32", display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>3</span>
-                           );
-                         })()}
-                       </div>
-                       <div style={{
-                         marginTop: "8px", fontWeight: 700, color: "#d4a27a",
-                         fontSize: "0.78rem", maxWidth: "82px", overflow: "hidden",
-                         textOverflow: "ellipsis", whiteSpace: "nowrap",
-                       }}>
-                         {voteData?.rankings?.this_week?.[2]?.artist_name}
-                       </div>
-                       <div style={{ fontSize: "0.72rem", color: "#cd7f32", fontWeight: 600 }}>
-                         {voteData?.rankings?.this_week?.[2]?.week_count} ⭐
-                       </div>
-                       <div style={{ marginTop: "10px", width: "82px", height: "32px", background: "linear-gradient(180deg,#cd7f32,#a05a20)", borderRadius: "6px 6px 0 0", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1rem", color: "#fff" }}>3</div>
-                     </div>
-                   </Link>
-                 )}
-              </div>
-
-              {/* Rankings List */}
-              <h4 style={{ 
-                fontSize: "1rem", 
-                fontWeight: 600, 
-                marginBottom: "16px",
-                color: "var(--text-primary)"
-              }}>
-                {t.fullRanking}
-              </h4>
-              <div style={{ 
-                display: "grid", 
-                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-                gap: "12px"
-              }}>
-                 {voteData?.rankings?.this_week?.slice(0, 15).map((entry: any, index: number) => {
-                   const artistObj = artists.find(a => a.name === entry.artist_name);
-                   const medalColor = index === 0 ? "#ffd700" : index === 1 ? "#c0c0c0" : index === 2 ? "#cd7f32" : "rgba(255,255,255,0.15)";
-                   return (
-                     <Link key={entry.artist_id} href={`/${lang}/artist/${slugify(entry.artist_name)}/`} style={{ textDecoration: "none" }}>
-                       <div style={{
-                         padding: "10px 14px",
-                         borderRadius: "12px",
-                         background: index < 3 ? "rgba(255,215,0,0.10)" : "rgba(20,20,38,0.65)",
-                         border: `1px solid ${index < 3 ? "rgba(255,215,0,0.25)" : "rgba(255,255,255,0.10)"}`,
-                         backdropFilter: "blur(8px)",
-                         display: "flex",
-                         alignItems: "center",
-                         gap: "10px",
-                         transition: "background 0.2s",
-                       }}>
-                         <div style={{
-                           width: "26px", height: "26px", borderRadius: "50%", flexShrink: 0,
-                           background: medalColor,
-                           display: "flex", alignItems: "center", justifyContent: "center",
-                           fontWeight: 800, fontSize: "0.78rem",
-                           color: index < 3 ? "#000" : "rgba(255,255,255,0.6)",
-                         }}>
-                           {index + 1}
-                         </div>
-                         {artistObj?.image && (
-                           <div style={{ width: "36px", height: "44px", borderRadius: "6px", overflow: "hidden", flexShrink: 0, position: "relative" }}>
-                             <Image src={`/assets/images/artists/${artistObj.image}`} alt={entry.artist_name} fill sizes="36px" style={{ objectFit: "cover" }} />
-                           </div>
-                         )}
-                         <div style={{ flex: 1, minWidth: 0 }}>
-                           <div style={{ fontWeight: 600, color: "#fff", fontSize: "0.85rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                             {entry.artist_name}
-                           </div>
-                           {entry.rank && (
-                             <div style={{ fontSize: "0.68rem", color: rankColors[entry.rank] || "rgba(255,255,255,0.4)", fontWeight: 600 }}>
-                               {entry.rank}
-                             </div>
-                           )}
-                         </div>
-                         <div style={{ fontWeight: 700, color: index < 3 ? "#ffd700" : "rgba(255,255,255,0.5)", fontSize: "0.9rem", flexShrink: 0 }}>
-                           {entry.week_count} ⭐
-                         </div>
-                       </div>
-                     </Link>
-                   );
-                 })}
-              </div>
+          <div className="vote">
+            <div className={`vote-banner${votedToday ? " done" : ""}`}>
+              <span className="vote-banner-dot" aria-hidden="true" />
+              <span>{votedToday ? t.alreadyVoted : t.voteBanner}</span>
+              {votedFor && <span className="vote-banner-for">· {votedFor}</span>}
             </div>
 
-            {/* All Artists for Voting */}
-            <div>
-              <h3 style={{ 
-                fontSize: "1.1rem", 
-                fontWeight: 700, 
-                marginBottom: "16px",
-                color: "var(--text-primary)"
-              }}>
-                🎤 {t.voteForArtist}
-              </h3>
-              <div style={{ 
-                display: "grid", 
-                gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-                gap: "12px"
-              }}>
-                {artists
-                  .sort((a, b) => {
-                    const rankOrder: Record<string, number> = { UR: 1, SSR: 2, SR: 3, R: 4, N: 5 };
-                    return (rankOrder[a.rank] || 99) - (rankOrder[b.rank] || 99);
-                  })
-                  .map(artist => {
-                    const artistVotes = voteData?.rankings?.all_time?.find((v: any) => v.artist_name === artist.name);
-                    const isVoting = votingArtist === artist.name;
-                    const isDisabled = votedToday || isVoting;
-                    
+            {/* Podium */}
+            {top3.length > 0 && (
+              <section className="vote-section">
+                <h2 className="vote-h2">{stripEmoji(t.podium)}</h2>
+                <div className="podium">
+                  {top3.map((entry, i) => {
+                    const a = artists.find((x) => x.name === entry.artist_name);
                     return (
-                      <div key={artist.id} style={{
-                        textAlign: "center",
-                        padding: "12px 8px",
-                        borderRadius: "var(--radius-md)",
-                        background: "rgba(20,20,38,0.72)",
-                        border: "1px solid rgba(255,255,255,0.10)",
-                        backdropFilter: "blur(10px)",
-                        transition: "all 0.2s",
-                      }}>
-                        {/* Image + name → navigates to artist profile */}
-                        <Link href={`/${lang}/artist/${slugify(artist.name)}/`} style={{ textDecoration: 'none', display: 'block' }}>
-                          <div style={{
-                            width: "70px",
-                            height: "85px",
-                            margin: "0 auto 8px",
-                            borderRadius: "var(--radius-sm)",
-                            border: `2px solid ${rankColors[artist.rank]}`,
-                            overflow: "hidden",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            position: "relative",
-                          }}>
-                            {artist.image ? (
-                              <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="70px" style={{ objectFit: "cover" }} />
-                            ) : (
-                              <span style={{ fontSize: "1.75rem", fontWeight: 800, color: rankColors[artist.rank] }}>
-                                {artist.name.charAt(0)}
-                              </span>
-                            )}
-                          </div>
-                          <div style={{
-                            fontSize: "0.7rem",
-                            fontWeight: 600,
-                            color: "var(--text-primary)",
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            marginBottom: "4px"
-                          }}>
-                            {artist.name}
-                          </div>
-                        </Link>
-                        {/* Vote button — separate from the link */}
-                        <button
-                          aria-label={`Vote for ${artist.name}`}
-                          onClick={() => { !isDisabled && handleVote(artist.name); }}
-                          disabled={isDisabled}
-                          style={{
-                            width: "100%",
-                            padding: "6px 10px",
-                            fontSize: "0.7rem",
-                            fontWeight: 600,
-                            borderRadius: "var(--radius-sm)",
-                            border: "none",
-                            background: isVoting
-                              ? "linear-gradient(135deg, #a78bfa, #8b5cf6)"
-                              : isDisabled
-                              ? "rgba(148, 163, 184, 0.3)"
-                              : "linear-gradient(135deg, var(--primary), #ff80ab)",
-                            color: "#fff",
-                            cursor: isDisabled ? "not-allowed" : "pointer",
-                            transition: "all 0.2s"
-                          }}
-                        >
-                          {isVoting ? "..." : isDisabled ? "✓" : "❤️ Vote"}
-                        </button>
-                      </div>
+                      <Link key={entry.artist_name} href={`/${lang}/artist/${slugify(entry.artist_name)}/`} className={`podium-card p${i + 1}`}>
+                        <span className="podium-place">{i + 1}</span>
+                        <span className="podium-img">
+                          {a?.image ? <Image src={`/assets/images/artists/${a.image}`} alt={entry.artist_name} fill sizes="200px" style={{ objectFit: "cover" }} /> : <span className="podium-letter">{entry.artist_name.charAt(0)}</span>}
+                        </span>
+                        <span className="podium-meta">
+                          <span className="podium-name">{entry.artist_name}</span>
+                          <span className="podium-votes">{entry.week_count} {t.vote.toLowerCase()}s</span>
+                        </span>
+                      </Link>
                     );
                   })}
+                </div>
+              </section>
+            )}
+
+            {/* Full ranking */}
+            {ranking.length > 0 && (
+              <section className="vote-section">
+                <h2 className="vote-h2">{stripEmoji(t.fullRanking)}</h2>
+                <ol className="rank-list">
+                  {ranking.map((entry, index) => {
+                    const a = artists.find((x) => x.name === entry.artist_name);
+                    return (
+                      <li key={entry.artist_name}>
+                        <Link href={`/${lang}/artist/${slugify(entry.artist_name)}/`} className={`rank-row${index < 3 ? " top" : ""}`}>
+                          <span className="rank-pos">{index + 1}</span>
+                          <span className="rank-img">
+                            {a?.image && <Image src={`/assets/images/artists/${a.image}`} alt={entry.artist_name} fill sizes="40px" style={{ objectFit: "cover" }} />}
+                          </span>
+                          <span className="rank-name">{entry.artist_name}</span>
+                          <span className="rank-rank" style={{ color: rankColors[entry.rank || ""] || "var(--text-muted)" }}>{entry.rank}</span>
+                          <span className="rank-bar"><i style={{ width: `${Math.max(4, (entry.week_count / maxVotes) * 100)}%` }} /></span>
+                          <span className="rank-count">{entry.week_count}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </section>
+            )}
+
+            {/* Vote grid */}
+            <section className="vote-section">
+              <h2 className="vote-h2">{stripEmoji(t.voteForArtist)}</h2>
+              <div className="vote-grid">
+                {votableArtists.map((artist) => {
+                  const isVoting = votingArtist === artist.name;
+                  const mine = votedFor === artist.name;
+                  const isDisabled = votedToday || isVoting;
+                  return (
+                    <div key={artist.id} className={`vote-tile${mine ? " mine" : ""}`} style={{ ["--rank" as string]: rankColors[artist.rank] || "#94a3b8" }}>
+                      <Link href={`/${lang}/artist/${slugify(artist.name)}/`} className="vote-tile-link">
+                        <span className="vote-tile-img">
+                          {artist.image ? <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="120px" style={{ objectFit: "cover" }} /> : <span className="artist-tile-letter">{artist.name.charAt(0)}</span>}
+                          <span className="artist-tile-rank">{artist.rank.replace("UR ", "UR·")}</span>
+                        </span>
+                        <span className="vote-tile-name">{artist.name}</span>
+                      </Link>
+                      <button
+                        className={`vote-btn${mine ? " mine" : isDisabled ? " off" : ""}`}
+                        aria-label={`${t.vote} ${artist.name}`}
+                        onClick={() => { if (!isDisabled) handleVote(artist.name); }}
+                        disabled={isDisabled}
+                      >
+                        {isVoting ? "…" : mine ? "✓" : isDisabled ? "—" : t.vote}
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
-            </div>
+            </section>
           </div>
         )}
       </div>

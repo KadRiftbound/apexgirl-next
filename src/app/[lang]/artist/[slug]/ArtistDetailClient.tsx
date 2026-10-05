@@ -3,6 +3,7 @@
 import artistsData from '@/lib/data/artists.json';
 import Link from 'next/link';
 import Image from 'next/image';
+import './artist.css';
 
 const t_map: Record<string, any> = {
   fr: {
@@ -182,10 +183,6 @@ const tierColors: Record<string, { bg: string; text: string }> = {
   'D':  { bg: 'rgba(148,163,184,0.15)', text: '#94a3b8' },
 };
 
-const positionIcons: Record<string, string> = {
-  Center: '🎤', Vocalist: '🎵', Dancer: '💃', Singer: '🎶', Visual: '✨',
-};
-
 const genreColors: Record<string, string> = {
   Pop: '#ec4899', Rock: '#ef4444', EDM: '#8b5cf6',
   'Hip Hop': '#f59e0b', 'R&B': '#06b6d4',
@@ -220,7 +217,6 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
     mid: { label: t.acqMid || 'Mid spender', color: '#a855f7', bg: 'rgba(168,85,247,0.18)' },
     whale: { label: t.acqWhale || 'Whale', color: '#f59e0b', bg: 'rgba(245,158,11,0.18)' },
   };
-  const posIcon = positionIcons[artist.position] || '🎵';
   const totalStats = (artist.singStat || 0) + (artist.danceStat || 0);
 
   const sameGenre = (artistsData as Artist[])
@@ -236,286 +232,186 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
 
   return (
     <>
-      {/* ─── HERO ─── */}
-      <div style={{
-        background: `linear-gradient(180deg, ${rankColor}18 0%, rgba(15,15,26,0) 100%)`,
-        borderBottom: `1px solid ${rankColor}33`,
-        padding: '32px 0 0',
-      }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '16px 20px', background: 'rgba(30,30,50,0.6)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
-          <Link href={`/${lang}/teambuilder/`} style={{
-            color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem',
-            textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px',
-            marginBottom: '20px',
-          }}>
-            ← {t.backToArtists}
-          </Link>
+      <div className="ad-wrap" style={{ ["--rank" as string]: rankColor, ["--genre" as string]: genreColor }}>
 
-          <div style={{ display: 'flex', gap: '28px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-            <div style={{
-              width: '160px', height: '200px', flexShrink: 0,
-              borderRadius: '16px',
-              border: `3px solid ${rankColor}`,
-              overflow: 'hidden',
-              background: artist.image ? 'transparent' : `linear-gradient(135deg, ${rankColor}33, rgba(30,30,50,1))`,
-              boxShadow: `0 16px 48px ${rankColor}44`,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              position: 'relative',
-            }}>
+        {/* ─── HERO ─── */}
+        <section className="ad-hero">
+          <Link href={`/${lang}/teambuilder/`} className="ad-back">← {t.backToArtists}</Link>
+          <div className="ad-hero-row">
+            <div className="ad-portrait">
               {artist.image ? (
-                <Image
-                  src={`/assets/images/artists/${artist.image}`}
-                  alt={artist.name}
-                  fill
-                  sizes="160px"
-                  style={{ objectFit: 'cover' }}
-                  priority
-                />
+                <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="200px" style={{ objectFit: 'cover' }} priority />
               ) : (
-                <span style={{ fontSize: '4rem', fontWeight: 800, color: rankColor }}>
-                  {artist.name.charAt(0)}
-                </span>
+                <span className="ad-portrait-letter">{artist.name.charAt(0)}</span>
               )}
             </div>
-
-            <div style={{ flex: 1, paddingBottom: '20px', minWidth: '200px' }}>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '12px' }}>
-                <span style={{ padding: '4px 12px', borderRadius: '20px', fontWeight: 700, fontSize: '0.8rem', background: rankColor, color: '#000' }}>
-                  {artist.rank}
-                </span>
+            <div className="ad-hero-body">
+              <div className="ad-pills">
+                <span className="ad-pill ad-pill-rank">{artist.rank}</span>
                 {artist.calculatedTier && tierData && (
-                  <span style={{ padding: '4px 12px', borderRadius: '20px', fontWeight: 700, fontSize: '0.8rem', background: tierData.bg, color: tierData.text, border: `1px solid ${tierData.text}44` }}>
-                    Tier {artist.calculatedTier}
-                  </span>
+                  <span className="ad-pill" style={{ color: tierData.text, borderColor: `${tierData.text}55`, background: tierData.bg }}>Tier {artist.calculatedTier}</span>
                 )}
-                <span style={{ padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 600, background: `${genreColor}22`, color: genreColor, border: `1px solid ${genreColor}44` }}>
-                  {artist.genre}
-                </span>
-                <span style={{ padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 600, background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.7)' }}>
-                  {posIcon} {artist.position}
-                </span>
+                <span className="ad-pill ad-pill-genre">{artist.genre}</span>
+                <span className="ad-pill">{artist.position}</span>
                 {artist.acquisitionTier && acquisitionStyles[artist.acquisitionTier] && (
-                  <span style={{ padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700, background: acquisitionStyles[artist.acquisitionTier].bg, color: acquisitionStyles[artist.acquisitionTier].color, border: `1px solid ${acquisitionStyles[artist.acquisitionTier].color}66` }}>
-                    💳 {t.acquisition}: {acquisitionStyles[artist.acquisitionTier].label}
+                  <span className="ad-pill" style={{ color: acquisitionStyles[artist.acquisitionTier].color, borderColor: `${acquisitionStyles[artist.acquisitionTier].color}55`, background: acquisitionStyles[artist.acquisitionTier].bg }}>
+                    {t.acquisition} · {acquisitionStyles[artist.acquisitionTier].label}
                   </span>
                 )}
               </div>
-
-              <h1 style={{ fontSize: '2.4rem', fontWeight: 800, margin: '0 0 8px', background: `linear-gradient(135deg, ${rankColor}, #fff)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                {artist.name}
-              </h1>
-
-              {artist.photos && (
-                <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', marginBottom: '8px' }}>
-                  📅 {t.season} : <span style={{ color: 'rgba(255,255,255,0.65)' }}>{artist.photos}</span>
-                </div>
-              )}
-              {artist.specialty && (
-                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>
-                  ⚡ {t.specialty} : <span style={{ color: rankColor, fontWeight: 600 }}>{artist.specialty}</span>
-                </div>
-              )}
+              <h1 className="ad-title">{artist.name}</h1>
+              <dl className="ad-meta">
+                {artist.group && artist.group !== 'No Group' && (<><dt>{t.group}</dt><dd>{artist.group}</dd></>)}
+                {artist.photos && (<><dt>{t.season}</dt><dd>{artist.photos}</dd></>)}
+                {artist.specialty && (<><dt>{t.specialty}</dt><dd className="ad-meta-accent">{artist.specialty}</dd></>)}
+              </dl>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      {/* ─── MAIN CONTENT ─── */}
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '28px 20px 0' }}>
-
-        {/* Description & Recommendation */}
-        {(artist.description || artist.thoughts) && (
-          <div style={{ background: 'rgba(15,15,35,0.55)', borderRadius: '16px', border: `1px solid ${rankColor}22`, padding: '20px', marginBottom: '14px', backdropFilter: 'blur(10px)' }}>
-            {artist.description && (
-              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.92rem', lineHeight: 1.7, margin: '0 0 12px' }}>
-                {artist.description}
-              </p>
-            )}
-            {artist.thoughts && (
-              <div style={{ borderTop: artist.description ? `1px solid ${rankColor}22` : 'none', paddingTop: artist.description ? '12px' : 0 }}>
-                <div style={{ color: rankColor, fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>
-                  💡 {t.thoughts}
-                </div>
-                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.88rem', lineHeight: 1.6, margin: 0 }}>
-                  {artist.thoughts}
-                </p>
-              </div>
-            )}
-          </div>
+        {/* ─── RECOMMENDATION ─── */}
+        {artist.thoughts && (
+          <section className="ad-panel ad-reco">
+            <span className="ad-eyebrow">{t.thoughts}</span>
+            <p>{artist.thoughts}</p>
+          </section>
         )}
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '14px' }} className="artist-top-row">
-
-          {/* Stats Panel */}
-          <div style={{ background: 'rgba(15,15,35,0.55)', borderRadius: '16px', border: `1px solid ${rankColor}33`, padding: '20px', backdropFilter: 'blur(10px)' }}>
-            <h2 style={{ margin: '0 0 16px', color: rankColor, fontSize: '0.9rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              📊 {t.statsSection}
-            </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-              <div style={{ background: 'rgba(251,191,36,0.08)', borderRadius: '10px', padding: '12px', border: '1px solid rgba(251,191,36,0.2)' }}>
-                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', marginBottom: '4px' }}>🎵 {t.singStat}</div>
-                <div style={{ color: '#fbbf24', fontSize: '1.4rem', fontWeight: 800 }}>{artist.singStat ? artist.singStat.toLocaleString() : t.none}</div>
+        <div className="ad-grid-2">
+          {/* ─── STATS ─── */}
+          <section className="ad-panel">
+            <span className="ad-eyebrow">{t.statsSection}</span>
+            <div className="ad-stats">
+              <div className="ad-stat">
+                <span className="ad-stat-label">{t.singStat}</span>
+                <span className="ad-stat-value">{artist.singStat ? artist.singStat.toLocaleString() : t.none}</span>
               </div>
-              <div style={{ background: 'rgba(251,191,36,0.08)', borderRadius: '10px', padding: '12px', border: '1px solid rgba(251,191,36,0.2)' }}>
-                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', marginBottom: '4px' }}>💃 {t.danceStat}</div>
-                <div style={{ color: '#fbbf24', fontSize: '1.4rem', fontWeight: 800 }}>{artist.danceStat ? artist.danceStat.toLocaleString() : t.none}</div>
+              <div className="ad-stat">
+                <span className="ad-stat-label">{t.danceStat}</span>
+                <span className="ad-stat-value">{artist.danceStat ? artist.danceStat.toLocaleString() : t.none}</span>
               </div>
               {totalStats > 0 && (
-                <div style={{ gridColumn: '1/-1', background: `${rankColor}11`, borderRadius: '10px', padding: '12px', border: `1px solid ${rankColor}33`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>⚡ {t.total}</span>
-                  <span style={{ color: rankColor, fontSize: '1.3rem', fontWeight: 800 }}>{totalStats.toLocaleString()}</span>
+                <div className="ad-stat ad-stat-wide">
+                  <span className="ad-stat-label">{t.total}</span>
+                  <span className="ad-stat-value ad-stat-accent">{totalStats.toLocaleString()}</span>
                 </div>
               )}
               {artist.calculatedTier && tierData && (
-                <div style={{ background: tierData.bg, borderRadius: '10px', padding: '12px', border: `1px solid ${tierData.text}33` }}>
-                  <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', marginBottom: '4px' }}>🏅 {t.tier}</div>
-                  <div style={{ color: tierData.text, fontSize: '1.4rem', fontWeight: 800 }}>{artist.calculatedTier}</div>
+                <div className="ad-stat">
+                  <span className="ad-stat-label">{t.tier}</span>
+                  <span className="ad-stat-value" style={{ color: tierData.text }}>{artist.calculatedTier}</span>
                 </div>
               )}
-              <div style={{ background: `${rankColor}11`, borderRadius: '10px', padding: '12px', border: `1px solid ${rankColor}33` }}>
-                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', marginBottom: '4px' }}>⭐ {t.rank}</div>
-                <div style={{ color: rankColor, fontSize: '1.1rem', fontWeight: 800 }}>{artist.rank}</div>
+              <div className="ad-stat">
+                <span className="ad-stat-label">{t.rank}</span>
+                <span className="ad-stat-value ad-stat-accent">{artist.rank}</span>
               </div>
             </div>
-          </div>
+          </section>
 
-          {/* Build & Skills Panel */}
-          <div style={{ background: 'rgba(15,15,35,0.55)', borderRadius: '16px', border: '1px solid rgba(139,92,246,0.3)', padding: '20px', backdropFilter: 'blur(10px)' }}>
-            <h2 style={{ margin: '0 0 16px', color: '#a855f7', fontSize: '0.9rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              🛠️ {t.skillsSection}
-            </h2>
+          {/* ─── SKILLS ─── */}
+          <section className="ad-panel">
+            <span className="ad-eyebrow">{t.skillsSection}</span>
             {artist.build && (
-              <div style={{ marginBottom: '14px', padding: '10px 14px', background: 'rgba(139,92,246,0.1)', borderRadius: '10px', border: '1px solid rgba(139,92,246,0.25)' }}>
-                <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.72rem', marginBottom: '3px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t.build}</div>
-                <div style={{ color: '#c084fc', fontWeight: 600, fontSize: '0.92rem' }}>{artist.build}</div>
+              <div className="ad-build">
+                <span className="ad-stat-label">{t.build}</span>
+                <span>{artist.build}</span>
               </div>
             )}
-            {hasSkillCats && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            {hasSkillCats ? (
+              <div className="ad-skills">
                 {Object.entries({
-                  dps: { label: t.dps, color: '#ef4444', icon: '⚔️' },
-                  offensive: { label: t.offensive, color: '#f97316', icon: '🔥' },
-                  hp: { label: t.hp, color: '#22c55e', icon: '❤️' },
-                  defense: { label: t.defense, color: '#3b82f6', icon: '🛡️' },
-                  speed: { label: t.speed, color: '#22d3ee', icon: '⚡' },
-                }).map(([key, { label, color, icon }]) => {
+                  dps: { label: t.dps, color: '#f87171' },
+                  offensive: { label: t.offensive, color: '#fb923c' },
+                  hp: { label: t.hp, color: '#4ade80' },
+                  defense: { label: t.defense, color: '#60a5fa' },
+                  speed: { label: t.speed, color: '#22d3ee' },
+                }).map(([key, { label, color }]) => {
                   const vals = skillCats?.[key as keyof typeof skillCats];
                   if (!vals || vals.length === 0) return null;
                   return (
-                    <div key={key} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', padding: '8px 10px', background: `${color}0d`, borderRadius: '8px', border: `1px solid ${color}22` }}>
-                      <span style={{ flexShrink: 0, fontSize: '0.8rem' }}>{icon}</span>
-                      <div>
-                        <div style={{ color, fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2px' }}>{label}</div>
-                        <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.8rem', lineHeight: 1.4 }}>{vals.join(' · ')}</div>
-                      </div>
+                    <div key={key} className="ad-skill" style={{ ["--c" as string]: color }}>
+                      <span className="ad-skill-label">{label}</span>
+                      <span className="ad-skill-vals">{vals.join(' · ')}</span>
                     </div>
                   );
                 })}
               </div>
-            )}
-            {!hasSkillCats && artist.skills && artist.skills.length > 0 && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            ) : artist.skills && artist.skills.length > 0 ? (
+              <div className="ad-skills">
                 {artist.skills.map((skill, i) => (
-                  <div key={i} style={{ padding: '8px 12px', background: 'rgba(255,255,255,0.04)', borderRadius: '8px', borderLeft: `3px solid ${rankColor}`, fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)' }}>
-                    {skill}
+                  <div key={i} className="ad-skill" style={{ ["--c" as string]: rankColor }}>
+                    <span className="ad-skill-vals">{skill}</span>
                   </div>
                 ))}
               </div>
+            ) : (
+              <p className="ad-empty">{t.noSkills}</p>
             )}
-          </div>
+          </section>
         </div>
 
-        {/* Guides recommandés */}
+        {/* ─── GUIDES ─── */}
         {relevantGuides.length > 0 && (
-          <div style={{ background: 'rgba(20,20,40,0.7)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.07)', padding: '18px 20px', marginBottom: '14px', backdropFilter: 'blur(10px)' }}>
-            <h2 style={{ margin: '0 0 14px', color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              📖 {t.relatedGuides}
-            </h2>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <section className="ad-panel">
+            <span className="ad-eyebrow">{t.relatedGuides}</span>
+            <div className="ad-chips">
               {relevantGuides.map(guideId => {
                 const guide = guidesMeta[guideId];
                 if (!guide) return null;
                 return (
-                  <Link key={guideId} href={`/${lang}/guides/${guideId}/`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 16px', borderRadius: '12px', textDecoration: 'none', background: `${guide.color}11`, border: `1px solid ${guide.color}33`, color: guide.color, fontWeight: 600, fontSize: '0.88rem' }}>
-                    <span>{guide.icon}</span>
-                    <span>{guide.label[lang] || guide.label.en}</span>
+                  <Link key={guideId} href={`/${lang}/guides/${guideId}/`} className="ad-chip" style={{ ["--c" as string]: guide.color }}>
+                    {guide.label[lang] || guide.label.en}
+                    <span aria-hidden="true">→</span>
                   </Link>
                 );
               })}
             </div>
-          </div>
+          </section>
         )}
 
-        {/* Artistes liés */}
-        <div style={{ display: 'grid', gridTemplateColumns: sameSpecialty.length > 0 ? '1fr 1fr' : '1fr', gap: '14px', marginBottom: '14px' }} className="artist-related-row">
+        {/* ─── RELATED ─── */}
+        <div className={`ad-grid-2${sameSpecialty.length === 0 ? " single" : ""}`}>
           {sameSpecialty.length > 0 && (
-            <div style={{ background: 'rgba(15,15,35,0.55)', borderRadius: '16px', border: `1px solid ${rankColor}22`, padding: '18px', backdropFilter: 'blur(10px)' }}>
-              <h3 style={{ margin: '0 0 12px', color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>⚡ {t.sameSpecialty}</h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {sameSpecialty.map((a: Artist) => {
-                  const ac = rankColors[a.rank] || '#6b7280';
-                  return (
-                    <Link key={a.id} href={`/${lang}/artist/${slugify(a.name)}/`} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px', borderRadius: '10px', textDecoration: 'none', background: 'rgba(255,255,255,0.04)', border: `1px solid ${ac}22` }}>
-                      <div style={{ width: '44px', height: '54px', borderRadius: '8px', overflow: 'hidden', flexShrink: 0, background: `${ac}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                        {a.image ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="44px" style={{ objectFit: 'cover' }} /> : <span style={{ fontSize: '0.9rem', fontWeight: 700, color: ac }}>{a.name.charAt(0)}</span>}
-                      </div>
-                      <span style={{ color: '#fff', fontWeight: 500, fontSize: '0.88rem', flex: 1 }}>{a.name}</span>
-                      <span style={{ color: ac, fontSize: '0.75rem', fontWeight: 700 }}>{a.rank}</span>
-                    </Link>
-                  );
-                })}
+            <section className="ad-panel">
+              <span className="ad-eyebrow">{t.sameSpecialty} · <b>{artist.specialty}</b></span>
+              <div className="ad-list">
+                {sameSpecialty.map((a: Artist) => <RelatedRow key={a.id} a={a} lang={lang} />)}
               </div>
-            </div>
+            </section>
           )}
           {sameGenre.length > 0 && (
-            <div style={{ background: 'rgba(15,15,35,0.55)', borderRadius: '16px', border: `1px solid ${genreColor}22`, padding: '18px', backdropFilter: 'blur(10px)' }}>
-              <h3 style={{ margin: '0 0 12px', color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>🎵 {t.sameGenre} · <span style={{ color: genreColor }}>{artist.genre}</span></h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {sameGenre.map((a: Artist) => {
-                  const ac = rankColors[a.rank] || '#6b7280';
-                  return (
-                    <Link key={a.id} href={`/${lang}/artist/${slugify(a.name)}/`} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px', borderRadius: '10px', textDecoration: 'none', background: 'rgba(255,255,255,0.04)', border: `1px solid ${ac}22` }}>
-                      <div style={{ width: '44px', height: '54px', borderRadius: '8px', overflow: 'hidden', flexShrink: 0, background: `${ac}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                        {a.image ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="44px" style={{ objectFit: 'cover' }} /> : <span style={{ fontSize: '0.9rem', fontWeight: 700, color: ac }}>{a.name.charAt(0)}</span>}
-                      </div>
-                      <span style={{ color: '#fff', fontWeight: 500, fontSize: '0.88rem', flex: 1 }}>{a.name}</span>
-                      <span style={{ color: ac, fontSize: '0.75rem', fontWeight: 700 }}>{a.rank}</span>
-                      {a.calculatedTier && <span style={{ color: tierColors[a.calculatedTier]?.text || '#fff', fontSize: '0.7rem' }}>T{a.calculatedTier}</span>}
-                    </Link>
-                  );
-                })}
+            <section className="ad-panel">
+              <span className="ad-eyebrow">{t.sameGenre} · <b style={{ color: genreColor }}>{artist.genre}</b></span>
+              <div className="ad-list">
+                {sameGenre.map((a: Artist) => <RelatedRow key={a.id} a={a} lang={lang} />)}
               </div>
-            </div>
+            </section>
           )}
         </div>
 
-        <div style={{ textAlign: 'right', marginBottom: '8px' }}>
-          <a
-            href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === 'fr' ? 'Nouvelle artiste' : 'New artist submission')}%3A%20${encodeURIComponent(artist.name)}`}
-            style={{
-              color: 'rgba(255,255,255,0.3)',
-              fontSize: '0.75rem',
-              textDecoration: 'none',
-              transition: 'color 0.15s',
-            }}
-          >
-            {lang === 'fr' ? 'Soumettre une nouvelle artiste →' : 'Submit a new artist →'}
+        <div className="ad-foot">
+          <Link href={`/${lang}/teambuilder/`}>← {t.backToArtists}</Link>
+          <a href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === 'fr' ? 'Nouvelle artiste' : 'New artist submission')}%3A%20${encodeURIComponent(artist.name)}`} className="ad-foot-muted">
+            {lang === 'fr' ? 'Soumettre une nouvelle artiste' : 'Submit a new artist'}
           </a>
-        </div>
-
-        {/* Footer nav */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '8px' }}>
-          <Link href={`/${lang}/teambuilder/`} style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>← {t.backToArtists}</Link>
-          <Link href={`/${lang}/tierlist/`} style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>{t.viewTierList}</Link>
+          <Link href={`/${lang}/tierlist/`}>{t.viewTierList.replace(' →', '')} →</Link>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 640px) {
-          .artist-top-row { grid-template-columns: 1fr !important; }
-          .artist-related-row { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </>
+  );
+}
+
+function RelatedRow({ a, lang }: { a: Artist; lang: string }) {
+  const ac = rankColors[a.rank] || '#6b7280';
+  return (
+    <Link href={`/${lang}/artist/${slugify(a.name)}/`} className="ad-row" style={{ ["--rank" as string]: ac }}>
+      <span className="ad-row-img">
+        {a.image ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="44px" style={{ objectFit: 'cover' }} /> : <span>{a.name.charAt(0)}</span>}
+      </span>
+      <span className="ad-row-name">{a.name}</span>
+      {a.calculatedTier && <span className="ad-row-tier" style={{ color: tierColors[a.calculatedTier]?.text || '#fff' }}>Tier {a.calculatedTier}</span>}
+      <span className="ad-row-rank">{a.rank}</span>
+    </Link>
   );
 }

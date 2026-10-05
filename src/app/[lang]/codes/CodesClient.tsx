@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { AdBanner } from "@/components/AdSense";
+import { SupportCard } from "@/components/SupportCard";
 import { activeCodes, expiredCodes } from '@/lib/data/codes';
 
 const codesData = {
@@ -339,7 +340,7 @@ export default function CodesClient({ lang }: { lang: string }) {
 
       <AdBanner />
 
-
+      <SupportCard lang={lang} />
     </div>
   );
 }

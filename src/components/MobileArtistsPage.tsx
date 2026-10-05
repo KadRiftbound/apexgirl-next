@@ -8,6 +8,33 @@ import { useParams, useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { slugify } from "@/lib/utils/slugify";
 import type { Artist } from "@/lib/types/artist";
+import { getArtistContent } from "@/lib/i18n/artists";
+import { SupportCard } from "@/components/SupportCard";
+
+type SavedTeam = { id: string; name: string; ids: number[]; createdAt: number };
+
+const tierBadgeColors: Record<string, string> = {
+  "S+": "#d4a017", S: "#eab308", A: "#22c55e", B: "#3b82f6", C: "#f59e0b", D: "#64748b",
+};
+
+const idsToArtists = (ids: number[]): Artist[] =>
+  ids.map((id) => artistsData.find((a: Artist) => a.id === id)).filter(Boolean).slice(0, 5) as Artist[];
+
+const copyToClipboard = async (text: string): Promise<boolean> => {
+  try { await navigator.clipboard.writeText(text); return true; } catch {}
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    ta.remove();
+    return ok;
+  } catch { return false; }
+};
 
 const filterTranslations: Record<string, any> = {
   fr: { all: "Tous", allGenres: "Tous genres", search: "Rechercher...", artistOverview: "Aperçu artiste", skills: "Compétences", viewFullProfile: "Voir la fiche complète", selectArtist: "Sélectionnez un artiste", teamBuilder: "Équipe", combinedStats: "Stats combinés", genres: "Genres", allRanks: "Tous les ranks", allSpecialties: "Toutes spécialités", foundArtists: "artistes trouvés", clearTeam: "Effacer", addTeam1: "+ Équipe 1", addTeam2: "+ Équipe 2", profile: "Fiche", clickToRemove: "Cliquer pour retirer", earlyRecommended: "Recommandée early", acquisition: "Accès", acqF2p: "F2P", acqLow: "Low spender", acqMid: "Mid spender", acqWhale: "Whale", loading: "Chargement...", specialtyOffensive: "Offensif", specialtyDefensive: "Défensif" },
@@ -79,7 +106,17 @@ export default function MobileArtistsPage() {
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [mounted, setMounted] = useState(false);
+  const [team1Name, setTeam1Name] = useState("");
+  const [team2Name, setTeam2Name] = useState("");
+  const [savedTeams, setSavedTeams] = useState<SavedTeam[]>([]);
+  const [toast, setToast] = useState<string | null>(null);
   const t = filterTranslations[lang] || filterTranslations.fr;
+  const tc = getArtistContent(lang);
+
+  const showToast = (msg: string) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2500);
+  };
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
     f2p: { label: t.acqF2p || "F2P", color: "#22c55e", bg: "rgba(34,197,94,0.18)" },
@@ -92,18 +129,20 @@ export default function MobileArtistsPage() {
     setMounted(true);
     if (typeof window !== 'undefined') {
       try {
+        const sp = new URLSearchParams(window.location.search);
+        const parseIds = (v: string | null) => (v || '').split(',').map((x) => parseInt(x, 10)).filter((x) => !Number.isNaN(x));
+        const url1 = parseIds(sp.get('t1'));
+        const url2 = parseIds(sp.get('t2'));
         const saved1 = localStorage.getItem('team1');
         const saved2 = localStorage.getItem('team2');
-        if (saved1) {
-          const ids = JSON.parse(saved1);
-          const artists = ids.map((id: number) => artistsData.find((a: Artist) => a.id === id)).filter(Boolean);
-          setTeam1(artists);
-        }
-        if (saved2) {
-          const ids = JSON.parse(saved2);
-          const artists = ids.map((id: number) => artistsData.find((a: Artist) => a.id === id)).filter(Boolean);
-          setTeam2(artists);
-        }
+        if (url1.length) setTeam1(idsToArtists(url1));
+        else if (saved1) setTeam1(idsToArtists(JSON.parse(saved1)));
+        if (url2.length) setTeam2(idsToArtists(url2));
+        else if (saved2) setTeam2(idsToArtists(JSON.parse(saved2)));
+        setTeam1Name(localStorage.getItem('team1Name') || '');
+        setTeam2Name(localStorage.getItem('team2Name') || '');
+        const rawSaved = localStorage.getItem('savedTeams');
+        if (rawSaved) { const arr = JSON.parse(rawSaved); if (Array.isArray(arr)) setSavedTeams(arr); }
       } catch (e) {
         console.warn('Échec du chargement des équipes', e);
       }
@@ -125,6 +164,40 @@ export default function MobileArtistsPage() {
       } catch (e) {}
     }
   }, [team2]);
+
+  useEffect(() => { if (mounted) try { localStorage.setItem('team1Name', team1Name); } catch {} }, [team1Name, mounted]);
+  useEffect(() => { if (mounted) try { localStorage.setItem('team2Name', team2Name); } catch {} }, [team2Name, mounted]);
+  useEffect(() => { if (mounted) try { localStorage.setItem('savedTeams', JSON.stringify(savedTeams)); } catch {} }, [savedTeams, mounted]);
+
+  const saveTeam = (n: 1 | 2) => {
+    const team = n === 1 ? team1 : team2;
+    if (team.length === 0) { showToast(tc.emptyTeam); return; }
+    const rawName = (n === 1 ? team1Name : team2Name).trim();
+    const name = rawName || `${n === 1 ? tc.team1Label : tc.team2Label} · ${new Date().toLocaleDateString()}`;
+    const entry: SavedTeam = { id: `${Date.now()}-${n}`, name, ids: team.map((a) => a.id), createdAt: Date.now() };
+    setSavedTeams((prev) => [entry, ...prev].slice(0, 30));
+    showToast(`💾 ${tc.teamSaved} : ${name}`);
+  };
+
+  const loadSaved = (saved: SavedTeam, n: 1 | 2) => {
+    const team = idsToArtists(saved.ids);
+    if (n === 1) { setTeam1(team); setTeam1Name(saved.name); } else { setTeam2(team); setTeam2Name(saved.name); }
+    showToast(`→ ${n === 1 ? tc.team1Label : tc.team2Label} : ${saved.name}`);
+  };
+
+  const deleteSaved = (id: string) => setSavedTeams((prev) => prev.filter((x) => x.id !== id));
+
+  const shareTeams = async () => {
+    const parts: string[] = [];
+    if (team1.length) parts.push('t1=' + team1.map((a) => a.id).join(','));
+    if (team2.length) parts.push('t2=' + team2.map((a) => a.id).join(','));
+    if (!parts.length) { showToast(tc.emptyTeam); return; }
+    const url = `${window.location.origin}/${lang}/teambuilder/?${parts.join('&')}`;
+    if (navigator.share) {
+      try { await navigator.share({ title: 'TopGirl Team Builder', url }); return; } catch {}
+    }
+    if (await copyToClipboard(url)) showToast(`🔗 ${tc.linkCopied}`); else showToast(url);
+  };
 
   const addToTeam1 = (artist: Artist) => {
     if (team1.length < 5 && !team1.find(a => a.id === artist.id)) {
@@ -248,6 +321,7 @@ export default function MobileArtistsPage() {
         <title>Artistes - TopGirl</title>
       </Head>
 
+      {toast && <div className="mobile-toast" role="status">{toast}</div>}
       <div className="mobile-page-container">
         {/* Page header */}
         <div className="mobile-page-header">
@@ -318,6 +392,20 @@ export default function MobileArtistsPage() {
           {/* Column 2: Team 1 - FULL stats with comparison */}
           <div className="mobile-panel-col mobile-panel-2">
             <div className="mobile-team-card mobile-team-1">
+              <div className="mobile-team-header-row">
+                <span className="mobile-team-badge mobile-team-badge-1">1</span>
+                <input
+                  className="mobile-team-name"
+                  value={team1Name}
+                  onChange={(e) => setTeam1Name(e.target.value)}
+                  placeholder={tc.team1Label}
+                  maxLength={20}
+                  aria-label={tc.teamNamePlaceholder}
+                />
+                <button onClick={() => saveTeam(1)} className="mobile-icon-btn" title={tc.saveTeam} aria-label={tc.saveTeam}>💾</button>
+                <button onClick={shareTeams} className="mobile-icon-btn" title={tc.shareTeam} aria-label={tc.shareTeam}>🔗</button>
+                <button onClick={() => setTeam1([])} className="mobile-icon-btn" title={t.clearTeam} aria-label={t.clearTeam}>🗑️</button>
+              </div>
               <div className="mobile-team-slots">
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team1[i] && setTeam1(team1.filter(a => a.id !== team1[i].id))} className="mobile-team-slot" title={t.clickToRemove}>
@@ -388,7 +476,6 @@ export default function MobileArtistsPage() {
                     <span key={spec} className="mobile-specialty-badge">{getSpecialtyLabel(spec, t)} {count}</span>
                   ))}
                 </div>
-                <button onClick={() => setTeam1([])} className="mobile-clear-btn">🗑️ {t.clearTeam}</button>
               </div>
             </div>
           </div>
@@ -396,6 +483,20 @@ export default function MobileArtistsPage() {
           {/* Column 3: Team 2 - FULL stats with comparison */}
           <div className="mobile-panel-col mobile-panel-3">
             <div className="mobile-team-card mobile-team-2">
+              <div className="mobile-team-header-row">
+                <span className="mobile-team-badge mobile-team-badge-2">2</span>
+                <input
+                  className="mobile-team-name"
+                  value={team2Name}
+                  onChange={(e) => setTeam2Name(e.target.value)}
+                  placeholder={tc.team2Label}
+                  maxLength={20}
+                  aria-label={tc.teamNamePlaceholder}
+                />
+                <button onClick={() => saveTeam(2)} className="mobile-icon-btn" title={tc.saveTeam} aria-label={tc.saveTeam}>💾</button>
+                <button onClick={shareTeams} className="mobile-icon-btn" title={tc.shareTeam} aria-label={tc.shareTeam}>🔗</button>
+                <button onClick={() => setTeam2([])} className="mobile-icon-btn" title={t.clearTeam} aria-label={t.clearTeam}>🗑️</button>
+              </div>
               <div className="mobile-team-slots">
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team2[i] && setTeam2(team2.filter(a => a.id !== team2[i].id))} className="mobile-team-slot" title={t.clickToRemove}>
@@ -466,7 +567,6 @@ export default function MobileArtistsPage() {
                     <span key={spec} className="mobile-specialty-badge">{getSpecialtyLabel(spec, t)} {count}</span>
                   ))}
                 </div>
-                <button onClick={() => setTeam2([])} className="mobile-clear-btn">🗑️ {t.clearTeam}</button>
               </div>
             </div>
           </div>
@@ -500,6 +600,29 @@ export default function MobileArtistsPage() {
 
         {/* Layer 4: Artists Grid - Scrollable */}
         <div className="mobile-artists-bottom">
+          <div className="mobile-saved-teams">
+            <span className="mobile-saved-title">📁 {tc.myTeams}</span>
+            {savedTeams.length === 0 ? (
+              <span className="mobile-saved-empty">{tc.noSavedTeams}</span>
+            ) : savedTeams.map((sv) => (
+              <div key={sv.id} className="mobile-saved-chip">
+                <span className="mobile-saved-avatars">
+                  {sv.ids.slice(0, 5).map((id) => {
+                    const a = artistsData.find((x: Artist) => x.id === id);
+                    if (!a) return null;
+                    return a.image
+                      ? <Image key={id} src={`/assets/images/artists/${a.image}`} alt={a.name} width={18} height={24} style={{ objectFit: "cover", borderRadius: 2 }} />
+                      : <span key={id} className="mobile-saved-letter">{a.name.charAt(0)}</span>;
+                  })}
+                </span>
+                <span className="mobile-saved-name">{sv.name}</span>
+                <button className="mobile-saved-btn b1" onClick={() => loadSaved(sv, 1)} aria-label={`${tc.loadInto} 1`}>→1</button>
+                <button className="mobile-saved-btn b2" onClick={() => loadSaved(sv, 2)} aria-label={`${tc.loadInto} 2`}>→2</button>
+                <button className="mobile-saved-btn del" onClick={() => deleteSaved(sv.id)} aria-label={tc.deleteSaved}>✕</button>
+              </div>
+            ))}
+          </div>
+          {savedTeams.length > 0 && <SupportCard lang={lang} compact />}
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
@@ -539,6 +662,31 @@ export default function MobileArtistsPage() {
                     <span style={{ color: rankColors[artist.rank], fontWeight: 800 }}>{artist.name.charAt(0)}</span>
                   </div>
                 )}
+                {(() => {
+                  const inT1 = team1.some((a) => a.id === artist.id);
+                  const inT2 = team2.some((a) => a.id === artist.id);
+                  return (
+                    <>
+                      <span className="m-card-rank" style={{ color: rankColors[artist.rank] || "#fff" }}>{artist.rank.replace('UR ', '')}</span>
+                      {artist.calculatedTier && (
+                        <span className="m-card-tier" style={{ background: tierBadgeColors[artist.calculatedTier] || "#64748b" }}>{artist.calculatedTier}</span>
+                      )}
+                      <span className="m-card-name">{artist.name}</span>
+                      <span className="m-card-add-row">
+                        <span
+                          role="button"
+                          className={`m-card-add t1${inT1 ? " in" : team1.length >= 5 ? " off" : ""}`}
+                          onClick={(e) => { e.stopPropagation(); if (!inT1) addToTeam1(artist); }}
+                        >{inT1 ? "✓1" : "+1"}</span>
+                        <span
+                          role="button"
+                          className={`m-card-add t2${inT2 ? " in" : team2.length >= 5 ? " off" : ""}`}
+                          onClick={(e) => { e.stopPropagation(); if (!inT2) addToTeam2(artist); }}
+                        >{inT2 ? "✓2" : "+2"}</span>
+                      </span>
+                    </>
+                  );
+                })()}
               </button>
             ))}
           </div>
@@ -942,6 +1090,192 @@ export default function MobileArtistsPage() {
           object-fit: cover;
           visibility: visible;
         }
+        .mobile-team-header-row {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+          margin-bottom: 4px;
+          flex-shrink: 0;
+        }
+        .mobile-team-badge {
+          width: 16px;
+          height: 16px;
+          border-radius: 4px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.6rem;
+          font-weight: 800;
+          color: #fff;
+          flex-shrink: 0;
+        }
+        .mobile-team-badge-1 { background: #8b5cf6; }
+        .mobile-team-badge-2 { background: #06b6d4; }
+        .mobile-team-name {
+          flex: 1;
+          min-width: 0;
+          width: 0;
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 4px;
+          color: #fff;
+          font-size: 0.62rem;
+          font-weight: 600;
+          padding: 2px 4px;
+        }
+        .mobile-team-name::placeholder { color: rgba(255,255,255,0.45); }
+        .mobile-icon-btn {
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 4px;
+          padding: 1px 3px;
+          font-size: 0.6rem;
+          line-height: 1.2;
+          cursor: pointer;
+          color: #fff;
+          flex-shrink: 0;
+        }
+        .mobile-toast {
+          position: fixed;
+          top: 64px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          max-width: 92vw;
+          padding: 10px 16px;
+          border-radius: 30px;
+          background: rgba(22, 163, 74, 0.95);
+          color: #fff;
+          font-weight: 700;
+          font-size: 0.78rem;
+          text-align: center;
+          word-break: break-all;
+          box-shadow: 0 8px 32px rgba(34,197,94,0.4);
+          border: 1px solid #22c55e;
+        }
+        .m-card-rank {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          font-size: 0.5rem;
+          font-weight: 800;
+          padding: 0 3px;
+          border-radius: 3px;
+          background: rgba(0,0,0,0.65);
+          line-height: 1.4;
+          pointer-events: none;
+        }
+        .m-card-tier {
+          position: absolute;
+          top: 2px;
+          right: 2px;
+          font-size: 0.5rem;
+          font-weight: 800;
+          color: #fff;
+          padding: 0 3px;
+          border-radius: 3px;
+          line-height: 1.4;
+          pointer-events: none;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        .m-card-name {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 18px;
+          padding: 2px 3px 0;
+          font-size: 0.52rem;
+          font-weight: 700;
+          color: #fff;
+          text-align: center;
+          background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 50%);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          pointer-events: none;
+        }
+        .m-card-add-row {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 18px;
+          display: flex;
+        }
+        .m-card-add {
+          flex: 1;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.55rem;
+          font-weight: 800;
+          color: #fff;
+        }
+        .m-card-add.t1 { background: rgba(139,92,246,0.85); }
+        .m-card-add.t2 { background: rgba(6,182,212,0.85); }
+        .m-card-add.in { background: rgba(34,197,94,0.85); }
+        .m-card-add.off { opacity: 0.35; }
+        .mobile-saved-teams {
+          display: flex;
+          gap: 6px;
+          overflow-x: auto;
+          align-items: center;
+          padding: 6px 0;
+          margin-bottom: 4px;
+          pointer-events: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .mobile-saved-title {
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: rgba(255,255,255,0.85);
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+        .mobile-saved-empty {
+          font-size: 0.65rem;
+          color: rgba(255,255,255,0.45);
+          white-space: nowrap;
+        }
+        .mobile-saved-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          padding: 3px 4px;
+          background: rgba(30,30,50,0.9);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 6px;
+          flex-shrink: 0;
+        }
+        .mobile-saved-avatars { display: inline-flex; gap: 1px; }
+        .mobile-saved-letter {
+          width: 18px; height: 24px; border-radius: 2px;
+          background: rgba(255,255,255,0.1);
+          display: inline-flex; align-items: center; justify-content: center;
+          font-size: 0.6rem; font-weight: 800; color: #fff;
+        }
+        .mobile-saved-name {
+          font-size: 0.65rem;
+          font-weight: 600;
+          color: #fff;
+          max-width: 90px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .mobile-saved-btn {
+          border: none;
+          border-radius: 4px;
+          padding: 3px 6px;
+          font-size: 0.6rem;
+          font-weight: 800;
+          color: #fff;
+          cursor: pointer;
+          line-height: 1.2;
+        }
+        .mobile-saved-btn.b1 { background: #8b5cf6; }
+        .mobile-saved-btn.b2 { background: #06b6d4; }
+        .mobile-saved-btn.del { background: rgba(248,113,113,0.3); color: #f87171; }
         .mobile-artist-placeholder {
           width: 100%;
           height: 100%;

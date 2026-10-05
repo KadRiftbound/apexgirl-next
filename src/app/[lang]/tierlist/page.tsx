@@ -84,11 +84,11 @@ export default async function TierlistPage({ params }: { params: Promise<{ lang:
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Tier List', href: '/tierlist/' }]} lang={lang} />
       </div>
       <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px 20px' }}>
-        <div style={{ background: 'rgba(18,20,34,0.93)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 14, padding: 16 }}>
-          <div style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.9)', marginBottom: 6 }}>
-            {lang === 'fr' ? 'Methodologie du classement' : 'Ranking methodology'}
+        <div className="info-panel">
+          <div className="info-panel-title">
+            {lang === 'fr' ? 'Méthodologie du classement' : 'Ranking methodology'}
           </div>
-          <div style={{ fontSize: '0.84rem', color: 'rgba(255,255,255,0.68)', lineHeight: 1.6 }}>
+          <div className="info-panel-body">
             {lang === 'fr'
               ? "Cette tier list combine votes communautaires, performances en jeu, synergies d'equipe et cout de progression. Les changements majeurs sont revus apres updates et evenements competitifs."
               : "This tier list combines community voting, in-game performance, team synergy, and progression cost. Major shifts are reviewed after game updates and competitive events."}

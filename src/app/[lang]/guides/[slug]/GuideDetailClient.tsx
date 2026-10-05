@@ -5,6 +5,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
+import { SupportCard } from "@/components/SupportCard";
 import { CorrectionCallout } from "@/components/CorrectionCallout";
 import { SummaryBox, type SummaryBoxData } from "@/components/SummaryBox";
 import { TipCallout, type CalloutData } from "@/components/TipCallout";
@@ -954,6 +955,8 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
         )}
 
         <AdBanner />
+
+        <SupportCard lang={lang} />
 
         {/* Autres guides */}
         <div style={{ marginTop: "32px", marginBottom: "24px" }}>
