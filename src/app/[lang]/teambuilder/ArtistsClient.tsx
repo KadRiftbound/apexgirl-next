@@ -25,6 +25,10 @@ const genreColors: Record<string, string> = {
   "R&B":     "rgba(6, 182, 212, 0.55)",
 };
 
+const tierBadgeColors: Record<string, string> = {
+  "S+": "#d4a017", S: "#eab308", A: "#22c55e", B: "#3b82f6", C: "#f59e0b", D: "#64748b",
+};
+
 const seasonLabels: Record<string, string> = {
   fr: "Saison",
   en: "Season",
@@ -71,51 +75,71 @@ const SPECIALTY_LABELS_BY_LANG: Record<string, Record<string, string>> = {
   de: { damage_boost: 'Schadensboost', damage_reduction: 'Schadensreduzierung', driving_speed: 'Fahrgeschwindigkeit', hq_defense: 'HQ Verteidigung', mixed: 'Gemischt', gathering: 'Sammeln', solo_car: 'Solo Auto', economy: 'Wirtschaft' },
 };
 
+
+const copyToClipboard = async (text: string): Promise<boolean> => {
+  try { await navigator.clipboard.writeText(text); return true; } catch {}
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    ta.remove();
+    return ok;
+  } catch { return false; }
+};
+
+type SavedTeam = { id: string; name: string; ids: number[]; createdAt: number };
+
+const idsToArtists = (ids: number[]): Artist[] =>
+  ids.map((id) => artistsData.find((a: Artist) => a.id === id)).filter(Boolean).slice(0, 5) as Artist[];
+
+const readLS = (key: string, fallback: string): string => {
+  if (typeof window === 'undefined') return fallback;
+  try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; }
+};
+
+/** Team from ?t1= / ?t2= in the URL takes priority over localStorage. */
+const loadInitialTeam = (n: 1 | 2): Artist[] => {
+  if (typeof window === 'undefined') return [];
+  try {
+    const fromUrl = new URLSearchParams(window.location.search).get(`t${n}`);
+    if (fromUrl) {
+      const ids = fromUrl.split(',').map((x) => parseInt(x, 10)).filter((x) => !Number.isNaN(x));
+      if (ids.length) return idsToArtists(ids);
+    }
+    const saved = localStorage.getItem(`team${n}`);
+    if (saved) return idsToArtists(JSON.parse(saved));
+  } catch (e) {
+    if (process.env.NODE_ENV !== 'production') console.warn(`Team ${n} load failed`, e);
+  }
+  return [];
+};
+
 export default function ArtistsClient({ lang }: { lang: string }) {
   const router = useRouter();
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [hoveredArtistId, setHoveredArtistId] = useState<number | null>(null);
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
   const hoverTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [team1, setTeam1] = useState<Artist[]>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('team1');
-        if (saved) {
-          const ids: number[] = JSON.parse(saved);
-          const team: Artist[] = [];
-          ids.forEach((id: number) => {
-            const artist = artistsData.find((a: Artist) => a.id === id);
-            if (artist) team.push(artist);
-          });
-          return team;
-        }
-      } catch (e) {
-        if (process.env.NODE_ENV !== 'production') console.warn('Team 1 load failed', e);
-      }
-    }
-    return [];
+  const [team1, setTeam1] = useState<Artist[]>(() => loadInitialTeam(1));
+  const [team2, setTeam2] = useState<Artist[]>(() => loadInitialTeam(2));
+  const [team1Name, setTeam1Name] = useState<string>(() => readLS('team1Name', ''));
+  const [team2Name, setTeam2Name] = useState<string>(() => readLS('team2Name', ''));
+  const [savedTeams, setSavedTeams] = useState<SavedTeam[]>(() => {
+    const raw = readLS('savedTeams', '[]');
+    try { const arr = JSON.parse(raw); return Array.isArray(arr) ? arr : []; } catch { return []; }
   });
-
-  const [team2, setTeam2] = useState<Artist[]>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('team2');
-        if (saved) {
-          const ids: number[] = JSON.parse(saved);
-          const team: Artist[] = [];
-          ids.forEach((id: number) => {
-            const artist = artistsData.find((a: Artist) => a.id === id);
-            if (artist) team.push(artist);
-          });
-          return team;
-        }
-      } catch (e) {
-        if (process.env.NODE_ENV !== 'production') console.warn('Team 2 load failed', e);
-      }
-    }
-    return [];
-  });
+  const [toast, setToast] = useState<string | null>(null);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showToast = (msg: string) => {
+    setToast(msg);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 2500);
+  };
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filterRank, setFilterRank] = useState("");
@@ -123,9 +147,6 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [filterMaxSeason, setFilterMaxSeason] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [panelFixed, setPanelFixed] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const panelSentinelRef = useRef<HTMLDivElement>(null);
   const t = getArtistContent(lang);
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -138,37 +159,6 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  useEffect(() => {
-    if (window.innerWidth <= 900) return;
-
-    const sentinel = panelSentinelRef.current;
-    if (!sentinel) return;
-
-    const header = document.querySelector('.header') as HTMLElement;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const shouldFix = !entry.isIntersecting;
-        setPanelFixed(shouldFix);
-        if (header) {
-          if (shouldFix) {
-            header.classList.add('header-hidden');
-          } else {
-            header.classList.remove('header-hidden');
-          }
-        }
-      },
-      { threshold: 0, rootMargin: '0px' }
-    );
-
-    observer.observe(sentinel);
-
-    return () => {
-      observer.disconnect();
-      if (header) header.classList.remove('header-hidden');
-    };
-  }, [mounted]);
 
   // Save teams to localStorage when they change
   useEffect(() => {
@@ -192,6 +182,40 @@ export default function ArtistsClient({ lang }: { lang: string }) {
       }
     }
   }, [team2]);
+
+  useEffect(() => { try { localStorage.setItem('team1Name', team1Name); } catch {} }, [team1Name]);
+  useEffect(() => { try { localStorage.setItem('team2Name', team2Name); } catch {} }, [team2Name]);
+  useEffect(() => { try { localStorage.setItem('savedTeams', JSON.stringify(savedTeams)); } catch {} }, [savedTeams]);
+
+  const saveTeam = (n: 1 | 2) => {
+    const team = n === 1 ? team1 : team2;
+    if (team.length === 0) { showToast(t.emptyTeam); return; }
+    const rawName = (n === 1 ? team1Name : team2Name).trim();
+    const name = rawName || `${n === 1 ? t.team1Label : t.team2Label} · ${new Date().toLocaleDateString()}`;
+    const entry: SavedTeam = { id: `${Date.now()}-${n}`, name, ids: team.map((a) => a.id), createdAt: Date.now() };
+    setSavedTeams((prev) => [entry, ...prev].slice(0, 30));
+    showToast(`💾 ${t.teamSaved} : ${name}`);
+  };
+
+  const loadSaved = (saved: SavedTeam, n: 1 | 2) => {
+    const team = idsToArtists(saved.ids);
+    if (n === 1) { setTeam1(team); setTeam1Name(saved.name); } else { setTeam2(team); setTeam2Name(saved.name); }
+  };
+
+  const deleteSaved = (id: string) => setSavedTeams((prev) => prev.filter((s) => s.id !== id));
+
+  const shareTeams = async () => {
+    const parts: string[] = [];
+    if (team1.length) parts.push('t1=' + team1.map((a) => a.id).join(','));
+    if (team2.length) parts.push('t2=' + team2.map((a) => a.id).join(','));
+    if (!parts.length) { showToast(t.emptyTeam); return; }
+    const url = `${window.location.origin}/${lang}/teambuilder/?${parts.join('&')}`;
+    if (await copyToClipboard(url)) {
+      showToast(`🔗 ${t.linkCopied}`);
+    } else {
+      showToast(url);
+    }
+  };
 
   const team1Stats = useMemo(() => calculateTeamStats(team1), [team1]);
   const team2Stats = useMemo(() => calculateTeamStats(team2), [team2]);
@@ -291,6 +315,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   return (
     <>
       
+      {toast && <div className="tb-toast" role="status">{toast}</div>}
       <div className="page-container">
         {/* Header with title and ads */}
         <div className="page-header">
@@ -314,21 +339,8 @@ export default function ArtistsClient({ lang }: { lang: string }) {
           lang={lang}
         />
 
-        {/* Sentinel: when this scrolls out of view, panel becomes fixed */}
-        <div ref={panelSentinelRef} style={{ height: 0, pointerEvents: 'none' }} />
-
-        {/* TOP PANEL */}
-        <div
-          ref={panelRef}
-          className="top-panel"
-          style={panelFixed ? {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            zIndex: 1001,
-          } : undefined}
-        >
+        {/* TOP PANEL: sticks under the site header while the grid scrolls */}
+        <div className="top-panel">
           {/* Column 1: Artist Preview (30%) */}
           <div className="panel-col panel-col-1">
             <div className="artist-preview-card">
@@ -339,8 +351,8 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                 <div className="artist-preview-content">
                   <div
                     className="artist-preview-image-large"
-                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
-                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)}
+                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)}
                     title={t.viewProfileTitle}
                     style={{ cursor: "pointer" }}
                   >
@@ -393,7 +405,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                         <p key={i} className="skill-line">{i === 0 ? "⚔️ " : "✨ "}{skill}</p>
                       ))}
                     </div>
-                    <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)} className="view-profile-btn">
+                    <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)} className="view-profile-btn">
                       {t.profile}
                     </button>
                     <div className="add-buttons">
@@ -419,7 +431,20 @@ export default function ArtistsClient({ lang }: { lang: string }) {
             <div className="team-card team-1">
               {/* Header with trash icon */}
               <div className="team-card-header">
-                <button onClick={() => setTeam1([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
+                <span className="team-badge team-badge-1">1</span>
+                <input
+                  className="team-name-input"
+                  value={team1Name}
+                  onChange={(e) => setTeam1Name(e.target.value)}
+                  placeholder={t.team1Label}
+                  maxLength={24}
+                  aria-label={t.teamNamePlaceholder}
+                />
+                <div className="team-actions">
+                  <button onClick={() => saveTeam(1)} className="icon-btn" title={t.saveTeam}>💾</button>
+                  <button onClick={shareTeams} className="icon-btn" title={t.shareTeam}>🔗</button>
+                  <button onClick={() => setTeam1([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
+                </div>
               </div>
               {/* Slots row */}
               <div className="team-slots">
@@ -476,7 +501,20 @@ export default function ArtistsClient({ lang }: { lang: string }) {
             <div className="team-card team-2">
               {/* Header with trash icon */}
               <div className="team-card-header">
-                <button onClick={() => setTeam2([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
+                <span className="team-badge team-badge-2">2</span>
+                <input
+                  className="team-name-input"
+                  value={team2Name}
+                  onChange={(e) => setTeam2Name(e.target.value)}
+                  placeholder={t.team2Label}
+                  maxLength={24}
+                  aria-label={t.teamNamePlaceholder}
+                />
+                <div className="team-actions">
+                  <button onClick={() => saveTeam(2)} className="icon-btn" title={t.saveTeam}>💾</button>
+                  <button onClick={shareTeams} className="icon-btn" title={t.shareTeam}>🔗</button>
+                  <button onClick={() => setTeam2([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
+                </div>
               </div>
               {/* Slots row */}
               <div className="team-slots">
@@ -524,8 +562,8 @@ export default function ArtistsClient({ lang }: { lang: string }) {
 
         {/* Add to Selected Team */}
         {/* BOTTOM - Artists Grid */}
-        <div className="artists-bottom" style={panelFixed ? { paddingTop: 'calc(40vh + 50px + 240px)' } : undefined}>
-          <div className="search-bar" style={panelFixed ? { position: 'fixed', top: '40vh', left: 0, right: 0, zIndex: 1002 } : {}}>
+        <div className="artists-bottom">
+          <div className="search-bar">
             <label htmlFor="artist-search" className="sr-only">{t.search}</label>
             <input
               id="artist-search"
@@ -559,7 +597,29 @@ export default function ArtistsClient({ lang }: { lang: string }) {
               {SEASON_LABELS.map(s => (<option key={s} value={s}>{`${t.maxSeason} : ${s}`}</option>))}
             </select>
           </div>
-          <div className="artists-count">{filteredArtists.length} {t.foundArtists}</div>
+          <div className="saved-teams">
+            <span className="saved-teams-title">📁 {t.myTeams}</span>
+            {savedTeams.length === 0 ? (
+              <span className="saved-empty">{t.noSavedTeams}</span>
+            ) : savedTeams.map((s) => (
+              <div key={s.id} className="saved-chip">
+                <span className="saved-avatars">
+                  {s.ids.slice(0, 5).map((id) => {
+                    const a = artistsData.find((x: Artist) => x.id === id);
+                    if (!a) return null;
+                    return a.image
+                      ? <Image key={id} src={`/assets/images/artists/${a.image}`} alt={a.name} width={22} height={28} style={{ objectFit: "cover", borderRadius: 3 }} />
+                      : <span key={id} className="saved-avatar-letter">{a.name.charAt(0)}</span>;
+                  })}
+                </span>
+                <span className="saved-name" title={s.name}>{s.name}</span>
+                <button className="saved-btn b1" onClick={() => loadSaved(s, 1)} title={`${t.loadInto} 1`}>→1</button>
+                <button className="saved-btn b2" onClick={() => loadSaved(s, 2)} title={`${t.loadInto} 2`}>→2</button>
+                <button className="saved-btn del" onClick={() => deleteSaved(s.id)} title={t.deleteSaved}>✕</button>
+              </div>
+            ))}
+          </div>
+          <div className="artists-count">{filteredArtists.length} {t.foundArtists} · <span className="hint">{t.hintAdd}</span></div>
 
           <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
             {sortedArtists.map((artist: Artist) => (
@@ -610,8 +670,8 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                       }
                     }
                   }}
-                  className={selectedArtist?.id === artist.id ? "selected" : ""}
-                  style={{ cursor: "pointer" }}
+                  className={`artist-card${selectedArtist?.id === artist.id ? " selected" : ""}`}
+                  style={{ cursor: "pointer", borderColor: selectedArtist?.id === artist.id ? rankColors[artist.rank] : undefined }}
                 >
                   {artist.image ? (
                      <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="(max-width: 900px) calc(100vw / 6), calc(100vw / 9)" style={{ objectFit: "cover" }} />
@@ -620,6 +680,39 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                     <span style={{ color: rankColors[artist.rank], fontWeight: 800 }}>{artist.name.charAt(0)}</span>
                   </div>
                 )}
+                  {(() => {
+                    const inT1 = team1.some((a) => a.id === artist.id);
+                    const inT2 = team2.some((a) => a.id === artist.id);
+                    return (
+                      <>
+                        <span className="card-rank" style={{ color: rankColors[artist.rank] || "#fff" }}>{artist.rank}</span>
+                        {artist.calculatedTier && (
+                          <span className="card-tier" style={{ background: tierBadgeColors[artist.calculatedTier] || "#64748b" }}>{artist.calculatedTier}</span>
+                        )}
+                        {(inT1 || inT2) && (
+                          <span className="card-inteam">
+                            {inT1 && <span className="card-inteam-1">1</span>}
+                            {inT2 && <span className="card-inteam-2">2</span>}
+                          </span>
+                        )}
+                        <span className="card-name">{artist.name}</span>
+                        <span className="card-hover" onDoubleClick={(e) => e.stopPropagation()}>
+                          <span
+                            role="button"
+                            className={`card-add t1${inT1 || team1.length >= 5 ? " off" : ""}`}
+                            title={t.addTeam1}
+                            onClick={(e) => { e.stopPropagation(); if (!inT1) addToTeam1(artist); }}
+                          >+1</span>
+                          <span
+                            role="button"
+                            className={`card-add t2${inT2 || team2.length >= 5 ? " off" : ""}`}
+                            title={t.addTeam2}
+                            onClick={(e) => { e.stopPropagation(); if (!inT2) addToTeam2(artist); }}
+                          >+2</span>
+                        </span>
+                      </>
+                    );
+                  })()}
               </button>
             ))}
             {hoveredArtistId && tooltipPos && (
@@ -671,14 +764,14 @@ export default function ArtistsClient({ lang }: { lang: string }) {
         .top-panel {
           display: flex;
           width: 100%;
-          height: 40vh;
-          min-height: 300px;
+          height: max(40vh, 300px);
           gap: 8px;
           padding: 8px;
           background: #0f0f1a;
-          position: relative;
-          z-index: 1001;
-          transition: box-shadow 0.3s ease;
+          position: sticky;
+          top: var(--header-height);
+          z-index: 50;
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
         }
         .panel-col {
           height: 100%;
@@ -856,10 +949,69 @@ export default function ArtistsClient({ lang }: { lang: string }) {
         /* Header: trash only */
         .team-card-header {
           display: flex;
-          justify-content: flex-end;
           align-items: center;
-          margin-bottom: 3px;
+          gap: 6px;
+          margin-bottom: 4px;
           flex-shrink: 0;
+        }
+        .team-badge {
+          width: 22px;
+          height: 22px;
+          border-radius: 6px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: #fff;
+          flex-shrink: 0;
+        }
+        .team-badge-1 { background: #8b5cf6; }
+        .team-badge-2 { background: #06b6d4; }
+        .team-name-input {
+          flex: 1;
+          min-width: 0;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 6px;
+          color: #fff;
+          font-size: 0.8rem;
+          font-weight: 600;
+          padding: 4px 8px;
+        }
+        .team-name-input:focus { outline: none; border-color: rgba(255,255,255,0.35); }
+        .team-name-input::placeholder { color: rgba(255,255,255,0.45); font-weight: 500; }
+        .team-actions { display: flex; gap: 4px; flex-shrink: 0; }
+        .icon-btn {
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 5px;
+          padding: 2px 6px;
+          font-size: 0.75rem;
+          cursor: pointer;
+          color: rgba(255,255,255,0.7);
+          line-height: 1;
+          transition: all 0.15s;
+        }
+        .icon-btn:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.08); color: #fff; }
+
+        .tb-toast {
+          position: fixed;
+          top: 90px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          padding: 12px 24px;
+          border-radius: 40px;
+          background: rgba(22, 163, 74, 0.95);
+          color: #fff;
+          font-weight: 700;
+          font-size: 0.9rem;
+          box-shadow: 0 8px 32px rgba(34,197,94,0.4);
+          border: 1px solid #22c55e;
+          max-width: min(90vw, 720px);
+          word-break: break-all;
+          text-align: center;
         }
         .trash-btn {
           background: transparent;
@@ -886,7 +1038,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
           margin-bottom: 5px;
           justify-content: center;
           flex-shrink: 0;
-          margin-top: -12px;
+          margin-top: 2px;
         }
         .team-slot {
           width: 69px;
@@ -1006,9 +1158,12 @@ export default function ArtistsClient({ lang }: { lang: string }) {
         .search-bar {
           display: flex;
           gap: 8px;
-          margin-bottom: 0;
+          margin: 0 -8px 8px;
           padding: 8px;
           background: #0f0f1a;
+          position: sticky;
+          top: calc(var(--header-height) + max(40vh, 300px));
+          z-index: 49;
         }
         .search-bar input {
           flex: 1;
@@ -1051,7 +1206,160 @@ export default function ArtistsClient({ lang }: { lang: string }) {
         }
         .artists-grid button.selected {
           border-width: 2px;
+          box-shadow: 0 0 0 2px rgba(255,255,255,0.25);
         }
+        .card-rank {
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          font-size: 0.6rem;
+          font-weight: 800;
+          padding: 1px 5px;
+          border-radius: 4px;
+          background: rgba(0,0,0,0.65);
+          line-height: 1.3;
+          pointer-events: none;
+        }
+        .card-tier {
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          font-size: 0.6rem;
+          font-weight: 800;
+          color: #fff;
+          padding: 1px 5px;
+          border-radius: 4px;
+          line-height: 1.3;
+          pointer-events: none;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        .card-inteam {
+          position: absolute;
+          right: 4px;
+          bottom: 22px;
+          display: flex;
+          gap: 2px;
+          pointer-events: none;
+        }
+        .card-inteam span {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          font-size: 0.6rem;
+          font-weight: 800;
+          color: #fff;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+        .card-inteam-1 { background: #8b5cf6; }
+        .card-inteam-2 { background: #06b6d4; }
+        .card-name {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 3px 4px;
+          font-size: 0.62rem;
+          font-weight: 700;
+          color: #fff;
+          text-align: center;
+          background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 40%);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          pointer-events: none;
+        }
+        .card-hover {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          background: rgba(0,0,0,0.35);
+          opacity: 0;
+          transition: opacity 0.15s;
+        }
+        .artists-grid button:hover .card-hover { opacity: 1; }
+        .card-add {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.72rem;
+          font-weight: 800;
+          color: #fff;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+          transition: transform 0.12s;
+        }
+        .card-add:hover { transform: scale(1.12); }
+        .card-add.t1 { background: #8b5cf6; }
+        .card-add.t2 { background: #06b6d4; }
+        .card-add.off { opacity: 0.35; cursor: not-allowed; }
+        .card-add.off:hover { transform: none; }
+
+        .saved-teams {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 10px;
+          margin-bottom: 8px;
+          background: rgba(30,30,50,0.7);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 10px;
+        }
+        .saved-teams-title {
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: rgba(255,255,255,0.85);
+          margin-right: 4px;
+        }
+        .saved-empty { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+        .saved-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 4px 6px 4px 4px;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 8px;
+        }
+        .saved-avatars { display: inline-flex; gap: 2px; }
+        .saved-avatar-letter {
+          width: 22px; height: 28px; border-radius: 3px;
+          background: rgba(255,255,255,0.1);
+          display: inline-flex; align-items: center; justify-content: center;
+          font-size: 0.7rem; font-weight: 800; color: #fff;
+        }
+        .saved-name {
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: #fff;
+          max-width: 140px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .saved-btn {
+          border: none;
+          border-radius: 5px;
+          padding: 3px 7px;
+          font-size: 0.68rem;
+          font-weight: 800;
+          color: #fff;
+          cursor: pointer;
+          line-height: 1.2;
+        }
+        .saved-btn.b1 { background: #8b5cf6; }
+        .saved-btn.b2 { background: #06b6d4; }
+        .saved-btn.del { background: rgba(248,113,113,0.25); color: #f87171; }
+        .saved-btn.del:hover { background: rgba(248,113,113,0.5); color: #fff; }
+        .artists-count .hint { color: rgba(255,255,255,0.4); font-weight: 400; }
         .artists-grid button img {
           width: 100%;
           height: 100%;

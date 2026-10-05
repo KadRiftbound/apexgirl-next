@@ -1,7 +1,9 @@
 "use client";
 
+
+import Image from "next/image";
 import Head from "next/head";
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { slugify } from "@/lib/utils/slugify";
@@ -77,12 +79,6 @@ export default function MobileArtistsPage() {
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const searchBarRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [searchBarHeight, setSearchBarHeight] = useState(50);
-  const [headerHeight, setHeaderHeight] = useState(0);
   const t = filterTranslations[lang] || filterTranslations.fr;
 
   const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
@@ -91,26 +87,6 @@ export default function MobileArtistsPage() {
     mid: { label: t.acqMid || "Mid spender", color: "#a855f7", bg: "rgba(168,85,247,0.18)" },
     whale: { label: t.acqWhale || "Whale", color: "#f59e0b", bg: "rgba(245,158,11,0.18)" },
   };
-
-  useEffect(() => {
-    if (searchBarRef.current) {
-      const ro = new ResizeObserver(([entry]) => {
-        setSearchBarHeight(entry.contentRect.height + 10);
-      });
-      ro.observe(searchBarRef.current);
-      return () => ro.disconnect();
-    }
-  }, [mounted]);
-
-  useEffect(() => {
-    if (headerRef.current) {
-      const ro = new ResizeObserver(([entry]) => {
-        setHeaderHeight(entry.contentRect.height);
-      });
-      ro.observe(headerRef.current);
-      return () => ro.disconnect();
-    }
-  }, [mounted]);
 
   useEffect(() => {
     setMounted(true);
@@ -132,41 +108,6 @@ export default function MobileArtistsPage() {
         console.warn('Échec du chargement des équipes', e);
       }
     }
-  }, []);
-
-  useEffect(() => {
-    let lastScrollY = 0;
-    let ticking = false;
-    let wasScrolled = false;
-    
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const threshold = Math.max(20, headerHeight - 56);
-          
-          const isScrolled = currentScrollY > threshold;
-          
-          // Only change state if crossing the threshold
-          if (isScrolled !== wasScrolled) {
-            wasScrolled = isScrolled;
-            setScrolled(isScrolled);
-          }
-          
-          // Panel: fixed at top when scrolled, otherwise at initial position
-          if (panelRef.current) {
-            panelRef.current.style.top = isScrolled ? '0' : `${headerHeight}px`;
-          }
-          
-          lastScrollY = currentScrollY;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -309,14 +250,14 @@ export default function MobileArtistsPage() {
 
       <div className="mobile-page-container">
         {/* Page header */}
-        <div className="mobile-page-header" ref={headerRef}>
+        <div className="mobile-page-header">
           <h1 className="mobile-page-title">{t.pageTitle || "🎤 Artists"}</h1>
           <p className="mobile-page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
           <div className="mobile-ad-slot" />
         </div>
 
-        {/* Layer 2: Fixed 3-column Panel */}
-        <div className="mobile-top-panel" ref={panelRef} style={{ position: scrolled ? 'fixed' : 'relative', top: scrolled ? 0 : headerHeight, zIndex: scrolled ? 100 : 1 }}>
+        {/* Layer 2: sticky 3-column panel */}
+        <div className="mobile-top-panel">
           {/* Column 1: Artist Preview - Name, Speciality, Genre, Skills */}
           <div className="mobile-panel-col mobile-panel-1">
             <div className="mobile-preview-card">
@@ -325,12 +266,12 @@ export default function MobileArtistsPage() {
                 <div className="mobile-preview-content">
                   <div 
                     className="mobile-preview-image"
-                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
-                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)}
+                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)}
+                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)}
                     style={{ cursor: "pointer" }}
                   >
                     {selectedArtist.image ? (
-                      <img src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} />
+                      <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={240} height={300} sizes="240px" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     ) : (
                       <span style={{ fontSize: "2.5rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
                     )}
@@ -355,7 +296,7 @@ export default function MobileArtistsPage() {
                   
                   {/* Actions */}
                   <div className="mobile-preview-actions">
-                    <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}`)} className="mobile-profile-btn">
+                    <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)} className="mobile-profile-btn">
                       {t.profile}
                     </button>
                     <div className="mobile-add-buttons">
@@ -381,7 +322,7 @@ export default function MobileArtistsPage() {
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team1[i] && setTeam1(team1.filter(a => a.id !== team1[i].id))} className="mobile-team-slot" title={t.clickToRemove}>
                     {team1[i] ? (
-                      team1[i].image ? <img src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
+                      team1[i].image ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} width={80} height={100} sizes="80px" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800 }}>{team1[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
                 ))}
@@ -459,7 +400,7 @@ export default function MobileArtistsPage() {
                 {[0,1,2,3,4].map(i => (
                   <div key={i} onClick={() => team2[i] && setTeam2(team2.filter(a => a.id !== team2[i].id))} className="mobile-team-slot" title={t.clickToRemove}>
                     {team2[i] ? (
-                      team2[i].image ? <img src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
+                      team2[i].image ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} width={80} height={100} sizes="80px" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800 }}>{team2[i].name.charAt(0)}</span>
                     ) : <span>+</span>}
                   </div>
                 ))}
@@ -532,7 +473,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 3: Search Bar - Always visible below panel */}
-        <div className="mobile-search-bar" ref={searchBarRef} style={{ position: scrolled ? 'fixed' : 'relative', top: scrolled ? 'calc(40vh)' : `calc(${headerHeight}px + 40vh)`, left: scrolled ? 0 : 'auto', right: scrolled ? 0 : 'auto', zIndex: scrolled ? 100 : 1 }}>
+        <div className="mobile-search-bar">
           <input
             type="text"
             placeholder={t.search}
@@ -558,7 +499,7 @@ export default function MobileArtistsPage() {
         </div>
 
         {/* Layer 4: Artists Grid - Scrollable */}
-        <div className="mobile-artists-bottom" style={{ paddingTop: scrolled ? `calc(40vh + ${searchBarHeight}px)` : `calc(${headerHeight}px + 40vh + ${searchBarHeight}px + 10px)` }}>
+        <div className="mobile-artists-bottom">
           <div className="mobile-artists-count">{filteredArtists.length} {t.foundArtists}</div>
           <div className="mobile-artists-grid">
             {sortedArtists.map((artist: Artist, index: number) => (
@@ -592,7 +533,7 @@ export default function MobileArtistsPage() {
                 className={selectedArtist?.id === artist.id ? "selected" : ""}
               >
                 {artist.image ? (
-                  <img src={`/assets/images/artists/${artist.image}`} alt={artist.name} />
+                  <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} width={120} height={150} sizes="120px" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : (
                   <div className="mobile-artist-placeholder">
                     <span style={{ color: rankColors[artist.rank], fontWeight: 800 }}>{artist.name.charAt(0)}</span>
@@ -650,11 +591,8 @@ export default function MobileArtistsPage() {
           background: #0f0f1a;
           z-index: 100;
           height: 40vh;
-          opacity: 1;
-          position: fixed;
-          left: 0;
-          right: 0;
-          transition: top 0.2s ease;
+          position: sticky;
+          top: 0;
         }
         
         .mobile-panel-col {
@@ -933,13 +871,10 @@ export default function MobileArtistsPage() {
           gap: 4px;
           padding: 6px 6px 4px 6px;
           background: #0f0f1a;
-          z-index: 200;
-          position: fixed;
-          left: 0;
-          right: 0;
+          z-index: 99;
+          position: sticky;
+          top: 40vh;
           align-items: center;
-          transition: top 0.2s ease;
-          pointer-events: auto;
         }
         .mobile-search-bar.hidden {
           transform: translateY(-100%);
@@ -967,11 +902,8 @@ export default function MobileArtistsPage() {
         
         /* Artists Bottom */
         .mobile-artists-bottom {
-          padding-right: 6px;
-          padding-bottom: 100px;
-          padding-left: 6px;
+          padding: 8px 6px 100px;
           min-height: 100vh;
-          transition: padding-top 0.2s ease;
           background: transparent;
           visibility: hidden;
         }

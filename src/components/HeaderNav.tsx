@@ -39,7 +39,7 @@ export function HeaderNav({ lang, items }: { lang: string; items: NavItem[] }) {
               rel="noopener noreferrer"
               className={className}
             >
-              ⭐ {item.label}
+              ♥ {item.label}
             </a>
           );
         }

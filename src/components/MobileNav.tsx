@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
 import { getUiStrings } from "@/lib/i18n/ui";
-import artistsData from "@/lib/data/artists.json";
+import artistImages from "@/lib/data/artist-images.json";
 import { fetchVoteData } from "@/lib/voteCache";
 
 type ArtistBasic = { id: number; name: string; image?: string };
@@ -24,8 +24,8 @@ export function MobileNav() {
       .then((data) => {
         const top = data?.rankings?.this_week?.[0];
         if (top?.artist_name) {
-          const artist = (artistsData as ArtistBasic[]).find((a) => a.name === top.artist_name);
-          setTopVotedArtist({ name: top.artist_name, image: artist?.image });
+          const image = (artistImages as Record<string, string>)[top.artist_name];
+          setTopVotedArtist({ name: top.artist_name, image });
         }
       });
   }, []);
@@ -72,18 +72,12 @@ export function MobileNav() {
     { href: `/${lang}/tools/`, label: ui.nav.tools, cta: true },
   ];
 
-    const VALID_LOCALES = ["fr", "en", "de", "it", "es", "pt", "pl", "id", "ru"];
+    const VALID_LOCALES = ["fr", "en", "id"];
 
   const languages = [
     { code: "fr", label: "FR" },
     { code: "en", label: "EN" },
-    { code: "de", label: "DE" },
-    { code: "it", label: "IT" },
-    { code: "es", label: "ES" },
-    { code: "pt", label: "PT" },
-    { code: "pl", label: "PL" },
     { code: "id", label: "ID" },
-    { code: "ru", label: "RU" },
   ];
 
   function switchLanguage(pathname: string, newLang: string): string {
@@ -114,7 +108,8 @@ export function MobileNav() {
         position: 'sticky',
         top: 0,
         height: '56px',
-        background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
+        background: 'rgba(10, 14, 24, 0.96)',
+        backdropFilter: 'blur(14px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -124,15 +119,18 @@ export function MobileNav() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
-            <img 
-              src="/assets/images/logo.png" 
-              alt="TopGirlGuide" 
+            <Image
+              src="/assets/images/logo.png"
+              alt="TopGirlGuide"
+              width={120}
+              height={36}
+              priority
               style={{ height: '36px', width: 'auto', maxWidth: '120px', objectFit: 'contain' }}
             />
           </Link>
           {topVotedArtist && (
             <Link
-              href={`/${lang}/tierlist?tab=vote`}
+              href={`/${lang}/tierlist/?tab=vote`}
               title={topVotedArtist.name}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '4px',
@@ -206,7 +204,8 @@ export function MobileNav() {
                 onClick={() => setIsOpen(false)}
                 style={{
                   padding: '16px 20px',
-                  background: item.cta ? 'linear-gradient(135deg, #ff6b9d, #c44569)' : 'rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(255, 255, 255, 0.06)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
                   borderRadius: '12px',
                   textDecoration: 'none',
                   color: '#fff',
@@ -226,11 +225,10 @@ export function MobileNav() {
               onClick={() => setIsOpen(false)}
               style={{
                 padding: '16px 20px',
-                background: 'transparent',
-                border: '2px solid #ffd700',
+                background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
                 borderRadius: '12px',
                 textDecoration: 'none',
-                color: '#ffd700',
+                color: '#fff',
                 fontSize: '18px',
                 fontWeight: 600,
                 textAlign: 'center'
@@ -248,7 +246,7 @@ export function MobileNav() {
               <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '12px', fontSize: '14px' }}>
                 🌐 {ui.mobile.languageLabel}
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                 {languages.map((l) => (
                   <Link
                     key={l.code}
@@ -256,8 +254,8 @@ export function MobileNav() {
                     onClick={() => setIsOpen(false)}
                     style={{
                       padding: '10px 8px',
-                      background: l.code === lang ? 'rgba(255, 107, 157, 0.3)' : 'rgba(255, 255, 255, 0.1)',
-                      border: l.code === lang ? '1px solid #ff6b9d' : '1px solid rgba(255, 255, 255, 0.2)',
+                      background: l.code === lang ? 'rgba(139, 92, 246, 0.25)' : 'rgba(255, 255, 255, 0.06)',
+                      border: l.code === lang ? '1px solid #8b5cf6' : '1px solid rgba(255, 255, 255, 0.12)',
                       borderRadius: '8px',
                       textDecoration: 'none',
                       color: '#fff',
