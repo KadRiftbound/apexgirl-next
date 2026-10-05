@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const locales = ["fr", "en", "de", "it", "es", "pt", "pl", "id", "ru"];
+const locales = ["fr", "en", "id"];
 const defaultLocale = "en";
 
 function getLocale(request: NextRequest) {
@@ -20,13 +20,7 @@ function getLocale(request: NextRequest) {
   const localeMap: Record<string, string> = {
     "fr": "fr", "fr-fr": "fr", "fr-be": "fr",
     "en": "en", "en-us": "en", "en-gb": "en",
-    "de": "de", "de-de": "de", "de-at": "de", "de-ch": "de",
-    "it": "it", "it-it": "it",
-    "es": "es", "es-es": "es", "es-mx": "es",
-    "pt": "pt", "pt-pt": "pt", "pt-br": "pt",
-    "pl": "pl", "pl-pl": "pl",
     "id": "id", "id-id": "id",
-    "ru": "ru", "ru-ru": "ru"
   };
   
   for (const browserLocale of browserLocales) {
@@ -36,29 +30,34 @@ function getLocale(request: NextRequest) {
   return defaultLocale;
 }
 
+// Languages retired in 2026 (auto-translated content removed). 301 them to English,
+// keeping the rest of the path: guide pages resolve old localized slugs themselves.
+const retiredLocaleMatch = /^\/(de|it|es|pt|pl|ru)(\/.*)?$/;
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  const retired = pathname.match(retiredLocaleMatch);
+  if (retired) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/en${retired[2] || "/"}`;
+    return NextResponse.redirect(url, 301);
+  }
 
   const localeVipSlugs: Record<string, string> = {
     fr: "guide-systeme-vip",
     en: "vip-system-guide",
-    de: "leitfaden-vip-system",
-    it: "guida-sistema-vip",
-    es: "guia-sistema-vip",
-    pt: "guia-sistema-vip",
-    pl: "przewodnik-system-vip",
     id: "panduan-sistem-vip",
-    ru: "rukovodstvo-sistem-vip",
   };
 
-  const localeVipMatch = pathname.match(/^\/(fr|en|de|it|es|pt|pl|id|ru)\/guides\/vip-level\/?$/);
+  const localeVipMatch = pathname.match(/^\/(fr|en|id)\/guides\/vip-level\/?$/);
   if (localeVipMatch) {
     const locale = localeVipMatch[1];
     const targetSlug = localeVipSlugs[locale] || localeVipSlugs.en;
     return NextResponse.redirect(new URL(`/${locale}/guides/${targetSlug}/`, request.url));
   }
 
-  const localeVipShortMatch = pathname.match(/^\/(fr|en|de|it|es|pt|pl|id|ru)\/guides\/vip\/?$/);
+  const localeVipShortMatch = pathname.match(/^\/(fr|en|id)\/guides\/vip\/?$/);
   if (localeVipShortMatch) {
     const locale = localeVipShortMatch[1];
     const targetSlug = localeVipSlugs[locale] || localeVipSlugs.en;

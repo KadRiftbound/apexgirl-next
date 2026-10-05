@@ -28,13 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       languages: {
         fr: `${BASE_URL}/fr/glossary/`,
         en: `${BASE_URL}/en/glossary/`,
-        de: `${BASE_URL}/de/glossary/`,
-        it: `${BASE_URL}/it/glossary/`,
-        es: `${BASE_URL}/es/glossary/`,
-        pt: `${BASE_URL}/pt/glossary/`,
-        pl: `${BASE_URL}/pl/glossary/`,
         id: `${BASE_URL}/id/glossary/`,
-        ru: `${BASE_URL}/ru/glossary/`,
         "x-default": `${BASE_URL}/en/glossary/`,
       },
     },

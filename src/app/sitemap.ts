@@ -2,24 +2,12 @@ import { MetadataRoute } from 'next';
 import guidesData from '@/lib/data/guides.json';
 
 const BASE_URL = 'https://apexgirlguide.com';
-const LANGUAGES = ['fr', 'en', 'de', 'it', 'es', 'pt', 'pl', 'id', 'ru'] as const;
+const LANGUAGES = ['fr', 'en', 'id'] as const;
 
-// All artist slugs (117 artists)
-const ARTIST_SLUGS = [
-  "alexandra","genevieve","isadora","josephine","marguerite","ayuni","bunga","putri",
-  "alice","antonia","anya","ariadne","audrey","aurelia","aurora","avery","aya","ayaka",
-  "brooklyn","calliope","chizuru","cindy","claire","claudius","cornelia","daphne","dewi",
-  "eirene","eri","everly","flora","haruki","hestia","hikari","isla","julia","kasha",
-  "kelly","kesnia","kokoro","leilani","lestari","margot","marina","megan","melissa",
-  "mio","miyuki","moana","nastassja","ningsih","noora","nova","octavia","paisley",
-  "ratih","riku","rin","rosemary","ruby","sari","savannah","sienna","skylar","sora",
-  "talia","valentina","vivienne","xenia","yumeno","yuuko","zendayah","bella","caroline",
-  "longkui","monica","abigail","angelina","aria","chloe","eleanor","ella","emily",
-  "evelyn","grace","hailey","hazel","lily","luna","madison","natalie","penelope",
-  "samantha","sarah","scarlett","stella","victoria","violet","charlotte","harper",
-  "olivia","isabella","ava","emma","sophia","mia","annabelle","nike","lysistrata",
-  "selene","sloane","kendell","valerie","anastasia","beatrice","elizabeth","gabriella",
-];
+import artistsData from '@/lib/data/artists.json';
+const slugifyArtist = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+// Artist slugs derived from the data so new artists are never missing.
+const ARTIST_SLUGS = (artistsData as { name: string }[]).map((a) => slugifyArtist(a.name));
 
 // Pages shared by all languages
 const COMMON_PAGES = [

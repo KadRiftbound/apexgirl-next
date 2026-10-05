@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     keywords: m.keywords.split(", "),
     alternates: {
       canonical,
-      languages: { fr: `${BASE_URL}/fr/codes/`, en: `${BASE_URL}/en/codes/`, de: `${BASE_URL}/de/codes/`, it: `${BASE_URL}/it/codes/`, es: `${BASE_URL}/es/codes/`, pt: `${BASE_URL}/pt/codes/`, pl: `${BASE_URL}/pl/codes/`, id: `${BASE_URL}/id/codes/`, ru: `${BASE_URL}/ru/codes/`, "x-default": `${BASE_URL}/en/codes/` },
+      languages: { fr: `${BASE_URL}/fr/codes/`, en: `${BASE_URL}/en/codes/`, id: `${BASE_URL}/id/codes/`, "x-default": `${BASE_URL}/en/codes/` },
     },
     openGraph: { title: m.title, description: m.description, url: canonical, siteName: "TopGirl Guide", type: "website" },
     twitter: { card: "summary_large_image", title: m.title, description: m.description },

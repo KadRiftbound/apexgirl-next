@@ -544,7 +544,7 @@ function TierListPageInner({ lang }: { lang: string }) {
                       {tierArtists
                         .sort((a, b) => getTierOrder(getEffectiveTier(a)) - getTierOrder(getEffectiveTier(b)))
                         .map(artist => (
-                          <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}`} style={{
+                          <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}/`} style={{
                             textDecoration: 'none',
                             display: 'inline-block',
                             width: '90px'
@@ -671,7 +671,7 @@ function TierListPageInner({ lang }: { lang: string }) {
               }}>
                {/* 2nd Place */}
                   {voteData?.rankings?.this_week?.[1] && (
-                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[1]?.artist_name)?.name || '')}`} style={{
+                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[1]?.artist_name)?.name || '')}/`} style={{
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
@@ -712,7 +712,7 @@ function TierListPageInner({ lang }: { lang: string }) {
 
                 {/* 1st Place */}
                   {voteData?.rankings?.this_week?.[0] && (
-                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name)?.name || '')}`} style={{
+                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[0]?.artist_name)?.name || '')}/`} style={{
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
@@ -753,7 +753,7 @@ function TierListPageInner({ lang }: { lang: string }) {
 
                 {/* 3rd Place */}
                   {voteData?.rankings?.this_week?.[2] && (
-                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name)?.name || '')}`} style={{
+                    <Link href={`/${lang}/artist/${slugify(artistsData.find(a => a.name === voteData?.rankings?.this_week?.[2]?.artist_name)?.name || '')}/`} style={{
                      textDecoration: 'none',
                      display: 'inline-block'
                    }}>
@@ -811,7 +811,7 @@ function TierListPageInner({ lang }: { lang: string }) {
                    const artistObj = artists.find(a => a.name === entry.artist_name);
                    const medalColor = index === 0 ? "#ffd700" : index === 1 ? "#c0c0c0" : index === 2 ? "#cd7f32" : "rgba(255,255,255,0.15)";
                    return (
-                     <Link key={entry.artist_id} href={`/${lang}/artist/${slugify(entry.artist_name)}`} style={{ textDecoration: "none" }}>
+                     <Link key={entry.artist_id} href={`/${lang}/artist/${slugify(entry.artist_name)}/`} style={{ textDecoration: "none" }}>
                        <div style={{
                          padding: "10px 14px",
                          borderRadius: "12px",
@@ -893,7 +893,7 @@ function TierListPageInner({ lang }: { lang: string }) {
                         transition: "all 0.2s",
                       }}>
                         {/* Image + name → navigates to artist profile */}
-                        <Link href={`/${lang}/artist/${slugify(artist.name)}`} style={{ textDecoration: 'none', display: 'block' }}>
+                        <Link href={`/${lang}/artist/${slugify(artist.name)}/`} style={{ textDecoration: 'none', display: 'block' }}>
                           <div style={{
                             width: "70px",
                             height: "85px",

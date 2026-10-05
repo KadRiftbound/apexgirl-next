@@ -2,18 +2,12 @@
 
 import { useRouter, usePathname } from "next/navigation";
 
-const VALID_LOCALES = ["fr", "en", "de", "it", "es", "pt", "pl", "id", "ru"];
+const VALID_LOCALES = ["fr", "en", "id"];
 
 const languages = [
   { code: "fr", label: "Français" },
   { code: "en", label: "English" },
-  { code: "de", label: "Deutsch" },
-  { code: "it", label: "Italiano" },
-  { code: "es", label: "Español" },
-  { code: "pt", label: "Português" },
-  { code: "pl", label: "Polski" },
   { code: "id", label: "Indonesia" },
-  { code: "ru", label: "Русский" },
 ];
 
 function switchLanguage(pathname: string, newLang: string): string {
@@ -37,21 +31,11 @@ export function LanguageSelector({ currentLang }: { currentLang: string }) {
         router.push(newPath);
       }}
       value={currentLang}
-      style={{
-        background: "rgba(20, 20, 35, 0.9)",
-        border: "1px solid rgba(255, 255, 255, 0.3)",
-        borderRadius: "8px",
-        padding: "8px 12px",
-        color: "#fff",
-        fontSize: "0.85rem",
-        cursor: "pointer",
-        marginLeft: "12px",
-        fontWeight: 500,
-        minWidth: "100px"
-      }}
+      className="lang-select"
+      aria-label="Language"
     >
       {languages.map((l) => (
-        <option key={l.code} value={l.code} style={{ background: "#1a1a2e", color: "#fff" }}>
+        <option key={l.code} value={l.code}>
           {l.label}
         </option>
       ))}

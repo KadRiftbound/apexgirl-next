@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -50,13 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       languages: {
         fr: `${BASE_URL}/fr/`,
         en: `${BASE_URL}/en/`,
-        de: `${BASE_URL}/de/`,
-        it: `${BASE_URL}/it/`,
-        es: `${BASE_URL}/es/`,
-        pt: `${BASE_URL}/pt/`,
-        pl: `${BASE_URL}/pl/`,
         id: `${BASE_URL}/id/`,
-        ru: `${BASE_URL}/ru/`,
         "x-default": `${BASE_URL}/en/`,
       },
     },
@@ -98,12 +93,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 export async function generateStaticParams() {
   return [
-    { lang: "fr" }, { lang: "en" }, { lang: "de" },
-    { lang: "it" }, { lang: "es" },
-    { lang: "pt" }, { lang: "pl" },
-    { lang: "id" }, { lang: "ru" }
+    { lang: "fr" }, { lang: "en" }, { lang: "id" }
   ];
 }
+
+const SUPPORTED_LANGS = ["fr", "en", "id"];
 
 export default async function LocaleLayout({
   children,
@@ -113,27 +107,22 @@ export default async function LocaleLayout({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  
+  if (!SUPPORTED_LANGS.includes(lang)) notFound();
+
   const ui = getUiStrings(lang);
   const navItems = [
     { href: `/${lang}/codes/`, label: ui.nav.codes },
     { href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder },
     { href: `/${lang}/tierlist/`, label: ui.nav.tierList },
     { href: `/${lang}/guides/`, label: ui.nav.guides },
-    { href: `/${lang}/tools/`, label: ui.nav.tools, cta: true },
+    { href: `/${lang}/tools/`, label: ui.nav.tools },
     { href: "https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00", label: ui.footer.support, cta: true, variant: "support" },
   ];
 
   const languages = [
     { code: "fr", label: "FR" },
     { code: "en", label: "EN" },
-    { code: "de", label: "DE" },
-    { code: "it", label: "IT" },
-    { code: "es", label: "ES" },
-    { code: "pt", label: "PT" },
-    { code: "pl", label: "PL" },
     { code: "id", label: "ID" },
-    { code: "ru", label: "RU" },
   ];
 
   return (
@@ -205,10 +194,10 @@ export default async function LocaleLayout({
           </div>
           <div>
             <h4>{ui.footer.legal}</h4>
-            <Link href={lang === 'fr' ? `/${lang}/mentions-legales` : `/${lang}/legal-notice`}>{ui.footer.legalNotice}</Link>
-            <Link href={lang === 'fr' ? `/${lang}/confidentialite` : `/${lang}/privacy-policy`}>{ui.footer.privacy}</Link>
-            <Link href={`/${lang}/cookie-settings`}>{ui.footer.cookies}</Link>
-            <Link href={`/${lang}/contact`}>{ui.footer.contact}</Link>
+            <Link href={lang === 'fr' ? `/${lang}/mentions-legales/` : `/${lang}/legal-notice/`}>{ui.footer.legalNotice}</Link>
+            <Link href={lang === 'fr' ? `/${lang}/confidentialite/` : `/${lang}/privacy-policy/`}>{ui.footer.privacy}</Link>
+            <Link href={`/${lang}/cookie-settings/`}>{ui.footer.cookies}</Link>
+            <Link href={`/${lang}/contact/`}>{ui.footer.contact}</Link>
             <Link href={`/${lang}/corrections/`}>{lang === "fr" ? "Corrections" : "Corrections"}</Link>
             <Link href={`/${lang}/advertising-disclosure/`}>{lang === "fr" ? "Transparence pub" : "Ad Disclosure"}</Link>
           </div>

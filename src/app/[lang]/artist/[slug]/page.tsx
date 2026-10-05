@@ -67,13 +67,7 @@ export async function generateMetadata(
       languages: {
         fr: `${BASE_URL}/fr/artist/${slug}/`,
         en: `${BASE_URL}/en/artist/${slug}/`,
-        de: `${BASE_URL}/de/artist/${slug}/`,
-        it: `${BASE_URL}/it/artist/${slug}/`,
-        es: `${BASE_URL}/es/artist/${slug}/`,
-        pt: `${BASE_URL}/pt/artist/${slug}/`,
-        pl: `${BASE_URL}/pl/artist/${slug}/`,
         id: `${BASE_URL}/id/artist/${slug}/`,
-        ru: `${BASE_URL}/ru/artist/${slug}/`,
         'x-default': `${BASE_URL}/en/artist/${slug}/`,
       },
     },
