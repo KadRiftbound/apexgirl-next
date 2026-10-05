@@ -15,6 +15,9 @@ export type Artist = {
   earlyGameRecommended?: boolean;
   acquisitionTier?: string;
   calculatedTier?: string;
+  tierScore?: number;
+  singStat?: number;
+  danceStat?: number;
   photos?: string;
   season?: string;
   event?: string;
