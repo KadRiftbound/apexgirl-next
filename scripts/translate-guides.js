@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const API_KEY = 'AIzaSyAtC5jv_9ZDUKjRbJsfpagbMf3j2Zxnc2s';
+const API_KEY = process.env.GOOGLE_TRANSLATE_API_KEY;
 
 if (!API_KEY) {
   console.error('Error: GOOGLE_TRANSLATE_API_KEY not found');

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const API_KEY = 'AIzaSyAtC5jv_9ZDUKjRbJsfpagbMf3j2Zxnc2s';
+const API_KEY = process.env.GOOGLE_TRANSLATE_API_KEY;
 
 const TARGET_LANGUAGES = ['en', 'it', 'es', 'pt', 'pl', 'id', 'ru'];
 const SOURCE_LANG = 'fr';
