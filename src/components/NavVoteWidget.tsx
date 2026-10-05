@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import artistsData from "@/lib/data/artists.json";
+import artistImages from "@/lib/data/artist-images.json";
 import { fetchVoteData } from "@/lib/voteCache";
 
 type Artist = { id: number; name: string; image?: string };
@@ -16,8 +16,8 @@ export function NavVoteWidget({ lang }: { lang: string }) {
       .then((data) => {
         const top = data?.rankings?.this_week?.[0];
         if (top?.artist_name) {
-          const artist = (artistsData as Artist[]).find((a) => a.name === top.artist_name);
-          setTopArtist({ name: top.artist_name, image: artist?.image });
+          const image = (artistImages as Record<string, string>)[top.artist_name];
+          setTopArtist({ name: top.artist_name, image });
         }
       });
   }, []);
@@ -26,7 +26,7 @@ export function NavVoteWidget({ lang }: { lang: string }) {
 
   return (
     <Link
-      href={`/${lang}/tierlist?tab=vote`}
+      href={`/${lang}/tierlist/?tab=vote`}
       title={topArtist.name}
       style={{
         display: "inline-flex",

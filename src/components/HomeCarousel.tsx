@@ -4,11 +4,11 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const carouselImages = [
-  { src: "/assets/images/bgs/file_000000002bbc722fa8aecd2660d92f4b.png", alt: "TopGirl - Discover Artists" },
-  { src: "/assets/images/bgs/PZa0kXg48tUA95eC40v6--1--40zmy.jpg", alt: "TopGirl - Build Your Team" },
-  { src: "/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.jpg", alt: "TopGirl - Events & Rewards" },
-  { src: "/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.jpg", alt: "TopGirl - Master the Game" },
-  { src: "/assets/images/bgs/Screenshot_20260213_103558_ChatGPT.jpg", alt: "TopGirl - Strategy Guides" },
+  { src: "/assets/images/bgs/file_000000002bbc722fa8aecd2660d92f4b.webp", alt: "TopGirl - Discover Artists" },
+  { src: "/assets/images/bgs/PZa0kXg48tUA95eC40v6--1--40zmy.webp", alt: "TopGirl - Build Your Team" },
+  { src: "/assets/images/bgs/fxGsW8cYpuse1vzGuTmm--1--aod7t.webp", alt: "TopGirl - Events & Rewards" },
+  { src: "/assets/images/bgs/Screenshot_20260115_051841_ChatGPT.webp", alt: "TopGirl - Master the Game" },
+  { src: "/assets/images/bgs/Screenshot_20260213_103558_ChatGPT.webp", alt: "TopGirl - Strategy Guides" },
 ];
 
 export function HomeCarousel() {

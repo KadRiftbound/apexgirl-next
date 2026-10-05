@@ -26,7 +26,7 @@
     },
     "calculatedTier": "A",
     "specialty": "Augmentation dommage",
-    "image": "Alexandra.jpg",
+    "image": "Alexandra.webp",
     "singStat": 25851,
     "danceStat": 19076,
     "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position lead d'équipe, genre Pop. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
@@ -44,7 +44,7 @@
     ],
     "description": "A talented Dancer from No Group.",
     "season": "Universal",
-    "image": "Genevieve.jpg",
+    "image": "Genevieve.webp",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -90,7 +90,7 @@
     },
     "calculatedTier": "A",
     "specialty": "Dommage réduction",
-    "image": "Isadora.jpg",
+    "image": "Isadora.webp",
     "singStat": 22464,
     "danceStat": 22464,
     "thoughts": "UR spéciale. Stats équilibrées (22464/22464). Spécialité défensive : réduit les dégâts subis. Compétences : ↓12% skill damage taken, ↓12% basic attack damage taken. Classement communauté : Tier A. Position lead d'équipe, genre EDM. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
@@ -122,7 +122,7 @@
     },
     "calculatedTier": "A",
     "specialty": "Augmentation dommage",
-    "image": "Josephine.jpg",
+    "image": "Josephine.webp",
     "singStat": 29023,
     "danceStat": 20893,
     "thoughts": "UR spéciale. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS vocal, genre Hip Hop. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
@@ -156,7 +156,7 @@
     "specialty": "Augmentation dommage",
     "singStat": 25851,
     "danceStat": 19076,
-    "image": "Marguerite.jpg",
+    "image": "Marguerite.webp",
     "thoughts": "UR spéciale. Stat Sing (25851) > Dance (19076) → profil offensif. Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑20% skill damage, ↑50% basic attack damage dealt. Classement communauté : Tier A. Position DPS vocal, genre R&B. UR serveur de départ : ne peut pas être améliorée directement, liée à une SSR de votre choix."
   },
   {
@@ -218,7 +218,7 @@
     },
     "calculatedTier": "S",
     "specialty": "Solo car",
-    "image": "Bunga.jpg"
+    "image": "Bunga.webp"
   },
   {
     "id": 8,
@@ -277,7 +277,7 @@
     "description": "A talented Vocalist from Fantasy Vibes.",
     "earlyGameRecommended": true,
     "acquisitionTier": "mid",
-    "image": "Alice.jpg",
+    "image": "Alice.webp",
     "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 25851,
@@ -310,7 +310,7 @@
     },
     "calculatedTier": "B",
     "description": "A talented Dancer from None.",
-    "image": "Antonia.jpg",
+    "image": "Antonia.webp",
     "specialty": "Solo car",
     "event": "Rome 3",
     "singStat": 25071,
@@ -344,7 +344,7 @@
     },
     "calculatedTier": "C",
     "description": "A talented Center from DreamCatcher.",
-    "image": "Anya.jpg",
+    "image": "Anya.webp",
     "specialty": "Solo car",
     "event": "Anniversary",
     "singStat": 24959,
@@ -377,7 +377,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from VenuLux.",
-    "image": "Ariadne.jpg",
+    "image": "Ariadne.webp",
     "specialty": "Mixte",
     "event": "Rome 1",
     "singStat": 20893,
@@ -410,7 +410,7 @@
     },
     "calculatedTier": "C",
     "description": "A talented Center from WildFlower.",
-    "image": "Audrey.jpg",
+    "image": "Audrey.webp",
     "specialty": "Mixte",
     "event": "Original",
     "singStat": 22464,
@@ -443,7 +443,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from None.",
-    "image": "Aurelia.jpg",
+    "image": "Aurelia.webp",
     "specialty": "Solo car",
     "event": "Rome 2",
     "singStat": 34827,
@@ -477,7 +477,7 @@
     "description": "A talented Center from Sparkle Artists.",
     "earlyGameRecommended": true,
     "acquisitionTier": "mid",
-    "image": "Aurora.jpg",
+    "image": "Aurora.webp",
     "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 22464,
@@ -510,7 +510,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Luna.",
-    "image": "Avery.jpg",
+    "image": "Avery.webp",
     "specialty": "Dommage réduction",
     "event": "Original",
     "singStat": 19076,
@@ -543,7 +543,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from None.",
-    "image": "Aya.jpg",
+    "image": "Aya.webp",
     "specialty": "Solo car",
     "event": "Tokyo 4",
     "singStat": 35540,
@@ -576,7 +576,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from Tokyo48.",
-    "image": "Ayaka.jpg",
+    "image": "Ayaka.webp",
     "specialty": "Dommage réduction",
     "event": "Tokyo 1",
     "singStat": 29023,
@@ -609,7 +609,7 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from Echo.",
-    "image": "Brooklyn.jpg",
+    "image": "Brooklyn.webp",
     "specialty": "HQ defense",
     "event": "Original",
     "singStat": 25851,
@@ -642,7 +642,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from VenuLux.",
-    "image": "Calliope.jpg",
+    "image": "Calliope.webp",
     "specialty": "Solo car",
     "event": "Rome 1",
     "singStat": 29023,
@@ -676,7 +676,7 @@
     "calculatedTier": "S",
     "description": "A talented Center from Tokyo48.",
     "acquisitionTier": "whale",
-    "image": "Chizuru.jpg",
+    "image": "Chizuru.webp",
     "specialty": "Rassemblement",
     "event": "Tokyo 1",
     "singStat": 24959,
@@ -709,7 +709,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Center from Luna.",
-    "image": "Cindy.jpg",
+    "image": "Cindy.webp",
     "specialty": "Mixte",
     "event": "SvS Event",
     "singStat": 22464,
@@ -743,7 +743,7 @@
     "description": "A talented Center from Sparkle Artists.",
     "earlyGameRecommended": true,
     "acquisitionTier": "f2p",
-    "image": "Claire.jpg",
+    "image": "Claire.webp",
     "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 22464,
@@ -775,7 +775,7 @@
     },
     "calculatedTier": "S+",
     "description": "A talented Vocalist from None.",
-    "image": "Claudius.jpg",
+    "image": "Claudius.webp",
     "specialty": "Augmentation dommage",
     "event": "Rome 3",
     "singStat": 34827,
@@ -809,7 +809,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
-    "image": "Cornelia.jpg",
+    "image": "Cornelia.webp",
     "specialty": "HQ defense",
     "event": "Rome 2",
     "singStat": 25071,
@@ -841,7 +841,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from VenuLux.",
-    "image": "Daphne.jpg",
+    "image": "Daphne.webp",
     "specialty": "Augmentation dommage",
     "event": "Rome 1",
     "singStat": 24959,
@@ -875,7 +875,7 @@
     "description": "A talented Center from Breezara.",
     "specialty": "Augmentation dommage",
     "event": "Bali 2",
-    "image": "Dewi.jpg",
+    "image": "Dewi.webp",
     "singStat": 29950,
     "danceStat": 29950,
     "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑24% skill damage, ↑60% basic attack damage dealt. Classement communauté : Tier S. Position lead d'équipe, genre R&B. Priorité d'investissement haute."
@@ -906,7 +906,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Vocalist from VenuLux.",
-    "image": "Eirene.jpg",
+    "image": "Eirene.webp",
     "specialty": "Mixte",
     "event": "Rome 1",
     "singStat": 24959,
@@ -942,7 +942,7 @@
     "description": "A talented Dancer from None.",
     "specialty": "Solo car",
     "event": "Tokyo 3",
-    "image": "Eri.jpg",
+    "image": "Eri.webp",
     "singStat": 25071,
     "danceStat": 34827,
     "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑12% fan cap, ↓12% basic attack damage taken. Classement communauté : Tier B. Position DPS danse, genre R&B. Utilisation situationnelle."
@@ -975,7 +975,7 @@
     "description": "A talented Center from DreamCatcher.",
     "earlyGameRecommended": true,
     "acquisitionTier": "mid",
-    "image": "Everly.jpg",
+    "image": "Everly.webp",
     "specialty": "Mixte",
     "event": "Original",
     "singStat": 22464,
@@ -1009,7 +1009,7 @@
     },
     "calculatedTier": "B",
     "description": "A talented Center from None.",
-    "image": "Flora.jpg",
+    "image": "Flora.webp",
     "specialty": "Solo car",
     "event": "Rome 3",
     "singStat": 29950,
@@ -1044,7 +1044,7 @@
     "description": "A talented Center from Rina.",
     "specialty": "Solo car",
     "event": "Tokyo 2",
-    "image": "Haruki.jpg",
+    "image": "Haruki.webp",
     "singStat": 29950,
     "danceStat": 29950,
     "thoughts": "SSR. Stats équilibrées (29950/29950). Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑60% basic attack damage dealt, ↑12% fan cap. Classement communauté : Tier S. Position lead d'équipe, genre Hip Hop. Priorité d'investissement haute."
@@ -1075,7 +1075,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from WildFlower.",
-    "image": "Hestia.jpg",
+    "image": "Hestia.webp",
     "specialty": "Rassemblement",
     "event": "Special",
     "singStat": 24959,
@@ -1108,7 +1108,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from None.",
-    "image": "Hikari.jpg",
+    "image": "Hikari.webp",
     "specialty": "Mixte",
     "event": "Tokyo 3",
     "singStat": 29950,
@@ -1141,7 +1141,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from None.",
-    "image": "Isla.jpg",
+    "image": "Isla.webp",
     "specialty": "Mixte",
     "event": "Bali 3",
     "singStat": 29950,
@@ -1175,7 +1175,7 @@
     "calculatedTier": "C",
     "description": "A talented Vocalist from Radiance.",
     "earlyGameRecommended": true,
-    "image": "Julia.jpg",
+    "image": "Julia.webp",
     "specialty": "Vitesse de conduite",
     "event": "Original",
     "singStat": 25851,
@@ -1207,7 +1207,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Dancer from Tokyo48.",
-    "image": "Kasha.jpg",
+    "image": "Kasha.webp",
     "specialty": "Augmentation dommage",
     "event": "Anniversary",
     "singStat": 25071,
@@ -1241,7 +1241,7 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from WildFlower.",
-    "image": "Kelly.jpg",
+    "image": "Kelly.webp",
     "specialty": "Rassemblement",
     "event": "Special",
     "singStat": 19033,
@@ -1274,7 +1274,7 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from Radiance.",
-    "image": "Kesnia.jpg",
+    "image": "Kesnia.webp",
     "specialty": "Économie",
     "event": "Anniversary",
     "singStat": 19076,
@@ -1307,7 +1307,7 @@
     "calculatedTier": "A",
     "description": "A talented Center from Tokyo48.",
     "acquisitionTier": "mid",
-    "image": "Kokoro.jpg",
+    "image": "Kokoro.webp",
     "specialty": "Augmentation dommage",
     "event": "Tokyo 1",
     "singStat": 24959,
@@ -1339,7 +1339,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Coral.",
-    "image": "Leilani.jpg",
+    "image": "Leilani.webp",
     "specialty": "Augmentation dommage",
     "event": "Bali 1",
     "singStat": 20893,
@@ -1372,7 +1372,7 @@
     },
     "calculatedTier": "D",
     "description": "A talented Vocalist from Breezara.",
-    "image": "Lestari.jpg",
+    "image": "Lestari.webp",
     "specialty": "HQ defense",
     "event": "Bali 2",
     "singStat": 34827,
@@ -1407,7 +1407,7 @@
     "description": "A talented Vocalist from None.",
     "specialty": "Solo car",
     "event": "Bali 4",
-    "image": "Margot.jpg",
+    "image": "Margot.webp",
     "singStat": 40439,
     "danceStat": 26213,
     "thoughts": "SSR. Stat Sing (40439) > Dance (26213) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑28% skill damage, ↑14% fan cap. Classement communauté : Tier A. Position DPS vocal, genre EDM. Bon investissement polyvalent."
@@ -1443,7 +1443,7 @@
     "event": "Bali 3",
     "singStat": 34827,
     "danceStat": 25071,
-    "image": "Marina.jpg",
+    "image": "Marina.webp",
     "thoughts": "SSR. Stat Sing (34827) > Dance (25071) → profil offensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑240 dps when attacking gc/club/lm, ↑12% fan cap. Classement communauté : Tier D. Position DPS vocal, genre Hip Hop. Faible priorité."
   },
   {
@@ -1472,7 +1472,7 @@
     },
     "calculatedTier": "C",
     "description": "A talented Dancer from WildFlower.",
-    "image": "Megan.jpg",
+    "image": "Megan.webp",
     "specialty": "Augmentation dommage",
     "event": "Special",
     "singStat": 20893,
@@ -1505,7 +1505,7 @@
     },
     "calculatedTier": "B",
     "description": "A talented Center from Neon.",
-    "image": "Mellissa.jpg",
+    "image": "Mellissa.webp",
     "specialty": "Solo car",
     "event": "Special",
     "singStat": 24959,
@@ -1540,7 +1540,7 @@
     "description": "A talented Dancer from None.",
     "specialty": "Mixte",
     "event": "Tokyo 4",
-    "image": "Mio.jpg",
+    "image": "Mio.webp",
     "singStat": 28069,
     "danceStat": 42152,
     "thoughts": "SSR. Stat Dance (42152) > Sing (28069) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑70% basic attack damage dealt, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre Hip Hop. Bon investissement polyvalent."
@@ -1573,7 +1573,7 @@
     "description": "A talented Dancer from Rina.",
     "specialty": "Mixte",
     "event": "Tokyo 2",
-    "image": "Miyuki.jpg",
+    "image": "Miyuki.webp",
     "singStat": 25071,
     "danceStat": 34827,
     "thoughts": "SSR. Stat Dance (34827) > Sing (25071) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑60% basic attack damage dealt, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS danse, genre EDM. Bon investissement polyvalent."
@@ -1608,7 +1608,7 @@
     "event": "Bali 1",
     "singStat": 29023,
     "danceStat": 20893,
-    "image": "Moana.jpg",
+    "image": "Moana.webp",
     "thoughts": "SSR. Stat Sing (29023) > Dance (20893) → profil offensif. Spécialité défensive : réduit les dégâts subis. Compétences : ↓12% skill damage taken, ↓12% basic attack damage taken. Classement communauté : Tier A. Position DPS vocal, genre Pop. Bon investissement polyvalent."
   },
   {
@@ -1637,7 +1637,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Tokyo48.",
-    "image": "Nastassja.jpg",
+    "image": "Nastassja.webp",
     "specialty": "Rassemblement",
     "event": "Special",
     "singStat": 29023,
@@ -1671,7 +1671,7 @@
     },
     "calculatedTier": "D",
     "description": "A talented Dancer from Breezara.",
-    "image": "Ningsih.jpg",
+    "image": "Ningsih.webp",
     "specialty": "Solo car",
     "event": "Bali 2",
     "singStat": 25071,
@@ -1704,7 +1704,7 @@
     },
     "calculatedTier": "C",
     "description": "A talented Center from WildFlower.",
-    "image": "Noora.jpg",
+    "image": "Noora.webp",
     "specialty": "Augmentation dommage",
     "event": "Special",
     "singStat": 24959,
@@ -1738,7 +1738,7 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from DreamCatcher.",
     "acquisitionTier": "f2p",
-    "image": "Nova.jpg",
+    "image": "Nova.webp",
     "specialty": "HQ defense",
     "event": "Original",
     "singStat": 22464,
@@ -1772,7 +1772,7 @@
     },
     "calculatedTier": "D",
     "description": "A talented Center from None.",
-    "image": "Octavia.jpg",
+    "image": "Octavia.webp",
     "specialty": "Solo car",
     "event": "Rome 2",
     "singStat": 29950,
@@ -1807,7 +1807,7 @@
     "description": "A talented Dancer from Neon.",
     "earlyGameRecommended": true,
     "acquisitionTier": "low",
-    "image": "Paisley.jpg",
+    "image": "Paisley.webp",
     "specialty": "Dommage réduction",
     "event": "Original",
     "singStat": 19076,
@@ -1840,7 +1840,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Coral.",
-    "image": "Ratih.jpg",
+    "image": "Ratih.webp",
     "specialty": "Mixte",
     "event": "Bali 1",
     "singStat": 20893,
@@ -1873,7 +1873,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Rina.",
-    "image": "Riku.jpg",
+    "image": "Riku.webp",
     "specialty": "Mixte",
     "event": "Tokyo 2",
     "singStat": 34827,
@@ -1906,7 +1906,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from None.",
-    "image": "Rin.jpg",
+    "image": "Rin.webp",
     "specialty": "Solo car",
     "event": "Tokyo 3",
     "singStat": 34827,
@@ -1939,7 +1939,7 @@
     },
     "calculatedTier": "B",
     "description": "A talented Vocalist from Tokyo48.",
-    "image": "Rosemary.jpg",
+    "image": "Rosemary.webp",
     "specialty": "Solo car",
     "event": "Special",
     "singStat": 29023,
@@ -1971,7 +1971,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from Echo.",
-    "image": "Ruby.jpg",
+    "image": "Ruby.webp",
     "specialty": "Augmentation dommage",
     "event": "Discord Event",
     "singStat": 20893,
@@ -2004,7 +2004,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Vocalist from Coral.",
-    "image": "Sari.jpg",
+    "image": "Sari.webp",
     "specialty": "Rassemblement",
     "event": "Bali 1",
     "singStat": 29023,
@@ -2038,7 +2038,7 @@
     },
     "calculatedTier": "D",
     "description": "A talented Dancer from Echo.",
-    "image": "Savannah.jpg",
+    "image": "Savannah.webp",
     "specialty": "Solo car",
     "event": "Original",
     "singStat": 19076,
@@ -2073,7 +2073,7 @@
     "description": "A talented Dancer from None.",
     "specialty": "Mixte",
     "event": "Bali 4",
-    "image": "Sienna.jpg",
+    "image": "Sienna.webp",
     "singStat": 33542,
     "danceStat": 33542,
     "thoughts": "SSR. Stats équilibrées (33542/33542). Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑28% player damage, ↓12% skill damage taken. Classement communauté : Tier S. Position lead d'équipe, genre Rock. Priorité d'investissement haute."
@@ -2103,7 +2103,7 @@
     },
     "calculatedTier": "C",
     "description": "A talented Vocalist from Neon.",
-    "image": "Skylar.jpg",
+    "image": "Skylar.webp",
     "specialty": "Augmentation dommage",
     "event": "Original",
     "singStat": 25851,
@@ -2136,7 +2136,7 @@
     },
     "calculatedTier": "B",
     "description": "A talented Vocalist from Tokyo48.",
-    "image": "Sora.jpg",
+    "image": "Sora.webp",
     "specialty": "Solo car",
     "event": "Tokyo 1",
     "singStat": 29023,
@@ -2169,7 +2169,7 @@
     },
     "calculatedTier": "B",
     "description": "A talented Center from Coral.",
-    "image": "Talia.jpg",
+    "image": "Talia.webp",
     "specialty": "Solo car",
     "event": "Bali 1",
     "singStat": 24959,
@@ -2205,7 +2205,7 @@
     "description": "A talented Dancer from None.",
     "specialty": "Solo car",
     "event": "Bali 4",
-    "image": "Valentina.jpg",
+    "image": "Valentina.webp",
     "singStat": 26071,
     "danceStat": 40154,
     "thoughts": "SSR. Stat Dance (40154) > Sing (26071) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑14% fan cap, ↓12% basic attack damage taken. Classement communauté : Tier B. Position DPS danse, genre R&B. Utilisation situationnelle."
@@ -2237,7 +2237,7 @@
     },
     "calculatedTier": "A",
     "description": "A talented Dancer from None.",
-    "image": "Vivienne.jpg",
+    "image": "Vivienne.webp",
     "specialty": "HQ defense",
     "event": "Bali 3",
     "singStat": 25071,
@@ -2270,7 +2270,7 @@
     },
     "calculatedTier": "S",
     "description": "A talented Center from VenuLux.",
-    "image": "Xenia.jpg",
+    "image": "Xenia.webp",
     "specialty": "Rassemblement",
     "event": "Rome 1",
     "singStat": 20893,
@@ -2305,7 +2305,7 @@
     "description": "A talented Vocalist from None.",
     "specialty": "Mixte",
     "event": "Tokyo 4",
-    "image": "Yumeno.jpg",
+    "image": "Yumeno.webp",
     "singStat": 42437,
     "danceStat": 28211,
     "thoughts": "SSR. Stat Sing (42437) > Dance (28211) → profil offensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↑28% player damage, ↓12% basic attack damage taken. Classement communauté : Tier S. Position DPS vocal, genre Pop. Priorité d'investissement haute."
@@ -2337,7 +2337,7 @@
     "calculatedTier": "A",
     "description": "A talented Dancer from Tokyo48.",
     "acquisitionTier": "mid",
-    "image": "Yuuko.jpg",
+    "image": "Yuuko.webp",
     "specialty": "Mixte",
     "event": "Tokyo 1",
     "singStat": 20893,
@@ -2372,7 +2372,7 @@
     "description": "A talented Center from Radiance.",
     "earlyGameRecommended": true,
     "acquisitionTier": "f2p",
-    "image": "Zendayah.jpg",
+    "image": "Zendayah.webp",
     "specialty": "Vitesse de conduite",
     "event": "Original",
     "singStat": 19076,
@@ -2405,7 +2405,7 @@
     },
     "calculatedTier": "B",
     "description": "A talented Vocalist from Luna.",
-    "image": "Bella.jpg",
+    "image": "Bella.webp",
     "specialty": "Solo car",
     "event": "Original",
     "singStat": 25851,
@@ -2442,7 +2442,7 @@
     "event": "VIP 10",
     "singStat": 19076,
     "danceStat": 25851,
-    "image": "Caroline.jpg",
+    "image": "Caroline.webp",
     "thoughts": "SSR. Stat Dance (25851) > Sing (19076) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑200 dps when attacking gc/club/lm, ↑10% fan cap. Classement communauté : Tier C. Position DPS danse, genre EDM. Utilisation situationnelle."
   },
   {
@@ -2472,7 +2472,7 @@
     "description": "A talented Center from Fantasy Vibes.",
     "earlyGameRecommended": true,
     "acquisitionTier": "whale",
-    "image": "Longkui.jpg",
+    "image": "Longkui.webp",
     "specialty": "Augmentation dommage",
     "event": "Home Auction",
     "singStat": 29950,
@@ -2504,7 +2504,7 @@
     },
     "calculatedTier": "S+",
     "description": "A talented Center from Tokyo48.",
-    "image": "Monica.jpg",
+    "image": "Monica.webp",
     "specialty": "Augmentation dommage",
     "event": "Abroad Auction",
     "singStat": 29950,
@@ -2539,7 +2539,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Augmentation dommage",
-    "image": "Abigail.jpg"
+    "image": "Abigail.webp"
   },
   {
     "id": 78,
@@ -2570,7 +2570,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Augmentation dommage",
-    "image": "Angelina.jpg"
+    "image": "Angelina.webp"
   },
   {
     "id": 79,
@@ -2599,7 +2599,7 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Aria.jpg",
+    "image": "Aria.webp",
     "specialty": "Augmentation dommage"
   },
   {
@@ -2631,7 +2631,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Vitesse de conduite",
-    "image": "Chloe.jpg"
+    "image": "Chloe.webp"
   },
   {
     "id": 81,
@@ -2661,7 +2661,7 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Eleanor.jpg",
+    "image": "Eleanor.webp",
     "specialty": "Augmentation dommage"
   },
   {
@@ -2692,7 +2692,7 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Ella.jpg",
+    "image": "Ella.webp",
     "specialty": "Vitesse de conduite"
   },
   {
@@ -2724,7 +2724,7 @@
     },
     "calculatedTier": "B",
     "specialty": "Mixte",
-    "image": "Emily.jpg"
+    "image": "Emily.webp"
   },
   {
     "id": 84,
@@ -2754,7 +2754,7 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "image": "Evelyn.jpg",
+    "image": "Evelyn.webp",
     "specialty": "Solo car"
   },
   {
@@ -2786,7 +2786,7 @@
     },
     "calculatedTier": "B",
     "specialty": "Mixte",
-    "image": "Grace.jpg"
+    "image": "Grace.webp"
   },
   {
     "id": 86,
@@ -2817,7 +2817,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Augmentation dommage",
-    "image": "Hailey.jpg"
+    "image": "Hailey.webp"
   },
   {
     "id": 87,
@@ -2848,7 +2848,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Augmentation dommage",
-    "image": "Hazel.jpg"
+    "image": "Hazel.webp"
   },
   {
     "id": 88,
@@ -2879,7 +2879,7 @@
     },
     "calculatedTier": "B",
     "specialty": "Solo car",
-    "image": "Lily.jpg"
+    "image": "Lily.webp"
   },
   {
     "id": 89,
@@ -2910,7 +2910,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Vitesse de conduite",
-    "image": "Luna.jpg"
+    "image": "Luna.webp"
   },
   {
     "id": 90,
@@ -2940,7 +2940,7 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "image": "Madison.jpg",
+    "image": "Madison.webp",
     "specialty": "Mixte"
   },
   {
@@ -2972,7 +2972,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Augmentation dommage",
-    "image": "Natalie.jpg"
+    "image": "Natalie.webp"
   },
   {
     "id": 92,
@@ -3003,7 +3003,7 @@
     },
     "calculatedTier": "B",
     "specialty": "Solo car",
-    "image": "Penelope.jpg"
+    "image": "Penelope.webp"
   },
   {
     "id": 93,
@@ -3034,7 +3034,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Vitesse de conduite",
-    "image": "Samantha.jpg"
+    "image": "Samantha.webp"
   },
   {
     "id": 94,
@@ -3064,7 +3064,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Vitesse de conduite",
-    "image": "Sarah.jpg"
+    "image": "Sarah.webp"
   },
   {
     "id": 95,
@@ -3095,7 +3095,7 @@
     },
     "calculatedTier": "B",
     "specialty": "Solo car",
-    "image": "Scarlett.jpg"
+    "image": "Scarlett.webp"
   },
   {
     "id": 96,
@@ -3126,7 +3126,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Augmentation dommage",
-    "image": "Stella.jpg"
+    "image": "Stella.webp"
   },
   {
     "id": 97,
@@ -3156,7 +3156,7 @@
       "speed": []
     },
     "calculatedTier": "B",
-    "image": "Victoria.jpg",
+    "image": "Victoria.webp",
     "specialty": "Solo car"
   },
   {
@@ -3186,7 +3186,7 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Violet.jpg",
+    "image": "Violet.webp",
     "specialty": "Augmentation dommage"
   },
   {
@@ -3215,7 +3215,7 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Charlotte.jpg",
+    "image": "Charlotte.webp",
     "specialty": "Augmentation dommage"
   },
   {
@@ -3244,7 +3244,7 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Harper.jpg",
+    "image": "Harper.webp",
     "specialty": "Vitesse de conduite"
   },
   {
@@ -3273,7 +3273,7 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Olivia.jpg",
+    "image": "Olivia.webp",
     "specialty": "Mixte"
   },
   {
@@ -3302,7 +3302,7 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Isabella.jpg",
+    "image": "Isabella.webp",
     "specialty": "Économie"
   },
   {
@@ -3331,7 +3331,7 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Ava.jpg",
+    "image": "Ava.webp",
     "specialty": "Économie"
   },
   {
@@ -3361,7 +3361,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Augmentation dommage",
-    "image": "Emma.jpg"
+    "image": "Emma.webp"
   },
   {
     "id": 105,
@@ -3389,7 +3389,7 @@
       "speed": []
     },
     "calculatedTier": "C",
-    "image": "Sophia.jpg",
+    "image": "Sophia.webp",
     "specialty": "Augmentation dommage"
   },
   {
@@ -3418,7 +3418,7 @@
       ]
     },
     "calculatedTier": "C",
-    "image": "Mia.jpg",
+    "image": "Mia.webp",
     "specialty": "Économie"
   },
   {
@@ -3448,7 +3448,7 @@
     },
     "calculatedTier": "C",
     "specialty": "Économie",
-    "image": "Annabelle.jpg"
+    "image": "Annabelle.webp"
   },
   {
     "id": 108,
@@ -3477,7 +3477,7 @@
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
     "event": "Rome 3",
-    "image": "Nike.jpg",
+    "image": "Nike.webp",
     "singStat": 34827,
     "danceStat": 25071
   },
@@ -3509,7 +3509,7 @@
     "calculatedTier": "S",
     "specialty": "Solo car",
     "event": "Rome 3",
-    "image": "Lysistrata.jpg",
+    "image": "Lysistrata.webp",
     "singStat": 25071,
     "danceStat": 34827
   },
@@ -3541,7 +3541,7 @@
     "calculatedTier": "S",
     "specialty": "Solo car",
     "event": "Rome 3",
-    "image": "Selene.jpg",
+    "image": "Selene.webp",
     "singStat": 29950,
     "danceStat": 29950
   },
@@ -3572,7 +3572,7 @@
     "calculatedTier": "S",
     "specialty": "Augmentation dommage",
     "event": "Roma 3",
-    "image": "Sloane.jpg",
+    "image": "Sloane.webp",
     "singStat": 21554,
     "danceStat": 21554,
     "thoughts": "SSR. Stats équilibrées (21554/21554). Spécialité dégâts offensifs : boost skill + attaque de base. Compétences : ↑28% skill damage, ↑28% damage to player. Classement communauté : Tier S. Position lead d'équipe, genre Pop. Priorité d'investissement haute."
@@ -3605,7 +3605,7 @@
     "calculatedTier": "B",
     "specialty": "Solo car",
     "event": "Roma 3",
-    "image": "Kendell.jpg",
+    "image": "Kendell.webp",
     "singStat": 2845,
     "danceStat": 14225,
     "thoughts": "SSR. Stat Dance (14225) > Sing (2845) → profil défensif. Spécialité solo : augmente la capacité de troupe (fan cap). Compétences : ↑14% fan cap, ↑28% skill damage. Classement communauté : Tier B. Position DPS vocal, genre Hip Hop. Utilisation situationnelle."
@@ -3638,7 +3638,7 @@
     "calculatedTier": "A",
     "specialty": "Mixte",
     "event": "Roma 3",
-    "image": "Valerie.jpg",
+    "image": "Valerie.webp",
     "singStat": 14083,
     "danceStat": 28166,
     "thoughts": "SSR. Stat Dance (28166) > Sing (14083) → profil défensif. Spécialité mixte : un sort offensif + un sort défensif. Compétences : ↓12% basic damage reduction, ↑28% skill damage. Classement communauté : Tier A. Position DPS danse, genre Rock. Bon investissement polyvalent."
@@ -3656,7 +3656,7 @@
     ],
     "description": "A talented Center from No Group.",
     "season": "Universal",
-    "image": "Anastasia.jpg",
+    "image": "Anastasia.webp",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -3688,7 +3688,7 @@
     ],
     "description": "A talented Singer from No Group.",
     "season": "Universal",
-    "image": "Beatrice.jpg",
+    "image": "Beatrice.webp",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -3721,7 +3721,7 @@
     ],
     "description": "A talented Visual from No Group.",
     "season": "Universal",
-    "image": "Elizabeth.jpg",
+    "image": "Elizabeth.webp",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -3753,7 +3753,7 @@
     ],
     "description": "A talented Dancer from No Group.",
     "season": "Universal",
-    "image": "Gabriella.jpg",
+    "image": "Gabriella.webp",
     "skillCategories": {
       "dps": [
         "10 sec/1800 Damage"
@@ -3796,11 +3796,12 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S+",
     "description": "A talented Vocalist from None.",
     "specialty": "Mixte",
     "event": "Tokyo 5",
-    "image": "Rena.webp"
+    "image": "Rena.webp",
+    "thoughts": ""
   },
   {
     "id": 119,
@@ -3830,7 +3831,7 @@
     "description": "A talented Center from None.",
     "specialty": "Solo car",
     "event": "Tokyo 5",
-    "image": "Mizakura.png"
+    "image": "Mizakura.webp"
   },
   {
     "id": 120,
@@ -3916,11 +3917,12 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S+",
     "description": "A talented Center from None.",
     "specialty": "Mixte",
     "event": "Bali 5",
-    "image": "Landy.png"
+    "image": "Landy.webp",
+    "thoughts": ""
   },
   {
     "id": 123,
@@ -3950,7 +3952,7 @@
     "description": "A talented Dancer from None.",
     "specialty": "Solo car",
     "event": "Bali 5",
-    "image": "Momona.png"
+    "image": "Momona.webp"
   },
   {
     "id": 124,
@@ -3980,7 +3982,7 @@
     "description": "A talented Dancer from None.",
     "specialty": "Solo car",
     "event": "Rome 5",
-    "image": "Elame.png"
+    "image": "Elame.webp"
   },
   {
     "id": 125,
@@ -4006,11 +4008,12 @@
       ],
       "speed": []
     },
-    "calculatedTier": "A",
+    "calculatedTier": "S+",
     "description": "A talented Vocalist from None.",
     "specialty": "Mixte",
     "event": "Rome 5",
-    "image": "Layla.png"
+    "image": "Layla.webp",
+    "thoughts": ""
   },
   {
     "id": 126,
@@ -4040,6 +4043,6 @@
     "description": "A talented Center from None.",
     "specialty": "Solo car",
     "event": "Rome 5",
-    "image": "Nephtys.png"
+    "image": "Nephtys.webp"
   }
 ]
