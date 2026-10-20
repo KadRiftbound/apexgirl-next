@@ -74,7 +74,7 @@ const homeContent: Record<string, HomeContent> = {
     whatWeOffer: "Tout ce dont vous avez besoin",
     sections: [
       { emoji: "🎤", title: "Artistes", desc: "112+ fiches complètes", detail: "Stats, skills, tier et conseils pour chaque artiste du jeu", href: "teambuilder", color: "#ff4d8d" },
-      { emoji: "🏆", title: "Tier List", desc: "Classement communautaire", detail: "Votez et découvrez les artistes les plus puissants cette semaine", href: "tierlist", color: "#ffd700" },
+      { emoji: "🏆", title: "Tier List", desc: "Classement S+ à D", detail: "Les artistes classées selon leurs sorts, et le vote de la semaine", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Outils", desc: "Team builder & calculateurs", detail: "Construisez votre équipe idéale et simulez vos compositions", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Guides", desc: "Stratégies & tutoriels", detail: "De débutant à expert : tout ce qu'il faut savoir pour progresser", href: "guides", color: "#4ade80" },
     ],
@@ -129,7 +129,7 @@ const homeContent: Record<string, HomeContent> = {
     whatWeOffer: "Everything you need",
     sections: [
       { emoji: "🎤", title: "Artists", desc: "112+ full profiles", detail: "Stats, skills, tier and tips for every artist in the game", href: "teambuilder", color: "#ff4d8d" },
-      { emoji: "🏆", title: "Tier List", desc: "Community ranking", detail: "Vote and discover the most powerful artists this week", href: "tierlist", color: "#ffd700" },
+      { emoji: "🏆", title: "Tier List", desc: "S+ to D ranking", detail: "Artists ranked by their skills, plus the weekly community vote", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Tools", desc: "Team builder & calculators", detail: "Build your ideal team and simulate your compositions", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Guides", desc: "Strategies & tutorials", detail: "From beginner to expert: everything you need to know to improve", href: "guides", color: "#4ade80" },
     ],
@@ -404,7 +404,7 @@ const homeContent: Record<string, HomeContent> = {
     whatWeOffer: "Semua yang kamu butuhkan",
     sections: [
       { emoji: "🎤", title: "Artis", desc: "112+ profil lengkap", detail: "Stats, skill, tier dan tips untuk setiap artis", href: "teambuilder", color: "#ff4d8d" },
-      { emoji: "🏆", title: "Tier List", desc: "Ranking komunitas", detail: "Pilih dan temukan artis terkuat minggu ini", href: "tierlist", color: "#ffd700" },
+      { emoji: "🏆", title: "Tier List", desc: "Peringkat S+ sampai D", detail: "Artis diurutkan berdasarkan skill, plus vote komunitas mingguan", href: "tierlist", color: "#ffd700" },
       { emoji: "🛠️", title: "Alat", desc: "Team builder & kalkulator", detail: "Bangun tim ideal dan simulasikan komposisi", href: "tools", color: "#60a5fa" },
       { emoji: "📖", title: "Panduan", desc: "Strategi & tutorial", detail: "Dari pemula hingga ahli: semua untuk berkembang", href: "guides", color: "#4ade80" },
     ],

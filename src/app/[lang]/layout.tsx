@@ -149,8 +149,8 @@ export default async function LocaleLayout({
         <div className="header-inner">
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
             <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
-              <Image src="/assets/logositenew.png" alt="TopGirl" width={36} height={36} priority />
-              <span>{ui.header.logoTitle}</span>
+              <Image src="/assets/logositenew.png" alt="" width={36} height={36} priority />
+              <span>TopGirl<em>Guide</em></span>
             </Link>
             <NavVoteWidget lang={lang} />
           </div>

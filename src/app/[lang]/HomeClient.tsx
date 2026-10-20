@@ -10,6 +10,8 @@ import { getHomeContent } from "@/lib/i18n/home";
 import { fetchVoteData } from "@/lib/voteCache";
 import artistImages from "@/lib/data/artist-images.json";
 import { slugify } from "@/lib/utils/slugify";
+import { skillChips } from "@/lib/utils/skillSummary";
+import artistsData from "@/lib/data/artists.json";
 import "./home.css";
 
 function formatExpiry(dateStr: string, lang: string): string {
@@ -21,13 +23,17 @@ function formatExpiry(dateStr: string, lang: string): string {
   return date.toLocaleDateString(localeMap[lang] || "en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
 
-function formatLastUpdated(lang: string): string {
-  const localeMap: Record<string, string> = {
-    fr: "fr-FR", en: "en-GB", it: "it-IT", es: "es-ES",
-    pt: "pt-BR", pl: "pl-PL", id: "id-ID", ru: "ru-RU", de: "de-DE",
-  };
-  return new Date().toLocaleDateString(localeMap[lang] || "en-GB", { month: "long", year: "numeric" });
-}
+const topTierText: Record<string, { title: string; sub: string; cta: string }> = {
+  fr: { title: "Les incontournables", sub: "Les artistes S+ de la tier list", cta: "Voir la tier list" },
+  en: { title: "Must-have artists", sub: "The S+ artists of the tier list", cta: "See the tier list" },
+  id: { title: "Artis wajib", sub: "Artis S+ di tier list", cta: "Lihat tier list" },
+};
+
+type TierArtist = { id: number; name: string; rank: string; image?: string; skills?: string[]; calculatedTier?: string; tierScore?: number };
+const topTierArtists = (artistsData as TierArtist[])
+  .filter((a) => a.calculatedTier === "S+" && a.rank === "SSR")
+  .sort((a, b) => (b.tierScore || 0) - (a.tierScore || 0))
+  .slice(0, 6);
 
 /* Small inline icons — no emoji, consistent stroke weight. */
 const icons: Record<string, React.ReactNode> = {
@@ -70,7 +76,7 @@ type VoteEntry = { artist_name: string; week_count?: number; rank?: string };
 export default function HomeClient({ lang }: { lang: string }) {
   const t = getHomeContent(lang);
   const l = local[lang] || local.en;
-  const lastUpdatedText = formatLastUpdated(lang);
+  const tt = topTierText[lang] || topTierText.en;
 
   const [copiedCode, setCopiedCode] = useState("");
   const [top, setTop] = useState<VoteEntry[]>([]);
@@ -108,7 +114,6 @@ export default function HomeClient({ lang }: { lang: string }) {
             <span><b>112+</b> {t.statArtists}</span>
             <span><b>50+</b> {t.statGuides}</span>
             <span><b>5+</b> {t.statTools}</span>
-            <span className="hm-stats-updated">{t.lastUpdatedLabel} : {lastUpdatedText}</span>
           </div>
         </div>
       </section>
@@ -120,6 +125,31 @@ export default function HomeClient({ lang }: { lang: string }) {
           <span className="hm-note-text">{t.patchNoteText}</span>
         </div>
       </div>
+
+      {/* ───────── TOP TIER ───────── */}
+      <section className="hm-wrap hm-section">
+        <div className="hm-section-head">
+          <div>
+            <h2 className="hm-h2">{tt.title}</h2>
+            <p className="hm-h2-sub">{tt.sub}</p>
+          </div>
+          <Link href={`/${lang}/tierlist/`} className="hm-link-btn">{tt.cta}</Link>
+        </div>
+        <div className="hm-top">
+          {topTierArtists.map((a) => (
+            <Link key={a.id} href={`/${lang}/artist/${slugify(a.name)}/`} className="hm-top-card">
+              <span className="hm-top-img">
+                {a.image && <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="140px" style={{ objectFit: "cover" }} />}
+                <span className="hm-top-tier">S+</span>
+              </span>
+              <span className="hm-top-meta">
+                <span className="hm-top-name">{a.name}</span>
+                <span className="hm-top-skill">{skillChips(a.skills, lang)[0]?.text}</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* ───────── EXPLORE ───────── */}
       <section className="hm-wrap hm-section">

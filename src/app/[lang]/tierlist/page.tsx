@@ -91,8 +91,8 @@ export default async function TierlistPage({ params }: { params: Promise<{ lang:
           </div>
           <div className="info-panel-body">
             {lang === 'fr'
-              ? "Cette tier list combine votes communautaires, performances en jeu, synergies d'equipe et cout de progression. Les changements majeurs sont revus apres updates et evenements competitifs."
-              : "This tier list combines community voting, in-game performance, team synergy, and progression cost. Major shifts are reviewed after game updates and competitive events."}
+              ? "Le classement repose uniquement sur les compétences des artistes. Les dégâts au joueur passent avant tout, puis la réduction de dégâts de skill, les dégâts de skill, l'attaque de base, la réduction d'attaque et la capacité de fans. Il faut deux compétences utiles en combat pour atteindre le tier A. Les votes de la communauté sont affichés à part, dans l'onglet Vote."
+              : "The ranking is based only on the artists' skills. Damage to player comes first, then skill damage reduction, skill damage, basic attack, basic attack reduction and fan capacity. An artist needs two useful combat skills to reach tier A. Community votes are shown separately, in the Vote tab."}
           </div>
         </div>
       </div>

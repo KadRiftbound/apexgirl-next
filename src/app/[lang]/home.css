@@ -67,7 +67,6 @@
   color: var(--text-muted);
 }
 .hm-stats b { color: #fff; font-weight: 700; }
-.hm-stats-updated { color: rgba(255,255,255,0.45); }
 
 /* ---- Patch note ---- */
 .hm-note {
@@ -201,6 +200,51 @@
 .hm-copy:hover { background: rgba(255,77,141,0.26); }
 .hm-copy.ok { background: rgba(34,197,94,0.16); border-color: rgba(34,197,94,0.4); color: #4ade80; }
 
+/* ---- Top tier strip ---- */
+.hm-top {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+.hm-top-card {
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(14,14,24,0.88);
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.hm-top-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(251,191,36,0.6);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+}
+.hm-top-img { position: relative; display: block; aspect-ratio: 3 / 4; background: #1a1a28; }
+.hm-top-img::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 45%;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.6));
+}
+.hm-top-tier {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #fbbf24;
+  background: rgba(10,10,18,0.8);
+  border: 1px solid rgba(251,191,36,0.5);
+}
+.hm-top-meta { display: block; padding: 9px 11px 11px; }
+.hm-top-name { display: block; font-size: 0.9rem; font-weight: 700; color: #fff; }
+.hm-top-skill { display: block; margin-top: 2px; font-size: 0.72rem; font-weight: 600; color: #ff80ab; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 /* ---- Explainer prose ---- */
 .hm-prose {
   max-width: 820px;
@@ -223,17 +267,19 @@
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
+  .hm-top { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; scroll-padding-left: 24px; }
+  .hm-top-card { flex: 0 0 144px; scroll-snap-align: start; }
   .hm-fav { grid-template-columns: repeat(3, 1fr); }
   .hm-fav-card:nth-child(n+4) { display: none; }
   .hm-trust { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .hm-wrap { padding: 0 16px; }
+  .hm-top { margin: 0 -16px; padding-left: 16px; padding-right: 16px; scroll-padding-left: 16px; }
   .hm-hero { padding: 36px 16px 28px; }
   .hm-eyebrow { font-size: 0.66rem; gap: 8px; }
   .hm-eyebrow i, .hm-eyebrow span:last-child { display: none; }
   .hm-stats { font-size: 0.78rem; gap: 4px 12px; }
-  .hm-stats-updated { display: none; }
   .hm-section { margin-top: 32px; }
   .hm-explore { grid-template-columns: 1fr; gap: 10px; }
   .hm-card { padding: 16px; }

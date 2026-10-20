@@ -7,271 +7,148 @@ import { useParams, usePathname } from "next/navigation";
 import { getUiStrings } from "@/lib/i18n/ui";
 import artistImages from "@/lib/data/artist-images.json";
 import { fetchVoteData } from "@/lib/voteCache";
+import "./mobile-nav.css";
 
-type ArtistBasic = { id: number; name: string; image?: string };
+const VALID_LOCALES = ["fr", "en", "id"];
+
+const languages = [
+  { code: "fr", label: "Français" },
+  { code: "en", label: "English" },
+  { code: "id", label: "Indonesia" },
+];
+
+function switchLanguage(pathname: string, newLang: string): string {
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments.length > 0 && VALID_LOCALES.includes(segments[0])) {
+    segments[0] = newLang;
+    return "/" + segments.join("/") + "/";
+  }
+  return `/${newLang}/`;
+}
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [topVotedArtist, setTopVotedArtist] = useState<{ name: string; image?: string } | null>(null);
   const params = useParams();
-  const pathname = usePathname();
+  const pathname = usePathname() || "";
   const lang = (params?.lang as string) || "fr";
   const ui = getUiStrings(lang);
-
-  useEffect(() => {
-    fetchVoteData()
-      .then((data) => {
-        const top = data?.rankings?.this_week?.[0];
-        if (top?.artist_name) {
-          const image = (artistImages as Record<string, string>)[top.artist_name];
-          setTopVotedArtist({ name: top.artist_name, image });
-        }
-      });
-  }, []);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    // Reset state when route changes
+    fetchVoteData().then((data) => {
+      const top = data?.rankings?.this_week?.[0];
+      if (top?.artist_name) {
+        const image = (artistImages as Record<string, string>)[top.artist_name];
+        setTopVotedArtist({ name: top.artist_name, image });
+      }
+    });
+  }, []);
+
+  // Close the menu on navigation; hide the bar while scrolling down, show it again on scroll up.
+  useEffect(() => {
     setIsOpen(false);
     setIsVisible(true);
-    lastScrollY.current = 0;
-    // Force scroll to top on navigation so navbar is always visible on new page
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-    }
-    
+    lastScrollY.current = window.scrollY;
+
     const handleScroll = () => {
-      if (typeof window === 'undefined') return;
-      
-      const currentScrollY = window.scrollY;
-      
-      // Only on mobile
-      if (window.innerWidth <= 900) {
-        if (currentScrollY > 120) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
-      } else {
-        setIsVisible(true);
-      }
-      
-      lastScrollY.current = currentScrollY;
+      const y = window.scrollY;
+      if (y < 80) setIsVisible(true);
+      else if (y > lastScrollY.current + 6) setIsVisible(false);
+      else if (y < lastScrollY.current - 6) setIsVisible(true);
+      lastScrollY.current = y;
     };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
+
   const navItems = [
+    { href: `/${lang}/`, label: ui.nav.home },
     { href: `/${lang}/codes/`, label: ui.nav.codes },
     { href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder },
     { href: `/${lang}/tierlist/`, label: ui.nav.tierList },
     { href: `/${lang}/guides/`, label: ui.nav.guides },
-    { href: `/${lang}/tools/`, label: ui.nav.tools, cta: true },
+    { href: `/${lang}/tools/`, label: ui.nav.tools },
   ];
 
-    const VALID_LOCALES = ["fr", "en", "id"];
-
-  const languages = [
-    { code: "fr", label: "FR" },
-    { code: "en", label: "EN" },
-    { code: "id", label: "ID" },
-  ];
-
-  function switchLanguage(pathname: string, newLang: string): string {
-    const segments = pathname.split("/").filter(Boolean);
-    if (segments.length > 0 && VALID_LOCALES.includes(segments[0])) {
-      segments[0] = newLang;
-      return "/" + segments.join("/") + "/";
-    }
-    return `/${newLang}/`;
-  }
+  const normalizedPath = pathname.endsWith("/") ? pathname : `${pathname}/`;
+  const isActive = (href: string) =>
+    href === `/${lang}/` ? normalizedPath === href : normalizedPath.startsWith(href);
 
   return (
-    <div 
-      className="mobile-nav"
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 9999999,
-        minHeight: '100vh',
-        transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
-        transition: 'transform 0.3s ease',
-        pointerEvents: 'none' as const,
-      }}
-    >
-      <div style={{
-        position: 'sticky',
-        top: 0,
-        height: '56px',
-        background: 'rgba(10, 14, 24, 0.96)',
-        backdropFilter: 'blur(14px)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 16px',
-        borderBottom: '1px solid rgba(255,255,255,0.1)',
-        pointerEvents: 'auto' as const,
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Link href={`/${lang}/`} style={{ textDecoration: 'none' }}>
-            <Image
-              src="/assets/images/logo.png"
-              alt="TopGirlGuide"
-              width={120}
-              height={36}
-              priority
-              style={{ height: '36px', width: 'auto', maxWidth: '120px', objectFit: 'contain' }}
-            />
+    <div className={`mnav${isVisible || isOpen ? "" : " mnav-hidden"}`}>
+      <div className="mnav-bar">
+        <div className="mnav-left">
+          <Link href={`/${lang}/`} className="mnav-logo" aria-label="TopGirl - Home">
+            <Image src="/assets/logositenew.png" alt="" width={30} height={30} priority />
+            <span>TopGirl<em>Guide</em></span>
           </Link>
           {topVotedArtist && (
-            <Link
-              href={`/${lang}/tierlist/?tab=vote`}
-              title={topVotedArtist.name}
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '4px',
-                textDecoration: 'none', padding: '2px 8px 2px 2px',
-                borderRadius: '20px', border: '1.5px solid rgba(255,215,0,0.5)',
-                background: 'rgba(255,215,0,0.08)',
-              }}
-            >
-              <div style={{ width: '24px', height: '24px', borderRadius: '50%', overflow: 'hidden', position: 'relative', border: '1.5px solid #ffd700', flexShrink: 0 }}>
+            <Link href={`/${lang}/tierlist/?tab=vote`} title={topVotedArtist.name} className="mnav-crown">
+              <span className="mnav-crown-img">
                 {topVotedArtist.image ? (
-                  <Image src={`/assets/images/artists/${topVotedArtist.image}`} alt={topVotedArtist.name} fill sizes="24px" style={{ objectFit: 'cover' }} />
+                  <Image src={`/assets/images/artists/${topVotedArtist.image}`} alt={topVotedArtist.name} fill sizes="24px" style={{ objectFit: "cover" }} />
                 ) : (
-                  <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: '0.6rem', color: '#ffd700', fontWeight: 800 }}>{topVotedArtist.name.charAt(0)}</span>
+                  topVotedArtist.name.charAt(0)
                 )}
-              </div>
-              <span style={{ fontSize: '0.6rem', fontWeight: 700, color: '#ffd700', maxWidth: '55px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                👑
               </span>
+              <span aria-hidden="true">👑</span>
             </Link>
           )}
         </div>
-        
-        <button 
+
+        <button
           type="button"
-          aria-label={isOpen ? "Close menu" : "Open menu"}
+          className={`mnav-toggle${isOpen ? " open" : ""}`}
+          aria-label={isOpen ? "Close menu" : ui.mobile.menu}
           aria-expanded={isOpen}
           aria-controls="mobile-nav-menu"
           onClick={() => setIsOpen(!isOpen)}
-          style={{
-            background: 'linear-gradient(135deg, #ff4d8d, #8b5cf6)',
-            border: 'none',
-            borderRadius: '8px',
-            padding: '8px 14px',
-            color: '#fff',
-            fontSize: '14px',
-            cursor: 'pointer',
-            fontWeight: 600,
-            boxShadow: '0 2px 10px rgba(255, 77, 141, 0.3)',
-            zIndex: 9999999,
-            position: 'relative',
-            pointerEvents: 'auto'
-          }}
         >
-          {isOpen ? '✕' : `☰ ${ui.mobile.menu}`}
+          <span /><span /><span />
         </button>
       </div>
 
       {isOpen && (
-        <div
-          id="mobile-nav-menu"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Navigation menu"
-          style={{
-            position: 'fixed',
-            top: '56px',
-            left: '0',
-            right: '0',
-            bottom: '0',
-            background: 'rgba(10, 10, 20, 0.98)',
-            zIndex: 9999998,
-            padding: '20px',
-            overflowY: 'auto',
-            pointerEvents: 'auto'
-          }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <nav id="mobile-nav-menu" className="mnav-panel" aria-label="Navigation menu">
+          <div className="mnav-links">
             {navItems.map((item) => (
-              <Link 
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                style={{
-                  padding: '16px 20px',
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '12px',
-                  textDecoration: 'none',
-                  color: '#fff',
-                  fontSize: '18px',
-                  fontWeight: 500,
-                  textAlign: 'center'
-                }}
+                className={`mnav-link${isActive(item.href) ? " active" : ""}`}
+                aria-current={isActive(item.href) ? "page" : undefined}
               >
                 {item.label}
+                <span aria-hidden="true">→</span>
               </Link>
             ))}
-            
-            
-            <div style={{ 
-              marginTop: '20px', 
-              padding: '16px', 
-              background: 'rgba(255, 255, 255, 0.05)', 
-              borderRadius: '12px' 
-            }}>
-              <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '12px', fontSize: '14px' }}>
-                🌐 {ui.mobile.languageLabel}
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
-                {languages.map((l) => (
-                  <Link
-                    key={l.code}
-                    href={switchLanguage(pathname, l.code)}
-                    onClick={() => setIsOpen(false)}
-                    style={{
-                      padding: '10px 8px',
-                      background: l.code === lang ? 'rgba(139, 92, 246, 0.25)' : 'rgba(255, 255, 255, 0.06)',
-                      border: l.code === lang ? '1px solid #8b5cf6' : '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '8px',
-                      textDecoration: 'none',
-                      color: '#fff',
-                      fontSize: '14px',
-                      fontWeight: 500,
-                      textAlign: 'center'
-                    }}
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
+          </div>
+
+          <div className="mnav-lang">
+            <p>{ui.mobile.languageLabel}</p>
+            <div className="mnav-lang-grid">
+              {languages.map((l) => (
+                <Link
+                  key={l.code}
+                  href={switchLanguage(pathname, l.code)}
+                  onClick={() => setIsOpen(false)}
+                  className={`mnav-lang-btn${l.code === lang ? " on" : ""}`}
+                >
+                  {l.label}
+                </Link>
+              ))}
             </div>
           </div>
-          
-          <button 
-            onClick={() => setIsOpen(false)}
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              background: 'rgba(255, 255, 255, 0.2)',
-              border: 'none',
-              borderRadius: '50%',
-              width: '40px',
-              height: '40px',
-              color: '#fff',
-              fontSize: '24px',
-              cursor: 'pointer'
-            }}
-          >
-            ✕
-          </button>
-        </div>
+        </nav>
       )}
     </div>
   );

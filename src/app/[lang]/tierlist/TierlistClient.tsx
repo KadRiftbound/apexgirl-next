@@ -7,25 +7,34 @@ import { useSearchParams } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 import { slugify } from "@/lib/utils/slugify";
+import { skillChips } from "@/lib/utils/skillSummary";
 import type { Artist } from "@/lib/types/artist";
 import "./tierlist.css";
 
 const tierDescriptions: Record<string, Record<string, string>> = {
   fr: {
-    "S+": "Surpuissant : Les artistes les plus fortes avec des dégâts et des capacités exceptionnelles.",
-    "S": "Très fort : Gros dégâts joueur combinés à une seconde compétence puissante utile dans de nombreuses situations.",
-    "A": "Fort : Artistes fiables avec deux compétences puissantes qui marchent dans la plupart des compositions.",
-    "B": "Situationnel : Utile surtout pour la capacité de fans ou des cas spécifiques.",
-    "C": "Faible : Combinaisons de compétences inhabituelles ou inefficaces qui limitent leur utilité.",
-    "D": "Très faible : Compétences incompréhensibles ou complètement inutiles."
+    "S+": "24 % de dégâts au joueur ou plus : le meilleur sort du jeu, en grande quantité.",
+    "S": "Dégâts au joueur (20 %), ou une combinaison exceptionnelle comme 80 % d'attaque + réduction de dégâts de skill.",
+    "A": "Sans dégâts au joueur, mais deux bons sorts de combat (dégâts de skill, attaque, réductions).",
+    "B": "Un bon sort et un moyen, ou un seul vrai sort de combat.",
+    "C": "Un seul sort utile en combat, souvent accompagné de fans.",
+    "D": "Sorts hors combat (or, vitesse, gardes) ou trop faibles."
   },
   en: {
-    "S+": "Top tier: The strongest artists with exceptional damage and abilities.",
-    "S": "Very strong: High player damage combined with a powerful secondary skill useful in many situations.",
-    "A": "Strong: Reliable artists with two powerful skills that perform well in most team compositions.",
-    "B": "Situational: Mainly valuable for fan capacity or niche strategies.",
-    "C": "Weak: Artists with unusual or ineffective skill combinations that limit their usefulness.",
-    "D": "Very weak: Skills that are unclear or not useful."
+    "S+": "24% damage to player or more: the best skill in the game, in large amounts.",
+    "S": "Damage to player (20%), or an exceptional combo such as 80% basic attack + skill damage reduction.",
+    "A": "No damage to player, but two good combat skills (skill damage, basic attack, reductions).",
+    "B": "One good skill and an average one, or a single real combat skill.",
+    "C": "Only one useful combat skill, often paired with fan capacity.",
+    "D": "Non-combat skills (gold, speed, building guards) or too weak."
+  },
+  id: {
+    "S+": "Damage to player 24% atau lebih: skill terbaik di game, dalam jumlah besar.",
+    "S": "Damage to player (20%), atau kombinasi luar biasa seperti 80% basic attack + skill damage reduction.",
+    "A": "Tanpa damage to player, tapi dua skill tempur yang bagus (skill damage, basic attack, reduksi).",
+    "B": "Satu skill bagus dan satu biasa, atau hanya satu skill tempur.",
+    "C": "Hanya satu skill tempur yang berguna, sering dengan fan capacity.",
+    "D": "Skill non-tempur (gold, kecepatan, penjaga bangunan) atau terlalu lemah."
   },
   de: {
     "S+": "Überragend: Die stärksten Künstlerinnen mit außergewöhnlichem Schaden und Fähigkeiten.",
@@ -66,14 +75,6 @@ const tierDescriptions: Record<string, Record<string, string>> = {
     "B": "Sytuacyjny: Przydatny głównie dzięki pojemności fanów lub w konkretnych sytuacjach.",
     "C": "Słaby: Artyści z nietypowymi lub nieefektywnymi kombinacjami umiejętności.",
     "D": "Bardzo słaby: Umiejętności niejasne lub bezużyteczne."
-  },
-  id: {
-    "S+": "Sangat kuat: Artis terkuat dengan kerusakan dan kemampuan luar biasa.",
-    "S": "Sangat kuat: Kerusakan pemain tinggi dengan skill sekunder yang kuat.",
-    "A": "Kuat: Artis andal dengan dua skill kuat.",
-    "B": "Situasional: Utama berguna untuk kapasitas penggemar atau situasi tertentu.",
-    "C": "Lemah: Artis dengan kombinasi skill yang tidak biasa atau tidak efektif.",
-    "D": "Sangat lemah: Skill tidak jelas atau tidak berguna."
   },
   ru: {
     "S+": "Лучший уровень: Самые сильные артисты с исключительным уроном и способностями.",
@@ -331,9 +332,9 @@ function TierListPageInner({ lang }: { lang: string }) {
             <div className="tier-toolbar">
               <div className="tier-legend" aria-label="Tiers">
                 {tierOrder.map(tier => (
-                  <span key={tier} className="tier-chip" style={{ ["--tier" as string]: tierColors[tier]?.rgb }}>
+                  <a key={tier} href={`#tier-${tier.replace("+", "plus")}`} className="tier-chip" style={{ ["--tier" as string]: tierColors[tier]?.rgb }}>
                     <b>{tier}</b>
-                  </span>
+                  </a>
                 ))}
               </div>
               <div className="tier-filters">
@@ -372,7 +373,7 @@ function TierListPageInner({ lang }: { lang: string }) {
               if (tierArtists.length === 0) return null;
               
               return (
-                <section key={tier} className="tier-panel" style={{ ["--tier" as string]: tierColors[tier]?.rgb }}>
+                <section key={tier} id={`tier-${tier.replace("+", "plus")}`} className="tier-panel" style={{ ["--tier" as string]: tierColors[tier]?.rgb }}>
                   <header className="tier-head">
                     <span className="tier-letter">{tier}</span>
                     <div className="tier-head-text">
@@ -400,10 +401,14 @@ function TierListPageInner({ lang }: { lang: string }) {
                           <span className="artist-tile-rank">{artist.rank.replace("UR ", "UR·")}</span>
                         </div>
                         <div className="artist-tile-meta">
-                          <span className="artist-tile-name">{artist.name}</span>
-                          <span className="artist-tile-genre">
-                            <i style={{ background: genreColors[artist.genre] || "#666" }} />
-                            {artist.genre}
+                          <span className="artist-tile-name">
+                            <i style={{ background: genreColors[artist.genre] || "#666" }} title={artist.genre} />
+                            {artist.name}
+                          </span>
+                          <span className="artist-tile-skills">
+                            {skillChips(artist.skills, lang).map((c, i) => (
+                              <span key={i} className={`skill-chip skill-${c.kind}`}>{c.text}</span>
+                            ))}
                           </span>
                         </div>
                       </Link>
