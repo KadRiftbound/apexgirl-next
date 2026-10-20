@@ -569,13 +569,12 @@ export default function ArtistsClient({ lang }: { lang: string }) {
               onName={setTeam2Name} onSave={() => saveTeam(2)} onShare={shareTeams}
               onClear={() => setTeam2([])} onRemove={removeFromTeam2}
             />
-            </div>
-
             <CompareTable
               e1={team1Eval} e2={team2Eval} t={t}
               collapsed={isMobile && compareCollapsed}
               onToggle={() => setCompareCollapsed((v) => !v)}
             />
+            </div>
 
           </div>
 
