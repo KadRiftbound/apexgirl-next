@@ -8,12 +8,10 @@ interface AdSenseProps {
 }
 
 export function AdSense({ adSlot, adFormat = "auto" }: AdSenseProps) {
-  if (!adSlot) return null;
-
   const pushed = useRef(false);
 
   useEffect(() => {
-    if (pushed.current) return;
+    if (!adSlot || pushed.current) return;
     pushed.current = true;
     try {
       (window as any).adsbygoogle = (window as any).adsbygoogle || [];
@@ -21,14 +19,16 @@ export function AdSense({ adSlot, adFormat = "auto" }: AdSenseProps) {
     } catch (e) {
       console.error("AdSense error:", e);
     }
-  }, []);
+  }, [adSlot]);
+
+  if (!adSlot) return null;
 
   return (
     <ins
       className="adsbygoogle"
       style={{ display: "block" }}
       data-ad-client="ca-pub-5737915177617454"
-      data-ad-slot={adSlot || "1234567890"}
+      data-ad-slot={adSlot}
       data-ad-format={adFormat}
       data-full-width-responsive="true"
     />
