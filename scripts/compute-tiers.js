@@ -6,16 +6,18 @@
  *   node scripts/compute-tiers.js --write  # also writes calculatedTier + tierScore into artists.json
  *
  * Principle: the tier depends only on the skills (type and % value). Two artists
- * with the same skills always land in the same tier. Stats only order artists
- * inside a tier (tieBreak), they never move an artist across tiers.
+ * with the same skills always land in the same tier.
  *
- * Each skill is first normalized by the highest value of its type seen in the data
- * (80% basic attack and 32% player damage both count as 1.0), then multiplied by
- * the type weight below, from the maintainer's ranking of skill power:
- *   damage to player > skill damage reduction > skill damage > basic attack > basic attack reduction
- *   rally cap / fan cap are situational (low weight)
- *   everything else (dps line, gold, drive speed, WBG, PVE dps) is dead weight (0)
- * A maxed skill of a given type is worth weight x 100 points.
+ * Rules, from the maintainer's ranking of skill power:
+ * 1. Damage to player is by far the best skill and drives the tier on its own:
+ *    >= 24% total -> S+, any lower amount -> S.
+ * 2. The other skills give "support points", used for artists without damage to player
+ *    (S >= 500, A >= 350, B >= 250, C >= 120, else D) and to order artists inside a tier:
+ *      skill damage reduction > skill damage > basic attack > basic attack reduction > fan cap > fixed dps
+ *    Fixed dps is decent but situational: low value, and it only counts as a second skill up to A.
+ *    Gold, drive speed, world building guard damage, PVE damage lines are dead weight (0).
+ * 3. An artist needs two useful skills to reach A or above, otherwise she is capped at B.
+ *    With fixed dps as her second skill she is capped at A.
  */
 const fs = require("fs");
 const path = require("path");
@@ -23,92 +25,78 @@ const path = require("path");
 const DATA = path.join(__dirname, "..", "src", "lib", "data", "artists.json");
 const WRITE = process.argv.includes("--write");
 
-// [regex, type weight, label]
-const SKILL_WEIGHTS = [
-  [/damage to player|player damage/i, 5, "player dmg"],
-  [/skill damage (taken|reduction)|↓.*skill damage/i, 4, "skill dmg reduction"],
-  [/↑\s*\S+\s*skill damage|^\S+\s*skill damage$/i, 3, "skill dmg"],
-  [/basic attack damage dealt|normal attack|basic attack damage$|increase normal attack/i, 2, "basic atk"],
-  [/basic attack damage taken|basic damage reduction|↓.*damage taken|^\S+ damage reduction$/i, 1.5, "basic atk reduction"],
-  [/rally fan|rally fans/i, 1.5, "rally cap"],
-  [/fan cap|fans cap/i, 1.5, "fan cap"],
+// [label, regex, points per unit, counts as a useful skill]. Order matters: first match wins.
+// Reference values: 12% skill damage reduction = 400, 20% skill damage = 200, 50% basic attack = 200,
+// 12% basic attack reduction = 120, 16% fan cap = 50, 240 fixed dps = 100.
+const PCT_TYPES = [
+  ["player dmg", /damage to player|player damage/i, 0, true],
+  ["skill dmg reduction", /skill damage (taken|reduction)|↓.*skill damage/i, 400 / 12, true],
+  ["skill dmg", /skill damage/i, 10, true],
+  ["basic atk", /basic attack damage dealt|normal attack|basic attack damage$|increase normal attack/i, 4, true],
+  ["basic atk reduction", /basic attack damage taken|basic damage reduction|↓.*damage taken|^\S+ damage reduction$/i, 10, true],
+  ["fan cap", /fans? cap|fan capacity/i, 50 / 16, true],
 ];
-
-// Tier boundaries on the skill score. Fixed numbers so identical skills always share a tier.
-// Tuned on the SSR distribution: see the histogram printed in dry run.
-const TIER_THRESHOLDS = [
-  ["S+", 700],
-  ["S", 550],
-  ["A", 400],
-  ["B", 250],
-  ["C", 120],
-  ["D", 0],
-];
+const DPS_POINTS = 100 / 240;
 
 function parseSkill(raw) {
-  const text = String(raw).replace(/\s+/g, " ").trim();
+  const text = String(raw).replace(/["\s]+/g, " ").trim();
   const pct = text.match(/(\d+(?:[.,]\d+)?)\s*%/);
-  if (!pct) return null; // "10 sec/1800 damage" and other non-% lines are dead weight
-  const value = parseFloat(pct[1].replace(",", "."));
-  for (const [re, weight, label] of SKILL_WEIGHTS) {
-    if (re.test(text)) return { label, value, weight };
+  if (pct) {
+    const value = parseFloat(pct[1].replace(",", "."));
+    for (const [label, re, perUnit, useful] of PCT_TYPES) {
+      if (re.test(text)) return { label, value, unit: "%", points: value * perUnit, useful };
+    }
+    return { label: "dead", value, unit: "%", points: 0, useful: false };
   }
-  return { label: "dead", value, weight: 0 };
-}
-
-// Highest value seen per skill type: the normalization base.
-const TYPE_MAX = {};
-function learnTypeMax(artists) {
-  for (const a of artists) for (const s of a.skills || []) {
-    const p = parseSkill(s);
-    if (p && p.weight) TYPE_MAX[p.label] = Math.max(TYPE_MAX[p.label] || 0, p.value);
-  }
+  const dps = text.match(/(\d+)\s*dps\b/i);
+  if (dps) return { label: "fixed dps", value: +dps[1], unit: "", points: +dps[1] * DPS_POINTS, useful: false, situational: true };
+  return null; // "10 sec/1800 damage" and other flat lines
 }
 
 function scoreArtist(artist) {
   const parts = (artist.skills || []).map(parseSkill).filter(Boolean);
-  for (const p of parts) p.points = p.weight ? (p.value / TYPE_MAX[p.label]) * p.weight * 100 : 0;
-  const score = parts.reduce((sum, p) => sum + p.points, 0);
-  return { score: Math.round(score), parts };
+  const playerDamage = parts.filter((p) => p.label === "player dmg").reduce((t, p) => t + p.value, 0);
+  const support = Math.round(parts.reduce((t, p) => t + p.points, 0));
+  const useful = parts.filter((p) => p.useful).length;
+  const situational = parts.filter((p) => p.situational).length;
+  return { playerDamage, support, useful, situational, parts, score: Math.round(playerDamage * 100 + support) };
 }
 
-function tierFor(score) {
-  for (const [tier, min] of TIER_THRESHOLDS) if (score >= min) return tier;
-  return "D";
+const TIERS = ["S+", "S", "A", "B", "C", "D"];
+
+function tierFor({ playerDamage, support, useful, situational }) {
+  let tier;
+  if (playerDamage >= 24) tier = "S+";
+  else if (playerDamage > 0 || support >= 500) tier = "S";
+  else if (support >= 350) tier = "A";
+  else if (support >= 250) tier = "B";
+  else if (support >= 120) tier = "C";
+  else tier = "D";
+  const cap = useful >= 2 ? "S+" : useful + situational >= 2 ? "A" : "B";
+  if (TIERS.indexOf(tier) < TIERS.indexOf(cap)) return { tier: cap, capped: true };
+  return { tier, capped: false };
 }
+
+// Capped artists sit at the bottom of their tier: their score is the tier's entry threshold.
+const CAPPED_SCORE = { A: 350, B: 250 };
 
 const artists = JSON.parse(fs.readFileSync(DATA, "utf8"));
-learnTypeMax(artists);
-console.log("Normalization base (max % per skill type):", TYPE_MAX);
-console.log("");
 const rows = artists.map((a) => {
-  const { score, parts } = scoreArtist(a);
-  const stats = (a.singStat || 0) + (a.danceStat || 0);
-  return { a, score, parts, stats, oldTier: a.calculatedTier, newTier: tierFor(score) };
+  const r = scoreArtist(a);
+  const { tier, capped } = tierFor(r);
+  return { a, ...r, score: capped ? CAPPED_SCORE[tier] : r.score, oldTier: a.calculatedTier, newTier: tier };
 });
 
-// Histogram of SSR scores, to tune thresholds.
-const ssr = rows.filter((r) => r.a.rank === "SSR").sort((p, q) => q.score - p.score);
-console.log("SSR score distribution (score: names)");
-const byScore = {};
-for (const r of ssr) (byScore[r.score] = byScore[r.score] || []).push(r.a.name);
-for (const [s, names] of Object.entries(byScore).sort((p, q) => q[0] - p[0])) {
-  console.log(`  ${String(s).padStart(6)}  ${tierFor(+s).padEnd(2)}  ${names.join(", ")}`);
-}
-
-console.log("\nTier changes:");
-let changes = 0;
-for (const r of rows) {
-  if (r.oldTier !== r.newTier) {
-    changes++;
-    const detail = r.parts.filter((p) => p.weight).map((p) => `${p.value}% ${p.label}`).join(" + ") || "no scored skill";
-    console.log(`  ${r.a.name.padEnd(12)} ${r.a.rank.padEnd(8)} ${String(r.oldTier).padEnd(3)} -> ${r.newTier.padEnd(3)} score ${String(r.score).padStart(5)}  (${detail})`);
+for (const tier of TIERS) {
+  const list = rows.filter((r) => r.newTier === tier).sort((p, q) => q.score - p.score);
+  console.log(`\n${tier} (${list.length})`);
+  for (const r of list) {
+    const detail = r.parts.map((p) => `${p.value}${p.unit} ${p.label}`).join(" + ") || "no scored skill";
+    const moved = r.oldTier !== r.newTier ? `  (was ${r.oldTier})` : "";
+    console.log(`  ${r.a.name.padEnd(12)} ${r.a.rank.padEnd(8)} ${String(r.score).padStart(5)}  ${detail}${moved}`);
   }
 }
-console.log(`\n${changes} artists change tier out of ${rows.length}.`);
-
-const deadPct = [...new Set(rows.flatMap((r) => r.a.skills.filter((s) => /\d%/.test(s) && parseSkill(s).weight === 0)))];
-if (deadPct.length) console.log("\nSkills with a % but weighted 0 (check they are really dead):\n  " + deadPct.join("\n  "));
+console.log(`\n${rows.filter((r) => r.oldTier !== r.newTier).length} artists change tier out of ${rows.length}.`);
 
 if (WRITE) {
   for (const r of rows) {
