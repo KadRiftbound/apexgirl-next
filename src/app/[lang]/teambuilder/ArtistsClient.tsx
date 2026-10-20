@@ -1,22 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, useSyncExternalStore, type ReactNode, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
-import MobileArtistsPage from "@/components/MobileArtistsPage";
 import { slugify } from "@/lib/utils/slugify";
-import { calculateTeamStats } from "@/lib/utils/calculateTeamStats";
+import { evaluateTeam, type TeamEvaluation, type TeamAxis, type TeamContext } from "@/lib/utils/evaluateTeam";
+import { skillChips } from "@/lib/utils/skillSummary";
 import type { Artist } from "@/lib/types/artist";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { SupportCard } from "@/components/SupportCard";
-import { getArtistContent } from "@/lib/i18n/artists";
+import { getArtistContent, type ArtistContent } from "@/lib/i18n/artists";
+import "./teambuilder.css";
 
-const rankColors: Record<string, string> = {
-  UR: "#ff6b6b", "UR Roma": "#ef4444", "UR Bali": "#ef4444", SSR: "#fbbf24", SR: "#8b5cf6", R: "#3b82f6",
-};
+const isUR = (rank: string) => rank.startsWith("UR");
 
 const genreColors: Record<string, string> = {
   "Pop":     "rgba(236, 72, 153, 0.55)",
@@ -27,43 +25,25 @@ const genreColors: Record<string, string> = {
 };
 
 const tierBadgeColors: Record<string, string> = {
-  "S+": "#d4a017", S: "#eab308", A: "#22c55e", B: "#3b82f6", C: "#f59e0b", D: "#64748b",
+  "S+": "#d4a017", S: "#eab308", A: "#22c55e", B: "#3b82f6", C: "#f59e0b", D: "#64748b", "-": "#475569",
 };
-
-const seasonLabels: Record<string, string> = {
-  fr: "Saison",
-  en: "Season",
-  it: "Stagione",
-  es: "Temporada",
-  pt: "Temporada",
-  pl: "Sezon",
-  id: "Musim",
-  ru: "Сезон",
-};
-
 
 const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
-const RANKS = ['UR', 'UR Roma', 'UR Bali', 'SSR', 'SR', 'R'];
 
 // French values from artists.json (used internally)
 const SPECIALTY_VALUES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de conduite', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'] as const;
-
-// Key-based mapping for filtering
 const SPECIALTY_KEYS = ['damage_boost', 'damage_reduction', 'driving_speed', 'hq_defense', 'mixed', 'gathering', 'solo_car', 'economy'] as const;
-
-// French values to keys mapping
 const SPECIALTY_FR_TO_KEY: Record<string, string> = {
   'Augmentation dommage': 'damage_boost',
   'Dommage réduction': 'damage_reduction',
   'Vitesse de conduite': 'driving_speed',
   'HQ Defense': 'hq_defense',
+  'HQ defense': 'hq_defense',
   'Mixte': 'mixed',
   'Rassemblement': 'gathering',
   'Solo car': 'solo_car',
   'Économie': 'economy',
 };
-
-// Translated display labels by language
 const SPECIALTY_LABELS_BY_LANG: Record<string, Record<string, string>> = {
   fr: { damage_boost: 'Augmentation dommage', damage_reduction: 'Dommage réduction', driving_speed: 'Vitesse de conduite', hq_defense: 'HQ Defense', mixed: 'Mixte', gathering: 'Rassemblement', solo_car: 'Solo car', economy: 'Économie' },
   en: { damage_boost: 'Damage Boost', damage_reduction: 'Damage Reduction', driving_speed: 'Driving Speed', hq_defense: 'HQ Defense', mixed: 'Mixed', gathering: 'Gathering', solo_car: 'Solo Car', economy: 'Economy' },
@@ -75,7 +55,68 @@ const SPECIALTY_LABELS_BY_LANG: Record<string, Record<string, string>> = {
   ru: { damage_boost: 'Увеличение урона', damage_reduction: 'Уменьшение урона', driving_speed: 'Скорость вождения', hq_defense: 'HQ Защита', mixed: 'Смешанный', gathering: 'Сбор', solo_car: 'Соло Машина', economy: 'Экономика' },
   de: { damage_boost: 'Schadensboost', damage_reduction: 'Schadensreduzierung', driving_speed: 'Fahrgeschwindigkeit', hq_defense: 'HQ Verteidigung', mixed: 'Gemischt', gathering: 'Sammeln', solo_car: 'Solo Auto', economy: 'Wirtschaft' },
 };
+const specialtyLabel = (spec: string | undefined, lang: string): string => {
+  if (!spec) return "";
+  const key = SPECIALTY_FR_TO_KEY[spec];
+  if (!key) return spec;
+  return SPECIALTY_LABELS_BY_LANG[lang]?.[key] || SPECIALTY_LABELS_BY_LANG.en[key] || spec;
+};
 
+/* Small monochrome stroke icons (lucide-style paths), so the sticky bar does not depend on emoji rendering. */
+const ICON_PATHS: Record<string, ReactNode> = {
+  save: <><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><path d="M17 21v-8H7v8" /><path d="M7 3v5h8" /></>,
+  link: <><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></>,
+  trash: <><path d="M3 6h18" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /><path d="M10 11v6M14 11v6" /><path d="M9 6V4h6v2" /></>,
+  zap: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />,
+  sword: <><path d="M14.5 17.5L3 6V3h3l11.5 11.5" /><path d="M13 19l6-6" /><path d="M16 16l4 4" /><path d="M19 21l2-2" /></>,
+  target: <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3" /><path d="M12 3v3M12 18v3M3 12h3M18 12h3" /></>,
+  shield: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />,
+  sparkle: <path d="M12 3l1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z" />,
+  music: <><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></>,
+  user: <><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></>,
+  users: <><circle cx="9" cy="8" r="4" /><path d="M2 21a7 7 0 0 1 14 0" /><circle cx="17" cy="9" r="3" /><path d="M22 20a5 5 0 0 0-6-4.9" /></>,
+  scale: <><path d="M12 3v18" /><path d="M5 7h14" /><path d="M3 15l2-8 2 8a3 3 0 0 1-4 0z" /><path d="M17 15l2-8 2 8a3 3 0 0 1-4 0z" /><path d="M8 21h8" /></>,
+  trophy: <><path d="M8 21h8" /><path d="M12 17v4" /><path d="M7 4h10v5a5 5 0 0 1-10 0z" /><path d="M17 5h3a2 2 0 0 1-2 4" /><path d="M7 5H4a2 2 0 0 0 2 4" /></>,
+  search: <><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></>,
+  folder: <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />,
+  chevron: <path d="M6 9l6 6 6-6" />,
+  check: <path d="M20 6L9 17l-5-5" />,
+};
+function Icon({ name, size = 14, className, style }: { name: string; size?: number; className?: string; style?: CSSProperties }) {
+  return (
+    <svg
+      className={`tb-ico${className ? ` ${className}` : ""}`}
+      width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden style={style}
+    >
+      {ICON_PATHS[name]}
+    </svg>
+  );
+}
+
+const CONTEXTS: Record<TeamContext, { icon: string; key: keyof ArtistContent }> = {
+  general: { icon: "scale", key: "ctxGeneral" },
+  solo: { icon: "user", key: "ctxSolo" },
+  rally: { icon: "users", key: "ctxRally" },
+};
+const AXES: Record<TeamAxis, { icon: string; key: keyof ArtistContent }> = {
+  solo: { icon: "user", key: "archSolo" },
+  rally: { icon: "users", key: "archRally" },
+  dps: { icon: "sword", key: "archDps" },
+  tank: { icon: "shield", key: "archTank" },
+};
+
+const STAT_ROWS: { key: keyof Omit<TeamEvaluation["stats"], "genreCounts">; icon: string; label: string; color: string; suffix?: string }[] = [
+  { key: "skillDamageRaw", icon: "zap", label: "DMG Factor", color: "#ff8c42" },
+  { key: "skillDamage", icon: "sword", label: "Skill DMG", color: "#ff6b6b", suffix: "%" },
+  { key: "basicAttackPercent", icon: "target", label: "Basic ATK", color: "#4ecdc4", suffix: "%" },
+  { key: "attackResist", icon: "shield", label: "Resistance", color: "#95e1d3", suffix: "%" },
+  { key: "skillResist", icon: "sparkle", label: "S. Resist", color: "#a29bfe", suffix: "%" },
+  { key: "fanCapacity", icon: "music", label: "Fan Cap", color: "#ffd700", suffix: "%" },
+  { key: "rallyCapacity", icon: "users", label: "Rally Cap", color: "#00ff88", suffix: "%" },
+];
+
+const fmt = (n: number) => n.toLocaleString("fr-FR").replace(/ /g, " ");
 
 const copyToClipboard = async (text: string): Promise<boolean> => {
   try { await navigator.clipboard.writeText(text); return true; } catch {}
@@ -94,9 +135,16 @@ const copyToClipboard = async (text: string): Promise<boolean> => {
 };
 
 type SavedTeam = { id: string; name: string; ids: number[]; createdAt: number };
+const newSavedTeam = (n: 1 | 2, name: string, ids: number[]): SavedTeam => {
+  const now = Date.now();
+  return { id: `${now}-${n}`, name, ids, createdAt: now };
+};
+
+// SR and R artists are not worth a team slot: the builder only lists UR and SSR.
+const POOL: Artist[] = (artistsData as Artist[]).filter((a) => a.rank !== "R" && a.rank !== "SR");
 
 const idsToArtists = (ids: number[]): Artist[] =>
-  ids.map((id) => artistsData.find((a: Artist) => a.id === id)).filter(Boolean).slice(0, 5) as Artist[];
+  ids.map((id) => (artistsData as Artist[]).find((a) => a.id === id)).filter(Boolean).slice(0, 5) as Artist[];
 
 const readLS = (key: string, fallback: string): string => {
   if (typeof window === 'undefined') return fallback;
@@ -120,16 +168,231 @@ const loadInitialTeam = (n: 1 | 2): Artist[] => {
   return [];
 };
 
+// Saison max — ordre chronologique
+const SEASON_ORDER: Record<string, number> = {
+  "Original": 0,
+  "Tokyo 1": 1,
+  "Événement": 1.5,
+  "Bali 1": 2,
+  "Rome 1": 3, "Roma 1": 3,
+  "Tokyo 2": 4,
+  "Bali 2": 5,
+  "Rome 2": 6, "Roma 2": 6,
+  "Tokyo 3": 7,
+  "Bali 3": 8,
+  "Rome 3": 9, "Roma 3": 9,
+  "Tokyo 4": 10,
+  "Bali 4": 11,
+  "Rome 4": 12, "Roma 4": 12,
+  "Tokyo 5": 13,
+  "Bali 5": 14,
+  "Rome 5": 15, "Roma 5": 15,
+};
+const SEASON_LABELS: string[] = [
+  "Original", "Tokyo 1", "Événement",
+  "Bali 1", "Rome 1",
+  "Tokyo 2", "Bali 2", "Rome 2",
+  "Tokyo 3", "Bali 3", "Rome 3",
+  "Tokyo 4", "Bali 4", "Rome 4",
+  "Tokyo 5", "Bali 5", "Rome 5",
+];
+const getArtistSeasonOrder = (artist: Artist): number => {
+  const ev = artist.event;
+  if (!ev) return SEASON_ORDER["Événement"];
+  return SEASON_ORDER[ev] ?? SEASON_ORDER["Événement"];
+};
+
+const rankOrder: Record<string, number> = { UR: 1, "UR Roma": 1, "UR Bali": 1, SSR: 2 };
+const tierOrder: Record<string, number> = { "S+": 0, S: 1, A: 2, B: 3, C: 4, D: 5 };
+
+const subscribeNoop = () => () => {};
+const subscribeResize = (cb: () => void) => {
+  window.addEventListener("resize", cb);
+  return () => window.removeEventListener("resize", cb);
+};
+
+/* ------------------------------------------------------------------ */
+/* Team evaluation block                                                */
+/* ------------------------------------------------------------------ */
+function TeamEvalBlock({ ev, t }: { ev: TeamEvaluation; t: ArtistContent }) {
+  const gradeColor = tierBadgeColors[ev.grade] || tierBadgeColors["-"];
+  const ctx = CONTEXTS[ev.context];
+  const genres = Object.entries(ev.stats.genreCounts).sort((a, b) => b[1] - a[1]);
+  const axisList = (list: TeamAxis[]) => list.map((k, i) => (
+    <span key={k} className="tb-axis">
+      {i > 0 && <span className="tb-sep">·</span>}
+      <Icon name={AXES[k].icon} size={11} /> {t[AXES[k].key]}
+    </span>
+  ));
+  return (
+    <>
+      <div className="tb-eval" style={{ ["--grade" as string]: gradeColor }}>
+        <div className="tb-grade" title={t.evalRatingHint}>
+          {ev.grade}
+          <small>{ev.size ? `${ev.rating}/100` : "—"}</small>
+        </div>
+        <div className="tb-eval-main">
+          <div className="tb-eval-row">
+            <span>{t.evalPower}</span>
+            <b>{fmt(ev.score)}</b>
+            {ev.synergy && <span className="tb-bonus">+{Math.round(ev.synergy.bonus * 100)}%</span>}
+            <span className="tb-rating" title={t.evalRatingHint}>{ev.rating}<span>/100</span></span>
+          </div>
+          <div className="tb-bar"><i style={{ width: `${ev.rating}%` }} /></div>
+          <div className="tb-chips">
+            {genres.length === 0 && <span className="tb-chip" style={{ background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.35)" }}>—</span>}
+            {genres.map(([genre, count]) => (
+              <span
+                key={genre}
+                className={`tb-chip${ev.synergy?.genre === genre ? " synergy" : ""}`}
+                style={ev.synergy?.genre === genre ? undefined : { background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}
+                title={ev.synergy?.genre === genre ? `${t.evalSynergy} +${Math.round(ev.synergy.bonus * 100)}%` : undefined}
+              >
+                {genre} ×{count}{ev.synergy?.genre === genre ? ` · +${Math.round(ev.synergy.bonus * 100)}%` : ""}
+              </span>
+            ))}
+            {ev.nextSynergy && (
+              <span className="tb-chip synergy-next" title={t.evalSynergy}>
+                {t.evalNextHint.replace("{genre}", ev.nextSynergy.genre).replace("{pct}", String(Math.round(ev.nextSynergy.bonus * 100)))}
+              </span>
+            )}
+            {ev.size > 0 && (
+              <span className="tb-chip ctx" title={t.evalBuiltFor}><Icon name={ctx.icon} size={11} /> {t.evalBuiltFor} : {t[ctx.key]}</span>
+            )}
+          </div>
+        </div>
+      </div>
+      {ev.size > 0 && (ev.strengths.length > 0 || ev.weaknesses.length > 0) && (
+        <div className="tb-verdict">
+          {ev.strengths.length > 0 && <span className="strong">{t.evalStrong} <b>{axisList(ev.strengths)}</b></span>}
+          {ev.weaknesses.length > 0 && <span className="weak">{t.evalWeak} <b>{axisList(ev.weaknesses)}</b></span>}
+        </div>
+      )}
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Team card                                                            */
+/* ------------------------------------------------------------------ */
+type TeamCardProps = {
+  n: 1 | 2;
+  team: Artist[];
+  name: string;
+  ev: TeamEvaluation;
+  t: ArtistContent;
+  active: boolean;
+  shown: boolean;
+  onActivate: () => void;
+  onName: (v: string) => void;
+  onSave: () => void;
+  onShare: () => void;
+  onClear: () => void;
+  onRemove: (id: number) => void;
+};
+
+function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onName, onSave, onShare, onClear, onRemove }: TeamCardProps) {
+  return (
+    <div className={`tb-card tb-team tb-team-${n}${active ? " active" : ""}${shown ? " shown" : ""}`}>
+      <div className="tb-team-head">
+        <button className="tb-team-badge" onClick={onActivate} title={t.activeTeamHint} aria-label={t.activeTeamHint}>{n}</button>
+        <input
+          className="tb-team-name"
+          value={name}
+          onChange={(e) => onName(e.target.value)}
+          onFocus={onActivate}
+          placeholder={n === 1 ? t.team1Label : t.team2Label}
+          maxLength={24}
+          aria-label={t.teamNamePlaceholder}
+        />
+        <div className="tb-team-actions">
+          <button onClick={onSave} className="tb-icon-btn" title={t.saveTeam} aria-label={t.saveTeam}><Icon name="save" /></button>
+          <button onClick={onShare} className="tb-icon-btn" title={t.shareTeam} aria-label={t.shareTeam}><Icon name="link" /></button>
+          <button onClick={onClear} className="tb-icon-btn danger" title={t.clearTeam} aria-label={t.clearTeam}><Icon name="trash" /></button>
+        </div>
+      </div>
+      <div className="tb-slots">
+        {[0, 1, 2, 3, 4].map((i) => {
+          const a = team[i];
+          return (
+            <div
+              key={i}
+              onClick={() => (a ? onRemove(a.id) : onActivate())}
+              className={`tb-slot${a ? " filled" : ""}${a && isUR(a.rank) ? " ur" : ""}`}
+              title={a ? `${a.name} · ${t.clickToRemove}` : t.activeTeamHint}
+            >
+              {a ? (
+                <>
+                  {a.image
+                    ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="100px" style={{ objectFit: "cover" }} />
+                    : <span style={{ fontWeight: 800, fontSize: "1rem" }}>{a.name.charAt(0)}</span>}
+                  <span className="tb-slot-name">{a.name}</span>
+                </>
+              ) : <span className="tb-slot-plus">+</span>}
+            </div>
+          );
+        })}
+      </div>
+      <TeamEvalBlock ev={ev} t={t} />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Comparison table (single, shared between both teams)                */
+/* ------------------------------------------------------------------ */
+function CompareTable({ e1, e2, t, collapsed, onToggle }: { e1: TeamEvaluation; e2: TeamEvaluation; t: ArtistContent; collapsed: boolean; onToggle: () => void }) {
+  const cls = (a: number, b: number) => (a > b ? "win" : a < b ? "lose" : "tie");
+  return (
+    <div className={`tb-card tb-compare${collapsed ? " collapsed" : ""}`}>
+      <button type="button" className="tb-compare-title" onClick={onToggle} aria-expanded={!collapsed}>
+        <Icon name="scale" size={13} /> {t.compareTitle}
+        <Icon name="chevron" size={12} className={`tb-compare-toggle${collapsed ? "" : " open"}`} />
+      </button>
+      <div className="tb-compare-rows">
+        {STAT_ROWS.map(({ key, icon, label, color, suffix = "" }) => {
+          const v1 = e1.stats[key] as number;
+          const v2 = e2.stats[key] as number;
+          const d = Math.abs(v1 - v2);
+          return (
+            <div key={key} className="tb-cmp-row">
+              <span className={`tb-cmp-v l ${cls(v1, v2)}`}>
+                {v1 > v2 && d > 0 && <span className="tb-cmp-diff">▲{fmt(d)}{suffix}</span>}
+                {fmt(v1)}{suffix}
+              </span>
+              <span className="tb-cmp-label" style={{ color }}><Icon name={icon} size={12} /> {label}</span>
+              <span className={`tb-cmp-v r ${cls(v2, v1)}`}>
+                {fmt(v2)}{suffix}
+                {v2 > v1 && d > 0 && <span className="tb-cmp-diff">▲{fmt(d)}{suffix}</span>}
+              </span>
+            </div>
+          );
+        })}
+        <div className="tb-cmp-row score">
+          <span className={`tb-cmp-v l ${cls(e1.rating, e2.rating)}`}>
+            {e1.rating}<span className="tb-cmp-grade" style={{ background: tierBadgeColors[e1.grade] }}>{e1.grade}</span>
+          </span>
+          <span className="tb-cmp-label" style={{ color: "#fff" }}><Icon name="trophy" size={12} /> {t.evalScoreRow}</span>
+          <span className={`tb-cmp-v r ${cls(e2.rating, e1.rating)}`}>
+            <span className="tb-cmp-grade" style={{ background: tierBadgeColors[e2.grade] }}>{e2.grade}</span>{e2.rating}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Page                                                                 */
+/* ------------------------------------------------------------------ */
 export default function ArtistsClient({ lang }: { lang: string }) {
   const router = useRouter();
-  const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
-  const [hoveredArtistId, setHoveredArtistId] = useState<number | null>(null);
-  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
-  const hoverTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [team1, setTeam1] = useState<Artist[]>(() => loadInitialTeam(1));
   const [team2, setTeam2] = useState<Artist[]>(() => loadInitialTeam(2));
   const [team1Name, setTeam1Name] = useState<string>(() => readLS('team1Name', ''));
   const [team2Name, setTeam2Name] = useState<string>(() => readLS('team2Name', ''));
+  const [activeTeam, setActiveTeam] = useState<1 | 2>(1);
+  const [compareCollapsed, setCompareCollapsed] = useState(true);
   const [savedTeams, setSavedTeams] = useState<SavedTeam[]>(() => {
     const raw = readLS('savedTeams', '[]');
     try { const arr = JSON.parse(raw); return Array.isArray(arr) ? arr : []; } catch { return []; }
@@ -143,47 +406,26 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   };
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [filterRank, setFilterRank] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [filterMaxSeason, setFilterMaxSeason] = useState("");
-  const [mounted, setMounted] = useState(false);
+  // Hydration-safe "mounted" flag without a setState-in-effect.
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
+  const windowWidth = useSyncExternalStore(subscribeResize, () => window.innerWidth, () => 0);
+  const isMobile = windowWidth > 0 && windowWidth <= 900;
   const t = getArtistContent(lang);
 
-  const acquisitionStyles: Record<string, { label: string; color: string; bg: string }> = {
-    f2p: { label: t.acqF2p || "F2P", color: "#22c55e", bg: "rgba(34,197,94,0.18)" },
-    low: { label: t.acqLow || "Low spender", color: "#38bdf8", bg: "rgba(56,189,248,0.18)" },
-    mid: { label: t.acqMid || "Mid spender", color: "#a855f7", bg: "rgba(168,85,247,0.18)" },
-    whale: { label: t.acqWhale || "Whale", color: "#f59e0b", bg: "rgba(245,158,11,0.18)" },
-  };
-
+  // Persist teams
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Save teams to localStorage when they change
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const ids = team1.map((artist: Artist) => artist.id);
-        localStorage.setItem('team1', JSON.stringify(ids));
-      } catch (e) {
-        if (process.env.NODE_ENV !== 'production') console.warn('Team 1 save failed', e);
-      }
+    try { localStorage.setItem('team1', JSON.stringify(team1.map((a) => a.id))); } catch (e) {
+      if (process.env.NODE_ENV !== 'production') console.warn('Team 1 save failed', e);
     }
   }, [team1]);
-
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const ids = team2.map((artist: Artist) => artist.id);
-        localStorage.setItem('team2', JSON.stringify(ids));
-      } catch (e) {
-        if (process.env.NODE_ENV !== 'production') console.warn('Team 2 save failed', e);
-      }
+    try { localStorage.setItem('team2', JSON.stringify(team2.map((a) => a.id))); } catch (e) {
+      if (process.env.NODE_ENV !== 'production') console.warn('Team 2 save failed', e);
     }
   }, [team2]);
-
   useEffect(() => { try { localStorage.setItem('team1Name', team1Name); } catch {} }, [team1Name]);
   useEffect(() => { try { localStorage.setItem('team2Name', team2Name); } catch {} }, [team2Name]);
   useEffect(() => { try { localStorage.setItem('savedTeams', JSON.stringify(savedTeams)); } catch {} }, [savedTeams]);
@@ -193,7 +435,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
     if (team.length === 0) { showToast(t.emptyTeam); return; }
     const rawName = (n === 1 ? team1Name : team2Name).trim();
     const name = rawName || `${n === 1 ? t.team1Label : t.team2Label} · ${new Date().toLocaleDateString()}`;
-    const entry: SavedTeam = { id: `${Date.now()}-${n}`, name, ids: team.map((a) => a.id), createdAt: Date.now() };
+    const entry = newSavedTeam(n, name, team.map((a) => a.id));
     setSavedTeams((prev) => [entry, ...prev].slice(0, 30));
     showToast(`💾 ${t.teamSaved} : ${name}`);
   };
@@ -201,6 +443,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   const loadSaved = (saved: SavedTeam, n: 1 | 2) => {
     const team = idsToArtists(saved.ids);
     if (n === 1) { setTeam1(team); setTeam1Name(saved.name); } else { setTeam2(team); setTeam2Name(saved.name); }
+    setActiveTeam(n);
   };
 
   const deleteSaved = (id: string) => setSavedTeams((prev) => prev.filter((s) => s.id !== id));
@@ -211,1295 +454,254 @@ export default function ArtistsClient({ lang }: { lang: string }) {
     if (team2.length) parts.push('t2=' + team2.map((a) => a.id).join(','));
     if (!parts.length) { showToast(t.emptyTeam); return; }
     const url = `${window.location.origin}/${lang}/teambuilder/?${parts.join('&')}`;
-    if (await copyToClipboard(url)) {
-      showToast(`🔗 ${t.linkCopied}`);
-    } else {
-      showToast(url);
-    }
+    if (await copyToClipboard(url)) showToast(`🔗 ${t.linkCopied}`);
+    else showToast(url);
   };
 
-  const team1Stats = useMemo(() => calculateTeamStats(team1), [team1]);
-  const team2Stats = useMemo(() => calculateTeamStats(team2), [team2]);
+  const team1Eval = useMemo(() => evaluateTeam(team1), [team1]);
+  const team2Eval = useMemo(() => evaluateTeam(team2), [team2]);
 
-  const addToTeam1 = (artist: Artist) => {
-    if (team1.length < 5 && !team1.find(a => a.id === artist.id)) {
-      setTeam1([...team1, artist]);
-    }
-  };
-
-  const addToTeam2 = (artist: Artist) => {
-    if (team2.length < 5 && !team2.find(a => a.id === artist.id)) {
-      setTeam2([...team2, artist]);
-    }
-  };
-
-  const removeFromTeam1 = (id: number) => {
-    setTeam1(team1.filter(a => a.id !== id));
-  };
-
-  const removeFromTeam2 = (id: number) => {
-    setTeam2(team2.filter(a => a.id !== id));
-  };
-
-  // Saison max — order chronologique
-  const SEASON_ORDER: Record<string, number> = {
-    "Original": 0,
-    "Tokyo 1": 1,
-    "Événement": 1.5,
-    "Bali 1": 2,
-    "Rome 1": 3, "Roma 1": 3,
-    "Tokyo 2": 4,
-    "Bali 2": 5,
-    "Rome 2": 6, "Roma 2": 6,
-    "Tokyo 3": 7,
-    "Bali 3": 8,
-    "Rome 3": 9, "Roma 3": 9,
-    "Tokyo 4": 10,
-    "Bali 4": 11,
-    "Rome 4": 12, "Roma 4": 12,
-    "Tokyo 5": 13,
-    "Bali 5": 14,
-    "Rome 5": 15, "Roma 5": 15,
-  };
-  const SEASON_LABELS: string[] = [
-    "Original", "Tokyo 1", "Événement",
-    "Bali 1", "Rome 1",
-    "Tokyo 2", "Bali 2", "Rome 2",
-    "Tokyo 3", "Bali 3", "Rome 3",
-    "Tokyo 4", "Bali 4", "Rome 4",
-    "Tokyo 5", "Bali 5", "Rome 5",
-  ];
-
-  const getArtistSeasonOrder = (artist: Artist): number => {
-    const ev = (artist as any).event as string | undefined;
-    if (!ev) return SEASON_ORDER["Événement"];
-    return SEASON_ORDER[ev] ?? SEASON_ORDER["Événement"];
+  const inTeam1 = (id: number) => team1.some((a) => a.id === id);
+  const inTeam2 = (id: number) => team2.some((a) => a.id === id);
+  const addToTeam1 = (artist: Artist) => { if (team1.length < 5 && !inTeam1(artist.id)) setTeam1([...team1, artist]); };
+  const addToTeam2 = (artist: Artist) => { if (team2.length < 5 && !inTeam2(artist.id)) setTeam2([...team2, artist]); };
+  const removeFromTeam1 = (id: number) => setTeam1(team1.filter((a) => a.id !== id));
+  const removeFromTeam2 = (id: number) => setTeam2(team2.filter((a) => a.id !== id));
+  /** Card click: add to the active team; if already there, remove it from that team. */
+  const toggleInActive = (artist: Artist) => {
+    const [team, inTeam, add, remove] = activeTeam === 1
+      ? [team1, inTeam1, addToTeam1, removeFromTeam1]
+      : [team2, inTeam2, addToTeam2, removeFromTeam2];
+    if (inTeam(artist.id)) remove(artist.id);
+    else if (team.length >= 5) showToast(`${activeTeam === 1 ? t.team1Label : t.team2Label} : 5/5`);
+    else add(artist);
   };
 
   const filteredArtists = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
     const maxOrder = filterMaxSeason ? (SEASON_ORDER[filterMaxSeason] ?? 9999) : 9999;
-    return artistsData.filter((artist: Artist) => {
-      const matchesSearch = !q || artist.name.toLowerCase().includes(q);
-      const matchesRank = !filterRank || artist.rank === filterRank;
-      const matchesGenre = !filterGenre || artist.genre === filterGenre;
-      const matchesSpecialty = !filterSpecialty || artist.specialty === filterSpecialty;
-      const matchesSeason = filterMaxSeason === "" || getArtistSeasonOrder(artist) <= maxOrder;
-      return matchesSearch && matchesRank && matchesGenre && matchesSpecialty && matchesSeason;
+    return POOL.filter((artist) => {
+      if (filterGenre && artist.genre !== filterGenre) return false;
+      if (filterSpecialty && artist.specialty !== filterSpecialty) return false;
+      if (filterMaxSeason !== "" && getArtistSeasonOrder(artist) > maxOrder) return false;
+      if (!q) return true;
+      const hay = [
+        artist.name,
+        artist.genre,
+        artist.rank,
+        artist.position,
+        artist.specialty,
+        specialtyLabel(artist.specialty, lang),
+        artist.calculatedTier,
+        ...(artist.skills || []),
+        ...skillChips(artist.skills, lang).map((c) => c.text),
+      ].filter(Boolean).join(" ").toLowerCase();
+      return q.split(/\s+/).every((w) => hay.includes(w));
     });
-  }, [searchQuery, filterRank, filterGenre, filterSpecialty, filterMaxSeason]);
+  }, [searchQuery, filterGenre, filterSpecialty, filterMaxSeason, lang]);
 
-  const [windowWidth, setWindowWidth] = useState(0);
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const isMobile = windowWidth <= 900;
-
-  const rankOrder: Record<string, number> = { UR: 1, "UR Roma": 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4 };
-  const getRankSort = (r: string) => rankOrder[r] || 99;
-  const sortedArtists = [...filteredArtists].sort((a, b) => getRankSort(a.rank) - getRankSort(b.rank));
+  const sortedArtists = useMemo(
+    () => [...filteredArtists].sort((a, b) =>
+      (rankOrder[a.rank] || 99) - (rankOrder[b.rank] || 99) ||
+      (tierOrder[a.calculatedTier || ""] ?? 9) - (tierOrder[b.calculatedTier || ""] ?? 9) ||
+      a.name.localeCompare(b.name)),
+    [filteredArtists],
+  );
 
   if (!mounted) {
     return <div style={{ padding: "100px", textAlign: "center", color: "#fff" }}>{t.loading}</div>;
   }
 
-  // Render mobile version on small screens
-  if (isMobile) {
-    return <MobileArtistsPage />;
-  }
+  const openProfile = (a: Artist) => router.push(`/${lang}/artist/${slugify(a.name)}/`);
+  const teamTabLabel = (n: 1 | 2) => {
+    const name = (n === 1 ? team1Name : team2Name).trim() || (n === 1 ? t.team1Label : t.team2Label);
+    const team = n === 1 ? team1 : team2;
+    return `${name} (${team.length}/5)`;
+  };
 
   return (
     <>
-      
       {toast && <div className="tb-toast" role="status">{toast}</div>}
-      <div className="page-container">
-        {/* Header with title and ads */}
-        <div className="page-header">
-          <h1 className="page-title">{t.pageTitle || "🎤 Artists"}</h1>
-          <p className="page-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
-          <div className="info-panel" style={{ maxWidth: 920, margin: "12px auto 16px" }}>
-            <div className="info-panel-title">
-              {t.teamBuilderMethodology}
+      <div className="tb-page">
+        <div className="tb-header">
+          <h1 className="tb-title">{t.pageTitle || "🎤 Artists"}</h1>
+          <p className="tb-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
+          {!isMobile && (
+            <div className="info-panel" style={{ maxWidth: 920, margin: "0 auto 12px" }}>
+              <div className="info-panel-title">{t.teamBuilderMethodology}</div>
+              <div className="info-panel-body">{t.teamBuilderMethodologyDesc}</div>
             </div>
-            <div className="info-panel-body">
-              {t.teamBuilderMethodologyDesc}
-            </div>
-          </div>
+          )}
           <AdBanner />
         </div>
 
-        <Breadcrumb
-          items={[
-            { label: "Team Builder", href: "/teambuilder/" },
-          ]}
-          lang={lang}
-        />
+        <Breadcrumb items={[{ label: "Team Builder", href: "/teambuilder/" }]} lang={lang} />
 
-        {/* TOP PANEL: sticks under the site header while the grid scrolls */}
-        <div className="top-panel">
-          {/* Column 1: Artist Preview (30%) */}
-          <div className="panel-col panel-col-1">
-            <div className="artist-preview-card">
-              <div className="artist-preview-title">
-                <span style={{ display: 'none' }}>{t.artistOverview}</span>
-              </div>
-              {selectedArtist ? (
-                <div className="artist-preview-content">
-                  <div
-                    className="artist-preview-image-large"
-                    onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)}
-                    onDoubleClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)}
-                    title={t.viewProfileTitle}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {selectedArtist.image ? (
-                      <Image src={`/assets/images/artists/${selectedArtist.image}`} alt={selectedArtist.name} width={160} height={200} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-                    ) : (
-                      <span style={{ fontSize: "3rem", fontWeight: 800, color: rankColors[selectedArtist.rank] }}>{selectedArtist.name.charAt(0)}</span>
-                    )}
-                  </div>
-                  <div className="artist-preview-info">
-                    <div className="artist-preview-nav">
-                      <button 
-                        aria-label="Previous artist"
-                        onClick={() => {
-                          const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
-                          if (idx > 0) setSelectedArtist(sortedArtists[idx - 1]);
-                        }}
-                        disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) === 0}
-                      >◀</button>
-                      <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.name}</span>
-                      <button 
-                        aria-label="Next artist"
-                        onClick={() => {
-                          const idx = sortedArtists.findIndex(a => a.id === selectedArtist?.id);
-                          if (idx >= 0 && idx < sortedArtists.length - 1) setSelectedArtist(sortedArtists[idx + 1]);
-                        }}
-                        disabled={!selectedArtist || sortedArtists.findIndex(a => a.id === selectedArtist.id) >= sortedArtists.length - 1}
-                      >▶</button>
-                    </div>
-                    <div className="artist-preview-details">
-                      <div className="detail-col">
-                        <p>🏠 {selectedArtist.group}</p>
-                        <p>🎯 {selectedArtist.position}</p>
-                        <p>💎 {selectedArtist.specialty || selectedArtist.genre}</p>
-                        {selectedArtist.acquisitionTier && acquisitionStyles[selectedArtist.acquisitionTier] && (
-                          <p style={{ color: acquisitionStyles[selectedArtist.acquisitionTier].color }}>
-                            💳 {t.acquisition}: {acquisitionStyles[selectedArtist.acquisitionTier].label}
-                          </p>
-                        )}
-                      </div>
-                      <div className="detail-col">
-                        <p>🎵 {selectedArtist.genre}</p>
-                        <p>📊 {t.rankLabel}: <span style={{ color: rankColors[selectedArtist.rank], fontWeight: 700 }}>{selectedArtist.rank}</span></p>
-                        {selectedArtist.calculatedTier && <p>⭐ {t.tier}: {selectedArtist.calculatedTier}</p>}
-                        {(selectedArtist as any).season && <p>📍 {seasonLabels[lang]}: {(selectedArtist as any).season}</p>}
-                      </div>
-                    </div>
-                    <div className="artist-preview-skills">
-                      {selectedArtist.skills?.slice(0, 3).map((skill, i) => (
-                        <p key={i} className="skill-line">{i === 0 ? "⚔️ " : "✨ "}{skill}</p>
-                      ))}
-                    </div>
-                    <button onClick={() => router.push(`/${lang}/artist/${slugify(selectedArtist.name)}/`)} className="view-profile-btn">
-                      {t.profile}
-                    </button>
-                    <div className="add-buttons">
-                      {selectedArtist && !team1.find(a => a.id === selectedArtist.id) && team1.length < 5 && (
-                        <button onClick={() => addToTeam1(selectedArtist)} className="add-team-btn team1">{t.addTeam1}</button>
-                      )}
-                      {selectedArtist && !team2.find(a => a.id === selectedArtist.id) && team2.length < 5 && (
-                        <button onClick={() => addToTeam2(selectedArtist)} className="add-team-btn team2">{t.addTeam2}</button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="artist-preview-empty">
-                  <p>{t.selectArtist}</p>
-                </div>
-              )}
+        {/* Sticky workbench: team 1 | comparison | team 2 (tabs on mobile), then the filter bar */}
+        <div className="tb-sticky">
+          <div className="tb-panel">
+            <div className="tb-teams">
+            <div className="tb-tabs" role="tablist">
+              {([1, 2] as const).map((n) => (
+                <button
+                  key={n}
+                  role="tab"
+                  aria-selected={activeTeam === n}
+                  className={`tb-tab${activeTeam === n ? ` on on${n}` : ""}`}
+                  onClick={() => setActiveTeam(n)}
+                >
+                  <span className="tb-tab-grade" style={{ background: tierBadgeColors[(n === 1 ? team1Eval : team2Eval).grade] }}>{(n === 1 ? team1Eval : team2Eval).grade}</span>
+                  {teamTabLabel(n)}
+                </button>
+              ))}
             </div>
-          </div>
 
-          {/* Column 2: Team 1 (35%) */}
-          <div className="panel-col panel-col-2">
-            <div className="team-card team-1">
-              {/* Header with trash icon */}
-              <div className="team-card-header">
-                <span className="team-badge team-badge-1">1</span>
-                <input
-                  className="team-name-input"
-                  value={team1Name}
-                  onChange={(e) => setTeam1Name(e.target.value)}
-                  placeholder={t.team1Label}
-                  maxLength={24}
-                  aria-label={t.teamNamePlaceholder}
-                />
-                <div className="team-actions">
-                  <button onClick={() => saveTeam(1)} className="icon-btn" title={t.saveTeam}>💾</button>
-                  <button onClick={shareTeams} className="icon-btn" title={t.shareTeam}>🔗</button>
-                  <button onClick={() => setTeam1([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
-                </div>
-              </div>
-              {/* Slots row */}
-              <div className="team-slots">
-                {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team1[i] && removeFromTeam1(team1[i].id)} className="team-slot" title={team1[i] ? t.clickToRemove : ""}>
-                    {team1[i] ? (
-                      team1[i].image
-                        ? <Image src={`/assets/images/artists/${team1[i].image}`} alt={team1[i].name} fill sizes="69px" style={{ objectFit: "cover" }} />
-                        : <span style={{ color: rankColors[team1[i].rank], fontWeight: 800, fontSize: "1rem" }}>{team1[i].name.charAt(0)}</span>
-                    ) : <span className="slot-plus">+</span>}
-                  </div>
-                ))}
-              </div>
-              {/* Genres row */}
-                <div className="team-genres">
-                  {Object.keys(team1Stats.genreCounts).length > 0
-                    ? Object.entries(team1Stats.genreCounts).map(([genre, count]) => (
-                        <span key={genre} className="genre-badge" style={{ background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
-                      ))
-                    : <span className="genre-badge-empty">—</span>
-                  }
-                </div>
-              {/* Stats — fixed height rows, no scroll */}
-              <div className="team-stats-grid">
-                 {[
-                   { label: "💥 DMG Factor", v1: team1Stats.skillDamageRaw, v2: team2Stats.skillDamageRaw, color: "#ff8c42" },
-                   { label: "⚔️ Skill DMG",  v1: team1Stats.skillDamage,    v2: team2Stats.skillDamage,    color: "#ff6b6b", suffix: "%" },
-                   { label: "👊 Basic ATK",  v1: team1Stats.basicAttackPercent, v2: team2Stats.basicAttackPercent, color: "#4ecdc4", suffix: "%" },
-                   { label: "🛡️ Resistance", v1: team1Stats.attackResist,   v2: team2Stats.attackResist,   color: "#95e1d3", suffix: "%" },
-                   { label: "✨ S.Resist",   v1: team1Stats.skillResist,     v2: team2Stats.skillResist,     color: "#a29bfe", suffix: "%" },
-                   { label: "🎵 Fan Cap",    v1: team1Stats.fanCapacity,     v2: team2Stats.fanCapacity,     color: "#ffd700", suffix: "%" },
-                   { label: "🚀 Rally Cap",  v1: team1Stats.rallyCapacity,   v2: team2Stats.rallyCapacity,   color: "#00ff88", suffix: "%" },
-                 ].map(({ label, v1, v2, color, suffix = "" }, i) => {
-                   const diff = v1 - v2;
-                   const diffColor = diff > 0 ? "#4ade80" : diff < 0 ? "#f87171" : "rgba(255,255,255,0.30)";
-                   const diffIcon = diff > 0 ? "▲" : diff < 0 ? "▼" : "—";
-                   const absDiff = Math.abs(diff);
-                   return (
-                      <div key={i} className="stat-row">
-                        <span className="stat-label" style={{ color }}>{label}</span>
-                        <span className="stat-value">
-                          <span className="stat-number">{v1}{suffix}</span>
-                          <span className="stat-diff" style={{ color: diffColor }}>{diffIcon}{absDiff > 0 ? absDiff + suffix : ""}</span>
-                        </span>
-                      </div>
-                   );
-                 })}
-              </div>
-            </div>
-          </div>
-
-          {/* Column 3: Team 2 (35%) */}
-          <div className="panel-col panel-col-3">
-            <div className="team-card team-2">
-              {/* Header with trash icon */}
-              <div className="team-card-header">
-                <span className="team-badge team-badge-2">2</span>
-                <input
-                  className="team-name-input"
-                  value={team2Name}
-                  onChange={(e) => setTeam2Name(e.target.value)}
-                  placeholder={t.team2Label}
-                  maxLength={24}
-                  aria-label={t.teamNamePlaceholder}
-                />
-                <div className="team-actions">
-                  <button onClick={() => saveTeam(2)} className="icon-btn" title={t.saveTeam}>💾</button>
-                  <button onClick={shareTeams} className="icon-btn" title={t.shareTeam}>🔗</button>
-                  <button onClick={() => setTeam2([])} className="trash-btn" title={t.clearTeam}>🗑️</button>
-                </div>
-              </div>
-              {/* Slots row */}
-              <div className="team-slots">
-                {[0,1,2,3,4].map(i => (
-                  <div key={i} onClick={() => team2[i] && removeFromTeam2(team2[i].id)} className="team-slot" title={team2[i] ? t.clickToRemove : ""}>
-                    {team2[i] ? (
-                      team2[i].image
-                        ? <Image src={`/assets/images/artists/${team2[i].image}`} alt={team2[i].name} fill sizes="69px" style={{ objectFit: "cover" }} />
-                        : <span style={{ color: rankColors[team2[i].rank], fontWeight: 800, fontSize: "1rem" }}>{team2[i].name.charAt(0)}</span>
-                    ) : <span className="slot-plus">+</span>}
-                  </div>
-                ))}
-              </div>
-               {/* Genres row */}
-                <div className="team-genres">
-                  {Object.keys(team2Stats.genreCounts).length > 0
-                    ? Object.entries(team2Stats.genreCounts).map(([genre, count]) => (
-                        <span key={genre} className="genre-badge" style={{ background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}>{genre} ×{count}</span>
-                      ))
-                    : <span className="genre-badge-empty">—</span>
-                  }
-                </div>
-              {/* Stats — fixed rows */}
-              <div className="team-stats-grid">
-                {[
-                  { label: "💥 DMG Factor", v: team2Stats.skillDamageRaw,       color: "#ff8c42" },
-                  { label: "⚔️ Skill DMG",  v: team2Stats.skillDamage,          color: "#ff6b6b", suffix: "%" },
-                  { label: "👊 Basic ATK",  v: team2Stats.basicAttackPercent,    color: "#4ecdc4", suffix: "%" },
-                  { label: "🛡️ Resistance", v: team2Stats.attackResist,          color: "#95e1d3", suffix: "%" },
-                  { label: "✨ S.Resist",   v: team2Stats.skillResist,           color: "#a29bfe", suffix: "%" },
-                  { label: "🎵 Fan Cap",    v: team2Stats.fanCapacity,           color: "#ffd700", suffix: "%" },
-                  { label: "🚀 Rally Cap",  v: team2Stats.rallyCapacity,         color: "#00ff88", suffix: "%" },
-                ].map(({ label, v, color, suffix = "" }, i) => (
-                  <div key={i} className="stat-row">
-                    <span className="stat-label" style={{ color }}>{label}</span>
-                    <span className="stat-value">
-                      <span className="stat-number">{v}{suffix}</span>
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Add to Selected Team */}
-        {/* BOTTOM - Artists Grid */}
-        <div className="artists-bottom">
-          <div className="search-bar">
-            <label htmlFor="artist-search" className="sr-only">{t.search}</label>
-            <input
-              id="artist-search"
-              type="text"
-              placeholder={t.search}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+            <TeamCard
+              n={1} team={team1} name={team1Name} ev={team1Eval} t={t}
+              active={activeTeam === 1} shown={!isMobile || activeTeam === 1} onActivate={() => setActiveTeam(1)}
+              onName={setTeam1Name} onSave={() => saveTeam(1)} onShare={shareTeams}
+              onClear={() => setTeam1([])} onRemove={removeFromTeam1}
             />
-            <label htmlFor="filter-rank" className="sr-only">{t.allRanks}</label>
-            <select id="filter-rank" value={filterRank} onChange={(e) => setFilterRank(e.target.value)}>
-              <option value="">{t.allRanks}</option>
-              {RANKS.map(rank => (<option key={rank} value={rank}>{rank}</option>))}
-            </select>
+
+            <TeamCard
+              n={2} team={team2} name={team2Name} ev={team2Eval} t={t}
+              active={activeTeam === 2} shown={!isMobile || activeTeam === 2} onActivate={() => setActiveTeam(2)}
+              onName={setTeam2Name} onSave={() => saveTeam(2)} onShare={shareTeams}
+              onClear={() => setTeam2([])} onRemove={removeFromTeam2}
+            />
+            </div>
+
+            <CompareTable
+              e1={team1Eval} e2={team2Eval} t={t}
+              collapsed={isMobile && compareCollapsed}
+              onToggle={() => setCompareCollapsed((v) => !v)}
+            />
+
+          </div>
+
+          <div className="tb-filters">
+            <label htmlFor="artist-search" className="tb-search">
+              <Icon name="search" size={15} />
+              <span className="sr-only">{t.search}</span>
+              <input id="artist-search" type="search" placeholder={t.searchPlaceholder} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+            </label>
             <label htmlFor="filter-genre" className="sr-only">{t.allGenres}</label>
             <select id="filter-genre" value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
               <option value="">{t.allGenres}</option>
-              {GENRES.map(genre => (<option key={genre} value={genre}>{genre}</option>))}
+              {GENRES.map((genre) => (<option key={genre} value={genre}>{genre}</option>))}
             </select>
             <label htmlFor="filter-specialty" className="sr-only">{t.allSpecialties}</label>
             <select id="filter-specialty" value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
               <option value="">{t.allSpecialties}</option>
-              {SPECIALTY_KEYS.map(key => {
+              {SPECIALTY_KEYS.map((key) => {
                 const frValue = SPECIALTY_VALUES[SPECIALTY_KEYS.indexOf(key)];
-                const label = SPECIALTY_LABELS_BY_LANG[lang]?.[key] || SPECIALTY_LABELS_BY_LANG['en'][key] || frValue;
+                const label = SPECIALTY_LABELS_BY_LANG[lang]?.[key] || SPECIALTY_LABELS_BY_LANG.en[key] || frValue;
                 return <option key={key} value={frValue}>{label}</option>;
               })}
             </select>
             <label htmlFor="filter-season" className="sr-only">{t.allSeasons}</label>
             <select id="filter-season" value={filterMaxSeason} onChange={(e) => setFilterMaxSeason(e.target.value)}>
               <option value="">{t.allSeasons}</option>
-              {SEASON_LABELS.map(s => (<option key={s} value={s}>{`${t.maxSeason} : ${s}`}</option>))}
+              {SEASON_LABELS.map((s) => (<option key={s} value={s}>{`${t.maxSeason} : ${s}`}</option>))}
             </select>
           </div>
-          <div className="saved-teams">
-            <span className="saved-teams-title">📁 {t.myTeams}</span>
+        </div>
+
+        {/* Saved teams + grid */}
+        <div className="tb-bottom">
+          <div className="tb-saved">
+            <span className="tb-saved-title"><Icon name="folder" size={13} /> {t.myTeams}</span>
             {savedTeams.length === 0 ? (
-              <span className="saved-empty">{t.noSavedTeams}</span>
+              <span className="tb-saved-empty">{t.noSavedTeams}</span>
             ) : savedTeams.map((s) => (
-              <div key={s.id} className="saved-chip">
-                <span className="saved-avatars">
+              <div key={s.id} className="tb-saved-chip">
+                <span className="tb-saved-avatars">
                   {s.ids.slice(0, 5).map((id) => {
-                    const a = artistsData.find((x: Artist) => x.id === id);
+                    const a = (artistsData as Artist[]).find((x) => x.id === id);
                     if (!a) return null;
                     return a.image
                       ? <Image key={id} src={`/assets/images/artists/${a.image}`} alt={a.name} width={22} height={28} style={{ objectFit: "cover", borderRadius: 3 }} />
-                      : <span key={id} className="saved-avatar-letter">{a.name.charAt(0)}</span>;
+                      : <span key={id} className="tb-saved-avatar-letter">{a.name.charAt(0)}</span>;
                   })}
                 </span>
-                <span className="saved-name" title={s.name}>{s.name}</span>
-                <button className="saved-btn b1" onClick={() => loadSaved(s, 1)} title={`${t.loadInto} 1`}>→1</button>
-                <button className="saved-btn b2" onClick={() => loadSaved(s, 2)} title={`${t.loadInto} 2`}>→2</button>
-                <button className="saved-btn del" onClick={() => deleteSaved(s.id)} title={t.deleteSaved}>✕</button>
+                <span className="tb-saved-name" title={s.name}>{s.name}</span>
+                <button className="tb-saved-btn b1" onClick={() => loadSaved(s, 1)} title={`${t.loadInto} 1`}>→1</button>
+                <button className="tb-saved-btn b2" onClick={() => loadSaved(s, 2)} title={`${t.loadInto} 2`}>→2</button>
+                <button className="tb-saved-btn del" onClick={() => deleteSaved(s.id)} title={t.deleteSaved}>✕</button>
               </div>
             ))}
           </div>
           {savedTeams.length > 0 && <SupportCard lang={lang} compact />}
-          <div className="artists-count">{filteredArtists.length} {t.foundArtists} · <span className="hint">{t.hintAdd}</span></div>
+          <div className="tb-count">
+            {filteredArtists.length} {t.foundArtists} · <span className="tb-hint">{t.activeTeamHint} ({activeTeam})</span>
+          </div>
 
-          <div className="artists-grid" key={`grid-${filteredArtists.length}-${searchQuery}-${filterRank}-${filterGenre}-${filterSpecialty}`}>
-            {sortedArtists.map((artist: Artist) => (
-                <button
+          {sortedArtists.length === 0 && <div className="tb-saved-empty" style={{ padding: 20, textAlign: "center" }}>{t.noResults}</div>}
+          <div className="tb-grid">
+            {sortedArtists.map((artist) => {
+              const inT1 = inTeam1(artist.id);
+              const inT2 = inTeam2(artist.id);
+              const ur = isUR(artist.rank);
+              const chips = skillChips(artist.skills, lang).slice(0, 3);
+              return (
+                <div
                   key={artist.id}
-                  onClick={() => {
-                    setSelectedArtist(artist);
-                    setHoveredArtistId(null);
-                    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
-                  }}
-                  onMouseEnter={(e) => {
-                    // Store initial position so tooltip has coords when timer fires
-                    setTooltipPos({ x: e.clientX, y: e.clientY });
-                    hoverTimerRef.current = setTimeout(() => setHoveredArtistId(artist.id), 2000);
-                  }}
-                  onMouseLeave={() => {
-                    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
-                    setHoveredArtistId(null);
-                    setTooltipPos(null);
-                  }}
-                  onMouseMove={(e) => {
-                    // Always update position while hovering
-                    setTooltipPos({ x: e.clientX, y: e.clientY });
-                  }}
-                  onDoubleClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const isInTeam1 = team1.some(a => a.id === artist.id);
-                    const isInTeam2 = team2.some(a => a.id === artist.id);
-                    
-                    if (isInTeam1 && isInTeam2) {
-                      // In both teams: do nothing
-                      return;
-                    } else if (isInTeam1) {
-                      // In Team1 only: add to Team2 (keep in Team1)
-                      if (team2.length < 5) {
-                        setTeam2([...team2, artist]);
-                      }
-                    } else if (isInTeam2) {
-                      // In Team2 only: add to Team1
-                      if (team1.length < 5) {
-                        setTeam1([...team1, artist]);
-                      }
-                    } else {
-                      // Not in any team: add to Team1
-                      if (team1.length < 5) {
-                        setTeam1([...team1, artist]);
-                      }
-                    }
-                  }}
-                  className={`artist-card${selectedArtist?.id === artist.id ? " selected" : ""}`}
-                  style={{ cursor: "pointer", borderColor: selectedArtist?.id === artist.id ? rankColors[artist.rank] : undefined }}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => toggleInActive(artist)}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleInActive(artist); } }}
+                  className={`tb-art${ur ? " ur" : ""}${inT1 ? " in1" : ""}${inT2 ? " in2" : ""}`}
+                  title={`${artist.name} · ${specialtyLabel(artist.specialty, lang)}`}
                 >
-                  {artist.image ? (
-                     <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="(max-width: 900px) calc(100vw / 6), calc(100vw / 9)" style={{ objectFit: "cover" }} />
-                   ) : (
-                  <div className="artist-placeholder">
-                    <span style={{ color: rankColors[artist.rank], fontWeight: 800 }}>{artist.name.charAt(0)}</span>
+                  <div className="tb-art-img">
+                    {artist.image ? (
+                      <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="(max-width: 900px) 33vw, 150px" style={{ objectFit: "cover" }} />
+                    ) : (
+                      <div className="tb-art-placeholder"><span>{artist.name.charAt(0)}</span></div>
+                    )}
+                    {artist.calculatedTier && (
+                      <span className="tb-art-tier" style={{ background: tierBadgeColors[artist.calculatedTier] || "#64748b" }}>{artist.calculatedTier}</span>
+                    )}
+                    {ur && <span className="tb-art-ur">{artist.rank}</span>}
+                    <span
+                      role="link"
+                      className="tb-art-info"
+                      title={t.viewProfileTitle}
+                      onClick={(e) => { e.stopPropagation(); openProfile(artist); }}
+                    >i</span>
+                    <span className="tb-art-name">{artist.name}<small>{artist.genre}</small></span>
+                    {(inT1 || inT2) && (
+                      <span className="tb-art-inteam">
+                        {inT1 && <span className="t1">1</span>}
+                        {inT2 && <span className="t2">2</span>}
+                      </span>
+                    )}
+                    <span className="tb-art-hover">
+                      <span
+                        role="button"
+                        className={`tb-art-add t1${inT1 || team1.length >= 5 ? " off" : ""}`}
+                        title={t.addTeam1}
+                        onClick={(e) => { e.stopPropagation(); if (!inT1) addToTeam1(artist); }}
+                      >+1</span>
+                      <span
+                        role="button"
+                        className={`tb-art-add t2${inT2 || team2.length >= 5 ? " off" : ""}`}
+                        title={t.addTeam2}
+                        onClick={(e) => { e.stopPropagation(); if (!inT2) addToTeam2(artist); }}
+                      >+2</span>
+                    </span>
                   </div>
-                )}
-                  {(() => {
-                    const inT1 = team1.some((a) => a.id === artist.id);
-                    const inT2 = team2.some((a) => a.id === artist.id);
-                    return (
-                      <>
-                        <span className="card-rank" style={{ color: rankColors[artist.rank] || "#fff" }}>{artist.rank}</span>
-                        {artist.calculatedTier && (
-                          <span className="card-tier" style={{ background: tierBadgeColors[artist.calculatedTier] || "#64748b" }}>{artist.calculatedTier}</span>
-                        )}
-                        {(inT1 || inT2) && (
-                          <span className="card-inteam">
-                            {inT1 && <span className="card-inteam-1">1</span>}
-                            {inT2 && <span className="card-inteam-2">2</span>}
-                          </span>
-                        )}
-                        <span className="card-name">{artist.name}</span>
-                        <span className="card-hover" onDoubleClick={(e) => e.stopPropagation()}>
-                          <span
-                            role="button"
-                            className={`card-add t1${inT1 || team1.length >= 5 ? " off" : ""}`}
-                            title={t.addTeam1}
-                            onClick={(e) => { e.stopPropagation(); if (!inT1) addToTeam1(artist); }}
-                          >+1</span>
-                          <span
-                            role="button"
-                            className={`card-add t2${inT2 || team2.length >= 5 ? " off" : ""}`}
-                            title={t.addTeam2}
-                            onClick={(e) => { e.stopPropagation(); if (!inT2) addToTeam2(artist); }}
-                          >+2</span>
-                        </span>
-                      </>
-                    );
-                  })()}
-              </button>
-            ))}
-            {hoveredArtistId && tooltipPos && (
-              <div style={{
-                position: "fixed",
-                left: tooltipPos.x,
-                top: tooltipPos.y + 16,
-                transform: "translateX(-50%)",
-                background: "rgba(15,15,30,0.92)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                borderRadius: "10px",
-                padding: "10px 14px",
-                whiteSpace: "nowrap",
-                zIndex: 99999,
-                boxShadow: "0 8px 24px rgba(0,0,0,0.5)",
-                pointerEvents: "none",
-                fontSize: "0.72rem",
-                color: "rgba(255,255,255,0.75)",
-                lineHeight: 1.7,
-              }}>
-                <div>👆 {t.tooltipSingle}</div>
-                <div>👆 {t.tooltipDouble}</div>
-              </div>
-            )}
+                  <div className="tb-art-skills">
+                    {chips.length === 0
+                      ? <span className="tb-skill other">—</span>
+                      : chips.map((c, i) => <span key={i} className={`tb-skill ${c.kind}`} title={artist.skills?.[i]}>{c.text}</span>)}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .page-container {
-          min-height: 100vh;
-        }
-        .page-header {
-          padding: 20px 12px;
-          text-align: center;
-        }
-        .page-title {
-          margin-bottom: 10px;
-          background: linear-gradient(135deg, #f472b6, #c084fc, #818cf8);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font-size: 2.5rem;
-          font-weight: 800;
-        }
-        .page-subtitle {
-          color: rgba(255,255,255,0.6);
-          margin-bottom: 20px;
-        }
-        .top-panel {
-          display: flex;
-          width: 100%;
-          height: max(40vh, 300px);
-          gap: 8px;
-          padding: 8px;
-          background: #0f0f1a;
-          position: sticky;
-          top: var(--header-height);
-          z-index: 50;
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-        }
-        .panel-col {
-          height: 100%;
-          overflow: hidden;
-        }
-        .panel-col-1 { width: 30%; }
-        .panel-col-2 { width: 35%; }
-        .panel-col-3 { width: 35%; }
-        
-        .artist-preview-card {
-          background: rgba(30,30,50,0.95);
-          border-radius: 8px;
-          border: 1px solid rgba(139,92,246,0.3);
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-        }
-        .artist-preview-title {
-          padding: 8px;
-          border-bottom: 1px solid rgba(255,255,255,0.1);
-          background: linear-gradient(135deg, rgba(255,77,141,0.15), rgba(139,92,246,0.15));
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: rgba(255,255,255,0.6);
-          text-transform: uppercase;
-        }
-        .artist-preview-content {
-          padding: 8px;
-          display: flex;
-          gap: 12px;
-          flex: 1;
-        }
-        .artist-preview-image-large {
-          position: relative;
-          width: 160px;
-          height: 200px;
-          border-radius: 8px;
-          border: 2px solid;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-          flex-shrink: 0;
-        }
-        .artist-preview-image-large img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .artist-preview-info {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          font-size: 0.7rem;
-          overflow: hidden;
-        }
-        .artist-preview-details {
-          display: flex;
-          gap: 8px;
-          margin-top: 4px;
-        }
-        .detail-col {
-          flex: 1;
-        }
-        .detail-col p {
-          margin: 2px 0;
-          color: rgba(255,255,255,0.82);
-          font-size: 0.72rem;
-          font-weight: 500;
-        }
-        .artist-preview-nav {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          margin-bottom: 4px;
-        }
-        .artist-preview-nav button {
-          width: 20px;
-          height: 20px;
-          border-radius: 4px;
-          border: 1px solid rgba(255,255,255,0.2);
-          background: rgba(255,255,255,0.05);
-          color: #fff;
-          cursor: pointer;
-          font-size: 0.6rem;
-          opacity: 1;
-          transition: opacity 0.2s;
-        }
-        .artist-preview-nav button:disabled {
-          opacity: 0.3;
-          cursor: not-allowed;
-        }
-        .artist-preview-nav span {
-          flex: 1;
-          text-align: center;
-          font-weight: 700;
-          font-size: 0.85rem;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: inline-block;
-        }
-        .artist-preview-info p {
-          color: rgba(255,255,255,0.8);
-          margin: 2px 0;
-          font-size: 0.72rem;
-        }
-        .artist-preview-skills {
-          margin-top: 6px;
-          padding-top: 6px;
-          border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .skill-line {
-          font-size: 0.6rem;
-          color: rgba(255,255,255,0.7);
-          margin: 2px 0;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .view-profile-btn {
-          display: inline-block;
-          margin-top: 8px;
-          padding: 6px 12px;
-          background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-          color: white;
-          border-radius: 4px;
-          font-size: 0.65rem;
-          text-decoration: none;
-          text-align: center;
-        }
-        .add-buttons {
-          display: flex;
-          gap: 6px;
-          margin-top: 6px;
-        }
-        .add-team-btn {
-          flex: 1;
-          padding: 6px 8px;
-          border-radius: 4px;
-          border: none;
-          color: white;
-          font-size: 0.6rem;
-          font-weight: 600;
-          cursor: pointer;
-        }
-        .add-team-btn.team1 {
-          background: #8b5cf6;
-        }
-        .add-team-btn.team2 {
-          background: #06b6d4;
-        }
-        .artist-preview-empty {
-          padding: 20px;
-          text-align: center;
-          color: rgba(255,255,255,0.4);
-          font-size: 0.8rem;
-        }
-        
-        .team-card {
-          background: rgba(30,30,50,0.95);
-          border-radius: 8px;
-          border: 1px solid rgba(139,92,246,0.3);
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          padding: 6px 8px;
-          box-sizing: border-box;
-          overflow: hidden;
-        }
-        .team-1 { border-color: rgba(139,92,246,0.5); }
-        .team-2 { border-color: rgba(6,182,212,0.5); }
-
-        /* Header: trash only */
-        .team-card-header {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          margin-bottom: 4px;
-          flex-shrink: 0;
-        }
-        .team-badge {
-          width: 22px;
-          height: 22px;
-          border-radius: 6px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.75rem;
-          font-weight: 800;
-          color: #fff;
-          flex-shrink: 0;
-        }
-        .team-badge-1 { background: #8b5cf6; }
-        .team-badge-2 { background: #06b6d4; }
-        .team-name-input {
-          flex: 1;
-          min-width: 0;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.12);
-          border-radius: 6px;
-          color: #fff;
-          font-size: 0.8rem;
-          font-weight: 600;
-          padding: 4px 8px;
-        }
-        .team-name-input:focus { outline: none; border-color: rgba(255,255,255,0.35); }
-        .team-name-input::placeholder { color: rgba(255,255,255,0.45); font-weight: 500; }
-        .team-actions { display: flex; gap: 4px; flex-shrink: 0; }
-        .icon-btn {
-          background: transparent;
-          border: 1px solid rgba(255,255,255,0.15);
-          border-radius: 5px;
-          padding: 2px 6px;
-          font-size: 0.75rem;
-          cursor: pointer;
-          color: rgba(255,255,255,0.7);
-          line-height: 1;
-          transition: all 0.15s;
-        }
-        .icon-btn:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.08); color: #fff; }
-
-        .tb-toast {
-          position: fixed;
-          top: 90px;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 9999;
-          padding: 12px 24px;
-          border-radius: 40px;
-          background: rgba(22, 163, 74, 0.95);
-          color: #fff;
-          font-weight: 700;
-          font-size: 0.9rem;
-          box-shadow: 0 8px 32px rgba(34,197,94,0.4);
-          border: 1px solid #22c55e;
-          max-width: min(90vw, 720px);
-          word-break: break-all;
-          text-align: center;
-        }
-        .trash-btn {
-          background: transparent;
-          border: 1px solid rgba(255,255,255,0.15);
-          border-radius: 5px;
-          padding: 2px 6px;
-          font-size: 0.75rem;
-          cursor: pointer;
-          color: rgba(255,255,255,0.5);
-          line-height: 1;
-          transition: all 0.15s;
-          flex-shrink: 0;
-        }
-        .trash-btn:hover {
-          border-color: #f87171;
-          color: #f87171;
-          background: rgba(248,113,113,0.1);
-        }
-
-        /* Slots */
-        .team-slots {
-          display: flex;
-          gap: 4px;
-          margin-bottom: 5px;
-          justify-content: center;
-          flex-shrink: 0;
-          margin-top: 2px;
-        }
-        .team-slot {
-          width: 69px;
-          height: 87px;
-          border-radius: 5px;
-          border: 1px solid rgba(255,255,255,0.15);
-          background: rgba(255,255,255,0.04);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          overflow: hidden;
-          position: relative;
-          transition: border-color 0.15s, transform 0.15s;
-          flex-shrink: 0;
-        }
-        .team-slot:hover {
-          border-color: rgba(255,80,80,0.6);
-          transform: scale(1.04);
-        }
-        .slot-plus {
-          color: rgba(255,255,255,0.2);
-          font-size: 1rem;
-        }
-
-        /* Genres */
-        .team-genres {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 3px;
-          margin-bottom: 5px;
-          justify-content: center;
-          flex-shrink: 0;
-          min-height: 16px;
-        }
-        .genre-badge {
-          padding: 3px 8px;
-          background: rgba(139,92,246,0.25);
-          border-radius: 8px;
-          font-size: 0.8rem;
-          color: #fff;
-          white-space: nowrap;
-          font-weight: 600;
-        }
-        .genre-badge-empty {
-          color: rgba(255,255,255,0.2);
-          font-size: 0.6rem;
-        }
-
-        /* Stats grid — fixed rows, NO overflow scroll */
-        .team-stats-grid {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          overflow: hidden;
-          gap: 1px;
-        }
-        .stat-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex: 1;
-          min-height: 0;
-          padding: 1px 4px;
-          border-bottom: 1px solid rgba(255,255,255,0.07);
-          border-radius: 3px;
-        }
-        .stat-row:last-child { border-bottom: none; }
-        .stat-row:nth-child(odd) {
-          background: rgba(255,255,255,0.03);
-        }
-        .stat-label {
-          font-size: 0.68rem;
-          font-weight: 600;
-          color: rgba(255,255,255,0.82);
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          flex: 1;
-          min-width: 0;
-          letter-spacing: 0.01em;
-        }
-        .stat-value {
-          font-size: 0.72rem;
-          font-weight: 700;
-          color: #fff;
-          display: flex;
-          align-items: center;
-          flex-shrink: 0;
-          gap: 0;
-        }
-        .stat-number {
-          display: inline-block;
-          width: 52px;
-          text-align: right;
-          font-size: 0.72rem;
-          font-weight: 700;
-          color: rgba(255,255,255,0.88);
-          font-variant-numeric: tabular-nums;
-        }
-        .stat-diff {
-          display: inline-block;
-          width: 52px;
-          text-align: left;
-          padding-left: 4px;
-          font-size: 0.62rem;
-          font-weight: 700;
-          font-variant-numeric: tabular-nums;
-        }
-        
-        .artists-bottom {
-          padding: 8px;
-          padding-bottom: 100px;
-          min-height: 100vh;
-        }
-        .search-bar {
-          display: flex;
-          gap: 8px;
-          margin: 0 -8px 8px;
-          padding: 8px;
-          background: #0f0f1a;
-          position: sticky;
-          top: calc(var(--header-height) + max(40vh, 300px));
-          z-index: 49;
-        }
-        .search-bar input {
-          flex: 1;
-          padding: 10px 12px;
-          background: #0f0f1a;
-          border: 1px solid #333;
-          border-radius: 8px;
-          color: #fff;
-          font-size: 0.9rem;
-        }
-        .search-bar select {
-          padding: 10px;
-          background: #0f0f1a;
-          border: 1px solid #333;
-          border-radius: 8px;
-          color: #fff;
-          font-size: 0.85rem;
-          cursor: pointer;
-        }
-        .artists-count {
-          font-size: 0.85rem;
-          color: #888;
-          margin-bottom: 8px;
-        }
-        
-        .artists-grid {
-          display: grid;
-          grid-template-columns: repeat(9, 1fr);
-          gap: 4px;
-        }
-        .artists-grid button {
-          aspect-ratio: 3/4;
-          border-radius: 8px;
-          border: 2px solid rgba(255,255,255,0.1);
-          background: rgba(30,30,50,0.9);
-          padding: 0;
-          cursor: pointer;
-          overflow: hidden;
-          position: relative;
-        }
-        .artists-grid button.selected {
-          border-width: 2px;
-          box-shadow: 0 0 0 2px rgba(255,255,255,0.25);
-        }
-        .card-rank {
-          position: absolute;
-          top: 4px;
-          left: 4px;
-          font-size: 0.6rem;
-          font-weight: 800;
-          padding: 1px 5px;
-          border-radius: 4px;
-          background: rgba(0,0,0,0.65);
-          line-height: 1.3;
-          pointer-events: none;
-        }
-        .card-tier {
-          position: absolute;
-          top: 4px;
-          right: 4px;
-          font-size: 0.6rem;
-          font-weight: 800;
-          color: #fff;
-          padding: 1px 5px;
-          border-radius: 4px;
-          line-height: 1.3;
-          pointer-events: none;
-          text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-        .card-inteam {
-          position: absolute;
-          right: 4px;
-          bottom: 22px;
-          display: flex;
-          gap: 2px;
-          pointer-events: none;
-        }
-        .card-inteam span {
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          font-size: 0.6rem;
-          font-weight: 800;
-          color: #fff;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.6);
-        }
-        .card-inteam-1 { background: #8b5cf6; }
-        .card-inteam-2 { background: #06b6d4; }
-        .card-name {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          padding: 3px 4px;
-          font-size: 0.62rem;
-          font-weight: 700;
-          color: #fff;
-          text-align: center;
-          background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 40%);
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          pointer-events: none;
-        }
-        .card-hover {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          background: rgba(0,0,0,0.35);
-          opacity: 0;
-          transition: opacity 0.15s;
-        }
-        .artists-grid button:hover .card-hover { opacity: 1; }
-        .card-add {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.72rem;
-          font-weight: 800;
-          color: #fff;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-          transition: transform 0.12s;
-        }
-        .card-add:hover { transform: scale(1.12); }
-        .card-add.t1 { background: #8b5cf6; }
-        .card-add.t2 { background: #06b6d4; }
-        .card-add.off { opacity: 0.35; cursor: not-allowed; }
-        .card-add.off:hover { transform: none; }
-
-        .saved-teams {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 8px;
-          padding: 8px 10px;
-          margin-bottom: 8px;
-          background: rgba(30,30,50,0.7);
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 10px;
-        }
-        .saved-teams-title {
-          font-size: 0.8rem;
-          font-weight: 700;
-          color: rgba(255,255,255,0.85);
-          margin-right: 4px;
-        }
-        .saved-empty { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
-        .saved-chip {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          padding: 4px 6px 4px 4px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.12);
-          border-radius: 8px;
-        }
-        .saved-avatars { display: inline-flex; gap: 2px; }
-        .saved-avatar-letter {
-          width: 22px; height: 28px; border-radius: 3px;
-          background: rgba(255,255,255,0.1);
-          display: inline-flex; align-items: center; justify-content: center;
-          font-size: 0.7rem; font-weight: 800; color: #fff;
-        }
-        .saved-name {
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: #fff;
-          max-width: 140px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .saved-btn {
-          border: none;
-          border-radius: 5px;
-          padding: 3px 7px;
-          font-size: 0.68rem;
-          font-weight: 800;
-          color: #fff;
-          cursor: pointer;
-          line-height: 1.2;
-        }
-        .saved-btn.b1 { background: #8b5cf6; }
-        .saved-btn.b2 { background: #06b6d4; }
-        .saved-btn.del { background: rgba(248,113,113,0.25); color: #f87171; }
-        .saved-btn.del:hover { background: rgba(248,113,113,0.5); color: #fff; }
-        .artists-count .hint { color: rgba(255,255,255,0.4); font-weight: 400; }
-        .artists-grid button img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .artist-placeholder {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.5rem;
-          font-weight: 800;
-        }
-
-        
-        /* Mobile - 20/40/40 columns */
-        @media (max-width: 900px) {
-          .page-header {
-            display: none;
-          }
-          .top-panel {
-            flex-direction: row;
-            height: 40vh;
-            min-height: 300px;
-            max-height: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-          }
-          .panel-col-1 { width: 28%; }
-          .panel-col-2 { width: 40%; }
-          .panel-col-3 { width: 32%; }
-          
-          /* Mobile artist preview - smaller image, buttons below */
-          .artist-preview-content {
-            flex-direction: column;
-            align-items: center;
-          }
-          .artist-preview-image-large {
-            width: 50px;
-            height: 70px;
-          }
-          .artist-preview-info {
-            font-size: 0.55rem;
-          }
-          .artist-preview-details {
-            display: none;
-          }
-          .artist-preview-skills {
-            display: none;
-          }
-          .artist-preview-nav {
-            margin-bottom: 4px;
-          }
-          .view-profile-btn, .add-buttons {
-            width: 100%;
-            margin-top: 3px;
-            padding: 6px 10px;
-            font-size: 0.55rem;
-            font-weight: 600;
-            border-radius: 6px;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-          }
-          .view-profile-btn {
-            background: linear-gradient(135deg, #f472b6, #c084fc);
-            color: white;
-            text-decoration: none;
-            display: block;
-          }
-          .add-buttons {
-            flex-direction: column;
-            gap: 3px;
-          }
-          .add-team-btn {
-            width: 100%;
-            padding: 6px 10px;
-            font-size: 0.55rem;
-            font-weight: 600;
-            border-radius: 6px;
-            border: none;
-          }
-          .add-team-btn.team1 {
-            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-            color: white;
-          }
-          .add-team-btn.team2 {
-            background: linear-gradient(135deg, #06b6d4, #22d3ee);
-            color: white;
-          }
-          
-          /* Team trash btn smaller on mobile */
-          .trash-btn {
-            padding: 1px 4px;
-            font-size: 0.65rem;
-          }
-          
-          .artists-bottom {
-            padding-bottom: 100px;
-            min-height: 100vh;
-            padding-top: 48vh;
-          }
-          .search-bar {
-            position: fixed;
-            top: 40vh;
-            left: 0;
-            right: 0;
-            margin-bottom: 0;
-            z-index: 101;
-            width: 100vw !important;
-            padding: 8px 12px !important;
-            box-sizing: border-box !important;
-          }
-          .top-panel {
-            z-index: 100;
-          }
-          .artists-grid {
-            grid-template-columns: repeat(6, 1fr);
-          }
-          
-          /* Background handling */
-          body {
-            background-image: none !important;
-          }
-          
-          /* Nav buttons styling */
-          .artist-preview-nav button {
-            opacity: 1;
-          }
-          .artist-preview-nav button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-          }
-        }
-      `}</style>
     </>
   );
 }

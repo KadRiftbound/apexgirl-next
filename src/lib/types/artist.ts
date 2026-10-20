@@ -1,6 +1,6 @@
 /**
  * Canonical Artist type — single source of truth.
- * Used in: artists/page.tsx, tierlist/page.tsx, MobileArtistsPage.tsx
+ * Used in: teambuilder/ArtistsClient.tsx, tierlist/TierlistClient.tsx
  */
 export type Artist = {
   id: number;

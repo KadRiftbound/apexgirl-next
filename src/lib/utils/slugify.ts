@@ -1,7 +1,7 @@
 /**
  * Converts an artist name to a URL-safe slug.
  * Shared utility — replaces the duplicated inline function in
- * artists/page.tsx, tierlist/page.tsx, and MobileArtistsPage.tsx.
+ * the artist, tier list and Team Builder pages.
  */
 export function slugify(name: string): string {
   return name
