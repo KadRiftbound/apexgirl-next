@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { BackgroundManager } from "@/components/BackgroundManager";
-import CookieConsent from "@/components/CookieConsent";
 import { Analytics } from "@vercel/analytics/react";
 import { MobileNav } from "@/components/MobileNav";
 import { NavVoteWidget } from "@/components/NavVoteWidget";
@@ -116,7 +115,6 @@ export default async function LocaleLayout({
     { href: `/${lang}/tierlist/`, label: ui.nav.tierList },
     { href: `/${lang}/guides/`, label: ui.nav.guides },
     { href: `/${lang}/tools/`, label: ui.nav.tools },
-    { href: "https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00", label: ui.footer.support, cta: true, variant: "support" },
   ];
 
   const languages = [
@@ -128,7 +126,6 @@ export default async function LocaleLayout({
   return (
     <>
       <Analytics />
-      <script data-grow-initializer="" dangerouslySetInnerHTML={{ __html: `!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTpiMTI1NDRjMS1lMjk3LTRiZjAtOWZlNy1mNzRkYTA0NWFiOGY=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();` }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -164,7 +161,6 @@ export default async function LocaleLayout({
       <main id="main-content" className="main-content" role="main" tabIndex={-1}>
         {children}
       </main>
-      <CookieConsent />
       <footer className="footer" role="contentinfo">
         <div className="footer-inner">
           <div>
@@ -191,6 +187,7 @@ export default async function LocaleLayout({
             <Link href={`/${lang}/methodology/`}>{lang === "fr" ? "Methodologie" : "Methodology"}</Link>
             <Link href={`/${lang}/editorial-policy/`}>{lang === "fr" ? "Politique editoriale" : "Editorial Policy"}</Link>
             <Link href={`/${lang}/about/`}>{lang === "fr" ? "A propos" : "About"}</Link>
+            <a href="https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00" target="_blank" rel="noopener noreferrer">{ui.footer.support}</a>
           </div>
           <div>
             <h4>{ui.footer.legal}</h4>
@@ -203,26 +200,6 @@ export default async function LocaleLayout({
           </div>
         </div>
         <div className="footer-bottom">
-          <a
-            href="https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-support"
-            style={{
-              display: "inline-block",
-              marginBottom: "16px",
-              padding: "12px 32px",
-              border: "2px solid #ffd700",
-              borderRadius: "10px",
-              color: "#ffd700",
-              textDecoration: "none",
-              fontWeight: 700,
-              fontSize: "16px",
-              transition: "all 0.2s ease",
-            }}
-          >
-            ⭐ {ui.footer.support}
-          </a>
           {ui.footer.copyright}
         </div>
       </footer>

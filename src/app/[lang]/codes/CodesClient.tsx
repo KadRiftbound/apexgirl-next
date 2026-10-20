@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { AdBanner } from "@/components/AdSense";
-import { SupportCard } from "@/components/SupportCard";
 import { activeCodes, expiredCodes } from '@/lib/data/codes';
 
 const codesData = {
@@ -187,17 +186,14 @@ export default function CodesClient({ lang }: { lang: string }) {
   return (
     <div className="container" style={{ paddingTop: '40px', paddingBottom: '80px' }}>
       {/* Header */}
-      <section style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <h1 className="section-title" style={{ fontSize: '2.5rem', marginBottom: '12px' }}>
-          🎁 {t.title}
-        </h1>
-        <p className="text-muted" style={{ fontSize: '1.125rem' }}>
-          {t.subtitle}
-        </p>
-      </section>
+      <header className="page-head" style={{ marginBottom: '36px' }}>
+        <span className="eyebrow">TopGirl · ApexGirl</span>
+        <h1 className="page-head-title">{t.title}</h1>
+        <p className="page-head-sub">{t.subtitle}</p>
+      </header>
 
       {/* How to use */}
-      <section className="glass-card" style={{ padding: '24px', marginBottom: '40px', maxWidth: '700px', margin: '0 auto 40px' }}>
+      <section className="info-panel" style={{ padding: '20px 24px', maxWidth: '800px', margin: '0 auto 40px' }}>
         <h2 style={{ fontSize: '1.1rem', marginBottom: '12px', color: 'var(--primary)' }}>
           💡 {t.howToUse}
         </h2>
@@ -214,9 +210,10 @@ export default function CodesClient({ lang }: { lang: string }) {
         </h2>
 
         {codesData.active.length === 0 ? (
-          <p className="text-muted text-center" style={{ padding: '40px' }}>
-            {t.noActive}
-          </p>
+          <div className="info-panel" style={{ textAlign: 'center', padding: '36px 24px', borderStyle: 'dashed' }}>
+            <div style={{ fontSize: '2rem', marginBottom: '8px', opacity: 0.8 }}>🎁</div>
+            <p style={{ margin: 0, color: 'var(--text-secondary)', fontWeight: 600 }}>{t.noActive}</p>
+          </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {/* Active codes first */}
@@ -339,8 +336,6 @@ export default function CodesClient({ lang }: { lang: string }) {
       </section>
 
       <AdBanner />
-
-      <SupportCard lang={lang} />
     </div>
   );
 }

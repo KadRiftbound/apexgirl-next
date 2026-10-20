@@ -5,7 +5,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AdBanner } from "@/components/AdSense";
-import { SupportCard } from "@/components/SupportCard";
 import { CorrectionCallout } from "@/components/CorrectionCallout";
 import { SummaryBox, type SummaryBoxData } from "@/components/SummaryBox";
 import { TipCallout, type CalloutData } from "@/components/TipCallout";
@@ -123,20 +122,11 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
   const langSlug = guide?.slugs?.[lang as keyof typeof guide.slugs] || guide?.id || slug;
   const guideColor = guide?.color || "#8b5cf6";
   const guideTitle = (guide as any)[`title_${lang}`] || guide?.title || "";
-  const today = new Date().toISOString().split("T")[0];
   
   const getGuideSlug = (g: GuideLite | Guide | null | undefined) => g?.slugs?.[lang as keyof NonNullable<typeof g>["slugs"]] || g?.id || '';
   const glossaryContent = glossaryText;
   const [tocOpen, setTocOpen] = useState(false);
 
-  const editorialTexts = {
-    usageTitle: lang === "fr" ? "Quand utiliser ce guide" : "When to use this guide",
-    usageBody:
-      lang === "fr"
-        ? "Priorisez ce guide si vous travaillez une equipe de meme genre, preparez un event competitif, ou arbitrez des depenses limitees."
-        : "Prioritize this guide when building same-genre teams, preparing competitive events, or optimizing limited resources.",
-    updateTitle: lang === "fr" ? "Derniere revue editoriale" : "Last editorial review",
-  };
 
   if (!guide) {
     return (
@@ -639,10 +629,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
         background: "rgba(10,12,22,0.94)",
         backdropFilter: "blur(16px)",
         borderBottom: `1px solid ${guideColor}44`,
-        padding: "32px 0 24px",
-        position: "sticky",
-        top: 0,
-        zIndex: 10,
+        padding: "28px 0 24px",
       }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 20px" }}>
           <Link href={`/${lang}/guides/`} style={{
@@ -655,7 +642,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
             marginBottom: "12px",
             transition: "color 0.2s",
           }}>
-            ← {t.backToGuides}
+            {t.backToGuides}
           </Link>
           <div style={{ display: "flex", alignItems: "center", gap: "14px", flexWrap: "wrap" }}>
             <div style={{
@@ -677,12 +664,10 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
                   {getCategoryLabel(guide, lang)}
                 </span>
                 <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>⏱️ {guide.readTime}</span>
-                <span style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.75rem" }}>🕐 {lang === "fr" ? "Récemment mis à jour" : "Recently updated"}</span>
               </div>
               <h1 style={{
-                fontSize: "1.7rem", fontWeight: 800, margin: 0,
-                background: `linear-gradient(135deg, ${guideColor}, #fff)`,
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, margin: 0,
+                color: "#fff", letterSpacing: "-0.01em",
               }}>
                 {(guide as any)[`title_${lang}`] || guide.title}
               </h1>
@@ -692,28 +677,6 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
       </div>
 
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 20px 0" }}>
-
-        <div style={{
-          background: "rgba(10,14,24,0.92)",
-          borderRadius: "16px",
-          border: "1px solid rgba(255,255,255,0.09)",
-          padding: "16px",
-          marginBottom: "16px",
-        }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "10px" }}>
-            <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", padding: "12px" }}>
-              <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.usageTitle}</div>
-              <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{editorialTexts.usageBody}</div>
-            </div>
-            <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", padding: "12px" }}>
-              <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.82rem", marginBottom: "6px" }}>{editorialTexts.updateTitle}</div>
-              <div style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.82rem", lineHeight: 1.55 }}>{today}</div>
-              <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.75rem", marginTop: "8px", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "8px" }}>
-                {lang === "fr" ? "Aussi connu sous le nom de Top Girl, Apex Girl, Idol Company" : "Also known as Top Girl, Apex Girl, Idol Company"}
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* Rewards */}
         {rewardsContent && (
@@ -759,8 +722,6 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
             </div>
           </div>
         )}
-
-        <CorrectionCallout lang={lang} />
 
         {guide.summaryBox && <SummaryBox data={guide.summaryBox} lang={lang} />}
 
@@ -832,6 +793,8 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
             {contentResult.elements}
           </div>
         )}
+
+        <CorrectionCallout lang={lang} />
 
         {(relatedGuideEntries.length > 0 || relatedArtistEntries.length > 0) && (
           <div style={{
@@ -956,8 +919,6 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
 
         <AdBanner />
 
-        <SupportCard lang={lang} />
-
         {/* Autres guides */}
         <div style={{ marginTop: "32px", marginBottom: "24px" }}>
           <h3 style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "14px" }}>
@@ -1074,7 +1035,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
           color: rgba(230,232,245,0.92);
           font-size: 0.98rem;
           line-height: 1.85;
-          font-weight: 430;
+          font-weight: 400;
           letter-spacing: 0.01em;
         }
         .guide-img-wrapper {

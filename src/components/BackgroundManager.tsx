@@ -21,8 +21,6 @@ export function BackgroundManager() {
       document.body.classList.add('bg-guides');
     } else if (pathname.includes('/tools')) {
       document.body.classList.add('bg-tools');
-    } else {
-      document.body.classList.add('bg-home');
     }
   }, [pathname]);
 

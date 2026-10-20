@@ -167,49 +167,13 @@ export default function ToolsClient({ lang }: { lang: string }) {
         paddingBottom: "80px",
       }}>
 
-      {/* Hero Header */}
-      <div style={{
-        background: "rgba(10,12,22,0.90)",
-        backdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(139, 92, 246, 0.38)",
-        padding: "40px 0 30px",
-      }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 20px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "8px" }}>
-            <div style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "14px",
-              background: "linear-gradient(135deg, #f472b6, #c084fc, #818cf8)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "1.5rem",
-              boxShadow: "0 8px 24px rgba(196, 132, 252, 0.4)",
-              flexShrink: 0,
-            }}>
-              🛠️
-            </div>
-            <div>
-              <h1 style={{
-                fontSize: "2rem",
-                fontWeight: 800,
-                margin: 0,
-                background: "linear-gradient(135deg, #f472b6, #c084fc, #818cf8)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}>
-                {t.title}
-              </h1>
-              <p style={{ color: "rgba(255,255,255,0.5)", margin: 0, fontSize: "0.9rem" }}>
-                {t.subtitle}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <header className="page-head" style={{ maxWidth: "900px", margin: "0 auto", padding: "40px 20px 0" }}>
+        <span className="eyebrow">TopGirl · ApexGirl</span>
+        <h1 className="page-head-title">{t.title}</h1>
+        <p className="page-head-sub">{t.subtitle}</p>
+      </header>
 
-      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "32px 20px 0" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "4px 20px 0" }}>
         <AdBanner />
 
         {/* Tool Cards Selector */}

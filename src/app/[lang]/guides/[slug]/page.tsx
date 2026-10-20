@@ -183,18 +183,6 @@ export default async function GuideDetailPage(
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         <Breadcrumb items={breadcrumbItems} lang={lang} />
       </div>
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px 20px' }}>
-        <div className="info-panel">
-          <div className="info-panel-title">
-            {lang === 'fr' ? 'Mise à jour éditoriale' : 'Editorial update'}: {today}
-          </div>
-          <div className="info-panel-body">
-            {lang === 'fr'
-              ? "Ce guide est revu apres changements majeurs de meta et feedback joueurs. Methodologie: tests en jeu, synergies, cout de progression."
-              : "This guide is reviewed after major meta changes and player feedback. Methodology: in-game testing, synergy checks, and progression cost."}
-          </div>
-        </div>
-      </div>
       <GuideDetailClient
         lang={lang}
         slug={langSlug}

@@ -231,6 +231,7 @@
   .hm-wrap { padding: 0 16px; }
   .hm-hero { padding: 36px 16px 28px; }
   .hm-eyebrow { font-size: 0.66rem; gap: 8px; }
+  .hm-eyebrow i, .hm-eyebrow span:last-child { display: none; }
   .hm-stats { font-size: 0.78rem; gap: 4px 12px; }
   .hm-stats-updated { display: none; }
   .hm-section { margin-top: 32px; }

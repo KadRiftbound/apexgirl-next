@@ -220,12 +220,20 @@ body::after {
   right: 0;
   bottom: 0;
   background:
-    linear-gradient(180deg, rgba(10, 10, 18, 0.60) 0%, rgba(10, 10, 18, 0.50) 50%, rgba(10, 10, 18, 0.65) 100%),
+    linear-gradient(180deg, rgba(10, 10, 18, 0.74) 0%, rgba(10, 10, 18, 0.80) 45%, rgba(10, 10, 18, 0.90) 100%),
     radial-gradient(ellipse at 20% 20%, rgba(255, 77, 141, 0.12) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.10) 0%, transparent 50%),
     radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 60%);
   pointer-events: none;
   z-index: -1;
+}
+
+/* Home keeps the artwork vivid behind the hero */
+body.bg-home::after {
+  background:
+    linear-gradient(180deg, rgba(10, 10, 18, 0.60) 0%, rgba(10, 10, 18, 0.50) 50%, rgba(10, 10, 18, 0.65) 100%),
+    radial-gradient(ellipse at 20% 20%, rgba(255, 77, 141, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.10) 0%, transparent 50%);
 }
 
 a {
@@ -408,8 +416,7 @@ img {
   transform: scaleX(1);
 }
 
-.nav-cta,
-.nav-cta-support {
+.nav-cta {
   margin-left: 12px;
   padding: 10px 20px !important;
   color: #fff !important;
@@ -420,15 +427,13 @@ img {
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.nav-cta:hover,
-.nav-cta-support:hover {
+.nav-cta:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4);
   background: linear-gradient(135deg, var(--primary-hover), var(--secondary-hover)) !important;
 }
 
-.nav-cta::after,
-.nav-cta-support::after {
+.nav-cta::after {
   display: none !important;
 }
 
@@ -519,17 +524,6 @@ img {
   transform: translateX(4px);
 }
 
-.btn-support {
-  background: rgba(255, 215, 0, 0.08);
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
-}
-
-.btn-support:hover {
-  background: rgba(255, 215, 0, 0.2);
-  box-shadow: 0 0 28px rgba(255, 215, 0, 0.45);
-  transform: scale(1.03);
-}
-
 .footer-bottom {
   max-width: var(--max-width);
   margin: 40px auto 0;
@@ -539,6 +533,45 @@ img {
   color: var(--text-dim);
   font-size: 0.85rem;
 }
+
+/* Page head (shared by section pages) */
+.page-head { text-align: center; margin-bottom: 28px; }
+.eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  margin-bottom: 10px;
+}
+.page-head-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.page-head-sub { color: var(--text-muted); font-size: 1.02rem; margin: 0; }
+.page-head-note {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: rgba(251, 191, 36, 0.9);
+  background: rgba(251, 191, 36, 0.07);
+  border: 1px solid rgba(251, 191, 36, 0.22);
+  border-radius: 8px;
+}
+.page-head-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+.page-head-link:hover { color: #fff; }
 
 /* Cards */
 .card {

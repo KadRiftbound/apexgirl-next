@@ -567,59 +567,15 @@ export default function GuidesListClient({ lang, guides: guidesProp }: { lang: s
       minHeight: "100vh",
       paddingBottom: "60px"
     }}>
-      <div style={{
-        backdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(139, 92, 246, 0.25)",
-        padding: "40px 0 30px"
-      }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
-          <h1 style={{ 
-            fontSize: "2.5rem", 
-            fontWeight: 800, 
-            marginBottom: "8px",
-            background: "linear-gradient(135deg, #f472b6, #c084fc, #818cf8)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}>
-            📖 {t.title}
-          </h1>
-          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem", marginBottom: "8px" }}>
-            {t.subtitle}
-          </p>
-          {t.outdatedNotice && (
-            <p style={{
-              display: "inline-block",
-              color: "rgba(251, 191, 36, 0.85)",
-              background: "rgba(251, 191, 36, 0.07)",
-              border: "1px solid rgba(251, 191, 36, 0.22)",
-              borderRadius: "8px",
-              padding: "6px 12px",
-              fontSize: "0.8rem",
-              lineHeight: 1.45,
-              margin: "0 0 10px 0",
-            }}>
-              ⚠️ {t.outdatedNotice}
-            </p>
-          )}
-          <Link
-            href={`/${lang}/glossary/`}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              color: "rgba(139, 92, 246, 0.85)",
-              fontSize: "0.88rem",
-              textDecoration: "none",
-              fontWeight: 600,
-              transition: "color 0.2s",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = "#c084fc"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(139, 92, 246, 0.85)"; }}
-          >
-            📚 {t.glossary}
-          </Link>
+      <header className="page-head" style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px 16px 0" }}>
+        <span className="eyebrow">TopGirl · ApexGirl</span>
+        <h1 className="page-head-title">{t.title}</h1>
+        <p className="page-head-sub">{t.subtitle}</p>
+        {t.outdatedNotice && <p className="page-head-note">{t.outdatedNotice}</p>}
+        <div>
+          <Link href={`/${lang}/glossary/`} className="page-head-link">{t.glossary} →</Link>
         </div>
-      </div>
+      </header>
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px 16px" }}>
         <AdBanner />
