@@ -1,7 +1,7 @@
 // Short, translated labels for an artist's skills, for compact cards (tier list, home).
 // Mirrors the skill types used by scripts/compute-tiers.js.
 
-export type SkillKind = "pd" | "sdr" | "sd" | "ba" | "bar" | "fan" | "dps" | "other";
+export type SkillKind = "pd" | "sdr" | "sd" | "ba" | "bar" | "fan" | "rally" | "dps" | "other";
 
 export type SkillChip = { kind: SkillKind; text: string };
 
@@ -11,13 +11,15 @@ const TYPES: [SkillKind, RegExp][] = [
   ["sd", /skill damage/i],
   ["ba", /basic attack damage dealt|normal attack|basic attack damage$|increase normal attack/i],
   ["bar", /basic attack damage taken|basic damage reduction|↓.*damage taken|^\S+ damage reduction$/i],
+  // Rally fan capacity (group rallies) is not the same skill as fan capacity (solo marches).
+  ["rally", /rally/i],
   ["fan", /fans? cap|fan capacity/i],
 ];
 
 const LABELS: Record<string, Record<SkillKind, string>> = {
-  fr: { pd: "Dmg joueur", sdr: "Réd. skill", sd: "Dmg skill", ba: "Attaque", bar: "Réd. attaque", fan: "Fans", dps: "DPS", other: "Hors combat" },
-  en: { pd: "Player dmg", sdr: "Skill dmg red.", sd: "Skill dmg", ba: "Basic atk", bar: "Basic dmg red.", fan: "Fan cap", dps: "DPS", other: "Non-combat" },
-  id: { pd: "Dmg pemain", sdr: "Red. skill", sd: "Dmg skill", ba: "Serangan", bar: "Red. serangan", fan: "Fan", dps: "DPS", other: "Non-tempur" },
+  fr: { pd: "Dmg joueur", sdr: "Réd. skill", sd: "Dmg skill", ba: "Attaque", bar: "Réd. attaque", fan: "Fans", rally: "Fans rally", dps: "DPS", other: "Hors combat" },
+  en: { pd: "Player dmg", sdr: "Skill dmg red.", sd: "Skill dmg", ba: "Basic atk", bar: "Basic dmg red.", fan: "Fan cap", rally: "Rally cap", dps: "DPS", other: "Non-combat" },
+  id: { pd: "Dmg pemain", sdr: "Red. skill", sd: "Dmg skill", ba: "Serangan", bar: "Red. serangan", fan: "Fan", rally: "Fan rally", dps: "DPS", other: "Non-tempur" },
 };
 
 function parse(raw: string): { kind: SkillKind; value: string } | null {

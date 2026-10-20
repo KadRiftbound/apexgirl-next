@@ -209,6 +209,7 @@ a.tier-chip:hover { background: rgba(var(--tier), 0.28); }
 .skill-sdr, .skill-bar { color: #7dd3fc; }
 .skill-sd, .skill-ba { color: #fdba74; }
 .skill-fan { color: #86efac; }
+.skill-rally { color: #67e8f9; }
 .skill-dps, .skill-other { color: var(--text-dim); }
 
 @media (max-width: 600px) {

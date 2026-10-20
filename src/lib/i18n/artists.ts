@@ -47,6 +47,7 @@ export type ArtistContent = {
   deleteSaved: string;
   noSavedTeams: string;
   teamNamePlaceholder: string;
+  renameTeam: string;
   emptyTeam: string;
   hintAdd: string;
   teamBuilderMethodology: string;
@@ -71,6 +72,9 @@ export type ArtistContent = {
   ctxRally: string;
   evalBuiltFor: string;
   searchPlaceholder: string;
+  hideUR: string;
+  resetFilters: string;
+  clearSearch: string;
   activeTeamHint: string;
   noResults: string;
   statsLabel: string;
@@ -126,6 +130,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Supprimer",
     noSavedTeams: "Aucune équipe sauvegardée. Composez une équipe puis cliquez sur 💾.",
     teamNamePlaceholder: "Nom de l'équipe",
+    renameTeam: "Renommer",
     emptyTeam: "L'équipe est vide",
     hintAdd: "Survolez une carte : +1 / +2 pour ajouter",
     evalPower: "Puissance",
@@ -148,6 +153,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Rally",
     evalBuiltFor: "Taillée pour",
     searchPlaceholder: "Nom, genre, spécialité, sort…",
+    hideUR: "Masquer UR",
+    resetFilters: "Réinitialiser",
+    clearSearch: "Effacer",
     activeTeamHint: "Équipe active : un clic sur une carte ajoute ici",
     noResults: "Aucun artiste ne correspond",
     statsLabel: "Stats",
@@ -204,6 +212,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Delete",
     noSavedTeams: "No saved team yet. Build a team then click 💾.",
     teamNamePlaceholder: "Team name",
+    renameTeam: "Rename",
     emptyTeam: "Team is empty",
     hintAdd: "Hover a card: +1 / +2 to add",
     evalPower: "Power",
@@ -226,6 +235,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Rally",
     evalBuiltFor: "Built for",
     searchPlaceholder: "Name, genre, specialty, skill…",
+    hideUR: "Hide UR",
+    resetFilters: "Reset",
+    clearSearch: "Clear",
     activeTeamHint: "Active team: clicking a card adds here",
     noResults: "No artist matches",
     statsLabel: "Stats",
@@ -282,6 +294,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Elimina",
     noSavedTeams: "Nessuna squadra salvata. Componi una squadra e clicca 💾.",
     teamNamePlaceholder: "Nome squadra",
+    renameTeam: "Rinomina",
     emptyTeam: "La squadra è vuota",
     hintAdd: "Passa su una carta: +1 / +2 per aggiungere",
     evalPower: "Potenza",
@@ -304,6 +317,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Rally",
     evalBuiltFor: "Fatta per",
     searchPlaceholder: "Nome, genere, specialità, abilità…",
+    hideUR: "Nascondi UR",
+    resetFilters: "Reimposta",
+    clearSearch: "Cancella",
     activeTeamHint: "Team attivo: un clic su una carta aggiunge qui",
     noResults: "Nessun artista corrisponde",
     statsLabel: "Stats",
@@ -360,6 +376,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Eliminar",
     noSavedTeams: "Ningún equipo guardado. Crea un equipo y pulsa 💾.",
     teamNamePlaceholder: "Nombre del equipo",
+    renameTeam: "Renombrar",
     emptyTeam: "El equipo está vacío",
     hintAdd: "Pasa sobre una carta: +1 / +2 para añadir",
     evalPower: "Potencia",
@@ -382,6 +399,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Rally",
     evalBuiltFor: "Hecha para",
     searchPlaceholder: "Nombre, género, especialidad, habilidad…",
+    hideUR: "Ocultar UR",
+    resetFilters: "Restablecer",
+    clearSearch: "Borrar",
     activeTeamHint: "Equipo activo: un clic en una carta añade aquí",
     noResults: "Ningún artista coincide",
     statsLabel: "Stats",
@@ -438,6 +458,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Excluir",
     noSavedTeams: "Nenhum time salvo. Monte um time e clique em 💾.",
     teamNamePlaceholder: "Nome do time",
+    renameTeam: "Renomear",
     emptyTeam: "O time está vazio",
     hintAdd: "Passe sobre um card: +1 / +2 para adicionar",
     evalPower: "Poder",
@@ -460,6 +481,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Rally",
     evalBuiltFor: "Feita para",
     searchPlaceholder: "Nome, gênero, especialidade, habilidade…",
+    hideUR: "Ocultar UR",
+    resetFilters: "Redefinir",
+    clearSearch: "Limpar",
     activeTeamHint: "Time ativo: um clique em uma carta adiciona aqui",
     noResults: "Nenhum artista corresponde",
     statsLabel: "Stats",
@@ -516,6 +540,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Usuń",
     noSavedTeams: "Brak zapisanych drużyn. Zbuduj drużynę i kliknij 💾.",
     teamNamePlaceholder: "Nazwa drużyny",
+    renameTeam: "Zmień nazwę",
     emptyTeam: "Drużyna jest pusta",
     hintAdd: "Najedź na kartę: +1 / +2 aby dodać",
     evalPower: "Moc",
@@ -538,6 +563,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Rally",
     evalBuiltFor: "Stworzona do",
     searchPlaceholder: "Imię, gatunek, specjalność, umiejętność…",
+    hideUR: "Ukryj UR",
+    resetFilters: "Resetuj",
+    clearSearch: "Wyczyść",
     activeTeamHint: "Aktywna drużyna: kliknięcie karty dodaje tutaj",
     noResults: "Brak pasujących artystek",
     statsLabel: "Statystyki",
@@ -594,6 +622,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Hapus",
     noSavedTeams: "Belum ada tim tersimpan. Susun tim lalu klik 💾.",
     teamNamePlaceholder: "Nama tim",
+    renameTeam: "Ganti nama",
     emptyTeam: "Tim kosong",
     hintAdd: "Arahkan ke kartu: +1 / +2 untuk menambah",
     evalPower: "Kekuatan",
@@ -616,6 +645,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Rally",
     evalBuiltFor: "Dibuat untuk",
     searchPlaceholder: "Nama, genre, spesialisasi, skill…",
+    hideUR: "Sembunyikan UR",
+    resetFilters: "Atur ulang",
+    clearSearch: "Hapus",
     activeTeamHint: "Tim aktif: klik kartu untuk menambah di sini",
     noResults: "Tidak ada artis yang cocok",
     statsLabel: "Stats",
@@ -672,6 +704,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Удалить",
     noSavedTeams: "Нет сохранённых команд. Соберите команду и нажмите 💾.",
     teamNamePlaceholder: "Название команды",
+    renameTeam: "Переименовать",
     emptyTeam: "Команда пуста",
     hintAdd: "Наведите на карту: +1 / +2 чтобы добавить",
     evalPower: "Сила",
@@ -694,6 +727,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Ралли",
     evalBuiltFor: "Создана для",
     searchPlaceholder: "Имя, жанр, специализация, навык…",
+    hideUR: "Скрыть UR",
+    resetFilters: "Сбросить",
+    clearSearch: "Очистить",
     activeTeamHint: "Активная команда: клик по карте добавляет сюда",
     noResults: "Нет подходящих артистов",
     statsLabel: "Статы",
@@ -750,6 +786,7 @@ const artistContent: Record<string, ArtistContent> = {
     deleteSaved: "Löschen",
     noSavedTeams: "Noch kein Team gespeichert. Team bauen und 💾 klicken.",
     teamNamePlaceholder: "Teamname",
+    renameTeam: "Umbenennen",
     emptyTeam: "Team ist leer",
     hintAdd: "Karte überfahren: +1 / +2 zum Hinzufügen",
     evalPower: "Stärke",
@@ -772,6 +809,9 @@ const artistContent: Record<string, ArtistContent> = {
     ctxRally: "Rally",
     evalBuiltFor: "Gebaut für",
     searchPlaceholder: "Name, Genre, Spezialität, Fähigkeit…",
+    hideUR: "UR ausblenden",
+    resetFilters: "Zurücksetzen",
+    clearSearch: "Löschen",
     activeTeamHint: "Aktives Team: Klick auf eine Karte fügt hier hinzu",
     noResults: "Kein Artist passt",
     statsLabel: "Stats",

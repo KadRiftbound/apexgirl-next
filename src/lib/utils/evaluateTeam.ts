@@ -14,6 +14,8 @@ import { calculateTeamStats, type TeamStats } from "./calculateTeamStats";
  *    The rating (0–100) is the best of the three, relative to the best possible
  *    team in that context, on a square-root scale so mid teams are not crushed.
  *    A very specialised team is therefore rated on what it is built for.
+ *    The damage factor (the "10 sec/1800 Damage" skill every artist has: 1800 for UR/SSR,
+ *    800 for SR, 300 for R) counts too, boosted by the team's skill damage %.
  * 3. Specialty: which context the team is built for, plus its strong/weak axes.
  */
 
@@ -56,6 +58,8 @@ const W = {
   attackResist: 10,
   fanBase: 3,
   rallyBase: 3,
+  /** per point of damage factor, before the skill damage % boost (1800 -> 90 pts) */
+  dmgFactor: 0.05,
   /** extra value of fan capacity when fighting solo */
   fanSolo: 80,
   /** extra value of rally capacity when rallying */
@@ -75,7 +79,8 @@ function contextScores(s: TeamStats): Record<TeamContext, number> {
     s.skillResist * W.skillResist +
     s.attackResist * W.attackResist +
     s.fanCapacity * W.fanBase +
-    s.rallyCapacity * W.rallyBase;
+    s.rallyCapacity * W.rallyBase +
+    s.skillDamageRaw * (1 + s.skillDamage / 100) * W.dmgFactor;
   return {
     general,
     solo: general + s.fanCapacity * W.fanSolo,

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Inter } from "next/font/google";
 import { useState, useMemo, useEffect, useRef, useSyncExternalStore, type ReactNode, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
@@ -15,6 +16,12 @@ import { getArtistContent, type ArtistContent } from "@/lib/i18n/artists";
 import "./teambuilder.css";
 
 const isUR = (rank: string) => rank.startsWith("UR");
+
+// Numbers (scores, %, grades) use Inter with tabular figures: Poppins digits are too round at heavy weights.
+const numFont = Inter({ subsets: ["latin"], weight: ["500", "600", "700", "800"], display: "swap", variable: "--font-num" });
+
+/** Strips leading emoji/symbols from a translated title. */
+const stripEmoji = (s: string) => s.replace(/^[^\p{L}\p{N}]+/u, "");
 
 const genreColors: Record<string, string> = {
   "Pop":     "rgba(236, 72, 153, 0.55)",
@@ -81,6 +88,9 @@ const ICON_PATHS: Record<string, ReactNode> = {
   folder: <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />,
   chevron: <path d="M6 9l6 6 6-6" />,
   check: <path d="M20 6L9 17l-5-5" />,
+  pencil: <><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></>,
+  x: <path d="M18 6L6 18M6 6l12 12" />,
+  reset: <><path d="M3 12a9 9 0 1 0 3-6.7" /><path d="M3 4v5h5" /></>,
 };
 function Icon({ name, size = 14, className, style }: { name: string; size?: number; className?: string; style?: CSSProperties }) {
   return (
@@ -214,10 +224,56 @@ const subscribeResize = (cb: () => void) => {
 /* ------------------------------------------------------------------ */
 /* Team evaluation block                                                */
 /* ------------------------------------------------------------------ */
-function TeamEvalBlock({ ev, t }: { ev: TeamEvaluation; t: ArtistContent }) {
+function TeamEvalBlock({ ev, t, label, onActivate }: { ev: TeamEvaluation; t: ArtistContent; label: string; onActivate: () => void }) {
   const gradeColor = tierBadgeColors[ev.grade] || tierBadgeColors["-"];
   const ctx = CONTEXTS[ev.context];
   const genres = Object.entries(ev.stats.genreCounts).sort((a, b) => b[1] - a[1]);
+  return (
+    <div className="tb-eval" style={{ ["--grade" as string]: gradeColor }}>
+      <div className="tb-grade" title={t.evalRatingHint}>
+        <span>{ev.grade}</span>
+        <small>{ev.size ? `${ev.rating}/100` : "—"}</small>
+      </div>
+      <div className="tb-eval-main">
+        <div className="tb-eval-row">
+          <button type="button" className="tb-team-label" onClick={onActivate} title={t.activeTeamHint}>{label}</button>
+          <span className="tb-power" title={t.evalPower}>
+            <b>{fmt(ev.score)}</b> pts
+            {ev.synergy && <span className="tb-bonus">+{Math.round(ev.synergy.bonus * 100)}%</span>}
+          </span>
+        </div>
+        <div className="tb-bar"><i style={{ width: `${ev.rating}%` }} /></div>
+        <div className="tb-chips">
+          {genres.length === 0 && <span className="tb-chip empty">—</span>}
+          {genres.map(([genre, count]) => {
+            const syn = ev.synergy?.genre === genre;
+            return (
+              <span
+                key={genre}
+                className={`tb-chip${syn ? " synergy" : ""}`}
+                style={{ ["--chip" as string]: genreColors[genre] || "rgba(139,92,246,0.55)" }}
+                title={syn ? `${t.evalSynergy} +${Math.round(ev.synergy!.bonus * 100)}%` : undefined}
+              >
+                <i />{genre} <span className="tb-num">×{count}</span>{syn && <span className="tb-num"> · +{Math.round(ev.synergy!.bonus * 100)}%</span>}
+              </span>
+            );
+          })}
+          {ev.nextSynergy && (
+            <span className="tb-chip synergy-next" title={t.evalSynergy}>
+              {t.evalNextHint.replace("{genre}", ev.nextSynergy.genre).replace("{pct}", String(Math.round(ev.nextSynergy.bonus * 100)))}
+            </span>
+          )}
+          {ev.size > 0 && (
+            <span className="tb-chip ctx" title={t.evalBuiltFor}><Icon name={ctx.icon} size={11} /> {t.evalBuiltFor} : {t[ctx.key]}</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TeamVerdict({ ev, t }: { ev: TeamEvaluation; t: ArtistContent }) {
+  if (!ev.size || (ev.strengths.length === 0 && ev.weaknesses.length === 0)) return <span />;
   const axisList = (list: TeamAxis[]) => list.map((k, i) => (
     <span key={k} className="tb-axis">
       {i > 0 && <span className="tb-sep">·</span>}
@@ -225,50 +281,10 @@ function TeamEvalBlock({ ev, t }: { ev: TeamEvaluation; t: ArtistContent }) {
     </span>
   ));
   return (
-    <>
-      <div className="tb-eval" style={{ ["--grade" as string]: gradeColor }}>
-        <div className="tb-grade" title={t.evalRatingHint}>
-          {ev.grade}
-          <small>{ev.size ? `${ev.rating}/100` : "—"}</small>
-        </div>
-        <div className="tb-eval-main">
-          <div className="tb-eval-row">
-            <span>{t.evalPower}</span>
-            <b>{fmt(ev.score)}</b>
-            {ev.synergy && <span className="tb-bonus">+{Math.round(ev.synergy.bonus * 100)}%</span>}
-            <span className="tb-rating" title={t.evalRatingHint}>{ev.rating}<span>/100</span></span>
-          </div>
-          <div className="tb-bar"><i style={{ width: `${ev.rating}%` }} /></div>
-          <div className="tb-chips">
-            {genres.length === 0 && <span className="tb-chip" style={{ background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.35)" }}>—</span>}
-            {genres.map(([genre, count]) => (
-              <span
-                key={genre}
-                className={`tb-chip${ev.synergy?.genre === genre ? " synergy" : ""}`}
-                style={ev.synergy?.genre === genre ? undefined : { background: genreColors[genre] || 'rgba(139,92,246,0.25)' }}
-                title={ev.synergy?.genre === genre ? `${t.evalSynergy} +${Math.round(ev.synergy.bonus * 100)}%` : undefined}
-              >
-                {genre} ×{count}{ev.synergy?.genre === genre ? ` · +${Math.round(ev.synergy.bonus * 100)}%` : ""}
-              </span>
-            ))}
-            {ev.nextSynergy && (
-              <span className="tb-chip synergy-next" title={t.evalSynergy}>
-                {t.evalNextHint.replace("{genre}", ev.nextSynergy.genre).replace("{pct}", String(Math.round(ev.nextSynergy.bonus * 100)))}
-              </span>
-            )}
-            {ev.size > 0 && (
-              <span className="tb-chip ctx" title={t.evalBuiltFor}><Icon name={ctx.icon} size={11} /> {t.evalBuiltFor} : {t[ctx.key]}</span>
-            )}
-          </div>
-        </div>
-      </div>
-      {ev.size > 0 && (ev.strengths.length > 0 || ev.weaknesses.length > 0) && (
-        <div className="tb-verdict">
-          {ev.strengths.length > 0 && <span className="strong">{t.evalStrong} <b>{axisList(ev.strengths)}</b></span>}
-          {ev.weaknesses.length > 0 && <span className="weak">{t.evalWeak} <b>{axisList(ev.weaknesses)}</b></span>}
-        </div>
-      )}
-    </>
+    <div className="tb-verdict">
+      {ev.strengths.length > 0 && <span className="strong">{t.evalStrong} <b>{axisList(ev.strengths)}</b></span>}
+      {ev.weaknesses.length > 0 && <span className="weak">{t.evalWeak} <b>{axisList(ev.weaknesses)}</b></span>}
+    </div>
   );
 }
 
@@ -284,33 +300,16 @@ type TeamCardProps = {
   active: boolean;
   shown: boolean;
   onActivate: () => void;
-  onName: (v: string) => void;
   onSave: () => void;
   onShare: () => void;
   onClear: () => void;
   onRemove: (id: number) => void;
 };
 
-function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onName, onSave, onShare, onClear, onRemove }: TeamCardProps) {
+/** The team is named when it is saved and renamed from "My teams": no name field here, the faces get the room. */
+function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onSave, onShare, onClear, onRemove }: TeamCardProps) {
   return (
     <div className={`tb-card tb-team tb-team-${n}${active ? " active" : ""}${shown ? " shown" : ""}`}>
-      <div className="tb-team-head">
-        <button className="tb-team-badge" onClick={onActivate} title={t.activeTeamHint} aria-label={t.activeTeamHint}>{n}</button>
-        <input
-          className="tb-team-name"
-          value={name}
-          onChange={(e) => onName(e.target.value)}
-          onFocus={onActivate}
-          placeholder={n === 1 ? t.team1Label : t.team2Label}
-          maxLength={24}
-          aria-label={t.teamNamePlaceholder}
-        />
-        <div className="tb-team-actions">
-          <button onClick={onSave} className="tb-icon-btn" title={t.saveTeam} aria-label={t.saveTeam}><Icon name="save" /></button>
-          <button onClick={onShare} className="tb-icon-btn" title={t.shareTeam} aria-label={t.shareTeam}><Icon name="link" /></button>
-          <button onClick={onClear} className="tb-icon-btn danger" title={t.clearTeam} aria-label={t.clearTeam}><Icon name="trash" /></button>
-        </div>
-      </div>
       <div className="tb-slots">
         {[0, 1, 2, 3, 4].map((i) => {
           const a = team[i];
@@ -324,7 +323,7 @@ function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onName, onS
               {a ? (
                 <>
                   {a.image
-                    ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="100px" style={{ objectFit: "cover" }} />
+                    ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="120px" style={{ objectFit: "cover", objectPosition: "center 12%" }} />
                     : <span style={{ fontWeight: 800, fontSize: "1rem" }}>{a.name.charAt(0)}</span>}
                   <span className="tb-slot-name">{a.name}</span>
                 </>
@@ -333,7 +332,15 @@ function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onName, onS
           );
         })}
       </div>
-      <TeamEvalBlock ev={ev} t={t} />
+      <TeamEvalBlock ev={ev} t={t} label={name || (n === 1 ? t.team1Label : t.team2Label)} onActivate={onActivate} />
+      <div className="tb-team-foot">
+        <TeamVerdict ev={ev} t={t} />
+        <div className="tb-team-actions">
+          <button onClick={onSave} className="tb-icon-btn" title={t.saveTeam} aria-label={t.saveTeam}><Icon name="save" size={13} /></button>
+          <button onClick={onShare} className="tb-icon-btn" title={t.shareTeam} aria-label={t.shareTeam}><Icon name="link" size={13} /></button>
+          <button onClick={onClear} className="tb-icon-btn danger" title={t.clearTeam} aria-label={t.clearTeam}><Icon name="trash" size={13} /></button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -360,7 +367,7 @@ function CompareTable({ e1, e2, t, collapsed, onToggle }: { e1: TeamEvaluation; 
                 {v1 > v2 && d > 0 && <span className="tb-cmp-diff">▲{fmt(d)}{suffix}</span>}
                 {fmt(v1)}{suffix}
               </span>
-              <span className="tb-cmp-label" style={{ color }}><Icon name={icon} size={12} /> {label}</span>
+              <span className="tb-cmp-label"><Icon name={icon} size={12} style={{ color }} /> {label}</span>
               <span className={`tb-cmp-v r ${cls(v2, v1)}`}>
                 {fmt(v2)}{suffix}
                 {v2 > v1 && d > 0 && <span className="tb-cmp-diff">▲{fmt(d)}{suffix}</span>}
@@ -372,7 +379,7 @@ function CompareTable({ e1, e2, t, collapsed, onToggle }: { e1: TeamEvaluation; 
           <span className={`tb-cmp-v l ${cls(e1.rating, e2.rating)}`}>
             {e1.rating}<span className="tb-cmp-grade" style={{ background: tierBadgeColors[e1.grade] }}>{e1.grade}</span>
           </span>
-          <span className="tb-cmp-label" style={{ color: "#fff" }}><Icon name="trophy" size={12} /> {t.evalScoreRow}</span>
+          <span className="tb-cmp-label strong"><Icon name="trophy" size={12} /> {t.evalScoreRow}</span>
           <span className={`tb-cmp-v r ${cls(e2.rating, e1.rating)}`}>
             <span className="tb-cmp-grade" style={{ background: tierBadgeColors[e2.grade] }}>{e2.grade}</span>{e2.rating}
           </span>
@@ -409,6 +416,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [filterMaxSeason, setFilterMaxSeason] = useState("");
+  const [hideUR, setHideUR] = useState<boolean>(() => readLS('tbHideUR', '0') === '1');
   // Hydration-safe "mounted" flag without a setState-in-effect.
   const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
   const windowWidth = useSyncExternalStore(subscribeResize, () => window.innerWidth, () => 0);
@@ -429,6 +437,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   useEffect(() => { try { localStorage.setItem('team1Name', team1Name); } catch {} }, [team1Name]);
   useEffect(() => { try { localStorage.setItem('team2Name', team2Name); } catch {} }, [team2Name]);
   useEffect(() => { try { localStorage.setItem('savedTeams', JSON.stringify(savedTeams)); } catch {} }, [savedTeams]);
+  useEffect(() => { try { localStorage.setItem('tbHideUR', hideUR ? '1' : '0'); } catch {} }, [hideUR]);
 
   const saveTeam = (n: 1 | 2) => {
     const team = n === 1 ? team1 : team2;
@@ -437,7 +446,8 @@ export default function ArtistsClient({ lang }: { lang: string }) {
     const name = rawName || `${n === 1 ? t.team1Label : t.team2Label} · ${new Date().toLocaleDateString()}`;
     const entry = newSavedTeam(n, name, team.map((a) => a.id));
     setSavedTeams((prev) => [entry, ...prev].slice(0, 30));
-    showToast(`💾 ${t.teamSaved} : ${name}`);
+    (n === 1 ? setTeam1Name : setTeam2Name)(name);
+    showToast(`${t.teamSaved} : ${name}`);
   };
 
   const loadSaved = (saved: SavedTeam, n: 1 | 2) => {
@@ -448,13 +458,24 @@ export default function ArtistsClient({ lang }: { lang: string }) {
 
   const deleteSaved = (id: string) => setSavedTeams((prev) => prev.filter((s) => s.id !== id));
 
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const renameSaved = (saved: SavedTeam, raw: string) => {
+    setEditingId(null);
+    const name = raw.trim().slice(0, 24);
+    if (!name || name === saved.name) return;
+    setSavedTeams((prev) => prev.map((s) => (s.id === saved.id ? { ...s, name } : s)));
+    // A team currently loaded from this save follows the new name.
+    if (team1Name === saved.name) setTeam1Name(name);
+    if (team2Name === saved.name) setTeam2Name(name);
+  };
+
   const shareTeams = async () => {
     const parts: string[] = [];
     if (team1.length) parts.push('t1=' + team1.map((a) => a.id).join(','));
     if (team2.length) parts.push('t2=' + team2.map((a) => a.id).join(','));
     if (!parts.length) { showToast(t.emptyTeam); return; }
     const url = `${window.location.origin}/${lang}/teambuilder/?${parts.join('&')}`;
-    if (await copyToClipboard(url)) showToast(`🔗 ${t.linkCopied}`);
+    if (await copyToClipboard(url)) showToast(t.linkCopied);
     else showToast(url);
   };
 
@@ -481,6 +502,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
     const q = searchQuery.toLowerCase().trim();
     const maxOrder = filterMaxSeason ? (SEASON_ORDER[filterMaxSeason] ?? 9999) : 9999;
     return POOL.filter((artist) => {
+      if (hideUR && isUR(artist.rank)) return false;
       if (filterGenre && artist.genre !== filterGenre) return false;
       if (filterSpecialty && artist.specialty !== filterSpecialty) return false;
       if (filterMaxSeason !== "" && getArtistSeasonOrder(artist) > maxOrder) return false;
@@ -498,7 +520,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
       ].filter(Boolean).join(" ").toLowerCase();
       return q.split(/\s+/).every((w) => hay.includes(w));
     });
-  }, [searchQuery, filterGenre, filterSpecialty, filterMaxSeason, lang]);
+  }, [searchQuery, filterGenre, filterSpecialty, filterMaxSeason, hideUR, lang]);
 
   const sortedArtists = useMemo(
     () => [...filteredArtists].sort((a, b) =>
@@ -507,6 +529,9 @@ export default function ArtistsClient({ lang }: { lang: string }) {
       a.name.localeCompare(b.name)),
     [filteredArtists],
   );
+
+  const activeFilters = [searchQuery.trim(), filterGenre, filterSpecialty, filterMaxSeason, hideUR ? "ur" : ""].filter(Boolean).length;
+  const resetFilters = () => { setSearchQuery(""); setFilterGenre(""); setFilterSpecialty(""); setFilterMaxSeason(""); setHideUR(false); };
 
   if (!mounted) {
     return <div style={{ padding: "100px", textAlign: "center", color: "#fff" }}>{t.loading}</div>;
@@ -522,9 +547,9 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   return (
     <>
       {toast && <div className="tb-toast" role="status">{toast}</div>}
-      <div className="tb-page">
+      <div className={`tb-page ${numFont.variable}`}>
         <div className="tb-header">
-          <h1 className="tb-title">{t.pageTitle || "🎤 Artists"}</h1>
+          <h1 className="tb-title">{stripEmoji(t.pageTitle || "Artists")}</h1>
           <p className="tb-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
           {!isMobile && (
             <div className="info-panel" style={{ maxWidth: 920, margin: "0 auto 12px" }}>
@@ -559,14 +584,14 @@ export default function ArtistsClient({ lang }: { lang: string }) {
             <TeamCard
               n={1} team={team1} name={team1Name} ev={team1Eval} t={t}
               active={activeTeam === 1} shown={!isMobile || activeTeam === 1} onActivate={() => setActiveTeam(1)}
-              onName={setTeam1Name} onSave={() => saveTeam(1)} onShare={shareTeams}
+              onSave={() => saveTeam(1)} onShare={shareTeams}
               onClear={() => setTeam1([])} onRemove={removeFromTeam1}
             />
 
             <TeamCard
               n={2} team={team2} name={team2Name} ev={team2Eval} t={t}
               active={activeTeam === 2} shown={!isMobile || activeTeam === 2} onActivate={() => setActiveTeam(2)}
-              onName={setTeam2Name} onSave={() => saveTeam(2)} onShare={shareTeams}
+              onSave={() => saveTeam(2)} onShare={shareTeams}
               onClear={() => setTeam2([])} onRemove={removeFromTeam2}
             />
             <CompareTable
@@ -579,30 +604,51 @@ export default function ArtistsClient({ lang }: { lang: string }) {
           </div>
 
           <div className="tb-filters">
-            <label htmlFor="artist-search" className="tb-search">
-              <Icon name="search" size={15} />
-              <span className="sr-only">{t.search}</span>
-              <input id="artist-search" type="search" placeholder={t.searchPlaceholder} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-            </label>
-            <label htmlFor="filter-genre" className="sr-only">{t.allGenres}</label>
-            <select id="filter-genre" value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
-              <option value="">{t.allGenres}</option>
-              {GENRES.map((genre) => (<option key={genre} value={genre}>{genre}</option>))}
-            </select>
-            <label htmlFor="filter-specialty" className="sr-only">{t.allSpecialties}</label>
-            <select id="filter-specialty" value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
-              <option value="">{t.allSpecialties}</option>
-              {SPECIALTY_KEYS.map((key) => {
-                const frValue = SPECIALTY_VALUES[SPECIALTY_KEYS.indexOf(key)];
-                const label = SPECIALTY_LABELS_BY_LANG[lang]?.[key] || SPECIALTY_LABELS_BY_LANG.en[key] || frValue;
-                return <option key={key} value={frValue}>{label}</option>;
-              })}
-            </select>
-            <label htmlFor="filter-season" className="sr-only">{t.allSeasons}</label>
-            <select id="filter-season" value={filterMaxSeason} onChange={(e) => setFilterMaxSeason(e.target.value)}>
-              <option value="">{t.allSeasons}</option>
-              {SEASON_LABELS.map((s) => (<option key={s} value={s}>{`${t.maxSeason} : ${s}`}</option>))}
-            </select>
+            <div className="tb-filters-main">
+              <label htmlFor="artist-search" className="tb-search">
+                <Icon name="search" size={15} />
+                <span className="sr-only">{t.search}</span>
+                <input id="artist-search" type="search" placeholder={t.searchPlaceholder} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                {searchQuery && (
+                  <button type="button" className="tb-search-clear" onClick={() => setSearchQuery("")} title={t.clearSearch} aria-label={t.clearSearch}>
+                    <Icon name="x" size={12} />
+                  </button>
+                )}
+              </label>
+              <label className={`tb-toggle${hideUR ? " on" : ""}`}>
+                <input type="checkbox" checked={hideUR} onChange={(e) => setHideUR(e.target.checked)} />
+                <span className="tb-toggle-box" aria-hidden><Icon name="check" size={11} /></span>
+                {t.hideUR}
+              </label>
+            </div>
+            <div className="tb-filters-selects">
+              <label htmlFor="filter-genre" className="sr-only">{t.allGenres}</label>
+              <select id="filter-genre" className={filterGenre ? "on" : ""} value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
+                <option value="">{t.allGenres}</option>
+                {GENRES.map((genre) => (<option key={genre} value={genre}>{genre}</option>))}
+              </select>
+              <label htmlFor="filter-specialty" className="sr-only">{t.allSpecialties}</label>
+              <select id="filter-specialty" className={filterSpecialty ? "on" : ""} value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
+                <option value="">{t.allSpecialties}</option>
+                {SPECIALTY_KEYS.map((key) => {
+                  const frValue = SPECIALTY_VALUES[SPECIALTY_KEYS.indexOf(key)];
+                  const label = SPECIALTY_LABELS_BY_LANG[lang]?.[key] || SPECIALTY_LABELS_BY_LANG.en[key] || frValue;
+                  return <option key={key} value={frValue}>{label}</option>;
+                })}
+              </select>
+              <label htmlFor="filter-season" className="sr-only">{t.allSeasons}</label>
+              <select id="filter-season" className={filterMaxSeason ? "on" : ""} value={filterMaxSeason} onChange={(e) => setFilterMaxSeason(e.target.value)}>
+                <option value="">{t.allSeasons}</option>
+                {SEASON_LABELS.map((s) => (<option key={s} value={s}>{`${t.maxSeason} : ${s}`}</option>))}
+              </select>
+            </div>
+            <div className="tb-filters-end">
+              <span className="tb-filters-count" title={t.foundArtists}>{filteredArtists.length}</span>
+              <button type="button" className="tb-reset" onClick={resetFilters} disabled={activeFilters === 0} title={t.resetFilters} aria-label={t.resetFilters}>
+                <Icon name="reset" size={13} />
+                {activeFilters > 0 && <b>{activeFilters}</b>}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -611,7 +657,11 @@ export default function ArtistsClient({ lang }: { lang: string }) {
           <div className="tb-saved">
             <span className="tb-saved-title"><Icon name="folder" size={13} /> {t.myTeams}</span>
             {savedTeams.length === 0 ? (
-              <span className="tb-saved-empty">{t.noSavedTeams}</span>
+              <span className="tb-saved-empty">
+                {t.noSavedTeams.split("💾").map((part, i) => (
+                  <span key={i}>{i > 0 && <Icon name="save" size={12} className="tb-inline-ico" />}{part}</span>
+                ))}
+              </span>
             ) : savedTeams.map((s) => (
               <div key={s.id} className="tb-saved-chip">
                 <span className="tb-saved-avatars">
@@ -623,7 +673,25 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                       : <span key={id} className="tb-saved-avatar-letter">{a.name.charAt(0)}</span>;
                   })}
                 </span>
-                <span className="tb-saved-name" title={s.name}>{s.name}</span>
+                {editingId === s.id ? (
+                  <input
+                    className="tb-saved-input"
+                    defaultValue={s.name}
+                    maxLength={24}
+                    autoFocus
+                    aria-label={t.teamNamePlaceholder}
+                    onFocus={(e) => e.target.select()}
+                    onBlur={(e) => renameSaved(s, e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") e.currentTarget.blur();
+                      if (e.key === "Escape") setEditingId(null);
+                    }}
+                  />
+                ) : (
+                  <button type="button" className="tb-saved-name" title={t.renameTeam} onClick={() => setEditingId(s.id)}>
+                    {s.name}<Icon name="pencil" size={10} />
+                  </button>
+                )}
                 <button className="tb-saved-btn b1" onClick={() => loadSaved(s, 1)} title={`${t.loadInto} 1`}>→1</button>
                 <button className="tb-saved-btn b2" onClick={() => loadSaved(s, 2)} title={`${t.loadInto} 2`}>→2</button>
                 <button className="tb-saved-btn del" onClick={() => deleteSaved(s.id)} title={t.deleteSaved}>✕</button>

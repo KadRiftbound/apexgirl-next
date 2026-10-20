@@ -91,8 +91,8 @@ export default async function TierlistPage({ params }: { params: Promise<{ lang:
           </div>
           <div className="info-panel-body">
             {lang === 'fr'
-              ? "Le classement repose uniquement sur les compétences des artistes. Les dégâts au joueur passent avant tout, puis la réduction de dégâts de skill, les dégâts de skill, l'attaque de base, la réduction d'attaque et la capacité de fans. Il faut deux compétences utiles en combat pour atteindre le tier A. Les votes de la communauté sont affichés à part, dans l'onglet Vote."
-              : "The ranking is based only on the artists' skills. Damage to player comes first, then skill damage reduction, skill damage, basic attack, basic attack reduction and fan capacity. An artist needs two useful combat skills to reach tier A. Community votes are shown separately, in the Vote tab."}
+              ? "Le classement repose uniquement sur les compétences des artistes. Les dégâts au joueur passent avant tout, puis la réduction de dégâts de skill, les dégâts de skill, l'attaque de base, la réduction d'attaque et la capacité de fans. Il faut deux compétences utiles en combat pour atteindre le tier A, et une artiste purement défensive (double résistance) plafonne en A. Les artistes des saisons récentes ont de meilleures stats de base (+3 % par saison) ; celles sans saison (Original, UR universelles, événements) ne peuvent pas avoir d'assistante et prennent un malus de 10 %. Les votes de la communauté sont affichés à part, dans l'onglet Vote."
+              : "The ranking is based only on the artists' skills. Damage to player comes first, then skill damage reduction, skill damage, basic attack, basic attack reduction and fan capacity. An artist needs two useful combat skills to reach tier A, and a purely defensive artist (double resistance) is capped at A. Artists from recent seasons have higher base stats (+3% per season); artists without a season (Original, universal URs, events) cannot get an assistant and take a 10% malus. Community votes are shown separately, in the Vote tab."}
           </div>
         </div>
       </div>
