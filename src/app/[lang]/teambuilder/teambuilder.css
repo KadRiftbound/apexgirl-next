@@ -172,7 +172,8 @@
 .tb-team-actions { display: flex; gap: 2px; flex-shrink: 0; margin-left: auto; }
 .tb-icon-btn {
   width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
-  background: none; border: 1px solid transparent; border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px;
+  box-shadow: var(--elev-ctl);
   padding: 0; cursor: pointer; color: var(--text-muted); line-height: 1;
   transition: color 0.15s, background 0.15s, border-color 0.15s;
 }
@@ -180,7 +181,14 @@
 .tb-icon-btn.danger:hover { color: #f87171; background: rgba(248, 113, 113, 0.12); }
 
 /* ---------- comparison (collapsible table, both sizes) ---------- */
-.tb-compare { grid-column: 1 / -1; }
+.tb-compare {
+  grid-column: 1 / -1;
+  padding: 0 10px 2px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
 .tb-compare-title {
   display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
   padding: 6px 4px 2px; margin: 0;
@@ -193,7 +201,7 @@
 .tb-compare-toggle.open { transform: rotate(180deg); }
 .tb-compare.collapsed .tb-compare-body { display: none; }
 .tb-compare-hint { margin: 0; padding: 2px 4px 6px; font-size: 0.86rem; color: var(--text-muted); }
-.tb-cmp { max-width: 720px; margin: 0 auto; border: 1px solid var(--line-strong); border-radius: 10px; overflow: hidden; --lbl: 170px; --delta: 66px; }
+.tb-cmp { max-width: 720px; margin: 0 auto 8px; border: 1px solid var(--line-raised); border-radius: 10px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); background: var(--surface-2); --lbl: 170px; --delta: 66px; }
 .tb-cmp .t1 { --team: var(--t1); }
 .tb-cmp .t2 { --team: var(--t2); }
 .tb-cmp-head, .tb-cmp-row { display: grid; grid-template-columns: 1fr var(--lbl) 1fr; align-items: stretch; }
@@ -258,7 +266,8 @@
 .tb-filters-end { display: flex; align-items: center; gap: 8px; margin-left: auto; order: 4; }
 .tb-search {
   flex: 1; min-width: 150px; height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 8px 0 12px;
-  background: rgba(0, 0, 0, 0.22); border: 1px solid var(--line-strong); border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28); border: 1px solid var(--line-raised); border-radius: 999px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35);
   color: var(--text-dim); transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
 }
 .tb-search:focus-within { border-color: rgba(255, 77, 141, 0.7); background: rgba(255, 77, 141, 0.06); color: #ff80ab; box-shadow: 0 0 0 3px rgba(255, 77, 141, 0.12); }
@@ -276,7 +285,8 @@
 /* "Hide UR" checkbox, styled as a pill next to the search */
 .tb-toggle {
   position: relative; flex-shrink: 0; height: 38px; display: inline-flex; align-items: center; gap: 7px; padding: 0 13px 0 10px;
-  border-radius: 999px; border: 1px solid rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08);
+  border-radius: 999px; border: 1px solid rgba(239, 68, 68, 0.45); background: linear-gradient(180deg, rgba(239, 68, 68, 0.16), rgba(239, 68, 68, 0.06));
+  box-shadow: var(--elev-ctl);
   color: var(--text-secondary); font-size: 0.82rem; font-weight: 700; cursor: pointer; user-select: none; white-space: nowrap;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
@@ -294,7 +304,8 @@
   height: 38px; padding: 0 30px 0 13px; max-width: 165px;
   background: rgba(0, 0, 0, 0.22) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ffffffaa' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
   -webkit-appearance: none; appearance: none;
-  border: 1px solid var(--line-strong); border-radius: 999px;
+  border: 1px solid var(--line-raised); border-radius: 999px;
+  box-shadow: var(--elev-ctl);
   color: var(--text-secondary); font-size: 0.82rem; font-weight: 600; font-family: inherit; min-width: 0; cursor: pointer;
   text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
 }
@@ -306,10 +317,12 @@
 .tb-filters-count {
   min-width: 36px; height: 28px; padding: 0 9px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;
   background: rgba(255, 255, 255, 0.08); color: var(--text-secondary); font-size: 0.78rem; font-weight: 800; font-variant-numeric: tabular-nums;
+  border: 1px solid var(--line); box-shadow: var(--elev-ctl);
 }
 .tb-reset {
   position: relative; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border-radius: 50%; cursor: pointer;
-  border: 1px solid var(--line-strong); background: none; color: var(--text-secondary);
+  border: 1px solid var(--line-raised); background: rgba(255, 255, 255, 0.05); color: var(--text-secondary);
+  box-shadow: var(--elev-ctl);
   font-family: inherit; font-size: 0.72rem; font-weight: 700; white-space: nowrap;
 }
 .tb-reset:disabled { opacity: 0.35; cursor: default; }
@@ -329,7 +342,8 @@
 .tb-saved-empty { font-size: 0.82rem; color: var(--text-muted); }
 .tb-saved-chip {
   display: inline-flex; align-items: center; gap: 6px; padding: 4px 6px 4px 4px;
-  background: rgba(255, 255, 255, 0.05); border: 1px solid var(--line-strong); border-radius: 9px;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid var(--line-raised); border-radius: 9px;
+  box-shadow: var(--elev-ctl);
 }
 .tb-saved-avatars { display: inline-flex; gap: 2px; }
 .tb-saved-avatar-letter {
@@ -361,6 +375,7 @@
   display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-family: inherit;
   font-size: 0.8rem; font-weight: 700; color: #fff;
   border: 1px solid color-mix(in srgb, var(--team) 55%, transparent); background: color-mix(in srgb, var(--team) 14%, transparent);
+  box-shadow: var(--elev-ctl);
 }
 .tb-active-chip.t1 { --team: var(--t1); }
 .tb-active-chip.t2 { --team: var(--t2); }
@@ -369,8 +384,9 @@
 /* ---------- artist cards ---------- */
 .tb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 10px; }
 .tb-art {
-  border-radius: 12px; border: 2px solid var(--line);
+  border-radius: 12px; border: 2px solid var(--line-raised);
   background: var(--surface-2); padding: 0; cursor: pointer; overflow: hidden; position: relative;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   display: flex; flex-direction: column; text-align: left; color: #fff; font: inherit;
   transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
 }
@@ -454,11 +470,12 @@
   .tb-tabs { display: flex; gap: 6px; }
   .tb-tab {
     flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: inherit;
-    padding: 8px 10px; border-radius: 999px; border: 1px solid var(--line-strong);
-    background: rgba(255, 255, 255, 0.05); color: var(--text-secondary); font-size: 0.82rem; font-weight: 700;
+    padding: 8px 10px; border-radius: 999px; border: 1px solid var(--line-raised);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)); color: var(--text-secondary); font-size: 0.82rem; font-weight: 700;
+    box-shadow: var(--elev-ctl);
     cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
   }
-  .tb-tab.on { background: var(--team); color: #0b0b14; border-color: transparent; }
+  .tb-tab.on { background: var(--team); color: #0b0b14; border-color: transparent; box-shadow: 0 6px 16px color-mix(in srgb, var(--team) 35%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
   .tb-tab.on1 { --team: var(--t1); }
   .tb-tab.on2 { --team: var(--t2); }
   .tb-tab .tb-tab-grade {
