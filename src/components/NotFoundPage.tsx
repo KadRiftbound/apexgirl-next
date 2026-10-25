@@ -1,15 +1,9 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "404 — Page not found | TopGirl Guide",
-  description: "This page does not exist. Return to the TopGirl Guide fansite.",
-  robots: { index: false, follow: false },
-};
-
-export default function NotFound() {
+export function NotFoundPage() {
   return (
-    <div style={{ margin: 0, background: "#0a0a12", fontFamily: "system-ui, sans-serif", color: "#fff" }}>
+    // Rendered by Next outside the site layout (no stylesheet), so it carries its own look.
+    <div style={{ margin: 0, minHeight: "100vh", background: "linear-gradient(180deg, #a8735c 0%, #6f4a3f 60%, #5a3c35 100%)", fontFamily: "system-ui, sans-serif", color: "#fff" }}>
       <div style={{
           minHeight: "100vh",
           display: "flex",

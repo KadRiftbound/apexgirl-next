@@ -1,6 +1,7 @@
 import { notFound, permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getGuideMeta, getGuideTitle, getGuideDescription, getGuideCategory, getGuideSlug, getAllGuideSlugs } from './guide-meta';
+import { getGuideMeta, getGuideTitle, getGuideDescription, getGuideCategory, getGuideSlug, getAllGuides } from './guide-meta';
+import { GUIDES_UPDATED } from '@/lib/seo/lastmod';
 import GuideDetailClient, { type GuideDetailProps } from './GuideDetailClient';
 import { buildGuidePayload } from './guide-server';
 import { Breadcrumb } from '@/components/Breadcrumb';
@@ -43,7 +44,12 @@ const articleAuthor = {
   ]
 };
 
-const today = new Date().toISOString().split('T')[0];
+// Canonical slug of every guide in every language is prerendered; old slugs redirect on demand.
+export function generateStaticParams() {
+  return (['fr', 'en', 'id'] as const).flatMap((lang) =>
+    getAllGuides().map((g) => ({ lang, slug: getGuideSlug(g, lang) }))
+  );
+}
 
 export async function generateMetadata(
   { params }: { params: Promise<{ lang: string; slug: string }> }
@@ -66,7 +72,7 @@ export async function generateMetadata(
   const canonicalUrl = `${BASE_URL}/${lang}/guides/${langSlug}/`;
   const ogImage = guide.thumbnail
     ? `${BASE_URL}${guide.thumbnail}`
-    : `${BASE_URL}/${lang}/opengraph-image`;
+    : `${BASE_URL}/${lang}/opengraph-image/`;
 
   const keywords = [title, `Top Girl ${title}`, `Apex Girl ${title}`, `TopGirl ${title}`, `Idol Company ${title}`, category, `Top Girl guide`, `Apex Girl guide`];
 
@@ -74,6 +80,7 @@ export async function generateMetadata(
     title: pageTitle,
     description,
     keywords,
+    ...(guide.outdated ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: canonicalUrl,
       languages: Object.fromEntries(
@@ -89,7 +96,7 @@ export async function generateMetadata(
       siteName: 'TopGirl Guide',
       type: 'article',
       publishedTime: '2025-01-01T00:00:00Z',
-      modifiedTime: today + 'T00:00:00Z',
+      modifiedTime: GUIDES_UPDATED + 'T00:00:00Z',
       authors: ['ApexGirl Guide Team'],
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
@@ -138,7 +145,7 @@ export default async function GuideDetailPage(
     "description": getGuideDescription(guide, lang),
     "url": `${BASE_URL}/${lang}/guides/${langSlug}/`,
     "datePublished": "2025-01-01",
-    "dateModified": today,
+    "dateModified": GUIDES_UPDATED,
     "inLanguage": lang,
     "author": articleAuthor,
     "publisher": {
@@ -152,7 +159,7 @@ export default async function GuideDetailPage(
     },
     "image": guide.thumbnail
       ? `${BASE_URL}${guide.thumbnail}`
-      : `${BASE_URL}/${lang}/opengraph-image`,
+      : `${BASE_URL}/${lang}/opengraph-image/`,
   };
 
   // FAQ schema for rich snippets

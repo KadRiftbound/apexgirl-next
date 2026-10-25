@@ -34,6 +34,7 @@ export type GuideMeta = {
   readTime?: string;
   isDone?: boolean;
   isNew?: boolean;
+  outdated?: boolean;
 };
 
 const guidesMeta = guidesData as GuideMeta[];
@@ -55,6 +56,10 @@ const categoryLabels = {
     advanced: { fr: "Avancé", en: "Advanced", it: "Avanzato", es: "Avanzado", pt: "Avançado", pl: "Zaawansowany", id: "Lanjutan", ru: "Продвинутый", de: "Experte" },
   },
 } as const;
+
+export function getAllGuides(): GuideMeta[] {
+  return guidesMeta;
+}
 
 export function getGuideMeta(slug: string): GuideMeta | undefined {
   const guide = guidesMeta.find((guide) => guide.id === slug);
@@ -95,8 +100,16 @@ export function getGuideTitle(guide: GuideMeta, lang: string): string {
   return (guide as any)[`title_${lang}`] || guide.title;
 }
 
+const descriptionTail: Record<string, string> = {
+  fr: " Guide TopGirl / Apex Girl : règles, astuces et stratégie.",
+  en: " TopGirl / Apex Girl guide: rules, tips and strategy.",
+  id: " Panduan TopGirl / Apex Girl: aturan, tips, dan strategi.",
+};
+
 export function getGuideDescription(guide: GuideMeta, lang: string): string {
-  return (guide as any)[`description_${lang}`] || guide.description;
+  const base: string = (guide as any)[`description_${lang}`] || guide.description;
+  if (base.length >= 110) return base;
+  return base.replace(/[.\s]+$/, ".") + (descriptionTail[lang] || descriptionTail.en);
 }
 
 export function getGuideCategory(guide: GuideMeta, lang: string): string {

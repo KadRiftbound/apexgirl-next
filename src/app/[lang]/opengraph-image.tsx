@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
 export const alt = "TopGirl Guide — Fansite guides, tools & tier list";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -9,13 +8,13 @@ export default async function OGImage({ params }: { params: Promise<{ lang: stri
   const { lang } = await params;
 
   const taglines: Record<string, string> = {
-    fr: "Guides · Outils · Tier List · Codes Promo",
-    en: "Guides · Tools · Tier List · Promo Codes",
+    fr: "Team Builder · Tier List · Guides · Codes Promo",
+    en: "Team Builder · Tier List · Guides · Promo Codes",
     it: "Guide · Strumenti · Tier List · Codici Promo",
     es: "Guías · Herramientas · Tier List · Códigos Promo",
     pt: "Guias · Ferramentas · Tier List · Códigos Promo",
     pl: "Poradniki · Narzędzia · Tier List · Kody Promo",
-    id: "Panduan · Alat · Tier List · Kode Promo",
+    id: "Team Builder · Tier List · Panduan · Kode Promo",
     ru: "Руководства · Инструменты · Tier List · Промокоды",
   };
 

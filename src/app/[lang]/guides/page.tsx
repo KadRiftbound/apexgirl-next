@@ -53,8 +53,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       canonical,
       languages: { fr: `${BASE_URL}/fr/guides/`, en: `${BASE_URL}/en/guides/`, id: `${BASE_URL}/id/guides/`, "x-default": `${BASE_URL}/en/guides/` },
     },
-    openGraph: { title: m.title, description: m.description, url: canonical, siteName: "TopGirl Guide", type: "website" },
-    twitter: { card: "summary_large_image", title: m.title, description: m.description },
+    openGraph: { title: m.title, description: m.description, url: canonical, siteName: "TopGirl Guide", type: "website", images: [{ url: `${BASE_URL}/${lang}/opengraph-image/`, width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: [`${BASE_URL}/${lang}/opengraph-image/`] },
   };
 }
 

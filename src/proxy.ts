@@ -34,7 +34,7 @@ function getLocale(request: NextRequest) {
 // keeping the rest of the path: guide pages resolve old localized slugs themselves.
 const retiredLocaleMatch = /^\/(de|it|es|pt|pl|ru)(\/.*)?$/;
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const retired = pathname.match(retiredLocaleMatch);
@@ -85,11 +85,7 @@ export function middleware(request: NextRequest) {
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (matchedLocale) {
-    const response = NextResponse.next();
-    response.headers.set("x-lang", matchedLocale);
-    return response;
-  }
+  if (matchedLocale) return NextResponse.next();
 
   const locale = getLocale(request) || defaultLocale;
   request.nextUrl.pathname = `/${locale}${pathname}`;

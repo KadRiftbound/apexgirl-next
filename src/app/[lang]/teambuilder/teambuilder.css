@@ -139,7 +139,7 @@
   content: "✕"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
   background: rgba(0, 0, 0, 0.5); color: #fca5a5; font-weight: 700; font-size: 1.1rem;
 }
-.tb-slot-plus { color: rgba(255, 255, 255, 0.35); font-size: 1.4rem; font-weight: 300; }
+.tb-slot-plus { color: rgba(255, 255, 255, 0.35); font-size: 1.4rem; font-weight: 400; }
 .tb-slot-name {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 3px 4px;
   font-size: 0.66rem; font-weight: 700; color: #fff; text-align: center;
@@ -495,7 +495,7 @@
   .tb-tab.on1 { --team: var(--t1); }
   .tb-tab.on2 { --team: var(--t2); }
   .tb-tab .tb-tab-grade {
-    display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 5px; font-size: 0.64rem; font-weight: 900; color: #fff;
+    display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 5px; font-size: 0.64rem; font-weight: 800; color: #fff;
     background: rgba(0, 0, 0, 0.4);
   }
   .tb-team { display: none; }

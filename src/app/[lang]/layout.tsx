@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import type { Metadata } from "next";
+import { Poppins, Outfit } from "next/font/google";
+import "../globals.css";
 import { BackgroundManager } from "@/components/BackgroundManager";
 import { Analytics } from "@vercel/analytics/react";
 import { MobileNav } from "@/components/MobileNav";
@@ -37,16 +40,33 @@ const metadataByLang: Record<string, { title: string; description: string; keywo
 
 const BASE_URL = "https://apexgirlguide.com";
 
-export const metadataBase = BASE_URL;
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  display: "swap",
+  variable: "--font-outfit",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-poppins",
+});
+
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const meta = metadataByLang[lang] || metadataByLang.en;
 
   return {
+    metadataBase: new URL(BASE_URL),
     title: meta.title,
     description: meta.description,
     keywords: meta.keywords.split(", "),
+    authors: [{ name: "TopGirl Guide" }],
+    creator: "TopGirl Guide",
+    publisher: "TopGirl Guide",
     alternates: {
       canonical: `${BASE_URL}/${lang}/`,
       languages: {
@@ -65,7 +85,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/${lang}/opengraph-image`,
+          url: `${BASE_URL}/${lang}/opengraph-image/`,
           width: 1200,
           height: 630,
           alt: "TopGirl Guide — Fansite guides, tools & tier list",
@@ -76,14 +96,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: [`${BASE_URL}/${lang}/opengraph-image`],
+      images: [`${BASE_URL}/${lang}/opengraph-image/`],
     },
     icons: {
       icon: [
         { url: "/icon.png", sizes: "192x192", type: "image/png" },
         { url: "/assets/logositenew.png", sizes: "512x512", type: "image/png" },
       ],
-      apple: { url: "/apple-icon.png", type: "image/png" },
+      apple: { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      shortcut: ["/icon.png"],
     },
     robots: {
       index: true,
@@ -122,7 +143,17 @@ export default async function LocaleLayout({
   ];
 
   return (
-    <>
+    <html lang={lang} suppressHydrationWarning className={`${poppins.variable} ${outfit.variable}`}>
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-5737915177617454" />
+        {/* Restore the collapsed sidebar before first paint (desktop only) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "try{if(localStorage.getItem('sidebar')==='collapsed')document.documentElement.dataset.sidebar='collapsed'}catch(e){}",
+          }}
+        />
+      </head>
+      <body>
       <Analytics />
       <script
         type="application/ld+json"
@@ -202,6 +233,44 @@ export default async function LocaleLayout({
           <div className="footer-lang"><LanguageSelector currentLang={lang} /></div>
         </div>
       </footer>
-    </>
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-Y082CPMLKJ"
+        />
+        <Script
+          id="gtag-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('consent', 'default', {
+                ad_storage: 'granted',
+                analytics_storage: 'granted',
+                ad_user_data: 'granted',
+                ad_personalization: 'granted'
+              });
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                analytics_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500,
+                region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','GB','CH']
+              });
+              gtag('config', 'G-Y082CPMLKJ');
+            `,
+          }}
+        />
+        <Script
+          id="adsense"
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5737915177617454"
+          crossOrigin="anonymous"
+        />
+      </body>
+    </html>
   );
 }

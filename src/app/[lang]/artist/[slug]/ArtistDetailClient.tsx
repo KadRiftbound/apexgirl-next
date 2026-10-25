@@ -4,6 +4,7 @@ import artistsData from '@/lib/data/artists.json';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GenreIcon } from '@/components/GenreIcon';
+import { artistIntro } from '@/lib/seo/artistSeo';
 import './artist.css';
 
 const t_map: Record<string, any> = {
@@ -141,7 +142,7 @@ type Artist = {
   id: number; name: string; group: string; rank: string;
   position: string; genre: string; skills?: string[];
   description?: string; thoughts?: string; build?: string;
-  photos?: string; image?: string;
+  photos?: string; image?: string; season?: string;
   skillCategories?: { dps?: string[]; offensive?: string[]; hp?: string[]; defense?: string[]; speed?: string[]; };
   calculatedTier?: string; specialty?: string;
   acquisitionTier?: string;
@@ -263,7 +264,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
               <h1 className="ad-title">{artist.name}</h1>
               <dl className="ad-meta">
                 {artist.group && artist.group !== 'No Group' && (<><dt>{t.group}</dt><dd>{artist.group}</dd></>)}
-                {artist.photos && (<><dt>{t.season}</dt><dd>{artist.photos}</dd></>)}
+                {artist.season && artist.season !== 'Universal' && (<><dt>{t.season}</dt><dd>{artist.season}</dd></>)}
                 {artist.specialty && (<><dt>{t.specialty}</dt><dd className="ad-meta-accent">{artist.specialty}</dd></>)}
               </dl>
               {artist.rank !== 'R' && artist.rank !== 'SR' && (
@@ -275,6 +276,9 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
             </div>
           </div>
         </section>
+
+        {/* ─── INTRO (generated from the data, unique per artist) ─── */}
+        <p className="ad-intro">{artistIntro(artist, lang)}</p>
 
         {/* ─── RECOMMENDATION ─── */}
         {artist.thoughts && (

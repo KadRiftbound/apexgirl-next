@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import guidesData from '@/lib/data/guides.json';
+import { SITE_UPDATED, GUIDES_UPDATED, ARTISTS_UPDATED } from '@/lib/seo/lastmod';
 
 const BASE_URL = 'https://apexgirlguide.com';
 const LANGUAGES = ['fr', 'en', 'id'] as const;
@@ -46,9 +47,11 @@ type GuideSlug = {
 type Guide = {
   id: string;
   slugs?: GuideSlug;
+  outdated?: boolean;
 };
 
-const guides = guidesData as Guide[];
+// Outdated guides are noindex: they do not belong in the sitemap.
+const guides = (guidesData as Guide[]).filter((g) => !g.outdated);
 
 function getGuideSlug(guide: Guide, lang: string): string {
   const slug = guide.slugs as Record<string, string | undefined>;
@@ -56,7 +59,6 @@ function getGuideSlug(guide: Guide, lang: string): string {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const today = new Date().toISOString().split('T')[0];
   const urls: MetadataRoute.Sitemap = [];
 
   for (const lang of LANGUAGES) {
@@ -66,7 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const isHome = page === '';
       urls.push({
         url: `${BASE_URL}${path}`,
-        lastModified: today,
+        lastModified: SITE_UPDATED,
         changeFrequency: isHome ? 'daily' : page === 'tierlist' || page === 'codes' ? 'daily' : 'weekly',
         priority: isHome ? 1.0 : ['teambuilder', 'guides', 'tierlist'].includes(page) ? 0.9 : 0.8,
         alternates: {
@@ -85,7 +87,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const page of legalPages) {
       urls.push({
         url: `${BASE_URL}/${lang}/${page}/`,
-        lastModified: today,
+        lastModified: SITE_UPDATED,
         changeFrequency: 'yearly',
         priority: 0.2,
       });
@@ -96,7 +98,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const langSlug = getGuideSlug(guide, lang);
       urls.push({
         url: `${BASE_URL}/${lang}/guides/${langSlug}/`,
-        lastModified: today,
+        lastModified: GUIDES_UPDATED,
         changeFrequency: 'monthly',
         priority: 0.7,
         alternates: {
@@ -111,7 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const slug of ARTIST_SLUGS) {
       urls.push({
         url: `${BASE_URL}/${lang}/artist/${slug}/`,
-        lastModified: today,
+        lastModified: ARTISTS_UPDATED,
         changeFrequency: 'monthly',
         priority: 0.6,
         alternates: {

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import artistsData from '@/lib/data/artists.json';
 import ArtistDetailClient from './ArtistDetailClient';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { artistDescription } from '@/lib/seo/artistSeo';
 
 const BASE_URL = 'https://apexgirlguide.com';
 
@@ -10,10 +11,20 @@ const slugify = (name: string) =>
   name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
 type ArtistData = {
-  name: string; rank: string; position: string; genre: string;
+  name: string; rank: string; position: string; genre: string; group?: string; season?: string;
+  skills?: string[]; singStat?: number; danceStat?: number;
   specialty?: string; calculatedTier?: string; description?: string;
   thoughts?: string; image?: string;
 };
+
+const LANGS = ['fr', 'en', 'id'] as const;
+
+// Every artist page is prerendered for every language.
+export function generateStaticParams() {
+  return LANGS.flatMap((lang) =>
+    (artistsData as ArtistData[]).map((a) => ({ lang, slug: slugify(a.name) }))
+  );
+}
 
 const titleByLang: Record<string, (a: ArtistData) => string> = {
   fr: a => `${a.name} — Guide TopGirl | ${a.rank} ${a.genre}`,
@@ -25,18 +36,6 @@ const titleByLang: Record<string, (a: ArtistData) => string> = {
   pl: a => `${a.name} — Poradnik TopGirl | ${a.rank} ${a.genre}`,
   id: a => `${a.name} — Panduan TopGirl | ${a.rank} ${a.genre}`,
   ru: a => `${a.name} — Гайд TopGirl | ${a.rank} ${a.genre}`,
-};
-
-const descByLang: Record<string, (a: ArtistData) => string> = {
-  fr: a => a.description || `${a.name} est une artiste ${a.rank} ${a.genre} (${a.position}) dans TopGirl/ApexGirl/Idol Company. Spécialité : ${a.specialty || 'N/A'}. Tier : ${a.calculatedTier || 'N/A'}.`,
-  en: a => a.description || `${a.name} is a ${a.rank} ${a.genre} ${a.position} in TopGirl/ApexGirl/Idol Company. Specialty: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  de: a => a.description || `${a.name} ist eine ${a.rank} ${a.genre} ${a.position} in TopGirl/ApexGirl/Idol Company. Spezialität: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  it: a => a.description || `${a.name} è una artista ${a.rank} ${a.genre} (${a.position}) in TopGirl/ApexGirl/Idol Company. Specialità: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  es: a => a.description || `${a.name} es una artista ${a.rank} ${a.genre} (${a.position}) en TopGirl/ApexGirl/Idol Company. Especialidad: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  pt: a => a.description || `${a.name} é uma artista ${a.rank} ${a.genre} (${a.position}) no TopGirl/ApexGirl/Idol Company. Especialidade: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  pl: a => a.description || `${a.name} jest artystką ${a.rank} ${a.genre} (${a.position}) w TopGirl/ApexGirl/Idol Company. Specjalność: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  id: a => a.description || `${a.name} adalah artis ${a.rank} ${a.genre} (${a.position}) di TopGirl/ApexGirl/Idol Company. Spesialitas: ${a.specialty || 'N/A'}. Tier: ${a.calculatedTier || 'N/A'}.`,
-  ru: a => a.description || `${a.name} — артист ${a.rank} ${a.genre} (${a.position}) в TopGirl/ApexGirl/Idol Company. Специализация: ${a.specialty || 'N/A'}. Тир: ${a.calculatedTier || 'N/A'}.`,
 };
 
 export async function generateMetadata(
@@ -53,7 +52,7 @@ export async function generateMetadata(
   }
 
   const title = (titleByLang[lang] || titleByLang.en)(artist);
-  const description = (descByLang[lang] || descByLang.en)(artist);
+  const description = artistDescription(artist, lang);
   const canonicalUrl = `${BASE_URL}/${lang}/artist/${slug}/`;
   const ogImage = artist.image
     ? `${BASE_URL}/assets/images/artists/${artist.image}`
