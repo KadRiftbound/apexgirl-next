@@ -589,11 +589,14 @@ html[data-sidebar="collapsed"] .footer { transition: margin-left 0.2s ease; }
   letter-spacing: -0.01em;
   margin: 0;
   line-height: 1.1;
-  background: linear-gradient(135deg, #fff 30%, var(--primary-light));
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0 1.5px, transparent 1.5px 5px),
+    linear-gradient(180deg, #ffffff 0%, #fff0f5 45%, #ffc9dc 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #fff;
+  filter: drop-shadow(0 2px 0 rgba(90, 20, 50, 0.55)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
 }
 .page-head-sub { width: 100%; color: var(--text-muted); font-size: 0.92rem; margin: 0; }
 .page-head-note {

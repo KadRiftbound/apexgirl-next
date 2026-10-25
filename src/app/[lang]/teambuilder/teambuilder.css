@@ -59,6 +59,7 @@
   font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--text-muted);
 }
+.tb-grid-head .tb-sec { color: #fff; text-shadow: 0 1px 0 rgba(60, 15, 35, 0.5), 0 4px 12px rgba(0, 0, 0, 0.35); }
 .tb-sec span { color: #fff; background: rgba(255, 255, 255, 0.1); padding: 1px 8px; border-radius: 6px; font-size: 0.74rem; letter-spacing: 0; }
 
 .tb-ico { display: inline-block; vertical-align: -2px; flex-shrink: 0; }
@@ -384,15 +385,6 @@
   position: absolute; left: 0; right: 0; top: 0; height: 3px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
 }
-.tb-ad { margin: 0 0 12px !important; }
-.ad-grid-unit {
-  grid-column: span 2;
-  min-height: 250px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.18);
-  border: 1px dashed rgba(255, 255, 255, 0.14);
-}
 .tb-grid-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 2px 0 10px; }
 .tb-grid-head .tb-sec { margin: 0; }
 .tb-active-chip {
@@ -539,7 +531,6 @@
   .tb-reset { width: 36px; height: 36px; }
   .tb-bottom { padding: 0 8px 60px; }
   .tb-grid-panel { padding: 8px 8px 10px; border-radius: 14px; }
-  .ad-grid-unit { grid-column: span 3; min-height: 120px; }
   .tb-saved-name { max-width: 110px; }
   .tb-saved-name .tb-ico { opacity: 1; }
   .tb-grid { grid-template-columns: repeat(3, 1fr); gap: 7px; }

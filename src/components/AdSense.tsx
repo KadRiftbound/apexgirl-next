@@ -45,26 +45,3 @@ export function AdBanner({ className }: { className?: string }) {
     </div>
   );
 }
-
-/** Card-sized unit placed inside an artist grid (spans two columns, same rounded frame as the cards). */
-export function AdGridUnit() {
-  const slot = process.env.NEXT_PUBLIC_ADSENSE_GRID_SLOT;
-  if (!slot) return null;
-
-  return (
-    <div className="ad-grid-unit">
-      <AdSense adSlot={slot} adFormat="rectangle" />
-    </div>
-  );
-}
-
-export function AdSidebar() {
-  const slot = process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_SLOT;
-  if (!slot) return null;
-
-  return (
-    <div className="ad-sidebar" style={{ margin: "var(--space-4) 0", minHeight: "250px" }}>
-      <AdSense adSlot={slot} adFormat="rectangle" />
-    </div>
-  );
-}

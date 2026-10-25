@@ -10,7 +10,6 @@ import { evaluateTeam, type TeamEvaluation } from "@/lib/utils/evaluateTeam";
 import { skillChips } from "@/lib/utils/skillSummary";
 import type { Artist } from "@/lib/types/artist";
 import { SupportCard } from "@/components/SupportCard";
-import { AdBanner, AdGridUnit } from "@/components/AdSense";
 import { GenreIcon, GenreBar, genreColors as genreSolid } from "@/components/GenreIcon";
 import { getArtistContent, type ArtistContent } from "@/lib/i18n/artists";
 import "./teambuilder.css";
@@ -695,7 +694,6 @@ export default function ArtistsClient({ lang }: { lang: string }) {
 
         {/* Saved teams + grid */}
         <div className="tb-bottom">
-          <AdBanner className="tb-ad" />
           {savedTeams.length > 0 && <div className="tb-saved">
             <span className="tb-saved-title"><Icon name="folder" size={13} /> {t.myTeams}</span>
             {savedTeams.map((s) => (
@@ -745,14 +743,13 @@ export default function ArtistsClient({ lang }: { lang: string }) {
 
           {sortedArtists.length === 0 && <div className="tb-saved-empty" style={{ padding: 20, textAlign: "center" }}>{t.noResults}</div>}
           <div className="tb-grid">
-            {sortedArtists.map((artist, idx) => {
+            {sortedArtists.map((artist) => {
               const inT1 = inTeam1(artist.id);
               const inT2 = inTeam2(artist.id);
               const ur = isUR(artist.rank);
               const chips = skillChips(artist.skills, lang).slice(0, 3);
               return (
                 <Fragment key={artist.id}>
-                {idx === 12 && <AdGridUnit />}
                 <div
                   role="button"
                   tabIndex={0}

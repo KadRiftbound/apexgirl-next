@@ -9,15 +9,32 @@
 .hm-hero-inner { max-width: 640px; margin: 0 auto; }
 .hm-title {
   font-family: var(--font-display);
-  font-size: 2.1rem;
+  font-size: 2.6rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1;
-  color: #fff;
-  margin: 0 0 8px;
-  text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  margin: 0 0 10px;
+  /* layered fill: pearly gradient with a fine diagonal hatch for texture */
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0 1.5px, transparent 1.5px 5px),
+    linear-gradient(180deg, #ffffff 0%, #fff0f5 40%, #ffd1e2 75%, #ffb6cf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(120, 25, 65, 0.6)) drop-shadow(0 4px 0 rgba(70, 10, 40, 0.45)) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
 }
-.hm-title em { font-style: normal; color: var(--primary); margin-left: 4px; }
+.hm-title em {
+  font-style: normal;
+  margin-left: 6px;
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0 1.5px, transparent 1.5px 5px),
+    linear-gradient(180deg, #ffa3c6 0%, #ff5d9a 45%, #ff3d80 75%, #d92a66 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
 .hm-sub {
   font-size: 0.82rem;
   font-weight: 600;
@@ -45,9 +62,14 @@
 .hm-btn-ghost:hover { border-color: #fff; color: #fff; transform: translateY(-1px); }
 
 /* ---- Headings ---- */
-.hm-h2 { font-family: var(--font-display); font-size: 1.45rem; font-weight: 800; letter-spacing: -0.015em; color: #fff; margin: 0 0 16px; }
+.hm-h2 {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.015em; margin: 0 0 16px;
+  background: linear-gradient(180deg, #fff 0%, #ffe6ef 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(60, 15, 35, 0.55)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+}
 .hm-h2-center { text-align: center; }
-.hm-h2-sub { margin: -10px 0 16px; color: var(--text-muted); font-size: 0.92rem; }
+.hm-h2-sub { margin: -10px 0 16px; color: #f4e2d4; font-size: 0.92rem; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45); }
 .hm-section-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid var(--line-strong); }
 .hm-section-head .hm-h2 { margin-bottom: 2px; }
 .hm-section-head .hm-h2-sub { margin: 0; }
@@ -307,7 +329,7 @@
   .hm-wrap { padding: 0 16px; }
   .hm-top { margin: 0 -16px; padding-left: 16px; padding-right: 16px; scroll-padding-left: 16px; }
   .hm-hero { padding: 28px 16px 22px; }
-  .hm-title { font-size: 1.7rem; }
+  .hm-title { font-size: 2rem; }
   .hm-sub { font-size: 0.72rem; }
   .hm-actions .hm-btn { flex: 1 1 auto; padding: 11px 14px; font-size: 0.9rem; }
   .hm-section { margin-top: 32px; }

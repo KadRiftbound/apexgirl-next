@@ -24,7 +24,7 @@
 .vt-section { margin-bottom: 30px; }
 .vt-section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
 .vt-section-head .vt-h2 { margin: 0; }
-.vt-h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.01em; color: #fff; margin: 0 0 12px; }
+.vt-h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.01em; color: #fff; margin: 0 0 12px; text-shadow: 0 2px 0 rgba(60, 15, 35, 0.5), 0 6px 16px rgba(0, 0, 0, 0.35); }
 .vt-empty { padding: 26px 16px; text-align: center; border-radius: 12px; background: var(--surface-glass); border: 1px dashed var(--line-strong); color: var(--text-muted); margin: 0; }
 
 .vt-podium { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: end; }
