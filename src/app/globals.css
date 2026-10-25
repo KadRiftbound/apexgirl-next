@@ -18,7 +18,7 @@
   --purple: #9b59b6;
   --blue: #3498db;
 
-  --bg-dark: #211820;
+  --bg-dark: #241a26;
   --bg-dark-soft: #2a1f28;
   --bg-card: #2e2230;
   --bg-card-hover: #392a3a;
@@ -189,7 +189,11 @@ button:active:not(:disabled) {
 /* Every page opens on the home artwork, sharp, fading into the dark below it (it scrolls away with the page). */
 body {
   position: relative;
-  background: linear-gradient(180deg, #241a27 0%, #1b1420 45%, #140f18 100%) fixed;
+  background:
+    radial-gradient(ellipse 60% 40% at 85% 100%, rgba(255, 150, 110, 0.10), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 10% 70%, rgba(255, 77, 141, 0.10), transparent 70%),
+    linear-gradient(180deg, #2c1e2e 0%, #261a28 45%, #221824 100%);
+  background-attachment: fixed;
 }
 
 body::before {
