@@ -14,6 +14,7 @@ import { skillChips } from "@/lib/utils/skillSummary";
 import artistsData from "@/lib/data/artists.json";
 import { evaluateTeam } from "@/lib/utils/evaluateTeam";
 import { GenreIcon } from "@/components/GenreIcon";
+import { NavIcon } from "@/components/navIcons";
 import type { Artist } from "@/lib/types/artist";
 import "./home.css";
 
@@ -50,30 +51,6 @@ const teaserTeam: TierArtist[] = [
   ...sPlusSSR.filter((a) => a.genre !== topGenre),
 ].slice(0, 5);
 const teaserTeamEval = evaluateTeam(teaserTeam as unknown as Artist[]);
-
-/* Small inline icons — no emoji, consistent stroke weight. */
-const icons: Record<string, React.ReactNode> = {
-  teambuilder: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" /><circle cx="17" cy="9" r="2.4" /><path d="M15.5 14.4c2.3.2 4 1.7 4.5 4.6" />
-    </svg>
-  ),
-  tierlist: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M8 4h8v4a4 4 0 0 1-8 0V4z" /><path d="M8 6H5a3 3 0 0 0 3 4" /><path d="M16 6h3a3 3 0 0 1-3 4" /><path d="M12 12v4" /><path d="M8 20h8" /><path d="M10 16h4v4h-4z" />
-    </svg>
-  ),
-  vote: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 20.5s-7.5-4.6-9.3-9.2C1.5 8.2 3.6 4.5 7.2 4.5c2 0 3.4 1.1 4.8 2.7 1.4-1.6 2.8-2.7 4.8-2.7 3.6 0 5.7 3.7 4.5 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" />
-    </svg>
-  ),
-  guides: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5z" /><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H19" /><path d="M8 7h7M8 10.5h7" />
-    </svg>
-  ),
-};
 
 type TbTeaser = { eyebrow: string; title: string; sub: string; grade: string; synergy: string; cta: string; ctaEmpty: string; points: string[] };
 const tbTeaser: Record<string, TbTeaser> = {
@@ -200,7 +177,7 @@ export default function HomeClient({ lang }: { lang: string }) {
         <div className="hm-explore">
           {t.sections.map((s) => (
             <Link key={s.href} href={`/${lang}/${s.href}/`} className="hm-card" style={{ ["--c" as string]: s.color }}>
-              <span className="hm-card-icon">{icons[s.href] || icons.guides}</span>
+              <span className="hm-card-icon"><NavIcon name={s.href} size={26} /></span>
               <span className="hm-card-body">
                 <span className="hm-card-title">{s.title}</span>
                 <span className="hm-card-desc">{s.desc}</span>
