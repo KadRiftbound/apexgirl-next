@@ -35,13 +35,25 @@ export function AdSense({ adSlot, adFormat = "auto" }: AdSenseProps) {
   );
 }
 
-export function AdBanner() {
+export function AdBanner({ className }: { className?: string }) {
   const slot = process.env.NEXT_PUBLIC_ADSENSE_BANNER_SLOT;
   if (!slot) return null;
 
   return (
-    <div className="ad-banner" style={{ margin: "16px 0", minHeight: "90px" }}>
-      <AdSense adSlot={slot} />
+    <div className={`ad-banner${className ? ` ${className}` : ""}`} style={{ margin: "16px 0", minHeight: "90px" }}>
+      <AdSense adSlot={slot} adFormat="horizontal" />
+    </div>
+  );
+}
+
+/** Card-sized unit placed inside an artist grid (spans two columns, same rounded frame as the cards). */
+export function AdGridUnit() {
+  const slot = process.env.NEXT_PUBLIC_ADSENSE_GRID_SLOT;
+  if (!slot) return null;
+
+  return (
+    <div className="ad-grid-unit">
+      <AdSense adSlot={slot} adFormat="rectangle" />
     </div>
   );
 }

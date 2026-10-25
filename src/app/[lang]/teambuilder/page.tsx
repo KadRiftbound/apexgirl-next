@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ArtistsClient from "./ArtistsClient";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { AdBanner } from "@/components/AdSense";
 import { getArtistContent } from "@/lib/i18n/artists";
 
 const BASE_URL = "https://apexgirlguide.com";
@@ -128,7 +127,6 @@ export default async function ArtistsPage({ params }: { params: Promise<{ lang: 
           <span className="eyebrow">{c.eyebrow}</span>
           <h1 className="page-head-title">{c.title}</h1>
         </header>
-        <AdBanner />
       </div>
       <ArtistsClient lang={lang} />
       <div className="tb-foot-wrap">

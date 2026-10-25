@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useState, useMemo, useEffect, useRef, type ReactNode, type CSSProperties } from "react";
+import { useState, useMemo, useEffect, useRef, Fragment, type ReactNode, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { slugify } from "@/lib/utils/slugify";
@@ -10,6 +10,7 @@ import { evaluateTeam, type TeamEvaluation } from "@/lib/utils/evaluateTeam";
 import { skillChips } from "@/lib/utils/skillSummary";
 import type { Artist } from "@/lib/types/artist";
 import { SupportCard } from "@/components/SupportCard";
+import { AdBanner, AdGridUnit } from "@/components/AdSense";
 import { GenreIcon, GenreBar, genreColors as genreSolid } from "@/components/GenreIcon";
 import { getArtistContent, type ArtistContent } from "@/lib/i18n/artists";
 import "./teambuilder.css";
@@ -694,6 +695,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
 
         {/* Saved teams + grid */}
         <div className="tb-bottom">
+          <AdBanner className="tb-ad" />
           {savedTeams.length > 0 && <div className="tb-saved">
             <span className="tb-saved-title"><Icon name="folder" size={13} /> {t.myTeams}</span>
             {savedTeams.map((s) => (
@@ -733,6 +735,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
             ))}
           </div>}
           {savedTeams.length > 0 && <SupportCard lang={lang} compact />}
+          <div className="tb-grid-panel">
           <div className="tb-grid-head">
             <h2 className="tb-sec">{L.secArtists} <span>{filteredArtists.length}</span></h2>
             <button type="button" className={`tb-active-chip t${activeTeam}`} onClick={() => setActiveTeam(activeTeam === 1 ? 2 : 1)} title={t.activeTeamHint}>
@@ -742,14 +745,15 @@ export default function ArtistsClient({ lang }: { lang: string }) {
 
           {sortedArtists.length === 0 && <div className="tb-saved-empty" style={{ padding: 20, textAlign: "center" }}>{t.noResults}</div>}
           <div className="tb-grid">
-            {sortedArtists.map((artist) => {
+            {sortedArtists.map((artist, idx) => {
               const inT1 = inTeam1(artist.id);
               const inT2 = inTeam2(artist.id);
               const ur = isUR(artist.rank);
               const chips = skillChips(artist.skills, lang).slice(0, 3);
               return (
+                <Fragment key={artist.id}>
+                {idx === 12 && <AdGridUnit />}
                 <div
-                  key={artist.id}
                   role="button"
                   tabIndex={0}
                   onClick={() => toggleInActive(artist)}
@@ -800,8 +804,10 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                       : chips.map((c, i) => <span key={i} className={`tb-skill ${c.kind}`} title={artist.skills?.[i]}>{c.text}</span>)}
                   </div>
                 </div>
+                </Fragment>
               );
             })}
+          </div>
           </div>
         </div>
       </div>

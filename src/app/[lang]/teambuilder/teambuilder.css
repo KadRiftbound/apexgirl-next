@@ -369,7 +369,31 @@
 .tb-saved-btn.del { background: rgba(248, 113, 113, 0.25); color: #fca5a5; }
 .tb-saved-btn.del:hover { background: rgba(248, 113, 113, 0.5); color: #fff; }
 
-.tb-grid-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 2px 0 8px; }
+/* The artist grid sits on its own dark panel so the cards never blend with the page background */
+.tb-grid-panel {
+  position: relative;
+  padding: 12px 12px 14px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #2b1f31 0%, #241a29 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.tb-grid-panel::before {
+  content: '';
+  position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+.tb-ad { margin: 0 0 12px !important; }
+.ad-grid-unit {
+  grid-column: span 2;
+  min-height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+}
+.tb-grid-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 2px 0 10px; }
 .tb-grid-head .tb-sec { margin: 0; }
 .tb-active-chip {
   display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-family: inherit;
@@ -514,6 +538,8 @@
   .tb-filters-count { display: none; }
   .tb-reset { width: 36px; height: 36px; }
   .tb-bottom { padding: 0 8px 60px; }
+  .tb-grid-panel { padding: 8px 8px 10px; border-radius: 14px; }
+  .ad-grid-unit { grid-column: span 3; min-height: 120px; }
   .tb-saved-name { max-width: 110px; }
   .tb-saved-name .tb-ico { opacity: 1; }
   .tb-grid { grid-template-columns: repeat(3, 1fr); gap: 7px; }
