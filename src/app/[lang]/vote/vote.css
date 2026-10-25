@@ -43,7 +43,7 @@
   width: 30px; height: 30px; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 0.85rem; font-weight: 800; color: #fff;
-  background: rgba(20, 20, 34, 0.85); border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(36, 26, 36, 0.85); border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .p1 .vt-place { background: #ffd700; color: #1a1200; border-color: #ffd700; }
 .p2 .vt-place { background: #cbd5e1; color: #111; border-color: #cbd5e1; }
@@ -96,7 +96,7 @@
 .vt-tile-rank {
   position: absolute; top: 6px; left: 6px; z-index: 1; padding: 2px 6px; border-radius: 5px;
   font-size: 0.64rem; font-weight: 800; letter-spacing: 0.04em; color: var(--rank);
-  background: rgba(20, 20, 34, 0.8); border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(36, 26, 36, 0.8); border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .vt-tile-name { display: block; padding: 8px 9px 4px; font-size: 0.84rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vt-btn {

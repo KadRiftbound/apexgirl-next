@@ -18,13 +18,13 @@
   --purple: #9b59b6;
   --blue: #3498db;
 
-  --bg-dark: #141424;
-  --bg-dark-soft: #1a1a2c;
-  --bg-card: #1e1e30;
-  --bg-card-hover: #262639;
-  --bg-elevated: #242438;
-  --bg-subtle: #181828;
-  --bg-glass: rgba(30, 30, 48, 0.9);
+  --bg-dark: #211820;
+  --bg-dark-soft: #2a1f28;
+  --bg-card: #2e2230;
+  --bg-card-hover: #392a3a;
+  --bg-elevated: #362837;
+  --bg-subtle: #261c25;
+  --bg-glass: rgba(46, 34, 48, 0.94);
 
   --text-primary: #ffffff;
   --text-secondary: #e6eaf3;
@@ -33,7 +33,7 @@
 
   --border: rgba(255, 255, 255, 0.12);
   --border-light: rgba(255, 255, 255, 0.18);
-  --panel-bg: rgba(20, 20, 34, 0.88);
+  --panel-bg: rgba(43, 32, 44, 0.94);
   --panel-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   --border-focus: #ff4d8d;
 
@@ -62,14 +62,14 @@
   --bnav-h: 58px;   /* mobile bottom tab bar */
 
   /* Surfaces: one family of panels for every page, a few steps lighter than the page */
-  --surface: #1e1e30;
-  --surface-2: #272739;
-  --surface-glass: rgba(32, 32, 50, 0.92);
+  --surface: #2b202c;
+  --surface-2: #362a37;
+  --surface-glass: rgba(43, 32, 44, 0.94);
   --line: rgba(255, 255, 255, 0.11);
   --line-strong: rgba(255, 255, 255, 0.18);
   --radius-card: 14px;
 
-  --background: #141424;
+  --background: #211820;
   --background-image: url('/assets/images/bgs/backgroundnew.webp');
   --foreground: #ffffff;
 
@@ -186,24 +186,13 @@ button:active:not(:disabled) {
 }
 
 /* Background: flat dark everywhere, with the artwork only behind the home hero (it scrolls away). */
+/* Every page opens on the home artwork, sharp, fading into the dark below it (it scrolls away with the page). */
 body {
   position: relative;
-  background: linear-gradient(180deg, #1a1a2e 0%, var(--bg-dark) 40%, #111120 100%) fixed;
+  background: linear-gradient(180deg, #241a27 0%, #1b1420 45%, #140f18 100%) fixed;
 }
 
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 45% at 10% 0%, rgba(255, 77, 141, 0.16) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 45% at 90% 100%, rgba(139, 92, 246, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 60% 40%, rgba(6, 182, 212, 0.07) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-body.bg-home::before {
+body::before {
   content: '';
   position: absolute;
   top: 0;
@@ -211,14 +200,14 @@ body.bg-home::before {
   right: 0;
   height: 100vh;
   background: url('/assets/images/bgs/backgroundnew.webp') center 10% / cover no-repeat;
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.75) 30%, transparent 100%);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.75) 30%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 30%, transparent 100%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 30%, transparent 100%);
   pointer-events: none;
   z-index: -1;
 }
 
 @media (max-width: 900px) {
-  body.bg-home::before { height: 80vh; }
+  body::before { height: 80vh; }
 }
 
 a {
@@ -302,7 +291,7 @@ img {
   flex-direction: column;
   gap: 22px;
   padding: 20px 14px 18px;
-  background: rgba(22, 22, 36, 0.96);
+  background: rgba(36, 26, 36, 0.96);
   border-right: 1px solid var(--line);
   z-index: 1000;
   transition: width 0.2s ease, padding 0.2s ease;
@@ -430,7 +419,7 @@ html[data-sidebar="collapsed"] .footer { transition: margin-left 0.2s ease; }
 }
 
 .lang-select option {
-  background: #12121c;
+  background: #2b202c;
   color: #fff;
 }
 
@@ -540,7 +529,7 @@ html[data-sidebar="collapsed"] .footer { transition: margin-left 0.2s ease; }
   padding: 16px 22px 16px 26px;
   margin-bottom: 18px;
   border-radius: 14px;
-  background: linear-gradient(120deg, rgba(255, 77, 141, 0.12), var(--surface-glass) 50%, rgba(139, 92, 246, 0.10));
+  background: linear-gradient(120deg, color-mix(in srgb, var(--primary) 14%, var(--surface)), var(--surface) 50%, color-mix(in srgb, var(--secondary) 12%, var(--surface)));
   border: 1px solid var(--line-strong);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
   overflow: hidden;
@@ -930,7 +919,7 @@ html[data-sidebar="collapsed"] .footer { transition: margin-left 0.2s ease; }
 .gbar {
   display: inline-flex; align-items: center; gap: 2px;
   padding: 4px; border-radius: 999px;
-  background: #15152a; border: 1px solid var(--line-strong);
+  background: rgba(24, 16, 24, 0.85); border: 1px solid var(--line-strong);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 .gbar-btn {
@@ -944,7 +933,7 @@ html[data-sidebar="collapsed"] .footer { transition: margin-left 0.2s ease; }
 .gbar-btn .genre-ico { width: 24px; height: 24px; }
 .gbar-all { padding: 0 16px; }
 .gbar-btn.on {
-  opacity: 1; color: #15152a;
+  opacity: 1; color: #241a24;
   background: linear-gradient(135deg, #ffffff 0%, #dcebff 55%, #ffd9ec 100%);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), 0 4px 16px rgba(255, 255, 255, 0.25);
 }

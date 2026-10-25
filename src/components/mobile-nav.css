@@ -9,7 +9,7 @@
   padding: 0 4px env(safe-area-inset-bottom, 0px);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  background: rgba(24, 24, 40, 0.95);
+  background: rgba(36, 26, 36, 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-top: 1px solid var(--line);
