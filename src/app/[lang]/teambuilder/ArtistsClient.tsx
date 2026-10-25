@@ -2,16 +2,15 @@
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useState, useMemo, useEffect, useRef, useSyncExternalStore, type ReactNode, type CSSProperties } from "react";
+import { useState, useMemo, useEffect, useRef, type ReactNode, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
-import { AdBanner } from "@/components/AdSense";
 import { slugify } from "@/lib/utils/slugify";
-import { evaluateTeam, type TeamEvaluation, type TeamAxis, type TeamContext } from "@/lib/utils/evaluateTeam";
+import { evaluateTeam, type TeamEvaluation } from "@/lib/utils/evaluateTeam";
 import { skillChips } from "@/lib/utils/skillSummary";
 import type { Artist } from "@/lib/types/artist";
-import { Breadcrumb } from "@/components/Breadcrumb";
 import { SupportCard } from "@/components/SupportCard";
+import { GenreIcon, GenreBar, genreColors as genreSolid } from "@/components/GenreIcon";
 import { getArtistContent, type ArtistContent } from "@/lib/i18n/artists";
 import "./teambuilder.css";
 
@@ -19,9 +18,6 @@ const isUR = (rank: string) => rank.startsWith("UR");
 
 // Numbers (scores, %, grades) use Inter with tabular figures: Poppins digits are too round at heavy weights.
 const numFont = Inter({ subsets: ["latin"], weight: ["500", "600", "700", "800"], display: "swap", variable: "--font-num" });
-
-/** Strips leading emoji/symbols from a translated title. */
-const stripEmoji = (s: string) => s.replace(/^[^\p{L}\p{N}]+/u, "");
 
 const genreColors: Record<string, string> = {
   "Pop":     "rgba(236, 72, 153, 0.55)",
@@ -35,7 +31,6 @@ const tierBadgeColors: Record<string, string> = {
   "S+": "#d4a017", S: "#eab308", A: "#22c55e", B: "#3b82f6", C: "#f59e0b", D: "#64748b", "-": "#475569",
 };
 
-const GENRES = ['EDM', 'Hip Hop', 'Pop', 'R&B', 'Rock'];
 
 // French values from artists.json (used internally)
 const SPECIALTY_VALUES = ['Augmentation dommage', 'Dommage réduction', 'Vitesse de conduite', 'HQ Defense', 'Mixte', 'Rassemblement', 'Solo car', 'Économie'] as const;
@@ -104,18 +99,6 @@ function Icon({ name, size = 14, className, style }: { name: string; size?: numb
   );
 }
 
-const CONTEXTS: Record<TeamContext, { icon: string; key: keyof ArtistContent }> = {
-  general: { icon: "scale", key: "ctxGeneral" },
-  solo: { icon: "user", key: "ctxSolo" },
-  rally: { icon: "users", key: "ctxRally" },
-};
-const AXES: Record<TeamAxis, { icon: string; key: keyof ArtistContent }> = {
-  solo: { icon: "user", key: "archSolo" },
-  rally: { icon: "users", key: "archRally" },
-  dps: { icon: "sword", key: "archDps" },
-  tank: { icon: "shield", key: "archTank" },
-};
-
 const STAT_ROWS: { key: keyof Omit<TeamEvaluation["stats"], "genreCounts">; icon: string; label: string; color: string; suffix?: string }[] = [
   { key: "skillDamageRaw", icon: "zap", label: "DMG Factor", color: "#ff8c42" },
   { key: "skillDamage", icon: "sword", label: "Skill DMG", color: "#ff6b6b", suffix: "%" },
@@ -125,6 +108,18 @@ const STAT_ROWS: { key: keyof Omit<TeamEvaluation["stats"], "genreCounts">; icon
   { key: "fanCapacity", icon: "music", label: "Fan Cap", color: "#ffd700", suffix: "%" },
   { key: "rallyCapacity", icon: "users", label: "Rally Cap", color: "#00ff88", suffix: "%" },
 ];
+
+const TB_COPY: Record<string, Record<string, string>> = {
+  fr: { skillDamageRaw: "Facteur de dégâts", skillDamage: "Dégâts de skill", basicAttackPercent: "Attaque de base", attackResist: "Résistance attaque", skillResist: "Résistance skill", fanCapacity: "Capacité de fans", rallyCapacity: "Capacité de rally", score: "Note", builtFor: "Taillée pour", strong: "Forte en", weak: "Faible en", hint: "Composez une deuxième équipe pour la comparer à la première.", secTeams: "Vos équipes", secFilters: "Filtres", secArtists: "Artistes", addingTo: "Ajout dans", none: "Aucune équipe sauvegardée." },
+  en: { skillDamageRaw: "Damage factor", skillDamage: "Skill damage", basicAttackPercent: "Basic attack", attackResist: "Attack resistance", skillResist: "Skill resistance", fanCapacity: "Fan capacity", rallyCapacity: "Rally capacity", score: "Grade", builtFor: "Built for", strong: "Strong in", weak: "Weak in", hint: "Build a second team to compare it with the first one.", secTeams: "Your teams", secFilters: "Filters", secArtists: "Artists", addingTo: "Adding to", none: "No saved team." },
+  id: { skillDamageRaw: "Faktor damage", skillDamage: "Skill damage", basicAttackPercent: "Basic attack", attackResist: "Resistensi serangan", skillResist: "Resistensi skill", fanCapacity: "Kapasitas fans", rallyCapacity: "Kapasitas rally", score: "Nilai", builtFor: "Dibuat untuk", strong: "Kuat di", weak: "Lemah di", hint: "Susun tim kedua untuk membandingkannya dengan yang pertama.", secTeams: "Tim kamu", secFilters: "Filter", secArtists: "Artis", addingTo: "Menambah ke", none: "Belum ada tim tersimpan." },
+};
+
+const TB_SHORT: Record<string, Record<string, string>> = {
+  fr: { skillDamageRaw: "Facteur dégâts", skillDamage: "Dégâts skill", basicAttackPercent: "Attaque base", attackResist: "Résist. attaque", skillResist: "Résist. skill", fanCapacity: "Cap. fans", rallyCapacity: "Cap. rally" },
+  en: { skillDamageRaw: "Dmg factor", skillDamage: "Skill dmg", basicAttackPercent: "Basic atk", attackResist: "Atk resist.", skillResist: "Skill resist.", fanCapacity: "Fan cap.", rallyCapacity: "Rally cap." },
+  id: { skillDamageRaw: "Faktor dmg", skillDamage: "Skill dmg", basicAttackPercent: "Basic atk", attackResist: "Resist. atk", skillResist: "Resist. skill", fanCapacity: "Kap. fans", rallyCapacity: "Kap. rally" },
+};
 
 const fmt = (n: number) => n.toLocaleString("fr-FR").replace(/ /g, " ");
 
@@ -157,13 +152,11 @@ const idsToArtists = (ids: number[]): Artist[] =>
   ids.map((id) => (artistsData as Artist[]).find((a) => a.id === id)).filter(Boolean).slice(0, 5) as Artist[];
 
 const readLS = (key: string, fallback: string): string => {
-  if (typeof window === 'undefined') return fallback;
   try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; }
 };
 
-/** Team from ?t1= / ?t2= in the URL takes priority over localStorage. */
+/** Team from ?t1= / ?t2= in the URL takes priority over localStorage. Browser only. */
 const loadInitialTeam = (n: 1 | 2): Artist[] => {
-  if (typeof window === 'undefined') return [];
   try {
     const fromUrl = new URLSearchParams(window.location.search).get(`t${n}`);
     if (fromUrl) {
@@ -176,6 +169,15 @@ const loadInitialTeam = (n: 1 | 2): Artist[] => {
     if (process.env.NODE_ENV !== 'production') console.warn(`Team ${n} load failed`, e);
   }
   return [];
+};
+
+/** Removes the one-shot query params (?add=, ?t1=, ?t2=) once they have been applied. */
+const cleanUrl = (keys: string[]) => {
+  try {
+    const url = new URL(window.location.href);
+    keys.forEach((k) => url.searchParams.delete(k));
+    window.history.replaceState(window.history.state, "", url.pathname + (url.search || "") + url.hash);
+  } catch {}
 };
 
 // Saison max — ordre chronologique
@@ -215,78 +217,6 @@ const getArtistSeasonOrder = (artist: Artist): number => {
 const rankOrder: Record<string, number> = { UR: 1, "UR Roma": 1, "UR Bali": 1, SSR: 2 };
 const tierOrder: Record<string, number> = { "S+": 0, S: 1, A: 2, B: 3, C: 4, D: 5 };
 
-const subscribeNoop = () => () => {};
-const subscribeResize = (cb: () => void) => {
-  window.addEventListener("resize", cb);
-  return () => window.removeEventListener("resize", cb);
-};
-
-/* ------------------------------------------------------------------ */
-/* Team evaluation block                                                */
-/* ------------------------------------------------------------------ */
-function TeamEvalBlock({ ev, t, label, onActivate }: { ev: TeamEvaluation; t: ArtistContent; label: string; onActivate: () => void }) {
-  const gradeColor = tierBadgeColors[ev.grade] || tierBadgeColors["-"];
-  const ctx = CONTEXTS[ev.context];
-  const genres = Object.entries(ev.stats.genreCounts).sort((a, b) => b[1] - a[1]);
-  return (
-    <div className="tb-eval" style={{ ["--grade" as string]: gradeColor }}>
-      <div className="tb-grade" title={t.evalRatingHint}>
-        <span>{ev.grade}</span>
-        <small>{ev.size ? `${ev.rating}/100` : "—"}</small>
-      </div>
-      <div className="tb-eval-main">
-        <div className="tb-eval-row">
-          <button type="button" className="tb-team-label" onClick={onActivate} title={t.activeTeamHint}>{label}</button>
-          <span className="tb-power" title={t.evalPower}>
-            <b>{fmt(ev.score)}</b> pts
-            {ev.synergy && <span className="tb-bonus">+{Math.round(ev.synergy.bonus * 100)}%</span>}
-          </span>
-        </div>
-        <div className="tb-bar"><i style={{ width: `${ev.rating}%` }} /></div>
-        <div className="tb-chips">
-          {genres.length === 0 && <span className="tb-chip empty">—</span>}
-          {genres.map(([genre, count]) => {
-            const syn = ev.synergy?.genre === genre;
-            return (
-              <span
-                key={genre}
-                className={`tb-chip${syn ? " synergy" : ""}`}
-                style={{ ["--chip" as string]: genreColors[genre] || "rgba(139,92,246,0.55)" }}
-                title={syn ? `${t.evalSynergy} +${Math.round(ev.synergy!.bonus * 100)}%` : undefined}
-              >
-                <i />{genre} <span className="tb-num">×{count}</span>{syn && <span className="tb-num"> · +{Math.round(ev.synergy!.bonus * 100)}%</span>}
-              </span>
-            );
-          })}
-          {ev.nextSynergy && (
-            <span className="tb-chip synergy-next" title={t.evalSynergy}>
-              {t.evalNextHint.replace("{genre}", ev.nextSynergy.genre).replace("{pct}", String(Math.round(ev.nextSynergy.bonus * 100)))}
-            </span>
-          )}
-          {ev.size > 0 && (
-            <span className="tb-chip ctx" title={t.evalBuiltFor}><Icon name={ctx.icon} size={11} /> {t.evalBuiltFor} : {t[ctx.key]}</span>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TeamVerdict({ ev, t }: { ev: TeamEvaluation; t: ArtistContent }) {
-  if (!ev.size || (ev.strengths.length === 0 && ev.weaknesses.length === 0)) return <span />;
-  const axisList = (list: TeamAxis[]) => list.map((k, i) => (
-    <span key={k} className="tb-axis">
-      {i > 0 && <span className="tb-sep">·</span>}
-      <Icon name={AXES[k].icon} size={11} /> {t[AXES[k].key]}
-    </span>
-  ));
-  return (
-    <div className="tb-verdict">
-      {ev.strengths.length > 0 && <span className="strong">{t.evalStrong} <b>{axisList(ev.strengths)}</b></span>}
-      {ev.weaknesses.length > 0 && <span className="weak">{t.evalWeak} <b>{axisList(ev.weaknesses)}</b></span>}
-    </div>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /* Team card                                                            */
@@ -298,7 +228,6 @@ type TeamCardProps = {
   ev: TeamEvaluation;
   t: ArtistContent;
   active: boolean;
-  shown: boolean;
   onActivate: () => void;
   onSave: () => void;
   onShare: () => void;
@@ -307,9 +236,25 @@ type TeamCardProps = {
 };
 
 /** The team is named when it is saved and renamed from "My teams": no name field here, the faces get the room. */
-function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onSave, onShare, onClear, onRemove }: TeamCardProps) {
+function TeamCard({ n, team, name, ev, t, active, onActivate, onSave, onShare, onClear, onRemove }: TeamCardProps) {
+  const gradeColor = tierBadgeColors[ev.grade] || tierBadgeColors["-"];
+  const genres = Object.entries(ev.stats.genreCounts).sort((a, b) => b[1] - a[1]);
+  const label = name || (n === 1 ? t.team1Label : t.team2Label);
   return (
-    <div className={`tb-card tb-team tb-team-${n}${active ? " active" : ""}${shown ? " shown" : ""}`}>
+    <div className={`tb-card tb-team tb-team-${n}${active ? " active" : ""}`} style={{ ["--grade" as string]: gradeColor }}>
+      <div className="tb-team-head">
+        <button type="button" className="tb-team-label" onClick={onActivate} title={t.activeTeamHint}><i aria-hidden="true" />{label}</button>
+        {active && <span className="tb-team-active-tag">{t.activeTeamShort || "Active"}</span>}
+        <span className="tb-score" title={t.evalPower}>
+          <b>{fmt(ev.score)}</b> pts
+          {ev.synergy && <span className="tb-bonus">+{Math.round(ev.synergy.bonus * 100)}%</span>}
+        </span>
+        <div className="tb-grade" title={t.evalRatingHint}>
+          <span>{ev.grade}</span>
+          <small>{ev.size ? `${ev.rating}/100` : "—"}</small>
+        </div>
+      </div>
+
       <div className="tb-slots">
         {[0, 1, 2, 3, 4].map((i) => {
           const a = team[i];
@@ -323,7 +268,7 @@ function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onSave, onS
               {a ? (
                 <>
                   {a.image
-                    ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="120px" style={{ objectFit: "cover", objectPosition: "center 12%" }} />
+                    ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="140px" style={{ objectFit: "cover", objectPosition: "center 12%" }} />
                     : <span style={{ fontWeight: 800, fontSize: "1rem" }}>{a.name.charAt(0)}</span>}
                   <span className="tb-slot-name">{a.name}</span>
                 </>
@@ -332,13 +277,29 @@ function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onSave, onS
           );
         })}
       </div>
-      <TeamEvalBlock ev={ev} t={t} label={name || (n === 1 ? t.team1Label : t.team2Label)} onActivate={onActivate} />
+
+      <div className="tb-bar"><i style={{ width: `${ev.rating}%` }} /></div>
       <div className="tb-team-foot">
-        <TeamVerdict ev={ev} t={t} />
+      <div className="tb-chips">
+        {genres.length === 0 && <span className="tb-chip empty">{t.emptyTeam}</span>}
+        {genres.map(([genre, count]) => {
+          const syn = ev.synergy?.genre === genre;
+          return (
+            <span
+              key={genre}
+              className={`tb-chip${syn ? " synergy" : ""}`}
+              style={{ ["--chip" as string]: genreColors[genre] || "rgba(139,92,246,0.55)" }}
+              title={syn ? `${t.evalSynergy} +${Math.round(ev.synergy!.bonus * 100)}%` : undefined}
+            >
+              <GenreIcon genre={genre} size={14} style={{ color: genreSolid[genre] || "#fff" }} />{genre} <span className="tb-num">×{count}</span>{syn && <span className="tb-num"> · +{Math.round(ev.synergy!.bonus * 100)}%</span>}
+            </span>
+          );
+        })}
+      </div>
         <div className="tb-team-actions">
-          <button onClick={onSave} className="tb-icon-btn" title={t.saveTeam} aria-label={t.saveTeam}><Icon name="save" size={13} /></button>
-          <button onClick={onShare} className="tb-icon-btn" title={t.shareTeam} aria-label={t.shareTeam}><Icon name="link" size={13} /></button>
-          <button onClick={onClear} className="tb-icon-btn danger" title={t.clearTeam} aria-label={t.clearTeam}><Icon name="trash" size={13} /></button>
+          <button onClick={onSave} className="tb-icon-btn" title={t.saveTeam} aria-label={t.saveTeam}><Icon name="save" size={14} /></button>
+          <button onClick={onShare} className="tb-icon-btn" title={t.shareTeam} aria-label={t.shareTeam}><Icon name="link" size={14} /></button>
+          <button onClick={onClear} className="tb-icon-btn danger" title={t.clearTeam} aria-label={t.clearTeam}><Icon name="trash" size={14} /></button>
         </div>
       </div>
     </div>
@@ -348,42 +309,61 @@ function TeamCard({ n, team, name, ev, t, active, shown, onActivate, onSave, onS
 /* ------------------------------------------------------------------ */
 /* Comparison table (single, shared between both teams)                */
 /* ------------------------------------------------------------------ */
-function CompareTable({ e1, e2, t, collapsed, onToggle }: { e1: TeamEvaluation; e2: TeamEvaluation; t: ArtistContent; collapsed: boolean; onToggle: () => void }) {
+function CompareTable({ e1, e2, t, lang, name1, name2, collapsed, onToggle }: { e1: TeamEvaluation; e2: TeamEvaluation; t: ArtistContent; lang: string; name1: string; name2: string; collapsed: boolean; onToggle: () => void }) {
+  const L = TB_COPY[lang] || TB_COPY.en;
+  const S = TB_SHORT[lang] || TB_SHORT.en;
   const cls = (a: number, b: number) => (a > b ? "win" : a < b ? "lose" : "tie");
+  const both = e1.size > 0 && e2.size > 0;
   return (
-    <div className={`tb-card tb-compare${collapsed ? " collapsed" : ""}`}>
+    <div className={`tb-compare${collapsed ? " collapsed" : ""}`}>
       <button type="button" className="tb-compare-title" onClick={onToggle} aria-expanded={!collapsed}>
-        <Icon name="scale" size={13} /> {t.compareTitle}
-        <Icon name="chevron" size={12} className={`tb-compare-toggle${collapsed ? "" : " open"}`} />
+        <Icon name="scale" size={14} /> {t.compareTitle}
+        <Icon name="chevron" size={13} className={`tb-compare-toggle${collapsed ? "" : " open"}`} />
       </button>
-      <div className="tb-compare-rows">
-        {STAT_ROWS.map(({ key, icon, label, color, suffix = "" }) => {
-          const v1 = e1.stats[key] as number;
-          const v2 = e2.stats[key] as number;
-          const d = Math.abs(v1 - v2);
-          return (
-            <div key={key} className="tb-cmp-row">
-              <span className={`tb-cmp-v l ${cls(v1, v2)}`}>
-                {v1 > v2 && d > 0 && <span className="tb-cmp-diff">▲{fmt(d)}{suffix}</span>}
-                {fmt(v1)}{suffix}
+      <div className="tb-compare-body">
+        {!both ? (
+          <p className="tb-compare-hint">{L.hint}</p>
+        ) : (
+          <div className="tb-cmp">
+            <div className="tb-cmp-head">
+              <span className="t1"><i aria-hidden="true" />{name1}</span>
+              <span />
+              <span className="t2"><i aria-hidden="true" />{name2}</span>
+            </div>
+            <div className="tb-cmp-rows">
+              {STAT_ROWS.map(({ key, suffix = "" }) => {
+                const v1 = e1.stats[key] as number;
+                const v2 = e2.stats[key] as number;
+                const d = v1 - v2;
+                const delta = (sign: number) => d === 0 ? <em className="none" /> : (
+                  <em className={sign > 0 ? "up" : "down"}>{sign > 0 ? "+" : "−"}{fmt(Math.abs(d))}{suffix}</em>
+                );
+                return (
+                  <div key={key} className="tb-cmp-row">
+                    <span className={`tb-cmp-v l t1 ${cls(v1, v2)}`}>
+                      <b>{fmt(v1)}{suffix}</b>
+                      {delta(d)}
+                    </span>
+                    <span className="tb-cmp-lbl"><span className="lbl-long">{L[key]}</span><span className="lbl-short">{S[key]}</span></span>
+                    <span className={`tb-cmp-v r t2 ${cls(v2, v1)}`}>
+                      {delta(-d)}
+                      <b>{fmt(v2)}{suffix}</b>
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="tb-cmp-row score">
+              <span className={`tb-cmp-v l t1 ${cls(e1.rating, e2.rating)}`}>
+                <b>{e1.rating}/100</b><span className="tb-cmp-grade" style={{ background: tierBadgeColors[e1.grade] }}>{e1.grade}</span>
               </span>
-              <span className="tb-cmp-label"><Icon name={icon} size={12} style={{ color }} /> {label}</span>
-              <span className={`tb-cmp-v r ${cls(v2, v1)}`}>
-                {fmt(v2)}{suffix}
-                {v2 > v1 && d > 0 && <span className="tb-cmp-diff">▲{fmt(d)}{suffix}</span>}
+              <span className="tb-cmp-lbl strong">{L.score}</span>
+              <span className={`tb-cmp-v r t2 ${cls(e2.rating, e1.rating)}`}>
+                <span className="tb-cmp-grade" style={{ background: tierBadgeColors[e2.grade] }}>{e2.grade}</span><b>{e2.rating}/100</b>
               </span>
             </div>
-          );
-        })}
-        <div className="tb-cmp-row score">
-          <span className={`tb-cmp-v l ${cls(e1.rating, e2.rating)}`}>
-            {e1.rating}<span className="tb-cmp-grade" style={{ background: tierBadgeColors[e1.grade] }}>{e1.grade}</span>
-          </span>
-          <span className="tb-cmp-label strong"><Icon name="trophy" size={12} /> {t.evalScoreRow}</span>
-          <span className={`tb-cmp-v r ${cls(e2.rating, e1.rating)}`}>
-            <span className="tb-cmp-grade" style={{ background: tierBadgeColors[e2.grade] }}>{e2.grade}</span>{e2.rating}
-          </span>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -394,16 +374,18 @@ function CompareTable({ e1, e2, t, collapsed, onToggle }: { e1: TeamEvaluation; 
 /* ------------------------------------------------------------------ */
 export default function ArtistsClient({ lang }: { lang: string }) {
   const router = useRouter();
-  const [team1, setTeam1] = useState<Artist[]>(() => loadInitialTeam(1));
-  const [team2, setTeam2] = useState<Artist[]>(() => loadInitialTeam(2));
-  const [team1Name, setTeam1Name] = useState<string>(() => readLS('team1Name', ''));
-  const [team2Name, setTeam2Name] = useState<string>(() => readLS('team2Name', ''));
+  // The grid is server-rendered with empty teams; teams, names and saves come from the URL /
+  // localStorage once mounted (see the hydration effect below), so the HTML matches on both sides.
+  const [team1, setTeam1] = useState<Artist[]>([]);
+  const [team2, setTeam2] = useState<Artist[]>([]);
+  const [team1Name, setTeam1Name] = useState<string>("");
+  const [team2Name, setTeam2Name] = useState<string>("");
   const [activeTeam, setActiveTeam] = useState<1 | 2>(1);
   const [compareCollapsed, setCompareCollapsed] = useState(true);
-  const [savedTeams, setSavedTeams] = useState<SavedTeam[]>(() => {
-    const raw = readLS('savedTeams', '[]');
-    try { const arr = JSON.parse(raw); return Array.isArray(arr) ? arr : []; } catch { return []; }
-  });
+  const [savedTeams, setSavedTeams] = useState<SavedTeam[]>([]);
+  const [hydrated, setHydrated] = useState(false);
+  // Mobile: the team bar switches to a compact strip once the grid is being scrolled.
+  const [compact, setCompact] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const showToast = (msg: string) => {
@@ -416,28 +398,72 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   const [filterGenre, setFilterGenre] = useState("");
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [filterMaxSeason, setFilterMaxSeason] = useState("");
-  const [hideUR, setHideUR] = useState<boolean>(() => readLS('tbHideUR', '0') === '1');
-  // Hydration-safe "mounted" flag without a setState-in-effect.
-  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
-  const windowWidth = useSyncExternalStore(subscribeResize, () => window.innerWidth, () => 0);
-  const isMobile = windowWidth > 0 && windowWidth <= 900;
+  const [hideUR, setHideUR] = useState<boolean>(true);
   const t = getArtistContent(lang);
 
-  // Persist teams
+  // Hydration: restore state from the URL and localStorage, then apply a one-shot ?add=ID
+  // (deep link from the tier list / artist pages: "Add to my team").
   useEffect(() => {
+    let t1 = loadInitialTeam(1);
+    const t2 = loadInitialTeam(2);
+    const raw = readLS('savedTeams', '[]');
+    let saved: SavedTeam[] = [];
+    try { const arr = JSON.parse(raw); saved = Array.isArray(arr) ? arr : []; } catch {}
+    let addedName: string | null = null;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const addId = parseInt(params.get('add') || '', 10);
+      if (!Number.isNaN(addId)) {
+        const artist = (artistsData as Artist[]).find((a) => a.id === addId);
+        if (artist && !t1.some((a) => a.id === addId)) {
+          if (t1.length >= 5) t1 = [...t1.slice(1), artist];
+          else t1 = [...t1, artist];
+          addedName = artist.name;
+        }
+      }
+      if (params.has('add') || params.has('t1') || params.has('t2')) cleanUrl(['add', 't1', 't2']);
+    } catch {}
+    setTeam1(t1);
+    setTeam2(t2);
+    setTeam1Name(readLS('team1Name', ''));
+    setTeam2Name(readLS('team2Name', ''));
+    setSavedTeams(saved);
+    setHideUR(readLS('tbHideUR2', '1') === '1');
+    setHydrated(true);
+    if (addedName) showToast(`${addedName} → ${t.team1Label} (${t1.length}/5)`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Mobile bottom tray: shown once the workbench has scrolled out of view.
+  const workbenchRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const onScroll = () => {
+      const el = workbenchRef.current;
+      const limit = el ? el.offsetTop + el.offsetHeight - 60 : 260;
+      setCompact(window.scrollY > limit);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Persist teams (only after hydration, so the server's empty state never overwrites a save)
+  useEffect(() => {
+    if (!hydrated) return;
     try { localStorage.setItem('team1', JSON.stringify(team1.map((a) => a.id))); } catch (e) {
       if (process.env.NODE_ENV !== 'production') console.warn('Team 1 save failed', e);
     }
-  }, [team1]);
+  }, [team1, hydrated]);
   useEffect(() => {
+    if (!hydrated) return;
     try { localStorage.setItem('team2', JSON.stringify(team2.map((a) => a.id))); } catch (e) {
       if (process.env.NODE_ENV !== 'production') console.warn('Team 2 save failed', e);
     }
-  }, [team2]);
-  useEffect(() => { try { localStorage.setItem('team1Name', team1Name); } catch {} }, [team1Name]);
-  useEffect(() => { try { localStorage.setItem('team2Name', team2Name); } catch {} }, [team2Name]);
-  useEffect(() => { try { localStorage.setItem('savedTeams', JSON.stringify(savedTeams)); } catch {} }, [savedTeams]);
-  useEffect(() => { try { localStorage.setItem('tbHideUR', hideUR ? '1' : '0'); } catch {} }, [hideUR]);
+  }, [team2, hydrated]);
+  useEffect(() => { if (hydrated) try { localStorage.setItem('team1Name', team1Name); } catch {} }, [team1Name, hydrated]);
+  useEffect(() => { if (hydrated) try { localStorage.setItem('team2Name', team2Name); } catch {} }, [team2Name, hydrated]);
+  useEffect(() => { if (hydrated) try { localStorage.setItem('savedTeams', JSON.stringify(savedTeams)); } catch {} }, [savedTeams, hydrated]);
+  useEffect(() => { if (hydrated) try { localStorage.setItem('tbHideUR2', hideUR ? '1' : '0'); } catch {} }, [hideUR, hydrated]);
 
   const saveTeam = (n: 1 | 2) => {
     const team = n === 1 ? team1 : team2;
@@ -493,9 +519,10 @@ export default function ArtistsClient({ lang }: { lang: string }) {
     const [team, inTeam, add, remove] = activeTeam === 1
       ? [team1, inTeam1, addToTeam1, removeFromTeam1]
       : [team2, inTeam2, addToTeam2, removeFromTeam2];
-    if (inTeam(artist.id)) remove(artist.id);
-    else if (team.length >= 5) showToast(`${activeTeam === 1 ? t.team1Label : t.team2Label} : 5/5`);
-    else add(artist);
+    const label = activeTeam === 1 ? t.team1Label : t.team2Label;
+    if (inTeam(artist.id)) { remove(artist.id); showToast(`${artist.name} ✕ ${label} (${team.length - 1}/5)`); }
+    else if (team.length >= 5) showToast(`${label} : 5/5`);
+    else { add(artist); showToast(`${artist.name} → ${label} (${team.length + 1}/5)`); }
   };
 
   const filteredArtists = useMemo(() => {
@@ -533,10 +560,7 @@ export default function ArtistsClient({ lang }: { lang: string }) {
   const activeFilters = [searchQuery.trim(), filterGenre, filterSpecialty, filterMaxSeason, hideUR ? "ur" : ""].filter(Boolean).length;
   const resetFilters = () => { setSearchQuery(""); setFilterGenre(""); setFilterSpecialty(""); setFilterMaxSeason(""); setHideUR(false); };
 
-  if (!mounted) {
-    return <div style={{ padding: "100px", textAlign: "center", color: "#fff" }}>{t.loading}</div>;
-  }
-
+  const L = TB_COPY[lang] || TB_COPY.en;
   const openProfile = (a: Artist) => router.push(`/${lang}/artist/${slugify(a.name)}/`);
   const teamTabLabel = (n: 1 | 2) => {
     const name = (n === 1 ? team1Name : team2Name).trim() || (n === 1 ? t.team1Label : t.team2Label);
@@ -548,22 +572,8 @@ export default function ArtistsClient({ lang }: { lang: string }) {
     <>
       {toast && <div className="tb-toast" role="status">{toast}</div>}
       <div className={`tb-page ${numFont.variable}`}>
-        <div className="tb-header">
-          <h1 className="tb-title">{stripEmoji(t.pageTitle || "Artists")}</h1>
-          <p className="tb-subtitle">{t.pageSubtitle || "Discover all characters"}</p>
-          {!isMobile && (
-            <div className="info-panel" style={{ maxWidth: 920, margin: "0 auto 12px" }}>
-              <div className="info-panel-title">{t.teamBuilderMethodology}</div>
-              <div className="info-panel-body">{t.teamBuilderMethodologyDesc}</div>
-            </div>
-          )}
-          <AdBanner />
-        </div>
-
-        <Breadcrumb items={[{ label: "Team Builder", href: "/teambuilder/" }]} lang={lang} />
-
         {/* Sticky workbench: team 1 | comparison | team 2 (tabs on mobile), then the filter bar */}
-        <div className="tb-sticky">
+        <div ref={workbenchRef} className={`tb-sticky${compact ? " compact" : ""}`}>
           <div className="tb-panel">
             <div className="tb-teams">
             <div className="tb-tabs" role="tablist">
@@ -583,20 +593,21 @@ export default function ArtistsClient({ lang }: { lang: string }) {
 
             <TeamCard
               n={1} team={team1} name={team1Name} ev={team1Eval} t={t}
-              active={activeTeam === 1} shown={!isMobile || activeTeam === 1} onActivate={() => setActiveTeam(1)}
+              active={activeTeam === 1} onActivate={() => setActiveTeam(1)}
               onSave={() => saveTeam(1)} onShare={shareTeams}
               onClear={() => setTeam1([])} onRemove={removeFromTeam1}
             />
 
             <TeamCard
               n={2} team={team2} name={team2Name} ev={team2Eval} t={t}
-              active={activeTeam === 2} shown={!isMobile || activeTeam === 2} onActivate={() => setActiveTeam(2)}
+              active={activeTeam === 2} onActivate={() => setActiveTeam(2)}
               onSave={() => saveTeam(2)} onShare={shareTeams}
               onClear={() => setTeam2([])} onRemove={removeFromTeam2}
             />
             <CompareTable
-              e1={team1Eval} e2={team2Eval} t={t}
-              collapsed={isMobile && compareCollapsed}
+              e1={team1Eval} e2={team2Eval} t={t} lang={lang}
+              name1={team1Name.trim() || t.team1Label} name2={team2Name.trim() || t.team2Label}
+              collapsed={compareCollapsed}
               onToggle={() => setCompareCollapsed((v) => !v)}
             />
             </div>
@@ -621,12 +632,8 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                 {t.hideUR}
               </label>
             </div>
+            <GenreBar value={filterGenre} onChange={setFilterGenre} allLabel={t.all} className="tb-gbar" />
             <div className="tb-filters-selects">
-              <label htmlFor="filter-genre" className="sr-only">{t.allGenres}</label>
-              <select id="filter-genre" className={filterGenre ? "on" : ""} value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
-                <option value="">{t.allGenres}</option>
-                {GENRES.map((genre) => (<option key={genre} value={genre}>{genre}</option>))}
-              </select>
               <label htmlFor="filter-specialty" className="sr-only">{t.allSpecialties}</label>
               <select id="filter-specialty" className={filterSpecialty ? "on" : ""} value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
                 <option value="">{t.allSpecialties}</option>
@@ -652,17 +659,44 @@ export default function ArtistsClient({ lang }: { lang: string }) {
           </div>
         </div>
 
+        {/* Mini team bar: fixed at the top once the workbench has scrolled away (both teams on wide screens) */}
+        <div className={`tb-tray${compact ? " show" : ""}`} aria-hidden={!compact}>
+          {([1, 2] as const).map((n) => {
+            const team = n === 1 ? team1 : team2;
+            const ev = n === 1 ? team1Eval : team2Eval;
+            const remove = n === 1 ? removeFromTeam1 : removeFromTeam2;
+            return (
+              <div key={n} className={`tb-tray-team t${n}${activeTeam === n ? " on" : ""}`} onClick={() => setActiveTeam(n)} role="button" tabIndex={0} title={t.activeTeamHint}>
+                <span className="tb-tray-num">{n}</span>
+                <span className="tb-tray-slots">
+                  {[0, 1, 2, 3, 4].map((i) => {
+                    const a = team[i];
+                    return (
+                      <span
+                        key={i}
+                        className={`tb-tray-slot${a ? " filled" : ""}`}
+                        onClick={(e) => { if (a) { e.stopPropagation(); remove(a.id); } }}
+                        title={a ? `${a.name} · ${t.clickToRemove}` : undefined}
+                      >
+                        {a?.image ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="48px" style={{ objectFit: "cover", objectPosition: "center 12%" }} /> : a ? a.name.charAt(0) : "+"}
+                      </span>
+                    );
+                  })}
+                </span>
+                <span className="tb-tray-grade" style={{ background: tierBadgeColors[ev.grade] || tierBadgeColors["-"] }}>{ev.grade}</span>
+                <span className="tb-tray-pts"><b>{fmt(ev.score)}</b> pts</span>
+              </div>
+            );
+          })}
+          <button type="button" className="tb-tray-swap" onClick={() => setActiveTeam(activeTeam === 1 ? 2 : 1)} aria-label={t.team2Label}>⇄</button>
+          <button type="button" className="tb-tray-up" onClick={() => workbenchRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })} aria-label="Top">▲</button>
+        </div>
+
         {/* Saved teams + grid */}
         <div className="tb-bottom">
-          <div className="tb-saved">
+          {savedTeams.length > 0 && <div className="tb-saved">
             <span className="tb-saved-title"><Icon name="folder" size={13} /> {t.myTeams}</span>
-            {savedTeams.length === 0 ? (
-              <span className="tb-saved-empty">
-                {t.noSavedTeams.split("💾").map((part, i) => (
-                  <span key={i}>{i > 0 && <Icon name="save" size={12} className="tb-inline-ico" />}{part}</span>
-                ))}
-              </span>
-            ) : savedTeams.map((s) => (
+            {savedTeams.map((s) => (
               <div key={s.id} className="tb-saved-chip">
                 <span className="tb-saved-avatars">
                   {s.ids.slice(0, 5).map((id) => {
@@ -697,10 +731,13 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                 <button className="tb-saved-btn del" onClick={() => deleteSaved(s.id)} title={t.deleteSaved}>✕</button>
               </div>
             ))}
-          </div>
+          </div>}
           {savedTeams.length > 0 && <SupportCard lang={lang} compact />}
-          <div className="tb-count">
-            {filteredArtists.length} {t.foundArtists} · <span className="tb-hint">{t.activeTeamHint} ({activeTeam})</span>
+          <div className="tb-grid-head">
+            <h2 className="tb-sec">{L.secArtists} <span>{filteredArtists.length}</span></h2>
+            <button type="button" className={`tb-active-chip t${activeTeam}`} onClick={() => setActiveTeam(activeTeam === 1 ? 2 : 1)} title={t.activeTeamHint}>
+              <i aria-hidden="true" />{L.addingTo} {teamTabLabel(activeTeam)} ⇄
+            </button>
           </div>
 
           {sortedArtists.length === 0 && <div className="tb-saved-empty" style={{ padding: 20, textAlign: "center" }}>{t.noResults}</div>}
@@ -729,14 +766,13 @@ export default function ArtistsClient({ lang }: { lang: string }) {
                     {artist.calculatedTier && (
                       <span className="tb-art-tier" style={{ background: tierBadgeColors[artist.calculatedTier] || "#64748b" }}>{artist.calculatedTier}</span>
                     )}
-                    {ur && <span className="tb-art-ur">{artist.rank}</span>}
                     <span
                       role="link"
                       className="tb-art-info"
                       title={t.viewProfileTitle}
                       onClick={(e) => { e.stopPropagation(); openProfile(artist); }}
                     >i</span>
-                    <span className="tb-art-name">{artist.name}<small>{artist.genre}</small></span>
+                    <span className="tb-art-name"><GenreIcon genre={artist.genre} size={13} style={{ color: genreSolid[artist.genre] || "#fff", marginRight: 5 }} />{artist.name}</span>
                     {(inT1 || inT2) && (
                       <span className="tb-art-inteam">
                         {inT1 && <span className="t1">1</span>}

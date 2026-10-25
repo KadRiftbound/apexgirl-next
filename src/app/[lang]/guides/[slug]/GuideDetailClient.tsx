@@ -10,6 +10,7 @@ import { SummaryBox, type SummaryBoxData } from "@/components/SummaryBox";
 import { TipCallout, type CalloutData } from "@/components/TipCallout";
 import { useMemo, useState, type ReactNode } from "react";
 import guideImageDims from "@/lib/data/guide-image-dims.json";
+import "./guide-detail.css";
 
 const guideTranslations: Record<string, any> = {
    fr: { notFound: "Guide non trouvé", backToGuides: "← Retour aux guides", otherGuides: "Autres guides", tips: "Conseils", rewards: "Récompenses", explanation: "Explication", artistDatabaseTitle: "Base de Données Artistes", artistDatabaseDesc: "Découvrez tous les artistes", tierListTitle: "Tier List", tierListDesc: "Classement des meilleurs artistes", relatedGuides: "Guides liés", relatedArtists: "Artistes liés", glossary: "Glossaire du guide", viewFullGlossary: "→ Voir le glossaire complet", noRelatedGuides: "Aucun guide lié", noRelatedArtists: "Aucun artiste lié" },
@@ -625,108 +626,52 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
   return (
     <>
       {/* Hero Header */}
-      <div style={{
-        background: "rgba(10,12,22,0.94)",
-        backdropFilter: "blur(16px)",
-        borderBottom: `1px solid ${guideColor}44`,
-        padding: "28px 0 24px",
-      }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 20px" }}>
-          <Link href={`/${lang}/guides/`} style={{
-            color: "rgba(255,255,255,0.45)",
-            fontSize: "0.85rem",
-            textDecoration: "none",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-            marginBottom: "12px",
-            transition: "color 0.2s",
-          }}>
-            {t.backToGuides}
-          </Link>
-          <div style={{ display: "flex", alignItems: "center", gap: "14px", flexWrap: "wrap" }}>
-            <div style={{
-              width: "52px", height: "52px", borderRadius: "14px", flexShrink: 0,
-              background: `linear-gradient(135deg, ${guideColor}, ${guideColor}88)`,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: "1.6rem",
-              boxShadow: `0 8px 24px ${guideColor}55`,
-            }}>
-              {guide.icon}
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px", flexWrap: "wrap" }}>
-                <span style={{
-                  padding: "3px 10px", borderRadius: "20px",
-                  background: `${guideColor}22`, color: guideColor,
-                  fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em",
-                }}>
-                  {getCategoryLabel(guide, lang)}
-                </span>
-                <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>⏱️ {guide.readTime}</span>
+      <div className="gd-hero" style={{ ["--c" as string]: guideColor }}>
+        <div className="gd-hero-inner">
+          <Link href={`/${lang}/guides/`} className="gd-back">{t.backToGuides}</Link>
+          <div className="gd-hero-row">
+            <span className="gd-icon" aria-hidden="true">{guide.icon}</span>
+            <div className="gd-hero-text">
+              <div className="gd-meta">
+                <span className="gd-cat">{getCategoryLabel(guide, lang)}</span>
+                <span className="gd-time">{guide.readTime}</span>
               </div>
-              <h1 style={{
-                fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, margin: 0,
-                color: "#fff", letterSpacing: "-0.01em",
-              }}>
-                {(guide as any)[`title_${lang}`] || guide.title}
-              </h1>
+              <h1 className="gd-title">{(guide as any)[`title_${lang}`] || guide.title}</h1>
             </div>
           </div>
         </div>
       </div>
 
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 20px 0" }}>
+      <div className="gd-body" style={{ ["--c" as string]: guideColor }}>
+        {(guide as any).outdated && (
+          <div className="gd-outdated" role="note">
+            <b>{lang === "fr" ? "Guide obsolète" : lang === "id" ? "Panduan usang" : "Outdated guide"}</b>
+            <span>{lang === "fr" ? "Cet événement n'existe plus dans le jeu. Le guide est conservé pour référence." : lang === "id" ? "Acara ini sudah tidak ada di game. Panduan disimpan sebagai referensi." : "This event no longer exists in the game. The guide is kept for reference."}</span>
+          </div>
+        )}
 
         {/* Rewards */}
         {rewardsContent && (
-          <div style={{
-            background: "rgba(8,32,14,0.78)",
-            borderRadius: "16px",
-            border: "1px solid rgba(34,197,94,0.3)",
-            padding: "24px",
-            marginBottom: "16px",
-            backdropFilter: "blur(10px)",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
-              <span style={{
-                width: "28px", height: "28px", borderRadius: "8px",
-                background: "rgba(34,197,94,0.15)", display: "flex", alignItems: "center",
-                justifyContent: "center", fontSize: "0.9rem",
-              }}>🎁</span>
-              <h2 style={{ margin: 0, color: "#22c55e", fontSize: "1rem", fontWeight: 700 }}>
-                {t.rewards}
-              </h2>
+          <section className="gd-panel gd-rewards">
+            <div className="gd-panel-head"><h2>{t.rewards}</h2></div>
+            <div className="gd-panel-body">
+              <div className="gd-rewards-grid">
+                {rewardsContent.split('\n').map((line, i) => {
+                  if (!line.trim()) return null;
+                  const text = line.startsWith('- ') ? line.replace('- ', '') : line;
+                  return (
+                    <div key={i} className="gd-reward"><i aria-hidden="true">✦</i><span>{text}</span></div>
+                  );
+                })}
+              </div>
             </div>
-            {/* Rewards en grille si liste de bullet points */}
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-              gap: "8px",
-            }}>
-              {rewardsContent.split('\n').map((line, i) => {
-                if (!line.trim()) return null;
-                const text = line.startsWith('- ') ? line.replace('- ', '') : line;
-                return (
-                  <div key={i} style={{
-                    display: "flex", gap: "10px", alignItems: "flex-start",
-                    background: "rgba(34,197,94,0.08)",
-                    borderRadius: "10px", padding: "10px 14px",
-                    border: "1px solid rgba(34,197,94,0.15)",
-                  }}>
-                    <span style={{ color: "#22c55e", flexShrink: 0, fontSize: "0.85rem", marginTop: "1px" }}>✦</span>
-                    <span style={{ color: "rgba(255,255,255,0.85)", fontSize: "0.88rem", lineHeight: 1.5 }}>{text}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          </section>
         )}
 
         {guide.summaryBox && <SummaryBox data={guide.summaryBox} lang={lang} />}
 
         {guide.callouts && guide.callouts.length > 0 && (
-          <div style={{ marginBottom: "16px" }}>
+          <div style={{ marginBottom: "14px" }}>
             {guide.callouts.map((c, i) => (
               <TipCallout key={i} callout={c} lang={lang} />
             ))}
@@ -734,53 +679,15 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
         )}
 
         {tocHeadings.length > 2 && (
-          <div style={{
-            background: "rgba(10,14,24,0.92)",
-            borderRadius: "16px",
-            border: "1px solid rgba(255,255,255,0.09)",
-            marginBottom: "16px",
-            overflow: "hidden",
-          }}>
-            <button
-              onClick={() => setTocOpen(!tocOpen)}
-              style={{
-                width: "100%",
-                background: "none",
-                border: "none",
-                padding: "14px 18px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                cursor: "pointer",
-                color: "rgba(255,255,255,0.8)",
-                fontSize: "0.9rem",
-                fontWeight: 600,
-              }}
-            >
-              <span>{lang === "fr" ? "Table des matières" : "Table of Contents"}</span>
-              <span style={{
-                transform: tocOpen ? "rotate(180deg)" : "rotate(0deg)",
-                transition: "transform 0.2s",
-                fontSize: "0.8rem",
-              }}>▾</span>
+          <div className="gd-panel">
+            <button type="button" className="gd-toc-btn" onClick={() => setTocOpen(!tocOpen)} aria-expanded={tocOpen}>
+              <span>{lang === "fr" ? "Table des matières" : lang === "id" ? "Daftar isi" : "Table of Contents"}</span>
+              <span aria-hidden="true">▾</span>
             </button>
             {tocOpen && (
-              <div style={{ padding: "0 18px 14px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <div className="gd-toc-list">
                 {tocHeadings.map((h) => (
-                  <a
-                    key={h.id}
-                    href={`#${h.id}`}
-                    style={{
-                      color: "rgba(255,255,255,0.65)",
-                      textDecoration: "none",
-                      fontSize: "0.85rem",
-                      padding: "4px 0 4px 0",
-                      transition: "color 0.15s",
-                      borderBottom: "1px solid rgba(255,255,255,0.04)",
-                    }}
-                  >
-                    {h.text}
-                  </a>
+                  <a key={h.id} href={`#${h.id}`}>{h.text}</a>
                 ))}
               </div>
             )}
@@ -797,151 +704,68 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
         <CorrectionCallout lang={lang} />
 
         {(relatedGuideEntries.length > 0 || relatedArtistEntries.length > 0) && (
-          <div style={{
-            background: "rgba(12,12,28,0.82)",
-            borderRadius: "16px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            marginBottom: "24px",
-            overflow: "hidden",
-            backdropFilter: "blur(10px)",
-          }}>
-            <div style={{ padding: "18px 20px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-              <h2 style={{ margin: 0, color: "rgba(255,255,255,0.85)", fontSize: "1rem", fontWeight: 700 }}>
-                {t.relatedGuides}
-              </h2>
-            </div>
-            <div style={{ padding: "18px 20px" }}>
+          <section className="gd-panel">
+            <div className="gd-panel-head"><h2>{t.relatedGuides}</h2></div>
+            <div className="gd-panel-body">
               {relatedGuideEntries.length ? (
-                <div style={{ display: "grid", gap: "10px" }}>
+                <div className="gd-list">
                   {relatedGuideEntries.map((relatedGuide) => (
-                    <Link
-                      key={relatedGuide.id}
-                      href={`/${lang}/guides/${getGuideSlug(relatedGuide)}/`}
-                      style={{
-                        textDecoration: "none",
-                        padding: "12px 14px",
-                        borderRadius: "10px",
-                        border: `1px solid ${relatedGuide.color}33`,
-                        background: "rgba(255,255,255,0.03)",
-                        color: "rgba(255,255,255,0.85)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                      }}
-                    >
-                      <span>{relatedGuide.icon}</span>
+                    <Link key={relatedGuide.id} href={`/${lang}/guides/${getGuideSlug(relatedGuide)}/`} className="gd-row">
+                      <span className="gd-row-ico" aria-hidden="true">{relatedGuide.icon}</span>
                       <span>{relatedGuide[`title_${lang}` as keyof typeof relatedGuide] as string || relatedGuide.title}</span>
+                      <span className="gd-row-arrow" aria-hidden="true">→</span>
                     </Link>
                   ))}
                 </div>
               ) : (
-                <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}>{t.noRelatedGuides}</div>
+                <div className="gd-empty">{t.noRelatedGuides}</div>
               )}
             </div>
-
-            <div style={{ padding: "0 20px 18px" }}>
-              <h3 style={{ margin: "0 0 12px", color: "rgba(255,255,255,0.7)", fontSize: "0.9rem", fontWeight: 700 }}>
-                {t.relatedArtists}
-              </h3>
-              {relatedArtistEntries.length ? (
-                <div style={{ display: "grid", gap: "10px" }}>
+            {relatedArtistEntries.length > 0 && (
+              <div className="gd-panel-body">
+                <h3>{t.relatedArtists}</h3>
+                <div className="gd-list">
                   {relatedArtistEntries.map((artist) => (
-                    <Link
-                      key={artist.slug}
-                      href={`/${lang}/artist/${artist.slug}/`}
-                      style={{
-                        textDecoration: "none",
-                        padding: "12px 14px",
-                        borderRadius: "10px",
-                        border: "1px solid rgba(255,255,255,0.12)",
-                        background: "rgba(255,255,255,0.03)",
-                        color: "rgba(255,255,255,0.85)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                      }}
-                    >
-                      <span>🎤</span>
+                    <Link key={artist.slug} href={`/${lang}/artist/${artist.slug}/`} className="gd-row">
+                      <span className="gd-row-ico" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>
+                      </span>
                       <span>{artist.name}</span>
+                      <span className="gd-row-arrow" aria-hidden="true">→</span>
                     </Link>
                   ))}
                 </div>
-              ) : (
-                <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem" }}>{t.noRelatedArtists}</div>
-              )}
-            </div>
-          </div>
+              </div>
+            )}
+          </section>
         )}
 
         {glossaryEntries.length > 0 && (
-          <div style={{
-            background: "rgba(8,12,22,0.82)",
-            borderRadius: "16px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            marginBottom: "24px",
-            padding: "20px",
-          }}>
-            <h2 style={{ margin: "0 0 14px", color: "rgba(255,255,255,0.85)", fontSize: "1rem", fontWeight: 700 }}>
-              {t.glossary}
-            </h2>
-            <div style={{ display: "grid", gap: "12px" }}>
-              {glossaryEntries.map((entry) => (
-                <div key={entry.term} style={{
-                  borderRadius: "12px",
-                  padding: "12px 14px",
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}>
-                  <div style={{ color: guideColor, fontWeight: 700, fontSize: "0.9rem", marginBottom: "6px" }}>
-                    {entry.term}
+          <section className="gd-panel">
+            <div className="gd-panel-head"><h2>{t.glossary}</h2></div>
+            <div className="gd-panel-body">
+              <div className="gd-glossary">
+                {glossaryEntries.map((entry) => (
+                  <div key={entry.term} className="gd-term">
+                    <b>{entry.term}</b>
+                    <span>{entry.definition}</span>
                   </div>
-                  <div style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.88rem", lineHeight: 1.6 }}>
-                    {entry.definition}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <Link href={`/${lang}/glossary/`} className="gd-glossary-link">{t.viewFullGlossary}</Link>
             </div>
-            <div style={{ marginTop: "14px", textAlign: "right" }}>
-              <Link
-                href={`/${lang}/glossary/`}
-                style={{
-                  color: "rgba(139, 92, 246, 0.85)",
-                  fontSize: "0.88rem",
-                  textDecoration: "none",
-                  fontWeight: 600,
-                }}
-              >
-                {t.viewFullGlossary}
-              </Link>
-            </div>
-          </div>
+          </section>
         )}
 
         <AdBanner />
 
         {/* Autres guides */}
-        <div style={{ marginTop: "32px", marginBottom: "24px" }}>
-          <h3 style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "14px" }}>
-            {t.otherGuides}
-          </h3>
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+        <div className="gd-others">
+          <h3>{t.otherGuides}</h3>
+          <div className="gd-others-list">
             {otherGuides.map(g => (
-              <Link
-                key={g.id}
-                href={`/${lang}/guides/${getGuideSlug(g)}/`}
-                style={{
-                  padding: "10px 16px",
-                   background: "rgba(10,10,24,0.72)",
-                   borderRadius: "10px",
-                  color: "rgba(255,255,255,0.8)",
-                  textDecoration: "none",
-                  border: `1px solid ${g.color || "#8b5cf6"}33`,
-                  display: "flex", alignItems: "center", gap: "8px",
-                  fontSize: "0.85rem", fontWeight: 500,
-                  transition: "all 0.2s",
-                }}
-              >
-                <span>{g.icon || "📘"}</span>
+              <Link key={g.id} href={`/${lang}/guides/${getGuideSlug(g)}/`}>
+                <span aria-hidden="true">{g.icon || "📘"}</span>
                 <span>{g[`title_${lang}` as keyof typeof g] as string || g.title}</span>
               </Link>
             ))}
@@ -949,86 +773,52 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
         </div>
 
         {/* Internal Linking Hubs */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px" }}>
-          <Link href={`/${lang}/teambuilder/`} style={{
-            padding: "18px", background: "rgba(244,114,182,0.1)",
-            borderRadius: "12px", border: "1px solid rgba(244,114,182,0.25)",
-            textDecoration: "none", display: "block",
-            transition: "all 0.2s",
-          }}>
-            <div style={{ fontSize: "1.4rem", marginBottom: "6px" }}>🎤</div>
-            <div style={{ color: "#f472b6", fontWeight: 600, fontSize: "0.9rem", marginBottom: "3px" }}>
-              {t.artistDatabaseTitle}
-            </div>
-            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>
-              {t.artistDatabaseDesc}
-            </div>
+        <div className="gd-hubs">
+          <Link href={`/${lang}/teambuilder/`} className="gd-hub" style={{ ["--c" as string]: "#ff4d8d" }}>
+            <span className="gd-hub-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" /><circle cx="17" cy="9" r="2.4" /><path d="M15.5 14.4c2.3.2 4 1.7 4.5 4.6" /></svg>
+            </span>
+            <span>
+              <span className="gd-hub-title">Team Builder</span>
+              <span className="gd-hub-desc">{t.artistDatabaseDesc}</span>
+            </span>
+            <span className="gd-hub-arrow" aria-hidden="true">→</span>
           </Link>
-
-          <Link href={`/${lang}/tierlist/`} style={{
-            padding: "18px", background: "rgba(251,191,36,0.1)",
-            borderRadius: "12px", border: "1px solid rgba(251,191,36,0.25)",
-            textDecoration: "none", display: "block",
-            transition: "all 0.2s",
-          }}>
-            <div style={{ fontSize: "1.4rem", marginBottom: "6px" }}>🏆</div>
-            <div style={{ color: "#fbbf24", fontWeight: 600, fontSize: "0.9rem", marginBottom: "3px" }}>
-              {t.tierListTitle}
-            </div>
-            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>
-              {t.tierListDesc}
-            </div>
+          <Link href={`/${lang}/tierlist/`} className="gd-hub" style={{ ["--c" as string]: "#fbbf24" }}>
+            <span className="gd-hub-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M8 4h8v4a4 4 0 0 1-8 0V4z" /><path d="M8 6H5a3 3 0 0 0 3 4" /><path d="M16 6h3a3 3 0 0 1-3 4" /><path d="M12 12v4" /><path d="M8 20h8" /></svg>
+            </span>
+            <span>
+              <span className="gd-hub-title">{t.tierListTitle}</span>
+              <span className="gd-hub-desc">{t.tierListDesc}</span>
+            </span>
+            <span className="gd-hub-arrow" aria-hidden="true">→</span>
           </Link>
         </div>
 
-        <div style={{ textAlign: "right", marginBottom: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "flex-end", flexWrap: "wrap" }}>
-            <a
-              href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Nouveau guide" : "New guide submission")}%3A%20${encodeURIComponent(guideTitle)}`}
-              style={{
-                color: "rgba(255,255,255,0.3)",
-                fontSize: "0.75rem",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-            >
-              {lang === "fr" ? "Soumettre un guide →" : "Submit a guide →"}
-            </a>
-            <a
-              href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Amélioration de guide" : "Guide improvement")}%3A%20${encodeURIComponent(guideTitle)}`}
-              style={{
-                color: "rgba(255,255,255,0.3)",
-                fontSize: "0.75rem",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-            >
-              {lang === "fr" ? "Suggérer une amélioration →" : "Suggest an improvement →"}
-            </a>
-          </div>
-          <div>
-            <Link
-              href={`/${lang}/methodology/`}
-              style={{
-                color: "rgba(255,255,255,0.25)",
-                fontSize: "0.7rem",
-                textDecoration: "none",
-              }}
-            >
-              {lang === "fr" ? "Méthodologie des guides" : "Guide methodology"}
-            </Link>
-          </div>
+        <div className="gd-foot">
+          <a href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Nouveau guide" : "New guide submission")}%3A%20${encodeURIComponent(guideTitle)}`}>
+            {lang === "fr" ? "Soumettre un guide →" : "Submit a guide →"}
+          </a>
+          <a href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Amélioration de guide" : "Guide improvement")}%3A%20${encodeURIComponent(guideTitle)}`}>
+            {lang === "fr" ? "Suggérer une amélioration →" : "Suggest an improvement →"}
+          </a>
+          <Link href={`/${lang}/methodology/`}>
+            {lang === "fr" ? "Méthodologie des guides" : "Guide methodology"}
+          </Link>
         </div>
       </div>
 
       <style>{`
         .guide-article {
-          background: linear-gradient(180deg, rgba(12,12,28,0.92), rgba(10,10,24,0.92));
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 18px;
+          background: var(--surface-glass);
+          border: 1px solid var(--line);
+          border-radius: var(--radius-card);
           padding: 28px;
-          margin-bottom: 24px;
-          box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+          margin-bottom: 14px;
+        }
+        @media (max-width: 900px) {
+          .guide-article { padding: 16px 14px; }
         }
 
         .guide-content {

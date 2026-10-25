@@ -80,11 +80,11 @@ export default async function TierlistPage({ params }: { params: Promise<{ lang:
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+      <div className="page" style={{ paddingTop: 8, paddingBottom: 0 }}>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Tier List', href: '/tierlist/' }]} lang={lang} />
       </div>
       <TierlistClient lang={lang} />
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '8px 20px 0' }}>
+      <div className="page page-narrow" style={{ paddingTop: 0 }}>
         <div className="info-panel">
           <div className="info-panel-title">
             {lang === 'fr' ? 'Méthodologie du classement' : 'Ranking methodology'}

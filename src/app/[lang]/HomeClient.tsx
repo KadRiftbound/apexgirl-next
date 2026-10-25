@@ -12,6 +12,9 @@ import artistImages from "@/lib/data/artist-images.json";
 import { slugify } from "@/lib/utils/slugify";
 import { skillChips } from "@/lib/utils/skillSummary";
 import artistsData from "@/lib/data/artists.json";
+import { evaluateTeam } from "@/lib/utils/evaluateTeam";
+import { GenreIcon } from "@/components/GenreIcon";
+import type { Artist } from "@/lib/types/artist";
 import "./home.css";
 
 function formatExpiry(dateStr: string, lang: string): string {
@@ -29,11 +32,24 @@ const topTierText: Record<string, { title: string; sub: string; cta: string }> =
   id: { title: "Artis wajib", sub: "Artis S+ di tier list", cta: "Lihat tier list" },
 };
 
-type TierArtist = { id: number; name: string; rank: string; image?: string; skills?: string[]; calculatedTier?: string; tierScore?: number };
+type TierArtist = { id: number; name: string; rank: string; image?: string; skills?: string[]; calculatedTier?: string; tierScore?: number; genre?: string };
 const topTierArtists = (artistsData as TierArtist[])
   .filter((a) => a.calculatedTier === "S+" && a.rank === "SSR")
   .sort((a, b) => (b.tierScore || 0) - (a.tierScore || 0))
   .slice(0, 6);
+
+// Reference team for the Team Builder teaser: the 5 best SSR S+ sharing the most common genre
+// among the S+ (so the genre synergy bonus applies), completed by the next best S+.
+const sPlusSSR = (artistsData as TierArtist[])
+  .filter((a) => a.calculatedTier === "S+" && a.rank === "SSR")
+  .sort((a, b) => (b.tierScore || 0) - (a.tierScore || 0));
+const genreCount = sPlusSSR.reduce<Record<string, number>>((m, a) => { if (a.genre) m[a.genre] = (m[a.genre] || 0) + 1; return m; }, {});
+const topGenre = Object.entries(genreCount).sort((a, b) => b[1] - a[1])[0]?.[0];
+const teaserTeam: TierArtist[] = [
+  ...sPlusSSR.filter((a) => a.genre === topGenre),
+  ...sPlusSSR.filter((a) => a.genre !== topGenre),
+].slice(0, 5);
+const teaserTeamEval = evaluateTeam(teaserTeam as unknown as Artist[]);
 
 /* Small inline icons — no emoji, consistent stroke weight. */
 const icons: Record<string, React.ReactNode> = {
@@ -47,9 +63,9 @@ const icons: Record<string, React.ReactNode> = {
       <path d="M8 4h8v4a4 4 0 0 1-8 0V4z" /><path d="M8 6H5a3 3 0 0 0 3 4" /><path d="M16 6h3a3 3 0 0 1-3 4" /><path d="M12 12v4" /><path d="M8 20h8" /><path d="M10 16h4v4h-4z" />
     </svg>
   ),
-  tools: (
+  vote: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="4" y="3" width="16" height="18" rx="2.5" /><path d="M8 7h8" /><path d="M8 11h3M13 11h3M8 15h3M13 15h3" />
+      <path d="M12 20.5s-7.5-4.6-9.3-9.2C1.5 8.2 3.6 4.5 7.2 4.5c2 0 3.4 1.1 4.8 2.7 1.4-1.6 2.8-2.7 4.8-2.7 3.6 0 5.7 3.7 4.5 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" />
     </svg>
   ),
   guides: (
@@ -57,6 +73,13 @@ const icons: Record<string, React.ReactNode> = {
       <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5z" /><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H19" /><path d="M8 7h7M8 10.5h7" />
     </svg>
   ),
+};
+
+type TbTeaser = { eyebrow: string; title: string; sub: string; grade: string; synergy: string; cta: string; ctaEmpty: string; points: string[] };
+const tbTeaser: Record<string, TbTeaser> = {
+  fr: { eyebrow: "L'outil du site", title: "Composez votre équipe", sub: "Voici l'équipe S+ de référence. Testez-la, remplacez une artiste par celles que vous possédez et comparez.", grade: "Note", synergy: "synergie", cta: "Tester cette équipe", ctaEmpty: "Partir de zéro", points: ["95 artistes UR et SSR", "Note et puissance en direct", "Comparaison de 2 équipes", "Sauvegarde et lien de partage"] },
+  en: { eyebrow: "The site's tool", title: "Build your team", sub: "Here is the reference S+ team. Try it, swap in the artists you own and compare.", grade: "Grade", synergy: "synergy", cta: "Try this team", ctaEmpty: "Start from scratch", points: ["95 UR and SSR artists", "Live grade and power", "Compare 2 teams", "Save and share link"] },
+  id: { eyebrow: "Alat utama situs", title: "Susun tim kamu", sub: "Ini tim S+ acuan. Coba, ganti dengan artis yang kamu punya, lalu bandingkan.", grade: "Nilai", synergy: "sinergi", cta: "Coba tim ini", ctaEmpty: "Mulai dari nol", points: ["95 artis UR dan SSR", "Nilai dan kekuatan langsung", "Bandingkan 2 tim", "Simpan dan bagikan tautan"] },
 };
 
 const local: Record<string, { favorites: string; favoritesSub: string; vote: string; votes: string; explore: string; noCodes: string; seeHistory: string; unofficial: string }> = {
@@ -77,6 +100,8 @@ export default function HomeClient({ lang }: { lang: string }) {
   const t = getHomeContent(lang);
   const l = local[lang] || local.en;
   const tt = topTierText[lang] || topTierText.en;
+  const tb = tbTeaser[lang] || tbTeaser.en;
+  const teaserHref = `/${lang}/teambuilder/?t1=${teaserTeam.map((a) => a.id).join(",")}`;
 
   const [copiedCode, setCopiedCode] = useState("");
   const [top, setTop] = useState<VoteEntry[]>([]);
@@ -99,32 +124,50 @@ export default function HomeClient({ lang }: { lang: string }) {
       {/* ───────── HERO ───────── */}
       <section className="hm-hero">
         <div className="hm-hero-inner">
-          <div className="hm-eyebrow">
-            <span>{l.unofficial}</span>
-            <i aria-hidden="true" />
-            <span>TopGirl · ApexGirl · Idol Company</span>
-          </div>
-          <h1 className="hm-title">{t.homeTitle}</h1>
-          <p className="hm-sub" dangerouslySetInnerHTML={{ __html: t.subtitle }} />
+          <h1 className="hm-title">TopGirl<em>Guide</em></h1>
+          <p className="hm-sub">{l.unofficial} · TopGirl, ApexGirl, Idol Company</p>
           <div className="hm-actions">
-            <Link href={`/${lang}/tierlist/`} className="hm-btn hm-btn-primary">{t.tierListVotes}</Link>
-            <Link href={`/${lang}/teambuilder/`} className="hm-btn hm-btn-ghost">{t.discoverArtists}</Link>
-          </div>
-          <div className="hm-stats">
-            <span><b>112+</b> {t.statArtists}</span>
-            <span><b>50+</b> {t.statGuides}</span>
-            <span><b>5+</b> {t.statTools}</span>
+            <Link href={`/${lang}/teambuilder/`} className="hm-btn hm-btn-primary">{t.discoverArtists}</Link>
+            <Link href={`/${lang}/tierlist/`} className="hm-btn hm-btn-ghost">{t.tierListVotes}</Link>
           </div>
         </div>
       </section>
 
-      {/* ───────── PATCH NOTE ───────── */}
-      <div className="hm-wrap">
-        <div className="hm-note">
-          <span className="hm-note-badge">{t.patchNoteBadge}</span>
-          <span className="hm-note-text">{t.patchNoteText}</span>
+      {/* ───────── TEAM BUILDER TEASER ───────── */}
+      <section className="hm-wrap hm-section">
+        <div className="hm-tb">
+          <div className="hm-tb-text">
+            <span className="hm-tb-eyebrow">{tb.eyebrow}</span>
+            <h2 className="hm-h2">{tb.title}</h2>
+            <p className="hm-tb-sub">{tb.sub}</p>
+            <ul className="hm-tb-points">
+              {tb.points.map((p) => <li key={p}>{p}</li>)}
+            </ul>
+            <div className="hm-tb-actions">
+              <Link href={teaserHref} className="hm-btn hm-btn-primary">{tb.cta}</Link>
+              <Link href={`/${lang}/teambuilder/`} className="hm-btn hm-btn-ghost">{tb.ctaEmpty}</Link>
+            </div>
+          </div>
+          <Link href={teaserHref} className="hm-tb-team" aria-label={tb.cta}>
+            <span className="hm-tb-slots">
+              {teaserTeam.map((a) => (
+                <span key={a.id} className="hm-tb-slot">
+                  {a.image && <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="90px" style={{ objectFit: "cover", objectPosition: "center 12%" }} />}
+                  <span className="hm-tb-slot-name">{a.name}</span>
+                </span>
+              ))}
+            </span>
+            <span className="hm-tb-eval">
+              <span className="hm-tb-grade">{teaserTeamEval.grade}<small>{teaserTeamEval.rating}/100</small></span>
+              <span className="hm-tb-meta">
+                <b>{teaserTeamEval.score.toLocaleString("fr-FR")} pts</b>
+                {teaserTeamEval.synergy && <span><GenreIcon genre={teaserTeamEval.synergy.genre} size={14} /> {teaserTeamEval.synergy.genre} ×{teaserTeamEval.synergy.count} · +{Math.round(teaserTeamEval.synergy.bonus * 100)}% {tb.synergy}</span>}
+              </span>
+              <span className="hm-tb-arrow" aria-hidden="true">→</span>
+            </span>
+          </Link>
         </div>
-      </div>
+      </section>
 
       {/* ───────── TOP TIER ───────── */}
       <section className="hm-wrap hm-section">
@@ -177,7 +220,7 @@ export default function HomeClient({ lang }: { lang: string }) {
               <h2 className="hm-h2">{l.favorites}</h2>
               <p className="hm-h2-sub">{l.favoritesSub}</p>
             </div>
-            <Link href={`/${lang}/tierlist/?tab=vote`} className="hm-link-btn">{l.vote}</Link>
+            <Link href={`/${lang}/vote/`} className="hm-link-btn">{l.vote}</Link>
           </div>
           <div className="hm-fav">
             {top.map((e, i) => {
@@ -236,9 +279,7 @@ export default function HomeClient({ lang }: { lang: string }) {
       <section className="hm-wrap hm-section">
         <div className="hm-prose">
           <h2 className="hm-h2">{t.explainerTitle}</h2>
-          {t.explainerParagraphs.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
+          <p>{t.explainerParagraphs[0]}</p>
           <div className="hm-prose-links">
             {t.explainerLinks.map((link) => (
               <Link key={link.href} href={`/${lang}${link.href}`} className="hm-link-btn">{link.text.replace(" →", "")}</Link>
@@ -252,11 +293,10 @@ export default function HomeClient({ lang }: { lang: string }) {
         <h2 className="hm-h2 hm-h2-center">{t.editorialTitle}</h2>
         <div className="hm-trust">
           {t.editorialCards.map((card) => (
-            <article key={card.href} className="hm-trust-card">
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
-              <Link href={`/${lang}${card.href}`}>{card.link.replace(" →", "")}</Link>
-            </article>
+            <Link key={card.href} href={`/${lang}${card.href}`} className="hm-trust-card">
+              <span className="hm-trust-title">{card.title}</span>
+              <span className="hm-trust-link">{card.link.replace(" →", "")} →</span>
+            </Link>
           ))}
         </div>
       </section>

@@ -2,6 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  async redirects() {
+    return [
+      { source: "/:lang(fr|en|id)/tools", destination: "/:lang/vote/", permanent: true },
+      { source: "/:lang(fr|en|id)/tools/:path*", destination: "/:lang/vote/", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

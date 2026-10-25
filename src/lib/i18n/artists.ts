@@ -76,6 +76,7 @@ export type ArtistContent = {
   resetFilters: string;
   clearSearch: string;
   activeTeamHint: string;
+  activeTeamShort?: string;
   noResults: string;
   statsLabel: string;
 };
@@ -156,6 +157,7 @@ const artistContent: Record<string, ArtistContent> = {
     hideUR: "Masquer UR",
     resetFilters: "Réinitialiser",
     clearSearch: "Effacer",
+    activeTeamShort: "Active",
     activeTeamHint: "Équipe active : un clic sur une carte ajoute ici",
     noResults: "Aucun artiste ne correspond",
     statsLabel: "Stats",
@@ -238,6 +240,7 @@ const artistContent: Record<string, ArtistContent> = {
     hideUR: "Hide UR",
     resetFilters: "Reset",
     clearSearch: "Clear",
+    activeTeamShort: "Active",
     activeTeamHint: "Active team: clicking a card adds here",
     noResults: "No artist matches",
     statsLabel: "Stats",
@@ -648,6 +651,7 @@ const artistContent: Record<string, ArtistContent> = {
     hideUR: "Sembunyikan UR",
     resetFilters: "Atur ulang",
     clearSearch: "Hapus",
+    activeTeamShort: "Aktif",
     activeTeamHint: "Tim aktif: klik kartu untuk menambah di sini",
     noResults: "Tidak ada artis yang cocok",
     statsLabel: "Stats",

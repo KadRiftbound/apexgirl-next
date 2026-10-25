@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Outfit } from "next/font/google";
 import { headers } from "next/headers";
 import Script from "next/script";
 import "./globals.css";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  display: "swap",
+  variable: "--font-outfit",
+});
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,9 +42,15 @@ export default async function RootLayout({
   const lang = headersList.get("x-lang") || "en";
 
   return (
-    <html lang={lang} suppressHydrationWarning className={poppins.variable}>
+    <html lang={lang} suppressHydrationWarning className={`${poppins.variable} ${outfit.variable}`}>
       <head>
         <meta name="google-adsense-account" content="ca-pub-5737915177617454" />
+        {/* Restore the collapsed sidebar before first paint (desktop only) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "try{if(localStorage.getItem('sidebar')==='collapsed')document.documentElement.dataset.sidebar='collapsed'}catch(e){}",
+          }}
+        />
       </head>
       <body>
         {children}

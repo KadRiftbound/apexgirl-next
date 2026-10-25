@@ -42,7 +42,7 @@ export function skillChips(skills: string[] | undefined, lang: string): SkillChi
     const p = parsed[i];
     const twin = parsed[i + 1];
     if (twin && twin.kind === p.kind && twin.value === p.value) {
-      chips.push({ kind: p.kind, text: `2×${p.value} ${labels[p.kind]}` });
+      chips.push({ kind: p.kind, text: `${p.value} ${labels[p.kind]} ×2` });
       i++;
     } else {
       chips.push({ kind: p.kind, text: p.kind === "other" ? labels.other : `${p.value} ${labels[p.kind]}` });

@@ -15,7 +15,7 @@ const COMMON_PAGES = [
   'teambuilder',
   'tierlist',
   'guides',
-  'tools',
+  'vote',
   'codes',
   'contact',
   'cookie-settings',

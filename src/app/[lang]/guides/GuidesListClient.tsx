@@ -5,6 +5,28 @@ import Image from "next/image";
 
 import { useState, useMemo } from "react";
 import { AdBanner } from "@/components/AdSense";
+import artistImages from "@/lib/data/artist-images.json";
+import { slugify } from "@/lib/utils/slugify";
+import "./guides.css";
+
+/* Cover images for the guides that have one; the others get a tinted cover with the icon. */
+const coverImages: Record<string, string> = {
+  "guide-fishing-event": "/assets/images/guides/fishing-event.webp",
+  "guide-echo-death-match": "/assets/images/guides/echo-death-match.webp",
+  "metro-guide": "/assets/images/guides/metro-subway.webp",
+  "guide-muse-event": "/assets/images/guides/muse-event.webp",
+  "guide-tokyo": "/assets/images/guides/tokyo-map.webp",
+  "guide-group-battle": "/assets/images/guides/vs-group.webp",
+  "ultimate-group-guide": "/assets/images/guides/vs-group.webp",
+};
+const artistImageBySlug: Record<string, string> = Object.fromEntries(
+  Object.entries(artistImages as Record<string, string>).map(([name, img]) => [slugify(name), img]),
+);
+const sectionTitles: Record<string, { classic: string; event: string; special: string; outdated: string; readMin: string }> = {
+  fr: { classic: "Guides de base", event: "Événements", special: "Spécial", outdated: "Obsolète", readMin: "min" },
+  en: { classic: "Core guides", event: "Events", special: "Special", outdated: "Outdated", readMin: "min" },
+  id: { classic: "Panduan dasar", event: "Acara", special: "Spesial", outdated: "Usang", readMin: "mnt" },
+};
 
 const guideListTranslations: Record<string, any> = {
   fr: { 
@@ -469,6 +491,8 @@ type Guide = {
   stage?: "early" | "mid" | "late" | null;
   difficulty?: "beginner" | "intermediate" | "advanced" | null;
   isDone?: boolean;
+  outdated?: boolean;
+  relatedArtists?: string[];
   // thumbnail: chemin image guide OU artiste SSR si pas de logo
   thumbnail?: string;
 };
@@ -557,17 +581,63 @@ export default function GuidesListClient({ lang, guides: guidesProp }: { lang: s
       });
     }
     
-    const newGuides = filtered.filter((g) => g.isNew);
-    const otherGuides = filtered.filter((g) => !g.isNew);
-    return [...newGuides, ...otherGuides];
+    const newGuides = filtered.filter((g) => g.isNew && !g.outdated);
+    const otherGuides = filtered.filter((g) => !g.isNew && !g.outdated);
+    const outdated = filtered.filter((g) => g.outdated);
+    return [...newGuides, ...otherGuides, ...outdated];
   }, [activeCategoryState, searchQuery, lang, t]);
 
+  const st = sectionTitles[lang] || sectionTitles.en;
+  const grouped = activeCategoryState === t.categories[0] && !searchQuery.trim();
+
+  const renderCard = (guide: Guide) => {
+    const langSlug = (guide as any).slugs?.[lang] || guide.id;
+    const cover = coverImages[guide.id];
+    const faces = (guide.relatedArtists || []).map((slug) => artistImageBySlug[slug]).filter(Boolean).slice(0, 3);
+    return (
+      <Link
+        key={guide.id}
+        href={`/${lang}/guides/${langSlug}/`}
+        className={`gl-card${guide.inProgress ? " wip" : ""}${guide.outdated ? " old" : ""}`}
+        style={{ ["--c" as string]: guide.color }}
+      >
+        <span className="gl-cover">
+          {cover ? (
+            <Image src={cover} alt="" fill sizes="(max-width: 900px) 50vw, 320px" />
+          ) : (
+            <span className="gl-cover-big" aria-hidden="true">{guide.icon || "📘"}</span>
+          )}
+          <span className="gl-cover-icon" aria-hidden="true">{guide.icon || "📘"}</span>
+          {!cover && faces.length > 0 && (
+            <span className="gl-cover-artists" aria-hidden="true">
+              {faces.map((img) => (
+                <span key={img} className="gl-cover-artist">
+                  <Image src={`/assets/images/artists/${img}`} alt="" fill sizes="34px" style={{ objectFit: "cover", objectPosition: "center 15%" }} />
+                </span>
+              ))}
+            </span>
+          )}
+          <span className="gl-cover-badges">
+            {guide.isNew && <span className="gl-tag new">{t.new || "Nouveau"}</span>}
+            {guide.inProgress && <span className="gl-tag wip">{t.inProgress || "En cours"}</span>}
+            {guide.outdated && <span className="gl-tag old">{st.outdated}</span>}
+          </span>
+        </span>
+        <span className="gl-body">
+          <h3 className="gl-title">{getGuideTitle(guide, lang)}</h3>
+          <p className="gl-desc">{getPreviewDescription(getGuideDescription(guide, lang))}</p>
+          <span className="gl-tags">
+            <span className="gl-tag">{getCategoryLabel(guide, t)}</span>
+            <span className="gl-time">{guide.readTime}</span>
+          </span>
+        </span>
+      </Link>
+    );
+  };
+
   return (
-    <div style={{ 
-      minHeight: "100vh",
-      paddingBottom: "60px"
-    }}>
-      <header className="page-head" style={{ maxWidth: "1200px", margin: "0 auto", padding: "40px 16px 0" }}>
+    <div className="page">
+      <header className="page-head">
         <span className="eyebrow">TopGirl · ApexGirl</span>
         <h1 className="page-head-title">{t.title}</h1>
         <p className="page-head-sub">{t.subtitle}</p>
@@ -577,234 +647,53 @@ export default function GuidesListClient({ lang, guides: guidesProp }: { lang: s
         </div>
       </header>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px 16px" }}>
-        <AdBanner />
+      <AdBanner />
 
-        <div style={{ display: "flex", gap: "8px", marginBottom: "24px", flexWrap: "wrap", alignItems: "center" }}>
-          {t.categories.map((cat: string) => {
-            return (
-            <button
-              key={cat}
-              onClick={() => setActiveCategoryState(cat)}
-              aria-pressed={activeCategoryState === cat}
-              style={{
-                padding: "10px 18px",
-                borderRadius: "10px",
-                border: activeCategoryState === cat
-                  ? "1px solid rgba(236, 72, 153, 0.7)"
-                  : "1px solid rgba(139, 92, 246, 0.30)",
-                background: activeCategoryState === cat
-                  ? "linear-gradient(135deg, #ec4899, #a855f7)"
-                  : "rgba(139, 92, 246, 0.10)",
-                color: activeCategoryState === cat ? "#fff" : "rgba(255,255,255,0.75)",
-                cursor: "pointer",
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                transition: "all 0.2s",
-                boxShadow: activeCategoryState === cat ? "0 4px 16px rgba(236,72,153,0.35)" : "none",
-              }}
-            >
-              {cat}
-            </button>
-          )})}
-        </div>
-
-        <div style={{ marginBottom: "24px" }}>
-          <label htmlFor="guides-search" className="sr-only">{t.searchPlaceholder}</label>
+      <div className="gl-toolbar">
+        <label className="gl-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>
+          <span className="sr-only">{t.searchPlaceholder}</span>
           <input
             id="guides-search"
-            type="text"
+            type="search"
             placeholder={t.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "14px 20px",
-              borderRadius: "12px",
-              border: "1.5px solid rgba(139, 92, 246, 0.45)",
-              background: "rgba(139, 92, 246, 0.08)",
-              color: "#fff",
-              fontSize: "1rem",
-              outline: "none",
-            }}
           />
-        </div>
-
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "16px",
-        }}>
-          {filteredGuides.map((guide) => {
-              const langSlug = (guide as any).slugs?.[lang] || guide.id;
-              return (
-            <Link
-              key={guide.id}
-              href={`/${lang}/guides/${langSlug}/`}
-              style={{
-                background: "rgba(20,20,40,0.92)",
-                borderRadius: "20px",
-                border: `1.5px solid ${guide.color}66`,
-                padding: 0,
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                position: "relative",
-                overflow: "hidden",
-                textDecoration: "none",
-                display: "flex",
-                flexDirection: "column",
-                boxShadow: `0 2px 16px ${guide.color}18`,
-                filter: guide.inProgress ? "grayscale(0.45)" : "none",
-              }}
-              onMouseEnter={(e) => {
-                if (!guide.inProgress) {
-                  e.currentTarget.style.transform = "translateY(-8px)";
-                  e.currentTarget.style.boxShadow = `0 20px 40px ${guide.color}22`;
-                  e.currentTarget.style.borderColor = guide.color + "66";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!guide.inProgress) {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = `0 2px 16px ${guide.color}18`;
-                  e.currentTarget.style.borderColor = `${guide.color}55`;
-                }
-              }}
+        </label>
+        <div className="gl-chips" role="group" aria-label="Filters">
+          {t.categories.map((cat: string) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategoryState(cat)}
+              aria-pressed={activeCategoryState === cat}
+              className={`gl-chip${activeCategoryState === cat ? " on" : ""}`}
             >
-              <div style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: "4px",
-                background: `linear-gradient(90deg, ${guide.color}, ${guide.color}88)`,
-              }} />
-
-              {/* Compartiment 1: Logo + titre */}
-              <div style={{
-                display: "flex",
-                alignItems: "flex-start",
-                justifyContent: "space-between",
-                gap: "12px",
-                padding: "18px",
-                borderBottom: "1px solid rgba(255,255,255,0.08)",
-              }}>
-                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start", flex: 1 }}>
-                  <div style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "12px",
-                    background: `${guide.color}22`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "1.15rem",
-                    flexShrink: 0,
-                    border: `1px solid ${guide.color}33`,
-                  }}>
-                    {guide.icon || "📘"}
-                  </div>
-                  <div>
-                    <h3 style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700, margin: 0 }}>
-                      {getGuideTitle(guide, lang)}
-                    </h3>
-                    <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.75rem", marginTop: "4px" }}>
-                      {guide.readTime}
-                    </div>
-                  </div>
-                </div>
-                {guide.thumbnail && (
-                  <div style={{
-                    height: "52px",
-                    width: "52px",
-                    borderRadius: "12px",
-                    overflow: "hidden",
-                    position: "relative",
-                    flexShrink: 0,
-                    border: "1px solid rgba(255,255,255,0.12)",
-                  }}>
-                    <Image
-                      src={guide.thumbnail}
-                      alt={guide.title}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      sizes="52px"
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Compartiment 2: explication */}
-              <div style={{
-                padding: "16px 18px",
-                borderBottom: "1px solid rgba(255,255,255,0.08)",
-              }}>
-                <p style={{
-                  color: "rgba(255,255,255,0.7)",
-                  fontSize: "0.88rem",
-                  lineHeight: 1.6,
-                  margin: 0,
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: "vertical",
-                  overflow: "hidden",
-                }}>
-                  {getPreviewDescription(getGuideDescription(guide, lang))}
-                </p>
-              </div>
-
-              {/* Compartiment 3: tags */}
-              <div style={{
-                display: "flex",
-                gap: "8px",
-                flexWrap: "wrap",
-                padding: "14px 18px 18px",
-              }}>
-                {guide.isNew && (
-                  <span style={{
-                    padding: "4px 10px",
-                    borderRadius: "8px",
-                    fontSize: "0.7rem",
-                    fontWeight: 600,
-                    background: "linear-gradient(135deg, #ef4444, #f97316)",
-                    color: "#fff",
-                  }}>
-                    {t.new || "Nouveau"}
-                  </span>
-                )}
-                {guide.inProgress && (
-                  <span style={{
-                    padding: "4px 10px",
-                    borderRadius: "8px",
-                    fontSize: "0.7rem",
-                    fontWeight: 600,
-                    background: "rgba(251, 191, 36, 0.35)",
-                    color: "#fbbf24",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                  }}>
-                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#fbbf24", animation: "pulse 1.5s infinite" }} />
-                    {t.inProgress || "En cours"}
-                  </span>
-                )}
-                <span style={{
-                  padding: "4px 10px",
-                  borderRadius: "8px",
-                  fontSize: "0.7rem",
-                  fontWeight: 600,
-                  background: `${guide.color}40`,
-                  color: "#fff",
-                  border: `1px solid ${guide.color}66`,
-                }}>
-                  {getCategoryLabel(guide, t)}
-                </span>
-              </div>
-            </Link>
-          );
-        })}
+              {cat}
+            </button>
+          ))}
         </div>
       </div>
+
+      {filteredGuides.length === 0 && <div className="gl-empty">—</div>}
+      {grouped ? (
+        (["classic", "event", "special"] as const).map((type) => {
+          const list = filteredGuides.filter((g) => g.guideType === type);
+          if (list.length === 0) return null;
+          return (
+            <section key={type} className="gl-section">
+              <div className="gl-section-head">
+                <h2>{st[type]}</h2>
+                <span>{list.length}</span>
+              </div>
+              <div className="gl-grid">{list.map(renderCard)}</div>
+            </section>
+          );
+        })
+      ) : (
+        <div className="gl-grid">{filteredGuides.map(renderCard)}</div>
+      )}
     </div>
   );
 }

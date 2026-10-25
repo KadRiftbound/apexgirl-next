@@ -3,6 +3,7 @@
 import artistsData from '@/lib/data/artists.json';
 import Link from 'next/link';
 import Image from 'next/image';
+import { GenreIcon } from '@/components/GenreIcon';
 import './artist.css';
 
 const t_map: Record<string, any> = {
@@ -15,7 +16,7 @@ const t_map: Record<string, any> = {
     skillCategories: "Catégories de compétences",
     dps: "DPS", offensive: "Offensif", hp: "HP",
     defense: "Défense", speed: "Vitesse", none: "—",
-    backToArtists: "Artistes", viewTierList: "Tier List →",
+    backToArtists: "Team Builder", viewTierList: "Tier List →", addToTeam: "Ajouter à mon équipe", openTeamBuilder: "Ouvrir le Team Builder",
     sameGenre: "Même genre", sameSpecialty: "Même spécialité",
     relatedGuides: "Guides recommandés", noSkills: "Aucune compétence",
     thoughts: "Recommandation", statsSection: "Statistiques",
@@ -31,7 +32,7 @@ const t_map: Record<string, any> = {
     skillCategories: "Skill Categories",
     dps: "DPS", offensive: "Offensive", hp: "HP",
     defense: "Defense", speed: "Speed", none: "—",
-    backToArtists: "Artists", viewTierList: "Tier List →",
+    backToArtists: "Team Builder", viewTierList: "Tier List →", addToTeam: "Add to my team", openTeamBuilder: "Open the Team Builder",
     sameGenre: "Same genre", sameSpecialty: "Same specialty",
     relatedGuides: "Recommended guides", noSkills: "No skills listed",
     thoughts: "Recommendation", statsSection: "Statistics",
@@ -111,7 +112,7 @@ const t_map: Record<string, any> = {
     skillCategories: "Kategori Skill",
     dps: "DPS", offensive: "Offensif", hp: "HP",
     defense: "Defensa", speed: "Kecepatan", none: "—",
-    backToArtists: "Artis", viewTierList: "Tier List →",
+    backToArtists: "Team Builder", viewTierList: "Tier List →", addToTeam: "Tambah ke tim saya", openTeamBuilder: "Buka Team Builder",
     sameGenre: "Genre sama", sameSpecialty: "Spesialitas sama",
     relatedGuides: "Panduan yang disarankan", noSkills: "Tidak ada skill",
     thoughts: "Rekomendasi", statsSection: "Statistik",
@@ -251,7 +252,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
                 {artist.calculatedTier && tierData && (
                   <span className="ad-pill" style={{ color: tierData.text, borderColor: `${tierData.text}55`, background: tierData.bg }}>Tier {artist.calculatedTier}</span>
                 )}
-                <span className="ad-pill ad-pill-genre">{artist.genre}</span>
+                <span className="ad-pill ad-pill-genre"><GenreIcon genre={artist.genre} size={14} style={{ marginRight: 5 }} />{artist.genre}</span>
                 <span className="ad-pill">{artist.position}</span>
                 {artist.acquisitionTier && acquisitionStyles[artist.acquisitionTier] && (
                   <span className="ad-pill" style={{ color: acquisitionStyles[artist.acquisitionTier].color, borderColor: `${acquisitionStyles[artist.acquisitionTier].color}55`, background: acquisitionStyles[artist.acquisitionTier].bg }}>
@@ -265,6 +266,12 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
                 {artist.photos && (<><dt>{t.season}</dt><dd>{artist.photos}</dd></>)}
                 {artist.specialty && (<><dt>{t.specialty}</dt><dd className="ad-meta-accent">{artist.specialty}</dd></>)}
               </dl>
+              {artist.rank !== 'R' && artist.rank !== 'SR' && (
+                <div className="ad-cta">
+                  <Link href={`/${lang}/teambuilder/?add=${artist.id}`} className="ad-cta-primary">+ {t.addToTeam || 'Add to my team'}</Link>
+                  <Link href={`/${lang}/teambuilder/`} className="ad-cta-ghost">{t.openTeamBuilder || 'Open the Team Builder'}</Link>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -382,7 +389,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
           )}
           {sameGenre.length > 0 && (
             <section className="ad-panel">
-              <span className="ad-eyebrow">{t.sameGenre} · <b style={{ color: genreColor }}>{artist.genre}</b></span>
+              <span className="ad-eyebrow">{t.sameGenre} · <b style={{ color: genreColor }}><GenreIcon genre={artist.genre} size={13} style={{ marginRight: 4 }} />{artist.genre}</b></span>
               <div className="ad-list">
                 {sameGenre.map((a: Artist) => <RelatedRow key={a.id} a={a} lang={lang} />)}
               </div>

@@ -7,6 +7,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { MobileNav } from "@/components/MobileNav";
 import { NavVoteWidget } from "@/components/NavVoteWidget";
 import { HeaderNav } from "@/components/HeaderNav";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { SidebarToggle } from "@/components/SidebarToggle";
 import { getUiStrings } from "@/lib/i18n/ui";
 
 const localeNames: Record<string, string> = {
@@ -110,17 +112,12 @@ export default async function LocaleLayout({
 
   const ui = getUiStrings(lang);
   const navItems = [
-    { href: `/${lang}/codes/`, label: ui.nav.codes },
-    { href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder },
-    { href: `/${lang}/tierlist/`, label: ui.nav.tierList },
-    { href: `/${lang}/guides/`, label: ui.nav.guides },
-    { href: `/${lang}/tools/`, label: ui.nav.tools },
-  ];
-
-  const languages = [
-    { code: "fr", label: "FR" },
-    { code: "en", label: "EN" },
-    { code: "id", label: "ID" },
+    { key: "home", href: `/${lang}/`, label: ui.nav.home },
+    { key: "teambuilder", href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder },
+    { key: "tierlist", href: `/${lang}/tierlist/`, label: ui.nav.tierList },
+    { key: "guides", href: `/${lang}/guides/`, label: ui.nav.guides },
+    { key: "vote", href: `/${lang}/vote/`, label: ui.nav.vote },
+    { key: "codes", href: `/${lang}/codes/`, label: ui.nav.codes },
   ];
 
   return (
@@ -145,18 +142,18 @@ export default async function LocaleLayout({
       <a href="#main-content" className="skip-link">
         {ui.skip}
       </a>
-      <header className="header" role="banner">
-        <div className="header-inner">
-          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
-              <Image src="/assets/logositenew.png" alt="" width={36} height={36} priority />
-              <span>TopGirl<em>Guide</em></span>
-            </Link>
-            <NavVoteWidget lang={lang} />
-          </div>
-          <HeaderNav lang={lang} items={navItems} />
+      <aside className="sidebar" role="banner">
+        <SidebarToggle labelCollapse={lang === "fr" ? "Réduire le menu" : lang === "id" ? "Perkecil menu" : "Collapse menu"} labelExpand={lang === "fr" ? "Agrandir le menu" : lang === "id" ? "Perbesar menu" : "Expand menu"} />
+        <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
+          <Image src="/assets/logositenew.png" alt="" width={36} height={36} priority />
+          <span>TopGirl<em>Guide</em></span>
+        </Link>
+        <HeaderNav lang={lang} items={navItems} />
+        <div className="sidebar-foot">
+          <NavVoteWidget lang={lang} />
+          <LanguageSelector currentLang={lang} />
         </div>
-      </header>
+      </aside>
       <MobileNav />
       <main id="main-content" className="main-content" role="main" tabIndex={-1}>
         {children}
@@ -176,10 +173,10 @@ export default async function LocaleLayout({
           <div>
             <h4>{ui.footer.navigation}</h4>
             <Link href={`/${lang}/`}>{ui.nav.home}</Link>
-            <Link href={`/${lang}/codes/`}>{ui.nav.codes}</Link>
             <Link href={`/${lang}/teambuilder/`}>{ui.nav.teambuilder}</Link>
-            <Link href={`/${lang}/tools/`}>{ui.nav.tools}</Link>
             <Link href={`/${lang}/tierlist/`}>{ui.nav.tierList}</Link>
+            <Link href={`/${lang}/vote/`}>{ui.nav.vote}</Link>
+            <Link href={`/${lang}/codes/`}>{ui.nav.codes}</Link>
           </div>
           <div>
             <h4>{ui.footer.resources}</h4>
@@ -201,6 +198,7 @@ export default async function LocaleLayout({
         </div>
         <div className="footer-bottom">
           {ui.footer.copyright}
+          <div className="footer-lang"><LanguageSelector currentLang={lang} /></div>
         </div>
       </footer>
     </>

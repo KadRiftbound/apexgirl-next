@@ -2,60 +2,37 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LanguageSelector } from "@/components/LanguageSelector";
+import { NavIcon } from "@/components/navIcons";
 
 type NavItem = {
+  key: string;
   href: string;
   label: string;
-  cta?: boolean;
-  variant?: string;
 };
 
+/** Vertical navigation of the desktop sidebar. */
 export function HeaderNav({ lang, items }: { lang: string; items: NavItem[] }) {
   const pathname = usePathname() || "";
   const normalizedPath = pathname.endsWith("/") ? pathname : `${pathname}/`;
 
-  const isActive = (href: string) => {
-    if (!href) return false;
-    const normalizedHref = href.endsWith("/") ? href : `${href}/`;
+  const isActive = (item: NavItem) => {
+    const normalizedHref = item.href.endsWith("/") ? item.href : `${item.href}/`;
     if (normalizedHref === `/${lang}/`) return normalizedPath === normalizedHref;
+    if (item.key === "teambuilder" && normalizedPath.includes("/artist/")) return true;
     return normalizedPath.startsWith(normalizedHref);
   };
-
-  const isExternal = (href: string) => href.startsWith("http://") || href.startsWith("https://");
 
   return (
     <nav className="nav" role="navigation" aria-label="Main navigation">
       {items.map((item) => {
-        const active = !isExternal(item.href) && isActive(item.href);
-        const className = `${item.cta ? "nav-cta" : ""}${item.variant ? ` nav-cta-${item.variant}` : ""}${active ? " active" : ""}`.trim();
-
-        if (isExternal(item.href)) {
-          return (
-            <a
-              key={item.href}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={className}
-            >
-              ♥ {item.label}
-            </a>
-          );
-        }
-
+        const active = isActive(item);
         return (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={className}
-            aria-current={active ? "page" : undefined}
-          >
-            {item.label}
+          <Link key={item.href} href={item.href} className={active ? "active" : undefined} aria-current={active ? "page" : undefined}>
+            <NavIcon name={item.key} size={20} />
+            <span>{item.label}</span>
           </Link>
         );
       })}
-      <LanguageSelector currentLang={lang} />
     </nav>
   );
 }

@@ -184,7 +184,7 @@ export default function CodesClient({ lang }: { lang: string }) {
   };
 
   return (
-    <div className="container" style={{ paddingTop: '40px', paddingBottom: '80px' }}>
+    <div className="page page-narrow">
       {/* Header */}
       <header className="page-head" style={{ marginBottom: '36px' }}>
         <span className="eyebrow">TopGirl · ApexGirl</span>
@@ -194,8 +194,8 @@ export default function CodesClient({ lang }: { lang: string }) {
 
       {/* How to use */}
       <section className="info-panel" style={{ padding: '20px 24px', maxWidth: '800px', margin: '0 auto 40px' }}>
-        <h2 style={{ fontSize: '1.1rem', marginBottom: '12px', color: 'var(--primary)' }}>
-          💡 {t.howToUse}
+        <h2 style={{ fontSize: '1rem', marginBottom: '8px', color: '#fff' }}>
+          {t.howToUse}
         </h2>
         <p className="text-muted" style={{ fontSize: '0.95rem' }}>
           {t.howToUseDesc}
@@ -205,13 +205,12 @@ export default function CodesClient({ lang }: { lang: string }) {
       {/* All Codes */}
       <section style={{ marginBottom: '48px', maxWidth: '800px', margin: '0 auto' }}>
         <h2 style={{ fontSize: '1.5rem', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span>✅</span> {t.latestCodes}
+          {t.latestCodes}
           <span style={{ fontSize: '0.875rem', color: 'var(--accent-green)', fontWeight: 600 }}>({codesData.active.length})</span>
         </h2>
 
         {codesData.active.length === 0 ? (
           <div className="info-panel" style={{ textAlign: 'center', padding: '36px 24px', borderStyle: 'dashed' }}>
-            <div style={{ fontSize: '2rem', marginBottom: '8px', opacity: 0.8 }}>🎁</div>
             <p style={{ margin: 0, color: 'var(--text-secondary)', fontWeight: 600 }}>{t.noActive}</p>
           </div>
         ) : (
@@ -256,7 +255,7 @@ export default function CodesClient({ lang }: { lang: string }) {
                     )}
                   </div>
                   <p className="text-muted" style={{ fontSize: '0.9rem' }}>
-                    🎁 {item.rewards}
+                    {item.rewards}
                   </p>
                 </div>
                 <button
@@ -275,11 +274,13 @@ export default function CodesClient({ lang }: { lang: string }) {
               </div>
             ))}
 
-            {/* Expired codes */}
-            {codesData.expired.length > 0 && (
-              <>
+          </div>
+        )}
+        {/* Expired codes (kept as a history) */}
+        {codesData.expired.length > 0 && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
                 <h2 style={{ fontSize: '1.25rem', marginTop: '32px', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px', opacity: 0.7 }}>
-                  <span>❌</span> {t.expiredCodes}
+                  {t.expiredCodes}
                   <span style={{ fontSize: '0.875rem', color: 'var(--error)', fontWeight: 600 }}>({codesData.expired.length})</span>
                 </h2>
                 {codesData.expired.map((item, index) => (
@@ -329,8 +330,6 @@ export default function CodesClient({ lang }: { lang: string }) {
                 </span>
               </div>
             ))}
-              </>
-            )}
           </div>
         )}
       </section>

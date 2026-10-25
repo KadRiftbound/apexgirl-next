@@ -3,12 +3,13 @@
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 import { slugify } from "@/lib/utils/slugify";
 import { skillChips } from "@/lib/utils/skillSummary";
 import type { Artist } from "@/lib/types/artist";
+import { GenreIcon, GenreBar, genreColors as genreSolid } from "@/components/GenreIcon";
 import "./tierlist.css";
 
 const tierDescriptions: Record<string, Record<string, string>> = {
@@ -87,15 +88,15 @@ const tierDescriptions: Record<string, Record<string, string>> = {
 };
 
 const tierlistTranslations: Record<string, any> = {
-  fr: { title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un seul vote par jour.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voté aujourd'hui.", podium: "🏅 Podium — Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Une erreur est survenue.", voteSuccess: "Votre vote a été comptabilisé !", voteAlreadyVoted: "Vous avez déjà voté aujourd'hui.", allGenres: "Tous les genres", allSpecialties: "Toutes spécialités" },
-  en: { title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today.", podium: "🏅 Podium — This week", fullRanking: "📊 Full ranking", artistCount: (n: number) => `${n} artist${n > 1 ? "s" : ""}`, voteError: "An error occurred.", voteSuccess: "Your vote has been counted!", voteAlreadyVoted: "You have already voted today.", allGenres: "All genres", allSpecialties: "All specialties" },
-  de: { title: "Tier List", subtitle: "Künstler-Rankings und Community-Stimmen", classic: "Klassisch", vote: "Abstimmen", viewProfile: "Profil ansehen", tierListClassic: "Tier List Klassisch", voteForFavorite: "Stimme für deinen Favoriten", voteBanner: "Stimme für deinen Lieblingskünstler! Eine Stimme pro Tag.", voteForArtist: "Für einen Künstler stimmen", alreadyVoted: "Du hast heute schon abgestimmt.", podium: "🏅 Podium — Diese Woche", fullRanking: "📊 Vollständiges Ranking", artistCount: (n: number) => `${n} Künstler${n > 1 ? "nen" : ""}`, voteError: "Ein Fehler ist aufgetreten.", voteSuccess: "Deine Stimme wurde gezählt!", voteAlreadyVoted: "Du hast heute schon abgestimmt.", allGenres: "Alle Genres", allSpecialties: "Alle Spezialitäten" },
-  it: { title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo", tierListClassic: "Tier List Classico", voteForFavorite: "Vota il tuo preferito", voteBanner: "Vota il tuo artista preferito! Un voto al giorno.", voteForArtist: "Vota per un artista", alreadyVoted: "Hai già votato oggi.", podium: "🏅 Podio — Questa settimana", fullRanking: "📊 Classifica completa", artistCount: (n: number) => `${n} artista/i`, voteError: "Si è verificato un errore.", voteSuccess: "Il tuo voto è stato conteggiato!", voteAlreadyVoted: "Hai già votato oggi.", allGenres: "Tutti i generi", allSpecialties: "Tutte le specialità" },
-  es: { title: "Tier List", subtitle: "Clasificaciones de artistas y votos comunitarios", classic: "Clásico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clásico", voteForFavorite: "Vota por tu favorito", voteBanner: "¡Vota por tu artista favorito! Un voto por día.", voteForArtist: "Vota por un artista", alreadyVoted: "Ya has votado hoy.", podium: "🏅 Podio — Esta semana", fullRanking: "📊 Clasificación completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Se produjo un error.", voteSuccess: "¡Tu voto ha sido contabilizado!", voteAlreadyVoted: "Ya has votado hoy.", allGenres: "Todos los géneros", allSpecialties: "Todas las especialidades" },
-  pt: { title: "Tier List", subtitle: "Ranking de artistas e votos da comunidade", classic: "Clássico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clássico", voteForFavorite: "Vote no seu favorito", voteBanner: "Vote na sua artista favorita! Um voto por dia.", voteForArtist: "Vote em um artista", alreadyVoted: "Você já votou hoje.", podium: "🏅 Pódio — Esta semana", fullRanking: "📊 Classificação completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Ocorreu um erro.", voteSuccess: "Seu voto foi contabilizado!", voteAlreadyVoted: "Você já votou hoje.", allGenres: "Todos os gêneros", allSpecialties: "Todas as especialidades" },
-  pl: { title: "Tier List", subtitle: "Rankingi artystów i głosy społeczności", classic: "Klasyczny", vote: "Głosuj", viewProfile: "Zobacz profil", tierListClassic: "Tier List Klasyczna", voteForFavorite: "Głosuj na swojego faworyta", voteBanner: "Głosuj na swojego ulubionego artystę! Jeden głos dziennie.", voteForArtist: "Głosuj na artystę", alreadyVoted: "Oddałeś już głos.", podium: "🏅 Podium — Ten tydzień", fullRanking: "📊 Pełny ranking", artistCount: (n: number) => `${n} artysta/ów`, voteError: "Wystąpił błąd.", voteSuccess: "Twój głos został policzony!", voteAlreadyVoted: "Oddałeś już głos dzisiaj.", allGenres: "Wszystkie gatunki", allSpecialties: "Wszystkie specjalności" },
-  id: { title: "Tier List", subtitle: "Peringkat artis dan suara komunitas", classic: "Klasik", vote: "Vote", viewProfile: "Lihat profil", tierListClassic: "Tier List Klasik", voteForFavorite: "Pilih favoritmu", voteBanner: "Pilih artis favoritmu! Satu suara per hari.", voteForArtist: "Pilih seorang artis", alreadyVoted: "Anda sudah memilih hari ini.", podium: "🏅 Podium — Minggu ini", fullRanking: "📊 Peringkat lengkap", artistCount: (n: number) => `${n} artis`, voteError: "Terjadi kesalahan.", voteSuccess: "Suara Anda telah dihitung!", voteAlreadyVoted: "Anda sudah memilih hari ini.", allGenres: "Semua genre", allSpecialties: "Semua spesialisasi" },
-  ru: { title: "Tier List", subtitle: "Рейтинги артистов и голоса сообщества", classic: "Классика", vote: "Голосовать", viewProfile: "Посмотреть профиль", tierListClassic: "Tier List Классика", voteForFavorite: "Голосуйте за фаворита", voteBanner: "Голосуйте за любимого артиста! Один голос в день.", voteForArtist: "Голосовать за артиста", alreadyVoted: "Вы уже голосовали сегодня.", podium: "🏅 Подиум — Эта неделя", fullRanking: "📊 Полный рейтинг", artistCount: (n: number) => `${n} артист(ов)`, voteError: "Произошла ошибка.", voteSuccess: "Ваш голос учтён!", voteAlreadyVoted: "Вы уже голосовали сегодня.", allGenres: "Все жанры", allSpecialties: "Все специализации" },
+  fr: { all: "Tous", addToTeam: "Ajouter à mon équipe", title: "Tier List", subtitle: "Classement des artistes et votes communautaires", classic: "Classique", vote: "Vote", viewProfile: "Voir le profil", tierListClassic: "Tier List Classique", voteForFavorite: "Votez pour votre favori", voteBanner: "Votez pour votre artiste préféré ! Un seul vote par jour.", voteForArtist: "Votez pour un artiste", alreadyVoted: "Vous avez déjà voté aujourd'hui.", podium: "🏅 Podium — Cette semaine", fullRanking: "📊 Classement complet", artistCount: (n: number) => `${n} artiste${n > 1 ? "s" : ""}`, voteError: "Une erreur est survenue.", voteSuccess: "Votre vote a été comptabilisé !", voteAlreadyVoted: "Vous avez déjà voté aujourd'hui.", allGenres: "Tous les genres", allSpecialties: "Toutes spécialités" },
+  en: { all: "All", addToTeam: "Add to my team", title: "Tier List", subtitle: "Artist rankings and community votes", classic: "Classic", vote: "Vote", viewProfile: "View profile", tierListClassic: "Tier List Classic", voteForFavorite: "Vote for your favorite", voteBanner: "Vote for your favorite artist! One vote per day.", voteForArtist: "Vote for an artist", alreadyVoted: "You have already voted today.", podium: "🏅 Podium — This week", fullRanking: "📊 Full ranking", artistCount: (n: number) => `${n} artist${n > 1 ? "s" : ""}`, voteError: "An error occurred.", voteSuccess: "Your vote has been counted!", voteAlreadyVoted: "You have already voted today.", allGenres: "All genres", allSpecialties: "All specialties" },
+  de: { all: "Alle", addToTeam: "Zu meinem Team", title: "Tier List", subtitle: "Künstler-Rankings und Community-Stimmen", classic: "Klassisch", vote: "Abstimmen", viewProfile: "Profil ansehen", tierListClassic: "Tier List Klassisch", voteForFavorite: "Stimme für deinen Favoriten", voteBanner: "Stimme für deinen Lieblingskünstler! Eine Stimme pro Tag.", voteForArtist: "Für einen Künstler stimmen", alreadyVoted: "Du hast heute schon abgestimmt.", podium: "🏅 Podium — Diese Woche", fullRanking: "📊 Vollständiges Ranking", artistCount: (n: number) => `${n} Künstler${n > 1 ? "nen" : ""}`, voteError: "Ein Fehler ist aufgetreten.", voteSuccess: "Deine Stimme wurde gezählt!", voteAlreadyVoted: "Du hast heute schon abgestimmt.", allGenres: "Alle Genres", allSpecialties: "Alle Spezialitäten" },
+  it: { all: "Tutti", addToTeam: "Aggiungi alla mia squadra", title: "Tier List", subtitle: "Classifiche artisti e voti della community", classic: "Classico", vote: "Vota", viewProfile: "Vedi profilo", tierListClassic: "Tier List Classico", voteForFavorite: "Vota il tuo preferito", voteBanner: "Vota il tuo artista preferito! Un voto al giorno.", voteForArtist: "Vota per un artista", alreadyVoted: "Hai già votato oggi.", podium: "🏅 Podio — Questa settimana", fullRanking: "📊 Classifica completa", artistCount: (n: number) => `${n} artista/i`, voteError: "Si è verificato un errore.", voteSuccess: "Il tuo voto è stato conteggiato!", voteAlreadyVoted: "Hai già votato oggi.", allGenres: "Tutti i generi", allSpecialties: "Tutte le specialità" },
+  es: { all: "Todos", addToTeam: "Añadir a mi equipo", title: "Tier List", subtitle: "Clasificaciones de artistas y votos comunitarios", classic: "Clásico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clásico", voteForFavorite: "Vota por tu favorito", voteBanner: "¡Vota por tu artista favorito! Un voto por día.", voteForArtist: "Vota por un artista", alreadyVoted: "Ya has votado hoy.", podium: "🏅 Podio — Esta semana", fullRanking: "📊 Clasificación completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Se produjo un error.", voteSuccess: "¡Tu voto ha sido contabilizado!", voteAlreadyVoted: "Ya has votado hoy.", allGenres: "Todos los géneros", allSpecialties: "Todas las especialidades" },
+  pt: { all: "Todos", addToTeam: "Adicionar ao meu time", title: "Tier List", subtitle: "Ranking de artistas e votos da comunidade", classic: "Clássico", vote: "Votar", viewProfile: "Ver perfil", tierListClassic: "Tier List Clássico", voteForFavorite: "Vote no seu favorito", voteBanner: "Vote na sua artista favorita! Um voto por dia.", voteForArtist: "Vote em um artista", alreadyVoted: "Você já votou hoje.", podium: "🏅 Pódio — Esta semana", fullRanking: "📊 Classificação completa", artistCount: (n: number) => `${n} artista${n > 1 ? "s" : ""}`, voteError: "Ocorreu um erro.", voteSuccess: "Seu voto foi contabilizado!", voteAlreadyVoted: "Você já votou hoje.", allGenres: "Todos os gêneros", allSpecialties: "Todas as especialidades" },
+  pl: { all: "Wszystko", addToTeam: "Dodaj do drużyny", title: "Tier List", subtitle: "Rankingi artystów i głosy społeczności", classic: "Klasyczny", vote: "Głosuj", viewProfile: "Zobacz profil", tierListClassic: "Tier List Klasyczna", voteForFavorite: "Głosuj na swojego faworyta", voteBanner: "Głosuj na swojego ulubionego artystę! Jeden głos dziennie.", voteForArtist: "Głosuj na artystę", alreadyVoted: "Oddałeś już głos.", podium: "🏅 Podium — Ten tydzień", fullRanking: "📊 Pełny ranking", artistCount: (n: number) => `${n} artysta/ów`, voteError: "Wystąpił błąd.", voteSuccess: "Twój głos został policzony!", voteAlreadyVoted: "Oddałeś już głos dzisiaj.", allGenres: "Wszystkie gatunki", allSpecialties: "Wszystkie specjalności" },
+  id: { all: "Semua", addToTeam: "Tambah ke tim saya", title: "Tier List", subtitle: "Peringkat artis dan suara komunitas", classic: "Klasik", vote: "Vote", viewProfile: "Lihat profil", tierListClassic: "Tier List Klasik", voteForFavorite: "Pilih favoritmu", voteBanner: "Pilih artis favoritmu! Satu suara per hari.", voteForArtist: "Pilih seorang artis", alreadyVoted: "Anda sudah memilih hari ini.", podium: "🏅 Podium — Minggu ini", fullRanking: "📊 Peringkat lengkap", artistCount: (n: number) => `${n} artis`, voteError: "Terjadi kesalahan.", voteSuccess: "Suara Anda telah dihitung!", voteAlreadyVoted: "Anda sudah memilih hari ini.", allGenres: "Semua genre", allSpecialties: "Semua spesialisasi" },
+  ru: { all: "Все", addToTeam: "В мою команду", title: "Tier List", subtitle: "Рейтинги артистов и голоса сообщества", classic: "Классика", vote: "Голосовать", viewProfile: "Посмотреть профиль", tierListClassic: "Tier List Классика", voteForFavorite: "Голосуйте за фаворита", voteBanner: "Голосуйте за любимого артиста! Один голос в день.", voteForArtist: "Голосовать за артиста", alreadyVoted: "Вы уже голосовали сегодня.", podium: "🏅 Подиум — Эта неделя", fullRanking: "📊 Полный рейтинг", artistCount: (n: number) => `${n} артист(ов)`, voteError: "Произошла ошибка.", voteSuccess: "Ваш голос учтён!", voteAlreadyVoted: "Вы уже голосовали сегодня.", allGenres: "Все жанры", allSpecialties: "Все специализации" },
 };
 
 
@@ -109,13 +110,6 @@ const rankColors: Record<string, string> = {
   N: "#94a3b8",
 };
 
-const genreColors: Record<string, string> = {
-  "Pop": "#ec4899",
-  "Rock": "#ef4444",
-  "EDM": "#8b5cf6",
-  "Hip Hop": "#f59e0b",
-  "R&B": "#06b6d4",
-};
 
 // bg = pill background (legend / badges). Panels use `rgb` for tinted dark surfaces.
 const tierColors: Record<string, { bg: string; border: string; text: string; rgb: string }> = {
@@ -171,8 +165,6 @@ const tierLabels: Record<string, Record<string, string>> = {
 const getTierLabel = (tier: string, lang: string): string =>
   tierLabels[lang]?.[tier] || tierLabels.en[tier] || "";
 
-type VoteRow = { artist_id?: number; artist_name: string; rank?: string; count?: number; week_count: number };
-const stripEmoji = (s: string) => s.replace(/^[^\p{L}\p{N}]+/u, "").trim();
 
 const getTierDescription = (tier: string, lang: string): string => {
   return tierDescriptions[lang]?.[tier] || tierDescriptions.en[tier] || "";
@@ -184,100 +176,23 @@ const getEffectiveTier = (artist: any): string => {
 
 function TierListPageInner({ lang }: { lang: string }) {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const t = tierlistTranslations[lang] || tierlistTranslations.en;
-  const [activeTab, setActiveTab] = useState<"classic" | "vote">(
-    searchParams?.get("tab") === "vote" ? "vote" : "classic"
-  );
-  const [voteData, setVoteData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [votedToday, setVotedToday] = useState(false);
-  const [votedFor, setVotedFor] = useState<string | null>(null);
-
-  // Remember today's vote across reloads
-  useEffect(() => {
-    try {
-      const today = new Date().toISOString().split("T")[0];
-      if (localStorage.getItem("voteDate") === today) {
-        setVotedToday(true);
-        setVotedFor(localStorage.getItem("voteFor"));
-      }
-    } catch {}
-  }, []);
-  const [voteMessage, setVoteMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-  const [votingArtist, setVotingArtist] = useState<string | null>(null);
   const [filterGenre, setFilterGenre] = useState<string>("");
   const [filterSpecialty, setFilterSpecialty] = useState<string>("");
 
+  // The vote moved to its own page.
   useEffect(() => {
-    fetchVoteData();
-  }, []);
-
-  const fetchVoteData = async () => {
-    try {
-      const res = await fetch("/api/vote");
-      const data = await res.json();
-      setVoteData(data);
-    } catch (e) {
-      console.error("Failed to load vote data", e);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleVote = async (artistName: string) => {
-    setVotingArtist(artistName);
-    try {
-      const res = await fetch("/api/vote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ artist_name: artistName }),
-      });
-      const data = await res.json();
-
-      if (data.success) {
-        setVoteMessage({ type: "success", text: t.voteSuccess });
-        setVotedToday(true);
-        setVotedFor(artistName);
-        try {
-          localStorage.setItem("voteDate", new Date().toISOString().split("T")[0]);
-          localStorage.setItem("voteFor", artistName);
-        } catch {}
-        fetchVoteData();
-      } else {
-        const alreadyVotedMsg =
-          data.message?.toLowerCase().includes("already") ||
-          data.message?.toLowerCase().includes("déjà") ||
-          data.message?.toLowerCase().includes("già") ||
-          data.message?.toLowerCase().includes("ya has") ||
-          data.message?.toLowerCase().includes("já votou") ||
-          data.message?.toLowerCase().includes("oddałeś") ||
-          data.message?.toLowerCase().includes("sudah") ||
-          data.message?.toLowerCase().includes("уже");
-        setVoteMessage({ type: "error", text: alreadyVotedMsg ? t.voteAlreadyVoted : t.voteError });
-        if (alreadyVotedMsg) setVotedToday(true);
-      }
-
-      setTimeout(() => setVoteMessage(null), 3500);
-    } catch (e) {
-      setVoteMessage({ type: "error", text: t.voteError });
-      setTimeout(() => setVoteMessage(null), 3500);
-    } finally {
-      setVotingArtist(null);
-    }
-  };
+    if (searchParams?.get("tab") === "vote") router.replace(`/${lang}/vote/`);
+  }, [searchParams, router, lang]);
 
   const artists = artistsData as Artist[];
   const tierOrder = ["S+", "S", "A", "B", "C", "D"];
-  const ranking: VoteRow[] = (voteData?.rankings?.this_week || []).slice(0, 15);
-  const top3 = ranking.slice(0, 3);
-  const maxVotes = Math.max(1, ...ranking.map((r) => r.week_count || 0));
-  const rankOrderMap: Record<string, number> = { UR: 1, "UR Roma": 1, "UR Bali": 1, SSR: 2, SR: 3, R: 4, N: 5 };
-  const votableArtists = [...artists].sort((a, b) => (rankOrderMap[a.rank] || 99) - (rankOrderMap[b.rank] || 99));
 
   return (
     <>
 
-      <div className="container" style={{ paddingTop: "32px" }}>
+      <div className="page" style={{ paddingTop: 0 }}>
         <header className="page-head">
           <span className="eyebrow">TopGirl · ApexGirl</span>
           <h1 className="page-head-title">{t.title}</h1>
@@ -286,47 +201,12 @@ function TierListPageInner({ lang }: { lang: string }) {
 
         <AdBanner />
 
-        {/* Tabs — segmented control */}
-        <div role="tablist" className="seg">
-          <button role="tab" aria-selected={activeTab === "classic"} onClick={() => setActiveTab("classic")} className={`seg-btn${activeTab === "classic" ? " on" : ""}`}>
-            {t.tierListClassic}
-          </button>
-          <button role="tab" aria-selected={activeTab === "vote"} onClick={() => setActiveTab("vote")} className={`seg-btn${activeTab === "vote" ? " on" : ""}`}>
-            {t.voteForFavorite}
-          </button>
+        <div className="tier-vote-cta">
+          <Link href={`/${lang}/vote/`}>♥ {t.voteForFavorite} →</Link>
         </div>
 
-        {/* Floating toast */}
-        {voteMessage && (
-          <div role="alert" style={{
-            position: "fixed",
-            top: "90px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            zIndex: 9999,
-            padding: "14px 28px",
-            borderRadius: "40px",
-            background: voteMessage.type === "success"
-              ? "rgba(22, 163, 74, 0.95)"
-              : "rgba(220, 38, 38, 0.95)",
-            color: "#fff",
-            fontWeight: 700,
-            fontSize: "0.95rem",
-            textAlign: "center",
-            boxShadow: voteMessage.type === "success"
-              ? "0 8px 32px rgba(34,197,94,0.4)"
-              : "0 8px 32px rgba(239,68,68,0.4)",
-            backdropFilter: "blur(8px)",
-            border: `1px solid ${voteMessage.type === "success" ? "#22c55e" : "#ef4444"}`,
-            whiteSpace: "nowrap",
-            animation: "toastIn 0.25s ease",
-          }}>
-            {voteMessage.text}
-          </div>
-        )}
-
-        {/* Classic Tier List Tab */}
-        {activeTab === "classic" && (
+        {/* Classic Tier List */}
+        {(
           <div>
             {/* Toolbar: legend + filters */}
             <div className="tier-toolbar">
@@ -337,15 +217,8 @@ function TierListPageInner({ lang }: { lang: string }) {
                   </a>
                 ))}
               </div>
+              <GenreBar value={filterGenre} onChange={setFilterGenre} allLabel={t.all || "All"} className="tier-gbar" />
               <div className="tier-filters">
-                <label className="tier-select">
-                  <select value={filterGenre} onChange={(e) => setFilterGenre(e.target.value)}>
-                    <option value="">{t.allGenres || "All genres"}</option>
-                    {Object.keys(genreColors).map(g => (
-                      <option key={g} value={g}>{g}</option>
-                    ))}
-                  </select>
-                </label>
                 <label className="tier-select">
                   <select value={filterSpecialty} onChange={(e) => setFilterSpecialty(e.target.value)}>
                     <option value="">{t.allSpecialties || "All specialties"}</option>
@@ -391,27 +264,34 @@ function TierListPageInner({ lang }: { lang: string }) {
 
                   <div className="tier-grid">
                     {tierArtists.map(artist => (
-                      <Link key={artist.id} href={`/${lang}/artist/${slugify(artist.name)}/`} className="artist-tile" style={{ ["--rank" as string]: rankColors[artist.rank] || "#94a3b8" }}>
-                        <div className="artist-tile-img">
-                          {artist.image ? (
-                            <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="120px" style={{ objectFit: "cover" }} />
-                          ) : (
-                            <span className="artist-tile-letter">{artist.name.charAt(0)}</span>
-                          )}
-                          <span className="artist-tile-rank">{artist.rank.replace("UR ", "UR·")}</span>
-                        </div>
-                        <div className="artist-tile-meta">
-                          <span className="artist-tile-name">
-                            <i style={{ background: genreColors[artist.genre] || "#666" }} title={artist.genre} />
-                            {artist.name}
-                          </span>
-                          <span className="artist-tile-skills">
-                            {skillChips(artist.skills, lang).map((c, i) => (
-                              <span key={i} className={`skill-chip skill-${c.kind}`}>{c.text}</span>
-                            ))}
-                          </span>
-                        </div>
-                      </Link>
+                      <div key={artist.id} className="artist-tile" style={{ ["--rank" as string]: rankColors[artist.rank] || "#94a3b8" }}>
+                        <Link href={`/${lang}/artist/${slugify(artist.name)}/`} className="artist-tile-link">
+                          <div className="artist-tile-img">
+                            {artist.image ? (
+                              <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="120px" style={{ objectFit: "cover" }} />
+                            ) : (
+                              <span className="artist-tile-letter">{artist.name.charAt(0)}</span>
+                            )}
+                          </div>
+                          <div className="artist-tile-meta">
+                            <span className="artist-tile-name">
+                              <GenreIcon genre={artist.genre} size={14} style={{ color: genreSolid[artist.genre] || "#fff" }} />
+                              {artist.name}
+                            </span>
+                            <span className="artist-tile-skills">
+                              {skillChips(artist.skills, lang).map((c, i) => (
+                                <span key={i} className={`skill-chip skill-${c.kind}`}>{c.text}</span>
+                              ))}
+                            </span>
+                          </div>
+                        </Link>
+                        <Link
+                          href={`/${lang}/teambuilder/?add=${artist.id}`}
+                          className="artist-tile-add"
+                          title={`${t.addToTeam || "Add to my team"} · ${artist.name}`}
+                          aria-label={`${t.addToTeam || "Add to my team"} · ${artist.name}`}
+                        >+</Link>
+                      </div>
                     ))}
                   </div>
                 </section>
@@ -420,111 +300,8 @@ function TierListPageInner({ lang }: { lang: string }) {
           </div>
         )}
 
-        {/* Voting Tab */}
-        {activeTab === "vote" && (
-          <div className="vote">
-            <div className={`vote-banner${votedToday ? " done" : ""}`}>
-              <span className="vote-banner-dot" aria-hidden="true" />
-              <span>{votedToday ? t.alreadyVoted : t.voteBanner}</span>
-              {votedFor && <span className="vote-banner-for">· {votedFor}</span>}
-            </div>
-
-            {/* Podium */}
-            {top3.length > 0 && (
-              <section className="vote-section">
-                <h2 className="vote-h2">{stripEmoji(t.podium)}</h2>
-                <div className="podium">
-                  {top3.map((entry, i) => {
-                    const a = artists.find((x) => x.name === entry.artist_name);
-                    return (
-                      <Link key={entry.artist_name} href={`/${lang}/artist/${slugify(entry.artist_name)}/`} className={`podium-card p${i + 1}`}>
-                        <span className="podium-place">{i + 1}</span>
-                        <span className="podium-img">
-                          {a?.image ? <Image src={`/assets/images/artists/${a.image}`} alt={entry.artist_name} fill sizes="200px" style={{ objectFit: "cover" }} /> : <span className="podium-letter">{entry.artist_name.charAt(0)}</span>}
-                        </span>
-                        <span className="podium-meta">
-                          <span className="podium-name">{entry.artist_name}</span>
-                          <span className="podium-votes">{entry.week_count} {t.vote.toLowerCase()}s</span>
-                        </span>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </section>
-            )}
-
-            {/* Full ranking */}
-            {ranking.length > 0 && (
-              <section className="vote-section">
-                <h2 className="vote-h2">{stripEmoji(t.fullRanking)}</h2>
-                <ol className="rank-list">
-                  {ranking.map((entry, index) => {
-                    const a = artists.find((x) => x.name === entry.artist_name);
-                    return (
-                      <li key={entry.artist_name}>
-                        <Link href={`/${lang}/artist/${slugify(entry.artist_name)}/`} className={`rank-row${index < 3 ? " top" : ""}`}>
-                          <span className="rank-pos">{index + 1}</span>
-                          <span className="rank-img">
-                            {a?.image && <Image src={`/assets/images/artists/${a.image}`} alt={entry.artist_name} fill sizes="40px" style={{ objectFit: "cover" }} />}
-                          </span>
-                          <span className="rank-name">{entry.artist_name}</span>
-                          <span className="rank-rank" style={{ color: rankColors[entry.rank || ""] || "var(--text-muted)" }}>{entry.rank}</span>
-                          <span className="rank-bar"><i style={{ width: `${Math.max(4, (entry.week_count / maxVotes) * 100)}%` }} /></span>
-                          <span className="rank-count">{entry.week_count}</span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </section>
-            )}
-
-            {/* Vote grid */}
-            <section className="vote-section">
-              <h2 className="vote-h2">{stripEmoji(t.voteForArtist)}</h2>
-              <div className="vote-grid">
-                {votableArtists.map((artist) => {
-                  const isVoting = votingArtist === artist.name;
-                  const mine = votedFor === artist.name;
-                  const isDisabled = votedToday || isVoting;
-                  return (
-                    <div key={artist.id} className={`vote-tile${mine ? " mine" : ""}`} style={{ ["--rank" as string]: rankColors[artist.rank] || "#94a3b8" }}>
-                      <Link href={`/${lang}/artist/${slugify(artist.name)}/`} className="vote-tile-link">
-                        <span className="vote-tile-img">
-                          {artist.image ? <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="120px" style={{ objectFit: "cover" }} /> : <span className="artist-tile-letter">{artist.name.charAt(0)}</span>}
-                          <span className="artist-tile-rank">{artist.rank.replace("UR ", "UR·")}</span>
-                        </span>
-                        <span className="vote-tile-name">{artist.name}</span>
-                      </Link>
-                      <button
-                        className={`vote-btn${mine ? " mine" : isDisabled ? " off" : ""}`}
-                        aria-label={`${t.vote} ${artist.name}`}
-                        onClick={() => { if (!isDisabled) handleVote(artist.name); }}
-                        disabled={isDisabled}
-                      >
-                        {isVoting ? "…" : mine ? "✓" : isDisabled ? "—" : t.vote}
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          </div>
-        )}
       </div>
 
-      <style jsx>{`
-        @media (max-width: 600px) {
-          .container {
-            padding-left: 12px !important;
-            padding-right: 12px !important;
-          }
-        }
-        @keyframes toastIn {
-          from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
-          to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-      `}</style>
     </>
   );
 }

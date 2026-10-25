@@ -26,7 +26,7 @@ export function NavVoteWidget({ lang }: { lang: string }) {
 
   return (
     <Link
-      href={`/${lang}/tierlist/?tab=vote`}
+      href={`/${lang}/vote/`}
       title={topArtist.name}
       style={{
         display: "inline-flex",
