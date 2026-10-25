@@ -10,6 +10,7 @@ import { SummaryBox, type SummaryBoxData } from "@/components/SummaryBox";
 import { TipCallout, type CalloutData } from "@/components/TipCallout";
 import { useMemo, useState, type ReactNode } from "react";
 import guideImageDims from "@/lib/data/guide-image-dims.json";
+import { GuideIcon } from "@/components/GuideIcon";
 import "./guide-detail.css";
 
 const guideTranslations: Record<string, any> = {
@@ -630,7 +631,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
         <div className="gd-hero-inner">
           <Link href={`/${lang}/guides/`} className="gd-back">{t.backToGuides}</Link>
           <div className="gd-hero-row">
-            <span className="gd-icon" aria-hidden="true">{guide.icon}</span>
+            <span className="gd-icon" aria-hidden="true"><GuideIcon id={guide.id} type={guide.guideType} size={26} /></span>
             <div className="gd-hero-text">
               <div className="gd-meta">
                 <span className="gd-cat">{getCategoryLabel(guide, lang)}</span>
@@ -711,7 +712,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
                 <div className="gd-list">
                   {relatedGuideEntries.map((relatedGuide) => (
                     <Link key={relatedGuide.id} href={`/${lang}/guides/${getGuideSlug(relatedGuide)}/`} className="gd-row">
-                      <span className="gd-row-ico" aria-hidden="true">{relatedGuide.icon}</span>
+                      <span className="gd-row-ico" aria-hidden="true"><GuideIcon id={relatedGuide.id} size={15} /></span>
                       <span>{relatedGuide[`title_${lang}` as keyof typeof relatedGuide] as string || relatedGuide.title}</span>
                       <span className="gd-row-arrow" aria-hidden="true">→</span>
                     </Link>
@@ -765,7 +766,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
           <div className="gd-others-list">
             {otherGuides.map(g => (
               <Link key={g.id} href={`/${lang}/guides/${getGuideSlug(g)}/`}>
-                <span aria-hidden="true">{g.icon || "📘"}</span>
+                <span aria-hidden="true" className="gd-others-ico"><GuideIcon id={g.id} size={15} /></span>
                 <span>{g[`title_${lang}` as keyof typeof g] as string || g.title}</span>
               </Link>
             ))}

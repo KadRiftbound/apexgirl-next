@@ -69,7 +69,9 @@
   background: rgba(36, 26, 36, 0.8); border: 1px solid color-mix(in srgb, var(--c) 50%, transparent);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
-.gl-cover-big { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 3.6rem; opacity: 0.35; filter: saturate(1.2); pointer-events: none; }
+.gl-cover-big { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--c); opacity: 0.5; pointer-events: none; }
+.gl-cover-big svg { width: 64px; height: 64px; }
+.gl-cover-icon { color: #fff; }
 .gl-cover-badges { position: absolute; top: 10px; right: 10px; z-index: 1; display: flex; gap: 6px; }
 .gl-cover-artists { position: absolute; right: 12px; bottom: 12px; z-index: 1; display: flex; }
 .gl-cover-artist { position: relative; width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 2px solid var(--surface); margin-left: -10px; background: var(--surface-2); box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
@@ -98,8 +100,10 @@
   .gl-chips::-webkit-scrollbar { display: none; }
   .gl-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .gl-cover { height: 92px; }
-  .gl-cover-icon { width: 36px; height: 36px; font-size: 1.1rem; left: 10px; bottom: 10px; border-radius: 10px; }
-  .gl-cover-big { font-size: 2.6rem; right: 10px; }
+  .gl-cover-icon { width: 36px; height: 36px; left: 10px; bottom: 10px; border-radius: 10px; }
+  .gl-cover-icon svg { width: 18px; height: 18px; }
+  .gl-cover-big { right: 10px; }
+  .gl-cover-big svg { width: 44px; height: 44px; }
   .gl-cover-artists { right: 8px; bottom: 8px; }
   .gl-cover-artist { width: 28px; height: 28px; margin-left: -8px; }
   .gl-body { padding: 10px 12px 12px; gap: 6px; }

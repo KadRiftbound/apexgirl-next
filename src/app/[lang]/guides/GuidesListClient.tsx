@@ -7,17 +7,14 @@ import { useState, useMemo } from "react";
 import { AdBanner } from "@/components/AdSense";
 import artistImages from "@/lib/data/artist-images.json";
 import { slugify } from "@/lib/utils/slugify";
+import { GuideIcon } from "@/components/GuideIcon";
 import "./guides.css";
 
 /* Cover images for the guides that have one; the others get a tinted cover with the icon. */
 const coverImages: Record<string, string> = {
-  "guide-fishing-event": "/assets/images/guides/fishing-event.webp",
   "guide-echo-death-match": "/assets/images/guides/echo-death-match.webp",
   "metro-guide": "/assets/images/guides/metro-subway.webp",
-  "guide-muse-event": "/assets/images/guides/muse-event.webp",
   "guide-tokyo": "/assets/images/guides/tokyo-map.webp",
-  "guide-group-battle": "/assets/images/guides/vs-group.webp",
-  "ultimate-group-guide": "/assets/images/guides/vs-group.webp",
 };
 const artistImageBySlug: Record<string, string> = Object.fromEntries(
   Object.entries(artistImages as Record<string, string>).map(([name, img]) => [slugify(name), img]),
@@ -605,9 +602,9 @@ export default function GuidesListClient({ lang, guides: guidesProp }: { lang: s
           {cover ? (
             <Image src={cover} alt="" fill sizes="(max-width: 900px) 50vw, 320px" />
           ) : (
-            <span className="gl-cover-big" aria-hidden="true">{guide.icon || "📘"}</span>
+            <span className="gl-cover-big" aria-hidden="true"><GuideIcon id={guide.id} type={guide.guideType} size={64} /></span>
           )}
-          <span className="gl-cover-icon" aria-hidden="true">{guide.icon || "📘"}</span>
+          <span className="gl-cover-icon" aria-hidden="true"><GuideIcon id={guide.id} type={guide.guideType} size={22} /></span>
           {!cover && faces.length > 0 && (
             <span className="gl-cover-artists" aria-hidden="true">
               {faces.map((img) => (
@@ -640,7 +637,6 @@ export default function GuidesListClient({ lang, guides: guidesProp }: { lang: s
       <header className="page-head">
         <span className="eyebrow">TopGirl · ApexGirl</span>
         <h1 className="page-head-title">{t.title}</h1>
-        <p className="page-head-sub">{t.subtitle}</p>
         {t.outdatedNotice && <p className="page-head-note">{t.outdatedNotice}</p>}
         <div>
           <Link href={`/${lang}/glossary/`} className="page-head-link">{t.glossary} →</Link>

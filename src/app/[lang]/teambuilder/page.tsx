@@ -127,7 +127,6 @@ export default async function ArtistsPage({ params }: { params: Promise<{ lang: 
         <header className="page-head tb-head">
           <span className="eyebrow">{c.eyebrow}</span>
           <h1 className="page-head-title">{c.title}</h1>
-          <p className="page-head-sub">{c.subtitle}</p>
         </header>
         <AdBanner />
       </div>

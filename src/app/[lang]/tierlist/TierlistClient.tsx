@@ -196,7 +196,6 @@ function TierListPageInner({ lang }: { lang: string }) {
         <header className="page-head">
           <span className="eyebrow">TopGirl · ApexGirl</span>
           <h1 className="page-head-title">{t.title}</h1>
-          <p className="page-head-sub">{t.subtitle}</p>
         </header>
 
         <AdBanner />

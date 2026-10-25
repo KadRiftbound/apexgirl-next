@@ -189,7 +189,6 @@ export default function CodesClient({ lang }: { lang: string }) {
       <header className="page-head" style={{ marginBottom: '36px' }}>
         <span className="eyebrow">TopGirl · ApexGirl</span>
         <h1 className="page-head-title">{t.title}</h1>
-        <p className="page-head-sub">{t.subtitle}</p>
       </header>
 
       {/* How to use */}

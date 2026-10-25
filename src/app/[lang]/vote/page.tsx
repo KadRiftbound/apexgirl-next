@@ -36,7 +36,6 @@ export default async function VotePage({ params }: { params: Promise<{ lang: str
       <header className="page-head">
         <span className="eyebrow">{m.eyebrow}</span>
         <h1 className="page-head-title">{m.h1}</h1>
-        <p className="page-head-sub">{m.sub}</p>
       </header>
       <VoteClient lang={lang} />
     </div>

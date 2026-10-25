@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavIcon } from "@/components/navIcons";
@@ -8,6 +9,7 @@ type NavItem = {
   key: string;
   href: string;
   label: string;
+  group?: string;
 };
 
 /** Vertical navigation of the desktop sidebar. */
@@ -24,13 +26,22 @@ export function HeaderNav({ lang, items }: { lang: string; items: NavItem[] }) {
 
   return (
     <nav className="nav" role="navigation" aria-label="Main navigation">
-      {items.map((item) => {
+      {items.map((item, i) => {
         const active = isActive(item);
+        const newGroup = i > 0 && item.group !== items[i - 1]?.group;
         return (
-          <Link key={item.href} href={item.href} className={active ? "active" : undefined} aria-current={active ? "page" : undefined}>
-            <NavIcon name={item.key} size={20} />
-            <span>{item.label}</span>
-          </Link>
+          <Fragment key={item.href}>
+            {newGroup && (
+              <div className="nav-group" aria-hidden="true">
+                <span className="nav-sep" />
+                {item.group && <span className="nav-group-label">{item.group}</span>}
+              </div>
+            )}
+            <Link href={item.href} className={active ? "active" : undefined} aria-current={active ? "page" : undefined}>
+              <NavIcon name={item.key} size={20} />
+              <span>{item.label}</span>
+            </Link>
+          </Fragment>
         );
       })}
     </nav>

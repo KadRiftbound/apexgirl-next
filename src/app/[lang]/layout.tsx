@@ -111,13 +111,14 @@ export default async function LocaleLayout({
   if (!SUPPORTED_LANGS.includes(lang)) notFound();
 
   const ui = getUiStrings(lang);
+  const groupLabels = lang === "fr" ? { tools: "Outils", content: "Contenu" } : lang === "id" ? { tools: "Alat", content: "Konten" } : { tools: "Tools", content: "Content" };
   const navItems = [
-    { key: "home", href: `/${lang}/`, label: ui.nav.home },
-    { key: "teambuilder", href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder },
-    { key: "tierlist", href: `/${lang}/tierlist/`, label: ui.nav.tierList },
-    { key: "guides", href: `/${lang}/guides/`, label: ui.nav.guides },
-    { key: "vote", href: `/${lang}/vote/`, label: ui.nav.vote },
-    { key: "codes", href: `/${lang}/codes/`, label: ui.nav.codes },
+    { key: "home", href: `/${lang}/`, label: ui.nav.home, group: "" },
+    { key: "teambuilder", href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder, group: groupLabels.tools },
+    { key: "tierlist", href: `/${lang}/tierlist/`, label: ui.nav.tierList, group: groupLabels.tools },
+    { key: "vote", href: `/${lang}/vote/`, label: ui.nav.vote, group: groupLabels.tools },
+    { key: "guides", href: `/${lang}/guides/`, label: ui.nav.guides, group: groupLabels.content },
+    { key: "codes", href: `/${lang}/codes/`, label: ui.nav.codes, group: groupLabels.content },
   ];
 
   return (
