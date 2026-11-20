@@ -30,8 +30,8 @@ export const legalNoticeContent: Record<string, LegalNoticeContent> = {
     hosting: {
       title: "2. Hébergement",
       provider: "Hébergeur :",
-      value: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
+      value: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, États-Unis",
     },
     property: {
       title: "3. Propriété intellectuelle",
@@ -89,8 +89,8 @@ export const legalNoticeContent: Record<string, LegalNoticeContent> = {
     hosting: {
       title: "2. Hosting",
       provider: "Host:",
-      value: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, United States",
+      value: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, United States",
     },
     property: {
       title: "3. Intellectual Property",
@@ -148,8 +148,8 @@ export const legalNoticeContent: Record<string, LegalNoticeContent> = {
     hosting: {
       title: "2. Hosting",
       provider: "Host:",
-      value: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, Stati Uniti",
+      value: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, Stati Uniti",
     },
     property: {
       title: "3. Proprietà intellettuale",
@@ -207,8 +207,8 @@ export const legalNoticeContent: Record<string, LegalNoticeContent> = {
     hosting: {
       title: "2. Alojamiento",
       provider: "Proveedor:",
-      value: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, Estados Unidos",
+      value: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, Estados Unidos",
     },
     property: {
       title: "3. Propiedad intelectual",
@@ -266,8 +266,8 @@ export const legalNoticeContent: Record<string, LegalNoticeContent> = {
     hosting: {
       title: "2. Hospedagem",
       provider: "Provedor:",
-      value: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, Estados Unidos",
+      value: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, Estados Unidos",
     },
     property: {
       title: "3. Propriedade intelectual",
@@ -325,8 +325,8 @@ export const legalNoticeContent: Record<string, LegalNoticeContent> = {
     hosting: {
       title: "2. Hosting",
       provider: "Host:",
-      value: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, USA",
+      value: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, USA",
     },
     property: {
       title: "3. Własność intelektualna",
@@ -384,8 +384,8 @@ export const legalNoticeContent: Record<string, LegalNoticeContent> = {
     hosting: {
       title: "2. Hosting",
       provider: "Penyedia:",
-      value: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, Amerika Serikat",
+      value: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, Amerika Serikat",
     },
     property: {
       title: "3. Hak kekayaan intelektual",
@@ -443,8 +443,8 @@ export const legalNoticeContent: Record<string, LegalNoticeContent> = {
     hosting: {
       title: "2. Хостинг",
       provider: "Хост:",
-      value: "Vercel Inc.",
-      address: "440 N Barranca Ave #4133, Covina, CA 91723, США",
+      value: "Cloudflare, Inc.",
+      address: "101 Townsend St, San Francisco, CA 94107, США",
     },
     property: {
       title: "3. Интеллектуальная собственность",
