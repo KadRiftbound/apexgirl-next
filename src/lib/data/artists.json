@@ -3991,7 +3991,7 @@
     "position": "Vocalist",
     "genre": "Rock",
     "skills": [
-      "↑36% damage to world building guard",
+      "↑80% basic attack damage dealt",
       "↓12% damage taken"
     ],
     "season": "Bali 5",
@@ -3999,7 +3999,7 @@
       "dps": [],
       "offensive": [
         "10 sec/1800 Damage",
-        "36% Damage World Building Guard"
+        "80% Basic Attack Damage"
       ],
       "hp": [],
       "defense": [
@@ -4007,12 +4007,12 @@
       ],
       "speed": []
     },
-    "calculatedTier": "C",
+    "calculatedTier": "S",
     "description": "A talented Vocalist from None.",
     "specialty": "Mixte",
     "event": "Bali 5",
     "image": "Momosaki.webp",
-    "tierScore": 170
+    "tierScore": 625
   },
   {
     "id": 122,
