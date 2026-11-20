@@ -20,7 +20,6 @@ const COMMON_PAGES = [
   'guides',
   'codes',
   'contact',
-  'cookie-settings',
   'about',
   'methodology',
   'editorial-policy',
