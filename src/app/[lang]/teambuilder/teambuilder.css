@@ -536,9 +536,15 @@
   .tb-grid { grid-template-columns: repeat(3, 1fr); gap: 7px; }
   .tb-art { border-width: 1.5px; }
   .tb-art-hover { display: none; }
-  .tb-art-info { opacity: 1; }
-  .tb-art-name { font-size: 0.72rem; right: 24px; }
-  .tb-skill { font-size: 0.64rem; padding: 2px 5px; }
+  /* Phones: nothing is cut off, text stays readable, buttons are finger-sized. */
+  .tb-art-info { opacity: 1; top: 5px; right: 5px; width: 28px; height: 28px; font-size: 0.78rem; }
+  .tb-art-info::after { content: ""; position: absolute; inset: -8px; }
+  .tb-art-name { font-size: 0.75rem; right: 0; white-space: normal; overflow-wrap: anywhere; line-height: 1.2; }
+  .tb-art-inteam { top: 38px; bottom: auto; right: 6px; flex-direction: column; }
+  .tb-skill { font-size: 0.72rem; padding: 2px 5px; white-space: normal; overflow-wrap: anywhere; line-height: 1.25; }
+  .tb-art-skills { padding: 5px 5px 6px; }
+  .tb-icon-btn { width: 40px; height: 40px; }
+  .tb-team-actions { gap: 4px; }
 }
 
 /* ---------- mini team bar (fixed at the top while the grid scrolls) ---------- */

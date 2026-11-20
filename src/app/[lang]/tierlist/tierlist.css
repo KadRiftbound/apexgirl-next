@@ -202,7 +202,7 @@ a.tier-chip:hover { background: rgba(var(--tier), 0.28); }
   .artist-tile-name { font-size: 0.78rem; gap: 4px; }
   .artist-tile-name .genre-ico { width: 12px; height: 12px; }
   .artist-tile-skills { gap: 2px; margin-top: 5px; }
-  .skill-chip { font-size: 0.64rem; padding: 2px 5px; letter-spacing: -0.01em; }
+  .skill-chip { font-size: 0.72rem; padding: 2px 5px; white-space: normal; overflow-wrap: anywhere; line-height: 1.25; }
   .tier-toolbar { flex-direction: column; align-items: stretch; gap: 10px; padding: 10px; }
   .tier-legend { justify-content: center; }
   .tier-filters { display: grid; grid-template-columns: 1fr; gap: 8px; }

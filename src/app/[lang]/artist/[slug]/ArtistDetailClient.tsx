@@ -263,7 +263,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
               </div>
               <h1 className="ad-title">{artist.name}</h1>
               <dl className="ad-meta">
-                {artist.group && artist.group !== 'No Group' && (<><dt>{t.group}</dt><dd>{artist.group}</dd></>)}
+                {artist.group && artist.group !== 'No Group' && artist.group !== 'None' && (<><dt>{t.group}</dt><dd>{artist.group}</dd></>)}
                 {artist.season && artist.season !== 'Universal' && (<><dt>{t.season}</dt><dd>{artist.season}</dd></>)}
                 {artist.specialty && (<><dt>{t.specialty}</dt><dd className="ad-meta-accent">{artist.specialty}</dd></>)}
               </dl>
