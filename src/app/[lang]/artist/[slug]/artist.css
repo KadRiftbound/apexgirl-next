@@ -126,3 +126,27 @@
   .ad-panel { padding: 14px; }
   .ad-foot { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---- Analysis and best-team blocks (ArtistInsights) ---- */
+h2.ad-eyebrow { margin-top: 0; }
+.ad-prose { margin: 0; color: rgba(255, 255, 255, 0.86); font-size: 0.93rem; line-height: 1.6; }
+.ad-skill-notes { margin: 12px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.ad-skill-notes dt { font-weight: 700; color: #fff; font-size: 0.9rem; margin-bottom: 2px; }
+.ad-skill-notes dd { margin: 0; color: rgba(255, 255, 255, 0.78); font-size: 0.9rem; line-height: 1.55; }
+.ad-team { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 12px; }
+.ad-team-card { display: flex; flex-direction: column; gap: 4px; min-width: 0; color: #fff; text-decoration: none; }
+.ad-team-img {
+  position: relative; aspect-ratio: 3 / 4; border-radius: 9px; overflow: hidden; background: #1a1a28;
+  border: 2px solid var(--line-raised); display: flex; align-items: center; justify-content: center; font-weight: 800;
+}
+.ad-team-card.self .ad-team-img { border-color: var(--rank); }
+.ad-team-card:hover .ad-team-img { border-color: var(--line-strong); }
+.ad-team-name { font-size: 0.74rem; font-weight: 600; text-align: center; overflow-wrap: anywhere; line-height: 1.2; }
+.ad-team-open {
+  display: inline-flex; align-items: center; margin-top: 12px; padding: 9px 16px; border-radius: 10px;
+  font-size: 0.88rem; font-weight: 700; text-decoration: none;
+}
+@media (max-width: 600px) {
+  .ad-team { gap: 5px; }
+  .ad-team-name { font-size: 0.66rem; letter-spacing: -0.01em; }
+}

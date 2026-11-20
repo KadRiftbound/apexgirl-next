@@ -22,7 +22,8 @@ const LABELS: Record<string, Record<SkillKind, string>> = {
   id: { pd: "Dmg pemain", sdr: "Red. skill", sd: "Dmg skill", ba: "Serangan", bar: "Red. serangan", fan: "Fan", rally: "Fan rally", dps: "DPS", other: "Non-tempur" },
 };
 
-function parse(raw: string): { kind: SkillKind; value: string } | null {
+/** Type and value of one raw skill line, or null when it has no number. */
+export function parseSkill(raw: string): { kind: SkillKind; value: string } | null {
   const text = String(raw).replace(/["\s]+/g, " ").trim();
   const pct = text.match(/(\d+(?:[.,]\d+)?)\s*%/);
   if (pct) {
@@ -36,7 +37,7 @@ function parse(raw: string): { kind: SkillKind; value: string } | null {
 
 export function skillChips(skills: string[] | undefined, lang: string): SkillChip[] {
   const labels = LABELS[lang] || LABELS.en;
-  const parsed = (skills || []).map(parse).filter((p): p is { kind: SkillKind; value: string } => p !== null);
+  const parsed = (skills || []).map(parseSkill).filter((p): p is { kind: SkillKind; value: string } => p !== null);
   const chips: SkillChip[] = [];
   for (let i = 0; i < parsed.length; i++) {
     const p = parsed[i];

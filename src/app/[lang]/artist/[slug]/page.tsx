@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import artistsData from '@/lib/data/artists.json';
+import { ArtistInsights } from "./ArtistInsights";
+import type { Artist } from "@/lib/types/artist";
 import ArtistDetailClient from './ArtistDetailClient';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { artistDescription } from '@/lib/seo/artistSeo';
@@ -107,7 +109,7 @@ export default async function ArtistDetailPage(
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         <Breadcrumb items={breadcrumbItems} lang={lang} />
       </div>
-      <ArtistDetailClient lang={lang} slug={slug} />
+      <ArtistDetailClient lang={lang} slug={slug} extra={<ArtistInsights artist={artist as unknown as Artist} lang={lang} />} />
     </>
   );
 }

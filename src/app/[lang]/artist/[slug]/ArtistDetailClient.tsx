@@ -190,7 +190,7 @@ const genreColors: Record<string, string> = {
   'Hip Hop': '#f59e0b', 'R&B': '#06b6d4',
 };
 
-export default function ArtistDetailClient({ lang, slug }: { lang: string; slug: string }) {
+export default function ArtistDetailClient({ lang, slug, extra }: { lang: string; slug: string; extra?: React.ReactNode }) {
   const t = t_map[lang] || t_map.en;
   const artist = artistsData.find((a: Artist) => slugify(a.name) === slug) as Artist | undefined;
 
@@ -361,6 +361,9 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
             )}
           </section>
         </div>
+
+        {/* ─── ANALYSIS + BEST TEAMS (server-rendered, see ArtistInsights) ─── */}
+        {extra}
 
         {/* ─── GUIDES ─── */}
         {relevantGuides.length > 0 && (
