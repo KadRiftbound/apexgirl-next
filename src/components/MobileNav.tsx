@@ -18,7 +18,7 @@ export function MobileNav() {
     { key: "teambuilder", href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder },
     { key: "tierlist", href: `/${lang}/tierlist/`, label: ui.nav.tierList },
     { key: "guides", href: `/${lang}/guides/`, label: ui.nav.guides },
-    { key: "vote", href: `/${lang}/vote/`, label: ui.nav.vote },
+    { key: "codes", href: `/${lang}/codes/`, label: ui.nav.codes },
   ];
 
   const normalizedPath = pathname.endsWith("/") ? pathname : `${pathname}/`;
@@ -32,7 +32,7 @@ export function MobileNav() {
       {tabs.map((tab) => {
         const on = activeKey === tab.key;
         return (
-          <Link key={tab.key} href={tab.href} className={`bnav-tab${on ? " on" : ""}`} aria-current={on ? "page" : undefined}>
+          <Link prefetch={false} key={tab.key} href={tab.href} className={`bnav-tab${on ? " on" : ""}`} aria-current={on ? "page" : undefined}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               {navIcons[tab.key]}
             </svg>

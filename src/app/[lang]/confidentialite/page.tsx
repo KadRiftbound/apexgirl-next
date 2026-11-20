@@ -168,7 +168,7 @@ export default async function Confidentialite({ params }: { params: Promise<{ la
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '24px' }}>
-          <Link href={`/${lang}/`} style={{ color: '#8b5cf6', fontWeight: 600, textDecoration: 'none' }}>
+          <Link prefetch={false} href={`/${lang}/`} style={{ color: '#8b5cf6', fontWeight: 600, textDecoration: 'none' }}>
             ← {content.backToSite}
           </Link>
         </div>

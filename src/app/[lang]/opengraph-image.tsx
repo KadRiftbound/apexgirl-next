@@ -4,6 +4,12 @@ export const alt = "TopGirl Guide — Fansite guides, tools & tier list";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Generated once at build time, not on every crawler hit.
+export function generateStaticParams() {
+  return [{ lang: "fr" }, { lang: "en" }, { lang: "id" }];
+}
+export const dynamicParams = false;
+
 export default async function OGImage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
 

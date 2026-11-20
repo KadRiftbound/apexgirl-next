@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useSearchParams, useRouter } from "next/navigation";
 import artistsData from "@/lib/data/artists.json";
 import { AdBanner } from "@/components/AdSense";
 import { slugify } from "@/lib/utils/slugify";
@@ -175,16 +174,9 @@ const getEffectiveTier = (artist: any): string => {
 };
 
 function TierListPageInner({ lang }: { lang: string }) {
-  const searchParams = useSearchParams();
-  const router = useRouter();
   const t = tierlistTranslations[lang] || tierlistTranslations.en;
   const [filterGenre, setFilterGenre] = useState<string>("");
   const [filterSpecialty, setFilterSpecialty] = useState<string>("");
-
-  // The vote moved to its own page.
-  useEffect(() => {
-    if (searchParams?.get("tab") === "vote") router.replace(`/${lang}/vote/`);
-  }, [searchParams, router, lang]);
 
   const artists = artistsData as Artist[];
   const tierOrder = ["S+", "S", "A", "B", "C", "D"];
@@ -199,10 +191,6 @@ function TierListPageInner({ lang }: { lang: string }) {
         </header>
 
         <AdBanner />
-
-        <div className="tier-vote-cta">
-          <Link href={`/${lang}/vote/`}>♥ {t.voteForFavorite} →</Link>
-        </div>
 
         {/* Classic Tier List */}
         {(
@@ -264,7 +252,7 @@ function TierListPageInner({ lang }: { lang: string }) {
                   <div className="tier-grid">
                     {tierArtists.map(artist => (
                       <div key={artist.id} className="artist-tile" style={{ ["--rank" as string]: rankColors[artist.rank] || "#94a3b8" }}>
-                        <Link href={`/${lang}/artist/${slugify(artist.name)}/`} className="artist-tile-link">
+                        <Link prefetch={false} href={`/${lang}/artist/${slugify(artist.name)}/`} className="artist-tile-link">
                           <div className="artist-tile-img">
                             {artist.image ? (
                               <Image src={`/assets/images/artists/${artist.image}`} alt={artist.name} fill sizes="120px" style={{ objectFit: "cover" }} />
@@ -284,7 +272,7 @@ function TierListPageInner({ lang }: { lang: string }) {
                             </span>
                           </div>
                         </Link>
-                        <Link
+                        <Link prefetch={false}
                           href={`/${lang}/teambuilder/?add=${artist.id}`}
                           className="artist-tile-add"
                           title={`${t.addToTeam || "Add to my team"} · ${artist.name}`}

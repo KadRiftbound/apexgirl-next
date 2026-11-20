@@ -6,9 +6,7 @@ import type { Metadata } from "next";
 import { Poppins, Outfit } from "next/font/google";
 import "../globals.css";
 import { BackgroundManager } from "@/components/BackgroundManager";
-import { Analytics } from "@vercel/analytics/react";
 import { MobileNav } from "@/components/MobileNav";
-import { NavVoteWidget } from "@/components/NavVoteWidget";
 import { HeaderNav } from "@/components/HeaderNav";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { SidebarToggle } from "@/components/SidebarToggle";
@@ -85,7 +83,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/${lang}/opengraph-image/`,
+          url: `${BASE_URL}/${lang}/opengraph-image.png`,
           width: 1200,
           height: 630,
           alt: "TopGirl Guide — Fansite guides, tools & tier list",
@@ -96,7 +94,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: [`${BASE_URL}/${lang}/opengraph-image/`],
+      images: [`${BASE_URL}/${lang}/opengraph-image.png`],
     },
     icons: {
       icon: [
@@ -137,7 +135,6 @@ export default async function LocaleLayout({
     { key: "home", href: `/${lang}/`, label: ui.nav.home, group: "" },
     { key: "teambuilder", href: `/${lang}/teambuilder/`, label: ui.nav.teambuilder, group: groupLabels.tools },
     { key: "tierlist", href: `/${lang}/tierlist/`, label: ui.nav.tierList, group: groupLabels.tools },
-    { key: "vote", href: `/${lang}/vote/`, label: ui.nav.vote, group: groupLabels.tools },
     { key: "guides", href: `/${lang}/guides/`, label: ui.nav.guides, group: groupLabels.content },
     { key: "codes", href: `/${lang}/codes/`, label: ui.nav.codes, group: groupLabels.content },
   ];
@@ -154,7 +151,6 @@ export default async function LocaleLayout({
         />
       </head>
       <body>
-      <Analytics />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -176,13 +172,12 @@ export default async function LocaleLayout({
       </a>
       <aside className="sidebar" role="banner">
         <SidebarToggle labelCollapse={lang === "fr" ? "Réduire le menu" : lang === "id" ? "Perkecil menu" : "Collapse menu"} labelExpand={lang === "fr" ? "Agrandir le menu" : lang === "id" ? "Perbesar menu" : "Expand menu"} />
-        <Link href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
+        <Link prefetch={false} href={`/${lang}/`} className="logo" aria-label="TopGirl - Home">
           <Image src="/assets/logositenew.png" alt="" width={36} height={36} priority />
           <span>TopGirl<em>Guide</em></span>
         </Link>
         <HeaderNav lang={lang} items={navItems} />
         <div className="sidebar-foot">
-          <NavVoteWidget lang={lang} />
           <LanguageSelector currentLang={lang} />
         </div>
       </aside>
@@ -204,28 +199,27 @@ export default async function LocaleLayout({
           </div>
           <div>
             <h4>{ui.footer.navigation}</h4>
-            <Link href={`/${lang}/`}>{ui.nav.home}</Link>
-            <Link href={`/${lang}/teambuilder/`}>{ui.nav.teambuilder}</Link>
-            <Link href={`/${lang}/tierlist/`}>{ui.nav.tierList}</Link>
-            <Link href={`/${lang}/vote/`}>{ui.nav.vote}</Link>
-            <Link href={`/${lang}/codes/`}>{ui.nav.codes}</Link>
+            <Link prefetch={false} href={`/${lang}/`}>{ui.nav.home}</Link>
+            <Link prefetch={false} href={`/${lang}/teambuilder/`}>{ui.nav.teambuilder}</Link>
+            <Link prefetch={false} href={`/${lang}/tierlist/`}>{ui.nav.tierList}</Link>
+            <Link prefetch={false} href={`/${lang}/codes/`}>{ui.nav.codes}</Link>
           </div>
           <div>
             <h4>{ui.footer.resources}</h4>
-            <Link href={`/${lang}/guides/`}>{ui.nav.guides}</Link>
-            <Link href={`/${lang}/methodology/`}>{lang === "fr" ? "Methodologie" : "Methodology"}</Link>
-            <Link href={`/${lang}/editorial-policy/`}>{lang === "fr" ? "Politique editoriale" : "Editorial Policy"}</Link>
-            <Link href={`/${lang}/about/`}>{lang === "fr" ? "A propos" : "About"}</Link>
+            <Link prefetch={false} href={`/${lang}/guides/`}>{ui.nav.guides}</Link>
+            <Link prefetch={false} href={`/${lang}/methodology/`}>{lang === "fr" ? "Methodologie" : "Methodology"}</Link>
+            <Link prefetch={false} href={`/${lang}/editorial-policy/`}>{lang === "fr" ? "Politique editoriale" : "Editorial Policy"}</Link>
+            <Link prefetch={false} href={`/${lang}/about/`}>{lang === "fr" ? "A propos" : "About"}</Link>
             <a href="https://buy.stripe.com/aFa4gygO6cqW6kTbqRenS00" target="_blank" rel="noopener noreferrer">{ui.footer.support}</a>
           </div>
           <div>
             <h4>{ui.footer.legal}</h4>
-            <Link href={lang === 'fr' ? `/${lang}/mentions-legales/` : `/${lang}/legal-notice/`}>{ui.footer.legalNotice}</Link>
-            <Link href={lang === 'fr' ? `/${lang}/confidentialite/` : `/${lang}/privacy-policy/`}>{ui.footer.privacy}</Link>
-            <Link href={`/${lang}/cookie-settings/`}>{ui.footer.cookies}</Link>
-            <Link href={`/${lang}/contact/`}>{ui.footer.contact}</Link>
-            <Link href={`/${lang}/corrections/`}>{lang === "fr" ? "Corrections" : "Corrections"}</Link>
-            <Link href={`/${lang}/advertising-disclosure/`}>{lang === "fr" ? "Transparence pub" : "Ad Disclosure"}</Link>
+            <Link prefetch={false} href={lang === 'fr' ? `/${lang}/mentions-legales/` : `/${lang}/legal-notice/`}>{ui.footer.legalNotice}</Link>
+            <Link prefetch={false} href={lang === 'fr' ? `/${lang}/confidentialite/` : `/${lang}/privacy-policy/`}>{ui.footer.privacy}</Link>
+            <Link prefetch={false} href={`/${lang}/cookie-settings/`}>{ui.footer.cookies}</Link>
+            <Link prefetch={false} href={`/${lang}/contact/`}>{ui.footer.contact}</Link>
+            <Link prefetch={false} href={`/${lang}/corrections/`}>{lang === "fr" ? "Corrections" : "Corrections"}</Link>
+            <Link prefetch={false} href={`/${lang}/advertising-disclosure/`}>{lang === "fr" ? "Transparence pub" : "Ad Disclosure"}</Link>
           </div>
         </div>
         <div className="footer-bottom">

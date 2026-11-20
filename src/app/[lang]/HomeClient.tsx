@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { AdBanner } from "@/components/AdSense";
 import { activeCodes } from "@/lib/data/codes";
 import { getHomeContent } from "@/lib/i18n/home";
-import { fetchVoteData } from "@/lib/voteCache";
-import artistImages from "@/lib/data/artist-images.json";
 import { slugify } from "@/lib/utils/slugify";
 import { skillChips } from "@/lib/utils/skillSummary";
 import artistsData from "@/lib/data/artists.json";
@@ -71,7 +69,6 @@ const local: Record<string, { favorites: string; favoritesSub: string; vote: str
   ru: { favorites: "Любимицы сообщества", favoritesSub: "Самые популярные артистки недели", vote: "Голосовать", votes: "голосов", explore: "Разделы сайта", noCodes: "Активных кодов пока нет.", seeHistory: "История кодов", unofficial: "Неофициальный фансайт" },
 };
 
-type VoteEntry = { artist_name: string; week_count?: number; rank?: string };
 
 export default function HomeClient({ lang }: { lang: string }) {
   const t = getHomeContent(lang);
@@ -81,15 +78,6 @@ export default function HomeClient({ lang }: { lang: string }) {
   const teaserHref = `/${lang}/teambuilder/?t1=${teaserTeam.map((a) => a.id).join(",")}`;
 
   const [copiedCode, setCopiedCode] = useState("");
-  const [top, setTop] = useState<VoteEntry[]>([]);
-
-  useEffect(() => {
-    fetchVoteData().then((d) => {
-      const list = (d?.rankings?.this_week as unknown as VoteEntry[] | undefined) || [];
-      setTop(list.slice(0, 5));
-    });
-  }, []);
-
   const copyCode = (code: string) => {
     navigator.clipboard.writeText(code);
     setCopiedCode(code);
@@ -104,8 +92,8 @@ export default function HomeClient({ lang }: { lang: string }) {
           <h1 className="hm-title">TopGirl<em>Guide</em></h1>
           <p className="hm-sub">{l.unofficial} · TopGirl, ApexGirl, Idol Company</p>
           <div className="hm-actions">
-            <Link href={`/${lang}/teambuilder/`} className="hm-btn hm-btn-primary">{t.discoverArtists}</Link>
-            <Link href={`/${lang}/tierlist/`} className="hm-btn hm-btn-ghost">{t.tierListVotes}</Link>
+            <Link prefetch={false} href={`/${lang}/teambuilder/`} className="hm-btn hm-btn-primary">{t.discoverArtists}</Link>
+            <Link prefetch={false} href={`/${lang}/tierlist/`} className="hm-btn hm-btn-ghost">{t.tierListVotes}</Link>
           </div>
         </div>
       </section>
@@ -121,11 +109,11 @@ export default function HomeClient({ lang }: { lang: string }) {
               {tb.points.map((p) => <li key={p}>{p}</li>)}
             </ul>
             <div className="hm-tb-actions">
-              <Link href={teaserHref} className="hm-btn hm-btn-primary">{tb.cta}</Link>
-              <Link href={`/${lang}/teambuilder/`} className="hm-btn hm-btn-ghost">{tb.ctaEmpty}</Link>
+              <Link prefetch={false} href={teaserHref} className="hm-btn hm-btn-primary">{tb.cta}</Link>
+              <Link prefetch={false} href={`/${lang}/teambuilder/`} className="hm-btn hm-btn-ghost">{tb.ctaEmpty}</Link>
             </div>
           </div>
-          <Link href={teaserHref} className="hm-tb-team" aria-label={tb.cta}>
+          <Link prefetch={false} href={teaserHref} className="hm-tb-team" aria-label={tb.cta}>
             <span className="hm-tb-slots">
               {teaserTeam.map((a) => (
                 <span key={a.id} className="hm-tb-slot">
@@ -153,11 +141,11 @@ export default function HomeClient({ lang }: { lang: string }) {
             <h2 className="hm-h2">{tt.title}</h2>
             <p className="hm-h2-sub">{tt.sub}</p>
           </div>
-          <Link href={`/${lang}/tierlist/`} className="hm-link-btn">{tt.cta}</Link>
+          <Link prefetch={false} href={`/${lang}/tierlist/`} className="hm-link-btn">{tt.cta}</Link>
         </div>
         <div className="hm-top">
           {topTierArtists.map((a) => (
-            <Link key={a.id} href={`/${lang}/artist/${slugify(a.name)}/`} className="hm-top-card">
+            <Link prefetch={false} key={a.id} href={`/${lang}/artist/${slugify(a.name)}/`} className="hm-top-card">
               <span className="hm-top-img">
                 {a.image && <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="140px" style={{ objectFit: "cover" }} />}
                 <span className="hm-top-tier">S+</span>
@@ -176,7 +164,7 @@ export default function HomeClient({ lang }: { lang: string }) {
         <h2 className="hm-h2">{l.explore}</h2>
         <div className="hm-explore">
           {t.sections.map((s) => (
-            <Link key={s.href} href={`/${lang}/${s.href}/`} className="hm-card" style={{ ["--c" as string]: s.color }}>
+            <Link prefetch={false} key={s.href} href={`/${lang}/${s.href}/`} className="hm-card" style={{ ["--c" as string]: s.color }}>
               <span className="hm-card-icon"><NavIcon name={s.href} size={26} /></span>
               <span className="hm-card-body">
                 <span className="hm-card-title">{s.title}</span>
@@ -189,36 +177,6 @@ export default function HomeClient({ lang }: { lang: string }) {
         </div>
       </section>
 
-      {/* ───────── COMMUNITY FAVORITES ───────── */}
-      {top.length > 0 && (
-        <section className="hm-wrap hm-section">
-          <div className="hm-section-head">
-            <div>
-              <h2 className="hm-h2">{l.favorites}</h2>
-              <p className="hm-h2-sub">{l.favoritesSub}</p>
-            </div>
-            <Link href={`/${lang}/vote/`} className="hm-link-btn">{l.vote}</Link>
-          </div>
-          <div className="hm-fav">
-            {top.map((e, i) => {
-              const img = (artistImages as Record<string, string>)[e.artist_name];
-              return (
-                <Link key={e.artist_name} href={`/${lang}/artist/${slugify(e.artist_name)}/`} className={`hm-fav-card${i === 0 ? " first" : ""}`}>
-                  <span className="hm-fav-rank">{i + 1}</span>
-                  <span className="hm-fav-img">
-                    {img ? <Image src={`/assets/images/artists/${img}`} alt={e.artist_name} fill sizes="160px" style={{ objectFit: "cover" }} /> : <span className="hm-fav-letter">{e.artist_name.charAt(0)}</span>}
-                  </span>
-                  <span className="hm-fav-meta">
-                    <span className="hm-fav-name">{e.artist_name}</span>
-                    <span className="hm-fav-votes">{e.week_count ?? 0} {l.votes}</span>
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
       <div className="hm-wrap"><AdBanner /></div>
 
       {/* ───────── CODES ───────── */}
@@ -229,10 +187,10 @@ export default function HomeClient({ lang }: { lang: string }) {
               <h2 className="hm-h2">{t.promoCodes}</h2>
               <p className="hm-h2-sub">{t.promoSubtitle}</p>
             </div>
-            <Link href={`/${lang}/codes/`} className="hm-link-btn">{t.seeAllCodes.replace(" →", "")}</Link>
+            <Link prefetch={false} href={`/${lang}/codes/`} className="hm-link-btn">{t.seeAllCodes.replace(" →", "")}</Link>
           </div>
           {activeCodes.length === 0 ? (
-            <p className="hm-empty">{l.noCodes} <Link href={`/${lang}/codes/`}>{l.seeHistory}</Link></p>
+            <p className="hm-empty">{l.noCodes} <Link prefetch={false} href={`/${lang}/codes/`}>{l.seeHistory}</Link></p>
           ) : (
             <div className="hm-codes">
               {activeCodes.map((c) => (
@@ -259,7 +217,7 @@ export default function HomeClient({ lang }: { lang: string }) {
           <p>{t.explainerParagraphs[0]}</p>
           <div className="hm-prose-links">
             {t.explainerLinks.map((link) => (
-              <Link key={link.href} href={`/${lang}${link.href}`} className="hm-link-btn">{link.text.replace(" →", "")}</Link>
+              <Link prefetch={false} key={link.href} href={`/${lang}${link.href}`} className="hm-link-btn">{link.text.replace(" →", "")}</Link>
             ))}
           </div>
         </div>
@@ -270,7 +228,7 @@ export default function HomeClient({ lang }: { lang: string }) {
         <h2 className="hm-h2 hm-h2-center">{t.editorialTitle}</h2>
         <div className="hm-trust">
           {t.editorialCards.map((card) => (
-            <Link key={card.href} href={`/${lang}${card.href}`} className="hm-trust-card">
+            <Link prefetch={false} key={card.href} href={`/${lang}${card.href}`} className="hm-trust-card">
               <span className="hm-trust-title">{card.title}</span>
               <span className="hm-trust-link">{card.link.replace(" →", "")} →</span>
             </Link>

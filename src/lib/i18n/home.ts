@@ -74,13 +74,12 @@ const homeContent: Record<string, HomeContent> = {
     whatWeOffer: "Tout ce dont vous avez besoin",
     sections: [
       { emoji: "🎤", title: "Team Builder", desc: "Composez et comparez vos équipes", detail: "95 artistes UR et SSR, note de l'équipe, synergies de genre et comparaison stat par stat", href: "teambuilder", color: "#ff4d8d" },
-      { emoji: "🏆", title: "Tier List", desc: "Classement S+ à D", detail: "Les artistes classées selon leurs sorts, et le vote de la semaine", href: "tierlist", color: "#ffd700" },
-      { emoji: "❤️", title: "Vote", desc: "Votre artiste préférée de la semaine", detail: "Un vote par jour, podium et classement complet de la communauté", href: "vote", color: "#60a5fa" },
+      { emoji: "🏆", title: "Tier List", desc: "Classement S+ à D", detail: "Les artistes classées selon leurs sorts et leurs synergies", href: "tierlist", color: "#ffd700" },
       { emoji: "📖", title: "Guides", desc: "Stratégies & tutoriels", detail: "De débutant à expert : tout ce qu'il faut savoir pour progresser", href: "guides", color: "#4ade80" },
     ],
     quickAccessTitle: "Accès rapide",
     tldrCards: [
-      { title: "🏆 Community Tier List", desc: "Votez pour vos artistes préférés. Classements mis à jour chaque semaine.", linkText: "Voir la Tier List →", href: "/tierlist/" },
+      { title: "🏆 Community Tier List", desc: "Les artistes classées de S+ à D selon leurs sorts.", linkText: "Voir la Tier List →", href: "/tierlist/" },
       { title: "🎤 Base de données artistes", desc: "Parcourez 117+ artistes avec statistiques, compétences et recommandations.", linkText: "Voir les Artistes →", href: "/teambuilder/" },
       { title: "💰 Codes Promo", desc: "Tous les codes sont expirés mais conservés pour référence.", linkText: "Voir les Codes →", href: "/codes/" },
       { title: "📖 Guides de jeu", desc: "Des conseils débutants aux stratégies avancées. Guides complets par des joueurs expérimentés.", linkText: "Voir les Guides →", href: "/guides/" },
@@ -129,13 +128,12 @@ const homeContent: Record<string, HomeContent> = {
     whatWeOffer: "Everything you need",
     sections: [
       { emoji: "🎤", title: "Team Builder", desc: "Build and compare your teams", detail: "95 UR and SSR artists, team grade, genre synergies and stat-by-stat comparison", href: "teambuilder", color: "#ff4d8d" },
-      { emoji: "🏆", title: "Tier List", desc: "S+ to D ranking", detail: "Artists ranked by their skills, plus the weekly community vote", href: "tierlist", color: "#ffd700" },
-      { emoji: "❤️", title: "Vote", desc: "Your favorite artist of the week", detail: "One vote a day, podium and full community ranking", href: "vote", color: "#60a5fa" },
+      { emoji: "🏆", title: "Tier List", desc: "S+ to D ranking", detail: "Artists ranked by their skills and synergies", href: "tierlist", color: "#ffd700" },
       { emoji: "📖", title: "Guides", desc: "Strategies & tutorials", detail: "From beginner to expert: everything you need to know to improve", href: "guides", color: "#4ade80" },
     ],
     quickAccessTitle: "Quick Access",
     tldrCards: [
-      { title: "🏆 Community Tier List", desc: "Vote for your favorite artists. Rankings updated weekly based on player feedback.", linkText: "View Tier List →", href: "/tierlist/" },
+      { title: "🏆 Community Tier List", desc: "Artists ranked S+ to D by their skills.", linkText: "View Tier List →", href: "/tierlist/" },
       { title: "🎤 Artist Database", desc: "Browse 117+ artists with stats, skills, and team recommendations. Find the perfect team.", linkText: "Browse Artists →", href: "/teambuilder/" },
       { title: "💰 Promo Codes", desc: "All codes are expired but kept for reference. Enter in game: Profile → Settings → Gift Code", linkText: "View Codes →", href: "/codes/" },
       { title: "📖 Game Guides", desc: "From beginner tips to advanced strategies. Comprehensive guides written by experienced players.", linkText: "View Guides →", href: "/guides/" },
@@ -404,13 +402,12 @@ const homeContent: Record<string, HomeContent> = {
     whatWeOffer: "Semua yang kamu butuhkan",
     sections: [
       { emoji: "🎤", title: "Team Builder", desc: "Susun dan bandingkan tim kamu", detail: "95 artis UR dan SSR, nilai tim, sinergi genre dan perbandingan stat demi stat", href: "teambuilder", color: "#ff4d8d" },
-      { emoji: "🏆", title: "Tier List", desc: "Peringkat S+ sampai D", detail: "Artis diurutkan berdasarkan skill, plus vote komunitas mingguan", href: "tierlist", color: "#ffd700" },
-      { emoji: "❤️", title: "Vote", desc: "Artis favoritmu minggu ini", detail: "Satu suara per hari, podium dan peringkat lengkap komunitas", href: "vote", color: "#60a5fa" },
+      { emoji: "🏆", title: "Tier List", desc: "Peringkat S+ sampai D", detail: "Artis diurutkan berdasarkan skill dan sinergi", href: "tierlist", color: "#ffd700" },
       { emoji: "📖", title: "Panduan", desc: "Strategi & tutorial", detail: "Dari pemula hingga ahli: semua untuk berkembang", href: "guides", color: "#4ade80" },
     ],
     quickAccessTitle: "Akses cepat",
     tldrCards: [
-      { title: "🏆 Tier List Komunitas", desc: "Vote buat artist favorit lo. Ranking diupdate tiap minggu based on feedback player.", linkText: "Lihat Tier List →", href: "/tierlist/" },
+      { title: "🏆 Tier List Komunitas", desc: "Artis diurutkan dari S+ sampai D berdasarkan skill.", linkText: "Lihat Tier List →", href: "/tierlist/" },
       { title: "🎤 Database Artist", desc: "Jelajahi 117+ artist lengkap dengan stat, skill, dan rekomendasi tim. Cari tim impian lo.", linkText: "Jelajahi Artist →", href: "/teambuilder/" },
       { title: "💰 Kode Promo", desc: "Semua kode udah expired tapi disimpan buat referensi. Masukin di game: Profile → Settings → Gift Code", linkText: "Lihat Kode →", href: "/codes/" },
       { title: "📖 Panduan Game", desc: "Dari tips pemula sampe strategi advanced. Panduan lengkap ditulis oleh player berpengalaman.", linkText: "Lihat Panduan →", href: "/guides/" },

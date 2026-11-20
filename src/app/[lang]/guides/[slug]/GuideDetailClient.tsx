@@ -134,7 +134,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
     return (
       <div className="container" style={{ padding: "40px 20px", textAlign: "center" }}>
         <h1 style={{ color: "#fff", marginBottom: "20px" }}>{t.notFound}</h1>
-        <Link href={`/${lang}/guides/`} style={{ color: "#8b5cf6" }}>
+        <Link prefetch={false} href={`/${lang}/guides/`} style={{ color: "#8b5cf6" }}>
           {t.backToGuides}
         </Link>
       </div>
@@ -629,7 +629,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
       {/* Hero Header */}
       <div className="gd-hero" style={{ ["--c" as string]: guideColor }}>
         <div className="gd-hero-inner">
-          <Link href={`/${lang}/guides/`} className="gd-back">{t.backToGuides}</Link>
+          <Link prefetch={false} href={`/${lang}/guides/`} className="gd-back">{t.backToGuides}</Link>
           <div className="gd-hero-row">
             <span className="gd-icon" aria-hidden="true"><GuideIcon id={guide.id} type={guide.guideType} size={26} /></span>
             <div className="gd-hero-text">
@@ -711,7 +711,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
               {relatedGuideEntries.length ? (
                 <div className="gd-list">
                   {relatedGuideEntries.map((relatedGuide) => (
-                    <Link key={relatedGuide.id} href={`/${lang}/guides/${getGuideSlug(relatedGuide)}/`} className="gd-row">
+                    <Link prefetch={false} key={relatedGuide.id} href={`/${lang}/guides/${getGuideSlug(relatedGuide)}/`} className="gd-row">
                       <span className="gd-row-ico" aria-hidden="true"><GuideIcon id={relatedGuide.id} size={15} /></span>
                       <span>{relatedGuide[`title_${lang}` as keyof typeof relatedGuide] as string || relatedGuide.title}</span>
                       <span className="gd-row-arrow" aria-hidden="true">→</span>
@@ -727,7 +727,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
                 <h3>{t.relatedArtists}</h3>
                 <div className="gd-list">
                   {relatedArtistEntries.map((artist) => (
-                    <Link key={artist.slug} href={`/${lang}/artist/${artist.slug}/`} className="gd-row">
+                    <Link prefetch={false} key={artist.slug} href={`/${lang}/artist/${artist.slug}/`} className="gd-row">
                       <span className="gd-row-ico" aria-hidden="true">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></svg>
                       </span>
@@ -753,7 +753,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
                   </div>
                 ))}
               </div>
-              <Link href={`/${lang}/glossary/`} className="gd-glossary-link">{t.viewFullGlossary}</Link>
+              <Link prefetch={false} href={`/${lang}/glossary/`} className="gd-glossary-link">{t.viewFullGlossary}</Link>
             </div>
           </section>
         )}
@@ -765,7 +765,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
           <h3>{t.otherGuides}</h3>
           <div className="gd-others-list">
             {otherGuides.map(g => (
-              <Link key={g.id} href={`/${lang}/guides/${getGuideSlug(g)}/`}>
+              <Link prefetch={false} key={g.id} href={`/${lang}/guides/${getGuideSlug(g)}/`}>
                 <span aria-hidden="true" className="gd-others-ico"><GuideIcon id={g.id} size={15} /></span>
                 <span>{g[`title_${lang}` as keyof typeof g] as string || g.title}</span>
               </Link>
@@ -775,7 +775,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
 
         {/* Internal Linking Hubs */}
         <div className="gd-hubs">
-          <Link href={`/${lang}/teambuilder/`} className="gd-hub" style={{ ["--c" as string]: "#ff4d8d" }}>
+          <Link prefetch={false} href={`/${lang}/teambuilder/`} className="gd-hub" style={{ ["--c" as string]: "#ff4d8d" }}>
             <span className="gd-hub-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" /><circle cx="17" cy="9" r="2.4" /><path d="M15.5 14.4c2.3.2 4 1.7 4.5 4.6" /></svg>
             </span>
@@ -785,7 +785,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
             </span>
             <span className="gd-hub-arrow" aria-hidden="true">→</span>
           </Link>
-          <Link href={`/${lang}/tierlist/`} className="gd-hub" style={{ ["--c" as string]: "#fbbf24" }}>
+          <Link prefetch={false} href={`/${lang}/tierlist/`} className="gd-hub" style={{ ["--c" as string]: "#fbbf24" }}>
             <span className="gd-hub-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M8 4h8v4a4 4 0 0 1-8 0V4z" /><path d="M8 6H5a3 3 0 0 0 3 4" /><path d="M16 6h3a3 3 0 0 1-3 4" /><path d="M12 12v4" /><path d="M8 20h8" /></svg>
             </span>
@@ -804,7 +804,7 @@ export default function GuideDetailClient({ lang, slug, guide, relatedGuides, ot
           <a href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === "fr" ? "Amélioration de guide" : "Guide improvement")}%3A%20${encodeURIComponent(guideTitle)}`}>
             {lang === "fr" ? "Suggérer une amélioration →" : "Suggest an improvement →"}
           </a>
-          <Link href={`/${lang}/methodology/`}>
+          <Link prefetch={false} href={`/${lang}/methodology/`}>
             {lang === "fr" ? "Méthodologie des guides" : "Guide methodology"}
           </Link>
         </div>

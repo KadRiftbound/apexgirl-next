@@ -592,7 +592,7 @@ export default function GuidesListClient({ lang, guides: guidesProp }: { lang: s
     const cover = coverImages[guide.id];
     const faces = (guide.relatedArtists || []).map((slug) => artistImageBySlug[slug]).filter(Boolean).slice(0, 3);
     return (
-      <Link
+      <Link prefetch={false}
         key={guide.id}
         href={`/${lang}/guides/${langSlug}/`}
         className={`gl-card${guide.inProgress ? " wip" : ""}${guide.outdated ? " old" : ""}`}
@@ -639,7 +639,7 @@ export default function GuidesListClient({ lang, guides: guidesProp }: { lang: s
         <h1 className="page-head-title">{t.title}</h1>
         {t.outdatedNotice && <p className="page-head-note">{t.outdatedNotice}</p>}
         <div>
-          <Link href={`/${lang}/glossary/`} className="page-head-link">{t.glossary} →</Link>
+          <Link prefetch={false} href={`/${lang}/glossary/`} className="page-head-link">{t.glossary} →</Link>
         </div>
       </header>
 

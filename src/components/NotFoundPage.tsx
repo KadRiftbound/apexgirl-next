@@ -22,7 +22,7 @@ export function NotFoundPage() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
-            <Link href="/en/" style={{
+            <Link prefetch={false} href="/en/" style={{
               padding: "12px 28px",
               background: "linear-gradient(135deg, #8b5cf6, #ec4899)",
               color: "#fff",
@@ -33,7 +33,7 @@ export function NotFoundPage() {
             }}>
               <span aria-hidden="true">🏠</span> Home
             </Link>
-            <Link href="/en/teambuilder/" style={{
+            <Link prefetch={false} href="/en/teambuilder/" style={{
               padding: "12px 28px",
               background: "rgba(255,255,255,0.08)",
               color: "#fff",
@@ -45,7 +45,7 @@ export function NotFoundPage() {
             }}>
               <span aria-hidden="true">🎤</span> Artists
             </Link>
-            <Link href="/en/guides/" style={{
+            <Link prefetch={false} href="/en/guides/" style={{
               padding: "12px 28px",
               background: "rgba(255,255,255,0.08)",
               color: "#fff",

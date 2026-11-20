@@ -15,7 +15,7 @@ const texts: Record<string, {
     unavailable: "La fenêtre de consentement n'est pas disponible dans votre région ou est bloquée par un bloqueur de publicité.",
     sections: [
       { title: "Cookies nécessaires", body: "Ils mémorisent vos préférences (langue, équipes sauvegardées) dans votre navigateur. Ils ne peuvent pas être désactivés." },
-      { title: "Mesure d'audience", body: "Google Analytics et Vercel Analytics nous aident à savoir quelles pages sont utiles, pour améliorer le site." },
+      { title: "Mesure d'audience", body: "Google Analytics nous aide à savoir quelles pages sont utiles, pour améliorer le site." },
       { title: "Publicité", body: "Google AdSense affiche des annonces qui financent le site. Selon votre choix, elles sont personnalisées ou non." },
     ],
     privacy: "Plus de détails dans notre",
@@ -28,7 +28,7 @@ const texts: Record<string, {
     unavailable: "The consent window isn't available in your region, or it is blocked by an ad blocker.",
     sections: [
       { title: "Necessary cookies", body: "They remember your preferences (language, saved teams) in your browser. They can't be turned off." },
-      { title: "Analytics", body: "Google Analytics and Vercel Analytics tell us which pages are useful so we can improve the site." },
+      { title: "Analytics", body: "Google Analytics tells us which pages are useful so we can improve the site." },
       { title: "Advertising", body: "Google AdSense shows ads that fund the site. Depending on your choice, they are personalised or not." },
     ],
     privacy: "More details in our",
@@ -41,7 +41,7 @@ const texts: Record<string, {
     unavailable: "Jendela persetujuan tidak tersedia di wilayah Anda, atau diblokir oleh pemblokir iklan.",
     sections: [
       { title: "Cookie yang diperlukan", body: "Menyimpan preferensi Anda (bahasa, tim tersimpan) di browser. Tidak dapat dinonaktifkan." },
-      { title: "Analitik", body: "Google Analytics dan Vercel Analytics membantu kami mengetahui halaman mana yang berguna." },
+      { title: "Analitik", body: "Google Analytics membantu kami mengetahui halaman mana yang berguna." },
       { title: "Iklan", body: "Google AdSense menampilkan iklan yang mendanai situs ini, dipersonalisasi atau tidak sesuai pilihan Anda." },
     ],
     privacy: "Detail lebih lanjut di",
@@ -81,7 +81,7 @@ export default async function CookieSettingsPage({ params }: { params: Promise<{
       </div>
 
       <p style={{ color: "var(--text-dim)", fontSize: "0.9rem" }}>
-        {t.privacy} <Link href={privacyHref} style={{ color: "var(--primary-light)" }}>{t.privacyLink}</Link>.
+        {t.privacy} <Link prefetch={false} href={privacyHref} style={{ color: "var(--primary-light)" }}>{t.privacyLink}</Link>.
       </p>
     </div>
   );

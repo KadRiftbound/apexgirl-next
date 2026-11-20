@@ -338,22 +338,13 @@ export default function Contact() {
       return;
     }
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    // No server: hand the message to the visitor's own mail app.
+    const subject = formData.subject || 'TopGirl Guide';
+    const body = `${formData.message}
 
-      if (response.ok) {
-        setSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '', gdpr: false });
-      } else {
-        setError(content.error);
-      }
-    } catch {
-      setError(content.error);
-    }
+${formData.name}
+${formData.email}`;
+    window.location.href = `mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (

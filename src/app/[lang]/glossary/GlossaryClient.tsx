@@ -212,7 +212,7 @@ export default function GlossaryClient({ lang }: { lang: string }) {
             ]}
             lang={lang}
           />
-          <Link
+          <Link prefetch={false}
             href={`/${lang}/guides/`}
             style={{
               display: "inline-flex",

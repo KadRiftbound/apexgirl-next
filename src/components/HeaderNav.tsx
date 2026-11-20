@@ -37,7 +37,7 @@ export function HeaderNav({ lang, items }: { lang: string; items: NavItem[] }) {
                 {item.group && <span className="nav-group-label">{item.group}</span>}
               </div>
             )}
-            <Link href={item.href} className={active ? "active" : undefined} aria-current={active ? "page" : undefined}>
+            <Link prefetch={false} href={item.href} className={active ? "active" : undefined} aria-current={active ? "page" : undefined}>
               <NavIcon name={item.key} size={20} />
               <span>{item.label}</span>
             </Link>

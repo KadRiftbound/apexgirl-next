@@ -199,7 +199,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
       <div style={{ padding: '60px 20px', textAlign: 'center' }}>
         <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔍</div>
         <h2 style={{ color: '#fff', marginBottom: '12px' }}>{t.notFound}</h2>
-        <Link href={`/${lang}/teambuilder/`} style={{
+        <Link prefetch={false} href={`/${lang}/teambuilder/`} style={{
           display: 'inline-block', marginTop: '16px', padding: '10px 24px',
           background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
           color: 'white', borderRadius: '10px', textDecoration: 'none', fontWeight: 600,
@@ -238,7 +238,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
 
         {/* ─── HERO ─── */}
         <section className="ad-hero">
-          <Link href={`/${lang}/teambuilder/`} className="ad-back">← {t.backToArtists}</Link>
+          <Link prefetch={false} href={`/${lang}/teambuilder/`} className="ad-back">← {t.backToArtists}</Link>
           <div className="ad-hero-row">
             <div className="ad-portrait">
               {artist.image ? (
@@ -269,8 +269,8 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
               </dl>
               {artist.rank !== 'R' && artist.rank !== 'SR' && (
                 <div className="ad-cta">
-                  <Link href={`/${lang}/teambuilder/?add=${artist.id}`} className="ad-cta-primary">+ {t.addToTeam || 'Add to my team'}</Link>
-                  <Link href={`/${lang}/teambuilder/`} className="ad-cta-ghost">{t.openTeamBuilder || 'Open the Team Builder'}</Link>
+                  <Link prefetch={false} href={`/${lang}/teambuilder/?add=${artist.id}`} className="ad-cta-primary">+ {t.addToTeam || 'Add to my team'}</Link>
+                  <Link prefetch={false} href={`/${lang}/teambuilder/`} className="ad-cta-ghost">{t.openTeamBuilder || 'Open the Team Builder'}</Link>
                 </div>
               )}
             </div>
@@ -371,7 +371,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
                 const guide = guidesMeta[guideId];
                 if (!guide) return null;
                 return (
-                  <Link key={guideId} href={`/${lang}/guides/${guideId}/`} className="ad-chip" style={{ ["--c" as string]: guide.color }}>
+                  <Link prefetch={false} key={guideId} href={`/${lang}/guides/${guideId}/`} className="ad-chip" style={{ ["--c" as string]: guide.color }}>
                     {guide.label[lang] || guide.label.en}
                     <span aria-hidden="true">→</span>
                   </Link>
@@ -402,11 +402,11 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
         </div>
 
         <div className="ad-foot">
-          <Link href={`/${lang}/teambuilder/`}>← {t.backToArtists}</Link>
+          <Link prefetch={false} href={`/${lang}/teambuilder/`}>← {t.backToArtists}</Link>
           <a href={`mailto:contact@apexgirlguide.com?subject=${encodeURIComponent(lang === 'fr' ? 'Nouvelle artiste' : 'New artist submission')}%3A%20${encodeURIComponent(artist.name)}`} className="ad-foot-muted">
             {lang === 'fr' ? 'Soumettre une nouvelle artiste' : 'Submit a new artist'}
           </a>
-          <Link href={`/${lang}/tierlist/`}>{t.viewTierList.replace(' →', '')} →</Link>
+          <Link prefetch={false} href={`/${lang}/tierlist/`}>{t.viewTierList.replace(' →', '')} →</Link>
         </div>
       </div>
     </>
@@ -416,7 +416,7 @@ export default function ArtistDetailClient({ lang, slug }: { lang: string; slug:
 function RelatedRow({ a, lang }: { a: Artist; lang: string }) {
   const ac = rankColors[a.rank] || '#6b7280';
   return (
-    <Link href={`/${lang}/artist/${slugify(a.name)}/`} className="ad-row" style={{ ["--rank" as string]: ac }}>
+    <Link prefetch={false} href={`/${lang}/artist/${slugify(a.name)}/`} className="ad-row" style={{ ["--rank" as string]: ac }}>
       <span className="ad-row-img">
         {a.image ? <Image src={`/assets/images/artists/${a.image}`} alt={a.name} fill sizes="44px" style={{ objectFit: 'cover' }} /> : <span>{a.name.charAt(0)}</span>}
       </span>

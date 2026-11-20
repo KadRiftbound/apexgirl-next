@@ -19,7 +19,9 @@ type ArtistData = {
 
 const LANGS = ['fr', 'en', 'id'] as const;
 
-// Every artist page is prerendered for every language.
+// Every artist page is prerendered for every language; unknown slugs 404 without rendering on demand.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return LANGS.flatMap((lang) =>
     (artistsData as ArtistData[]).map((a) => ({ lang, slug: slugify(a.name) }))

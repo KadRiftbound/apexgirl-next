@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import guidesData from '@/lib/data/guides.json';
 import { SITE_UPDATED, GUIDES_UPDATED, ARTISTS_UPDATED } from '@/lib/seo/lastmod';
 
+export const dynamic = 'force-static';
+
 const BASE_URL = 'https://apexgirlguide.com';
 const LANGUAGES = ['fr', 'en', 'id'] as const;
 
@@ -16,7 +18,6 @@ const COMMON_PAGES = [
   'teambuilder',
   'tierlist',
   'guides',
-  'vote',
   'codes',
   'contact',
   'cookie-settings',
